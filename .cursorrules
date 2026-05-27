@@ -1,8 +1,25 @@
 # RIMEC NEXUS CORE — Reglas únicas del holding (Cursor / Auto)
 
-> **Casa:** `C:\Users\hecto\Nexus_Core\`  
-> **Workspace recomendado en Cursor:** abrir la carpeta **Nexus_Core** (padre), no solo un sub-repo.  
+> **Casa:** `C:\Users\hecto\Nexus_Core\`
+> **Workspace recomendado en Cursor:** abrir la carpeta **Nexus_Core** (padre), no solo un sub-repo.
 > Documentación extendida: `docs/` y `roles/`.
+
+---
+
+## 🚨 ESTRUCTURA OBLIGATORIA (LEER PRIMERO)
+
+**ANTES de crear CUALQUIER archivo o carpeta:**
+1. Lee [`docs/ESTRUCTURA_OBLIGATORIA.md`](docs/ESTRUCTURA_OBLIGATORIA.md)
+2. Consulta a Claude (Maestro de Obras)
+3. Claude aprueba la ubicación
+4. SOLO entonces creas
+
+**PROHIBIDO:**
+- ❌ Crear carpetas sin aprobación de Claude
+- ❌ Documentos sueltos en raíz (solo README.md y SECURITY.md)
+- ❌ Documentación de app en `Nexus_Core/docs/` (va en `[app]/docs/`)
+
+**AUTORIDAD:** Claude es el ÚNICO que aprueba nuevas carpetas/estructura.
 
 ---
 
