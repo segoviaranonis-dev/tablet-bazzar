@@ -24,12 +24,24 @@ Resultados: [ot/RESPUESTA_EJECUTOR.md](ot/RESPUESTA_EJECUTOR.md) · Guía Direct
 | Documento | Uso |
 |-----------|-----|
 | [.cursorrules](.cursorrules) | **Regla única** para Cursor (abrir workspace aquí) |
+| [docs/BUENAS_PRACTICAS.md](docs/BUENAS_PRACTICAS.md) | **Orden, seguridad, reutilización** |
 | [ot/](ot/) | Cola, protocolo, respuestas |
 | [docs/CONTRATO_ARQUITECTURA.md](docs/CONTRATO_ARQUITECTURA.md) | Leyes estructurales |
 | [docs/EQUIPO_Y_ROLES.md](docs/EQUIPO_Y_ROLES.md) | Cursor · Claude · Antigravity |
 | [docs/FLUJO_OT_Y_AUDITORIA.md](docs/FLUJO_OT_Y_AUDITORIA.md) | OT → ejecución → auditoría |
 | [docs/MAPA_REPOS.md](docs/MAPA_REPOS.md) | Paths, deploy, BD compartida |
-| [OT-RESTABLECIMIENTO-NEXUS-CORE-001.md](OT-RESTABLECIMIENTO-NEXUS-CORE-001.md) | OT de orden post-migración |
+
+## Estructura de Documentación
+
+```
+docs/
+├── auditorias/      → Reportes RBAC, seguridad, cumplimiento
+├── historico/       → Proyectos completados y archivados
+├── migraciones/     → Evidencias de cambios estructurales
+└── referencias/     → PDFs de estilo, guías, ejemplos
+
+comercial/           → Propuestas, presupuestos, presentaciones
+```
 
 ## Cómo abrir en Cursor
 
