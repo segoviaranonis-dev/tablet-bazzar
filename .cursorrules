@@ -1,0 +1,95 @@
+# RIMEC NEXUS CORE — Reglas únicas del holding (Cursor / Auto)
+
+> **Casa:** `C:\Users\hecto\Nexus_Core\`  
+> **Workspace recomendado en Cursor:** abrir la carpeta **Nexus_Core** (padre), no solo un sub-repo.  
+> Documentación extendida: `docs/` y `roles/`.
+
+---
+
+## Equipo (3 agentes + Director)
+
+| Rol | Herramienta | Responsabilidad |
+|-----|-------------|-----------------|
+| **Director** | — | Prioridades, cierre gerencial, push Git |
+| **Cursor (Auto)** | Cursor | Redactar OT, auditoría estricta PASS/FAIL, integridad P1–P8 |
+| **Claude Code** | VS Code | Ejecutar OT (código + **migraciones SQL / índices / funciones BD**) |
+| **Antigravity** | Gemini 3 Flash / 3.1 Pro | UI/UX, diseño, prototipos visuales (sin parches de datos en cliente) |
+
+Claude **ejecuta**; Cursor **audita**. Antigravity **diseña**; no cierra OT ni toca resets transaccionales sin OT.
+
+---
+
+## CONTRATO DE ARQUITECTURA (inquebrantable)
+
+### 1. Regla de oro — El pilar es la única verdad
+
+- **PROHIBIDO** usar datos desnormalizados (texto: nombres de marca, estilo, género) para cálculos, agrupamientos o filtros si existe tabla Maestra/Pilar.
+- Toda entidad interactúa por **FK canónicas (`bigint`)**: `linea_id`, `referencia_id`, `material_id`, `color_id`, `marca_id`, `genero_id`, etc.
+- Legacy con huérfanos o texto: **reportar** y **refactorizar al pilar**, nunca parche en UI.
+
+### 2. Anti-patrones prohibidos
+
+- **Parche en memoria (React/Streamlit):** no deduplicar ni “arreglar” relaciones en el cliente; saneamiento en BD o backend.
+- **Arrastre ciego:** al portar Streamlit → Next.js, no copiar SQL obsoleto; mapear al esquema vigente.
+- **Dataframes planos para FI/KPIs transaccionales:** Ley de exhibición — **5 pilares legibles + URL imagen**.
+- **Motor de precios:** no bucle Python por SKU si existe camino SQL indexado (`INSERT…SELECT`, `ROUND` en Postgres).
+- **Reset:** nunca `TRUNCATE CASCADE` en biblioteca/pilares; `registro_ventas_general_v2` intocable.
+
+### 3. Antes de escribir código — validar
+
+1. **JOINs:** ¿Lee desde pilar (`linea.marca_id`) o campo obsoleto (`ppd.id_marca` sin validar)?
+2. **Índices:** ¿Triplete `(evento_id, linea_id, referencia_id, material_id)` o equivalente para lookups PP/FI?
+3. **Persistencia:** import Excel/API deduplica en el **INSERT** inicial; datos sucios no entran a tablas.
+
+### 4. Criterio de aceptación gerencial
+
+- No basta con que compile o no tire error en pantalla.
+- Éxito = menos código, **SQL directo indexado**, matemática en BD (`ROUND`, `SUM`), criterio unificado.
+- OT cerrada solo con evidencia `OT-*-EVIDENCIA.json` y `auditoria_auto: PASS` cuando aplique.
+
+---
+
+## Repositorios (mapa)
+
+| Carpeta | Producto | Stack |
+|---------|----------|--------|
+| `control_central/` | Nexus operativo (ex ventas_por_mes_rimec) | Streamlit + Supabase |
+| `rimec-web/` | Web RIMEC | Next.js + Vercel |
+| `bazzar-web/` | Web Bazar | Next.js + Vercel |
+| `report/` | Sales Report | Next.js (sin pilares) |
+
+Integridad detallada: `control_central/docs/CONTROL_INTEGRIDAD_HOLDING.md`  
+Registro OT: `control_central/docs/OT_REGISTRO_ESTADO.md`
+
+---
+
+## Flujo OT (Cursor) — sistema «Ejecuta la OT»
+
+**Bandeja única:** `ot/COLA.md` + `ot/RESPUESTA_EJECUTOR.md` + `ot/PROTOCOLO_EJECUTAR_OT.md`
+
+1. Director pide objetivo → Cursor redacta OT en `ot/en_curso/OT-*.md` (o `control_central/` si aplica).
+2. Cursor **actualiza `ot/COLA.md`** (ID, ruta, ejecutor, estado `PENDIENTE_EJECUCION`) y resetea `RESPUESTA_EJECUTOR.md`.
+3. Director dice a Claude/Antigravity: **«Ejecuta la OT»** (nada más).
+4. Ejecutor sigue protocolo → llena `RESPUESTA_EJECUTOR.md` (preguntas en §4 si hay dudas).
+5. Cursor audita → responde §5 de RESPUESTA → PASS/FAIL → `OT_REGISTRO_ESTADO.md`.
+6. **No** crear commits ni push salvo pedido explícito del Director.
+
+Director lee solo: `ot/RESPUESTA_EJECUTOR.md` §1 y `ot/TARJETA_DIRECTOR.md`.
+
+---
+
+## Productos vs procesos
+
+- **Nexus** = Streamlit + webs (flujo IC → PP → FI → web).
+- **Report** = ventas históricas; **no usa pilares**.
+- **Motor de precios** = Excel + evento + `precio_lista`; **sí provisiona pilares**.
+- **Retail** = staging desde Excel; enriquece con FK pilares.
+
+---
+
+## Referencias rápidas
+
+- **Ejecutar OT:** `ot/PROTOCOLO_EJECUTAR_OT.md` · Cola: `ot/COLA.md`
+- Contrato completo: `docs/CONTRATO_ARQUITECTURA.md`
+- Roles: `docs/EQUIPO_Y_ROLES.md` · `roles/*.md`
+- Director (3 frases): `ot/TARJETA_DIRECTOR.md`

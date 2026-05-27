@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Briefing: NEXUS CORE + RIMEC WEB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; }
+            body { background-color: #fff; color: #000; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-indigo-500 selection:text-white">
+
+    <!-- Barra lateral / Navegación (No se imprime) -->
+    <div class="no-print fixed top-0 left-0 right-0 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="w-3 h-3 rounded-full bg-indigo-500 animate-pulse"></span>
+                <span class="font-bold text-sm tracking-wider uppercase text-slate-200">NEXUS INTEGRAL HUB</span>
+            </div>
+            <button onclick="window.print()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 shadow-lg shadow-indigo-600/25">
+                🖨️ Exportar a PDF Profesional
+            </button>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal de la Presentación -->
+    <div class="max-w-5xl mx-auto px-6 pt-28 pb-20 space-y-20">
+
+        <!-- PORTADA CORPORATIVA (PÁGINA 1 PDF) -->
+        <section class="min-h-[70vh] flex flex-col justify-between pt-10">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2.5 bg-indigo-500/10 border border-indigo-500/30 px-4 py-1.5 rounded-full text-indigo-400 text-xs font-semibold tracking-wider uppercase">
+                    Ecosistema Enterprise • Gestión de Distribución
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    NEXUS CORE <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">+ RIMEC WEB</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-3xl font-light leading-relaxed">
+                    Documentación Técnica, Arquitectura de Datos Dinámica y Evaluación de Retorno de Inversión (ROI) para la industria mayorista de calzado.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-slate-800 pt-12 mt-12">
+                <div class="text-xs text-slate-500 space-y-1">
+                    <p class="uppercase font-semibold tracking-widest text-slate-400">Desarrollo y Consultoría</p>
+                    <p class="text-sm font-bold text-slate-200">Héctor Segovia</p>
+                    <p>Líder del Proyecto & Arquitecto de Software</p>
+                    <p>Soporte de Ingeniería: Claude Sonnet 4.5</p>
+                </div>
+                <div class="text-xs md:text-right text-slate-500 space-y-1">
+                    <p class="uppercase font-semibold tracking-widest text-slate-400">Control de Versiones</p>
+                    <p class="text-sm font-bold text-slate-200">v1.0.0 (Producción Activa)</p>
+                    <p>Fecha de Lanzamiento: 25 de Mayo de 2026</p>
+                    <p>Localización: Asunción, Paraguay</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-900 page-break">
+
+        <!-- RESUMEN EJECUTIVO & TRACCIÓN -->
+        <section class="space-y-8">
+            <div class="space-y-2">
+                <h2 class="text-xs font-bold tracking-widest text-indigo-400 uppercase">Sección 01</h2>
+                <h3 class="text-3xl font-bold text-white tracking-tight">Resumen Ejecutivo y Métricas de Impacto</h3>
+            </div>
+            
+            <p class="text-slate-400 leading-relaxed font-light">
+                NEXUS CORE + RIMEC WEB rompe el paradigma de los ERP tradicionales rígidos (Odoo, SAP Business One), introduciendo un ecosistema optimizado específicamente para distribuidoras mayoristas de calzado. Permite monetizar el inventario antes de su arribo físico mediante un motor transaccional de <strong class="text-white font-medium">Stock en Tránsito</strong>, gobernado por matrices complejas de precios multi-lista y descuentos en cascada automáticos.
+            </p>
+
+            <!-- Tarjetas de Tracción Real -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+                <div class="bg-slate-900/50 border border-slate-800/80 p-5 rounded-2xl">
+                    <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Volumen Día 1</p>
+                    <p class="text-3xl font-bold text-white mt-2">1,868 <span class="text-xs text-slate-400 font-normal">pares</span></p>
+                    <p class="text-[10px] text-emerald-400 mt-1">✓ 100% Vendido</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-800/80 p-5 rounded-2xl">
+                    <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Órdenes Críticas</p>
+                    <p class="text-3xl font-bold text-indigo-400 mt-2">7 <span class="text-xs text-slate-400 font-normal">pedidos</span></p>
+                    <p class="text-[10px] text-slate-400 mt-1">Procesados con éxito</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-800/80 p-5 rounded-2xl">
+                    <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Fuerza de Ventas</p>
+                    <p class="text-3xl font-bold text-white mt-2">3 <span class="text-xs text-slate-400 font-normal">Agentes</span></p>
+                    <p class="text-[10px] text-indigo-400 mt-1">Sincronizados en tiempo real</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-800/80 p-5 rounded-2xl">
+                    <p class="text-slate-500 text-xs font-semibold uppercase tracking-wider">Facturación Bruta</p>
+                    <p class="text-3xl font-bold text-emerald-400 mt-2">Gs. 180M+</p>
+                    <p class="text-[10px] text-emerald-400 mt-1">Uptime del Sistema: 100%</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-900 page-break">
+
+        <!-- ARQUITECTURA COMPLETA -->
+        <section class="space-y-8">
+            <div class="space-y-2">
+                <h2 class="text-xs font-bold tracking-widest text-indigo-400 uppercase">Sección 02</h2>
+                <h3 class="text-3xl font-bold text-white tracking-tight">Arquitectura de Software e Interconexión de Capas</h3>
+            </div>
+
+            <!-- Gráfico de arquitectura emulado con CSS -->
+            <div class="bg-slate-900/30 border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center text-xs font-bold">
+                    
+                    <!-- Capa 1 -->
+                    <div class="bg-indigo-950/40 border border-indigo-500/30 rounded-xl p-4 space-y-3">
+                        <span class="text-indigo-400 uppercase tracking-widest text-[10px] block">Capa de Gestión Interna</span>
+                        <div class="bg-slate-950 p-2 rounded border border-slate-800 text-slate-200">NEXUS CORE (Streamlit)</div>
+                        <p class="text-slate-400 font-normal text-[11px] text-left">Control de administración central, auditoría, automatización y reportería avanzada para la gerencia.</p>
+                    </div>
+
+                    <!-- Capa 2 -->
+                    <div class="bg-cyan-950/40 border border-cyan-500/30 rounded-xl p-4 space-y-3">
+                        <span class="text-cyan-400 uppercase tracking-widest text-[10px] block">Capa de Distribución B2B / B2C</span>
+                        <div class="bg-slate-950 p-2 rounded border border-slate-800 text-slate-200">RIMEC WEB + BAZZAR (Next.js)</div>
+                        <p class="text-slate-400 font-normal text-[11px] text-left">Fuerza de venta digital, carritos persistentes de baja latencia desplegados en los servidores perimetrales de Vercel.</p>
+                    </div>
+
+                    <!-- Capa 3 -->
+                    <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-xl p-4 space-y-3">
+                        <span class="text-emerald-400 uppercase tracking-widest text-[10px] block">Capa de Datos Unificada</span>
+                        <div class="bg-slate-950 p-2 rounded border border-slate-800 text-slate-200">SUPABASE (PostgreSQL)</div>
+                        <p class="text-slate-400 font-normal text-[11px] text-left">Base relacional ACID con políticas RLS, triggers inteligentes y versionamiento de stock virtual en tránsito.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-900 page-break">
+
+        <!-- DETALLE DE LOS 12 MÓDULOS NEXUS CORE -->
+        <section class="space-y-8">
+            <div class="space-y-2">
+                <h2 class="text-xs font-bold tracking-widest text-indigo-400 uppercase">Sección 03</h2>
+                <h3 class="text-3xl font-bold text-white tracking-tight">Estructura Interna: Los 12 Módulos de NEXUS CORE</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Mod 1 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M01 // Sales Report</span>
+                    <h4 class="text-base font-bold text-white">Análisis y Proyecciones de Venta</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Filtros multidimensionales avanzados (vendedor, cliente, marca, periodos) con renders gráficos interactivos basados en Pandas y Plotly.</p>
+                </div>
+                <!-- Mod 2 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M02 // Carga Automatizada</span>
+                    <h4 class="text-base font-bold text-white">Importación Masiva de Datos</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Ingesta masiva a través de archivos Excel y CSV con validación estricta de esquemas estructurales antes de impactar en Supabase.</p>
+                </div>
+                <!-- Mod 3 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M03 // Motor de Precios</span>
+                    <h4 class="text-base font-bold text-white">Estructuración de Descuentos en Cascada</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Gobierna 4 listas activas (LPN, LPC02, LPC03, LPC04). Ejecuta fórmulas matemáticas en cascada: $Precio \times (1 - d_1/100) \times (1 - d_2/100)\dots$</p>
+                </div>
+                <!-- Mod 4 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M04 // Manejo de Casos</span>
+                    <h4 class="text-base font-bold text-white">Matrices de Clasificación Marca × Caso</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Clasificación dinámica de flujos de negocio (Ej: BR-VZ-MD-ML-MKA-O) mapeando origen, marca y tipo de cliente mayorista de forma automática.</p>
+                </div>
+                <!-- Mod 5 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M05 // Biblioteca de Precios</span>
+                    <h4 class="text-base font-bold text-white">Repositorio y Versionado Histórico</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Auditoría completa de variaciones en listas de costos. Permite simular el impacto en los márgenes de ganancia antes de su publicación.</p>
+                </div>
+                <!-- Mod 6 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M06 // Intención de Compra</span>
+                    <h4 class="text-base font-bold text-white">Planificación de Pedidos de Importación</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Registro y traza de necesidades de stock por marca mucho antes del envío de proformas oficiales por parte de las fábricas internacionales.</p>
+                </div>
+                <!-- Mod 7 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M07 // Digitación Inteligente</span>
+                    <h4 class="text-base font-bold text-white">Carga Manual Guiada con Guardado en Base de Datos</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Formularios optimizados con autocompletado inteligente y guardado persistente de borradores para la creación de registros sin pérdida de datos.</p>
+                </div>
+                <!-- Mod 8 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M08 // Pedido Proveedor</span>
+                    <h4 class="text-base font-bold text-white">Gestor del Ciclo de Vida de Compras</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Control total del estatus de órdenes internacionales (Borrador → Enviado → Confirmado → En Tránsito) indexando fechas estimadas de arribo (ETA).</p>
+                </div>
+                <!-- Mod 9 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M09 // Parser Proforma</span>
+                    <h4 class="text-base font-bold text-white">Mapeo y Vinculación Automatizada con Markup</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Algoritmo inteligente de lectura Excel para extraer curvas de calzado por color, calculando listas de venta sugeridas en base al markup configurado.</p>
+                </div>
+                <!-- Mod 10 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M10 // Stock en Tránsito</span>
+                    <h4 class="text-base font-bold text-white">Estructuración y Control de la Vista `v_stock_rimec`</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Cálculo dinámico de la disponibilidad real en la nube: $Disponibles = Total\,Proforma - Comprometido\,en\,Carritos$, evitando sobreventas.</p>
+                </div>
+                <!-- Mod 11 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M11 // Módulo Aprobación</span>
+                    <h4 class="text-base font-bold text-white">Panel de Control para la Dirección General</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Interfaz ejecutiva para autorizar o rechazar solicitudes de pedidos B2B, disparando de manera interna la reserva de stock a través de procedimientos PL/pgSQL.</p>
+                </div>
+                <!-- Mod 12 -->
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-2">
+                    <span class="text-indigo-400 font-mono text-xs font-bold">M12 // Facturas Internas</span>
+                    <h4 class="text-base font-bold text-white">División Automatizada Estricta Marca × Caso</h4>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">Segmenta un pedido maestro en sub-comprobantes agrupados por marca y caso de negocio, asignando descuentos específicos a nivel de base de datos.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-900 page-break">
+
+        <!-- DETALLE DE LOS 8 MÓDULOS RIMEC WEB + 2 BAZZAR WEB -->
+        <section class="space-y-8">
+            <div class="space-y-2">
+                <h2 class="text-xs font-bold tracking-widest text-cyan-400 uppercase">Sección 04</h2>
+                <h3 class="text-3xl font-bold text-white tracking-tight">Canales Digitales: Módulos RIMEC WEB & BAZZAR WEB</h3>
+            </div>
+
+            <div class="border-l-2 border-cyan-500/30 pl-4 space-y-2 mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">RIMEC WEB (Fuerza Mayorista B2B)</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl">
+                    <h5 class="text-sm font-bold text-slate-200">W01 // Catálogo de Preventa</h5>
+                    <p class="text-xs text-slate-400 mt-1">Renderizado veloz de productos indexados en stock virtual segregados por quincena de arribo.</p>
+                </div>
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl">
+                    <h5 class="text-sm font-bold text-slate-200">W02 // Carrito Persistente</h5>
+                    <p class="text-xs text-slate-400 mt-1">Sincronización en base de datos. Permite iniciar la venta en una PC de escritorio y cerrarla desde un celular en campo.</p>
+                </div>
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl">
+                    <h5 class="text-sm font-bold text-slate-200">W03 // Metadata Cache</h5>
+                    <p class="text-xs text-slate-400 mt-1">Uso de almacenamiento local para guardar estructuras estáticas, acelerando los tiempos de respuesta de la app.</p>
+                </div>
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl">
+                    <h5 class="text-sm font-bold text-slate-200">W04 // Lógica de Fragmentación</h5>
+                    <p class="text-xs text-slate-400 mt-1">Algoritmo en el frontend (Next.js) que desglosa visualmente el carrito según la combinación de Marca × Caso comercial.</p>
+                </div>
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl">
+                    <h5 class="text-sm font-bold text-slate-200">W05 // Control de Doble Rol</h5>
+                    <p class="text-xs text-slate-400 mt-1">Control de accesos estructurado para Vendedores y Administradores corporativos mediante validación JWT.</p>
+                </div>
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl">
+                    <h5 class="text-sm font-bold text-slate-200">W06 // Bloqueo de Stock Temporal</h5>
+                    <p class="text-xs text-slate-400 mt-1">Token de seguridad de 60 segundos que asegura el inventario durante el paso crítico de validación y confirmación.</p>
+                </div>
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl">
+                    <h5 class="text-sm font-bold text-slate-200">W07 // Middleware Perimetral</h5>
+                    <p class="text-xs text-slate-400 mt-1">Capa de control en Vercel que bloquea de forma inmediata ataques comunes y escaneos de vulnerabilidades.</p>
+                </div>
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl">
+                    <h5 class="text-sm font-bold text-slate-200">W08 // Resguardos Automatizados</h5>
+                    <p class="text-xs text-slate-400 mt-1">Scripts diarios (GitHub Actions) que extraen copias comprimidas de la base de datos hacia repositorios aislados.</p>
+                </div>
+            </div>
+
+            <div class="border-l-2 border-amber-500/30 pl-4 space-y-2 mt-8 mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400">BAZZAR WEB (Canal Minorista B2C - En Desarrollo)</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl border-dashed">
+                    <h5 class="text-sm font-bold text-slate-200">B01 // Portal Público B2C</h5>
+                    <p class="text-xs text-slate-400 mt-1">Catálogo directo al consumidor final, conectado de manera exclusiva con los remanentes de stock real en depósito físico.</p>
+                </div>
+                <div class="bg-slate-900/20 border border-slate-800/80 p-5 rounded-xl border-dashed">
+                    <h5 class="text-sm font-bold text-slate-200">B02 // Depósito Web Sincronizado</h5>
+                    <p class="text-xs text-slate-400 mt-1">Gestión de stock físico disponible una vez que los contenedores llegan al depósito general de la distribuidora.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-900 page-break">
+
+        <!-- FLUJO COMPLETO DEL NEGOCIO (5 CICLOS) -->
+        <section class="space-y-8">
+            <div class="space-y-2">
+                <h2 class="text-xs font-bold tracking-widest text-indigo-400 uppercase">Sección 05</h2>
+                <h3 class="text-3xl font-bold text-white tracking-tight">El Ciclo Operativo del Negocio: Flujo de Fin a Fin</h3>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Ciclo 1 -->
+                <div class="flex gap-4 bg-slate-900/30 p-5 rounded-xl border border-slate-800">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600/20 text-indigo-400 font-bold flex items-center justify-center shrink-0 text-sm">1</div>
+                    <div class="text-xs space-y-1">
+                        <h4 class="text-sm font-bold text-white">Importación e Ingesta Planificada</h4>
+                        <p class="text-slate-400 font-light">Se procesa la proforma en formato Excel a través de Nexus Core, el sistema calcula de forma instantánea las cuatro listas de precio con su respectivo markup y da de alta los productos en la vista global <code class="bg-slate-950 px-1 py-0.5 rounded text-indigo-300 font-mono">v_stock_rimec</code> como Stock en Tránsito.</p>
+                    </div>
+                </div>
+                <!-- Ciclo 2 -->
+                <div class="flex gap-4 bg-slate-900/30 p-5 rounded-xl border border-slate-800">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600/20 text-indigo-400 font-bold flex items-center justify-center shrink-0 text-sm">2</div>
+                    <div class="text-xs space-y-1">
+                        <h4 class="text-sm font-bold text-white">Preventa Transaccional Mayorista B2B</h4>
+                        <p class="text-slate-400 font-light">Los vendedores levantan los pedidos de los clientes desde RIMEC WEB consumiendo el stock virtual en tránsito. El sistema bloquea el inventario por 60 segundos bajo un token único para validar precios netos y confirmar la orden de compra.</p>
+                    </div>
+                </div>
+                <!-- Ciclo 3 -->
+                <div class="flex gap-4 bg-slate-900/30 p-5 rounded-xl border border-slate-800">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600/20 text-indigo-400 font-bold flex items-center justify-center shrink-0 text-sm">3</div>
+                    <div class="text-xs space-y-1">
+                        <h4 class="text-sm font-bold text-white">Auditoría, Fragmentación y Autorización Gerencial</h4>
+                        <p class="text-slate-400 font-light">La Dirección General evalúa la solicitud desde el panel de aprobación. Al dar clic en aprobar, el backend ejecuta procedimientos PL/pgSQL que dividen la orden en Facturas Internas estructuradas estrictamente bajo la combinación de Marca × Caso.</p>
+                    </div>
+                </div>
+                <!-- Ciclo 4 -->
+                <div class="flex gap-4 bg-slate-900/30 p-5 rounded-xl border border-slate-800">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600/20 text-indigo-400 font-bold flex items-center justify-center shrink-0 text-sm">4</div>
+                    <div class="text-xs space-y-1">
+                        <h4 class="text-sm font-bold text-white">Arribo y Conversión Física en Depósito</h4>
+                        <p class="text-slate-400 font-light">Una vez que la mercadería llega físicamente al país, el stock se traslada de forma automática de la categoría de Tránsito hacia Stock Real en Depósito, dejando las órdenes listas para el empaque y despacho logístico final.</p>
+                    </div>
+                </div>
+                <!-- Ciclo 5 -->
+                <div class="flex gap-4 bg-slate-900/30 p-5 rounded-xl border border-slate-800">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600/20 text-indigo-400 font-bold flex items-center justify-center shrink-0 text-sm">5</div>
+                    <div class="text-xs space-y-1">
+                        <h4 class="text-sm font-bold text-white">Monetización del Remanente en Canal Minorista B2C</h4>
+                        <p class="text-slate-400 font-light">Los pares sobrantes que no se vendieron en el canal mayorista se publican automáticamente en el portal público BAZZAR WEB para su venta unitaria directa al consumidor final, maximizando el margen de ganancia líquida.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-900 page-break">
+
+        <!-- VALORACIÓN DE MERCADO Y MODELOS DE NEGOCIO -->
+        <section class="space-y-8">
+            <div class="space-y-2">
+                <h2 class="text-xs font-bold tracking-widest text-emerald-400 uppercase">Sección 06</h2>
+                <h3 class="text-3xl font-bold text-white tracking-tight">Análisis Financiero, Modelos de Negocio y ROI</h3>
+            </div>
+
+            <div class="bg-gradient-to-br from-slate-900 to-indigo-950 border border-indigo-500/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="space-y-2">
+                    <h4 class="text-xl font-bold text-white">Valoración del Sistema Custom</h4>
+                    <p class="text-xs text-slate-400 font-light max-w-xl">Estructuración del costo de reemplazo del sistema si fuese desarrollado desde cero por una agencia tradicional de software (1,215 horas de ingeniería acumuladas).</p>
+                </div>
+                <div class="text-center bg-slate-950 border border-slate-800 px-6 py-4 rounded-xl min-w-[200px]">
+                    <span class="text-xs text-slate-400 block uppercase tracking-wider">Costo de Mercado</span>
+                    <span class="text-3xl font-black text-emerald-400 mt-1">$60,650 USD</span>
+                </div>
+            </div>
+
+            <!-- Tres Modelos de Negocio -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-light">
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-3">
+                    <span class="font-bold text-indigo-400 uppercase block tracking-wider">Modelo A // Licencia de Venta</span>
+                    <h5 class="text-sm font-bold text-white">Cobro por Agente Activo</h5>
+                    <p class="text-slate-400">Se fija un costo de <strong class="text-white font-medium">$50/mes por vendedor</strong>. Con una proyección base de 10 vendedores estables, genera un flujo de efectivo bruto de $500/mes ($5,460 anuales limpios).</p>
+                    <span class="inline-block bg-slate-950 text-slate-400 px-2 py-1 rounded font-mono text-[10px]">Recuperación: ~11 Años</span>
+                </div>
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-3">
+                    <span class="font-bold text-cyan-400 uppercase block tracking-wider">Modelo B // Corporativo Corporaciones</span>
+                    <h5 class="text-sm font-bold text-white">Venta de Licencias On-Premise</h5>
+                    <p class="text-slate-400">Implementación única llave en mano de <strong class="text-white font-medium">$2,000 + $200/mes por soporte</strong> técnico. Firmando 5 distribuidoras al año se obtienen $22,000 USD anuales.</p>
+                    <span class="inline-block bg-slate-950 text-cyan-400 px-2 py-1 rounded font-mono text-[10px]">Recuperación: ~3.7 Años</span>
+                </div>
+                <div class="bg-slate-900/40 border border-slate-800 p-5 rounded-xl space-y-3">
+                    <span class="font-bold text-emerald-400 uppercase block tracking-wider">Modelo C // SaaS Multi-Tenant</span>
+                    <h5 class="text-sm font-bold text-white">Plataforma Nube Distribuida</h5>
+                    <p class="text-slate-400">Esquema de suscripción mensual recurrente de <strong class="text-white font-medium">$300/mes por distribuidora</strong>. Escalando a 20 empresas se obtienen ingresos por $72,000 USD al año.</p>
+                    <span class="inline-block bg-slate-950 text-emerald-400 px-2 py-1 rounded font-mono text-[10px]">Recuperación: ~1.5 Años</span>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-slate-900 page-break">
+
+        <!-- RECOMENDACIÓN HONESTA INFRAESTRUCTURA -->
+        <section class="bg-slate-900/30 border border-slate-800 rounded-2xl p-6 md:p-8 space-y-6">
+            <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600/10 text-indigo-400 border border-indigo-500/20 text-xl font-bold flex items-center justify-center shrink-0">💡</div>
+                <div class="space-y-2 text-xs font-light">
+                    <h4 class="text-base font-bold text-white">Dictamen de Infraestructura: Migración Obligatoria a Supabase Pro</h4>
+                    <p class="text-slate-400 leading-relaxed">
+                        Como tu colaborador estratégico, mi recomendación es categórica: **Debes activar el plan Supabase Pro ($25/mes) de inmediato**. Tras registrar un volumen real de 1,868 pares vendidos en tu primer día, la base de datos ha dejado de ser un entorno de desarrollo para convertirse en un activo crítico de producción.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed">
+                        El plan gratuito carece de copias de seguridad automáticas nativas y restringe el almacenamiento a 500 MB. El plan Pro activa la funcionalidad <strong class="text-white font-medium">PITR (Point-in-Time Recovery)</strong>, la cual guarda logs transaccionales que permiten restaurar la base de datos al estado exacto de cualquier milisegundo de los últimos 7 días ante un error accidental o falla crítica. La prevención de un solo incidente operacional paga décadas de este servicio.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer Corporativo (No se imprime) -->
+    <footer class="no-print bg-slate-950 border-t border-slate-900 py-8 text-center text-xs text-slate-500">
+        <p>Ecosistema de Gestión de Calzado NEXUS • Desarrollado por Héctor Segovia en colaboración con Claude 4.5 • 2026</p>
+    </footer>
+
+</body>
+</html>

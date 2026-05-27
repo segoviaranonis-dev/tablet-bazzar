@@ -1,0 +1,301 @@
+---
+description: Leyes de Importación y Mutación de Pilares — Retail / Stock. Reglas mandatorias para los tres motores de carga (Listado de Precios, Facturas Proformas, Importación Masiva de Retail). Aislamiento absoluto respecto del ecosistema Sales Report.
+globs:
+  - control_central/modules/listado_precios/**
+  - control_central/modules/proforma/**
+  - control_central/modules/balance_tiendas_retail/**
+  - control_central/modules/digitacion_pedidos/**
+  - control_central/core/pilares/**
+  - control_central/migrations/**
+  - report/src/lib/retail/**
+alwaysApply: true
+---
+
+# Leyes de Importación y Mutación de Pilares — Retail / Stock
+
+> Especificación técnica vinculante. Todo motor de importación que toque los 5
+> pilares (`linea`, `referencia`, `material`, `color`, `talla_grada`) debe
+> obedecer estas leyes de forma mandatoria. **Sales Report** está blindado y
+> NO entra bajo ningún concepto.
+
+---
+
+## 1. Aislamiento Absoluto
+
+El sistema contiene dos ámbitos que actúan como **agua y aceite**:
+
+| Ámbito | Tablas operativas | Pilares | Política |
+|--------|-------------------|---------|----------|
+| **Sales Report** | `registro_ventas_general_v2` | NO usa pilares | **BLINDADO** — no intervenir |
+| **Retail / Stock** | `registro_st_vt_rc_reposicion`, listados, proformas, pedidos proveedor | `linea`, `referencia`, `material`, `color`, `talla_grada` | Aplican estas leyes |
+
+**Prohibido** cruzar lógica, columnas, FKs o flujos entre los dos ámbitos.
+
+---
+
+## 2. Las Tres Fuentes de Nutrición de los Pilares
+
+Los pilares se cargan y mutan **exclusivamente** por tres vías, compartiendo la
+misma matriz lógica:
+
+1. **A · Listado de Precios** — fuente nominal con altura jerárquica.
+2. **B · Facturas Proformas** — fuente canónica de descripciones.
+3. **C · Importación Masiva de Retail (`st+vt+RC`)** — fuente de alta densidad.
+
+Ninguna otra ruta puede insertar ni actualizar pilares. Cualquier flujo
+nuevo debe enchufarse al **motor compartido de pilares** (sección 8).
+
+---
+
+## 3. Política Específica — Listado de Precios
+
+### 3.1 Protocolo de Agregación Jerárquica de Línea
+
+Si el `codigo_proveedor` de la línea **no existe** en `linea`, el motor activa
+el **protocolo de inserción jerárquica** heredando obligatoriamente:
+
+- `genero` — desde el listado o catálogo por defecto.
+- `marca` — desde el listado o catálogo por defecto.
+- `estilo` — desde el listado o catálogo por defecto.
+- `tipo_1` — desde el listado o catálogo por defecto.
+
+Si alguna dimensión no viene en el listado, se completa contra el catálogo
+por defecto **sin abortar** el alta de la línea.
+
+### 3.2 Inserción de Material y Color
+
+`material` y `color` se procesan **directamente por código numérico**, con o
+sin descripción. Si la descripción viene, se aplica la regla de
+enriquecimiento (sección 6).
+
+### 3.3 Referencia
+
+`referencia` se ata a la `linea_id` recién insertada o existente. Alta
+directa por `codigo_proveedor`; descripción opcional.
+
+### 3.4 Talla / Grada
+
+Cuando el listado incluya curva, se aplica la **matriz estática de 12 pares**
+(sección 7).
+
+---
+
+## 4. Política Específica — Facturas Proformas (Enriquecimiento No Inverso)
+
+### 4.1 Sanitización Nominal Obligatoria
+
+En el módulo de proformas, `material` y `color` se importan **siempre con su
+descripción de texto**. La proforma es la **fuente canónica** de descripciones.
+
+### 4.2 Regla de Actualización — No Vacío, No Inverso
+
+| Estado del pilar | Aporte de la proforma | Acción |
+|------------------|----------------------|--------|
+| Existe sin descripción ("ciego") | Trae descripción | **UPDATE** descripción |
+| Existe con descripción | Trae descripción distinta | **UPDATE** descripción (proforma manda) |
+| Existe con descripción | Trae descripción vacía | **NO TOCAR** (regla no inversa) |
+| No existe | Trae código (con o sin descripción) | **INSERT** |
+
+**Esta regla jamás opera a la inversa:** una importación sin descripción
+**nunca** borra, pisa ni vacía un texto ya existente. Solo se actualiza si el
+flujo entrante aporta información real.
+
+### 4.3 Línea, Referencia, Talla
+
+Aplican las mismas reglas de Listado de Precios: herencia jerárquica para
+línea nueva, alta por código de proveedor para referencia, matriz estática
+para curva.
+
+---
+
+## 5. Política Específica — Retail (Alta Densidad, Inserción Ciega Masiva)
+
+### 5.1 Volumen y Densidad
+
+Retail genera la **mayor densidad de datos** del sistema. El motor debe
+procesar la inserción **en lote (bulk)** de miles de registros simultáneos:
+líneas nuevas, referencias nuevas, materiales y colores en ciego.
+
+### 5.2 Inserción Ciega Garantizada
+
+El pilar **debe aceptar** códigos de proveedor puros (sin descripción). Los
+filtros de la interfaz dependen del **ID de negocio** (código de proveedor),
+no de la descripción.
+
+### 5.3 Sin Bloqueo por Descripción Faltante
+
+Ningún pilar (`linea`, `referencia`, `material`, `color`) puede tener
+restricción `NOT NULL` sobre `descripcion`. Solo el `codigo_proveedor` /
+`codigo_negocio` es **obligatorio y único**.
+
+### 5.4 Herencia para Línea Nueva (Retail)
+
+Cuando Retail inserte una línea nueva, hereda género/marca/estilo/tipo_1
+del **catálogo por defecto** (categoría `OTROS` o similar). El Listado de
+Precios o la Proforma posteriores podrán enriquecer (sección 4.2).
+
+### 5.5 Grada Curva en Retail
+
+El campo Excel `CALCE` viene como `34(1 2 3 3 2 1)39` y debe procesarse con
+la **matriz estática de 12 pares** (sección 7). Materialización en BD: ver
+sección 7.3 (pregunta abierta a Claude en OT-PILARES-LEYES-IMPORTACION-001).
+
+---
+
+## 6. Regla Transversal — Enriquecimiento No Inverso
+
+Esta es la **regla maestra** que rige las tres fuentes:
+
+```
+SI pilar.descripcion EXISTE Y NO está vacía:
+    SI flujo_entrante.descripcion EXISTE Y NO está vacía:
+        UPDATE descripcion
+    SI NO:
+        NO TOCAR (NUNCA borrar/vaciar)
+SI pilar.descripcion NO EXISTE o está vacía:
+    SI flujo_entrante.descripcion EXISTE Y NO está vacía:
+        UPDATE descripcion (enriquecimiento)
+    SI NO:
+        NO TOCAR (mantener vacío)
+```
+
+**Implementación SQL canónica:**
+
+```sql
+UPDATE material
+SET descripcion = :nueva_descripcion
+WHERE codigo_proveedor = :codigo
+  AND :nueva_descripcion IS NOT NULL
+  AND TRIM(:nueva_descripcion) <> '';
+```
+
+Nunca usar `COALESCE(:nueva, descripcion)` con `:nueva = ''` porque pisa el
+campo. Validar **siempre** que el aporte sea no-vacío antes de actualizar.
+
+---
+
+## 7. Matriz de Asignación Estática para Grada de 12 Pares
+
+### 7.1 Distribución por Caja
+
+Todo procesamiento de curvas de tallas dentro del motor de importación debe
+responder de manera **inflexible** a la siguiente política de distribución
+por caja (Grada 34-39):
+
+| Talla | Unidades |
+|-------|----------|
+| 34 | 1 |
+| 35 | 2 |
+| 36 | 3 |
+| 37 | 3 |
+| 38 | 2 |
+| 39 | 1 |
+| **TOTAL** | **12** |
+
+### 7.2 Detección de Curva
+
+Patrón canónico en Excel: `34(1 2 3 3 2 1)39` o variantes con espacios.
+
+```python
+CURVA_REGEX = re.compile(
+    r"^\s*34\s*\(\s*1\s+2\s+3\s+3\s+2\s+1\s*\)\s*39\s*$"
+)
+MATRIZ_GRADA_12 = {34: 1, 35: 2, 36: 3, 37: 3, 38: 2, 39: 1}
+```
+
+Si el patrón **no coincide** con la matriz canónica, el motor debe registrar
+un **warning** y rechazar la fila para revisión manual. No se aceptan curvas
+ad-hoc.
+
+### 7.3 Materialización en Base de Datos
+
+**Pregunta abierta** definida en `OT-PILARES-LEYES-IMPORTACION-001`:
+
+| Estrategia | Pro | Contra |
+|------------|-----|--------|
+| **Expandir** (6 filas por bulto) | Frontend trivial, sumas SQL directas | Multiplica volumen ×6 |
+| **String + render** (1 fila, expansión en cliente) | Conserva semántica de bulto | Frontend explota, sumas requieren CTE |
+| **Híbrido** (curva original + columnas por talla) | Mejor para reportes pivot | Esquema más ancho |
+
+Claude Code debe **proponer y justificar** en la evidencia, luego implementar.
+
+---
+
+## 8. Motor Compartido de Pilares (Arquitectura)
+
+Las tres fuentes (Listado, Proforma, Retail) deben usar el **mismo módulo
+Python** para mutar pilares. Ubicación canónica:
+
+```
+control_central/core/pilares/
+    __init__.py
+    upsert.py        # upsert_linea, upsert_referencia, upsert_material, upsert_color
+    herencia.py      # alta jerárquica genero/marca/estilo/tipo_1
+    grada.py         # expandir_grada_curva + MATRIZ_GRADA_12
+    enriquecimiento.py  # regla no inversa (sección 6)
+```
+
+API mínima:
+
+```python
+def upsert_linea(
+    conn,
+    codigo_proveedor: str,
+    *,
+    descripcion: str | None = None,
+    genero_id: int | None = None,
+    marca_id: int | None = None,
+    estilo_id: int | None = None,
+    tipo_1_id: int | None = None,
+    fuente: Literal["listado", "proforma", "retail"],
+) -> int: ...
+
+def upsert_material(
+    conn,
+    codigo_proveedor: str,
+    *,
+    descripcion: str | None = None,
+    fuente: Literal["listado", "proforma", "retail"],
+) -> int: ...
+
+# Idem upsert_referencia, upsert_color, upsert_talla_grada.
+```
+
+**Comportamiento garantizado:**
+
+- Idempotencia (mismo input → mismo `id`, no duplica).
+- Transaccional (un fallo en una fila no aborta el lote; loguea y continúa).
+- Devuelve el `id` del pilar para usar como FK aguas abajo.
+- Honra la regla no inversa (sección 6).
+- Aplica herencia jerárquica para línea (sección 3.1).
+
+---
+
+## 9. Aplicabilidad Temporal
+
+Estas leyes aplican a **importaciones futuras únicamente**. Los pilares ya
+cargados quedan **tal como están**; ningún saneamiento retroactivo se ejecuta
+salvo OT explícita.
+
+---
+
+## 10. Evidencia y Trazabilidad
+
+Toda importación que toque pilares debe registrar en logs/evidencia:
+
+- Conteo `INSERT` por pilar.
+- Conteo `UPDATE` por pilar (con detalle de descripción enriquecida).
+- Conteo `SKIP` (filas rechazadas por curva no canónica, etc.).
+- Fuente (`listado` / `proforma` / `retail`) y `batch_id`.
+
+---
+
+## 11. Sales Report — Recordatorio Final
+
+`registro_ventas_general_v2` y su pipeline están **blindados**. Cualquier
+intento de hacer JOIN o ALTER que cruce sus tablas con los pilares Retail
+debe **abortar la migración** y notificar al Director.
+
+---
+
+**Compilado por orden del Director — leyes mandatorias para el motor de carga.**

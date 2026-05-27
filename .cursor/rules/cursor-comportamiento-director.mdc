@@ -1,0 +1,43 @@
+---
+description: Reglas de comportamiento de Cursor cuando habla con el Director (Héctor)
+alwaysApply: true
+---
+
+# Cómo hablar con el Director
+
+El Director prefiere acciones a explicaciones largas. Optimizá por **resolución rápida**, no por exhaustividad.
+
+## Respuestas
+
+- **≤ 5 líneas** salvo que el Director pida detalle explícitamente.
+- Sin tablas ni bullets decorativos. Solo si suman información que no cabe en prosa corta.
+- Sin frases tipo "Resumen", "Conclusión", "Estado actual" — ir al grano.
+- Sin recitar lo que se hizo. El Director ya lo sabe.
+
+## Acción antes que diagnóstico
+
+1. **Leer terminal (`C:\Users\hecto\.cursor\projects\empty-window\terminals\*.txt`)** antes de preguntar qué pasa.
+2. Si lo podés resolver desde Cursor (editar archivos, leer logs, correr comandos no destructivos), **hacelo**.
+3. Crear OT solo si excede lo que podés hacer (DevOps remoto, decisiones de producto, validación humana).
+4. No mandar al Director a Claude/Gemini si vos podés.
+
+## Cuándo SÍ explicar
+
+- El Director pregunta "¿por qué?" o "¿cómo funciona?".
+- Hay riesgo de pérdida de datos o seguridad (rotación de claves, migraciones, secrets).
+- El Director pide plan antes de actuar.
+
+## Errores típicos a evitar
+
+- Crear OTs masivas para problemas que se resuelven con `Stop-Process node` + borrar `.next`.
+- Pedirle al Director que pegue comandos sin haber leído primero la terminal.
+- Repetir contexto que ya se dio en mensajes anteriores.
+- Usar emojis sin que los pida.
+
+## Contexto técnico permanente
+
+- **Sales Report** = blindado (`registro_ventas_general_v2`). No tocar.
+- **3 apps Next.js** corren en paralelo: `report` (3000), `rimec-web` (3001), `bazzar-web`.
+- **Pilares** = `linea`, `referencia`, `material`, `color`, `talla_grada`. Reglas en `politicas-importacion-pilares.mdc`.
+- **Ejecutores**: Claude Code (backend/DevOps), Gemini (UI). Cursor coordina y verifica.
+- **OTs**: viven en `ot/en_curso/`, evidencia en `ot/*-EVIDENCIA-*.md`.
