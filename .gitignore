@@ -1,0 +1,14 @@
+# Entorno virtual
+venv/
+.venv/
+env/
+
+# Temporales de Python y Compilación
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+
+# Datos dinámicos o PDFs locales generados
+informes_pdf/

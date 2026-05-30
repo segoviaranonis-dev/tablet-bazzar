@@ -1,0 +1,181 @@
+/* Base de la ventana principal */
+QMainWindow {
+    background-color: #f0f2f5; /* Fondo gris muy claro */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    color: #333333;
+}
+
+/* Contenedor principal de la ventana (si es un QWidget directamente) */
+QWidget#centralwidget {
+    background-color: #f0f2f5;
+}
+
+/* Etiquetas (QLabel) */
+QLabel {
+    color: #444444;
+    font-size: 10pt;
+    padding: 2px;
+}
+
+/* Títulos o etiquetas importantes */
+QLabel#titleLabel { /* Asegúrate de dar este objectName a tu QLabel del título */
+    font-size: 18pt;
+    font-weight: bold;
+    color: #2a52be; /* Azul corporativo */
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+/* Botones (QPushButton) */
+QPushButton {
+    background-color: #2a52be; /* Azul principal */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    font-size: 10pt;
+    font-weight: bold;
+    min-width: 100px; /* Ancho mínimo para botones */
+    outline: none; /* Elimina el borde de enfoque por defecto */
+}
+QPushButton:hover {
+    background-color: #3a63d4; /* Azul un poco más claro al pasar el mouse */
+}
+QPushButton:pressed {
+    background-color: #1e3a8a; /* Azul más oscuro al presionar */
+    padding-top: 11px; /* Efecto de "presionado" */
+    padding-bottom: 9px;
+}
+QPushButton:disabled {
+    background-color: #a7b7d9; /* Azul más claro para botones deshabilitados */
+    color: #e0e0e0;
+}
+
+/* Líneas de edición de texto (QLineEdit) y ComboBox (QComboBox) */
+QLineEdit, QComboBox {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 8px 10px;
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 10pt;
+}
+QLineEdit:focus, QComboBox:focus {
+    border: 1px solid #2a52be; /* Borde azul al enfocar */
+}
+QComboBox::drop-down {
+    border: 0px; /* Elimina el borde del botón desplegable */
+}
+QComboBox::down-arrow {
+    image: url(resources/icons/down_arrow.png); /* Asegúrate de tener este icono o ajústalo */
+    width: 12px;
+    height: 12px;
+}
+QComboBox QAbstractItemView { /* Estilo para los ítems del menú desplegable del ComboBox */
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    selection-background-color: #2a52be; /* Fondo azul para el ítem seleccionado */
+    selection-color: white;
+    padding: 5px;
+}
+
+
+/* DateEdit (QDateEdit) */
+QDateEdit {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 8px 10px;
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 10pt;
+}
+QDateEdit::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 25px;
+    border-left: 1px solid #cccccc;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+QDateEdit::down-arrow {
+    image: url(resources/icons/calendar_icon.png); /* Un icono de calendario sería genial aquí */
+    width: 14px;
+    height: 14px;
+}
+QDateEdit:focus {
+    border: 1px solid #2a52be;
+}
+
+/* Barra de progreso (QProgressBar) */
+QProgressBar {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #e0e0e0;
+    color: #333333;
+    height: 20px;
+}
+QProgressBar::chunk {
+    background-color: #2a52be; /* Color del progreso */
+    border-radius: 5px;
+}
+
+/* Tabla (QTableView - o QTableWidget si lo usas) */
+QTableView {
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    gridline-color: #e0e0e0; /* Color de las líneas de la cuadrícula */
+    background-color: #ffffff;
+    selection-background-color: #e6f0ff; /* Azul muy claro para la selección */
+    selection-color: #333333;
+    font-size: 9pt;
+    alternate-background-color: #f9f9f9; /* Color alterno para filas */
+}
+QTableView::item {
+    padding: 5px;
+}
+QTableView::item:selected {
+    background-color: #e6f0ff;
+    color: #333333;
+}
+
+/* Encabezado de la tabla (horizontal y vertical) */
+QHeaderView::section {
+    background-color: #e0e0e0; /* Gris claro */
+    color: #444444;
+    padding: 6px;
+    border: 1px solid #cccccc;
+    font-weight: bold;
+    font-size: 9pt;
+}
+QHeaderView::section:horizontal {
+    border-top-left-radius: 8px; /* Solo para la esquina superior izquierda del primer encabezado */
+    border-top-right-radius: 8px; /* Solo para la esquina superior derecha del último encabezado */
+}
+
+/* ScrollBars */
+QScrollBar:vertical {
+    border: 1px solid #e0e0e0;
+    background: #f0f0f0;
+    width: 12px;
+    margin: 15px 0 15px 0;
+    border-radius: 6px;
+}
+QScrollBar::handle:vertical {
+    background: #cccccc;
+    border-radius: 5px;
+    min-height: 20px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #bbbbbb;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+}
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
