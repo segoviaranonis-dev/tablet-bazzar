@@ -4,6 +4,7 @@ Reglas: [MEMORIA_SISTEMA.md](MEMORIA_SISTEMA.md) · Activa hoy: [COLA.md](COLA.m
 
 | ID | Estado | Ejecutor | Ubicación | Cierre |
 |----|--------|----------|-----------|--------|
+| **OT-CLAUDE-METODOLOGIA-NEXUS-001** | **COMPLETADA** | Claude Code | [en_curso/](en_curso/OT-CLAUDE-METODOLOGIA-NEXUS-001.md) | Adopción protocolo GPT + Claude Code |
 | **OT-RIMEC-WEB-MARCA-COLORES-001** | **CERRADA** | Gemini | [en_curso/](en_curso/OT-RIMEC-WEB-MARCA-COLORES-001.md) | Badge marca por marca |
 | **OT-RIMEC-WEB-FILTRO-ETA-001** | **CERRADA** | Claude | [en_curso/](en_curso/OT-RIMEC-WEB-FILTRO-ETA-001.md) | Dropdown ETA catálogo |
 | **OT-DEPLOY-STREAMLIT-PASO3-001** | PUSH_OK | Claude | [en_curso/](en_curso/OT-DEPLOY-STREAMLIT-PASO3-001.md) | `7d97535`; Director pull+restart |
