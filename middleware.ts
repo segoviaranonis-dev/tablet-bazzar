@@ -29,14 +29,27 @@ export async function middleware(request: NextRequest) {
   try {
     const { payload } = await jwtVerify(token, getSecret())
 
-    // Verificar que sea rol 1 (Admin) o rol 2 (Retail)
-    if (payload.rol_id !== 1 && payload.rol_id !== 2) {
+    // Validación de acceso a Tablet Bazzar
+    // ROL 1: Acceso total (sin restricciones)
+    // ROL 2: Solo ADMIN y SU (no VENDEDOR)
+    if (payload.rol_id === 1) {
+      // Rol 1: Acceso total
+      return NextResponse.next()
+    } else if (payload.rol_id === 2) {
+      // Rol 2: Validar categoría
+      const categoriaPermitida = payload.categoria === 'ADMIN' || payload.categoria === 'SU'
+      if (!categoriaPermitida) {
+        const response = NextResponse.redirect(new URL('/login', request.url))
+        response.cookies.delete('tablet-session')
+        return response
+      }
+      return NextResponse.next()
+    } else {
+      // Rol no permitido
       const response = NextResponse.redirect(new URL('/login', request.url))
       response.cookies.delete('tablet-session')
       return response
     }
-
-    return NextResponse.next()
   } catch (error) {
     // Token inválido o expirado
     const response = NextResponse.redirect(new URL('/login', request.url))

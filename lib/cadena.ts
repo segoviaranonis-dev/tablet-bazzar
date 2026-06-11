@@ -1,0 +1,149 @@
+/** Fila de depósito con FK para agrupación en tablet. */
+export type DepositoFila = {
+  linea_id: number | null;
+  referencia_id: number | null;
+  material_id: number | null;
+  color_id: number | null;
+  marca_id: number | null;
+  linea_codigo_proveedor: string;
+  referencia_codigo_proveedor: string;
+  material_code: string;
+  color_code: string;
+  marca: string;
+  genero: string;
+  estilo: string;
+  tipo_v2: string;
+  descp_material: string | null;
+  descp_color: string | null;
+  grada: string;
+  cantidad: number;
+  imagen_nombre: string | null;
+};
+
+export function numCodigo(v: string): number {
+  const n = Number(String(v).replace(/\D/g, ""));
+  return Number.isFinite(n) ? n : 0;
+}
+
+/** Orden cadena: línea ASC → referencia ASC */
+export function compareLineaRef(a: DepositoFila, b: DepositoFila): number {
+  const dl = numCodigo(a.linea_codigo_proveedor) - numCodigo(b.linea_codigo_proveedor);
+  if (dl !== 0) return dl;
+  return numCodigo(a.referencia_codigo_proveedor) - numCodigo(b.referencia_codigo_proveedor);
+}
+
+export function keyLRM(row: Pick<DepositoFila, "linea_codigo_proveedor" | "referencia_codigo_proveedor" | "material_code">): string {
+  return `${row.linea_codigo_proveedor}|${row.referencia_codigo_proveedor}|${row.material_code}`;
+}
+
+export function keyLR(row: Pick<DepositoFila, "linea_codigo_proveedor" | "referencia_codigo_proveedor">): string {
+  return `${row.linea_codigo_proveedor}|${row.referencia_codigo_proveedor}`;
+}
+
+export function keyLRMC(row: DepositoFila): string {
+  return `${keyLRM(row)}|${row.color_code}`;
+}
+
+/** Grupo 1 — L + R + material (precio / foto base) */
+export type GrupoPrincipal = {
+  key: string;
+  linea: string;
+  referencia: string;
+  material: string;
+  descp_material: string | null;
+  marca: string;
+  filas: DepositoFila[];
+  colores: DepositoFila[];
+};
+
+/** Par L+R único en cadena */
+export type ParLineaRef = {
+  key: string;
+  linea: string;
+  referencia: string;
+  estilo: string;
+  gruposMaterial: GrupoPrincipal[];
+  /** Colores agregados solo L+R (grupo 2 visual) */
+  coloresLR: DepositoFila[];
+};
+
+export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string): ParLineaRef[] {
+  const deMarca = filas.filter((f) => f.marca === marcaFiltro && f.cantidad > 0);
+  const porLR = new Map<string, DepositoFila[]>();
+
+  for (const f of deMarca) {
+    const k = keyLR(f);
+    if (!porLR.has(k)) porLR.set(k, []);
+    porLR.get(k)!.push(f);
+  }
+
+  const pares: ParLineaRef[] = [];
+
+  for (const [, rows] of porLR) {
+    rows.sort(compareLineaRef);
+    const first = rows[0];
+    const porMat = new Map<string, DepositoFila[]>();
+    for (const r of rows) {
+      const mk = keyLRM(r);
+      if (!porMat.has(mk)) porMat.set(mk, []);
+      porMat.get(mk)!.push(r);
+    }
+
+    const gruposMaterial: GrupoPrincipal[] = [...porMat.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([key, matRows]) => {
+        const m0 = matRows[0];
+        const colores = dedupeColores(matRows);
+        return {
+          key,
+          linea: m0.linea_codigo_proveedor,
+          referencia: m0.referencia_codigo_proveedor,
+          material: m0.material_code,
+          descp_material: m0.descp_material,
+          marca: m0.marca,
+          filas: matRows,
+          colores,
+        };
+      });
+
+    pares.push({
+      key: keyLR(first),
+      linea: first.linea_codigo_proveedor,
+      referencia: first.referencia_codigo_proveedor,
+      estilo: first.estilo,
+      gruposMaterial,
+      coloresLR: dedupeColores(rows),
+    });
+  }
+
+  pares.sort((a, b) => compareLineaRef(
+    { linea_codigo_proveedor: a.linea, referencia_codigo_proveedor: a.referencia } as DepositoFila,
+    { linea_codigo_proveedor: b.linea, referencia_codigo_proveedor: b.referencia } as DepositoFila,
+  ));
+
+  return pares;
+}
+
+function dedupeColores(rows: DepositoFila[]): DepositoFila[] {
+  const map = new Map<string, DepositoFila>();
+  for (const r of rows) {
+    const k = r.color_code || r.descp_color || "?";
+    const prev = map.get(k);
+    if (!prev || r.cantidad > prev.cantidad) map.set(k, r);
+  }
+  return [...map.values()].sort((a, b) => numCodigo(a.color_code) - numCodigo(b.color_code));
+}
+
+export function listMarcasConStock(filas: DepositoFila[]): { marca: string; skus: number; pares: number }[] {
+  const map = new Map<string, { skus: number; pares: number }>();
+  for (const f of filas) {
+    if (f.cantidad <= 0) continue;
+    const cur = map.get(f.marca) ?? { skus: 0, pares: 0 };
+    cur.skus += 1;
+    cur.pares += f.cantidad;
+    map.set(f.marca, cur);
+  }
+  return [...map.entries()]
+    .map(([marca, v]) => ({ marca, ...v }))
+    .sort((a, b) => a.marca.localeCompare(b.marca));
+}

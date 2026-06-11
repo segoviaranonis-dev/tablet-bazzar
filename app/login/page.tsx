@@ -30,7 +30,7 @@ export default function LoginPage() {
         return
       }
 
-      // Redirigir al home
+      // Redirigir al panel de control
       router.push('/')
       router.refresh()
     } catch (err) {
@@ -110,7 +110,10 @@ export default function LoginPage() {
           {/* Info */}
           <div className="mt-6 pt-6 border-t border-white/10 text-center">
             <p className="text-sm text-slate-400">
-              Acceso para <span className="text-blue-300 font-semibold">Admin</span> y <span className="text-green-300 font-semibold">Retail</span>
+              Acceso para <span className="text-yellow-300 font-semibold">ADMIN</span> y <span className="text-blue-300 font-semibold">SU</span>
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              Vendedores: usar Report
             </p>
           </div>
         </div>

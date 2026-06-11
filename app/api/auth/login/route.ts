@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     // Consultar usuario_v2 por descp_usuario
     const { data: usuarios, error } = await supabase
       .from('usuario_v2')
-      .select('id_usuario, descp_usuario, email, password, rol_id')
+      .select('id_usuario, descp_usuario, email, password, rol_id, categoria')
       .eq('descp_usuario', usuarioInput.toUpperCase().trim())
       .limit(1)
 
@@ -46,10 +46,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Solo permitir rol 1 (Admin) y rol 2 (Retail) en tablet-bazzar
-    if (usuario.rol_id !== 1 && usuario.rol_id !== 2) {
+    // Validación de acceso a Tablet Bazzar
+    // ROL 1: Acceso total (sin restricciones)
+    // ROL 2: Solo ADMIN y SU (no VENDEDOR)
+    if (usuario.rol_id === 1) {
+      // Rol 1: Acceso total, sin restricciones
+      // Continuar con el flujo normal
+    } else if (usuario.rol_id === 2) {
+      // Rol 2: Validar categoría
+      const categoriaPermitida = usuario.categoria === 'ADMIN' || usuario.categoria === 'SU'
+      if (!categoriaPermitida) {
+        return NextResponse.json(
+          { error: 'Acceso no autorizado. Solo usuarios ADMIN y SU pueden acceder a Tablet Bazzar.' },
+          { status: 403 }
+        )
+      }
+    } else {
+      // Rol diferente de 1 o 2: no permitido
       return NextResponse.json(
-        { error: 'Acceso no autorizado. Solo usuarios Admin y Retail pueden acceder.' },
+        { error: 'Acceso no autorizado.' },
         { status: 403 }
       )
     }
@@ -60,6 +75,7 @@ export async function POST(request: NextRequest) {
       nombre: usuario.descp_usuario,
       email: usuario.email,
       rol_id: usuario.rol_id,
+      categoria: usuario.categoria,
       version: SESSION_VERSION,
     })
       .setProtectedHeader({ alg: 'HS256' })
@@ -74,6 +90,7 @@ export async function POST(request: NextRequest) {
         nombre: usuario.descp_usuario,
         email: usuario.email,
         rol_id: usuario.rol_id,
+        categoria: usuario.categoria,
       },
     })
 
