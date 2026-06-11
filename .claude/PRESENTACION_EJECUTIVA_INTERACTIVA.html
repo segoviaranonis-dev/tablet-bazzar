@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS CORE - Presentación Ejecutiva Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rimec-azul: #002B4E;
+            --rimec-azul-dark: #001829;
+            --rimec-azul-light: #003d6b;
+            --bazzar-naranja: #ea580c;
+            --bazzar-naranja-dark: #c2410c;
+            --app-bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --neutral-ink: #2d2520;
+            --neutral-muted: #64748b;
+            --success: #2f4f3e;
+            --border: #e2e8f0;
+            --gold: #d97706;
+            --red: #dc2626;
+            --purple: #7c3aed;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--app-bg);
+            color: var(--neutral-ink);
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--rimec-azul-dark) 0%, var(--rimec-azul) 50%, var(--rimec-azul-light) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--rimec-azul);
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--neutral-muted);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Flow Diagram */
+        .flow-container {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            overflow-x: auto;
+            margin-bottom: 3rem;
+        }
+
+        .flow-box {
+            background: white;
+            border: 3px solid;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 180px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .flow-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        .flow-box.rimec {
+            border-color: var(--rimec-azul);
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+        }
+
+        .flow-box.bazzar {
+            border-color: var(--bazzar-naranja);
+            background: linear-gradient(135deg, #ffffff 0%, #ffedd5 100%);
+        }
+
+        .flow-box.motor {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 100%);
+        }
+
+        .flow-box.corazon {
+            border-color: var(--red);
+            background: linear-gradient(135deg, #ffffff 0%, #fee2e2 100%);
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .flow-box .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-box .title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--neutral-ink);
+            margin-bottom: 0.25rem;
+        }
+
+        .flow-box .subtitle {
+            font-size: 0.75rem;
+            color: var(--neutral-muted);
+        }
+
+        .arrow {
+            color: var(--neutral-muted);
+            font-size: 2rem;
+            margin: 0 1rem;
+        }
+
+        .arrow-down {
+            text-align: center;
+            color: var(--neutral-muted);
+            font-size: 2rem;
+            margin: 1rem 0;
+        }
+
+        /* Grid Layouts */
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .flow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neutral-ink);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            margin-bottom: 0.5rem;
+            z-index: 100;
+        }
+
+        .flow-box:hover .tooltip {
+            opacity: 1;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: var(--card-bg);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            border-color: var(--rimec-azul);
+            background: var(--rimec-azul);
+            color: white;
+        }
+
+        .tab.active {
+            border-color: var(--rimec-azul);
+            background: var(--rimec-azul);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Module Cards */
+        .module-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--rimec-azul);
+            margin-bottom: 2rem;
+        }
+
+        .module-card.bazzar {
+            border-left-color: var(--bazzar-naranja);
+        }
+
+        .module-card h3 {
+            font-size: 1.5rem;
+            color: var(--rimec-azul);
+            margin-bottom: 1rem;
+        }
+
+        .module-card.bazzar h3 {
+            color: var(--bazzar-naranja);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--rimec-azul);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        /* Hearts Section */
+        .hearts-container {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 4px solid var(--red);
+        }
+
+        .hearts-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--red);
+            font-weight: 800;
+        }
+
+        .hearts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .heart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 3px solid var(--red);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.2);
+        }
+
+        .heart-card h4 {
+            font-size: 1.5rem;
+            color: var(--red);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .flow-row { flex-direction: column; }
+            .arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>💎 NEXUS CORE</h1>
+        <p>Sistema Operativo Empresarial Unificado - Flujo Completo Interactivo</p>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Navegación del Sistema</h2>
+        <p class="section-subtitle">Seleccione un flujo para explorar</p>
+
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('control-central')">🎛️ Control Central</div>
+            <div class="tab" onclick="showTab('motor-precios')">💖 Motor de Precios</div>
+            <div class="tab" onclick="showTab('flujo-completo')">🔄 Flujo Completo</div>
+            <div class="tab" onclick="showTab('bazzar-flow')">🏪 Flujo BAZZAR</div>
+        </div>
+
+        <!-- TAB 1: CONTROL CENTRAL -->
+        <div id="control-central" class="tab-content active">
+            <h3 class="section-title">🎛️ Control Central - Flujo Operativo</h3>
+
+            <div class="flow-container">
+                <h4 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem; color: var(--rimec-azul);">
+                    Módulos Secuenciales
+                </h4>
+
+                <!-- INFORME DE VENTAS -->
+                <div class="module-card">
+                    <h3>📊 1. Informe de Ventas</h3>
+                    <p><strong>Tecnología:</strong> 8 Tablas SQL + KPIs</p>
+                    <ul class="feature-list">
+                        <li><strong>Por Cliente:</strong> Análisis de compras por cliente individual</li>
+                        <li><strong>Por Marca:</strong> Rendimiento de cada marca</li>
+                        <li><strong>Por Vendedor:</strong> Performance de equipo comercial</li>
+                        <li><strong>Generación PDF en lote:</strong> Reportes masivos automáticos</li>
+                    </ul>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <!-- INTENCIÓN DE PEDIDOS -->
+                <div class="module-card">
+                    <h3>📝 2. Intención de Pedidos</h3>
+                    <p><strong>Primera Fase:</strong> Registro de Intenciones</p>
+                    <ul class="feature-list">
+                        <li><strong>Compra Previa:</strong> Pedidos planificados con anticipación</li>
+                        <li><strong>Compra Programada:</strong> Calendario de órdenes futuras</li>
+                        <li><strong>Registro de Intención:</strong> Captura de necesidades cliente</li>
+                    </ul>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <!-- DIGITACIÓN Y DISTRIBUCIÓN -->
+                <div class="module-card">
+                    <h3>⌨️ 3. Digitación y Distribución</h3>
+                    <p><strong>Procesamiento:</strong> Preparación de pedidos</p>
+                    <ul class="feature-list">
+                        <li><strong>Digitación:</strong> Ingreso formal de pedido al sistema</li>
+                        <li><strong>Distribución:</strong> Asignación a proveedores</li>
+                        <li><strong>Validación:</strong> Verificación de disponibilidad</li>
+                    </ul>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <!-- PEDIDO PROVEEDOR -->
+                <div class="module-card">
+                    <h3>📦 4. Pedido Proveedor</h3>
+                    <p><strong>Gestión de Órdenes:</strong> Pedidos a proveedores</p>
+                    <ul class="feature-list">
+                        <li><strong>Generación de OC:</strong> Orden de compra formal</li>
+                        <li><strong>Seguimiento:</strong> Estado de pedidos</li>
+                        <li><strong>Facturas Internas:</strong> Ejecución dentro del módulo</li>
+                        <li><strong>Cierre al Arribo:</strong> Pedido se cierra cuando mercadería arriba</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: #fffbeb; border-radius: 8px; border-left: 4px solid var(--gold);">
+                        <strong>🔗 Conexión:</strong> De aquí sale <strong>RIMEC Web</strong> (catálogo con artículos disponibles)
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 2rem; margin: 2rem 0;">
+                    <div style="flex: 1; text-align: center;">
+                        <div class="arrow-down">↓</div>
+                        <div class="flow-box rimec" style="margin: 0 auto;">
+                            <div class="icon">🛒</div>
+                            <div class="title">RIMEC Web</div>
+                            <div class="subtitle">Catálogo Vendedores</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <!-- APROBACIÓN PEDIDOS -->
+                <div class="module-card">
+                    <h3>✅ 5. Aprobación de Pedidos RIMEC Web</h3>
+                    <p><strong>Validación:</strong> Aprobación de preventas</p>
+                    <ul class="feature-list">
+                        <li><strong>Revisión:</strong> Validación de pedidos ingresados en RIMEC Web</li>
+                        <li><strong>Aprobación/Rechazo:</strong> Decisión comercial</li>
+                        <li><strong>Preventas Número Único:</strong> Trazabilidad máxima</li>
+                    </ul>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <!-- COMPRAS -->
+                <div class="module-card">
+                    <h3>🚚 6. Módulo Compras</h3>
+                    <p><strong>Recepción:</strong> Mercadería arribada</p>
+                    <ul class="feature-list">
+                        <li><strong>Cierre Pedido Proveedor:</strong> Conexión directa desde Pedido Proveedor</li>
+                        <li><strong>Recepción de Mercadería:</strong> Registro de llegada</li>
+                        <li><strong>Autorización Usuario:</strong> Validación de recepción</li>
+                        <li><strong>Destino:</strong> Envío a Facturación O Depósito</li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; gap: 2rem; margin: 2rem 0; justify-content: center;">
+                    <div style="text-align: center;">
+                        <div class="flow-box rimec">
+                            <div class="icon">📄</div>
+                            <div class="title">Facturación</div>
+                            <div class="subtitle">Documentos</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 2rem; align-self: center;">O</div>
+                    <div style="text-align: center;">
+                        <div class="flow-box rimec">
+                            <div class="icon">🏢</div>
+                            <div class="title">Depósito</div>
+                            <div class="subtitle">Almacén</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <!-- TRANSFERENCIA BAZZAR WEB -->
+                <div class="module-card bazzar">
+                    <h3>🔄 7. Transferencia Automática BAZZAR Web</h3>
+                    <p><strong>Condición:</strong> Cliente 5000 (BAZZAR)</p>
+                    <ul class="feature-list">
+                        <li><strong>Detección Cliente 5000:</strong> Sistema identifica cliente especial</li>
+                        <li><strong>Transferencia Automática:</strong> SIN intervención humana</li>
+                        <li><strong>Recepción en BAZZAR Web:</strong> Mercadería disponible</li>
+                        <li><strong>Depósito BAZZAR:</strong> Asignación a tiendas (6 depósitos)</li>
+                        <li><strong>Precio Automático:</strong> Según caso asignado al artículo</li>
+                    </ul>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: #fff7ed; border-radius: 8px; border-left: 4px solid var(--bazzar-naranja);">
+                        <strong>🤖 AUTOMATIZACIÓN TOTAL:</strong> Precio de venta se marca automáticamente según el caso, sin interacción humana
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: MOTOR DE PRECIOS -->
+        <div id="motor-precios" class="tab-content">
+            <div class="hearts-container">
+                <div class="hearts-title">💖💖 LOS DOS CORAZONES DEL MOTOR DE PRECIOS</div>
+
+                <div class="hearts-grid">
+                    <!-- CORAZÓN 1 -->
+                    <div class="heart-card">
+                        <h4>💖 CORAZÓN 1: Biblioteca de Casos</h4>
+                        <span class="badge badge-danger">Estrategia Comercial</span>
+                        <p style="margin: 1rem 0; line-height: 1.8;">
+                            <strong>Función:</strong> Define las estrategias comerciales y reglas de negocio.
+                        </p>
+                        <ul class="feature-list">
+                            <li>Contiene CASOS de estrategias de precios</li>
+                            <li>Análisis de estrategias comerciales</li>
+                            <li>Cerebro del sistema de precios</li>
+                            <li>Ejemplos: Liquidación, Premium, Mayorista, Promoción</li>
+                        </ul>
+                    </div>
+
+                    <!-- CORAZÓN 2 -->
+                    <div class="heart-card">
+                        <h4>💖 CORAZÓN 2: Caso + Excel = Evento</h4>
+                        <span class="badge badge-danger">Generación de Precios</span>
+                        <p style="margin: 1rem 0; line-height: 1.8;">
+                            <strong>Fórmula:</strong> Caso (Biblioteca) + Excel = EVENTO (Listado de Precio)
+                        </p>
+                        <ul class="feature-list">
+                            <li>Combina Caso con archivo Excel</li>
+                            <li>Genera Evento (Listado de Precio)</li>
+                            <li>Contiene SKUs + Precios + Vigencia</li>
+                            <li>Músculo ejecutor del sistema</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <div style="background: white; border-radius: 12px; padding: 2rem; border: 3px solid var(--purple);">
+                    <h4 style="text-align: center; font-size: 1.5rem; color: var(--purple); margin-bottom: 1rem;">
+                        ⚡ Flujo Completo del Motor
+                    </h4>
+
+                    <div class="flow-row">
+                        <div class="flow-box corazon">
+                            <div class="icon">💖</div>
+                            <div class="title">Caso</div>
+                            <div class="subtitle">Biblioteca</div>
+                            <div class="tooltip">Estrategia comercial definida</div>
+                        </div>
+                        <span class="arrow">+</span>
+                        <div class="flow-box motor">
+                            <div class="icon">📊</div>
+                            <div class="title">Excel</div>
+                            <div class="subtitle">Productos + Márgenes</div>
+                            <div class="tooltip">Importador de Precios</div>
+                        </div>
+                        <span class="arrow">=</span>
+                        <div class="flow-box motor">
+                            <div class="icon">📋</div>
+                            <div class="title">EVENTO</div>
+                            <div class="subtitle">Listado de Precio</div>
+                            <div class="tooltip">SKUs con precios calculados</div>
+                        </div>
+                    </div>
+
+                    <div class="arrow-down">↓</div>
+
+                    <div class="flow-row">
+                        <div class="flow-box motor">
+                            <div class="icon">📋</div>
+                            <div class="title">Evento</div>
+                            <div class="subtitle">Listado de Precio</div>
+                        </div>
+                        <span class="arrow">+</span>
+                        <div class="flow-box motor">
+                            <div class="icon">📄</div>
+                            <div class="title">Proforma</div>
+                            <div class="subtitle">Formato Presentación</div>
+                            <div class="tooltip">Cómo se muestra al vendedor</div>
+                        </div>
+                        <span class="arrow">=</span>
+                        <div class="flow-box rimec">
+                            <div class="icon">🛒</div>
+                            <div class="title">Artículo Venta</div>
+                            <div class="subtitle">Disponible RIMEC Web</div>
+                            <div class="tooltip">¡Listo para vender!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h4 style="font-size: 1.5rem; color: var(--purple); margin-bottom: 1rem;">
+                        🔧 Componentes del Motor
+                    </h4>
+                    <div class="flow-grid">
+                        <div class="flow-box motor">
+                            <div class="icon">📚</div>
+                            <div class="title">Biblioteca de Precios</div>
+                            <div class="subtitle">Gestión de Casos</div>
+                        </div>
+                        <div class="flow-box motor">
+                            <div class="icon">📥</div>
+                            <div class="title">Importador de Precios</div>
+                            <div class="subtitle">Procesa Excel</div>
+                        </div>
+                        <div class="flow-box motor">
+                            <div class="icon">⚙️</div>
+                            <div class="title">Gestor de Eventos</div>
+                            <div class="subtitle">Combina Caso + Excel</div>
+                        </div>
+                        <div class="flow-box rimec">
+                            <div class="icon">🚀</div>
+                            <div class="title">Salida RIMEC Web</div>
+                            <div class="subtitle">Artículos Disponibles</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: FLUJO COMPLETO -->
+        <div id="flujo-completo" class="tab-content">
+            <h3 class="section-title">🔄 Flujo Completo del Sistema</h3>
+
+            <div class="flow-container">
+                <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <h4 style="text-align: center; font-size: 1.5rem; color: var(--rimec-azul); margin-bottom: 1.5rem;">
+                        🎛️ Control Central → RIMEC Web → BAZZAR Web
+                    </h4>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="flow-row">
+                            <div class="flow-box rimec">
+                                <div class="icon">📝</div>
+                                <div class="title">Intención Pedidos</div>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="flow-box rimec">
+                                <div class="icon">⌨️</div>
+                                <div class="title">Digitación</div>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="flow-box rimec">
+                                <div class="icon">📦</div>
+                                <div class="title">Pedido Proveedor</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; font-size: 1.5rem; color: var(--neutral-muted);">
+                            ↓ De aquí sale
+                        </div>
+
+                        <div class="flow-row">
+                            <div class="flow-box rimec">
+                                <div class="icon">🛒</div>
+                                <div class="title">RIMEC Web</div>
+                                <div class="subtitle">Catálogo Vendedores</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; font-size: 1.5rem; color: var(--neutral-muted);">
+                            ↓ Pedidos regresan a
+                        </div>
+
+                        <div class="flow-row">
+                            <div class="flow-box rimec">
+                                <div class="icon">✅</div>
+                                <div class="title">Aprobación</div>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="flow-box rimec">
+                                <div class="icon">🚚</div>
+                                <div class="title">Compras</div>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="flow-box rimec">
+                                <div class="icon">📄</div>
+                                <div class="title">Facturación</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; font-size: 1.5rem; color: var(--bazzar-naranja); font-weight: 700;">
+                            ↓ Si Cliente 5000 → Automático
+                        </div>
+
+                        <div class="flow-row">
+                            <div class="flow-box bazzar">
+                                <div class="icon">🔄</div>
+                                <div class="title">BAZZAR Web</div>
+                                <div class="subtitle">Transferencia Automática</div>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="flow-box bazzar">
+                                <div class="icon">🏪</div>
+                                <div class="title">Depósito BAZZAR</div>
+                                <div class="subtitle">6 Tiendas</div>
+                            </div>
+                            <span class="arrow">→</span>
+                            <div class="flow-box bazzar">
+                                <div class="icon">💰</div>
+                                <div class="title">Precio Automático</div>
+                                <div class="subtitle">Sin intervención humana</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); padding: 2rem; border-radius: 12px; margin-top: 2rem;">
+                    <h4 style="text-align: center; font-size: 1.5rem; color: var(--purple); margin-bottom: 1.5rem;">
+                        💖 Motor de Precios (Paralelo)
+                    </h4>
+
+                    <div class="flow-row">
+                        <div class="flow-box corazon">
+                            <div class="icon">💖</div>
+                            <div class="title">Biblioteca Casos</div>
+                        </div>
+                        <span class="arrow">+</span>
+                        <div class="flow-box motor">
+                            <div class="icon">📊</div>
+                            <div class="title">Importador Excel</div>
+                        </div>
+                        <span class="arrow">=</span>
+                        <div class="flow-box motor">
+                            <div class="icon">📋</div>
+                            <div class="title">Evento</div>
+                        </div>
+                        <span class="arrow">+</span>
+                        <div class="flow-box motor">
+                            <div class="icon">📄</div>
+                            <div class="title">Proforma</div>
+                        </div>
+                        <span class="arrow">=</span>
+                        <div class="flow-box rimec">
+                            <div class="icon">🚀</div>
+                            <div class="title">A RIMEC Web</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: FLUJO BAZZAR -->
+        <div id="bazzar-flow" class="tab-content">
+            <h3 class="section-title">🏪 Flujo Específico BAZZAR</h3>
+
+            <div class="module-card bazzar">
+                <h3>🔄 Transferencia Automática desde RIMEC</h3>
+                <p style="line-height: 1.8; margin-bottom: 1rem;">
+                    Cuando una mercadería en <strong>Facturación (Control Central)</strong> pertenece al <strong>Cliente 5000 (BAZZAR)</strong>,
+                    el sistema detecta automáticamente y ejecuta una transferencia sin intervención humana.
+                </p>
+
+                <div class="flow-row" style="margin: 2rem 0;">
+                    <div class="flow-box rimec">
+                        <div class="icon">📄</div>
+                        <div class="title">Facturación</div>
+                        <div class="subtitle">Control Central</div>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="flow-box bazzar">
+                        <div class="icon">🔍</div>
+                        <div class="title">Detecta Cliente 5000</div>
+                        <div class="subtitle">Automático</div>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="flow-box bazzar">
+                        <div class="icon">🔄</div>
+                        <div class="title">BAZZAR Web</div>
+                        <div class="subtitle">Recibe mercadería</div>
+                    </div>
+                </div>
+
+                <div class="arrow-down">↓</div>
+
+                <ul class="feature-list">
+                    <li><strong>Asignación a Depósito:</strong> Mercadería pasa al depósito correspondiente (1 de 6 tiendas)</li>
+                    <li><strong>Marcado Automático de Precio:</strong> Sistema consulta el CASO asignado al artículo</li>
+                    <li><strong>Precio según Evento:</strong> Aplica precio del evento activo SIN intervención humana</li>
+                    <li><strong>Disponible para Venta:</strong> Artículo listo en BAZZAR Web / Tablet BAZZAR</li>
+                </ul>
+
+                <div style="margin-top: 2rem; padding: 1.5rem; background: #fff7ed; border-radius: 8px; border: 3px solid var(--bazzar-naranja);">
+                    <h4 style="color: var(--bazzar-naranja); margin-bottom: 1rem; font-size: 1.25rem;">
+                        🤖 AUTOMATIZACIÓN TOTAL (Fase 1 Hiedra Venenosa)
+                    </h4>
+                    <p style="line-height: 1.8;">
+                        Esta automatización es parte de la <strong>Fase 1: Infiltración</strong> de la estrategia Hiedra Venenosa.
+                        BAZZAR empieza a depender del sistema RIMEC sin saberlo, ya que:
+                    </p>
+                    <ul style="margin-top: 1rem; list-style: disc; margin-left: 2rem;">
+                        <li>Los precios se calculan automáticamente</li>
+                        <li>La mercadería se recibe digitalmente</li>
+                        <li>Los depósitos se actualizan en tiempo real</li>
+                        <li>Todo sin necesidad de Excel o procesos manuales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="module-card bazzar" style="margin-top: 2rem;">
+                <h3>📱 Tablet BAZZAR + Report (Depósitos)</h3>
+                <p style="line-height: 1.8; margin-bottom: 1rem;">
+                    Una vez la mercadería está en BAZZAR Web, se distribuye a las herramientas operativas:
+                </p>
+
+                <div class="flow-grid">
+                    <div class="flow-box bazzar">
+                        <div class="icon">📱</div>
+                        <div class="title">Tablet BAZZAR</div>
+                        <div class="subtitle">POS Vendedor</div>
+                        <div class="tooltip">Offline-first, 6 tiendas</div>
+                    </div>
+                    <div class="flow-box bazzar">
+                        <div class="icon">📊</div>
+                        <div class="title">Report - Depósitos</div>
+                        <div class="subtitle">Stock Multi-tienda</div>
+                        <div class="tooltip">Consulta en tiempo real</div>
+                    </div>
+                </div>
+
+                <ul class="feature-list" style="margin-top: 2rem;">
+                    <li><strong>Tablet BAZZAR:</strong> Vendedores ven productos con precios ya calculados</li>
+                    <li><strong>Report Depósitos:</strong> Gerencia consulta stock de las 6 tiendas</li>
+                    <li><strong>Sincronización:</strong> Cambios en una tienda se reflejan en todas</li>
+                    <li><strong>Trazabilidad:</strong> Sistema sabe de dónde vino cada artículo (5 Pilares)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- REPORT SECTION -->
+        <div style="margin-top: 3rem;">
+            <div class="module-card" style="border-left-color: var(--gold);">
+                <h3 style="color: var(--gold);">📊 Report - Área Independiente</h3>
+                <p style="line-height: 1.8; margin-bottom: 1rem;">
+                    <strong>Report</strong> es un módulo independiente que procesa datos del <strong>sistema antiguo</strong>
+                    y los traduce al idioma de los <strong>5 Pilares RIMEC</strong>.
+                </p>
+
+                <ul class="feature-list">
+                    <li><strong>Procesa Excel del sistema antiguo:</strong> Lee archivos legacy</li>
+                    <li><strong>Traduce a 5 Pilares:</strong> Convierte a Línea + Referencia + Material + Color + Talla</li>
+                    <li><strong>Genera herramientas:</strong> Stock/Retail, Depósitos, Ventas con Fotos</li>
+                    <li><strong>Fácil gestión:</strong> UI NIIF institucional, diseñado para jornadas de 8 horas</li>
+                    <li><strong>Buena organización:</strong> Sistema numerado, índices, documentación completa</li>
+                </ul>
+
+                <div style="margin-top: 1.5rem; padding: 1rem; background: #fffbeb; border-radius: 8px; border-left: 4px solid var(--gold);">
+                    <strong>💡 Filosofía Report:</strong> Puente entre el sistema antiguo (Excel) y el sistema nuevo (5 Pilares + UI Profesional)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: var(--rimec-azul); color: white; padding: 2rem; text-align: center; margin-top: 3rem;">
+        <h3 style="margin-bottom: 0.5rem;">💎 NEXUS CORE</h3>
+        <p>Sistema Operativo Empresarial Unificado</p>
+        <p style="margin-top: 1rem; opacity: 0.8; font-size: 0.875rem;">
+            5 Módulos • 2 Corazones • 1 Ecosistema • 230 Documentos Técnicos
+        </p>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

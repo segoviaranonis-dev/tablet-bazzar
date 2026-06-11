@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS CORE - Presentación Completa con Flujo Paralelo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rimec-azul: #002B4E;
+            --rimec-azul-dark: #001829;
+            --bazzar-naranja: #ea580c;
+            --motor-purple: #7c3aed;
+            --corazon-red: #dc2626;
+            --app-bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --neutral-ink: #2d2520;
+            --neutral-muted: #64748b;
+            --success: #2f4f3e;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--app-bg);
+            color: var(--neutral-ink);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--rimec-azul-dark), var(--rimec-azul));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-container {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .flow-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--rimec-azul);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Layout con dos filas */
+        .flow-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            min-width: 3000px;
+        }
+
+        /* Fila principal */
+        .flow-row-main {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Fila motor (paralela) */
+        .flow-row-motor {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-left: 800px; /* Alinear con Pedido Proveedor */
+        }
+
+        /* Connector vertical */
+        .connector-vertical {
+            position: absolute;
+            left: 1150px;
+            top: 350px;
+            width: 4px;
+            height: 150px;
+            background: var(--motor-purple);
+        }
+
+        .connector-label {
+            position: absolute;
+            left: 1160px;
+            top: 400px;
+            background: var(--motor-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* Flow box */
+        .flow-box {
+            background: white;
+            border: 3px solid;
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-width: 180px;
+            max-width: 180px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .flow-box:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .flow-box.rimec {
+            border-color: var(--rimec-azul);
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+        }
+
+        .flow-box.bazzar {
+            border-color: var(--bazzar-naranja);
+            background: linear-gradient(135deg, #ffffff 0%, #ffedd5 100%);
+        }
+
+        .flow-box.motor {
+            border-color: var(--motor-purple);
+            background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 100%);
+        }
+
+        .flow-box.corazon {
+            border-color: var(--corazon-red);
+            background: linear-gradient(135deg, #ffffff 0%, #fee2e2 100%);
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .flow-box .icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .flow-box .title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-box .subtitle {
+            font-size: 0.75rem;
+            color: var(--neutral-muted);
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: var(--neutral-muted);
+            font-weight: 700;
+        }
+
+        .arrow.purple {
+            color: var(--motor-purple);
+        }
+
+        /* Bifurcation */
+        .bifurcation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .bifurcation-label {
+            background: var(--rimec-azul);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        /* Modal styles (mismo que antes pero más completo) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modal-header.rimec {
+            background: linear-gradient(135deg, var(--rimec-azul-dark), var(--rimec-azul));
+            color: white;
+        }
+
+        .modal-header.bazzar {
+            background: linear-gradient(135deg, #c2410c, var(--bazzar-naranja));
+            color: white;
+        }
+
+        .modal-header.motor {
+            background: linear-gradient(135deg, #6d28d9, var(--motor-purple));
+            color: white;
+        }
+
+        .modal-header.corazon {
+            background: linear-gradient(135deg, #b91c1c, var(--corazon-red));
+            color: white;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .modal-subtitle {
+            opacity: 0.95;
+            margin-top: 0.5rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .info-section {
+            background: var(--app-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-section h4 {
+            font-size: 1.25rem;
+            color: var(--rimec-azul);
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--rimec-azul);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .alert {
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .alert-danger {
+            background: #fee2e2;
+            border-color: var(--corazon-red);
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>💎 NEXUS CORE - FLUJO COMPLETO</h1>
+        <p>Sistema Operativo Empresarial Unificado con Motor de Precios en Paralelo</p>
+        <p style="font-size: 0.875rem; opacity: 0.85; margin-top: 0.5rem;">Click en cada módulo para información profunda</p>
+    </div>
+
+    <div class="flow-container">
+        <div class="flow-title">🔄 Flujo Operativo Completo de NEXUS CORE</div>
+
+        <div class="flow-layout">
+            <!-- FILA PRINCIPAL -->
+            <div class="flow-row-main">
+                <!-- 1. Informe Ventas -->
+                <div class="flow-box rimec" onclick="openModal('informe-ventas')">
+                    <div class="icon">📊</div>
+                    <div class="title">Informe Ventas</div>
+                    <div class="subtitle">Cliente/Marca/Vendedor</div>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <!-- 2. Intención Pedidos -->
+                <div class="flow-box rimec" onclick="openModal('intencion')">
+                    <div class="icon">📝</div>
+                    <div class="title">Intención</div>
+                    <div class="subtitle">Previa/Programada</div>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <!-- 3. Digitación -->
+                <div class="flow-box rimec" onclick="openModal('digitacion')">
+                    <div class="icon">⌨️</div>
+                    <div class="title">Digitación</div>
+                    <div class="subtitle">Distribución</div>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <!-- 4. Pedido Proveedor -->
+                <div class="flow-box rimec" onclick="openModal('pedido-proveedor')">
+                    <div class="icon">📦</div>
+                    <div class="title">Pedido Proveedor</div>
+                    <div class="subtitle">OC + Facturas</div>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <!-- 5. RIMEC Web (sale de Pedido Proveedor) -->
+                <div class="bifurcation">
+                    <div class="bifurcation-label">De aquí sale ↓</div>
+                    <div class="flow-box rimec" onclick="openModal('rimec-web')">
+                        <div class="icon">🛒</div>
+                        <div class="title">RIMEC Web</div>
+                        <div class="subtitle">Catálogo</div>
+                    </div>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <!-- 6. Aprobación -->
+                <div class="flow-box rimec" onclick="openModal('aprobacion')">
+                    <div class="icon">✅</div>
+                    <div class="title">Aprobación</div>
+                    <div class="subtitle">Preventas</div>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <!-- 7. Compras -->
+                <div class="flow-box rimec" onclick="openModal('compras')">
+                    <div class="icon">🚚</div>
+                    <div class="title">Compras</div>
+                    <div class="subtitle">Recepción</div>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <!-- 8. Facturación/Depósito -->
+                <div class="bifurcation">
+                    <div class="flow-box rimec" onclick="openModal('facturacion')">
+                        <div class="icon">📄</div>
+                        <div class="title">Facturación</div>
+                        <div class="subtitle">O Depósito</div>
+                    </div>
+                    <div class="bifurcation-label">Si Cliente 5000 ↓</div>
+                </div>
+
+                <span class="arrow">→</span>
+
+                <!-- 9. BAZZAR Transfer -->
+                <div class="flow-box bazzar" onclick="openModal('bazzar-transfer')">
+                    <div class="icon">🔄</div>
+                    <div class="title">BAZZAR Web</div>
+                    <div class="subtitle">Automático</div>
+                </div>
+            </div>
+
+            <!-- FILA MOTOR DE PRECIOS (PARALELA) -->
+            <div class="flow-row-motor">
+                <!-- Corazón 1 -->
+                <div class="flow-box corazon" onclick="openModal('corazon-1')">
+                    <div class="icon">💖</div>
+                    <div class="title">Biblioteca Casos</div>
+                    <div class="subtitle">Corazón 1</div>
+                </div>
+
+                <span class="arrow purple">+</span>
+
+                <!-- Importador -->
+                <div class="flow-box motor" onclick="openModal('importador')">
+                    <div class="icon">📊</div>
+                    <div class="title">Importador</div>
+                    <div class="subtitle">Excel</div>
+                </div>
+
+                <span class="arrow purple">=</span>
+
+                <!-- Corazón 2: Evento -->
+                <div class="flow-box corazon" onclick="openModal('corazon-2')">
+                    <div class="icon">💖</div>
+                    <div class="title">Evento</div>
+                    <div class="subtitle">Listado Precio</div>
+                </div>
+
+                <span class="arrow purple">+</span>
+
+                <!-- Proforma -->
+                <div class="flow-box motor" onclick="openModal('proforma')">
+                    <div class="icon">📄</div>
+                    <div class="title">Proforma</div>
+                    <div class="subtitle">Formato</div>
+                </div>
+
+                <span class="arrow purple">=</span>
+
+                <!-- Artículo -->
+                <div class="flow-box motor" onclick="openModal('articulo')">
+                    <div class="icon">🚀</div>
+                    <div class="title">Artículo</div>
+                    <div class="subtitle">Con Precio</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connector visual -->
+        <div class="connector-vertical"></div>
+        <div class="connector-label">Se une aquí ↑</div>
+
+        <div style="margin-top: 3rem; text-align: center; color: var(--neutral-muted);">
+            <p><strong>Flujo Superior:</strong> Control Central → RIMEC Web → Aprobación → Compras → BAZZAR</p>
+            <p><strong>Flujo Paralelo:</strong> Motor de Precios genera artículos con precio que se unen a Pedido Proveedor</p>
+        </div>
+    </div>
+
+    <!-- MODALS COMPLETOS -->
+
+    <!-- Modal: Informe de Ventas -->
+    <div id="modal-informe-ventas" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('informe-ventas')">×</button>
+                <div class="modal-title">
+                    <span>📊</span>
+                    <span>Informe de Ventas</span>
+                </div>
+                <div class="modal-subtitle">Análisis multidimensional: Cliente, Marca, Vendedor + Generación PDF en lote</div>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>🎯 Análisis Multidimensional</h4>
+                    <ul class="feature-list">
+                        <li><strong>Por Cliente:</strong> Historial completo de compras, productos favoritos, frecuencia</li>
+                        <li><strong>Por Marca:</strong> Rendimiento de cada marca, participación en ventas</li>
+                        <li><strong>Por Vendedor:</strong> Performance individual, cumplimiento de metas, comisiones</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>📄 Generación de PDF en Lote</h4>
+                    <p>Sistema genera reportes masivos automáticamente para distribución a vendedores, gerencia y stakeholders.</p>
+                    <ul class="feature-list">
+                        <li>PDFs personalizados por vendedor con su performance</li>
+                        <li>Reportes ejecutivos para gerencia</li>
+                        <li>Análisis de tendencias por marca</li>
+                        <li>Exportación programada (diaria, semanal, mensual)</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Integración 5 Pilares</strong>
+                    Todos los reportes respetan la filosofía de los 5 Pilares RIMEC para trazabilidad completa.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Intención de Pedidos -->
+    <div id="modal-intencion" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('intencion')">×</button>
+                <div class="modal-title">
+                    <span>📝</span>
+                    <span>Intención de Pedidos</span>
+                </div>
+                <div class="modal-subtitle">Registro de Intención: Compra Previa o Programada</div>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>📋 Tipos de Intención</h4>
+                    <ul class="feature-list">
+                        <li><strong>Compra Previa:</strong> Cliente expresa interés en productos antes de pedido formal</li>
+                        <li><strong>Compra Programada:</strong> Pedidos planificados con anticipación (calendario)</li>
+                        <li><strong>Registro de Intención:</strong> Captura de necesidades del cliente para análisis</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>🎯 Objetivo</h4>
+                    <p>Capturar la <strong>intención de compra</strong> antes de que se convierta en pedido formal. Esto permite:</p>
+                    <ul class="feature-list">
+                        <li>Planificar inventario con anticipación</li>
+                        <li>Negociar mejores condiciones con proveedores</li>
+                        <li>Reducir tiempos de entrega</li>
+                        <li>Maximizar conversión de intención a venta</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✅ Primera Fase del Proceso</strong>
+                    La Intención es la ENTRADA del sistema. De aquí se pasa a Digitación para formalizar el pedido.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Digitación y Distribución -->
+    <div id="modal-digitacion" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('digitacion')">×</button>
+                <div class="modal-title">
+                    <span>⌨️</span>
+                    <span>Digitación y Distribución</span>
+                </div>
+                <div class="modal-subtitle">Procesamiento formal de pedidos y asignación a proveedores</div>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>⌨️ Digitación</h4>
+                    <p>Conversión de la <strong>Intención</strong> en un <strong>Pedido Formal</strong> en el sistema.</p>
+                    <ul class="feature-list">
+                        <li>Ingreso formal de productos, cantidades y condiciones</li>
+                        <li>Validación contra stock disponible</li>
+                        <li>Cálculo de precios según caso activo</li>
+                        <li>Generación de ID único de pedido</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>📦 Distribución</h4>
+                    <p>Asignación del pedido a <strong>proveedores</strong> según disponibilidad y condiciones.</p>
+                    <ul class="feature-list">
+                        <li>Selección de proveedor óptimo (precio, plazo, stock)</li>
+                        <li>División de pedido si requiere múltiples proveedores</li>
+                        <li>Creación de órdenes de compra (OC)</li>
+                        <li>Notificación automática a proveedores</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚡ Punto Crítico</strong>
+                    Aquí se decide QUÉ comprar y a QUIÉN. Una buena distribución optimiza costos y tiempos.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Pedido Proveedor -->
+    <div id="modal-pedido-proveedor" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('pedido-proveedor')">×</button>
+                <div class="modal-title">
+                    <span>📦</span>
+                    <span>Pedido Proveedor</span>
+                </div>
+                <div class="modal-subtitle">Gestión de Órdenes de Compra + Facturas Internas</div>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>📦 Gestión de Pedidos</h4>
+                    <ul class="feature-list">
+                        <li><strong>Generación de OC:</strong> Orden de compra formal al proveedor</li>
+                        <li><strong>Seguimiento de Estado:</strong> Pendiente → Confirmado → En Tránsito → Arribado</li>
+                        <li><strong>Facturas Internas:</strong> Ejecución de facturas dentro del módulo</li>
+                        <li><strong>Cierre al Arribo:</strong> Pedido se cierra cuando mercadería llega</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>🔗 PUNTO DE CONEXIÓN CRÍTICO</strong>
+                    De PEDIDO PROVEEDOR sale RIMEC WEB (catálogo con artículos disponibles para vendedores)
+                </div>
+
+                <div class="info-section">
+                    <h4>💖 Unión con Motor de Precios</h4>
+                    <p>El <strong>Motor de Precios</strong> (flujo paralelo) genera artículos con precio que se unen aquí:</p>
+                    <ul class="feature-list">
+                        <li>Evento (Listado Precio) del motor se asocia a productos del Pedido Proveedor</li>
+                        <li>Artículos obtienen precio automáticamente según caso</li>
+                        <li>Sistema valida que artículo tenga precio antes de aparecer en RIMEC Web</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✅ Cierre Automático</strong>
+                    Cuando mercadería arriba, Pedido Proveedor se cierra y pasa automáticamente a COMPRAS.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: RIMEC Web -->
+    <div id="modal-rimec-web" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('rimec-web')">×</button>
+                <div class="modal-title">
+                    <span>🛒</span>
+                    <span>RIMEC Web</span>
+                </div>
+                <div class="modal-subtitle">Catálogo para Vendedores - Sale de Pedido Proveedor</div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <strong>🔗 Origen</strong>
+                    RIMEC Web NO es un módulo independiente. SALE de PEDIDO PROVEEDOR con artículos que ya tienen precio del Motor.
+                </div>
+
+                <div class="info-section">
+                    <h4>🛒 Funcionalidades</h4>
+                    <ul class="feature-list">
+                        <li><strong>Catálogo de Productos:</strong> Solo artículos con precio y stock disponible</li>
+                        <li><strong>Carrito de Compras:</strong> Vendedor arma pedido para cliente</li>
+                        <li><strong>Motor de Precios Dinámico:</strong> Precios según caso activo</li>
+                        <li><strong>Confirmación de Pedido:</strong> Genera preventa con número único</li>
+                        <li><strong>Mis Preventas:</strong> Vendedor ve historial de pedidos</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>💰 Precio Automático</h4>
+                    <p>Los precios vienen del <strong>Motor de Precios</strong>:</p>
+                    <ul class="feature-list">
+                        <li>Artículo tiene asociado un EVENTO (Listado de Precio)</li>
+                        <li>EVENTO tiene un CASO (estrategia comercial)</li>
+                        <li>Precio se calcula automáticamente según caso</li>
+                        <li>Vendedor VE el precio final, NO lo modifica</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚡ Preventas van a Aprobación</strong>
+                    Cada pedido confirmado en RIMEC Web genera una preventa que debe ser aprobada en el módulo siguiente.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Aprobación de Pedidos -->
+    <div id="modal-aprobacion" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('aprobacion')">×</button>
+                <div class="modal-title">
+                    <span>✅</span>
+                    <span>Aprobación de Pedidos RIMEC Web</span>
+                </div>
+                <div class="modal-subtitle">Validación de Preventas con Número Único para Máximo Monitoreo</div>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>✅ Proceso de Aprobación</h4>
+                    <ul class="feature-list">
+                        <li><strong>Revisión:</strong> Gerencia revisa pedidos ingresados en RIMEC Web</li>
+                        <li><strong>Validación Comercial:</strong> Verifica condiciones, precios, disponibilidad</li>
+                        <li><strong>Aprobación/Rechazo:</strong> Decisión final sobre el pedido</li>
+                        <li><strong>Notificación:</strong> Vendedor recibe confirmación o rechazo</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>🔢 Preventas con Número Único</strong>
+                    Cada preventa recibe un ID único e irrepetible para trazabilidad máxima. Esto permite monitoreo completo del pedido desde intención hasta entrega.
+                </div>
+
+                <div class="info-section">
+                    <h4>📊 Trazabilidad Completa</h4>
+                    <p>Con el número único de preventa se puede rastrear:</p>
+                    <ul class="feature-list">
+                        <li>Quién creó el pedido (vendedor)</li>
+                        <li>Cuándo se creó (timestamp)</li>
+                        <li>Qué productos y cantidades</li>
+                        <li>Qué caso de precio se aplicó</li>
+                        <li>Quién aprobó/rechazó</li>
+                        <li>Estado actual del pedido</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✅ Pedidos Aprobados → Compras</strong>
+                    Una vez aprobados, los pedidos pasan al módulo de COMPRAS para gestión de mercadería.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Compras -->
+    <div id="modal-compras" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('compras')">×</button>
+                <div class="modal-title">
+                    <span>🚚</span>
+                    <span>Módulo de Compras</span>
+                </div>
+                <div class="modal-subtitle">Recepción de Mercadería - Conectado a Pedido Proveedor</div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <strong>🔗 Conexión con Pedido Proveedor</strong>
+                    Cuando mercadería arriba, Pedido Proveedor se CIERRA automáticamente y pasa a COMPRAS.
+                </div>
+
+                <div class="info-section">
+                    <h4>🚚 Recepción de Mercadería</h4>
+                    <ul class="feature-list">
+                        <li><strong>Registro de Arribo:</strong> Mercadería llega y se registra en sistema</li>
+                        <li><strong>Verificación:</strong> Se valida contra Pedido Proveedor (cantidades, productos)</li>
+                        <li><strong>Control de Calidad:</strong> Inspección física de mercadería</li>
+                        <li><strong>Baja de Mercadería:</strong> Se da de baja en el módulo</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>👤 Autorización Usuario</h4>
+                    <p>Usuario con rol adecuado <strong>autoriza</strong> la mercadería recibida y decide destino:</p>
+                    <ul class="feature-list">
+                        <li><strong>Opción 1:</strong> Enviar a FACTURACIÓN (para documentar)</li>
+                        <li><strong>Opción 2:</strong> Enviar a DEPÓSITO (almacenamiento directo)</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚡ Decisión Crítica</strong>
+                    La decisión Facturación vs Depósito determina el siguiente paso del flujo.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Facturación -->
+    <div id="modal-facturacion" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('facturacion')">×</button>
+                <div class="modal-title">
+                    <span>📄</span>
+                    <span>Facturación / Depósito</span>
+                </div>
+                <div class="modal-subtitle">Documentación O Almacenamiento - Detección Cliente 5000</div>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>📄 Facturación</h4>
+                    <p>Generación de documentos fiscales para la mercadería recibida.</p>
+                    <ul class="feature-list">
+                        <li>Creación de facturas</li>
+                        <li>Asociación con Pedido Proveedor</li>
+                        <li>Registro contable</li>
+                        <li>Documentación completa</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>🤖 DETECCIÓN AUTOMÁTICA CLIENTE 5000</strong>
+                    Si el cliente asociado a la mercadería es el <strong>Cliente 5000 (BAZZAR)</strong>, el sistema detecta automáticamente y ejecuta transferencia sin intervención humana.
+                </div>
+
+                <div class="info-section">
+                    <h4>🔄 Transferencia Automática BAZZAR</h4>
+                    <p>Cuando Cliente = 5000:</p>
+                    <ul class="feature-list">
+                        <li><strong>Detección:</strong> Sistema identifica Cliente 5000</li>
+                        <li><strong>Transferencia:</strong> Mercadería pasa automáticamente a BAZZAR Web</li>
+                        <li><strong>Sin Intervención Humana:</strong> Proceso 100% automatizado</li>
+                        <li><strong>Trazabilidad:</strong> Registro completo del movimiento</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>✅ Siguiente Paso</strong>
+                    Mercadería transferida a BAZZAR Web → Depósito BAZZAR → Precio Automático
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: BAZZAR Transfer -->
+    <div id="modal-bazzar-transfer" class="modal">
+        <div class="modal-content">
+            <div class="modal-header bazzar">
+                <button class="modal-close" onclick="closeModal('bazzar-transfer')">×</button>
+                <div class="modal-title">
+                    <span>🔄</span>
+                    <span>BAZZAR Web - Transferencia Automática</span>
+                </div>
+                <div class="modal-subtitle">Cliente 5000 → Depósito → Precio Automático SIN Humano</div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <strong>🤖 100% AUTOMATIZACIÓN</strong>
+                    Todo este proceso ocurre SIN intervención humana. Sistema detecta, transfiere, deposita y marca precio automáticamente.
+                </div>
+
+                <div class="info-section">
+                    <h4>1️⃣ Recepción en BAZZAR Web</h4>
+                    <ul class="feature-list">
+                        <li>Mercadería llega desde Facturación (Cliente 5000)</li>
+                        <li>Sistema registra ingreso automático</li>
+                        <li>Validación contra 5 Pilares</li>
+                        <li>Asociación con caso de precio</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>2️⃣ Asignación a Depósito</h4>
+                    <ul class="feature-list">
+                        <li>Mercadería pasa a uno de los <strong>6 depósitos BAZZAR</strong></li>
+                        <li>Asignación según reglas (cercanía, stock, rotación)</li>
+                        <li>Actualización de inventario en tiempo real</li>
+                        <li>Disponible para venta en Tablet BAZZAR</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>3️⃣ Precio Automático según Caso</h4>
+                    <p><strong>SIN intervención humana</strong>, el sistema:</p>
+                    <ul class="feature-list">
+                        <li>Consulta qué CASO acompaña al artículo</li>
+                        <li>Aplica precio del EVENTO activo</li>
+                        <li>Marca precio de venta automáticamente</li>
+                        <li>Artículo listo para vender en BAZZAR</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>🌿 Fase 1 Hiedra Venenosa</strong>
+                    Esta automatización es parte de la estrategia de infiltración. BAZZAR empieza a depender del sistema RIMEC sin saberlo.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Corazón 1 - Biblioteca de Casos -->
+    <div id="modal-corazon-1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header corazon">
+                <button class="modal-close" onclick="closeModal('corazon-1')">×</button>
+                <div class="modal-title">
+                    <span>💖</span>
+                    <span>CORAZÓN 1: Biblioteca de Casos</span>
+                </div>
+                <div class="modal-subtitle">Cerebro Comercial - Define Estrategias</div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <strong>💖 PRIMER CORAZÓN</strong>
+                    La Biblioteca de Casos es el CEREBRO comercial. Aquí se definen las estrategias y análisis comerciales.
+                </div>
+
+                <div class="info-section">
+                    <h4>🎯 ¿Qué Contiene?</h4>
+                    <ul class="feature-list">
+                        <li><strong>CASOS:</strong> Estrategias comerciales definidas (Liquidación, Premium, Mayorista, etc.)</li>
+                        <li><strong>Análisis:</strong> Efectividad de cada estrategia</li>
+                        <li><strong>Reglas de Negocio:</strong> Condiciones y restricciones</li>
+                        <li><strong>Historial:</strong> Casos pasados para aprender</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>🧠 Por Qué es el "Cerebro"</h4>
+                    <p>De aquí vienen:</p>
+                    <ul class="feature-list">
+                        <li>Estrategias de pricing dinámico</li>
+                        <li>Análisis de estrategias comerciales</li>
+                        <li>Decisiones de negocio basadas en datos</li>
+                        <li>Optimización de márgenes</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>➡️ Siguiente Paso</strong>
+                    Un CASO de la biblioteca se combina con EXCEL en el Importador para generar EVENTO (Corazón 2).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Importador de Precios -->
+    <div id="modal-importador" class="modal">
+        <div class="modal-content">
+            <div class="modal-header motor">
+                <button class="modal-close" onclick="closeModal('importador')">×</button>
+                <div class="modal-title">
+                    <span>📊</span>
+                    <span>Importador de Precios</span>
+                </div>
+                <div class="modal-subtitle">Procesa Excel con Productos y Márgenes</div>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>📊 Función</h4>
+                    <p>Lee archivos <strong>Excel</strong> con productos, valida contra 5 Pilares y prepara para generar evento.</p>
+                    <ul class="feature-list">
+                        <li>Lee Excel con códigos de producto, descripciones, precios base</li>
+                        <li>Valida que cada producto tenga: Línea, Referencia, Material, Color, Talla</li>
+                        <li>Procesa márgenes y condiciones especiales</li>
+                        <li>Prepara datos para combinarse con CASO</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚡ Validación 5 Pilares</strong>
+                    Si un producto NO tiene los 5 Pilares completos, el importador lo rechaza. Esto garantiza trazabilidad molecular.
+                </div>
+
+                <div class="info-section">
+                    <h4>🔄 Proceso</h4>
+                    <ul class="feature-list">
+                        <li><strong>Paso 1:</strong> Usuario sube Excel</li>
+                        <li><strong>Paso 2:</strong> Sistema valida formato y 5 Pilares</li>
+                        <li><strong>Paso 3:</strong> Se combina con CASO seleccionado</li>
+                        <li><strong>Paso 4:</strong> Genera EVENTO (Corazón 2)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Corazón 2 - Evento -->
+    <div id="modal-corazon-2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header corazon">
+                <button class="modal-close" onclick="closeModal('corazon-2')">×</button>
+                <div class="modal-title">
+                    <span>💖</span>
+                    <span>CORAZÓN 2: EVENTO = Caso + Excel</span>
+                </div>
+                <div class="modal-subtitle">Listado de Precio - Músculo Ejecutor</div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger">
+                    <strong>💖 SEGUNDO CORAZÓN</strong>
+                    CASO (Biblioteca) + EXCEL (Productos) = EVENTO (Listado de Precio con todos los SKUs y precios calculados)
+                </div>
+
+                <div class="info-section">
+                    <h4>🧮 La Fórmula</h4>
+                    <div style="background: white; padding: 2rem; border-radius: 12px; border: 3px solid var(--corazon-red); text-align: center; font-size: 1.25rem; font-weight: 700;">
+                        Caso + Excel = EVENTO (Listado de Precio)
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h4>📋 ¿Qué Contiene un EVENTO?</h4>
+                    <ul class="feature-list">
+                        <li><strong>SKUs con Precio:</strong> Todos los productos con precio calculado</li>
+                        <li><strong>Vigencia:</strong> Fecha inicio y fin</li>
+                        <li><strong>Condiciones:</strong> Tipo de cliente, canal, volumen</li>
+                        <li><strong>Caso Asociado:</strong> Referencia al caso que lo generó</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-success">
+                    <strong>➡️ Siguiente Paso</strong>
+                    EVENTO se combina con PROFORMA para crear artículo disponible para venta.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Proforma -->
+    <div id="modal-proforma" class="modal">
+        <div class="modal-content">
+            <div class="modal-header motor">
+                <button class="modal-close" onclick="closeModal('proforma')">×</button>
+                <div class="modal-title">
+                    <span>📄</span>
+                    <span>Proforma</span>
+                </div>
+                <div class="modal-subtitle">Formato de Presentación del Artículo</div>
+            </div>
+            <div class="modal-body">
+                <div class="info-section">
+                    <h4>📄 ¿Qué es una Proforma?</h4>
+                    <p>Es el <strong>formato de presentación</strong> de cómo se muestra el artículo al vendedor/cliente.</p>
+                    <ul class="feature-list">
+                        <li>Define cómo se visualiza el producto</li>
+                        <li>Incluye imágenes, descripciones, especificaciones</li>
+                        <li>Formato de precio (con/sin IVA, descuentos visibles, etc.)</li>
+                        <li>Información adicional (stock, plazo entrega, etc.)</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>🔗 Unión con Evento</h4>
+                    <p><strong>EVENTO + PROFORMA = Artículo Disponible para Venta</strong></p>
+                    <ul class="feature-list">
+                        <li>Evento aporta: Precio calculado, vigencia, condiciones</li>
+                        <li>Proforma aporta: Presentación visual, formato</li>
+                        <li>Resultado: Artículo completo listo para RIMEC Web</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>➡️ Destino Final</strong>
+                    El artículo resultante se conecta a PEDIDO PROVEEDOR y aparece disponible en RIMEC Web para vendedores.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Artículo Final -->
+    <div id="modal-articulo" class="modal">
+        <div class="modal-content">
+            <div class="modal-header motor">
+                <button class="modal-close" onclick="closeModal('articulo')">×</button>
+                <div class="modal-title">
+                    <span>🚀</span>
+                    <span>Artículo Disponible para Venta</span>
+                </div>
+                <div class="modal-subtitle">Evento + Proforma = Listo para RIMEC Web</div>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success">
+                    <strong>✅ RESULTADO FINAL DEL MOTOR DE PRECIOS</strong>
+                    Artículo completo con precio, formato y listo para que vendedores lo ofrezcan en RIMEC Web.
+                </div>
+
+                <div class="info-section">
+                    <h4>🚀 Características del Artículo</h4>
+                    <ul class="feature-list">
+                        <li><strong>Precio Calculado:</strong> Según caso del Motor de Precios</li>
+                        <li><strong>Trazabilidad Completa:</strong> 5 Pilares RIMEC validados</li>
+                        <li><strong>Formato Profesional:</strong> Presentación según Proforma</li>
+                        <li><strong>Vigencia Activa:</strong> Solo disponible si evento está vigente</li>
+                        <li><strong>Stock Validado:</strong> Asociado a Pedido Proveedor</li>
+                    </ul>
+                </div>
+
+                <div class="info-section">
+                    <h4>🔗 Conexión a Pedido Proveedor</h4>
+                    <p>Este artículo se <strong>une a PEDIDO PROVEEDOR</strong> (flujo principal):</p>
+                    <ul class="feature-list">
+                        <li>Artículo con precio se asocia a mercadería del pedido</li>
+                        <li>Sistema valida que haya stock físico</li>
+                        <li>Aparece en RIMEC Web para vendedores</li>
+                        <li>Vendedor puede crear preventa</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-danger">
+                    <strong>💖 Aquí se unen LOS DOS CORAZONES</strong>
+                    El trabajo del Motor de Precios (Biblioteca + Importador + Evento + Proforma) culmina aquí y se conecta al flujo principal de Control Central.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) {
+            document.getElementById('modal-' + id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById('modal-' + id).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

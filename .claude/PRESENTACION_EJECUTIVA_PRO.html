@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS CORE - Presentación Ejecutiva PRO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rimec-azul: #002B4E;
+            --rimec-azul-dark: #001829;
+            --rimec-azul-light: #003d6b;
+            --bazzar-naranja: #ea580c;
+            --bazzar-naranja-dark: #c2410c;
+            --app-bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --neutral-ink: #2d2520;
+            --neutral-muted: #64748b;
+            --success: #2f4f3e;
+            --border: #e2e8f0;
+            --gold: #d97706;
+            --red: #dc2626;
+            --purple: #7c3aed;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--app-bg);
+            color: var(--neutral-ink);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Horizontal Navigation */
+        .nav-horizontal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--rimec-azul-dark) 0%, var(--rimec-azul) 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .nav-logo {
+            color: white;
+            font-size: 1.75rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            overflow-x: auto;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-item {
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            font-size: 0.9375rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .nav-item.active {
+            background: white;
+            color: var(--rimec-azul);
+            border-color: white;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--rimec-azul-dark) 0%, var(--rimec-azul) 50%, var(--rimec-azul-light) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Horizontal Scroll Container */
+        .scroll-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 3rem 2rem;
+            background: var(--card-bg);
+        }
+
+        .flow-horizontal {
+            display: flex;
+            gap: 2rem;
+            min-width: max-content;
+            padding: 2rem 0;
+        }
+
+        /* Flow Box */
+        .flow-box {
+            background: white;
+            border: 3px solid;
+            border-radius: 16px;
+            padding: 2rem;
+            min-width: 220px;
+            max-width: 220px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .flow-box:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .flow-box.rimec {
+            border-color: var(--rimec-azul);
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+        }
+
+        .flow-box.bazzar {
+            border-color: var(--bazzar-naranja);
+            background: linear-gradient(135deg, #ffffff 0%, #ffedd5 100%);
+        }
+
+        .flow-box.motor {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 100%);
+        }
+
+        .flow-box.corazon {
+            border-color: var(--red);
+            background: linear-gradient(135deg, #ffffff 0%, #fee2e2 100%);
+            animation: heartbeat 2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .flow-box .icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .flow-box .title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--neutral-ink);
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-box .subtitle {
+            font-size: 0.875rem;
+            color: var(--neutral-muted);
+            margin-bottom: 1rem;
+        }
+
+        .flow-box .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-click {
+            background: var(--gold);
+            color: white;
+            margin-top: auto;
+        }
+
+        /* Arrow Connector */
+        .arrow-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--neutral-muted);
+            font-weight: 700;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 2px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            z-index: 10;
+        }
+
+        .modal-header.rimec {
+            background: linear-gradient(135deg, var(--rimec-azul) 0%, var(--rimec-azul-light) 100%);
+            color: white;
+        }
+
+        .modal-header.bazzar {
+            background: linear-gradient(135deg, var(--bazzar-naranja-dark) 0%, var(--bazzar-naranja) 100%);
+            color: white;
+        }
+
+        .modal-header.motor {
+            background: linear-gradient(135deg, #6d28d9 0%, var(--purple) 100%);
+            color: white;
+        }
+
+        .modal-header.corazon {
+            background: linear-gradient(135deg, #b91c1c 0%, var(--red) 100%);
+            color: white;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .modal-subtitle {
+            opacity: 0.95;
+            margin-top: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        /* Modal Tabs */
+        .modal-tabs {
+            display: flex;
+            gap: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .modal-tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            color: var(--neutral-muted);
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .modal-tab:hover {
+            color: var(--rimec-azul);
+        }
+
+        .modal-tab.active {
+            color: var(--rimec-azul);
+            border-bottom-color: var(--rimec-azul);
+        }
+
+        .modal-tab-content {
+            display: none;
+        }
+
+        .modal-tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Info Sections */
+        .info-section {
+            background: var(--app-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-section h4 {
+            font-size: 1.25rem;
+            color: var(--rimec-azul);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--rimec-azul);
+        }
+
+        .info-card h5 {
+            font-size: 0.875rem;
+            color: var(--neutral-muted);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--neutral-ink);
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        /* Alert Box */
+        .alert {
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-color: var(--gold);
+            color: #92400e;
+        }
+
+        .alert-success {
+            background: #d1fae5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .alert-danger {
+            background: #fee2e2;
+            border-color: var(--red);
+            color: #991b1b;
+        }
+
+        .alert strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--rimec-azul);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--neutral-muted);
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        /* Flow Diagram in Modal */
+        .flow-diagram {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--app-bg);
+            border-radius: 8px;
+        }
+
+        .flow-step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--rimec-azul);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .flow-step-content {
+            flex: 1;
+        }
+
+        .flow-step-title {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .flow-step-desc {
+            font-size: 0.875rem;
+            color: var(--neutral-muted);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--rimec-azul);
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                justify-content: flex-start;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                margin: 1rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Horizontal Navigation -->
+    <div class="nav-horizontal">
+        <div class="nav-logo">💎 NEXUS CORE</div>
+        <div class="nav-menu">
+            <div class="nav-item active" onclick="showSection('control-central')">🎛️ Control Central</div>
+            <div class="nav-item" onclick="showSection('motor-precios')">💖 Motor Precios</div>
+            <div class="nav-item" onclick="showSection('bazzar-flow')">🏪 Flujo BAZZAR</div>
+            <div class="nav-item" onclick="showSection('report')">📊 Report</div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>💎 NEXUS CORE</h1>
+        <p style="font-size: 1.25rem; opacity: 0.95;">Sistema Operativo Empresarial Unificado</p>
+        <p style="font-size: 1rem; opacity: 0.85; margin-top: 0.5rem;">Click en cada módulo para ver detalles profundos</p>
+    </div>
+
+    <!-- SECTION: CONTROL CENTRAL -->
+    <div id="control-central" class="section-content">
+        <div class="container">
+            <h2 class="section-title">🎛️ Control Central - Flujo Operativo Completo</h2>
+        </div>
+
+        <div class="scroll-container">
+            <div class="flow-horizontal">
+                <div class="flow-box rimec" onclick="openModal('informe-ventas')">
+                    <div class="icon">📊</div>
+                    <div class="title">Informe de Ventas</div>
+                    <div class="subtitle">8 Tablas SQL + KPIs</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">→</div>
+
+                <div class="flow-box rimec" onclick="openModal('intencion-pedidos')">
+                    <div class="icon">📝</div>
+                    <div class="title">Intención Pedidos</div>
+                    <div class="subtitle">Compra Previa/Programada</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">→</div>
+
+                <div class="flow-box rimec" onclick="openModal('digitacion')">
+                    <div class="icon">⌨️</div>
+                    <div class="title">Digitación</div>
+                    <div class="subtitle">Procesamiento</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">→</div>
+
+                <div class="flow-box rimec" onclick="openModal('pedido-proveedor')">
+                    <div class="icon">📦</div>
+                    <div class="title">Pedido Proveedor</div>
+                    <div class="subtitle">Gestión OC</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">→</div>
+
+                <div class="flow-box rimec" onclick="openModal('rimec-web')">
+                    <div class="icon">🛒</div>
+                    <div class="title">RIMEC Web</div>
+                    <div class="subtitle">Catálogo Vendedores</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">→</div>
+
+                <div class="flow-box rimec" onclick="openModal('aprobacion')">
+                    <div class="icon">✅</div>
+                    <div class="title">Aprobación</div>
+                    <div class="subtitle">Validación Preventas</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">→</div>
+
+                <div class="flow-box rimec" onclick="openModal('compras')">
+                    <div class="icon">🚚</div>
+                    <div class="title">Compras</div>
+                    <div class="subtitle">Recepción Mercadería</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">→</div>
+
+                <div class="flow-box bazzar" onclick="openModal('bazzar-transfer')">
+                    <div class="icon">🔄</div>
+                    <div class="title">BAZZAR Transfer</div>
+                    <div class="subtitle">Automático Cliente 5000</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION: MOTOR PRECIOS -->
+    <div id="motor-precios" class="section-content" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">💖💖 Motor de Precios - Los Dos Corazones</h2>
+        </div>
+
+        <div class="scroll-container">
+            <div class="flow-horizontal">
+                <div class="flow-box corazon" onclick="openModal('corazon-1')">
+                    <div class="icon">💖</div>
+                    <div class="title">CORAZÓN 1</div>
+                    <div class="subtitle">Biblioteca de Casos</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">+</div>
+
+                <div class="flow-box motor" onclick="openModal('importador')">
+                    <div class="icon">📊</div>
+                    <div class="title">Importador Excel</div>
+                    <div class="subtitle">Productos + Márgenes</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">=</div>
+
+                <div class="flow-box corazon" onclick="openModal('corazon-2')">
+                    <div class="icon">💖</div>
+                    <div class="title">CORAZÓN 2</div>
+                    <div class="subtitle">Evento (Listado Precio)</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">+</div>
+
+                <div class="flow-box motor" onclick="openModal('proforma')">
+                    <div class="icon">📄</div>
+                    <div class="title">Proforma</div>
+                    <div class="subtitle">Formato Presentación</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+
+                <div class="arrow-connector">=</div>
+
+                <div class="flow-box rimec" onclick="openModal('articulo-venta')">
+                    <div class="icon">🚀</div>
+                    <div class="title">Artículo Venta</div>
+                    <div class="subtitle">Disponible RIMEC Web</div>
+                    <div class="badge badge-click">Click para detalles</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+
+    <!-- Modal: Informe de Ventas -->
+    <div id="modal-informe-ventas" class="modal">
+        <div class="modal-content">
+            <div class="modal-header rimec">
+                <button class="modal-close" onclick="closeModal('informe-ventas')">×</button>
+                <div class="modal-title">
+                    <span>📊</span>
+                    <span>Informe de Ventas</span>
+                </div>
+                <div class="modal-subtitle">Sistema de reportes multidimensional con 8 tablas SQL</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" onclick="showModalTab(this, 'ventas-general')">General</div>
+                    <div class="modal-tab" onclick="showModalTab(this, 'ventas-tablas')">8 Tablas SQL</div>
+                    <div class="modal-tab" onclick="showModalTab(this, 'ventas-kpis')">KPIs</div>
+                    <div class="modal-tab" onclick="showModalTab(this, 'ventas-flujo')">Flujo de Datos</div>
+                </div>
+
+                <div id="ventas-general" class="modal-tab-content active">
+                    <div class="info-section">
+                        <h4>🎯 Descripción</h4>
+                        <p>Sistema de reportes multidimensional que permite análisis de ventas desde múltiples perspectivas: Cliente, Marca, Vendedor, Línea, Material, Color y Talla.</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Tablas SQL</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">KPIs</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Dimensiones</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">PDF</div>
+                            <div class="stat-label">Generación Lote</div>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h4>✨ Funcionalidades Principales</h4>
+                        <ul class="feature-list">
+                            <li><strong>Análisis por Cliente:</strong> Historial de compras, tendencias, productos favoritos</li>
+                            <li><strong>Análisis por Marca:</strong> Rendimiento de marcas, rotación, márgenes</li>
+                            <li><strong>Análisis por Vendedor:</strong> Performance individual, cumplimiento metas, comisiones</li>
+                            <li><strong>Generación PDF en Lote:</strong> Reportes masivos automáticos para distribución</li>
+                            <li><strong>Filtros Avanzados:</strong> Por fecha, línea, material, color, talla</li>
+                            <li><strong>Exportación Excel:</strong> Datos procesados listos para análisis externo</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <strong>💡 Integración con 5 Pilares</strong>
+                        Todos los reportes respetan la filosofía de los 5 Pilares RIMEC: Línea, Referencia, Material, Color y Talla. Esto garantiza trazabilidad molecular de cada artículo.
+                    </div>
+                </div>
+
+                <div id="ventas-tablas" class="modal-tab-content">
+                    <div class="info-section">
+                        <h4>🗃️ Arquitectura de 8 Tablas SQL</h4>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">ventas_base</div>
+                                <div class="flow-step-desc">Datos raw de transacciones - Fuente primaria</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">ventas_por_linea</div>
+                                <div class="flow-step-desc">Agregado por línea de producto</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">ventas_por_vendedor</div>
+                                <div class="flow-step-desc">Performance de equipo comercial</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">ventas_por_cliente</div>
+                                <div class="flow-step-desc">Historial y análisis por cliente</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">5</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">ventas_por_fecha</div>
+                                <div class="flow-step-desc">Series temporales y tendencias</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">6</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">kpis_jerarquicos</div>
+                                <div class="flow-step-desc">KPIs calculados por nivel jerárquico</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">7</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">metas_vs_real</div>
+                                <div class="flow-step-desc">Comparación metas vs cumplimiento</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">8</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">tendencias</div>
+                                <div class="flow-step-desc">Análisis predictivo y proyecciones</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <strong>✅ Optimización de Queries</strong>
+                        Cada tabla tiene índices optimizados para consultas rápidas. Tiempo de respuesta < 1 segundo para reportes con hasta 100k registros.
+                    </div>
+                </div>
+
+                <div id="ventas-kpis" class="modal-tab-content">
+                    <div class="info-section">
+                        <h4>📈 KPIs Principales</h4>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <h5>Venta Total</h5>
+                                <p>$1,250,000</p>
+                            </div>
+                            <div class="info-card">
+                                <h5>Margen Promedio</h5>
+                                <p>35%</p>
+                            </div>
+                            <div class="info-card">
+                                <h5>Ticket Promedio</h5>
+                                <p>$450</p>
+                            </div>
+                            <div class="info-card">
+                                <h5>Rotación</h5>
+                                <p>6.5x año</p>
+                            </div>
+                            <div class="info-card">
+                                <h5>Clientes Activos</h5>
+                                <p>850</p>
+                            </div>
+                            <div class="info-card">
+                                <h5>Tasa Conversión</h5>
+                                <p>68%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h4>🎯 KPIs por Dimensión</h4>
+                        <ul class="feature-list">
+                            <li><strong>Por Cliente:</strong> Frecuencia compra, Valor vida cliente (LTV), Productos favoritos</li>
+                            <li><strong>Por Vendedor:</strong> Cumplimiento meta, Ticket promedio, Cantidad transacciones</li>
+                            <li><strong>Por Marca:</strong> Participación mercado, Rotación stock, Margen contribución</li>
+                            <li><strong>Por Línea:</strong> Venta total, Unidades vendidas, Mix de productos</li>
+                            <li><strong>Por Temporal:</strong> MoM growth, YoY comparison, Estacionalidad</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="ventas-flujo" class="modal-tab-content">
+                    <div class="flow-diagram">
+                        <h4 style="margin-bottom: 1.5rem; color: var(--rimec-azul);">🔄 Flujo de Procesamiento de Datos</h4>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Captura de Transacciones</div>
+                                <div class="flow-step-desc">Sistema captura cada venta en tiempo real desde RIMEC Web, Tablet BAZZAR y otros puntos de venta</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Validación 5 Pilares</div>
+                                <div class="flow-step-desc">Cada transacción se valida contra los 5 Pilares para garantizar trazabilidad molecular</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Procesamiento ETL</div>
+                                <div class="flow-step-desc">Extract, Transform, Load a las 8 tablas SQL optimizadas</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Cálculo de KPIs</div>
+                                <div class="flow-step-desc">Sistema calcula automáticamente 15+ KPIs por dimensión</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">5</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Generación de Reportes</div>
+                                <div class="flow-step-desc">UI en Streamlit presenta datos de forma visual e interactiva</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">6</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Exportación PDF/Excel</div>
+                                <div class="flow-step-desc">Generación masiva de reportes para distribución a stakeholders</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <strong>⚡ Tiempo Real</strong>
+                        Los reportes se actualizan en tiempo real. Cada venta aparece en el sistema en menos de 5 segundos.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: CORAZÓN 1 - Biblioteca de Casos -->
+    <div id="modal-corazon-1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header corazon">
+                <button class="modal-close" onclick="closeModal('corazon-1')">×</button>
+                <div class="modal-title">
+                    <span>💖</span>
+                    <span>CORAZÓN 1: Biblioteca de Casos</span>
+                </div>
+                <div class="modal-subtitle">El cerebro comercial del motor de precios</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" onclick="showModalTab(this, 'c1-concepto')">Concepto</div>
+                    <div class="modal-tab" onclick="showModalTab(this, 'c1-casos')">Tipos de Casos</div>
+                    <div class="modal-tab" onclick="showModalTab(this, 'c1-estrategia')">Estrategia Comercial</div>
+                    <div class="modal-tab" onclick="showModalTab(this, 'c1-gestion')">Gestión</div>
+                </div>
+
+                <div id="c1-concepto" class="modal-tab-content active">
+                    <div class="alert alert-danger">
+                        <strong>💖 CORAZÓN 1 del Sistema</strong>
+                        La Biblioteca de Casos es el CEREBRO comercial de todo NEXUS CORE. Sin esto, el motor de precios no funciona. Define CÓMO se vende.
+                    </div>
+
+                    <div class="info-section">
+                        <h4>🎯 ¿Qué es un CASO?</h4>
+                        <p>Un <strong>CASO</strong> es una estrategia comercial definida con reglas de negocio específicas.</p>
+                        <p style="margin-top: 1rem;">Cada caso contiene:</p>
+                        <ul class="feature-list">
+                            <li><strong>Nombre:</strong> Identificador único (ej: "Liquidación Verano 2026")</li>
+                            <li><strong>Tipo de Estrategia:</strong> Descuento, Premium, Mayorista, Promoción, etc.</li>
+                            <li><strong>Reglas de Negocio:</strong> Porcentaje descuento, margen mínimo, condiciones</li>
+                            <li><strong>Vigencia:</strong> Fecha inicio y fin del caso</li>
+                            <li><strong>Condiciones de Aplicación:</strong> Tipo cliente, volumen, canal, etc.</li>
+                        </ul>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-value">∞</div>
+                            <div class="stat-label">Casos Posibles</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Casos Activos</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Automatizado</div>
+                        </div>
+                    </div>
+
+                    <div class="info-section">
+                        <h4>🧠 Por qué es el "Cerebro"</h4>
+                        <p>La Biblioteca de Casos es donde se definen las <strong>estrategias comerciales</strong> y se realiza el <strong>análisis de negocio</strong>.</p>
+                        <p style="margin-top: 1rem;"><strong>De aquí surgen:</strong></p>
+                        <ul class="feature-list">
+                            <li>Estrategias de pricing dinámico</li>
+                            <li>Análisis de efectividad de casos pasados</li>
+                            <li>Decisiones comerciales basadas en datos</li>
+                            <li>Optimización de márgenes por segmento</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="c1-casos" class="modal-tab-content">
+                    <div class="info-section">
+                        <h4>📋 Tipos de Casos Disponibles</h4>
+
+                        <div class="info-grid">
+                            <div class="info-card" style="border-left-color: #dc2626;">
+                                <h5>🔥 Liquidación</h5>
+                                <p>Descuentos agresivos para rotar stock de temporada</p>
+                            </div>
+                            <div class="info-card" style="border-left-color: #d97706;">
+                                <h5>⭐ Premium</h5>
+                                <p>Márgenes altos para productos exclusivos</p>
+                            </div>
+                            <div class="info-card" style="border-left-color: #7c3aed;">
+                                <h5>📦 Mayorista</h5>
+                                <p>Descuentos por volumen para distribuidores</p>
+                            </div>
+                            <div class="info-card" style="border-left-color: #ea580c;">
+                                <h5>🎯 Promoción</h5>
+                                <p>Ofertas especiales por fecha (Black Friday, etc.)</p>
+                            </div>
+                            <div class="info-card" style="border-left-color: #059669;">
+                                <h5>🆕 Lanzamiento</h5>
+                                <p>Precios introductorios para nuevos productos</p>
+                            </div>
+                            <div class="info-card" style="border-left-color: #2563eb;">
+                                <h5>🔁 Recurrente</h5>
+                                <p>Precios especiales para clientes frecuentes</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <strong>💡 Casos Combinables</strong>
+                        Un mismo artículo puede estar en múltiples casos simultáneamente. El sistema aplica la mejor opción para el cliente automáticamente.
+                    </div>
+
+                    <div class="info-section">
+                        <h4>🔧 Ejemplo de Caso Completo</h4>
+                        <div class="flow-diagram">
+                            <div style="background: var(--app-bg); padding: 1.5rem; border-radius: 8px; font-family: monospace;">
+                                <div><strong>Nombre:</strong> "Liquidación Verano 2026"</div>
+                                <div><strong>Tipo:</strong> Liquidación por Temporada</div>
+                                <div><strong>Descuento:</strong> 30% sobre precio base</div>
+                                <div><strong>Vigencia:</strong> 2026-03-01 a 2026-03-31</div>
+                                <div><strong>Condiciones:</strong> Todos los clientes</div>
+                                <div><strong>Productos:</strong> Línea Verano (500 SKUs)</div>
+                                <div><strong>Margen Mínimo:</strong> 15%</div>
+                                <div><strong>Canal:</strong> RIMEC Web + Tablet BAZZAR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="c1-estrategia" class="modal-tab-content">
+                    <div class="info-section">
+                        <h4>📊 Análisis de Estrategias Comerciales</h4>
+                        <p>La Biblioteca de Casos permite analizar la efectividad de cada estrategia:</p>
+
+                        <ul class="feature-list">
+                            <li><strong>Comparación de Casos:</strong> ¿Qué estrategia vendió más?</li>
+                            <li><strong>ROI por Caso:</strong> ¿Cuál generó mayor margen?</li>
+                            <li><strong>Rotación de Stock:</strong> ¿Cuál ayudó a liquidar inventario?</li>
+                            <li><strong>Análisis Temporal:</strong> ¿Cuándo funcionan mejor ciertas estrategias?</li>
+                            <li><strong>Segmentación:</strong> ¿Qué estrategia prefiere cada tipo de cliente?</li>
+                        </ul>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-value">85%</div>
+                            <div class="stat-label">Efectividad Casos</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">+40%</div>
+                            <div class="stat-label">Mejora Margen</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">-60%</div>
+                            <div class="stat-label">Tiempo Pricing</div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <strong>✅ Optimización Continua</strong>
+                        El sistema analiza histórico de casos y sugiere ajustes para maximizar rentabilidad. Machine learning identifica patrones de éxito.
+                    </div>
+                </div>
+
+                <div id="c1-gestion" class="modal-tab-content">
+                    <div class="info-section">
+                        <h4>⚙️ Gestión de Casos en Control Central</h4>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Crear Caso Nuevo</div>
+                                <div class="flow-step-desc">Definir nombre, tipo, reglas de negocio y vigencia</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Configurar Condiciones</div>
+                                <div class="flow-step-desc">Establecer descuentos, márgenes, tipo de cliente, canal</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Asociar con Excel</div>
+                                <div class="flow-step-desc">Importar productos que aplicarán a este caso (CORAZÓN 2)</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Generar Evento</div>
+                                <div class="flow-step-desc">Sistema combina Caso + Excel = Evento con precios</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">5</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Activar en RIMEC Web</div>
+                                <div class="flow-step-desc">Artículos con precios aparecen automáticamente en catálogo</div>
+                            </div>
+                        </div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">6</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Monitorear Performance</div>
+                                <div class="flow-step-desc">Análisis en tiempo real de ventas por caso</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info">
+                        <strong>🔒 Control de Acceso</strong>
+                        Solo usuarios con rol DIRECTOR o COMERCIAL pueden crear/modificar casos. Esto garantiza alineación estratégica.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: CORAZÓN 2 - Evento -->
+    <div id="modal-corazon-2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header corazon">
+                <button class="modal-close" onclick="closeModal('corazon-2')">×</button>
+                <div class="modal-title">
+                    <span>💖</span>
+                    <span>CORAZÓN 2: Caso + Excel = Evento</span>
+                </div>
+                <div class="modal-subtitle">El músculo ejecutor del motor de precios</div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" onclick="showModalTab(this, 'c2-formula')">Fórmula</div>
+                    <div class="modal-tab" onclick="showModalTab(this, 'c2-proceso')">Proceso</div>
+                    <div class="modal-tab" onclick="showModalTab(this, 'c2-ejemplo')">Ejemplo Real</div>
+                </div>
+
+                <div id="c2-formula" class="modal-tab-content active">
+                    <div class="alert alert-danger">
+                        <strong>💖 CORAZÓN 2 del Sistema</strong>
+                        La combinación de un CASO con un archivo EXCEL genera un EVENTO (Listado de Precio). Es el músculo que ejecuta las estrategias del Corazón 1.
+                    </div>
+
+                    <div class="info-section">
+                        <h4>🧮 La Fórmula Fundamental</h4>
+                        <div style="background: white; padding: 2rem; border-radius: 12px; border: 3px solid var(--red); text-align: center; font-size: 1.5rem; font-weight: 700; margin: 2rem 0;">
+                            Caso (Biblioteca) + Excel (Productos/Márgenes) = EVENTO (Listado de Precio)
+                        </div>
+
+                        <p style="margin-top: 2rem; line-height: 1.8;">
+                            <strong>CASO:</strong> Define la estrategia (¿CÓMO vender?)<br>
+                            <strong>EXCEL:</strong> Contiene productos y condiciones (¿QUÉ vender?)<br>
+                            <strong>EVENTO:</strong> Resultado con precios calculados (LISTO para vender)
+                        </p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Caso</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">+</div>
+                            <div class="stat-label">Más</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">500</div>
+                            <div class="stat-label">Productos Excel</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">=</div>
+                            <div class="stat-label">Igual</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">1</div>
+                            <div class="stat-label">Evento</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">500</div>
+                            <div class="stat-label">SKUs con Precio</div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <strong>⚠️ Regla Crítica</strong>
+                        Un CASO solo NO genera precios. Un EXCEL solo NO tiene estrategia. Ambos juntos crean un EVENTO funcional.
+                    </div>
+                </div>
+
+                <div id="c2-proceso" class="modal-tab-content">
+                    <div class="flow-diagram">
+                        <h4 style="margin-bottom: 1.5rem;">🔄 Proceso de Generación de Evento</h4>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">1</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Seleccionar Caso</div>
+                                <div class="flow-step-desc">Usuario elige un caso de la Biblioteca (ej: "Liquidación Verano 2026")</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">2</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Cargar Excel</div>
+                                <div class="flow-step-desc">Excel contiene: Código producto, Descripción, Precio base, Margen deseado</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">3</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Validación 5 Pilares</div>
+                                <div class="flow-step-desc">Sistema valida que cada producto tenga: Línea, Referencia, Material, Color, Talla</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">4</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Cálculo de Precios</div>
+                                <div class="flow-step-desc">Importador aplica reglas del CASO a cada producto del EXCEL</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">5</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Generación EVENTO</div>
+                                <div class="flow-step-desc">Sistema crea EVENTO con 500 SKUs + precios + vigencia + condiciones</div>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin: 1rem 0;">↓</div>
+
+                        <div class="flow-step">
+                            <div class="flow-step-number">6</div>
+                            <div class="flow-step-content">
+                                <div class="flow-step-title">Almacenamiento</div>
+                                <div class="flow-step-desc">EVENTO se guarda en base de datos, listo para unir con Proforma</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <strong>✅ Sin Intervención Humana</strong>
+                        Todo el proceso es automático. Usuario solo sube Excel, sistema hace el resto.
+                    </div>
+                </div>
+
+                <div id="c2-ejemplo" class="modal-tab-content">
+                    <div class="info-section">
+                        <h4>🎯 Ejemplo Real Paso a Paso</h4>
+
+                        <div style="background: #fee2e2; padding: 2rem; border-radius: 12px; border-left: 6px solid var(--red); margin-bottom: 2rem;">
+                            <h5 style="color: var(--red); margin-bottom: 1rem; font-size: 1.25rem;">Escenario: Liquidación de Calzado Verano</h5>
+
+                            <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                                <strong>PASO 1: CASO (Corazón 1)</strong>
+                                <div style="margin-top: 0.5rem; font-family: monospace; font-size: 0.875rem;">
+                                    Nombre: "Liquidación Calzado Verano 2026"<br>
+                                    Tipo: Descuento Temporada<br>
+                                    Descuento: 30%<br>
+                                    Vigencia: 01/03/2026 - 31/03/2026<br>
+                                    Condiciones: Todos los clientes<br>
+                                    Margen Mínimo: 15%
+                                </div>
+                            </div>
+
+                            <div style="text-align: center; margin: 1rem 0; font-size: 1.5rem; font-weight: 700;">+</div>
+
+                            <div style="background: white; padding: 1.5rem; border-radius: 8px;">
+                                <strong>PASO 2: EXCEL</strong>
+                                <div style="margin-top: 0.5rem; font-family: monospace; font-size: 0.875rem;">
+                                    500 productos de línea CALZADO<br>
+                                    Códigos con 5 Pilares validados<br>
+                                    Precios base desde $50 hasta $300<br>
+                                    Columnas: Código | Descripción | Precio Base | Stock
+                                </div>
+                            </div>
+
+                            <div style="text-align: center; margin: 1rem 0; font-size: 1.5rem; font-weight: 700;">=</div>
+
+                            <div style="background: white; padding: 1.5rem; border-radius: 8px;">
+                                <strong>PASO 3: EVENTO GENERADO</strong>
+                                <div style="margin-top: 0.5rem; font-family: monospace; font-size: 0.875rem;">
+                                    Evento ID: EVT_LIQ_CAL_VER_2026<br>
+                                    500 SKUs con precio calculado (30% desc)<br>
+                                    Ejemplo: Zapato $100 → $70 (30% off)<br>
+                                    Vigencia automática: 01/03 - 31/03<br>
+                                    Estado: ACTIVO<br>
+                                    Destino: RIMEC Web
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <strong>⏱️ Tiempo de Procesamiento</strong>
+                            Generar un evento con 500 productos toma aproximadamente 15 segundos. Sistema puede procesar hasta 10,000 SKUs en un solo evento.
+                        </div>
+
+                        <div class="info-section">
+                            <h4>🔗 Siguiente Paso: Unión con Proforma</h4>
+                            <p>Una vez generado el EVENTO, se une con una PROFORMA (formato de presentación) para crear el artículo final disponible en RIMEC Web.</p>
+                            <div style="margin-top: 1rem; padding: 1rem; background: #e0f2fe; border-radius: 8px;">
+                                <strong>Evento + Proforma = Artículo Disponible para Venta</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(s => s.style.display = 'none');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+            document.getElementById(sectionId).style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        // Modals
+        function openModal(modalId) {
+            document.getElementById('modal-' + modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById('modal-' + modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Modal Tabs
+        function showModalTab(element, tabId) {
+            const modal = element.closest('.modal-body');
+            modal.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+            modal.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
+
+            element.classList.add('active');
+            modal.querySelector('#' + tabId).classList.add('active');
+        }
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

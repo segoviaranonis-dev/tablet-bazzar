@@ -6,7 +6,9 @@
       "PowerShell(C:\\\\Users\\\\hecto\\\\Nexus_Core\\\\control_central\\\\venv\\\\Scripts\\\\python.exe C:\\\\Users\\\\hecto\\\\Nexus_Core\\\\control_central\\\\scripts\\\\smoke_test_pilares.py 2>&1)",
       "Bash(curl -s \"http://localhost:3001/\")",
       "Bash(git mv *)",
-      "Bash(mv FI_8-PV012.pdf docs/referencias/ && echo \"✅ PDF movido\")"
+      "Bash(mv FI_8-PV012.pdf docs/referencias/ && echo \"✅ PDF movido\")",
+      "Bash(git stash *)",
+      "Bash(node -e ' *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\hecto\\Nexus_Core"

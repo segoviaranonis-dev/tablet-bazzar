@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegador Documentación - Nexus Core</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* NIIF - Colores Institucionales */
+            --rimec-azul: #002B4E;
+            --rimec-azul-dark: #001829;
+            --rimec-azul-light: #003d6b;
+            --bazzar-naranja: #ea580c;
+            --app-bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --neutral-ink: #2d2520;
+            --neutral-muted: #64748b;
+            --success: #2f4f3e;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--app-bg);
+            color: var(--neutral-ink);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--rimec-azul);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+
+        /* Search */
+        .search-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--card-bg);
+            transition: all 0.2s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--rimec-azul);
+            box-shadow: 0 0 0 3px rgba(0, 43, 78, 0.1);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .tree-container {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Tree Styles */
+        .tree {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tree ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .tree-item {
+            margin: 0.25rem 0;
+        }
+
+        .tree-node {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.15s;
+            user-select: none;
+        }
+
+        .tree-node:hover {
+            background: var(--app-bg);
+        }
+
+        .tree-node.active {
+            background: rgba(0, 43, 78, 0.08);
+            border-left: 3px solid var(--rimec-azul);
+        }
+
+        /* Icons */
+        .icon {
+            margin-right: 0.5rem;
+            font-size: 1.125rem;
+            flex-shrink: 0;
+        }
+
+        .toggle {
+            margin-right: 0.25rem;
+            font-size: 0.75rem;
+            color: var(--neutral-muted);
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .toggle.expanded {
+            transform: rotate(90deg);
+        }
+
+        /* Labels */
+        .label {
+            flex: 1;
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+
+        .label-folder {
+            color: var(--rimec-azul);
+            font-weight: 600;
+        }
+
+        .label-file {
+            color: var(--neutral-ink);
+        }
+
+        .label-index {
+            color: var(--bazzar-naranja);
+            font-weight: 600;
+        }
+
+        /* Badge */
+        .badge {
+            margin-left: 0.5rem;
+            padding: 0.125rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+        }
+
+        .badge-primary {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-count {
+            background: var(--app-bg);
+            color: var(--neutral-muted);
+        }
+
+        /* Collapsed */
+        .collapsed {
+            display: none;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--rimec-azul);
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--rimec-azul);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--neutral-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--neutral-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Highlight */
+        .highlight {
+            background: #fef08a;
+            padding: 0.125rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header, .search-container, .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .tree-container {
+                padding: 1rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📚 Navegador de Documentación</h1>
+        <p>Nexus Core - Sistema de Memoria V2 Optimizado</p>
+    </div>
+
+    <div class="search-container">
+        <input
+            type="text"
+            class="search-box"
+            id="searchInput"
+            placeholder="🔍 Buscar archivos... (ej: pilares, errores, motor, niif)"
+            autofocus
+        />
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalFiles">0</div>
+                <div class="stat-label">Archivos MD</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">10</div>
+                <div class="stat-label">Categorías</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Centralizado</div>
+            </div>
+        </div>
+
+        <div class="tree-container">
+            <ul class="tree" id="tree">
+                <li class="tree-item">
+                    <div class="tree-node" onclick="toggleFolder(this)">
+                        <span class="toggle">▶</span>
+                        <span class="icon">📁</span>
+                        <span class="label label-folder">.claude/</span>
+                    </div>
+                    <ul class="collapsed">
+                        <li class="tree-item">
+                            <div class="tree-node">
+                                <span class="icon">🎯</span>
+                                <span class="label label-index">INDICE_MAESTRO.md</span>
+                                <span class="badge badge-primary">ENTRADA</span>
+                            </div>
+                        </li>
+
+                        <!-- 1_fundamentos -->
+                        <li class="tree-item">
+                            <div class="tree-node" onclick="toggleFolder(this)">
+                                <span class="toggle">▶</span>
+                                <span class="icon">📂</span>
+                                <span class="label label-folder">1_fundamentos/</span>
+                                <span class="badge badge-count">15+</span>
+                            </div>
+                            <ul class="collapsed">
+                                <li class="tree-item">
+                                    <div class="tree-node">
+                                        <span class="icon">📋</span>
+                                        <span class="label label-index">INDICE.md</span>
+                                    </div>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">1.1_protocolos/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">memoria_v2.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">protocolo_etapas.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">🚨</span>
+                                                <span class="label label-file">protocolo_errores.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">workflow_local.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">git_admin.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">🛡️</span>
+                                                <span class="label label-file">guardian_claude.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">1.2_leyes/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">🧬</span>
+                                                <span class="label label-file">pilares_rimec.md</span>
+                                                <span class="badge badge-primary">5 PILARES</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">💰</span>
+                                                <span class="label label-file">motor_precios.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">nomenclatura_p0.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">formato_grada.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">1.3_politicas/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">⭐</span>
+                                                <span class="label label-file">fundamentos_estrategicos.md</span>
+                                                <span class="badge badge-primary">CRÍTICO</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">politicas_blindadas.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">infraestructura.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 2_modulos -->
+                        <li class="tree-item">
+                            <div class="tree-node" onclick="toggleFolder(this)">
+                                <span class="toggle">▶</span>
+                                <span class="icon">📂</span>
+                                <span class="label label-folder">2_modulos/</span>
+                                <span class="badge badge-count">40+</span>
+                            </div>
+                            <ul class="collapsed">
+                                <li class="tree-item">
+                                    <div class="tree-node">
+                                        <span class="icon">📋</span>
+                                        <span class="label label-index">INDICE.md</span>
+                                    </div>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">2.1_control_central/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">arquitectura.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📊</span>
+                                                <span class="label label-file">sales_report.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">2.2_rimec_web/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">arquitectura.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">2.3_report/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">🔐</span>
+                                                <span class="label label-file">sistema_permisos.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">2.4_tablet_bazzar/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📱</span>
+                                                <span class="label label-file">tablet_bazzar.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 3_arquitectura -->
+                        <li class="tree-item">
+                            <div class="tree-node" onclick="toggleFolder(this)">
+                                <span class="toggle">▶</span>
+                                <span class="icon">📂</span>
+                                <span class="label label-folder">3_arquitectura/</span>
+                                <span class="badge badge-count">15+</span>
+                            </div>
+                            <ul class="collapsed">
+                                <li class="tree-item">
+                                    <div class="tree-node">
+                                        <span class="icon">📋</span>
+                                        <span class="label label-index">INDICE.md</span>
+                                    </div>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">3.1_sales_report/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📊</span>
+                                                <span class="label label-file">arquitectura_ventas.md</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">📄</span>
+                                                <span class="label label-file">diseno_8_tablas.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">3.2_venta_tienda/</span>
+                                    </div>
+                                    <ul class="collapsed">
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">🏪</span>
+                                                <span class="label label-file">depositos.md</span>
+                                                <span class="badge badge-primary">2 CORAZONES</span>
+                                            </div>
+                                        </li>
+                                        <li class="tree-item">
+                                            <div class="tree-node">
+                                                <span class="icon">🎫</span>
+                                                <span class="label label-file">tickets_oro.md</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 4_etapas -->
+                        <li class="tree-item">
+                            <div class="tree-node" onclick="toggleFolder(this)">
+                                <span class="toggle">▶</span>
+                                <span class="icon">📂</span>
+                                <span class="label label-folder">4_etapas/</span>
+                                <span class="badge badge-primary">PRIMARIO</span>
+                            </div>
+                            <ul class="collapsed">
+                                <li class="tree-item">
+                                    <div class="tree-node">
+                                        <span class="icon">🎯</span>
+                                        <span class="label label-index">ACTUAL.md</span>
+                                        <span class="badge badge-primary">NO CODE SI VACÍO</span>
+                                    </div>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node">
+                                        <span class="icon">📄</span>
+                                        <span class="label label-file">README.md</span>
+                                    </div>
+                                </li>
+                                <li class="tree-item">
+                                    <div class="tree-node" onclick="toggleFolder(this)">
+                                        <span class="toggle">▶</span>
+                                        <span class="icon">📂</span>
+                                        <span class="label label-folder">realizadas/</span>
