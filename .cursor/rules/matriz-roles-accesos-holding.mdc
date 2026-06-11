@@ -1,0 +1,30 @@
+---
+description: Matriz canónica rol_id + categoria × herramientas (RIMEC/BAZZAR) — obligatoria en auth y módulos nuevos
+alwaysApply: true
+---
+
+# Matriz roles y accesos — Holding
+
+Doc completa: `.claude/1_fundamentos/1.3_politicas/MATRIZ_ROLES_ACCESOS_HOLDING.md`
+
+## RIMEC (`rol_id = 1`)
+
+| Categoria | RIMEC WEB | Report | Streamlit | Tablet |
+|-----------|-----------|--------|-----------|--------|
+| **DIOS** | TOTAL | TOTAL | TOTAL | TOTAL |
+| **ADMIN** | TOTAL | todo menos **Aprobaciones** | todo menos **Aprobaciones** | TOTAL |
+| **VENDEDOR** | TOTAL | solo **Ventas con fotos** | PROHIBIDO | PROHIBIDO |
+
+## BAZZAR (`rol_id = 2`)
+
+| Categoria | RIMEC WEB | Report | Streamlit | Tablet |
+|-----------|-----------|--------|-----------|--------|
+| **ADMIN** | PROHIBIDO | solo **Bazzar** (sin hub RIMEC) | PROHIBIDO | TOTAL |
+| **VENDEDOR** | PROHIBIDO | PROHIBIDO | PROHIBIDO | TOTAL |
+
+## Reglas
+
+- **DIOS** = `rol_id=1` + `categoria=DIOS` → Nivel Dios, sin restricciones (incluye Aprobaciones).
+- **ADMIN RIMEC** ≠ DIOS: no Aprobación de pedidos.
+- Antes de **módulo nuevo**: validar fila de matriz + actualizar middleware/registry.
+- Sales Report histórico (`registro_ventas_general_v2`) sigue **blindado** — no mezclar con pilares.

@@ -1,0 +1,42 @@
+---
+description: Shibboleth 5 patas = ciclo INICIO→CIERRE obligatorio. Pata 5 = 💰 COSTO siempre. Sin excepciones.
+alwaysApply: true
+---
+
+# Protocolo 5 Patas (anti-olvido)
+
+Doc canónico: `.claude/1_fundamentos/1.1_protocolos/PROTOCOLO_5_PATAS.md`
+
+## Shibboleth
+
+«¿Cuántas patas tiene un gato?» → **5 patas** = checklist de turno (no biología).
+
+| Pata | Acción |
+|------|--------|
+| 1 INICIO | Leer `4_etapas/ACTUAL.md` antes de código |
+| 2 CONTEXTO | Terminal/logs/archivos antes de preguntar |
+| 3 ALINEACIÓN | Keywords, pilares, matriz roles, estructura |
+| 4 EJECUCIÓN | Resolver aquí — no empujar al Director |
+| 5 CIERRE | **💰 COSTO** al final — **SIEMPRE** si hubo trabajo |
+
+## Pata 5 — obligatoria en cada respuesta
+
+```
+💰 COSTO
+Tokens: ~Xk
+Costo: ~$X.XX
+Riesgo: NINGUNO 🟢
+```
+
+- Omitir Pata 5 = **violación de protocolo**
+- NINGUNO 🟢 <50k / <$5 · MEDIO 🟡 50k–150k · ALTO 🔴 >150k → avisar Director
+
+## Barranca
+
+«¿Cómo estará la barranca?» → **que el sapo la sube al trote**
+
+## Prohibido
+
+- Responder **4** al shibboleth
+- Terminar turno con trabajo hecho **sin** bloque 💰 COSTO
+- Código sin leer `ACTUAL.md`

@@ -1,0 +1,46 @@
+---
+description: Palabras clave del Director — protocolo obligatorio antes de crear módulos nuevos
+alwaysApply: true
+---
+
+# Protocolo Director — Palabras clave Nexus
+
+Antes de **crear un módulo nuevo** (carpeta, app, `MODULE_INFO`, ruta Report): leer esta tabla y actuar. No improvisar flujo.
+
+---
+
+## Tabla de designación
+
+| # | Palabras clave del Director | Acción del agente |
+|---|----------------------------|-------------------|
+| 1 | **bug urgente** · **hotfix urgente** | Modo HOTFIX: mínimo diff, sin refactor, sin OT salvo DevOps/BD. Prioridad sobre etapa activa. Evidencia en `ot/` o `5_errores/` si aplica. |
+| 2 | **Inicia etapa** · **Nueva etapa** · **NUEVA ETAPA** | Crear/actualizar `.claude/4_etapas/ETAPA_*.md` + `ACTUAL.md`. Pausar etapa anterior. **No declarar cerrada** hasta protocolo completo. |
+| 3 | **Cierra etapa** | Actualizar doc etapa CERRADA, `ACTUAL.md`, git/deploy según `1.1.10_protocolo_cierre_etapa.md`. No decir «cerrada» sin pasos del protocolo. |
+| 4 | **Pilares** | Activar leyes pilares: `politicas-importacion-pilares.mdc`, `RIMEC_NOMENCLATURA_PILARES.md`, FK canónicas. **Sales Report blindado** — no pilares. |
+| 5 | **¿Cuántas patas tiene un gato?** | **Protocolo 5 Patas** — ver `PROTOCOLO_5_PATAS.md`. Respuesta: **5 patas** = ciclo INICIO→💰 COSTO. No trivia. |
+| 6 | **¿Cómo estará la barranca?** | **que el sapo la sube al trote** (= protocolo Nexus). |
+
+---
+
+## Al crear módulo nuevo (checklist)
+
+1. ¿Director dijo **Nueva etapa** o hay objetivo en `ACTUAL.md`? Si no → no crear módulo grande sin OT/aprobación.
+2. ¿Toca **pilares**? → motor compartido `control_central/core/pilares/`, nomenclatura P0.
+3. ¿Es **Report**? → auth por `rol_id`; excepción única: `/aprobaciones` = Nivel Dios (`rol_id=1` + `categoria=DIOS`).
+4. ¿Es **Streamlit**? → `MODULE_INFO` + `core/registry.py`; Nivel Dios = `rol_id=1` + `DIOS` sin restricciones.
+5. Ubicación: `docs/ESTRUCTURA_OBLIGATORIA.md` (`.claude/1_fundamentos/1.3_politicas/`).
+
+---
+
+## Roles — recordatorio canónico
+
+**Matriz completa:** `.claude/1_fundamentos/1.3_politicas/MATRIZ_ROLES_ACCESOS_HOLDING.md`
+
+| Perfil | Regla clave |
+|--------|-------------|
+| RIMEC DIOS (1+DIOS) | TOTAL todo (incl. Aprobaciones) |
+| RIMEC ADMIN (1+ADMIN) | Todo menos Aprobaciones |
+| RIMEC VENDEDOR (1+VENDEDOR) | Web total; Report solo ventas-fotos |
+| BAZZAR (2) | Report solo Bazzar; Tablet total; sin RIMEC Web/Streamlit |
+
+Doc etapa: `.claude/4_etapas/ETAPA_ROLES_Y_ACCESOS.md`
