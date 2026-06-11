@@ -33,15 +33,15 @@ export function compareLineaRef(a: DepositoFila, b: DepositoFila): number {
 }
 
 export function keyLRM(row: Pick<DepositoFila, "linea_codigo_proveedor" | "referencia_codigo_proveedor" | "material_code">): string {
-  return `${row.linea_codigo_proveedor}|${row.referencia_codigo_proveedor}|${row.material_code}`;
+  return `${String(row.linea_codigo_proveedor).trim()}|${String(row.referencia_codigo_proveedor).trim()}|${String(row.material_code).trim()}`;
 }
 
 export function keyLR(row: Pick<DepositoFila, "linea_codigo_proveedor" | "referencia_codigo_proveedor">): string {
-  return `${row.linea_codigo_proveedor}|${row.referencia_codigo_proveedor}`;
+  return `${String(row.linea_codigo_proveedor).trim()}|${String(row.referencia_codigo_proveedor).trim()}`;
 }
 
 export function keyLRMC(row: DepositoFila): string {
-  return `${keyLRM(row)}|${row.color_code}`;
+  return `${keyLRM(row)}|${String(row.color_code).trim()}`;
 }
 
 /** Grupo 1 — L + R + material (precio / foto base) */
@@ -67,8 +67,18 @@ export type ParLineaRef = {
   coloresLR: DepositoFila[];
 };
 
+function normMarca(m: string | null | undefined): string {
+  return (m ?? "").trim();
+}
+
+function qty(v: number | string): number {
+  const n = typeof v === "number" ? v : Number(v);
+  return Number.isFinite(n) ? n : 0;
+}
+
 export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string): ParLineaRef[] {
-  const deMarca = filas.filter((f) => f.marca === marcaFiltro && f.cantidad > 0);
+  const mf = normMarca(marcaFiltro);
+  const deMarca = filas.filter((f) => normMarca(f.marca) === mf && qty(f.cantidad) > 0);
   const porLR = new Map<string, DepositoFila[]>();
 
   for (const f of deMarca) {
@@ -96,9 +106,9 @@ export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string)
         const colores = dedupeColores(matRows);
         return {
           key,
-          linea: m0.linea_codigo_proveedor,
-          referencia: m0.referencia_codigo_proveedor,
-          material: m0.material_code,
+          linea: String(m0.linea_codigo_proveedor).trim(),
+          referencia: String(m0.referencia_codigo_proveedor).trim(),
+          material: String(m0.material_code).trim(),
           descp_material: m0.descp_material,
           marca: m0.marca,
           filas: matRows,
@@ -108,8 +118,8 @@ export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string)
 
     pares.push({
       key: keyLR(first),
-      linea: first.linea_codigo_proveedor,
-      referencia: first.referencia_codigo_proveedor,
+      linea: String(first.linea_codigo_proveedor).trim(),
+      referencia: String(first.referencia_codigo_proveedor).trim(),
       estilo: first.estilo,
       gruposMaterial,
       coloresLR: dedupeColores(rows),
@@ -127,7 +137,7 @@ export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string)
 function dedupeColores(rows: DepositoFila[]): DepositoFila[] {
   const map = new Map<string, DepositoFila>();
   for (const r of rows) {
-    const k = r.color_code || r.descp_color || "?";
+    const k = String(r.color_code || r.descp_color || "?").trim();
     const prev = map.get(k);
     if (!prev || r.cantidad > prev.cantidad) map.set(k, r);
   }

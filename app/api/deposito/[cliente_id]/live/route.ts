@@ -21,11 +21,13 @@ async function queryUbicacionGrada(
       AND grada IS NOT NULL AND btrim(grada::text) <> ''
     GROUP BY btrim(grada::text)
   `;
-  for (const tabla of tablas) {
-    const { rows } = await pool.query<{ grada: string; cantidad: string }>(
-      sql.replace("__TABLA__", tabla),
-      [fk.linea_id, fk.referencia_id, fk.material_id, fk.color_id],
-    );
+  const params = [fk.linea_id, fk.referencia_id, fk.material_id, fk.color_id];
+  const results = await Promise.all(
+    tablas.map((tabla) =>
+      pool.query<{ grada: string; cantidad: string }>(sql.replace("__TABLA__", tabla), params),
+    ),
+  );
+  for (const { rows } of results) {
     for (const r of rows) {
       merged.set(r.grada, (merged.get(r.grada) ?? 0) + (Number(r.cantidad) || 0));
     }
@@ -71,15 +73,18 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     const cantidad_local = Number(localR.rows[0]?.cantidad) || 0;
 
     const gradasPorUb = new Map<string, Map<string, number>>();
-    for (const ub of UBICACIONES) {
-      const tablas = ub.depositos.map((d) => d.tabla);
-      gradasPorUb.set(ub.id, await queryUbicacionGrada(pool, tablas, {
-        linea_id,
-        referencia_id,
-        material_id,
-        color_id,
-      }));
-    }
+    await Promise.all(
+      UBICACIONES.map(async (ub) => {
+        const tablas = ub.depositos.map((d) => d.tabla);
+        const gm = await queryUbicacionGrada(pool, tablas, {
+          linea_id,
+          referencia_id,
+          material_id,
+          color_id,
+        });
+        gradasPorUb.set(ub.id, gm);
+      }),
+    );
 
     const ubicaciones = buildStockBloques(gradasPorUb, ubicacionActualId);
 

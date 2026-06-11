@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import { useRouter } from "next/navigation";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { FiltrosCabecera } from "@/components/cadena/FiltrosCabecera";
 
@@ -85,8 +85,8 @@ export default function CadenaMarcaPage() {
   const [filtros, setFiltros] = useState<FiltrosEntrada>(FILTROS_ENTRADA_VACIOS);
 
   const [api, setApi] = useState<FiltrosApi | null>(null);
-
-  const [loading, setLoading] = useState(true);
+  const [bootLoading, setBootLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   const [ingresando, setIngresando] = useState(false);
 
@@ -98,67 +98,58 @@ export default function CadenaMarcaPage() {
 
   const depositoActivo = DEPOSITOS.find((d) => d.cliente_id === clienteId);
 
+  const hadApi = useRef(false);
 
+  useEffect(() => {
+    hadApi.current = false;
+    setApi(null);
+    setBootLoading(true);
+  }, [clienteId]);
 
-  const cargarFiltros = useCallback(async (cid: number, f: FiltrosEntrada) => {
+  const filtrosKey = useMemo(
+    () => filtrosEntradaToSql(filtros).toString(),
+    [filtros],
+  );
 
-    setLoading(true);
-
+  const cargarFiltros = useCallback(async (cid: number, qs: string, firstBoot: boolean) => {
+    if (firstBoot) setBootLoading(true);
+    else setRefreshing(true);
     setError(null);
 
-    const qs = filtrosEntradaToSql(f).toString();
-
     try {
-
       const r = await fetch(`/api/deposito/${cid}/filtros?${qs}`, { cache: "no-store" });
-
       const data = await r.json();
-
       if (data.error) throw new Error(data.error);
-
       setApi({
-
         generos: data.generos ?? [],
-
         marcas: data.marcas ?? [],
-
         estilos: data.estilos ?? [],
-
         tipos: data.tipos ?? [],
-
         marcasEntrada: data.marcasEntrada ?? [],
-
         referencias: data.referencias ?? [],
-
         resumen: data.resumen ?? { skus: 0, pares: 0, ultima_carga: null },
-
         ms: data.ms,
-
       });
-
+      hadApi.current = true;
     } catch (e) {
-
       setError(e instanceof Error ? e.message : "Error");
-
-      setApi(null);
-
+      if (!hadApi.current) setApi(null);
     } finally {
-
-      setLoading(false);
-
+      setBootLoading(false);
+      setRefreshing(false);
     }
-
   }, []);
 
 
 
   useEffect(() => {
-
-    const t = setTimeout(() => cargarFiltros(clienteId, filtros), 180);
-
+    const delay = filtros.buscar.trim() ? 650 : 350;
+    const t = setTimeout(
+      () => cargarFiltros(clienteId, filtrosKey, !hadApi.current),
+      delay,
+    );
     return () => clearTimeout(t);
-
-  }, [clienteId, filtros, cargarFiltros]);
+  }, [clienteId, filtrosKey, filtros.buscar, cargarFiltros]);
 
 
 
@@ -248,7 +239,9 @@ export default function CadenaMarcaPage() {
 
   const refs = api?.referencias ?? [];
 
-  const puedeIngresar = !loading && !error && marcas.length > 0;
+  // Permitir INGRESAR siempre - sin filtros = ver TODO
+
+  const puedeIngresar = !bootLoading && !error;
 
 
 
@@ -276,16 +269,12 @@ export default function CadenaMarcaPage() {
 
           <span className="text-lg">{depositoActivo ? `${depositoActivo.ente} · ${depositoActivo.tipo}` : "Cadena"}</span>
 
-          {api?.resumen && !loading && (
-
+          {api?.resumen && (
             <span className="font-mono text-[9px] tabular-nums text-[#6b6560]">
-
               {api.resumen.skus.toLocaleString()} SKUs · {Math.round(api.resumen.pares).toLocaleString()} p
-
               {api.ms != null ? ` · ${api.ms}ms` : ""}
-
+              {refreshing ? " · …" : ""}
             </span>
-
           )}
 
         </div>
@@ -310,7 +299,7 @@ export default function CadenaMarcaPage() {
 
               clienteId === d.cliente_id
 
-                ? "border-[#1a1a1a] bg-[#1a1a1a] text-[#f4f1ec]"
+                ? "border-[#ea580c] bg-[#ea580c] text-white font-semibold"
 
                 : "border-[#8a8278] bg-white text-[#1a1a1a] active:bg-[#e8e2d9]"
 
@@ -320,7 +309,7 @@ export default function CadenaMarcaPage() {
 
             <span className="block font-br text-xs tracking-wide">{d.ente}</span>
 
-            <span className="mt-0.5 block text-[9px] uppercase tracking-[0.16em] opacity-80">{d.tipo}</span>
+            <span className="mt-0.5 block text-[9px] uppercase tracking-[0.16em] opacity-90">{d.tipo}</span>
 
           </TouchPad>
 
@@ -332,8 +321,7 @@ export default function CadenaMarcaPage() {
 
       <div className="shrink-0 border-b border-[#c4bdb4] p-2">
 
-        {!loading && !error && api && (
-
+        {api && (
           <FiltrosCabecera
 
             filtros={filtros}
@@ -390,21 +378,17 @@ export default function CadenaMarcaPage() {
 
       <main className="min-h-0 flex-1 overflow-y-auto p-2 pb-28">
 
-        {loading && (
-
+        {bootLoading && !api && (
           <div className="flex items-center justify-center py-24">
-
             <span className="h-10 w-10 animate-pulse rounded-full bg-[#9a9288]/40" />
-
           </div>
-
         )}
 
         {error && (
 
           <TouchPad
 
-            onClick={() => cargarFiltros(clienteId, filtros)}
+            onClick={() => cargarFiltros(clienteId, filtrosKey, false)}
 
             ariaLabel="Reintentar"
 
@@ -420,67 +404,21 @@ export default function CadenaMarcaPage() {
 
 
 
-        {!loading && !error && marcas.length === 0 && (
+        {!bootLoading && !error && refs.length === 0 && api && (
 
-          <p className="py-12 text-center font-br text-lg text-[#6b6560]">Sin coincidencias</p>
-
-        )}
-
-
-
-        {marcas.length > 0 && (
-
-          <>
-
-            <p className="mb-2 px-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b6560]">
-
-              Marca · tocar o INGRESAR abajo
-
-            </p>
-
-            <div className="mb-4 grid gap-2 sm:grid-cols-2">
-
-              {marcas.map((m) => (
-
-                <TouchPad
-
-                  key={m.marca}
-
-                  onClick={() => ingresar(m.marca)}
-
-                  ariaLabel={m.marca}
-
-                  className="min-h-[64px] border border-[#c4bdb4] bg-white p-3 text-left active:bg-[#fff7ed] active:border-[#ea580c]"
-
-                >
-
-                  <span className="font-br block text-lg tracking-wide text-[#1a1a1a]">{m.marca}</span>
-
-                  <span className="mt-1 block font-mono text-[10px] tracking-wider text-[#6b6560]">
-
-                    {m.skus.toLocaleString()} SKUs · {Math.round(m.pares).toLocaleString()} pares
-
-                  </span>
-
-                </TouchPad>
-
-              ))}
-
-            </div>
-
-          </>
+          <p className="py-12 text-center font-br text-lg text-[#6b6560]">Aplicá filtros o usa INGRESAR</p>
 
         )}
 
 
 
-        {!loading && !error && refs.length > 0 && (
+        {api && !error && refs.length > 0 && (
 
           <>
 
             <p className="mb-2 px-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b6560]">
 
-              Línea · referencia · estilo
+              {refs.length} Referencias encontradas
 
             </p>
 
@@ -534,7 +472,7 @@ export default function CadenaMarcaPage() {
 
 
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#c4bdb4] bg-[#f4f1ec]/95 p-2 backdrop-blur-sm">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#c4bdb4] bg-[#f4f1ec]/95 p-3 backdrop-blur-sm">
 
         {ingresoError && (
 
@@ -550,11 +488,11 @@ export default function CadenaMarcaPage() {
 
           disabled={!puedeIngresar || ingresando}
 
-          className={`min-h-[56px] w-full font-br text-xl tracking-[0.12em] ${
+          className={`min-h-[72px] w-full font-br text-2xl tracking-[0.12em] shadow-lg ${
 
             puedeIngresar && !ingresando
 
-              ? "bg-[#1a1a1a] text-[#f4f1ec] active:bg-[#ea580c]"
+              ? "bg-[#ea580c] text-white active:bg-[#c2410c]"
 
               : "bg-[#9a9288] text-[#f4f1ec] opacity-60"
 

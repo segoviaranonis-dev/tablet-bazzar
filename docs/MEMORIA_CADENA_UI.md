@@ -1,6 +1,6 @@
 # Memoria — Cadena consecutiva (cuestionario)
 
-Resumen denso para verificación de contexto. Doc extendida: [CADENA_CONSECUTIVA.md](./CADENA_CONSECUTIVA.md).
+Resumen denso para verificación de contexto. Doc extendida: [CADENA_CONSECUTIVA.md](./CADENA_CONSECUTIVA.md) · [NAVEGACION_CADENA.md](./NAVEGACION_CADENA.md).
 
 ---
 
@@ -11,7 +11,7 @@ Resumen denso para verificación de contexto. Doc extendida: [CADENA_CONSECUTIVA
 | App | Tablet Bazzar — PWA POS tiendas Bazzar |
 | Repo | `tablet-bazzar/` |
 | Puerto dev | **3002** |
-| Ruta cadena | `/cadena/vista?cliente_id=2100&marca=BEIRA+RIO` |
+| Ruta cadena | `/cadena` → `/cadena/vista?cliente_id=2100&marca=VIZZANO` |
 | Depósito prueba | Fernando Adultos, `cliente_id` **2100**, ~5.660 SKUs |
 | Stack | Next.js 16 · Turbopack · TypeScript · Tailwind |
 
@@ -19,9 +19,9 @@ Resumen denso para verificación de contexto. Doc extendida: [CADENA_CONSECUTIVA
 
 ## Ley de agrupación (2 niveles)
 
-1. **Nivel principal:** L + R + **material** → precio, mazo de colores
-2. **Nivel color:** `color_code` / `color_id` → variantes, stock/grada
-3. **Cadena de navegación:** L + R **sin material** → orden numérico ascendente
+1. **Nivel principal:** L + R + **material** → footer naipes + precio futuro
+2. **Nivel color:** `color_code` → mazo apilado sidebar; eje ↑↓
+3. **Cadena secundaria:** L + R sin material → sidebar vertical (solo si >1 ref); eje ←→
 
 Código: `lib/cadena.ts` · Ley holding: `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md`
 
@@ -29,65 +29,34 @@ Código: `lib/cadena.ts` · Ley holding: `.claude/2_modulos/2.4_tablet_bazzar/ag
 
 ## Layout — reglas que no se negocian
 
-1. **Aside derecho fijo:** carrusel vertical naipes L+R + mazo colores/material — **nunca quitar**
-2. **Footer:** carrusel horizontal naipes L+R con ◀▶
+1. **Footer:** materiales L+R+Mat (`CarruselMateriales`) — **no** repetir la misma foto N veces
+2. **Sidebar:** mazo colores siempre; carrusel L+R vertical solo si hay >1 ref
 3. **Paneles Estilo / Referencia:** ocultos por defecto; tap en hero abre/cierra
-4. **`paresNav`:** si filtro vacía resultados, navegación usa `paresAll` para mantener fotos laterales
-5. **Hero:** foto `object-contain`, ~70% visual; gestos ←→ ↑↓; detalle al tap centro
+4. **`paresNav`:** si filtro vacía hero, navegación usa `paresAll`
+5. **Hero:** foto `object-contain`; gestos + **flechas teclado**; sin ◀▶ visibles
+6. **URL `refs`:** una clave `1184|1101` intacta; varias claves separadas por **coma**
 
 ---
 
-## Filtros
-
-- **Estilo** (panel izq): multi-select, OR interno
-- **Referencia** (panel der): multi-select por `linea.referencia`, OR interno
-- **Entre columnas:** AND
-- **Cascada:** referencias se acotan si hay estilos activos
-- **Color:** pendiente — mismo patrón colapsable
-- Estado: `FiltrosCadena` en `lib/cadena-filtros.ts`
-- Componente UI: `MultiSelectFlotante.tsx`
-- **No existe** `FiltrosElegantes.tsx` (eliminado)
-
----
-
-## Navegación táctil
+## Navegación
 
 | Input | Efecto |
 |-------|--------|
-| ← swipe / borde hero | Siguiente L+R |
-| → swipe / borde hero | Anterior L+R |
-| ↑ swipe | Color/material anterior |
-| ↓ swipe | Color/material siguiente |
-| Tap estilo hero | Toggle panel Estilo |
-| Tap ref hero | Toggle panel Referencia |
-| Tap centro hero | Detalle material/grada/pares |
-| Tap naipes | Salto a índice L+R |
-| ⌕ header | Búsqueda código vendedor |
-
-Sin ▲▼ visibles. Hero sin flechas visibles.
+| ← → (teclado / swipe / bordes) | Varias refs → L+R; una ref → material |
+| ↑ ↓ (teclado / swipe) | Solo **color** del material activo |
+| Footer naipes | Salto a material |
+| Sidebar vertical | Salto a L+R (si >1) |
+| Mazo | Rotar / stack colores |
+| ⌕ | Búsqueda código vendedor |
 
 ---
 
-## Estilo Banana Republic
+## Backend entrada (INGRESAR)
 
-- Crema `#f4f1ec` · carbón `#1a1a1a` · navy `#1b2a41`
-- Serif: Cormorant Garamond (`.font-br`)
-- Chips: clase `.chip-br` en `globals.css` (contraste tablet)
-- Fondo reactivo por par L+R: `cadenaBackgroundStyle`
-
----
-
-## Imágenes
-
-- Orden: `productos/thumbs/` → full `productos/`
-- Prefetch vecinos: `lib/prefetch-images.ts`
-- Fallback sin foto: emoji 👟 en `ProductImage.tsx`
-
----
-
-## Búsqueda código
-
-`1122.828` · `1122.828-100` · `1122.828-100-5` — parser en `lib/codigo-busqueda.ts`
+- `POST /ingresar` → cookie POS 12 h + URL vista
+- Búsqueda amplia (`1184`) → marca sin acotar a una sola ref
+- Click ref → incluye `refs` en URL (parser comma-safe)
+- Fix P0: ver `BUG_FILTROS_BUSQUEDA.md` (RESUELTO)
 
 ---
 
@@ -96,7 +65,7 @@ Sin ▲▼ visibles. Hero sin flechas visibles.
 - Precio LPN (API + Motor)
 - Carrito / tickets ORO
 - Filtro color colapsable
-- PWA offline · deploy Vercel prod
+- PWA offline · deploy Vercel prod · git push
 
 ---
 

@@ -10,8 +10,24 @@ export type PosicionCadena = {
   colorG2: number;
 };
 
+function normKey(k: string): string {
+  return k.trim();
+}
+
+function refsCoincidenBuscar(
+  referencias: { key: string; marca: string; linea: string; referencia: string }[],
+  q: string,
+): typeof referencias {
+  return referencias.filter(
+    (r) =>
+      `${r.linea}.${r.referencia}`.startsWith(q) ||
+      r.linea === q ||
+      r.linea.startsWith(q),
+  );
+}
+
 export function buildCadenaServer(filas: DepositoFila[], marca: string): ParLineaRef[] {
-  return buildCadenaFromFilas(filas, marca);
+  return buildCadenaFromFilas(filas, marca.trim());
 }
 
 export function resolverMarcaIngreso(
@@ -22,34 +38,46 @@ export function resolverMarcaIngreso(
   if (marcas.length === 0) return null;
 
   if (f.referenciaKeys.length === 1) {
-    const ref = referencias.find((r) => r.key === f.referenciaKeys[0]);
-    if (ref) return { marca: ref.marca, refKey: ref.key };
+    const k = normKey(f.referenciaKeys[0]!);
+    const ref = referencias.find((r) => normKey(r.key) === k);
+    if (ref) return { marca: ref.marca.trim(), refKey: normKey(ref.key) };
   }
 
   const q = f.buscar.trim();
   const dot = /^(\d+)\.(\d+)/.exec(q);
   if (dot) {
     const key = `${dot[1]}|${dot[2]}`;
-    const ref = referencias.find((r) => r.key === key);
-    if (ref) return { marca: ref.marca, refKey: ref.key };
+    const ref = referencias.find((r) => normKey(r.key) === key);
+    if (ref) return { marca: ref.marca.trim(), refKey: normKey(ref.key) };
   }
 
   if (q && referencias.length > 0) {
-    const ref =
-      referencias.find((r) => `${r.linea}.${r.referencia}`.startsWith(q)) ??
-      referencias.find((r) => r.linea === q || r.linea.startsWith(q));
-    if (ref) return { marca: ref.marca, refKey: ref.key };
+    const matching = refsCoincidenBuscar(referencias, q);
+    if (matching.length === 1) {
+      const ref = matching[0]!;
+      return { marca: ref.marca.trim(), refKey: normKey(ref.key) };
+    }
+    if (matching.length > 1) {
+      return { marca: matching[0]!.marca.trim() };
+    }
   }
 
   if (referencias.length === 1) {
     const r = referencias[0]!;
-    return { marca: r.marca, refKey: r.key };
+    return { marca: r.marca.trim(), refKey: normKey(r.key) };
   }
 
   const marca =
-    f.marcas.length === 1 ? f.marcas[0]! : marcas.length === 1 ? marcas[0]!.marca : f.marcaCadena;
+    f.marcas.length === 1
+      ? f.marcas[0]!.trim()
+      : marcas.length === 1
+        ? marcas[0]!.marca.trim()
+        : f.marcaCadena?.trim();
 
   if (marca) return { marca };
+
+  if (marcas.length > 0) return { marca: marcas[0]!.marca.trim() };
+
   return null;
 }
 
@@ -61,7 +89,8 @@ export function posicionInicialCadena(
   if (pares.length === 0) return base;
 
   if (opts.refKey) {
-    const pi = pares.findIndex((p) => p.key === opts.refKey);
+    const rk = normKey(opts.refKey);
+    const pi = pares.findIndex((p) => normKey(p.key) === rk);
     if (pi >= 0) return { ...base, parIndex: pi };
   }
 
@@ -92,9 +121,10 @@ export function filtrarParesServer(
   pares: ParLineaRef[],
   f: Pick<FiltrosSql, "estilos" | "referenciaKeys">,
 ): ParLineaRef[] {
+  const refSet = new Set(f.referenciaKeys.map(normKey).filter(Boolean));
   return pares.filter((par) => {
     if (f.estilos.length > 0 && !f.estilos.includes(par.estilo)) return false;
-    if (f.referenciaKeys.length > 0 && !f.referenciaKeys.includes(par.key)) return false;
+    if (refSet.size > 0 && !refSet.has(normKey(par.key))) return false;
     return true;
   });
 }

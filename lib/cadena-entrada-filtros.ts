@@ -1,5 +1,5 @@
-import type { DepositoFila } from "./cadena";
-import { keyLR, numCodigo } from "./cadena";
+import { keyLR, numCodigo, type DepositoFila } from "./cadena";
+import { parseReferenciaKeysParam, serializeReferenciaKeysParam } from "./filtros-url";
 import type { FiltrosCadena } from "./cadena-filtros";
 
 export type FiltrosEntrada = {
@@ -219,7 +219,7 @@ export function buildVistaQuery(
   p.set("marca", marca);
   if (entrada.estilos.length) p.set("estilos", entrada.estilos.join("|"));
   const refs = extra?.referenciaKeys ?? entrada.referenciaKeys;
-  if (refs.length) p.set("refs", refs.join("|"));
+  if (refs.length) p.set("refs", serializeReferenciaKeysParam(refs));
   if (extra?.colorCode) p.set("color", extra.colorCode);
   if (entrada.generos.length === 1) p.set("genero", entrada.generos[0]!);
   if (entrada.tipos.length === 1) p.set("tipo", entrada.tipos[0]!);
@@ -233,7 +233,7 @@ export function parseFiltrosEntradaFromUrl(sp: URLSearchParams): FiltrosEntrada 
     marcas: sp.get("marcas") ? sp.get("marcas")!.split("|").filter(Boolean) : [],
     estilos: sp.get("estilos") ? sp.get("estilos")!.split("|").filter(Boolean) : [],
     tipos: sp.get("tipo") ? [sp.get("tipo")!] : [],
-    referenciaKeys: sp.get("refs") ? sp.get("refs")!.split("|").filter(Boolean) : [],
+    referenciaKeys: parseReferenciaKeysParam(sp.get("refs")),
     buscar: sp.get("q") ?? "",
   };
 }
@@ -248,34 +248,44 @@ export function resolverEntradaVista(
   const q = filtros.buscar.trim();
 
   if (filtros.referenciaKeys.length === 1) {
-    const ref = referencias.find((r) => r.key === filtros.referenciaKeys[0]);
-    if (ref) return { marca: ref.marca, refKey: ref.key };
+    const k = filtros.referenciaKeys[0]!.trim();
+    const ref = referencias.find((r) => r.key.trim() === k);
+    if (ref) return { marca: ref.marca.trim(), refKey: ref.key.trim() };
   }
 
   const codigo = q ? parseCodigoVendedorLite(q) : null;
   if (codigo?.referencia) {
     const key = `${codigo.linea}|${codigo.referencia}`;
-    const ref = referencias.find((r) => r.key === key);
-    if (ref) return { marca: ref.marca, refKey: ref.key };
+    const ref = referencias.find((r) => r.key.trim() === key);
+    if (ref) return { marca: ref.marca.trim(), refKey: ref.key.trim() };
   }
 
   if (q && referencias.length > 0) {
-    const ref =
-      referencias.find((r) => `${r.linea}.${r.referencia}`.startsWith(q)) ??
-      referencias.find((r) => r.linea === q || r.linea.startsWith(q));
-    if (ref) return { marca: ref.marca, refKey: ref.key };
+    const matching = referencias.filter(
+      (r) =>
+        `${r.linea}.${r.referencia}`.startsWith(q) ||
+        r.linea === q ||
+        r.linea.startsWith(q),
+    );
+    if (matching.length === 1) {
+      const ref = matching[0]!;
+      return { marca: ref.marca.trim(), refKey: ref.key.trim() };
+    }
+    if (matching.length > 1) {
+      return { marca: matching[0]!.marca.trim() };
+    }
   }
 
   if (referencias.length === 1) {
     const r = referencias[0]!;
-    return { marca: r.marca, refKey: r.key };
+    return { marca: r.marca.trim(), refKey: r.key.trim() };
   }
 
   const marca =
     filtros.marcas.length === 1
-      ? filtros.marcas[0]!
+      ? filtros.marcas[0]!.trim()
       : marcas.length === 1
-        ? marcas[0]!.marca
+        ? marcas[0]!.marca.trim()
         : null;
 
   if (marca) return { marca };
@@ -295,7 +305,7 @@ function parseCodigoVendedorLite(raw: string): { linea: string; referencia?: str
 export function parseFiltrosCadenaFromUrl(sp: URLSearchParams): FiltrosCadena {
   return {
     estilos: sp.get("estilos") ? sp.get("estilos")!.split("|").filter(Boolean) : [],
-    referenciaKeys: sp.get("refs") ? sp.get("refs")!.split("|").filter(Boolean) : [],
+    referenciaKeys: parseReferenciaKeysParam(sp.get("refs")),
     colorCode: sp.get("color") ?? null,
   };
 }

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { SignJWT } from 'jose'
-import { supabase } from '@/lib/supabase'
+import { getSupabase } from '@/lib/supabase'
 
 const SESSION_VERSION = 1
 
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Consultar usuario_v2 por descp_usuario
-    const { data: usuarios, error } = await supabase
+    const { data: usuarios, error } = await getSupabase()
       .from('usuario_v2')
       .select('id_usuario, descp_usuario, email, password, rol_id, categoria')
       .eq('descp_usuario', usuarioInput.toUpperCase().trim())

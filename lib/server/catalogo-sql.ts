@@ -250,18 +250,20 @@ export function sqlReferenciasAgregado(tabla: string, f: FiltrosSql): { text: st
   const w = buildWhere(f, null);
   return {
     text: `
-      SELECT
-        trim(s.linea_codigo_proveedor::text) || '|' || trim(s.referencia_codigo_proveedor::text) AS key,
-        trim(s.linea_codigo_proveedor::text) AS linea,
-        trim(s.referencia_codigo_proveedor::text) AS referencia,
-        COALESCE(NULLIF(btrim(ge.descp_grupo_estilo::text), ''), '—') AS estilo,
-        COALESCE(NULLIF(btrim(mv.descp_marca::text), ''), '(sin marca)') AS marca,
-        COALESCE(SUM(s.cantidad::float8), 0)::float8 AS pares,
-        COUNT(*)::int AS skus
-      ${fromClause(tabla)}
-      WHERE ${w.sql}
-      GROUP BY 1, 2, 3, 4, 5
-      ORDER BY s.linea_codigo_proveedor::bigint NULLS LAST, s.referencia_codigo_proveedor::bigint NULLS LAST
+      SELECT * FROM (
+        SELECT
+          trim(s.linea_codigo_proveedor::text) || '|' || trim(s.referencia_codigo_proveedor::text) AS key,
+          trim(s.linea_codigo_proveedor::text) AS linea,
+          trim(s.referencia_codigo_proveedor::text) AS referencia,
+          COALESCE(NULLIF(btrim(ge.descp_grupo_estilo::text), ''), '—') AS estilo,
+          COALESCE(NULLIF(btrim(mv.descp_marca::text), ''), '(sin marca)') AS marca,
+          COALESCE(SUM(s.cantidad::float8), 0)::float8 AS pares,
+          COUNT(*)::int AS skus
+        ${fromClause(tabla)}
+        WHERE ${w.sql}
+        GROUP BY 1, 2, 3, 4, 5
+      ) refs
+      ORDER BY NULLIF(refs.linea, '')::bigint NULLS LAST, NULLIF(refs.referencia, '')::bigint NULLS LAST
       LIMIT 500
     `,
     params: w.params,

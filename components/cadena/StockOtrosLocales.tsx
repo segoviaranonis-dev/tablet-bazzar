@@ -1,20 +1,22 @@
 "use client";
 
 import type { DepositoFila } from "@/lib/cadena";
+import { stockBloquesEqual } from "@/lib/stock-snapshot-equal";
 import {
   stockLiveUrl,
   type StockLiveResponse,
   type StockUbicacionBloque,
 } from "@/lib/stock-otros-locales";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 
-const LIVE_POLL_MS = 4000;
+/** Refresh silencioso — sin skeleton en cada tick */
+const LIVE_POLL_MS = 20_000;
 
 function fmt(n: number) {
   return new Intl.NumberFormat("es-PY", { maximumFractionDigits: 0 }).format(n);
 }
 
-function MiniTablaStock({ bloque }: { bloque: StockUbicacionBloque }) {
+const MiniTablaStock = memo(function MiniTablaStock({ bloque }: { bloque: StockUbicacionBloque }) {
   const sinTallas = bloque.tallas.length === 0;
 
   return (
@@ -69,7 +71,7 @@ function MiniTablaStock({ bloque }: { bloque: StockUbicacionBloque }) {
       )}
     </div>
   );
-}
+});
 
 const SLOT: Record<string, string> = {
   fernando: "absolute right-2 top-[4.5rem] z-20",
@@ -79,16 +81,20 @@ const SLOT: Record<string, string> = {
 
 type Props = {
   ubicaciones: StockUbicacionBloque[];
-  loading?: boolean;
+  /** Solo true en primera carga de molécula — nunca en poll */
+  bootLoading?: boolean;
 };
 
-export function StockOtrosLocales({ ubicaciones, loading }: Props) {
+export const StockOtrosLocales = memo(function StockOtrosLocales({
+  ubicaciones,
+  bootLoading,
+}: Props) {
   return (
     <>
       {ubicaciones.map((bloque) => (
         <div key={bloque.id} className={`pointer-events-none ${SLOT[bloque.id] ?? "absolute z-20"}`}>
-          {loading ? (
-            <div className="h-12 w-[108px] animate-pulse border border-[#c4bdb4] bg-white/80" />
+          {bootLoading && ubicaciones.length === 0 ? (
+            <div className="h-12 w-[108px] border border-[#c4bdb4] bg-white/80" />
           ) : (
             <MiniTablaStock bloque={bloque} />
           )}
@@ -96,26 +102,31 @@ export function StockOtrosLocales({ ubicaciones, loading }: Props) {
       ))}
     </>
   );
-}
+});
 
 export function useStockOtrosLocales(clienteId: number, activa: DepositoFila | null) {
   const [ubicaciones, setUbicaciones] = useState<StockUbicacionBloque[]>([]);
   const [cantidadLocal, setCantidadLocal] = useState<number | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [bootLoading, setBootLoading] = useState(false);
+  const cantidadRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!activa?.linea_id || !activa.referencia_id || !activa.material_id || !activa.color_id) {
       setUbicaciones([]);
       setCantidadLocal(null);
+      cantidadRef.current = null;
+      setBootLoading(false);
       return;
     }
 
     const ac = new AbortController();
     let mounted = true;
+    let first = true;
 
     async function tick() {
       if (!activa) return;
-      setLoading(true);
+      if (first) setBootLoading(true);
+
       const url = stockLiveUrl(
         clienteId,
         {
@@ -126,26 +137,45 @@ export function useStockOtrosLocales(clienteId: number, activa: DepositoFila | n
         },
         activa.grada,
       );
+
       try {
         const r = await fetch(url, { cache: "no-store", signal: ac.signal });
         const data: StockLiveResponse = await r.json();
         if (!mounted || ac.signal.aborted) return;
-        setUbicaciones(data.ubicaciones ?? []);
-        setCantidadLocal(data.cantidad_local ?? null);
+
+        const nextUb = data.ubicaciones ?? [];
+        setUbicaciones((prev) => (stockBloquesEqual(prev, nextUb) ? prev : nextUb));
+
+        const nextCant = data.cantidad_local ?? null;
+        if (cantidadRef.current !== nextCant) {
+          cantidadRef.current = nextCant;
+          setCantidadLocal(nextCant);
+        }
       } catch {
-        if (!mounted || ac.signal.aborted) return;
+        /* silencioso en refresh */
       } finally {
-        if (mounted && !ac.signal.aborted) setLoading(false);
+        if (first && mounted && !ac.signal.aborted) {
+          first = false;
+          setBootLoading(false);
+        }
       }
     }
 
+    function onVis() {
+      if (document.visibilityState === "visible") tick();
+    }
+
     tick();
-    const iv = setInterval(tick, LIVE_POLL_MS);
+    const iv = setInterval(() => {
+      if (document.visibilityState === "visible") tick();
+    }, LIVE_POLL_MS);
+    document.addEventListener("visibilitychange", onVis);
 
     return () => {
       mounted = false;
       ac.abort();
       clearInterval(iv);
+      document.removeEventListener("visibilitychange", onVis);
     };
   }, [
     clienteId,
@@ -156,5 +186,5 @@ export function useStockOtrosLocales(clienteId: number, activa: DepositoFila | n
     activa?.grada,
   ]);
 
-  return { ubicaciones, loading, cantidadLocal };
+  return { ubicaciones, bootLoading, cantidadLocal };
 }

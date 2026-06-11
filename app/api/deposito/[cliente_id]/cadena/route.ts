@@ -25,7 +25,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
 
   const ingreso = await cookiePosIngreso(req);
   const filtros = filtrosFromSearchParams(req.nextUrl.searchParams);
-  const marca = filtros.marcaCadena ?? ingreso?.marca;
+  const marca = (filtros.marcaCadena ?? ingreso?.marca)?.trim();
 
   if (!marca) {
     return NextResponse.json(

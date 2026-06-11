@@ -8,7 +8,6 @@ type Props = {
   grupos: GrupoPrincipal[];
   grupoIndex: number;
   colorIndex: number;
-  onSelectGrupo: (gi: number) => void;
   onStepColor: (delta: number) => void;
 };
 
@@ -16,7 +15,6 @@ export function MazoMaterialNaipes({
   grupos,
   grupoIndex,
   colorIndex,
-  onSelectGrupo,
   onStepColor,
 }: Props) {
   const grupo = grupos[grupoIndex] ?? grupos[0];
@@ -72,25 +70,6 @@ export function MazoMaterialNaipes({
           </span>
         )}
       </TouchPad>
-
-      {grupos.length > 1 && (
-        <div className="flex flex-wrap justify-center gap-1 px-0.5">
-          {grupos.map((g, i) => (
-            <TouchPad
-              key={g.key}
-              onClick={() => onSelectGrupo(i)}
-              ariaLabel={`Material ${g.material}`}
-              className={`min-h-[44px] min-w-[44px] rounded-sm px-2 font-mono text-[10px] ${
-                grupoIndex === i
-                  ? "bg-br-charcoal text-br-cream"
-                  : "border border-br-stone/50 bg-white/90 text-br-charcoal"
-              }`}
-            >
-              {g.material}
-            </TouchPad>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

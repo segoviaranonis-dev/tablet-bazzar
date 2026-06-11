@@ -52,6 +52,23 @@ Secret: `TABLET_SESSION_SECRET` (mismo env que auth).
 | `lib/filtros-url.ts` | Params URL compartidos cliente/servidor |
 | `lib/cadena.ts` | `buildCadenaFromFilas` (reutilizado en servidor) |
 
+### Param `refs` (URL vista)
+
+```typescript
+// Una ref:   refs=1184|1101        → ["1184|1101"]
+// Varias:    refs=1184|1101,1184|1161
+parseReferenciaKeysParam(sp.get("refs"))
+serializeReferenciaKeysParam(keys)  // join con coma
+```
+
+**No usar** `.split("|")` directo sobre `refs` — el pipe es parte de la clave L+R.
+
+### Normalización cadena
+
+- `buildCadenaFromFilas`: trim en comparación de `marca` y `cantidad`
+- `filtrarParesServer` / `filtrarPares`: trim en claves L+R
+- `resolverMarcaIngreso`: búsqueda amplia sin `refKey` único cuando hay múltiples coincidencias
+
 ---
 
 ## Rendimiento

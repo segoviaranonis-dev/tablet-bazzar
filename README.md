@@ -13,15 +13,15 @@ npm run dev   # http://localhost:3002
 
 Documentación completa: **[docs/README.md](./docs/README.md)**
 
-## Modos de vista
+## Cadena (modo principal)
 
-| Modo | Ruta |
-|------|------|
-| Panel | `/` |
-| Depósito con fotos | `/deposito` |
-| Cadena consecutiva | `/cadena` |
+| Doc | Contenido |
+|-----|-----------|
+| [CADENA_CONSECUTIVA.md](./docs/CADENA_CONSECUTIVA.md) | Flujo, layout, filtros |
+| [NAVEGACION_CADENA.md](./docs/NAVEGACION_CADENA.md) | Teclado, 2 niveles, smoke test |
 
 ## Holding
 
 - Módulo: `.claude/2_modulos/2.4_tablet_bazzar/`
-- Etapa activa: `.claude/4_etapas/ETAPA_TABLET_BAZZAR.md`
+- Etapa: `.claude/4_etapas/ETAPA_TABLET_BAZZAR.md`
+- **Propuesta cierre sub-etapa:** `.claude/4_etapas/ETAPA_TABLET_CADENA_UI_NAV_PROPUESTA_CIERRE.md`

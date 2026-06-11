@@ -39,7 +39,6 @@ function FilaChips({ label, todosLabel, items, selected, onToggle, onClear }: Ro
               className={`chip-filter shrink-0 snap-center ${on ? "chip-filter-active" : ""}`}
             >
               <span className="block max-w-[140px] truncate">{item.label}</span>
-              <span className="chip-filter-sub">{item.count}</span>
             </TouchPad>
           );
         })}
@@ -111,16 +110,6 @@ export function FiltrosCabecera({
         onToggle={(id) => set({ tipos: toggleChip(filtros.tipos, id) })}
         onClear={() => set({ tipos: [] })}
       />
-      {refChips.length > 0 && (
-        <FilaChips
-          label="L·R"
-          todosLabel="Todas"
-          items={refChips}
-          selected={filtros.referenciaKeys}
-          onToggle={(id) => set({ referenciaKeys: toggleChip(filtros.referenciaKeys, id) })}
-          onClear={() => set({ referenciaKeys: [] })}
-        />
-      )}
       <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
         <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b6560] sm:w-20">
           Buscar

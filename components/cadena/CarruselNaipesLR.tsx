@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { ProductImage } from "@/components/ProductImage";
 import { TouchPad } from "@/components/cadena/TouchPad";
-import { filaPreviewPar, type NaipeLRProps } from "@/lib/cadena-carousel";
+import { filaPreviewPar, buildCarouselWindow, type NaipeLRProps } from "@/lib/cadena-carousel";
 import type { ParLineaRef } from "@/lib/cadena";
 
 function NaipesCard({
@@ -63,7 +63,6 @@ type CarruselProps = {
   pares: ParLineaRef[];
   parIndex: number;
   onSelect: (index: number) => void;
-  onStep?: (delta: number) => void;
   orientation: "horizontal" | "vertical";
   before: number;
   after: number;
@@ -74,7 +73,6 @@ export function CarruselNaipesLR({
   pares,
   parIndex,
   onSelect,
-  onStep,
   orientation,
   before,
   after,
@@ -82,15 +80,8 @@ export function CarruselNaipesLR({
 }: CarruselProps) {
   const activeRef = useRef<HTMLDivElement>(null);
   const isVertical = orientation === "vertical";
-  const showHorizontalStep = onStep && !isVertical;
 
-  const items: { idx: number; offset: number }[] = [];
-  for (let d = -before; d <= after; d++) {
-    items.push({
-      idx: ((parIndex + d) % pares.length + pares.length) % pares.length,
-      offset: d,
-    });
-  }
+  const items = buildCarouselWindow(parIndex, pares.length, before, after);
 
   useEffect(() => {
     activeRef.current?.scrollIntoView({
@@ -100,23 +91,10 @@ export function CarruselNaipesLR({
     });
   }, [parIndex, isVertical]);
 
-  const stepBtn =
-    "flex shrink-0 items-center justify-center bg-[#f4f1ec] text-lg text-[#1a1a1a] active:bg-[#e8e2d9]";
-
   return (
     <div
       className={`flex ${isVertical ? "h-full flex-col" : "w-full flex-row items-stretch"} ${className}`}
     >
-      {showHorizontalStep && (
-        <TouchPad
-          onClick={() => onStep(-1)}
-          ariaLabel="Anterior L+R"
-          className={`${stepBtn} min-w-[52px] self-stretch border-r border-[#c4bdb4] px-3`}
-        >
-          ◀
-        </TouchPad>
-      )}
-
       <div
         className={`flex min-h-0 flex-1 gap-1.5 overflow-auto scroll-smooth ${
           isVertical
@@ -140,16 +118,6 @@ export function CarruselNaipesLR({
           </div>
         ))}
       </div>
-
-      {showHorizontalStep && (
-        <TouchPad
-          onClick={() => onStep(1)}
-          ariaLabel="Siguiente L+R"
-          className={`${stepBtn} min-w-[52px] self-stretch border-l border-[#c4bdb4] px-3`}
-        >
-          ▶
-        </TouchPad>
-      )}
     </div>
   );
 }

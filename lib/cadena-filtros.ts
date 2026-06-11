@@ -111,9 +111,10 @@ export function buildOpcionesFiltro(
 }
 
 export function filtrarPares(pares: ParLineaRef[], filtros: FiltrosCadena): ParLineaRef[] {
+  const refSet = new Set(filtros.referenciaKeys.map((k) => k.trim()).filter(Boolean));
   return pares.filter((par) => {
     if (filtros.estilos.length > 0 && !filtros.estilos.includes(par.estilo)) return false;
-    if (filtros.referenciaKeys.length > 0 && !filtros.referenciaKeys.includes(par.key)) return false;
+    if (refSet.size > 0 && !refSet.has(par.key.trim())) return false;
     if (filtros.colorCode) {
       const ok = par.coloresLR.some((c) => c.color_code === filtros.colorCode);
       if (!ok) return false;

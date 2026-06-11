@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { CarruselNaipesLR } from "@/components/cadena/CarruselNaipesLR";
+import { CarruselMateriales } from "@/components/cadena/CarruselMateriales";
 import { LineaReferenciaHero } from "@/components/cadena/LineaReferenciaHero";
 import { MazoMaterialNaipes } from "@/components/cadena/MazoMaterialNaipes";
 import { MultiSelectFlotante } from "@/components/cadena/MultiSelectFlotante";
@@ -23,6 +24,7 @@ import {
 import { cadenaBackgroundStyle } from "@/lib/product-image";
 import { prefetchRowThumb } from "@/lib/prefetch-images";
 import { useTouchNav } from "@/lib/use-touch-nav";
+import { useCadenaKeyboard } from "@/lib/use-cadena-keyboard";
 import { filaPreviewPar } from "@/lib/cadena-carousel";
 import { parseFiltrosCadenaFromUrl } from "@/lib/cadena-entrada-filtros";
 import { filaActiva, parseCodigoVendedor, resolveCodigoEnCadena } from "@/lib/codigo-busqueda";
@@ -127,14 +129,12 @@ function CadenaVistaInner() {
     ? filaActiva(par, grupoIndex, colorG1) ?? par.coloresLR[colorG2] ?? null
     : null;
 
-  const { ubicaciones: stockUbicaciones, loading: stockLoading, cantidadLocal } =
+  const { ubicaciones: stockUbicaciones, bootLoading: stockBootLoading, cantidadLocal } =
     useStockOtrosLocales(clienteId, activaBase);
 
-  const activa = activaBase
-    ? cantidadLocal != null
-      ? { ...activaBase, cantidad: cantidadLocal }
-      : activaBase
-    : null;
+  const activa = activaBase;
+  const cantidadMostrada =
+    cantidadLocal != null ? cantidadLocal : activaBase?.cantidad ?? 0;
 
   const bgStyle = useMemo(
     () => (parNav ? cadenaBackgroundStyle(parNav.linea, parNav.referencia) : undefined),
@@ -148,6 +148,12 @@ function CadenaVistaInner() {
     setFiltros(parseFiltrosCadenaFromUrl(sp));
   }, [sp]);
 
+  const cadenaQueryString = useMemo(() => {
+    const p = new URLSearchParams(sp.toString());
+    for (const k of ["pi", "gi", "c1", "c2"]) p.delete(k);
+    return p.toString();
+  }, [sp]);
+
   useEffect(() => {
     if (!marca) {
       router.replace("/cadena");
@@ -155,8 +161,7 @@ function CadenaVistaInner() {
     }
     setLoading(true);
     setPosApplied(false);
-    const qs = sp.toString();
-    fetch(`/api/deposito/${clienteId}/cadena?${qs}`, { cache: "no-store" })
+    fetch(`/api/deposito/${clienteId}/cadena?${cadenaQueryString}`, { cache: "no-store" })
       .then((r) => r.json())
       .then((data) => {
         if (data.error) throw new Error(data.error);
@@ -164,7 +169,7 @@ function CadenaVistaInner() {
       })
       .catch((e) => setError(e instanceof Error ? e.message : "Error"))
       .finally(() => setLoading(false));
-  }, [marca, clienteId, router, sp.toString()]);
+  }, [marca, clienteId, router, cadenaQueryString]);
 
   useEffect(() => {
     if (posApplied || paresNav.length === 0) return;
@@ -263,25 +268,47 @@ function CadenaVistaInner() {
     (delta: number) => {
       if (!parNav) return;
       const grupo = parNav.gruposMaterial[grupoIndex] ?? parNav.gruposMaterial[0];
-      if (!grupo) return;
+      if (!grupo || grupo.colores.length === 0) return;
       const nCol = grupo.colores.length;
-      if (nCol > 1) {
-        setColorG1((ci) => (ci + delta + nCol) % nCol);
-        return;
-      }
-      const nGr = parNav.gruposMaterial.length;
-      if (nGr > 1) {
-        setGrupoIndex((gi) => (gi + delta + nGr) % nGr);
-        setColorG1(0);
-      }
+      setColorG1((ci) => (ci + delta + nCol) % nCol);
     },
     [parNav, grupoIndex],
   );
 
+  const stepGrupo = useCallback(
+    (delta: number) => {
+      if (!parNav || parNav.gruposMaterial.length <= 1) return;
+      setGrupoIndex((gi) => (gi + delta + parNav.gruposMaterial.length) % parNav.gruposMaterial.length);
+      setColorG1(0);
+    },
+    [parNav],
+  );
+
+  const irGrupo = useCallback((i: number) => {
+    setGrupoIndex(i);
+    setColorG1(0);
+  }, []);
+
+  const stepHorizontal = useCallback(
+    (delta: number) => {
+      if (paresNav.length > 1) stepPar(delta);
+      else stepGrupo(delta);
+    },
+    [paresNav.length, stepPar, stepGrupo],
+  );
+
+  useCadenaKeyboard({
+    enabled: !loading && !searchOpen && paresAll.length > 0 && !sinResultados,
+    onLeft: () => stepHorizontal(-1),
+    onRight: () => stepHorizontal(1),
+    onUp: () => stepColor(-1),
+    onDown: () => stepColor(1),
+  });
+
   const heroTouch = useTouchNav({
     threshold: 22,
-    onLeft: () => stepPar(1),
-    onRight: () => stepPar(-1),
+    onLeft: () => stepHorizontal(1),
+    onRight: () => stepHorizontal(-1),
     onUp: () => stepColor(-1),
     onDown: () => stepColor(1),
     onTap: () => setDetalleOpen((v) => !v),
@@ -341,26 +368,24 @@ function CadenaVistaInner() {
 
   const asideFotos = parNav ? (
     <aside className="flex w-[120px] shrink-0 flex-col border-l border-[#c4bdb4] bg-[#f4f1ec]/80 sm:w-[128px]">
-      <div className="min-h-0 flex-[3]">
-        <CarruselNaipesLR
-          pares={paresNav}
-          parIndex={parIndex}
-          onSelect={irPar}
-          orientation="vertical"
-          before={2}
-          after={4}
-          className="h-full"
-        />
-      </div>
-      <div className="shrink-0 border-t border-[#c4bdb4]">
+      {paresNav.length > 1 && (
+        <div className="min-h-0 flex-[3]">
+          <CarruselNaipesLR
+            pares={paresNav}
+            parIndex={parIndex}
+            onSelect={irPar}
+            orientation="vertical"
+            before={2}
+            after={4}
+            className="h-full"
+          />
+        </div>
+      )}
+      <div className={`shrink-0 border-t border-[#c4bdb4] ${paresNav.length > 1 ? "" : "flex-1"}`}>
         <MazoMaterialNaipes
           grupos={parNav.gruposMaterial}
           grupoIndex={grupoIndex}
           colorIndex={colorG1}
-          onSelectGrupo={(i) => {
-            setGrupoIndex(i);
-            setColorG1(0);
-          }}
           onStepColor={stepColor}
         />
       </div>
@@ -480,7 +505,7 @@ function CadenaVistaInner() {
                         alt={`${activa.linea_codigo_proveedor}.${activa.referencia_codigo_proveedor}`}
                         variant="hero"
                       />
-                      <StockOtrosLocales ubicaciones={stockUbicaciones} loading={stockLoading} />
+                      <StockOtrosLocales ubicaciones={stockUbicaciones} bootLoading={stockBootLoading} />
                       {detalleOpen && (
                         <div className="absolute inset-x-0 bottom-0 max-h-[42%] overflow-y-auto border-t border-[#c4bdb4] bg-[#f4f1ec] px-4 py-4">
                           <p className="font-br text-lg text-[#1a1a1a]">{activa.estilo || "—"}</p>
@@ -496,7 +521,7 @@ function CadenaVistaInner() {
                             {activa.descp_color ? ` · ${activa.descp_color}` : ""}
                           </p>
                           <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#6b6560]">
-                            {activa.grada} · {Math.round(activa.cantidad)} pares
+                            {activa.grada} · {Math.round(cantidadMostrada)} pares
                           </p>
                         </div>
                       )}
@@ -509,14 +534,14 @@ function CadenaVistaInner() {
                 <>
                   <TouchPad
                     stopBubble
-                    onClick={() => stepPar(-1)}
-                    ariaLabel="Anterior"
+                    onClick={() => stepHorizontal(1)}
+                    ariaLabel="Siguiente"
                     className="absolute left-0 top-0 z-10 h-full w-[12%] max-w-[72px] opacity-0"
                   />
                   <TouchPad
                     stopBubble
-                    onClick={() => stepPar(1)}
-                    ariaLabel="Siguiente"
+                    onClick={() => stepHorizontal(-1)}
+                    ariaLabel="Anterior"
                     className="absolute right-0 top-0 z-10 h-full w-[12%] max-w-[72px] opacity-0"
                   />
                 </>
@@ -542,16 +567,24 @@ function CadenaVistaInner() {
       </div>
 
       <footer className="shrink-0 border-t border-[#c4bdb4] bg-[#f4f1ec]">
-        <CarruselNaipesLR
-          pares={paresNav}
-          parIndex={parIndex}
-          onSelect={irPar}
-          onStep={stepPar}
-          orientation="horizontal"
-          before={1}
-          after={3}
-          className="min-h-[120px]"
-        />
+        {parNav && parNav.gruposMaterial.length > 0 ? (
+          <CarruselMateriales
+            grupos={parNav.gruposMaterial}
+            grupoIndex={grupoIndex}
+            onSelect={irGrupo}
+            className="min-h-[120px]"
+          />
+        ) : paresNav.length > 1 ? (
+          <CarruselNaipesLR
+            pares={paresNav}
+            parIndex={parIndex}
+            onSelect={irPar}
+            orientation="horizontal"
+            before={1}
+            after={3}
+            className="min-h-[120px]"
+          />
+        ) : null}
       </footer>
 
       {searchOpen && (

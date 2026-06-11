@@ -44,20 +44,19 @@ Implementación: `lib/cadena.ts` → `buildCadenaFromFilas`, `ParLineaRef`, `Gru
 ┌──────────────────────────────────────────────────────────────────┐
 │ ← │ MARCA │ ⌕  (header táctil)                                   │
 ├────┬─────────────────────────────────────────────┬───────┬───────┤
-│[E] │                                             │ [R]   │ vert  │
-│ s  │   HERO — foto object-contain                │  e    │ naipes│
-│ t  │   overlay: estilo (tap) · ref (tap)         │  f    │ L+R   │
+│[E] │                                             │ [R]   │ L+R   │  ← solo si >1 ref
+│ s  │   HERO — foto object-contain                │  e    │ vert  │
+│ t  │   overlay: estilo (tap) · ref (tap)         │  f    │ naipes│
 │ i  │   tap centro = detalle                      │       ├───────┤
-│ l  │   swipe ←→ = L+R                            │       │ mazo  │
-│ o  │                                             │       │ colores│
+│ l  │   swipe / flechas ←→ = L+R o material       │       │ MAZO  │
+│ o  │   swipe / flechas ↑↓ = color                │       │ colores│
 │    │                                             │       │       │
 ├────┴─────────────────────────────────────────────┴───────┴───────┤
-│ ◀ │ naipes L+R anterior · actual · siguientes │ ▶               │
+│ Footer: naipes horizontales L+R+MAT (material) — sin ◀▶ visibles │
 └──────────────────────────────────────────────────────────────────┘
 
 [E] = panel Estilo (colapsable, oculto por defecto, ~108px)
 [R] = panel Referencia (colapsable, oculto por defecto, ~116px)
-vert naipes + mazo = SIEMPRE visibles (aside fijo, no se eliminan)
 ```
 
 ### Paneles colapsables (decisión 2026-06-11)
@@ -72,11 +71,19 @@ vert naipes + mazo = SIEMPRE visibles (aside fijo, no se eliminan)
 - Tap en un chip **dentro** del panel → toggle filtro; **no** cierra el panel.
 - Componente wrapper: `PanelColapsable` en `page.tsx` (transición width 200ms).
 
-### Carrusel lateral (inviolable)
+### Aside derecho (cadena secundaria + nivel 1)
 
-- **Aside derecho fijo** (~120–128px): carrusel vertical L+R + mazo L+R+Mat abajo.
-- Se alimenta con `paresNav` = `pares` filtrados, o `paresAll` si el filtro deja 0 resultados — así las fotos laterales **nunca desaparecen** aunque el hero muestre «Sin coincidencias».
-- Footer horizontal de naipes L+R se mantiene con la misma regla `paresNav`.
+- **Carrusel vertical L+R:** solo si `paresNav.length > 1` — cadena secundaria, sin duplicar tarjetas.
+- **Mazo colores (L+R+Mat):** siempre visible — stack apilado; navegación de **color** (↑↓ / tap).
+- Se alimenta con `paresNav` = `pares` filtrados, o `paresAll` si el filtro deja 0 resultados en hero.
+
+### Footer (nivel 1 — L+R+material)
+
+- **CarruselMateriales:** una tarjeta por triplete L+R+Mat del par activo.
+- Sin botones ◀▶ visibles; flechas teclado ←→ cuando hay una sola ref en cadena.
+- Evita duplicación infinita de la misma foto (bug corregido 2026-06-11).
+
+Doc detallada: [NAVEGACION_CADENA.md](./NAVEGACION_CADENA.md)
 
 ### Estilo visual (Banana Republic)
 
@@ -87,25 +94,24 @@ vert naipes + mazo = SIEMPRE visibles (aside fijo, no se eliminan)
 
 ---
 
-## Navegación táctil
+## Navegación táctil y teclado
 
-| Gesto / zona | Acción |
-|--------------|--------|
-| Swipe ← | Siguiente par L+R en cadena |
-| Swipe → | Par L+R anterior |
-| Swipe ↑ | Color/material anterior |
-| Swipe ↓ | Color/material siguiente |
-| Tap centro hero | Abre/cierra panel detalle (material, grada, pares) |
+| Gesto / tecla | Acción |
+|---------------|--------|
+| Swipe ← / **ArrowRight** | Siguiente: L+R si hay varias refs; **material** si hay una sola ref |
+| Swipe → / **ArrowLeft** | Anterior (misma regla) |
+| Swipe ↑ / **ArrowUp** | Color anterior (material activo) |
+| Swipe ↓ / **ArrowDown** | Color siguiente |
+| Tap centro hero | Abre/cierra panel detalle |
 | Bordes laterales invisibles del hero | Mismo ←→ que swipe |
-| Naipes (carruseles vertical + footer) | Salto directo a índice L+R |
-| Tap mazo colores | Rota color del grupo L+R+Mat |
-| Tap **estilo** en hero | Abre/cierra panel Estilo (no toggle del ítem) |
+| Sidebar vertical naipes | Salto directo a par L+R (si >1) |
+| Footer materiales | Salto directo a L+R+Mat |
+| Tap mazo colores | Rota color del grupo activo |
+| Tap **estilo** en hero | Abre/cierra panel Estilo |
 | Tap **referencia** en hero | Abre/cierra panel Referencia |
 
-Hook: `lib/use-touch-nav.ts` · Botones mínimos 52×52px: `components/cadena/TouchPad.tsx`
-
-**Sin botones ▲▼ visibles** — solo gestos para eje vertical.  
-**Sin flechas ◀▶ visibles en hero** — zonas táctiles opacas; footer sí tiene ◀▶.
+Hooks: `lib/use-touch-nav.ts` · `lib/use-cadena-keyboard.ts`  
+**Sin botones ◀▶ visibles** en footer ni carruseles.
 
 ---
 
@@ -162,8 +168,11 @@ Ver [IMAGENES_PRODUCTO.md](./IMAGENES_PRODUCTO.md).
 | `lib/cadena-filtros.ts` | Filtros cascada, `toggleEstilo`, `toggleReferencia` |
 | `lib/cadena-carousel.ts` | Preview thumb por par |
 | `lib/codigo-busqueda.ts` | Parser + resolver índices |
-| `components/cadena/CarruselNaipesLR.tsx` | Naipes L+R (vertical + horizontal) |
+| `components/cadena/CarruselNaipesLR.tsx` | Naipes L+R (sidebar vertical) |
+| `components/cadena/CarruselMateriales.tsx` | Naipes L+R+Mat (footer) |
 | `components/cadena/MazoMaterialNaipes.tsx` | Stack colores Nivel 1 |
+| `lib/use-cadena-keyboard.ts` | Flechas teclado ←→ ↑↓ |
+| `lib/filtros-url.ts` | Params URL; parser `refs` (coma entre claves) |
 | `components/cadena/LineaReferenciaHero.tsx` | Overlay + toggles paneles estilo/ref |
 | `components/cadena/MultiSelectFlotante.tsx` | Columnas multi-select |
 | `components/cadena/TouchPad.tsx` | Target táctil ≥52px |
@@ -180,4 +189,4 @@ Ver [IMAGENES_PRODUCTO.md](./IMAGENES_PRODUCTO.md).
 
 ---
 
-**Última actualización:** 2026-06-11
+**Última actualización:** 2026-06-11 (navegación 2 niveles + teclado + fix refs URL)
