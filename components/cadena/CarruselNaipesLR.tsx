@@ -15,33 +15,50 @@ function NaipesCard({
   onSelect,
 }: NaipeLRProps) {
   const preview = filaPreviewPar(par);
-  const rot = orientation === "horizontal" ? offsetFromActive * 2 : 0;
-  const scale = active ? 1.03 : 0.95 - Math.min(Math.abs(offsetFromActive) * 0.02, 0.08);
-
   const isH = orientation === "horizontal";
+  const rot = isH ? offsetFromActive * 2 : 0;
+  const scale = active ? (isH ? 1.03 : 1.04) : 0.95 - Math.min(Math.abs(offsetFromActive) * 0.02, 0.08);
+
   const shell = isH
     ? "h-[104px] w-[80px] min-h-[104px] min-w-[80px]"
-    : "h-[96px] w-full min-h-[96px] max-w-[112px]";
+    : "h-[96px] w-[112px] min-h-[96px] min-w-[112px]";
+
+  const activeShell = active
+    ? isH
+      ? "border-[#1a1a1a] ring-1 ring-[#1a1a1a]/20 shadow-md"
+      : "border-[#1a1a1a] bg-[#faf8f5] shadow-lg ring-2 ring-[#1a1a1a]/50"
+    : "border-[#c4bdb4] opacity-90";
 
   return (
     <TouchPad
       onClick={() => onSelect(index)}
       ariaLabel={`${par.linea}.${par.referencia}`}
-      className="shrink-0 snap-center p-0.5"
+      className={`shrink-0 snap-center p-0.5 ${isH ? "" : "w-[112px]"}`}
     >
       <div
-        className={`relative overflow-hidden rounded-sm border bg-white shadow-sm transition-transform duration-150 ${shell} ${
-          active ? "border-[#1a1a1a] ring-1 ring-[#1a1a1a]/20" : "border-[#c4bdb4]"
-        }`}
+        className={`relative overflow-hidden rounded-sm border bg-white shadow-sm transition-all duration-150 ${shell} ${activeShell}`}
         style={{ transform: `rotate(${rot}deg) scale(${scale})` }}
         aria-current={active ? "true" : undefined}
+        data-active={active ? "true" : undefined}
       >
-        <div className="absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[8px] leading-none text-[#6b6560]">
+        {!isH && active ? (
+          <span
+            className="pointer-events-none absolute left-0 top-0 z-20 h-full w-1 bg-[#1a1a1a]"
+            aria-hidden
+          />
+        ) : null}
+        <div
+          className={`absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[8px] leading-none ${
+            active ? "font-bold text-[#1a1a1a]" : "text-[#6b6560]"
+          }`}
+        >
           {par.linea}.{par.referencia}
         </div>
         <div className="relative h-full w-full bg-white pt-3">
           {preview ? (
             <ProductImage
+              src={preview.imagen_url_thumb}
+              fallbackSrc={preview.imagen_url_flat}
               linea={preview.linea_codigo_proveedor}
               ref={preview.referencia_codigo_proveedor}
               material={preview.material_code}
@@ -98,7 +115,7 @@ export function CarruselNaipesLR({
       <div
         className={`flex min-h-0 flex-1 gap-1.5 overflow-auto scroll-smooth ${
           isVertical
-            ? "flex-col items-center py-1 snap-y snap-mandatory"
+            ? "flex-col items-center py-1 snap-y snap-mandatory px-1"
             : "flex-row items-center justify-center px-1 snap-x snap-mandatory"
         }`}
       >

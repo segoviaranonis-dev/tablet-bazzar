@@ -30,6 +30,7 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 | [API_DEPOSITO.md](./API_DEPOSITO.md) | Endpoints catálogo y status |
 | [BACKEND_POS.md](./BACKEND_POS.md) | Capa SQL titanio — filtros, ingresar, live |
 | [IMAGENES_PRODUCTO.md](./IMAGENES_PRODUCTO.md) | Thumbs, convención L-R-M-C, prefetch |
+| [ETAPA_4_TICKET_BOTON.md](./ETAPA_4_TICKET_BOTON.md) | **Etapa activa** — botón tikeCT / Ticket ORO |
 
 ---
 
@@ -58,7 +59,7 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 | Botón INGRESAR + sesión POS 12 h | ✅ |
 | Stock live 3 ubicaciones | ✅ |
 | Precio LPN desde Motor | ⏳ |
-| Carrito / tickets ORO | ⏳ |
+| Carrito / tickets ORO (tikeCT) | 🟡 Etapa 4 abierta |
 | PWA offline | ⏳ |
 | Deploy Vercel prod + git push | ⏳ |
 

@@ -3,6 +3,7 @@ import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { getPool, isDatabaseConfigured } from "@/lib/pool";
 import { sqlFilasStock, filtrosFromSearchParams, FILTROS_SQL_VACIOS } from "@/lib/server/catalogo-sql";
 import type { DepositoFila } from "@/lib/cadena";
+import { enrichDepositoFilaImagenes } from "@/lib/product-image";
 
 type RouteCtx = { params: Promise<{ cliente_id: string }> };
 
@@ -32,7 +33,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     ente: config.ente,
     tipo: config.tipo,
     codigo: config.codigo,
-    filas: rows,
+    filas: rows.map(enrichDepositoFilaImagenes),
     total: rows.length,
     ms: Date.now() - t0,
   });

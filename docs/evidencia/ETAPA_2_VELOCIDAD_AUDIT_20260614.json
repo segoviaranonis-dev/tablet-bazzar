@@ -1,0 +1,46 @@
+{
+  "fecha": "2026-06-14T19:38:40.061Z",
+  "etapa": 2,
+  "auditor": "Cursor",
+  "cliente_id": 2100,
+  "marcas": [
+    {
+      "marca": "ACTVITTA",
+      "filas_sql": 378,
+      "pares": 63,
+      "filas_en_json": 378,
+      "colores_en_json": 194,
+      "sql_ms": 516,
+      "build_ms": 15,
+      "bytes_actual": 979616,
+      "bytes_slim": 176792,
+      "reduccion_pct": 82,
+      "urls_por_fila": 3
+    },
+    {
+      "marca": "VIZZANO",
+      "filas_sql": 2304,
+      "pares": 348,
+      "filas_en_json": 2304,
+      "colores_en_json": 1365,
+      "sql_ms": 255,
+      "build_ms": 17,
+      "bytes_actual": 6118066,
+      "bytes_slim": 1200333,
+      "reduccion_pct": 80.4,
+      "urls_por_fila": 3
+    }
+  ],
+  "hallazgos": {
+    "V1_payload_slim": true,
+    "V4_priority_solo_hero": true,
+    "V7_prefetch_cap_200": true,
+    "V8_ingresar_seed": true,
+    "V2_seed_session_storage": true,
+    "V5_poll_ms": 20000,
+    "V6_sql_sin_limit": true,
+    "V3_isr_cookie": true
+  },
+  "veredicto": "PARCIAL",
+  "nota": "V1/V4/V7/V8/V2 implementados. Pendiente V3/V5/V6."
+}

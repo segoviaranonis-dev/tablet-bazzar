@@ -18,6 +18,8 @@ import {
 } from "@/lib/server/catalogo-sql";
 import { firmarPosIngreso, setCookiePosIngreso } from "@/lib/server/pos-sesion";
 import type { DepositoFila } from "@/lib/cadena";
+import { enrichDepositoFilaImagenes } from "@/lib/product-image";
+import { buildCadenaWireResponse } from "@/lib/server/cadena-payload";
 
 type RouteCtx = { params: Promise<{ cliente_id: string }> };
 
@@ -67,9 +69,11 @@ export async function POST(req: NextRequest, ctx: RouteCtx) {
 
     const qFilas = sqlFilasStock(tabla, filtros);
     const filasR = await pool.query<DepositoFila>(qFilas.text, qFilas.params);
-    const paresAll = buildCadenaServer(filasR.rows, dest.marca);
+    const rows = filasR.rows.map(enrichDepositoFilaImagenes);
+    const paresAll = buildCadenaServer(rows, dest.marca);
     const pares = filtrarParesServer(paresAll, filtros);
-    const posicion = posicionInicialCadena(pares.length > 0 ? pares : paresAll, {
+    const paresNav = pares.length > 0 ? pares : paresAll;
+    const posicion = posicionInicialCadena(paresNav, {
       refKey: dest.refKey,
       buscar: filtros.buscar,
     });
@@ -77,6 +81,7 @@ export async function POST(req: NextRequest, ctx: RouteCtx) {
     const vistaParams = filtrosToSearchParams({ ...filtros, marcaCadena: dest.marca });
     vistaParams.set("cliente_id", String(cliente_id));
     const vistaUrl = `/cadena/vista?${vistaParams.toString()}`;
+    const wire = buildCadenaWireResponse(paresAll, pares);
 
     const token = await firmarPosIngreso({
       cliente_id,
@@ -89,9 +94,10 @@ export async function POST(req: NextRequest, ctx: RouteCtx) {
       vistaUrl,
       marca: dest.marca,
       posicion,
+      ...wire,
       stats: {
-        filas: filasR.rows.length,
-        pares: pares.length > 0 ? pares.length : paresAll.length,
+        filas: rows.length,
+        pares: paresNav.length,
       },
       ms: Date.now() - t0,
     });

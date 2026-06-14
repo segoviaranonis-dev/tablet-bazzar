@@ -18,19 +18,67 @@
   --font-br: var(--font-cormorant);
 }
 
+/* Estándares Apple HIG + Material Design */
+html {
+  /* Prevenir ajustes automáticos de texto en iOS */
+  -webkit-text-size-adjust: 100%;
+  /* Suavizar scroll */
+  scroll-behavior: smooth;
+  /* Touch optimizations */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 body {
   background: #f4f1ec;
   color: #1a1a1a;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  /* Prevenir overscroll bounce en iOS */
+  overscroll-behavior: none;
+  /* Touch manipulation */
+  touch-action: manipulation;
+  /* Suavizar fuentes en Apple */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevenir selección de texto no deseada en touch */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .font-br {
   font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
 }
 
-/* Botones táctiles — color explícito (evita texto blanco fantasma en tablet) */
-button {
+/* Botones táctiles — cumple estándar Apple HIG (44x44px) y Material (48x48dp) */
+button, a, input[type="button"], input[type="submit"] {
   color: #1a1a1a;
+  /* Mínimo 44px touch target (Apple HIG) */
+  min-height: 44px;
+  min-width: 44px;
+  /* Cursor pointer para indicar interactividad */
+  cursor: pointer;
+  /* Optimización táctil */
+  touch-action: manipulation;
+  /* Prevenir highlight azul en iOS */
+  -webkit-tap-highlight-color: transparent;
+  /* Prevenir callout en iOS */
+  -webkit-touch-callout: none;
+}
+
+/* Inputs: prevenir zoom en iOS (font-size >= 16px) */
+input, textarea, select {
+  font-size: 16px;
+  /* Permitir selección de texto en inputs */
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Links y áreas clickeables deben tener área mínima */
+a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  touch-action: manipulation;
 }
 
 @layer components {
@@ -93,4 +141,7 @@ button {
     letter-spacing: 0.12em;
     color: #6b6560;
   }
+
+  /* Hero cadena — imagen 1:1 MÁXIMO tamaño posible */
+  /* Hero cadena — estilos en HeroProductImage (paridad rimec-web) */
 }

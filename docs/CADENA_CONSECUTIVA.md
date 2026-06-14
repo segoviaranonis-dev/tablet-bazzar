@@ -153,7 +153,7 @@ Modal ⌕ en header. Formatos (`lib/codigo-busqueda.ts`):
 - Miniaturas: bucket `productos/thumbs/` primero (convención RIMEC/Report)
 - Fallback a `productos/` full size
 - Prefetch de vecinos L+R y colores del par activo: `lib/prefetch-images.ts`
-- Sin foto: placeholder 👟 (no icono roto): `components/ProductImage.tsx`
+- Sin foto: gradiente navy RIMEC + código L·R (no emoji): `components/ProductImage.tsx`
 
 Ver [IMAGENES_PRODUCTO.md](./IMAGENES_PRODUCTO.md).
 

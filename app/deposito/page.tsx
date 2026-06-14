@@ -27,6 +27,9 @@ type Producto = {
   grada: string;
   cantidad: number;
   imagen_nombre: string | null;
+  imagen_url_thumb?: string | null;
+  imagen_url_hero?: string | null;
+  imagen_url_flat?: string | null;
 };
 
 const DEFAULT_CLIENTE_ID = 2100;
@@ -153,6 +156,8 @@ export default function DepositoPage() {
                 >
                   <div className="relative aspect-square bg-slate-100">
                     <ProductImage
+                      src={p.imagen_url_thumb}
+                      fallbackSrc={p.imagen_url_flat}
                       linea={p.linea_codigo_proveedor}
                       ref={p.referencia_codigo_proveedor}
                       material={p.material_code}

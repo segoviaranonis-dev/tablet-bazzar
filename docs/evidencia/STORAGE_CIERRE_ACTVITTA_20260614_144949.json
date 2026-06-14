@@ -1,0 +1,561 @@
+{
+  "fecha": "20260614_144949",
+  "marca": "ACTVITTA",
+  "procesados": 79,
+  "ok_sm_lg": 79,
+  "rows": [
+    {
+      "nombre": "4917-119-31723-109813.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4922-103-25083-15745.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4925-102-26156-92473.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4926-100-25756-93237.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4926-102-27316-96081.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4926-103-27318-96092.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4927-100-27675-15787.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4927-200-27675-93247.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4927-201-27316-101524.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4927-201-27316-96082.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4927-201-27316-96890.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4927-202-27681-83802.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4929-101-28180-15915.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4929-103-28180-31463.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4929-103-28180-43508.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4929-105-29578-102145.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4929-110-28394-93718.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4930-101-28046-100432.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4930-101-28046-97580.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4930-104-28586-100813.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4930-108-29407-101598.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4930-108-29407-101601.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-100-28448-104035.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-100-28448-99406.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-102-28442-101674.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-102-28442-99428.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-103-28643-99801.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-115-30626-105776.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-115-30626-105779.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-202-28442-103993.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-202-28442-99429.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-300-28448-102679.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-302-28442-102678.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-300-28448-102681.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4931-302-28442-102686.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4934-102-29456-101726.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4934-102-29456-101729.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4934-103-29456-101735.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4934-104-29948-103215.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4934-104-29948-103216.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4935-102-29601-102247.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4934-105-29814-103655.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-101-30428-104969.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-101-30428-104972.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-102-30407-109746.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-104-30671-105912.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-105-30647-105916.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-105-30647-105915.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-105-30647-107346.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-106-31414-106814.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-203-30431-104984.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-203-30431-105396.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-301-30428-107138.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-301-30428-107137.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-301-30428-107241.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-306-31414-108660.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-306-31414-108665.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4938-402-30407-107143.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-100-23153-104463.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-100-23153-15745.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-200-23153-104463.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-200-23153-15745.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-200-23153-16072.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-200-23153-33300.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-201-23153-15745.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-201-23153-33300.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-202-23153-15745.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4945-101-31033-107259.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4945-200-31023-107155.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4945-100-31023-107258.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4945-101-31033-106236.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4945-200-31023-107181.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4942-202-23153-33300.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4945-502-31023-109786.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4947-101-31402-109246.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4999-1-22766-510.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4947-102-31403-108771.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4947-102-31403-109239.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    },
+    {
+      "nombre": "4947-102-31403-109240.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "fecha": "2026-06-14",
+  "sku": "4215.1034",
+  "archivo": "4215-1034-28458-98904.jpg",
+  "marca": "ACTVITTA",
+  "estado": "RESUELTO_STORAGE+CSS",
+  "documentacion_critica": ".claude/2_modulos/2.1_control_central/docs/PUNTO_CRITICO_RECORTE_CALZADO.md",
+
+  "mapa_error": {
+    "paso_1_origen_local": {
+      "ruta": "C:\\Users\\hecto\\Documents\\Prg_locales\\proyectos\\imagenes\\4215-1034-28458-98904.jpg",
+      "px": "800x545",
+      "zapato_completo": true,
+      "nota": "Foto horizontal — punta y tacón visibles"
+    },
+    "paso_2_storage_antes": {
+      "tier": "lg",
+      "px": "800x800",
+      "content_bbox": [0, 72, 799, 727],
+      "margin_l_px": 0,
+      "margin_r_px": 0,
+      "causa": "Conversión vieja a cuadrado RECORTÓ laterales (cover), no contain",
+      "evidencia_visual": "docs/evidencia/4215-1034-lg.jpg"
+    },
+    "paso_3_css_hero": {
+      "build": "v13-contain",
+      "regla": "absolute inset-0 + h/w-full object-contain + overflow-hidden en contenedor",
+      "nota": "CSS correcto pero NO puede inventar punta/tacón si el JPEG ya venía recortado"
+    },
+    "paso_4_storage_despues": {
+      "script": "scripts/regenerar_storage_4215_1034.py",
+      "metodo": "resize_contain (Protocolo Nexus)",
+      "upload": { "sm": "OK", "md": "OK", "lg": "OK", "flat": "HTTP 200" },
+      "lg_content_bbox": [24, 176, 775, 622],
+      "margin_l_px": 24,
+      "margin_r_px": 24,
+      "margin_t_px": 176,
+      "margin_b_px": 177,
+      "evidencia_visual": "docs/evidencia/regen_4215/lg/4215-1034-28458-98904.jpg"
+    }
+  },
+
+  "prueba_dom": {
+    "data_hero_frame": "v13-contain",
+    "data_hero_sku": "4215.1034",
+    "url": "productos/lg/4215-1034-28458-98904.jpg",
+    "img_dentro_marco": true,
+    "object_fit": "contain"
+  },
+
+  "accion_director": "Ctrl+Shift+R en /cadena/vista (marca ACTVITTA) — bust cache CDN Storage"
+}

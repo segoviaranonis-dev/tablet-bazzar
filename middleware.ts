@@ -9,7 +9,7 @@ function getSecret() {
   return new TextEncoder().encode(process.env.TABLET_SESSION_SECRET)
 }
 
-const PUBLIC_PATHS = ['/login', '/api/auth/login']
+const PUBLIC_PATHS = ['/login', '/api/auth/login', '/login-simple', '/api/auth/login-simple', '/api/auth/auto-login']
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl

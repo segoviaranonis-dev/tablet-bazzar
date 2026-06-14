@@ -1,0 +1,41 @@
+{
+  "fecha": "2026-06-14",
+  "estado": "PASS_EVIDENCIA_V9",
+  "sku": "4215.1034",
+  "causa_raiz": "Recorte era CSS (ProductImage/lg/upsacle), no JPEG. Storage sm/lg tienen tacón completo.",
+  "fix": "HeroProductImage v9-bare-img: img directo sm/ paridad sidebar + grid contain",
+  "medicion_dom": {
+    "build": "v9-bare-img",
+    "hero_tier": "sm",
+    "paridad_sm_sidebar": true,
+    "misma_url": "sm/4215-1034-28458-98904.jpg",
+    "object_fit": "contain",
+    "clip_lateral": false,
+    "contenido_en_marco": {
+      "left": true,
+      "right": true,
+      "top": true,
+      "bottom": true
+    }
+  },
+  "storage_jpeg_sm": {
+    "size_px": [
+      200,
+      200
+    ],
+    "content_bbox": [
+      0,
+      15,
+      199,
+      192
+    ],
+    "margin_left_px": 0,
+    "margin_right_px": 0,
+    "tacon_en_archivo": true
+  },
+  "archivos": [
+    "components/cadena/HeroProductImage.tsx",
+    "app/globals.css (.cadena-hero-frame)",
+    "app/cadena/vista/page.tsx (grid place-items-center)"
+  ]
+}

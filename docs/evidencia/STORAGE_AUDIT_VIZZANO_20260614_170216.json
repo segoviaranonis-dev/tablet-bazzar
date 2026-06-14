@@ -1,0 +1,6582 @@
+{
+  "fecha": "20260614_170216",
+  "marca": "VIZZANO",
+  "total": 1565,
+  "sm_ok": 839,
+  "md_ok": 838,
+  "lg_ok": 840,
+  "flat_ok": 1183,
+  "origen_local": 696,
+  "gaps": [
+    {
+      "nombre": "1184-1101-31310-107723.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1101-31660-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1101-5881-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-14710-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-14710-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-29229-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-29229-31.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-29526-90995.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-30009-62115.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-30802-81208.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1501-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1731-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1727-31310-107724.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": true,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1731-29918-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": true,
+      "md_ok": true,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1184-1727-31310-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1185-1148-31310-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1185-1138-29269-96285.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1185-1138-29269-94979.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1185-702-29918-103102.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1185-702-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1185-702-29960-64.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": true,
+      "md_ok": false,
+      "lg_ok": true,
+      "origen_local": false
+    },
+    {
+      "nombre": "1185-702-7286-104070.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1185-702-7286-104069.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1206-1017-29918-107802.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": true,
+      "lg_ok": true,
+      "origen_local": false
+    },
+    {
+      "nombre": "1206-200-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": true,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1214-205-7286-17689.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-13488-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-29918-101439.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-13488-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-13488-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-29918-103102.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-29918-104070.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-5881-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-5881-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-104069.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-104070.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-315-7286-83517.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-317-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-317-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-317-7286-83517.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-366-13488-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-366-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-378-29711-102051.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-378-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-381-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-13488-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1220-381-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-13488-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-23572-95669.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-29711-102052.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-29918-103102.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-29918-101439.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-7286-102473.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-7286-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-7286-89521.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-400-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-449-27850-100120.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-449-27850-97250.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1285-452-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-500-29711-102052.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-500-7286-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-500-23572-95669.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-500-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-500-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-500-7286-89521.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-500-7286-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-532-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1290-532-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1307-109-28341-17159.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1307-216-30196-104088.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-317-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-328-24523-91180.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1307-215-30195-104083.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-332-27839-97231.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-340-29945-103186.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-339-18533-17159.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-343-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-341-20677-17159.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-344-7286-98841.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-345-28918-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-517-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-345-28918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1339-517-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1346-100-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1351-105-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1351-106-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1351-106-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1373-101-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1373-101-31310-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1373-101-5881-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1373-101-5881-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1373-110-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1373-111-31536-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1376-109-30336-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1376-109-30336-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1376-109-7286-15758.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1376-109-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1376-111-24523-32737.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1376-118-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1376-119-30375-50.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1376-118-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-100-5881-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-100-5881-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-100-5881-65457.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-102-5881-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-102-5881-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-215-29918-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-215-29918-101439.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-200-5881-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-215-29918-107802.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-200-5881-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-516-31310-107723.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-215-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-500-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-500-5881-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-516-31310-107724.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-500-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-516-31310-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-516-7286-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1389-101-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-516-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1388-516-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1389-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1389-112-26574-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1389-110-24523-91180.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1389-135-29616-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1389-128-30017-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1389-537-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1395-103-24311-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1395-103-20076-46175.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1413-101-13967-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1419-107-18462-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-13488-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-13488-93371.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-13488-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-13488-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-29711-102052.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-7286-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-102-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-100-7286-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-102-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-116-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-116-29711-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-216-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1422-100-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1421-216-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1422-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1426-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1427-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1428-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1429-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1429-102-27775-17159.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1429-101-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1429-204-28075-97483.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1429-106-28208-17798.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1429-111-29937-43605.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-16507-104260.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-16507-55452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-16507-79755.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-20280-17689.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-16507-96821.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-16507-79938.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-20280-90181.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-31376-108507.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-29787-102763.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-30391-15758.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-30391-90618.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-7286-109657.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-7286-96412.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-102-7286-99789.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1430-124-31700-109710.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1432-101-28319-21475.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1432-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1432-101-7286-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1432-106-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-100-17951-99278.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-104-28918-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-110-7286-104979.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-110-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-110-30429-104974.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-109-29568-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-109-29568-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-110-7286-78396.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-100-24604-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1440-111-21918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-100-24604-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-104-18462-98514.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-104-18462-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-108-31477-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-111-29918-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-116-31480-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-117-5881-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-117-5881-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-117-5881-65457.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-117-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-118-29918-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-100-29490-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-118-29918-22070.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-118-29918-107802.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1443-120-31647-11404.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-100-30391-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-100-29490-99789.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-100-30391-90618.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-100-29492-101988.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-100-29492-17689.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-100-30391-104832.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-101-28918-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-104-30225-90519.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-113-31576-35432.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-113-31576-109213.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-214-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1446-100-29711-102051.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-215-30731-17159.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-215-30731-17131.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1444-215-30731-35432.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1446-100-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1446-100-7286-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1446-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1446-100-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1447-100-7286-83517.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1447-100-7286-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1447-103-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1447-105-7286-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1447-105-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1449-104-30009-62115.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-102-29613-17689.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-102-29613-99161.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1449-105-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-102-29613-102238.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-100-28918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-102-29616-102254.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-206-31561-109183.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-102-29616-17689.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-202-7286-96412.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1450-206-31561-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1452-104-30124-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1452-104-30124-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1451-103-21918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1452-100-12553-17159.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1452-100-12553-17131.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1453-100-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1453-102-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1453-106-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1453-106-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1453-202-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1453-202-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1455-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1455-102-31565-108107.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1455-102-24524-79744.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1455-104-26641-31463.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1456-101-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1456-104-31329-107668.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1456-104-30336-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1456-200-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1456-111-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1456-111-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1456-200-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1456-112-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1463-100-29816-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1463-100-29816-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1463-101-29688-70717.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1465-102-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1463-102-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1465-102-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1475-100-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1475-102-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1475-100-29711-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1475-103-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1478-100-31404-108588.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1477-101-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1477-101-7286-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1478-100-31404-108585.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1477-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1478-100-31404-108586.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1478-100-31406-107709.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1478-100-31406-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1483-100-29918-101439.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1483-100-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1482-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1482-100-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1483-100-31310-107723.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1483-100-31310-107724.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1483-100-31310-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1483-101-31310-107723.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1483-103-7286-101321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1483-103-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1486-100-29918-101439.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1486-100-31310-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1486-102-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1486-101-31310-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1487-100-31791-110260.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1487-100-31791-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1487-103-29787-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1487-103-29787-99789.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1487-201-31793-110321.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1487-201-31793-110330.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1830-501-7286-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1830-501-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1840-301-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1840-301-7286-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "1840-301-7286-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3049-219-20081-17606.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3049-219-23580-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3049-219-20081-84242.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3049-219-20081-84282.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3049-219-23580-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3049-225-23580-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3049-241-25498-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3049-247-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3070-109-27429-17131.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3070-111-27431-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3070-113-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3070-114-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-106-23580-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-120-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-120-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-122-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-125-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-125-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-125-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-126-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-126-25498-107509.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-126-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-126-25498-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-127-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3077-127-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3085-100-20108-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3092-100-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3091-102-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3092-100-23580-89673.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3098-100-20081-95670.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3098-105-23580-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3099-100-23580-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3101-102-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3103-104-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3101-201-23580-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3103-103-21665-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3103-100-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-102-20108-100214.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-100-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-103-23572-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-103-23572-95669.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-103-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-103-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-105-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-105-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-106-23572-95669.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3109-100-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3109-100-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3105-106-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3109-100-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3109-100-23572-95669.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3109-101-23572-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3109-101-23572-95669.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3110-100-25498-107509.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3110-100-25498-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3110-101-23624-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3110-101-31263-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3110-101-31263-106596.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3111-100-23654-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3111-100-23654-83508.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3111-103-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3112-100-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3112-100-31234-107668.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3112-101-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3112-101-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3111-103-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3112-101-25498-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3112-101-25498-107509.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-100-20081-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3112-102-25498-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3112-102-25498-107509.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-100-20081-72374.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-100-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-100-31136-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-100-31136-101439.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-100-31136-106595.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-100-31136-106596.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-101-23655-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-101-23655-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-101-23655-83508.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-101-31136-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-101-31136-106596.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-101-31136-101439.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-101-31136-106595.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-102-23580-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-102-23580-83508.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-102-31136-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "3113-102-31136-101439.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1019-13488-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1019-13488-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1019-7286-104069.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1019-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1019-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1019-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1043-28300-12099.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1039-28330-98447.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1039-28330-98444.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1043-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1063-30100-103694.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1119-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1063-31032-104943.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1063-30100-103698.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-1063-31032-94074.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-655-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-655-26594-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-655-26721-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-655-26594-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-655-26594-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-655-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-655-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6210-655-7286-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1702-28206-98033.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1188-18986-92298.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1721-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1717-18621-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1706-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1721-29711-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1718-7663-95183.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1717-18621-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1003-29227-101024.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1723-31024-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6235-1723-31024-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1003-29227-101026.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1003-29227-101032.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1016-11808-105788.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1016-7286-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1012-30101-103696.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1016-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1017-29711-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1016-7286-104069.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1111-29754-97261.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1017-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1017-29711-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-452-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-452-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1114-30579-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-1118-30651-89673.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-452-26594-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-464-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-452-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-464-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-479-13488-79854.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6249-499-27853-97247.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-1033-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-1009-25791-32737.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-1036-7286-104049.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-1034-30510-105319.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-1033-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-1035-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-1035-29711-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-406-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-1036-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-406-26594-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-406-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-406-26594-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-406-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-474-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-474-26594-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-474-26594-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6262-474-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6281-847-28683-99675.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1180-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1184-7286-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1184-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1191-30526-105367.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1191-30526-85432.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1189-30159-102051.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1192-14404-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1196-30758-85432.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1194-29568-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1195-7286-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1496-30757-102848.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1400-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1400-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-900-26594-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1815-30755-104943.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-900-26594-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-1815-30755-94074.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-900-8389-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-900-26721-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-900-8389-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-900-8389-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-927-7286-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-13488-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-927-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6291-927-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-26594-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-26594-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-30591-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-26594-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-217-26594-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-7286-104069.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-200-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-217-26594-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-217-7286-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-217-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-217-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-217-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-280-30086-105108.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-265-28206-98033.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-281-30087-103653.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-280-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-280-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-280-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6292-280-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-1005-30758-85432.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-1008-29711-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-1008-29711-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-1008-13488-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-1001-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-1105-30757-88085.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-167-26565-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-167-26565-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-167-26565-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-167-14710-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-167-30579-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-195-29757-97252.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-174-30579-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-174-14710-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-367-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-398-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-374-7286-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6371-367-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6409-202-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-101-30592-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-101-30592-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-101-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-101-7286-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-104-26594-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-104-26594-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-104-26594-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-104-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-139-28196-56251.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-139-29223-101028.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-139-26564-92817.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-139-29223-100999.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-142-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-155-30957-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-153-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-153-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6428-155-30957-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6448-323-27122-95597.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-111-26721-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-111-26565-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-111-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-111-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-111-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-123-7286-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-123-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-129-14404-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-132-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-132-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-134-29568-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6454-134-29568-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6455-201-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6455-201-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-110-24698-71970.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-110-19085-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-110-24698-93225.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-122-7286-63619.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "6459-118-27113-95651.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": true,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "6459-118-24698-92760.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-127-27030-15787.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "6459-122-7286-81189.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "6459-132-26972-32737.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-139-30082-103628.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-138-7663-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-138-7663-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "6459-132-26972-90556.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-137-30071-88882.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-337-30070-90139.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-337-30070-99243.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6459-310-10719-101000.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6463-107-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6463-107-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6463-108-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6463-109-30100-104341.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6463-108-7286-83517.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-102-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-100-7286-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-102-7286-101441.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-102-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-102-7286-93371.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "6464-102-7286-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": true,
+      "origen_local": true
+    },
+    {
+      "nombre": "6464-119-24448-91292.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-119-24448-91003.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-140-13488-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "6464-415-14710-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": true,
+      "lg_ok": true,
+      "origen_local": true
+    },
+    {
+      "nombre": "6464-145-30082-103628.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-448-30651-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6464-448-30651-89673.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6472-204-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6472-204-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6472-207-26721-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6472-215-30827-105826.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6472-215-30827-105824.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6472-215-30806-105745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6472-207-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6492-305-24523-32737.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6492-305-24523-90556.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6492-330-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6492-331-30757-45575.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6492-331-30757-19026.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6492-330-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6499-103-30806-105744.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6499-110-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6499-103-30806-105745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6499-103-7286-79854.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6499-122-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6499-124-30073-97698.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6499-124-30073-97826.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6499-134-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6506-109-28330-98477.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6506-125-22143-23301.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6506-126-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6506-127-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6506-128-31112-97060.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6510-102-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6510-109-28918-98514.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6510-109-28918-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6510-110-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6510-110-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6510-111-17466-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6510-121-30577-96794.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6513-212-29229-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6513-201-14710-97693.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6513-210-7286-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6516-102-23729-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6516-102-7286-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6517-102-7286-86347.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6517-113-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6519-101-26466-99188.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6524-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6528-108-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6528-111-29711-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6530-100-29144-96848.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6530-101-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6530-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6530-108-30453-105210.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-101-18807-52531.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6531-105-30158-93355.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6530-108-30453-43186.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-101-18807-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-102-29918-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-106-18807-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-106-18807-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-111-23105-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-111-23105-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-112-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6536-113-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6541-102-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6541-102-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6541-110-7286-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6541-200-28683-95373.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6541-111-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6541-111-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-100-26721-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-100-26565-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6550-102-30336-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6550-102-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6550-103-30100-103698.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-100-30336-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-100-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-100-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-103-26565-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-103-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-103-26721-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-103-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-103-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-103-7286-104069.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-104-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-104-7286-16072.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-105-30100-95847.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-105-30100-103698.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-105-30755-104943.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6551-105-30755-94074.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6552-103-30100-103698.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-104-29711-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-105-29711-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-104-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-105-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-105-29711-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-107-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-205-30591-23146.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-411-31368-17606.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-306-31066-107368.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6553-205-30591-41.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6558-103-29711-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6558-103-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6559-101-29711-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6559-101-31133-96412.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6559-103-30086-94802.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6559-101-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6559-103-30086-97645.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6559-103-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6559-106-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6559-308-31135-107630.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6564-100-7286-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6564-100-7286-104069.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6564-100-7286-29452.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6564-300-11808-105788.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6564-300-11808-87029.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6570-100-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6570-102-29711-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6570-100-29711-35312.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6570-200-29711-104068.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6570-202-30591-66.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": true,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "6850-107-25365-15745.jpg",
+      "marca": "VIZZANO",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    }
+  ]
+}

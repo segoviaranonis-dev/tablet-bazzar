@@ -1,45 +1,77 @@
-# Imágenes de producto
+# Imágenes de producto — Tablet Bazzar
 
-Misma convención que RIMEC Web y Report.
+Convención unificada Nexus — **Protocolo Imágenes** (`sm` / `md` / `lg`).
+
+> **Punto crítico holding:** [PUNTO_CRITICO_RECORTE_CALZADO.md](../../.claude/2_modulos/2.1_control_central/docs/PUNTO_CRITICO_RECORTE_CALZADO.md)  
+> Caso resuelto: `4215.1034` · evidencia `docs/evidencia/HERO_CASO_4215_1034.json`
 
 ## URL pública
 
-`lib/storage-url.ts` → `publicStorageObjectUrl("productos", path)`
+`lib/storage-url.ts` → `publicStorageObjectUrl("productos", path)` + `cleanSupabaseUrl`.
 
 Base: `NEXT_PUBLIC_SUPABASE_URL` + `/storage/v1/object/public/productos/`
 
-## Convención de nombre
+## Sistema sm/md/lg
 
-Stem **L-R-M-C** (códigos proveedor enteros):
+| Tamaño | Ruta Storage | Uso Tablet |
+|--------|--------------|------------|
+| **sm** | `productos/sm/L-R-M-C.jpg` | Thumbs, sidebar, footer |
+| **lg** | `productos/lg/...` | Hero salón (`HeroProductImage`) |
+| **md** | `productos/md/...` | No usar — tiers legacy pueden estar recortados |
 
+**Ley crítica:** tiers deben generarse con **fit contain**. Si Storage tiene crop, hero y thumbs fallan igual.
+
+## Hero cadena (v13)
+
+| Elemento | Valor |
+|----------|-------|
+| Componente | `components/cadena/HeroProductImage.tsx` |
+| Marco | `data-hero-frame="v13-contain"` |
+| CSS | `absolute inset-0 h-full w-full object-contain` en contenedor cuadrado |
+| Fuente | `imagen_url_hero` (lg/) → thumb → flat |
+
+**Prohibido:** `h-full w-full` + `padding` en `<img>` sin `box-border` — desborda y recorta punta/tacón.
+
+## URL canónica (servidor)
+
+```typescript
+import { enrichDepositoFilaImagenes } from "@/lib/product-image";
 ```
-1184-100-9569-15745.jpg
-```
 
-Fallback sin material/color: `1184-100.jpg`
+APIs depósito/cadena enriquecen filas en servidor.
 
-Excel legacy: columna `imagen_nombre` en fila depósito.
+## Generación / reparación Storage
 
-## Miniaturas (velocidad)
+| Acción | Script |
+|--------|--------|
+| Lote local sm/md/lg | `control_central/tools/convertir_miniaturas_retail.py` |
+| Cierre gap por marca | `control_central/tools/protocolo_imagenes_cerrar_gap.py --cerrar` |
+| Un SKU (plantilla) | `scripts/regenerar_storage_4215_1034.py` |
+| Auditoría HEAD | `scripts/auditar_hero_4215_1034.ts` |
 
-`lib/product-image.ts` → `toThumbnailStorageUrl`:
+Origen fotos: `C:\Users\hecto\Documents\Prg_locales\proyectos\imagenes\`
 
-```
-/productos/1184-100.jpg  →  /productos/thumbs/1184-100.jpg
-```
+## UI cadena
 
-`ProductImage` intenta thumb primero; en error prueba candidatos siguientes; al agotar muestra 👟.
+| Componente | Uso |
+|------------|-----|
+| `HeroProductImage` | Hero central — lg/ + contain |
+| `ProductImage` variant thumb | Carruseles, mazo, naipes |
+| `lib/prefetch-images.ts` | Prefetch thumb + hero |
 
-## Prefetch
+## Evidencia y registro etapa
 
-`lib/prefetch-images.ts` — precarga en `<link>` implícito vía `new Image()`:
+| Doc | Contenido |
+|-----|-----------|
+| `docs/evidencia/HERO_CASO_4215_1034.json` | Mapa error + fix Storage |
+| `docs/evidencia/4215-1034-lg.jpg` | Antes (recortado) |
+| `docs/evidencia/4215-1034-lg-FIXED.jpg` | Después (contain) |
+| `docs/ETAPA_DISENO_REGISTRO.md` | Cronología etapa diseño |
 
-- Par activo
-- Vecinos ±1, ±2, ±3 en cadena
-- Hasta 4 colores por grupo material del par actual
+## Dev
 
-Invocado desde `app/cadena/vista/page.tsx` en `useEffect`.
+Reinicio sin `EADDRINUSE`: `REINICIAR_DEV.bat` (puerto 3002).
 
 ---
 
-**Última actualización:** 2026-06-10
+**Última actualización:** 2026-06-14 — solución crítica recorte documentada

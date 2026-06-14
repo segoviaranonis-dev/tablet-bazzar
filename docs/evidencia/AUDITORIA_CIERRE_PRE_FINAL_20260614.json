@@ -1,0 +1,52 @@
+{
+  "fecha": "2026-06-14T19:45:00Z",
+  "auditor": "Cursor",
+  "tipo": "AUDITORIA_CIERRE_PRE_FINAL",
+  "veredicto_global": "FAIL",
+  "cierre_etapa_autorizado": false,
+  "motivo": "Criterios plan 3 etapas y ETAPA_TABLET_DISENO_INVESTIGACION no cumplen estándar alto",
+  "gates": {
+    "build_npm": { "estado": "PASS", "evidencia": "npm run build OK 2026-06-14" },
+    "api_smoke": {
+      "estado": "PASS",
+      "filtros": 200,
+      "cadena": 200,
+      "vista": 200,
+      "marca": "ACTVITTA"
+    },
+    "etapa_1_storage": {
+      "estado": "FAIL",
+      "ACTVITTA": { "pct_sm": 100, "verificar": "PASS", "total": 249 },
+      "VIZZANO": { "pct_sm_baseline": 43.8, "sm_ok": 686, "total": 1565, "cierre_evidencia": null },
+      "criterio": ">=95% sm/ HEAD 200 por marca tablet"
+    },
+    "etapa_2_velocidad": {
+      "estado": "PARCIAL",
+      "veredicto": "PARCIAL",
+      "implementados": ["V1", "V2", "V4", "V7", "V8"],
+      "pendientes": ["V3_isr", "V5_poll_jwt", "V6_sql_limit"],
+      "reduccion_payload_vizzano_pct": 80.4,
+      "evidencia": "ETAPA_2_VELOCIDAD_AUDIT_20260614.json"
+    },
+    "etapa_3_precision": {
+      "estado": "PASS_CODIGO",
+      "hallazgos": "7/7",
+      "qa_piso_director": "PENDIENTE",
+      "evidencia": "ETAPA_3_PRECISION_AUDIT_20260614.json"
+    },
+    "etapa_diseno_investigacion": {
+      "estado": "FAIL",
+      "bloqueadores": [
+        "VIZZANO storage <95%",
+        "QA 50 swaps sin flash no evidenciado",
+        "Track B Antigravity sin aprobación Director"
+      ]
+    }
+  },
+  "siguiente_paso": [
+    "Completar --cerrar VIZZANO y --verificar >=95%",
+    "Director QA piso 50 swaps + SKU 4215.1034",
+    "Opcional V3/V5/V6 antes de etapa final tickets"
+  ],
+  "nota": "No cerrar etapa hasta gates etapa_1 PASS + etapa_3 qa_piso PASS + Director diseño aprobado"
+}

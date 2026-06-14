@@ -88,5 +88,5 @@ export function filaActiva(
 ): DepositoFila | null {
   const grupo = par.gruposMaterial[grupoIndex] ?? par.gruposMaterial[0];
   if (!grupo) return null;
-  return grupo.colores[colorGrupo1Index] ?? grupo.colores[0] ?? grupo.filas[0] ?? null;
+  return grupo.colores[colorGrupo1Index] ?? grupo.colores[0] ?? null;
 }

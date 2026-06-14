@@ -21,7 +21,7 @@ export function MazoMaterialNaipes({
   if (!grupo) return null;
 
   const extraColores = Math.max(0, grupo.colores.length - 1);
-  const peekColores = grupo.colores.slice(1, 4);
+  const peekColores = grupo.colores.slice(1, 2);
 
   return (
     <div className="flex w-full flex-col items-stretch gap-1 px-1 pb-1">
@@ -41,6 +41,8 @@ export function MazoMaterialNaipes({
             }}
           >
             <ProductImage
+              src={c.imagen_url_thumb}
+              fallbackSrc={c.imagen_url_flat}
               linea={c.linea_codigo_proveedor}
               ref={c.referencia_codigo_proveedor}
               material={c.material_code}
@@ -54,6 +56,8 @@ export function MazoMaterialNaipes({
         <div className="relative z-10 h-[100px] w-[80px] overflow-hidden rounded-sm border border-br-charcoal/80 bg-white shadow-md">
           {grupo.colores[colorIndex] ? (
             <ProductImage
+              src={grupo.colores[colorIndex].imagen_url_thumb}
+              fallbackSrc={grupo.colores[colorIndex].imagen_url_flat}
               linea={grupo.colores[colorIndex].linea_codigo_proveedor}
               ref={grupo.colores[colorIndex].referencia_codigo_proveedor}
               material={grupo.colores[colorIndex].material_code}

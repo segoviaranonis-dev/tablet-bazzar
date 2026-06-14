@@ -15,26 +15,34 @@ export default function LoginPage() {
     setError('')
     setLoading(true)
 
+    console.log('[LOGIN] Iniciando login para usuario:', usuario)
+
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ usuario, password }),
+        credentials: 'same-origin', // CRÍTICO: asegurar que cookies se envíen
       })
 
+      console.log('[LOGIN] Response status:', res.status)
       const data = await res.json()
+      console.log('[LOGIN] Response data:', data)
 
       if (!res.ok) {
+        console.error('[LOGIN] Login falló:', data.error)
         setError(data.error || 'Error al iniciar sesión')
         setLoading(false)
         return
       }
 
+      console.log('[LOGIN] Login exitoso, redirigiendo a /')
       // Redirigir al panel de control
       router.push('/')
       router.refresh()
     } catch (err) {
-      setError('Error de conexión')
+      console.error('[LOGIN] Excepción:', err)
+      setError('Error de conexión: ' + (err instanceof Error ? err.message : String(err)))
       setLoading(false)
     }
   }

@@ -1,0 +1,22 @@
+{
+  "fecha": "2026-06-14",
+  "etapa": "TABLET_DISENO_INVESTIGACION",
+  "estado": "CERRADA",
+  "calificacion": 7,
+  "director": "cierre gerencial con deuda documentada",
+  "entregables_pass": [
+    "hero_v14_fallback",
+    "etapa3_codigo_7_7",
+    "etapa2_v1_v2_v4_v7_v8",
+    "actvitta_storage_100",
+    "build_ok"
+  ],
+  "deuda": {
+    "vizzano_storage_pct": 54.1,
+    "qa_piso_50_swaps": "pendiente",
+    "v3_v5_v6": "pendiente",
+    "track_b_antigravity": "pendiente"
+  },
+  "deploy_url": "https://tableta-bazzar.vercel.app",
+  "auditor": "Cursor"
+}

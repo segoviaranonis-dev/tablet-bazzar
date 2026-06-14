@@ -108,6 +108,30 @@ Límite mensual: **$250/mes**
 
 ---
 
+## Imágenes de producto
+
+**Sistema:** sm/md/lg responsivo — palabra clave `Protocolo Imágenes`
+
+| Tamaño | Uso en Tablet |
+|--------|----------------|
+| **sm** | Listados, footer cadena, sidebar |
+| **lg** | Hero cadena (`HeroProductImage` v13-contain) |
+
+**Punto crítico:** tiers Storage deben ser **fit contain** — ver `PUNTO_CRITICO_RECORTE_CALZADO.md` (holding). Crop legacy corta punta/tacón; CSS no lo arregla.
+
+**Helper:**
+
+```typescript
+import { getTabletImageUrl } from "@/lib/product-image";
+```
+
+**Reglas:**
+- Hero: `HeroProductImage` — `object-contain`, `data-hero-frame="v13-contain"`
+- Protocolo completo: `.claude/2_modulos/2.1_control_central/docs/NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md`
+- Evidencia caso: `tablet-bazzar/docs/evidencia/HERO_CASO_4215_1034.json`
+
+---
+
 ## 📂 ESTRUCTURA
 
 ```

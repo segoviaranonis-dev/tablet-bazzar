@@ -18,6 +18,12 @@ export type DepositoFila = {
   grada: string;
   cantidad: number;
   imagen_nombre: string | null;
+  /** URL canónica sm — resuelta en servidor (thumbs + hero cadena). */
+  imagen_url_thumb?: string | null;
+  /** URL canónica lg (800px) — hero cadena. */
+  imagen_url_hero?: string | null;
+  /** Plano legacy — fallback único si tier sm/md falta. */
+  imagen_url_flat?: string | null;
 };
 
 export function numCodigo(v: string): number {

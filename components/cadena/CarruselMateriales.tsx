@@ -14,7 +14,7 @@ type Props = {
 };
 
 function previewGrupo(g: GrupoPrincipal) {
-  return g.colores[0] ?? g.filas[0] ?? null;
+  return g.colores[0] ?? null;
 }
 
 export function CarruselMateriales({
@@ -53,7 +53,7 @@ export function CarruselMateriales({
             <div
               key={`mat-${g.key}-${offset}`}
               ref={active && offset === 0 ? activeRef : undefined}
-              className="shrink-0 snap-center"
+                className={`shrink-0 snap-center${active ? "" : " [content-visibility:auto]"}`}
             >
               <TouchPad
                 onClick={() => onSelect(idx)}
@@ -76,6 +76,8 @@ export function CarruselMateriales({
                   <div className="relative h-full w-full bg-white pt-3 pb-3">
                     {preview ? (
                       <ProductImage
+                        src={preview.imagen_url_thumb}
+                        fallbackSrc={preview.imagen_url_flat}
                         linea={preview.linea_codigo_proveedor}
                         ref={preview.referencia_codigo_proveedor}
                         material={preview.material_code}

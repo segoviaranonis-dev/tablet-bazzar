@@ -1,0 +1,32 @@
+{
+  "fecha": "2026-06-14",
+  "etapa": 1,
+  "estado": "EN_CURSO",
+  "toolchain": {
+    "subir_miniaturas_supabase.py": "CREADO",
+    "protocolo_imagenes_cerrar_gap.py": "CREADO",
+    "convertir_miniaturas_retail.py": "FIX sm/md/lg"
+  },
+  "marcas": {
+    "ACTVITTA": {
+      "total": 249,
+      "sm_ok_final": 249,
+      "pct_sm": 100.0,
+      "verificar": "PASS",
+      "evidencia_audit": "STORAGE_AUDIT_ACTVITTA_20260614_175753.json",
+      "nota": "Re-verificado 2026-06-14 con HEAD retries + workers=6"
+    },
+    "VIZZANO": {
+      "total": 1565,
+      "sm_ok_verificado": 847,
+      "pct_sm_verificado": 54.1,
+      "verificar": "FAIL",
+      "estado": "CIERRE_PENDIENTE",
+      "gaps": 718,
+      "evidencia_audit": "STORAGE_AUDIT_VIZZANO_20260614_181613.json",
+      "nota": "Re-audit estable con retries; faltan ~718 sm/"
+    }
+  },
+  "origen_local": "C:\\Users\\hecto\\Documents\\Prg_locales\\proyectos\\imagenes",
+  "metodo": "resize_contain + upload sm/md/lg/flat"
+}

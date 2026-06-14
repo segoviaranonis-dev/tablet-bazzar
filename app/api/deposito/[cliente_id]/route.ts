@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { getPool, isDatabaseConfigured } from "@/lib/pool";
+import { enrichDepositoFilaImagenes } from "@/lib/product-image";
 
 export type DepositoProducto = {
   linea_codigo_proveedor: string;
@@ -16,6 +17,8 @@ export type DepositoProducto = {
   grada: string;
   cantidad: number;
   imagen_nombre: string | null;
+  imagen_url_thumb: string | null;
+  imagen_url_hero: string | null;
 };
 
 export async function GET(
@@ -106,7 +109,7 @@ export async function GET(
     ente: config.ente,
     tipo: config.tipo,
     codigo: config.codigo,
-    productos: rows,
+    productos: rows.map(enrichDepositoFilaImagenes),
     total: rows.length,
     total_pares_muestra: totalPares,
   });

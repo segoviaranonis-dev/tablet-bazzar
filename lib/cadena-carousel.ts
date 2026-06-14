@@ -25,10 +25,27 @@ export function buildCarouselWindow(
   return items;
 }
 
-/** Primera fila representativa de un par L+R (para thumbnail del naipe). */
+/** Primera fila representativa de un par L+R (thumbnail del naipe). Prefiere color con más stock. */
 export function filaPreviewPar(par: ParLineaRef): DepositoFila | null {
-  const g = par.gruposMaterial[0];
-  return g?.colores[0] ?? g?.filas[0] ?? par.coloresLR[0] ?? null;
+  let best: DepositoFila | null = null;
+  let bestQty = -1;
+  for (const g of par.gruposMaterial) {
+    for (const c of g.colores) {
+      if (c.cantidad > bestQty) {
+        bestQty = c.cantidad;
+        best = c;
+      }
+    }
+    if (best) continue;
+    const f = g.colores[0];
+    if (f && f.cantidad > bestQty) {
+      bestQty = f.cantidad;
+      best = f;
+    }
+  }
+  if (best) return best;
+  const g0 = par.gruposMaterial[0];
+  return g0?.colores[0] ?? par.coloresLR[0] ?? null;
 }
 
 /** Índices para carrusel: anteriores + actual + siguientes (con wrap). */

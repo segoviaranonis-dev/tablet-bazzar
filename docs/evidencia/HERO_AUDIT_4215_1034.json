@@ -1,0 +1,33 @@
+{
+  "fecha": "2026-06-14",
+  "sku": "4215.1034",
+  "archivo": "4215-1034-28458-98904.jpg",
+  "storage": {
+    "sm": {
+      "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/sm/4215-1034-28458-98904.jpg",
+      "http": 200,
+      "bytes": 7735,
+      "width": 200,
+      "height": 200
+    },
+    "lg": {
+      "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/lg/4215-1034-28458-98904.jpg",
+      "http": 200,
+      "bytes": 96664,
+      "width": 800,
+      "height": 800
+    },
+    "flat": {
+      "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/4215-1034-28458-98904.jpg",
+      "http": 200,
+      "bytes": 7735,
+      "width": 200,
+      "height": 200
+    }
+  },
+  "diagnostico": {
+    "sm_ok": true,
+    "lg_ok": true,
+    "mismo_aspect_sm": 1
+  }
+}

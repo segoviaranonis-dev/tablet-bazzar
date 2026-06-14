@@ -1,0 +1,201 @@
+{
+  "fecha": "20260614_141024",
+  "marca": "ACTVITTA",
+  "total": 249,
+  "sm_ok": 228,
+  "md_ok": 229,
+  "lg_ok": 229,
+  "flat_ok": 204,
+  "origen_local": 121,
+  "gaps": [
+    {
+      "nombre": "4942-202-23153-15745.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4942-202-23153-33300.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4945-100-31023-107258.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4945-101-31033-106236.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4945-101-31033-107259.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4945-200-31023-107155.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4945-200-31023-107181.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4945-201-31033-106236.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4945-201-31033-107188.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4945-301-31033-109868.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4945-201-31033-107190.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4945-301-31033-109869.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4945-502-31023-109786.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4946-102-31393-108557.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": false
+    },
+    {
+      "nombre": "4947-101-31402-103437.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4947-102-31403-108771.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4947-101-31402-109246.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4947-102-31403-109239.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4947-102-31403-109240.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4947-202-31403-108581.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": false,
+      "lg_ok": false,
+      "origen_local": true
+    },
+    {
+      "nombre": "4998-1-22766-103927.jpg",
+      "marca": "ACTVITTA",
+      "flat_ok": false,
+      "sm_ok": false,
+      "md_ok": true,
+      "lg_ok": true,
+      "origen_local": true
+    }
+  ]
+}

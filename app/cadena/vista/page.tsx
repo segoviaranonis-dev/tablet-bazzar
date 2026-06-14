@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CarruselNaipesLR } from "@/components/cadena/CarruselNaipesLR";
 import { CarruselMateriales } from "@/components/cadena/CarruselMateriales";
 import { LineaReferenciaHero } from "@/components/cadena/LineaReferenciaHero";
@@ -10,22 +10,26 @@ import { MazoMaterialNaipes } from "@/components/cadena/MazoMaterialNaipes";
 import { MultiSelectFlotante } from "@/components/cadena/MultiSelectFlotante";
 import { StockOtrosLocales, useStockOtrosLocales } from "@/components/cadena/StockOtrosLocales";
 import { TouchPad } from "@/components/cadena/TouchPad";
-import { ProductImage } from "@/components/ProductImage";
+import { HeroProductImage } from "@/components/cadena/HeroProductImage";
 import type { ParLineaRef } from "@/lib/cadena";
 import {
   FILTROS_VACIOS,
   filtrarPares,
-  indiceColorEnPar,
-  indiceGrupoConColor,
   toggleEstilo,
   toggleReferencia,
   type FiltrosCadena,
 } from "@/lib/cadena-filtros";
 import { cadenaBackgroundStyle } from "@/lib/product-image";
-import { prefetchRowThumb } from "@/lib/prefetch-images";
+import { prefetchRowHero, prefetchRowThumb } from "@/lib/prefetch-images";
 import { useTouchNav } from "@/lib/use-touch-nav";
 import { useCadenaKeyboard } from "@/lib/use-cadena-keyboard";
 import { filaPreviewPar } from "@/lib/cadena-carousel";
+import { cadenaQueryKey, loadCadenaSeed } from "@/lib/cadena-seed";
+import {
+  resolveCadenaBootState,
+  resolveColorFilterState,
+  resolveFiltrosChangeState,
+} from "@/lib/cadena-boot";
 import { parseFiltrosCadenaFromUrl } from "@/lib/cadena-entrada-filtros";
 import { filaActiva, parseCodigoVendedor, resolveCodigoEnCadena } from "@/lib/codigo-busqueda";
 
@@ -68,6 +72,13 @@ function CadenaVistaInner() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [posApplied, setPosApplied] = useState(false);
+  const bootFiltrosKeyRef = useRef<string | null>(null);
+  const serverPosicionRef = useRef<{
+    parIndex: number;
+    grupoIndex: number;
+    colorG1: number;
+    colorG2: number;
+  } | null>(null);
 
   const [filtros, setFiltros] = useState<FiltrosCadena>(FILTROS_VACIOS);
   const [estiloPanelOpen, setEstiloPanelOpen] = useState(false);
@@ -154,98 +165,100 @@ function CadenaVistaInner() {
     return p.toString();
   }, [sp]);
 
+  const applyBootPosition = useCallback(
+    (serverPos?: { parIndex: number; grupoIndex: number; colorG1: number; colorG2: number } | null) => {
+      if (paresNav.length === 0) return;
+      const nav = resolveCadenaBootState({
+        paresNav,
+        posUrl,
+        serverPosicion: serverPos ?? serverPosicionRef.current,
+        qBuscar,
+        filtros,
+      });
+      setParIndex(nav.parIndex);
+      setGrupoIndex(nav.grupoIndex);
+      setColorG1(nav.colorG1);
+      setColorG2(nav.colorG2);
+      setPosApplied(true);
+      bootFiltrosKeyRef.current = filtrosKey;
+    },
+    [paresNav, posUrl, qBuscar, filtros, filtrosKey],
+  );
+
   useEffect(() => {
     if (!marca) {
       router.replace("/cadena");
       return;
     }
+
+    const qKey = cadenaQueryKey(cadenaQueryString);
+    const seed = loadCadenaSeed(clienteId, marca, qKey);
+    if (seed) {
+      serverPosicionRef.current = seed.posicion ?? null;
+      setParesAll(seed.paresAll);
+      setLoading(false);
+      setError(null);
+      setPosApplied(false);
+      return;
+    }
+
     setLoading(true);
     setPosApplied(false);
-    fetch(`/api/deposito/${clienteId}/cadena?${cadenaQueryString}`, { cache: "no-store" })
+    serverPosicionRef.current = null;
+    fetch(`/api/deposito/${clienteId}/cadena?${cadenaQueryString}`)
       .then((r) => r.json())
       .then((data) => {
         if (data.error) throw new Error(data.error);
-        setParesAll(data.paresAll ?? data.pares ?? []);
+        const all = data.paresAll ?? data.pares ?? [];
+        serverPosicionRef.current = data.posicion ?? null;
+        setParesAll(all);
       })
       .catch((e) => setError(e instanceof Error ? e.message : "Error"))
       .finally(() => setLoading(false));
   }, [marca, clienteId, router, cadenaQueryString]);
 
   useEffect(() => {
-    if (posApplied || paresNav.length === 0) return;
-    if (Number.isFinite(posUrl.pi)) {
-      setParIndex(Math.min(Math.max(0, posUrl.pi), paresNav.length - 1));
-      if (Number.isFinite(posUrl.gi)) setGrupoIndex(posUrl.gi);
-      if (Number.isFinite(posUrl.c1)) setColorG1(posUrl.c1);
-      if (Number.isFinite(posUrl.c2)) setColorG2(posUrl.c2);
-    }
-    setPosApplied(true);
-  }, [posApplied, paresNav.length, posUrl.pi, posUrl.gi, posUrl.c1, posUrl.c2]);
+    if (posApplied || paresNav.length === 0 || loading) return;
+    applyBootPosition(serverPosicionRef.current);
+  }, [posApplied, paresNav.length, loading, applyBootPosition]);
 
   useEffect(() => {
-    if (!posApplied) return;
-    setGrupoIndex(0);
-    setColorG1(0);
-    setColorG2(0);
+    if (!posApplied || bootFiltrosKeyRef.current === filtrosKey) return;
     setDetalleOpen(false);
-    if (filtros.referenciaKeys.length === 1 && paresNav.length > 0) {
-      const idx = paresNav.findIndex((p) => p.key === filtros.referenciaKeys[0]);
-      setParIndex(idx >= 0 ? idx : 0);
-    } else if (!Number.isFinite(posUrl.pi)) {
-      setParIndex(0);
+    const next = resolveFiltrosChangeState(paresNav, filtros, posUrl.pi);
+    if (next) {
+      setParIndex(next.parIndex);
+      setGrupoIndex(next.grupoIndex);
+      setColorG1(next.colorG1);
+      setColorG2(next.colorG2);
     }
-  }, [filtrosKey, paresNav, posApplied, filtros.referenciaKeys, posUrl.pi]);
-
-  useEffect(() => {
-    if (!posApplied || !qBuscar || paresNav.length === 0) return;
-    if (filtros.referenciaKeys.length > 0) return;
-    if (Number.isFinite(posUrl.pi)) return;
-
-    const codigo = parseCodigoVendedor(qBuscar);
-    if (codigo) {
-      const idx = resolveCodigoEnCadena(paresNav, codigo);
-      if (idx) {
-        setParIndex(idx.parIndex);
-        setGrupoIndex(idx.grupoIndex);
-        setColorG1(idx.colorGrupo1Index);
-        setColorG2(idx.colorGrupo2Index);
-      }
-      return;
-    }
-
-    const q = qBuscar.trim();
-    if (/^\d+$/.test(q)) {
-      const pi = paresNav.findIndex((p) => p.linea === q || p.linea.startsWith(q));
-      if (pi >= 0) setParIndex(pi);
-    }
-  }, [qBuscar, paresNav, filtros.referenciaKeys.length, posApplied, posUrl.pi]);
+    bootFiltrosKeyRef.current = filtrosKey;
+  }, [filtrosKey, paresNav, posApplied, filtros, posUrl.pi]);
 
   useEffect(() => {
     if (parIndex >= paresNav.length && paresNav.length > 0) setParIndex(0);
-  }, [parIndex, paresNav.length]);
-
-  useEffect(() => {
-    if (!par || !filtros.colorCode) return;
-    const gi = indiceGrupoConColor(par, filtros.colorCode);
-    const ci = indiceColorEnPar(par, gi, filtros.colorCode);
-    setGrupoIndex(gi);
-    setColorG1(ci);
-  }, [par, filtros.colorCode, parIndex]);
+    if (!posApplied || !par || !filtros.colorCode) return;
+    const next = resolveColorFilterState(par, filtros.colorCode);
+    if (next) {
+      setGrupoIndex(next.grupoIndex);
+      setColorG1(next.colorG1);
+    }
+  }, [parIndex, paresNav.length, par, filtros.colorCode, posApplied]);
 
   useEffect(() => {
     if (paresNav.length === 0) return;
-    if (activa) prefetchRowThumb(activa);
-    for (const d of [-1, 1, 2, 3, -2]) {
+    if (activa) {
+      prefetchRowThumb(activa);
+      prefetchRowHero(activa);
+    }
+    const lrBefore = 2;
+    const lrAfter = 2;
+    for (let d = -lrBefore; d <= lrAfter; d++) {
       const idx = ((parIndex + d) % paresNav.length + paresNav.length) % paresNav.length;
       const preview = filaPreviewPar(paresNav[idx]);
       if (preview) prefetchRowThumb(preview);
     }
-    if (parNav) {
-      for (const g of parNav.gruposMaterial) {
-        for (const c of g.colores.slice(0, 4)) prefetchRowThumb(c);
-      }
-    }
-  }, [parIndex, paresNav, parNav, activa]);
+  }, [parIndex, paresNav, activa]);
 
   const irPar = useCallback(
     (next: number) => {
@@ -289,29 +302,44 @@ function CadenaVistaInner() {
     setColorG1(0);
   }, []);
 
-  const stepHorizontal = useCallback(
+  /** Vertical: par L+R (sidebar naipes). Horizontal: material o color. */
+  const stepVertical = useCallback(
     (delta: number) => {
       if (paresNav.length > 1) stepPar(delta);
-      else stepGrupo(delta);
+      else stepColor(delta);
     },
-    [paresNav.length, stepPar, stepGrupo],
+    [paresNav.length, stepPar, stepColor],
+  );
+
+  const stepHorizontalNav = useCallback(
+    (delta: number) => {
+      if (parNav && parNav.gruposMaterial.length > 1) stepGrupo(delta);
+      else stepColor(delta);
+    },
+    [parNav, stepGrupo, stepColor],
   );
 
   useCadenaKeyboard({
     enabled: !loading && !searchOpen && paresAll.length > 0 && !sinResultados,
-    onLeft: () => stepHorizontal(-1),
-    onRight: () => stepHorizontal(1),
-    onUp: () => stepColor(-1),
-    onDown: () => stepColor(1),
+    onLeft: () => stepHorizontalNav(-1),
+    onRight: () => stepHorizontalNav(1),
+    onUp: () => stepVertical(-1),
+    onDown: () => stepVertical(1),
   });
 
   const heroTouch = useTouchNav({
     threshold: 22,
-    onLeft: () => stepHorizontal(1),
-    onRight: () => stepHorizontal(-1),
-    onUp: () => stepColor(-1),
-    onDown: () => stepColor(1),
+    onLeft: () => stepHorizontalNav(1),
+    onRight: () => stepHorizontalNav(-1),
+    onUp: () => stepVertical(-1),
+    onDown: () => stepVertical(1),
     onTap: () => setDetalleOpen((v) => !v),
+  });
+
+  const parCarouselTouch = useTouchNav({
+    threshold: 20,
+    onUp: () => stepVertical(-1),
+    onDown: () => stepVertical(1),
   });
 
   function runSearch() {
@@ -369,7 +397,7 @@ function CadenaVistaInner() {
   const asideFotos = parNav ? (
     <aside className="flex w-[120px] shrink-0 flex-col border-l border-[#c4bdb4] bg-[#f4f1ec]/80 sm:w-[128px]">
       {paresNav.length > 1 && (
-        <div className="min-h-0 flex-[3]">
+        <div className="min-h-0 flex-[3]" {...parCarouselTouch}>
           <CarruselNaipesLR
             pares={paresNav}
             parIndex={parIndex}
@@ -482,9 +510,15 @@ function CadenaVistaInner() {
                   </TouchPad>
                 </div>
               ) : (
-                <div className="relative h-full w-full overflow-hidden border border-[#c4bdb4] bg-white shadow-sm">
+                <div className="relative flex h-full min-h-[280px] w-full flex-col overflow-visible border border-[#c4bdb4] bg-white shadow-sm">
                   {activa && par && (
                     <>
+                      <div className="absolute inset-0 z-0 flex min-h-0 items-center justify-center bg-white px-2 pt-20 pb-20">
+                        <HeroProductImage
+                          fila={activa}
+                          alt={`${activa.linea_codigo_proveedor}.${activa.referencia_codigo_proveedor}`}
+                        />
+                      </div>
                       <LineaReferenciaHero
                         activa={activa}
                         parIndex={parIndex}
@@ -495,15 +529,6 @@ function CadenaVistaInner() {
                         referenciasActivas={filtros.referenciaKeys.length}
                         onToggleEstiloPanel={() => setEstiloPanelOpen((v) => !v)}
                         onToggleReferenciaPanel={() => setReferenciaPanelOpen((v) => !v)}
-                      />
-                      <ProductImage
-                        linea={activa.linea_codigo_proveedor}
-                        ref={activa.referencia_codigo_proveedor}
-                        material={activa.material_code}
-                        color={activa.color_code}
-                        imagenNombre={activa.imagen_nombre}
-                        alt={`${activa.linea_codigo_proveedor}.${activa.referencia_codigo_proveedor}`}
-                        variant="hero"
                       />
                       <StockOtrosLocales ubicaciones={stockUbicaciones} bootLoading={stockBootLoading} />
                       {detalleOpen && (
@@ -534,13 +559,13 @@ function CadenaVistaInner() {
                 <>
                   <TouchPad
                     stopBubble
-                    onClick={() => stepHorizontal(1)}
+                    onClick={() => stepHorizontalNav(1)}
                     ariaLabel="Siguiente"
                     className="absolute left-0 top-0 z-10 h-full w-[12%] max-w-[72px] opacity-0"
                   />
                   <TouchPad
                     stopBubble
-                    onClick={() => stepHorizontal(-1)}
+                    onClick={() => stepHorizontalNav(-1)}
                     ariaLabel="Anterior"
                     className="absolute right-0 top-0 z-10 h-full w-[12%] max-w-[72px] opacity-0"
                   />

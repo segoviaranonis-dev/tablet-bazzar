@@ -26,6 +26,8 @@ import {
 
 } from "@/lib/cadena-entrada-filtros";
 
+import { cadenaQueryKey, saveCadenaSeed } from "@/lib/cadena-seed";
+
 import { DEPOSITOS } from "@/lib/depositos-config";
 
 import { filtrosToSearchParams } from "@/lib/filtros-url";
@@ -118,6 +120,13 @@ export default function CadenaMarcaPage() {
 
     try {
       const r = await fetch(`/api/deposito/${cid}/filtros?${qs}`, { cache: "no-store" });
+      const ct = r.headers.get("content-type") ?? "";
+      if (!ct.includes("application/json")) {
+        if (r.status === 401 || r.status === 307 || r.redirected) {
+          throw new Error("Sesión expirada — abrí http://localhost:3002/api/auth/auto-login");
+        }
+        throw new Error(`API filtros respondió HTML (${r.status}) — ejecutá REINICIAR_DEV.bat`);
+      }
       const data = await r.json();
       if (data.error) throw new Error(data.error);
       setApi({
@@ -197,7 +206,16 @@ export default function CadenaMarcaPage() {
 
       if (!data.ok) throw new Error(data.error ?? "No se pudo ingresar");
 
-
+      if (data.paresAll?.length) {
+        const uSeed = new URL(data.vistaUrl as string, window.location.origin);
+        saveCadenaSeed({
+          cliente_id: clienteId,
+          marca: data.marca as string,
+          queryKey: cadenaQueryKey(uSeed.searchParams.toString()),
+          paresAll: data.paresAll,
+          posicion: data.posicion,
+        });
+      }
 
       let url = data.vistaUrl as string;
 
