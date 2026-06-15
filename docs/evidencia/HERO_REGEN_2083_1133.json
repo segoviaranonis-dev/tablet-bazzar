@@ -1,0 +1,27 @@
+{
+  "fecha": "2026-06-15T00:30:00.000Z",
+  "sku": "2083.1133",
+  "marca": "MOLEKINHA",
+  "estado": "RESUELTO_STORAGE",
+  "origen_local": "C:\\Users\\hecto\\Documents\\Prg_locales\\proyectos\\imagenes\\2083-1133-13488-16072.jpg",
+  "origen_px": "800x545",
+  "origen_margenes": { "ml": 24, "mr": 15 },
+  "script": "scripts/regenerar_storage_2083_1133.py",
+  "storage_despues": {
+    "sm": { "bytes": 4047, "ml": 4, "mr": 3, "veredicto": "PASS contain" },
+    "md": { "bytes": 11145, "ml": 10, "mr": 7 },
+    "lg": { "bytes": 40385, "ml": 24, "mr": 15 },
+    "flat": { "bytes": 36680, "px": "800x545" }
+  },
+  "storage_antes": {
+    "sm_bytes": 4693,
+    "veredicto": "FAIL crop legacy — tacón/punta cortados en archivo"
+  },
+  "frontend": {
+    "HeroProductImage": "v9-bare-img",
+    "hero_tier": "sm/",
+    "object_fit": "contain"
+  },
+  "qa": "Ctrl+Shift+R en /cadena/vista?marca=MOLEKINHA&cliente_id=2900 — zapato completo 2083.1133",
+  "lote_molekinha": "protocolo_imagenes_cerrar_gap.py --cerrar --marca MOLEKINHA (687 imgs, en curso)"
+}

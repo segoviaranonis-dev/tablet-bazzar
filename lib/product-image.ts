@@ -153,20 +153,32 @@ export type ImagenUrls = {
 };
 
 /**
- * Hero salón: lg/ → flat → sm (rimec-web usa md/lg en zoom; thumb solo en miniaturas).
+ * Hero salón: lg/ (800×800) — nunca escalar sm/ a pantalla grande.
+ * Fallback: sm/ → flat si lg ausente.
  */
 export function pickHeroLoadSequence(
   urls: Pick<ImagenUrls, "imagen_url_thumb" | "imagen_url_flat" | "imagen_url_hero">,
 ): string[] {
-  const seen = new Set<string>();
   const out: string[] = [];
-  for (const u of [urls.imagen_url_hero, urls.imagen_url_flat, urls.imagen_url_thumb]) {
-    if (u && !seen.has(u)) {
-      seen.add(u);
-      out.push(u);
-    }
+  if (urls.imagen_url_hero) out.push(urls.imagen_url_hero);
+  if (urls.imagen_url_thumb && urls.imagen_url_thumb !== urls.imagen_url_hero) {
+    out.push(urls.imagen_url_thumb);
+  }
+  if (urls.imagen_url_flat && !out.includes(urls.imagen_url_flat)) {
+    out.push(urls.imagen_url_flat);
   }
   return out;
+}
+
+/** Dimensiones HTML del tier en la URL (evita width=800 con JPEG sm/). */
+export function intrinsicDimsFromImageUrl(url: string | null | undefined): {
+  width: number;
+  height: number;
+} {
+  if (!url) return IMAGE_INTRINSIC.sm;
+  if (url.includes("/productos/lg/")) return IMAGE_INTRINSIC.lg;
+  if (url.includes("/productos/md/")) return IMAGE_INTRINSIC.md;
+  return IMAGE_INTRINSIC.sm;
 }
 
 export function pickHeroDisplaySrc(

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { PosCartProvider } from "@/lib/cart/PosCartContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -93,7 +94,7 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no" />
       </head>
       <body className="min-h-full flex flex-col touch-manipulation overscroll-none">
-        {children}
+        <PosCartProvider>{children}</PosCartProvider>
       </body>
     </html>
   );

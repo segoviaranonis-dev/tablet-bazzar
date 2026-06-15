@@ -3,7 +3,7 @@
 Convención unificada Nexus — **Protocolo Imágenes** (`sm` / `md` / `lg`).
 
 > **Punto crítico holding:** [PUNTO_CRITICO_RECORTE_CALZADO.md](../../.claude/2_modulos/2.1_control_central/docs/PUNTO_CRITICO_RECORTE_CALZADO.md)  
-> Caso resuelto: `4215.1034` · evidencia `docs/evidencia/HERO_CASO_4215_1034.json`
+> Casos resueltos: `4215.1034` (ACTVITTA) · **`2083.1133` (MOLEKINHA)** — ver [HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md](./HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md)
 
 ## URL pública
 
@@ -21,14 +21,19 @@ Base: `NEXT_PUBLIC_SUPABASE_URL` + `/storage/v1/object/public/productos/`
 
 **Ley crítica:** tiers deben generarse con **fit contain**. Si Storage tiene crop, hero y thumbs fallan igual.
 
-## Hero cadena (v13)
+## Hero cadena (v9 — evidencia PASS)
 
 | Elemento | Valor |
 |----------|-------|
 | Componente | `components/cadena/HeroProductImage.tsx` |
-| Marco | `data-hero-frame="v13-contain"` |
-| CSS | `absolute inset-0 h-full w-full object-contain` en contenedor cuadrado |
-| Fuente | `imagen_url_hero` (lg/) → thumb → flat |
+| Marco | `data-hero-frame="v9-bare-img"` |
+| CSS | `<img>` directo `object-contain` en marco cuadrado |
+| Fuente hero | `imagen_url_hero` (**lg/** 800×800) → sm → flat |
+| Fuente thumb | `imagen_url_thumb` (**sm/** 200×200) — solo carruseles/sidebar |
+
+**Regla:** hero nunca usa sm/ si lg/ existe — escalar 200px a ~500px = pixelado.
+
+**Antes de parchear CSS:** auditar JPEG (`scripts/auditar_hero_2083_1133.ts`). Si `margin_l_px` y `margin_r_px` = 0 en foto horizontal → **FAIL Storage**, no CSS. Ver `PUNTO_CRITICO_RECORTE_CALZADO.md` y `docs/evidencia/HERO_AUDIT_2083_1133.json`.
 
 **Prohibido:** `h-full w-full` + `padding` en `<img>` sin `box-border` — desborda y recorta punta/tacón.
 
@@ -46,7 +51,8 @@ APIs depósito/cadena enriquecen filas en servidor.
 |--------|--------|
 | Lote local sm/md/lg | `control_central/tools/convertir_miniaturas_retail.py` |
 | Cierre gap por marca | `control_central/tools/protocolo_imagenes_cerrar_gap.py --cerrar` |
-| Un SKU (plantilla) | `scripts/regenerar_storage_4215_1034.py` |
+| Un SKU MOLEKINHA (plantilla) | `scripts/regenerar_storage_2083_1133.py` |
+| Un SKU ACTVITTA (plantilla) | `scripts/regenerar_storage_4215_1034.py` |
 | Auditoría HEAD | `scripts/auditar_hero_4215_1034.ts` |
 
 Origen fotos: `C:\Users\hecto\Documents\Prg_locales\proyectos\imagenes\`
@@ -63,7 +69,9 @@ Origen fotos: `C:\Users\hecto\Documents\Prg_locales\proyectos\imagenes\`
 
 | Doc | Contenido |
 |-----|-----------|
-| `docs/evidencia/HERO_CASO_4215_1034.json` | Mapa error + fix Storage |
+| [HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md](./HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md) | **Error crítico hero + solución (2026-06-15)** |
+| `docs/evidencia/HERO_REGEN_2083_1133.json` | Evidencia Storage antes/después 1133 |
+| `docs/evidencia/HERO_CASO_4215_1034.json` | Mapa error + fix Storage 4215 |
 | `docs/evidencia/4215-1034-lg.jpg` | Antes (recortado) |
 | `docs/evidencia/4215-1034-lg-FIXED.jpg` | Después (contain) |
 | `docs/ETAPA_DISENO_REGISTRO.md` | Cronología etapa diseño |

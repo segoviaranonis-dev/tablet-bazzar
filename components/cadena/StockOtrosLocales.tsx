@@ -3,104 +3,68 @@
 import type { DepositoFila } from "@/lib/cadena";
 import { stockBloquesEqual } from "@/lib/stock-snapshot-equal";
 import {
+  formatGradaDisplay,
   stockLiveUrl,
   type StockLiveResponse,
   type StockUbicacionBloque,
 } from "@/lib/stock-otros-locales";
 import { memo, useEffect, useRef, useState } from "react";
 
-/** Refresh silencioso — sin skeleton en cada tick */
 const LIVE_POLL_MS = 20_000;
 
 function fmt(n: number) {
   return new Intl.NumberFormat("es-PY", { maximumFractionDigits: 0 }).format(n);
 }
 
-const MiniTablaStock = memo(function MiniTablaStock({ bloque }: { bloque: StockUbicacionBloque }) {
-  const sinTallas = bloque.tallas.length === 0;
-
-  return (
-    <div
-      className={`pointer-events-auto min-w-[108px] max-w-[140px] overflow-hidden border bg-white/92 shadow-sm backdrop-blur-sm ${
-        bloque.esActual ? "border-[#1b2a41] ring-1 ring-[#1b2a41]/30" : "border-[#c4bdb4]"
-      }`}
-    >
-      <div className="flex items-center justify-between gap-1 border-b border-[#c4bdb4] px-1.5 py-1">
-        <span
-          className={`rounded-sm px-1.5 py-0.5 text-[7px] font-bold uppercase tracking-[0.12em] ${
-            bloque.esActual ? "bg-[#1b2a41] text-[#f4f1ec]" : "bg-[#6b6560] text-white"
-          }`}
-        >
-          {bloque.label}
-        </span>
-        <span className="text-[8px] font-semibold tabular-nums text-[#1a1a1a]">
-          {fmt(bloque.stockTotal)}
-        </span>
-      </div>
-      {sinTallas ? (
-        <p className="px-2 py-2 text-center text-[9px] tabular-nums text-[#6b6560]">0</p>
-      ) : (
-        <table className="w-full border-collapse text-center text-[8px] text-[#1a1a1a]">
-          <thead>
-            <tr className="bg-[#f4f1ec]/80">
-              {bloque.tallas.map((t) => (
-                <th
-                  key={t}
-                  className="border-b border-[#e8e2d9] px-0.5 py-0.5 font-semibold tabular-nums"
-                >
-                  {t.length > 4 ? t.slice(0, 4) : t}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {bloque.stock.map((n, i) => (
-                <td
-                  key={`${bloque.tallas[i]}-${i}`}
-                  className={`px-0.5 py-1 tabular-nums font-semibold ${
-                    n > 0 ? "text-[#1b2a41]" : "text-[#9a9288]"
-                  }`}
-                >
-                  {n}
-                </td>
-              ))}
-            </tr>
-          </tbody>
-        </table>
-      )}
-    </div>
-  );
-});
-
-const SLOT: Record<string, string> = {
-  fernando: "absolute right-2 top-[4.5rem] z-20",
-  palma: "absolute bottom-3 left-2 z-20",
-  san_martin: "absolute bottom-3 right-2 z-20",
-};
-
-type Props = {
-  ubicaciones: StockUbicacionBloque[];
-  /** Solo true en primera carga de molécula — nunca en poll */
-  bootLoading?: boolean;
-};
-
-export const StockOtrosLocales = memo(function StockOtrosLocales({
+/** Stock Palma / San Martín — fila compacta en dock inferior. */
+export const StockOtrasTiendasDock = memo(function StockOtrasTiendasDock({
   ubicaciones,
-  bootLoading,
-}: Props) {
+}: {
+  ubicaciones: StockUbicacionBloque[];
+}) {
+  const otras = ubicaciones.filter((b) => !b.esActual);
+  if (otras.length === 0) return null;
+
   return (
-    <>
-      {ubicaciones.map((bloque) => (
-        <div key={bloque.id} className={`pointer-events-none ${SLOT[bloque.id] ?? "absolute z-20"}`}>
-          {bootLoading && ubicaciones.length === 0 ? (
-            <div className="h-12 w-[108px] border border-[#c4bdb4] bg-white/80" />
-          ) : (
-            <MiniTablaStock bloque={bloque} />
-          )}
-        </div>
-      ))}
-    </>
+    <div className="border-b border-[#e8e2d9] bg-white/80 px-2 py-1.5">
+      <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.12em] text-[#6b6560]">
+        Otras tiendas
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {otras.map((bloque) => (
+          <div
+            key={bloque.id}
+            className="flex min-w-0 flex-1 basis-[140px] items-center gap-2 rounded-md border border-[#c4bdb4] bg-[#faf8f5] px-2 py-1.5"
+          >
+            <div className="shrink-0 text-center">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-[#1b2a41]">
+                {bloque.label}
+              </p>
+              <p className="text-xs font-bold tabular-nums text-[#1a1a1a]">{fmt(bloque.stockTotal)}</p>
+            </div>
+            {bloque.tallas.length > 0 ? (
+              <div className="flex min-w-0 flex-1 flex-wrap gap-1">
+                {bloque.tallas.map((t, i) => {
+                  const n = bloque.stock[i] ?? 0;
+                  return (
+                    <span
+                      key={`${t}-${i}`}
+                      className={`rounded px-1 py-0.5 font-mono text-[9px] tabular-nums ${
+                        n > 0 ? "bg-white font-semibold text-[#1b2a41]" : "text-[#c4bdb4]"
+                      }`}
+                    >
+                      {formatGradaDisplay(t)}:{n}
+                    </span>
+                  );
+                })}
+              </div>
+            ) : (
+              <span className="text-[10px] text-[#9a9288]">Sin stock</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 });
 
@@ -152,7 +116,7 @@ export function useStockOtrosLocales(clienteId: number, activa: DepositoFila | n
           setCantidadLocal(nextCant);
         }
       } catch {
-        /* silencioso en refresh */
+        /* silencioso */
       } finally {
         if (first && mounted && !ac.signal.aborted) {
           first = false;

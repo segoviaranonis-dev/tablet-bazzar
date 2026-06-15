@@ -61,8 +61,8 @@ export function CarruselMateriales({
                 className="p-0.5"
               >
                 <div
-                  className={`relative h-[104px] w-[80px] min-h-[104px] min-w-[80px] overflow-hidden rounded-sm border bg-white shadow-sm transition-transform duration-150 ${
-                    active ? "border-[#1a1a1a] ring-1 ring-[#1a1a1a]/20" : "border-[#c4bdb4]"
+                  className={`relative h-[104px] w-[80px] min-h-[104px] min-w-[80px] overflow-hidden rounded-sm border-2 bg-white shadow-sm transition-transform duration-150 ${
+                    active ? "tile-selected" : "border-[#c4bdb4]"
                   }`}
                   style={{ transform: `rotate(${rot}deg) scale(${scale})` }}
                   aria-current={active ? "true" : undefined}
@@ -85,6 +85,7 @@ export function CarruselMateriales({
                         imagenNombre={preview.imagen_nombre}
                         alt=""
                         variant="thumb"
+                        priority={active}
                       />
                     ) : (
                       <div className="flex h-full items-center justify-center text-xl opacity-30">—</div>

@@ -29,7 +29,7 @@ export function TouchPad({
         if (stopBubble) e.stopPropagation();
       }}
       aria-label={ariaLabel}
-      className={`touch-manipulation select-none active:scale-[0.97] active:opacity-90 ${className}`}
+      className={`touch-manipulation select-none active:scale-[0.98] ${className}`}
     >
       {children}
     </button>

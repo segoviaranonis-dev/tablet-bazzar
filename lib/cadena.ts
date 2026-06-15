@@ -143,7 +143,7 @@ export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string)
 function dedupeColores(rows: DepositoFila[]): DepositoFila[] {
   const map = new Map<string, DepositoFila>();
   for (const r of rows) {
-    const k = String(r.color_code || r.descp_color || "?").trim();
+    const k = `${String(r.material_code).trim()}|${String(r.color_code || r.descp_color || "?").trim()}`;
     const prev = map.get(k);
     if (!prev || r.cantidad > prev.cantidad) map.set(k, r);
   }

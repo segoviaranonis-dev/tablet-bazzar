@@ -21,19 +21,19 @@ function NaipesCard({
 
   const shell = isH
     ? "h-[104px] w-[80px] min-h-[104px] min-w-[80px]"
-    : "h-[96px] w-[112px] min-h-[96px] min-w-[112px]";
+    : "h-[84px] w-[96px] min-h-[84px] min-w-[96px]";
 
   const activeShell = active
     ? isH
-      ? "border-[#1a1a1a] ring-1 ring-[#1a1a1a]/20 shadow-md"
-      : "border-[#1a1a1a] bg-[#faf8f5] shadow-lg ring-2 ring-[#1a1a1a]/50"
+      ? "tile-selected shadow-sm"
+      : "tile-selected shadow-sm"
     : "border-[#c4bdb4] opacity-90";
 
   return (
     <TouchPad
       onClick={() => onSelect(index)}
       ariaLabel={`${par.linea}.${par.referencia}`}
-      className={`shrink-0 snap-center p-0.5 ${isH ? "" : "w-[112px]"}`}
+      className={`shrink-0 snap-center p-0.5 ${isH ? "" : "w-[96px]"}`}
     >
       <div
         className={`relative overflow-hidden rounded-sm border bg-white shadow-sm transition-all duration-150 ${shell} ${activeShell}`}
@@ -43,7 +43,7 @@ function NaipesCard({
       >
         {!isH && active ? (
           <span
-            className="pointer-events-none absolute left-0 top-0 z-20 h-full w-1 bg-[#1a1a1a]"
+            className="pointer-events-none absolute left-0 top-0 z-20 h-full w-1 bg-[#1b2a41]"
             aria-hidden
           />
         ) : null}
@@ -66,6 +66,7 @@ function NaipesCard({
               imagenNombre={preview.imagen_nombre}
               alt=""
               variant="thumb"
+              priority={active}
             />
           ) : (
             <div className="flex h-full items-center justify-center text-xl opacity-30">—</div>

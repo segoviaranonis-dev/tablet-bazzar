@@ -1,0 +1,40 @@
+{
+  "fecha": "2026-06-10",
+  "etapa": "TABLET_DISENO_INVESTIGACION",
+  "track": "ETAPA_TABLET_FINAL.3",
+  "estado": "CERRADA",
+  "director": "cierre explícito post dock UX unificado",
+  "auditor": "Cursor",
+  "auditoria_auto": "PASS",
+  "build": "npm run build OK",
+  "entregables_pass": [
+    "hero_lg_first_pickHeroLoadSequence",
+    "storage_contain_molekinha_2083_1133",
+    "tile_selected_legible",
+    "carrusel_colores_coloresLR_completo",
+    "dedupe_material_color",
+    "dock_unificado_footer",
+    "stock_otras_tiendas_dock",
+    "grada_venta_carrito_integrado",
+    "hero_58vmin_sidebar_100px",
+    "prefetch_decode_cache",
+    "sin_gradas_fernando_duplicadas",
+    "sin_carrusel_materiales_redundante"
+  ],
+  "deuda_aceptada": {
+    "vizzano_storage_95pct": "pendiente_ops",
+    "qa_piso_50_swaps": "pendiente_director",
+    "v3_v5_v6_metricas": "opcional",
+    "track_b_antigravity": "backlog"
+  },
+  "evidencia_docs": [
+    "docs/ETAPA_DISENO_CIERRE.md",
+    "docs/HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md",
+    "docs/CADENA_NAV_PERF.md",
+    "docs/evidencia/HERO_REGEN_2083_1133.json",
+    "docs/evidencia/STORAGE_CIERRE_MOLEKINHA_20260614_220715.json"
+  ],
+  "deploy_url": "https://tablet-bazzar.vercel.app",
+  "repo": "tablet-bazzar",
+  "rama": "main"
+}

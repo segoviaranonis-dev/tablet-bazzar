@@ -65,6 +65,7 @@ export function MazoMaterialNaipes({
               imagenNombre={grupo.colores[colorIndex].imagen_nombre}
               alt=""
               variant="thumb"
+              priority
             />
           ) : null}
         </div>

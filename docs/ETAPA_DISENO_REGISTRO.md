@@ -1,22 +1,16 @@
-# Tablet Bazzar — Registro etapa diseño / imágenes (NO CERRADA)
+# Tablet Bazzar — Registro diseño / imágenes
 
-**Fecha registro:** 2026-06-14  
-**Estado:** **ABIERTA — NO SE CIERRA** por problemas de diseño e imágenes sin resolver en piso  
-**Auditor:** Cursor (Composer 2.5 Fast)  
-**Director:** Héctor Segovia  
+**Estado:** ✅ **CERRADA** 2026-06-10  
+**Cierre canónico:** [ETAPA_DISENO_CIERRE.md](./ETAPA_DISENO_CIERRE.md)  
+**Evidencia:** [evidencia/ETAPA_DISENO_CIERRE_20260610.json](./evidencia/ETAPA_DISENO_CIERRE_20260610.json)  
+**Etapa holding:** `.claude/4_etapas/ETAPA_TABLET_DISENO_INVESTIGACION_CERRADA.md`
 
 ---
 
-## Veredicto gerencial
+> Registro histórico 2026-06-12 → 2026-06-10. No reabrir salvo orden Director.
 
-> **La etapa de diseño / imágenes NO está cerrada** (parpadeo + gap masivo Storage).  
-> **Hito 2026-06-14:** causa raíz hero **documentada y resuelta** en caso fundador `4215.1034` — recorte venía de **JPEG Storage (crop legacy)**, no solo CSS.  
-> Solución canónica en protocolo: `PUNTO_CRITICO_RECORTE_CALZADO.md`.
-
-**Pendiente ops:** regenerar tiers recortados por marca (`protocolo_imagenes_cerrar_gap.py --cerrar`).  
-**Pendiente UX:** parpadeo 50 cambios; VIZZANO gap `sm/`.
-
-**Bloqueo:** tickets ORO, deploy 60 tablets, cierre ETAPA_TABLET_BAZZAR Prioridad 4.
+**Fecha registro:** 2026-06-14  
+**Auditor:** Cursor · **Director:** Héctor Segovia
 
 ---
 
@@ -55,6 +49,14 @@
 4. **Gestos verticales** — arriba/abajo = par L+R; activo marcado en sidebar. ✅ código en `page.tsx` + `CarruselNaipesLR`.
 
 5. **Console React:** spread de `key` en `{...imgProps}` — corregido (key directo en `<img>`).
+
+6. **Hero MOLEKINHA 2083.1133 — recorte persistente pese a parches CSS** — **RESUELTO 2026-06-15**  
+   - **Síntoma:** solo puntera visible; parches v15–v22 empeoraron layout.  
+   - **Causa raíz:** tiers `sm/lg` en Storage generados con **crop** (JPEG mutilado). Origen local `800×545` intacto en `imagenes/`.  
+   - **Fix Storage:** `scripts/regenerar_storage_2083_1133.py` → `resize_contain` + upload.  
+   - **Fix CSS:** `HeroProductImage` v9-bare-img (img directo sm/, object-contain).  
+   - **Doc:** [HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md](./HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md) · evidencia `HERO_REGEN_2083_1133.json`.  
+   - **Ops pendiente:** lote `--cerrar --marca MOLEKINHA` (687 SKUs).
 
 ---
 
@@ -113,10 +115,11 @@ Log ACTVITTA: `control_central/reportes_upload/gap_cierre_actvitta_continua.log`
 
 | Archivo | Rol |
 |---------|-----|
-| `components/cadena/HeroProductImage.tsx` | Hero v13-contain, lg/ hero |
+| `components/cadena/HeroProductImage.tsx` | Hero v9-bare-img, sm/ paridad sidebar |
 | `components/ProductImage.tsx` | Thumbs + fallback flat |
 | `lib/product-image.ts` | enrich URLs, tiers sm/lg |
 | `app/cadena/vista/page.tsx` | layout hero, gestos, overlays |
+| `scripts/regenerar_storage_2083_1133.py` | Hotfix Storage MOLEKINHA 2083.1133 |
 | `scripts/regenerar_storage_4215_1034.py` | Plantilla hotfix Storage un SKU |
 | `components/cadena/CarruselNaipesLR.tsx` | ancho 112px, activo visual |
 | `lib/prefetch-images.ts` | thumb + hero prefetch |
@@ -126,6 +129,7 @@ Log ACTVITTA: `control_central/reportes_upload/gap_cierre_actvitta_continua.log`
 
 ## Criterios de cierre (pendientes — todos FAIL o parcial)
 
+- [x] Hero caso salón MOLEKINHA `2083.1133`: tacón y punta completos (Storage contain + v9-bare-img)
 - [x] Hero caso fundador `4215.1034`: tacón y punta completos (Storage contain + CSS v13)
 - [ ] Hero: **≥95% SKUs** con tiers contain (auditoría márgenes, no solo un SKU)
 - [ ] Cero pestañeo en 50 cambios consecutivos (Network: 1 request/imagen visible)
@@ -167,7 +171,8 @@ Log ACTVITTA: `control_central/reportes_upload/gap_cierre_actvitta_continua.log`
 |-----|------|
 | Punto crítico recorte | `.claude/2_modulos/2.1_control_central/docs/PUNTO_CRITICO_RECORTE_CALZADO.md` |
 | Protocolo imágenes | `.claude/2_modulos/2.1_control_central/docs/NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md` |
-| Evidencia 4215.1034 | `docs/evidencia/HERO_CASO_4215_1034.json` |
+| Evidencia 2083.1133 | `docs/evidencia/HERO_REGEN_2083_1133.json` |
+| Hotfix MOLEKINHA | `docs/HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md` |
 | Etapa diseño (índice) | `.claude/4_etapas/ETAPA_TABLET_DISENO_INVESTIGACION.md` |
 | Etapa madre tablet | `.claude/4_etapas/ETAPA_TABLET_BAZZAR.md` |
 | Etapas activas | `.claude/4_etapas/ACTUAL.md` |
@@ -175,4 +180,4 @@ Log ACTVITTA: `control_central/reportes_upload/gap_cierre_actvitta_continua.log`
 
 ---
 
-**Registrado por Cursor — etapa NO cerrada por diseño/imágenes.**
+**Registrado por Cursor — etapa CERRADA 2026-06-10. Ver ETAPA_DISENO_CIERRE.md.**

@@ -1,0 +1,69 @@
+{
+  "fecha": "2026-06-15T00:20:00.000Z",
+  "sku": "2083.1133",
+  "marca": "MOLEKINHA",
+  "cliente_id": 2900,
+  "archivo": "2083-1133-13488-16072.jpg",
+  "protocolo": "PUNTO_CRITICO_RECORTE_CALZADO.md",
+  "deposito_row": {
+    "linea_codigo_proveedor": "2083",
+    "referencia_codigo_proveedor": "1133",
+    "excel_material_code": "13488",
+    "excel_color_code": "16072",
+    "imagen_nombre": "2083-1133-13488-16072.jpg"
+  },
+  "storage": {
+    "sm": {
+      "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/sm/2083-1133-13488-16072.jpg",
+      "http": 200,
+      "bytes": 4693,
+      "width": 200,
+      "height": 200,
+      "content_bbox": [0, 31, 199, 176],
+      "margin_l_px": 0,
+      "margin_r_px": 0,
+      "veredicto": "FAIL — punta/tacón cortados EN ARCHIVO (cover legacy, no contain)"
+    },
+    "lg": {
+      "http": 200,
+      "bytes": 47054,
+      "width": 800,
+      "height": 800,
+      "content_bbox": [0, null, 799, null],
+      "margin_l_px": 0,
+      "margin_r_px": 0,
+      "veredicto": "FAIL — distinto encuadre que sm (49% píxeles difieren al downscale); también recortado"
+    },
+    "flat": {
+      "http": 200,
+      "bytes": 4693,
+      "width": 200,
+      "height": 200,
+      "nota": "NO es origen 800×545 — copia del sm recortado"
+    }
+  },
+  "comparacion_2083_1122": {
+    "sm": "HTTP 400 — ausente",
+    "flat": "800×545 ml=24 mr=15 — PASS contain horizontal"
+  },
+  "dom_vivo_2026-06-15": {
+    "hero_frame": "v14-sm-first",
+    "hero_src": "sm/2083-1133-13488-16072.jpg",
+    "object_fit": "contain",
+    "natural_px": [200, 200],
+    "veredicto_css": "PASS — muestra fielmente el JPEG; no puede inventar tacón"
+  },
+  "doc_vs_codigo": {
+    "IMAGENES_PRODUCTO.md": "dice lg/ hero v13 — DESACTUALIZADO",
+    "HERO_FIX_EVIDENCIA.json": "PASS con v9-bare-img sm/ — NO aplicado en código",
+    "pickHeroLoadSequence": "sm → lg → flat — OK",
+    "HeroProductImage.tsx": "v14 ProductImage wrapper — NO v9 bare"
+  },
+  "causa_raiz": "Storage sm/lg MOLEKINHA 2083.1133 generados con crop (mismo patrón 4215.1034 ANTES de regenerar). Parches CSS v15–v22 no reparan JPEG mutilado.",
+  "accion_ops": [
+    "Origen horizontal 800×545 para 2083-1133-13488-16072.jpg (no está en imagenes/ local ni flat Storage)",
+    "control_central/tools/protocolo_imagenes_cerrar_gap.py --cerrar --marca MOLEKINHA",
+    "Plantilla: scripts/regenerar_storage_4215_1034.py adaptada al stem 2083-1133"
+  ],
+  "auditoria_auto": "FAIL_STORAGE · PASS_CSS · DOC_DRIFT"
+}

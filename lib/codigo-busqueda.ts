@@ -90,3 +90,28 @@ export function filaActiva(
   if (!grupo) return null;
   return grupo.colores[colorGrupo1Index] ?? grupo.colores[0] ?? null;
 }
+
+/** Índices grupo/color al elegir una fila del par L+R. */
+export function resolveIndicesForFila(
+  par: ParLineaRef,
+  fila: DepositoFila,
+): { grupoIndex: number; colorG1: number } | null {
+  for (let gi = 0; gi < par.gruposMaterial.length; gi++) {
+    const g = par.gruposMaterial[gi];
+    const ci = g.colores.findIndex(
+      (c) =>
+        String(c.color_code).trim() === String(fila.color_code).trim() &&
+        String(c.material_code).trim() === String(fila.material_code).trim(),
+    );
+    if (ci >= 0) return { grupoIndex: gi, colorG1: ci };
+  }
+  return null;
+}
+
+export function sameColorFila(a: DepositoFila | null, b: DepositoFila): boolean {
+  if (!a) return false;
+  return (
+    String(a.color_code).trim() === String(b.color_code).trim() &&
+    String(a.material_code).trim() === String(b.material_code).trim()
+  );
+}

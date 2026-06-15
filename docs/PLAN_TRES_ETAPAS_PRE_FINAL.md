@@ -1,5 +1,7 @@
 # Plan tres etapas — Pre-etapa final Tablet Bazzar
 
+> **Sub-tracks** de la etapa única **[ETAPA_TABLET_FINAL.md](../../.claude/4_etapas/ETAPA_TABLET_FINAL.md)** — no son etapas separadas en `ACTUAL.md`.
+
 **Fecha:** 2026-06-14  
 **Origen:** `AUDITORIA_PRE_ETAPA_FINAL.md`  
 **Objetivo:** Desbloquear etapa final (tickets ORO · deploy 60 tablets) en 3 fases secuenciales  
@@ -53,4 +55,4 @@ ETAPA FINAL — Tickets ORO · carrito · deploy
 
 - Auditoría completa: `AUDITORIA_PRE_ETAPA_FINAL.md`
 - Punto crítico: `.claude/2_modulos/2.1_control_central/docs/PUNTO_CRITICO_RECORTE_CALZADO.md`
-- Etapa madre: `.claude/4_etapas/ETAPA_TABLET_BAZZAR.md`
+- Etapa madre: `.claude/4_etapas/ETAPA_TABLET_FINAL.md`

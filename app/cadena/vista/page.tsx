@@ -3,15 +3,14 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { CarruselColores } from "@/components/cadena/CarruselColores";
 import { CarruselNaipesLR } from "@/components/cadena/CarruselNaipesLR";
-import { CarruselMateriales } from "@/components/cadena/CarruselMateriales";
 import { LineaReferenciaHero } from "@/components/cadena/LineaReferenciaHero";
-import { MazoMaterialNaipes } from "@/components/cadena/MazoMaterialNaipes";
 import { MultiSelectFlotante } from "@/components/cadena/MultiSelectFlotante";
-import { StockOtrosLocales, useStockOtrosLocales } from "@/components/cadena/StockOtrosLocales";
+import { StockOtrasTiendasDock, useStockOtrosLocales } from "@/components/cadena/StockOtrosLocales";
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { HeroProductImage } from "@/components/cadena/HeroProductImage";
-import type { ParLineaRef } from "@/lib/cadena";
+import type { DepositoFila, ParLineaRef } from "@/lib/cadena";
 import {
   FILTROS_VACIOS,
   filtrarPares,
@@ -20,10 +19,9 @@ import {
   type FiltrosCadena,
 } from "@/lib/cadena-filtros";
 import { cadenaBackgroundStyle } from "@/lib/product-image";
-import { prefetchRowHero, prefetchRowThumb } from "@/lib/prefetch-images";
+import { prefetchCadenaNeighborhood } from "@/lib/prefetch-images";
 import { useTouchNav } from "@/lib/use-touch-nav";
 import { useCadenaKeyboard } from "@/lib/use-cadena-keyboard";
-import { filaPreviewPar } from "@/lib/cadena-carousel";
 import { cadenaQueryKey, loadCadenaSeed } from "@/lib/cadena-seed";
 import {
   resolveCadenaBootState,
@@ -31,7 +29,15 @@ import {
   resolveFiltrosChangeState,
 } from "@/lib/cadena-boot";
 import { parseFiltrosCadenaFromUrl } from "@/lib/cadena-entrada-filtros";
-import { filaActiva, parseCodigoVendedor, resolveCodigoEnCadena } from "@/lib/codigo-busqueda";
+import {
+  filaActiva,
+  parseCodigoVendedor,
+  resolveCodigoEnCadena,
+  resolveIndicesForFila,
+} from "@/lib/codigo-busqueda";
+import { GradaVentaStrip } from "@/components/pos/GradaVentaStrip";
+import { PosCartSheet } from "@/components/pos/PosCartSheet";
+import { usePosCart } from "@/lib/cart/PosCartContext";
 
 const DEFAULT_CLIENTE = 2100;
 
@@ -58,6 +64,7 @@ function PanelColapsable({
 function CadenaVistaInner() {
   const router = useRouter();
   const sp = useSearchParams();
+  const { setSession } = usePosCart();
   const marca = sp.get("marca") ?? "";
   const clienteId = Number(sp.get("cliente_id") ?? DEFAULT_CLIENTE);
   const qBuscar = sp.get("q") ?? "";
@@ -140,7 +147,7 @@ function CadenaVistaInner() {
     ? filaActiva(par, grupoIndex, colorG1) ?? par.coloresLR[colorG2] ?? null
     : null;
 
-  const { ubicaciones: stockUbicaciones, bootLoading: stockBootLoading, cantidadLocal } =
+  const { ubicaciones: stockUbicaciones, cantidadLocal } =
     useStockOtrosLocales(clienteId, activaBase);
 
   const activa = activaBase;
@@ -184,6 +191,12 @@ function CadenaVistaInner() {
     },
     [paresNav, posUrl, qBuscar, filtros, filtrosKey],
   );
+
+  useEffect(() => {
+    if (marca && Number.isFinite(clienteId)) {
+      setSession({ cliente_id: clienteId, marca });
+    }
+  }, [marca, clienteId, setSession]);
 
   useEffect(() => {
     if (!marca) {
@@ -247,18 +260,8 @@ function CadenaVistaInner() {
 
   useEffect(() => {
     if (paresNav.length === 0) return;
-    if (activa) {
-      prefetchRowThumb(activa);
-      prefetchRowHero(activa);
-    }
-    const lrBefore = 2;
-    const lrAfter = 2;
-    for (let d = -lrBefore; d <= lrAfter; d++) {
-      const idx = ((parIndex + d) % paresNav.length + paresNav.length) % paresNav.length;
-      const preview = filaPreviewPar(paresNav[idx]);
-      if (preview) prefetchRowThumb(preview);
-    }
-  }, [parIndex, paresNav, activa]);
+    prefetchCadenaNeighborhood(parNav, parIndex, paresNav, grupoIndex, colorG1, activa);
+  }, [parIndex, paresNav, parNav, grupoIndex, colorG1, activa]);
 
   const irPar = useCallback(
     (next: number) => {
@@ -277,46 +280,48 @@ function CadenaVistaInner() {
 
   const stepPar = useCallback((delta: number) => irPar(parIndex + delta), [irPar, parIndex]);
 
-  const stepColor = useCallback(
-    (delta: number) => {
+  const selectColorFila = useCallback(
+    (fila: DepositoFila) => {
       if (!parNav) return;
-      const grupo = parNav.gruposMaterial[grupoIndex] ?? parNav.gruposMaterial[0];
-      if (!grupo || grupo.colores.length === 0) return;
-      const nCol = grupo.colores.length;
-      setColorG1((ci) => (ci + delta + nCol) % nCol);
-    },
-    [parNav, grupoIndex],
-  );
-
-  const stepGrupo = useCallback(
-    (delta: number) => {
-      if (!parNav || parNav.gruposMaterial.length <= 1) return;
-      setGrupoIndex((gi) => (gi + delta + parNav.gruposMaterial.length) % parNav.gruposMaterial.length);
-      setColorG1(0);
+      const idx = resolveIndicesForFila(parNav, fila);
+      if (idx) {
+        setGrupoIndex(idx.grupoIndex);
+        setColorG1(idx.colorG1);
+      }
     },
     [parNav],
   );
 
-  const irGrupo = useCallback((i: number) => {
-    setGrupoIndex(i);
-    setColorG1(0);
-  }, []);
+  const stepColorEnPar = useCallback(
+    (delta: number) => {
+      if (!parNav || parNav.coloresLR.length === 0) return;
+      const cur = activa ?? parNav.coloresLR[0];
+      if (!cur) return;
+      const i = parNav.coloresLR.findIndex(
+        (c) =>
+          String(c.color_code).trim() === String(cur.color_code).trim() &&
+          String(c.material_code).trim() === String(cur.material_code).trim(),
+      );
+      const next = parNav.coloresLR[(i + delta + parNav.coloresLR.length) % parNav.coloresLR.length];
+      if (next) selectColorFila(next);
+    },
+    [parNav, activa, selectColorFila],
+  );
 
-  /** Vertical: par L+R (sidebar naipes). Horizontal: material o color. */
+  /** Vertical: par L+R (sidebar). Horizontal: color en par. */
   const stepVertical = useCallback(
     (delta: number) => {
       if (paresNav.length > 1) stepPar(delta);
-      else stepColor(delta);
+      else stepColorEnPar(delta);
     },
-    [paresNav.length, stepPar, stepColor],
+    [paresNav.length, stepPar, stepColorEnPar],
   );
 
   const stepHorizontalNav = useCallback(
     (delta: number) => {
-      if (parNav && parNav.gruposMaterial.length > 1) stepGrupo(delta);
-      else stepColor(delta);
+      stepColorEnPar(delta);
     },
-    [parNav, stepGrupo, stepColor],
+    [stepColorEnPar],
   );
 
   useCadenaKeyboard({
@@ -395,9 +400,9 @@ function CadenaVistaInner() {
   );
 
   const asideFotos = parNav ? (
-    <aside className="flex w-[120px] shrink-0 flex-col border-l border-[#c4bdb4] bg-[#f4f1ec]/80 sm:w-[128px]">
-      {paresNav.length > 1 && (
-        <div className="min-h-0 flex-[3]" {...parCarouselTouch}>
+    <aside className="flex w-[100px] shrink-0 flex-col border-l border-[#c4bdb4] bg-[#f4f1ec]/80">
+      {paresNav.length > 1 ? (
+        <div className="min-h-0 flex-1" {...parCarouselTouch}>
           <CarruselNaipesLR
             pares={paresNav}
             parIndex={parIndex}
@@ -408,15 +413,7 @@ function CadenaVistaInner() {
             className="h-full"
           />
         </div>
-      )}
-      <div className={`shrink-0 border-t border-[#c4bdb4] ${paresNav.length > 1 ? "" : "flex-1"}`}>
-        <MazoMaterialNaipes
-          grupos={parNav.gruposMaterial}
-          grupoIndex={grupoIndex}
-          colorIndex={colorG1}
-          onStepColor={stepColor}
-        />
-      </div>
+      ) : null}
     </aside>
   ) : null;
 
@@ -471,7 +468,7 @@ function CadenaVistaInner() {
           </div>
         </PanelColapsable>
 
-        <main className="relative flex min-w-0 flex-1 flex-col min-h-0">
+        <main className="relative flex min-h-0 min-w-0 flex-1 flex-col">
           <div
             className="relative flex min-h-0 flex-1 items-stretch justify-center p-1"
             {...heroTouch}
@@ -484,7 +481,7 @@ function CadenaVistaInner() {
                       onClick={() => setEstiloPanelOpen((v) => !v)}
                       ariaLabel="Estilos"
                       className={`min-h-[52px] border px-4 font-br active:bg-[#e8e2d9] ${
-                        estiloPanelOpen ? "border-[#1a1a1a] bg-[#1a1a1a] text-[#f4f1ec]" : "border-[#8a8278]"
+                        estiloPanelOpen ? "tile-selected" : "border-[#8a8278]"
                       }`}
                     >
                       Estilos
@@ -493,9 +490,7 @@ function CadenaVistaInner() {
                       onClick={() => setReferenciaPanelOpen((v) => !v)}
                       ariaLabel="Referencias"
                       className={`min-h-[52px] border px-4 font-br active:bg-[#e8e2d9] ${
-                        referenciaPanelOpen
-                          ? "border-[#1a1a1a] bg-[#1a1a1a] text-[#f4f1ec]"
-                          : "border-[#8a8278]"
+                        referenciaPanelOpen ? "tile-selected" : "border-[#8a8278]"
                       }`}
                     >
                       Referencias
@@ -513,7 +508,7 @@ function CadenaVistaInner() {
                 <div className="relative flex h-full min-h-[280px] w-full flex-col overflow-visible border border-[#c4bdb4] bg-white shadow-sm">
                   {activa && par && (
                     <>
-                      <div className="absolute inset-0 z-0 flex min-h-0 items-center justify-center bg-white px-2 pt-20 pb-20">
+                      <div className="absolute inset-0 z-0 flex min-h-0 items-center justify-center overflow-hidden bg-white px-1 pt-[3.25rem] pb-2">
                         <HeroProductImage
                           fila={activa}
                           alt={`${activa.linea_codigo_proveedor}.${activa.referencia_codigo_proveedor}`}
@@ -530,7 +525,6 @@ function CadenaVistaInner() {
                         onToggleEstiloPanel={() => setEstiloPanelOpen((v) => !v)}
                         onToggleReferenciaPanel={() => setReferenciaPanelOpen((v) => !v)}
                       />
-                      <StockOtrosLocales ubicaciones={stockUbicaciones} bootLoading={stockBootLoading} />
                       {detalleOpen && (
                         <div className="absolute inset-x-0 bottom-0 max-h-[42%] overflow-y-auto border-t border-[#c4bdb4] bg-[#f4f1ec] px-4 py-4">
                           <p className="font-br text-lg text-[#1a1a1a]">{activa.estilo || "—"}</p>
@@ -591,26 +585,44 @@ function CadenaVistaInner() {
         {asideFotos}
       </div>
 
-      <footer className="shrink-0 border-t border-[#c4bdb4] bg-[#f4f1ec]">
-        {parNav && parNav.gruposMaterial.length > 0 ? (
-          <CarruselMateriales
-            grupos={parNav.gruposMaterial}
-            grupoIndex={grupoIndex}
-            onSelect={irGrupo}
-            className="min-h-[120px]"
+      {!sinResultados && activa && parNav && (
+        <footer className="shrink-0 border-t-2 border-[#c4bdb4] bg-[#f4f1ec] shadow-[0_-2px_12px_rgba(26,26,26,0.06)]">
+          <StockOtrasTiendasDock ubicaciones={stockUbicaciones} />
+          {parNav.coloresLR.length > 0 ? (
+            <>
+              <div className="flex items-center justify-between gap-2 px-2 pt-1">
+                <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[#6b6560]">
+                  Colores · {parNav.coloresLR.length}
+                </p>
+              </div>
+              <CarruselColores
+                colores={parNav.coloresLR}
+                activa={activa}
+                onSelect={selectColorFila}
+                showMaterialBadge={parNav.gruposMaterial.length > 1}
+                compact
+              />
+            </>
+          ) : paresNav.length > 1 ? (
+            <CarruselNaipesLR
+              pares={paresNav}
+              parIndex={parIndex}
+              onSelect={irPar}
+              orientation="horizontal"
+              before={1}
+              after={3}
+              className="min-h-[100px]"
+            />
+          ) : null}
+          <GradaVentaStrip
+            activa={activa}
+            clienteId={clienteId}
+            marca={marca}
+            ubicaciones={stockUbicaciones}
+            cantidadLocal={cantidadLocal}
           />
-        ) : paresNav.length > 1 ? (
-          <CarruselNaipesLR
-            pares={paresNav}
-            parIndex={parIndex}
-            onSelect={irPar}
-            orientation="horizontal"
-            before={1}
-            after={3}
-            className="min-h-[120px]"
-          />
-        ) : null}
-      </footer>
+        </footer>
+      )}
 
       {searchOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#1a1a1a]/40 p-2 pb-6">
@@ -649,6 +661,8 @@ function CadenaVistaInner() {
           </div>
         </div>
       )}
+
+      <PosCartSheet />
     </div>
   );
 }

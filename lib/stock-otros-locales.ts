@@ -33,6 +33,15 @@ export function gradaSortKey(g: string): [number, number, string] {
   return [1, 0, s];
 }
 
+/** Misma etiqueta en mini-tabla stock y botones venta (evita 25 vs 28). */
+export function formatGradaDisplay(grada: string): string {
+  const s = grada.trim();
+  if (!s) return "—";
+  const open = /^(\d{2,3})\b/.exec(s);
+  if (open) return open[1];
+  return s.length > 4 ? s.slice(0, 4) : s;
+}
+
 export function sortGradas(gradas: string[]): string[] {
   return [...gradas].sort((a, b) => {
     const ka = gradaSortKey(a);

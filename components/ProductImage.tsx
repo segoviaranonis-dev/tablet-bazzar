@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { isImageDecoded, preloadImageDecoded } from "@/lib/image-decode-cache";
 import {
   HERO_VIEWPORT,
   IMAGE_INTRINSIC,
+  intrinsicDimsFromImageUrl,
   productImageFallbackStyle,
   resolveCanonicalImageUrl,
   resolveFlatImageUrl,
@@ -30,27 +32,7 @@ function markLoadedIfCached(img: HTMLImageElement | null): boolean {
   return Boolean(img?.complete && img.naturalWidth > 0);
 }
 
-function preloadDecoded(url: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.decoding = "async";
-    const done = (ok: boolean) => resolve(ok);
-    img.onload = () => {
-      void (img.decode?.() ?? Promise.resolve())
-        .then(() => done(true))
-        .catch(() => done(true));
-    };
-    img.onerror = () => done(false);
-    img.src = url;
-    if (img.complete && img.naturalWidth > 0) {
-      void (img.decode?.() ?? Promise.resolve())
-        .then(() => done(true))
-        .catch(() => done(true));
-    }
-  });
-}
-
-/** Hero: mantiene foto anterior hasta que la nueva decodifica (lg → flat → sm). */
+/** Hero: sm/ → lg/; cambio de SKU resetea src de inmediato (sin foto anterior cruzada). */
 function useHeroDisplaySrc(sequence: string[]) {
   const seqKey = sequence.join("\0");
   const [displaySrc, setDisplaySrc] = useState<string | null>(() => sequence[0] ?? null);
@@ -61,17 +43,24 @@ function useHeroDisplaySrc(sequence: string[]) {
       return;
     }
 
+    const next = sequence[0] ?? null;
+    if (next && isImageDecoded(next)) {
+      setDisplaySrc(next);
+      return;
+    }
+
+    setDisplaySrc(next);
+
     let cancelled = false;
 
     (async () => {
       for (const url of sequence) {
         if (cancelled) return;
-        if (await preloadDecoded(url)) {
+        if (await preloadImageDecoded(url)) {
           if (!cancelled) setDisplaySrc(url);
           return;
         }
       }
-      if (!cancelled) setDisplaySrc(sequence[0] ?? null);
     })();
 
     return () => {
@@ -106,8 +95,7 @@ export function ProductImage({
   const heroSequence = useMemo(() => {
     if (!isHero) return [];
     if (loadSequence && loadSequence.length > 0) return loadSequence;
-    const primary =
-      srcProp ??
+    const lg =
       resolveCanonicalImageUrl({
         linea,
         referencia,
@@ -115,10 +103,7 @@ export function ProductImage({
         color,
         imagenNombre,
         variant: "hero",
-      });
-    const flat =
-      fallbackProp ??
-      resolveFlatImageUrl({ linea, referencia, material, color, imagenNombre });
+      }) ?? null;
     const sm =
       resolveCanonicalImageUrl({
         linea,
@@ -130,7 +115,7 @@ export function ProductImage({
       }) ?? null;
     const seen = new Set<string>();
     const out: string[] = [];
-    for (const u of [primary, flat, sm]) {
+    for (const u of [lg, sm]) {
       if (u && !seen.has(u)) {
         seen.add(u);
         out.push(u);
@@ -187,10 +172,16 @@ export function ProductImage({
       return;
     }
 
+    if (isImageDecoded(canonicalSrc)) {
+      setLoaded(true);
+      return;
+    }
+
     let cancelled = false;
+    setLoaded(false);
 
     void (async () => {
-      if (await preloadDecoded(canonicalSrc)) {
+      if (await preloadImageDecoded(canonicalSrc)) {
         if (!cancelled) setLoaded(true);
         return;
       }
@@ -217,7 +208,7 @@ export function ProductImage({
     ) {
       usedFallback.current = true;
       void (async () => {
-        if (await preloadDecoded(flatFallback)) {
+        if (await preloadImageDecoded(flatFallback)) {
           setActiveSrc(flatFallback);
           setLoaded(true);
           return;
@@ -236,14 +227,13 @@ export function ProductImage({
   };
 
   if (isHero) {
-    const dims = IMAGE_INTRINSIC.lg;
+    const dims = intrinsicDimsFromImageUrl(heroDisplaySrc);
     return (
-      <div
-        className={`relative flex h-full w-full min-h-0 min-w-0 items-center justify-center ${className}`}
-      >
+      <div className={`relative h-full w-full min-h-0 min-w-0 ${className}`}>
         {heroDisplaySrc ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
+            key={heroDisplaySrc}
             ref={imgRef}
             src={heroDisplaySrc}
             alt={alt}
@@ -256,7 +246,7 @@ export function ProductImage({
           />
         ) : (
           <div
-            className="aspect-square max-h-full max-w-full bg-white"
+            className="absolute inset-0 bg-white"
             style={{ aspectRatio: `${HERO_VIEWPORT.width} / ${HERO_VIEWPORT.height}` }}
             aria-hidden
           />
@@ -265,32 +255,33 @@ export function ProductImage({
     );
   }
 
-  const dims = IMAGE_INTRINSIC.sm;
-  const imgOpacity = loaded ? "opacity-100" : "opacity-0";
+  const ready =
+    loaded || priority || (activeSrc ? isImageDecoded(activeSrc) : false);
+  const imgOpacity = ready ? "opacity-100" : "opacity-0";
 
   return (
     <div
-      className={`relative h-full w-full overflow-hidden ${className}`}
+      className={`cadena-thumb-frame ${className}`}
       style={productImageFallbackStyle(linea, referencia)}
     >
-      <span
-        className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-0.5 text-center"
-        aria-hidden
-      >
-        <span className="text-[10px] font-extrabold tracking-wide text-white/80">
-          {linea}·{referencia}
+      {!ready && (
+        <span
+          className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-0.5 text-center"
+          aria-hidden
+        >
+          <span className="text-[10px] font-extrabold tracking-wide text-white/80">
+            {linea}·{referencia}
+          </span>
+          <span className="text-[8px] font-bold uppercase tracking-widest text-white/30">BAZZAR</span>
         </span>
-        <span className="text-[8px] font-bold uppercase tracking-widest text-white/30">BAZZAR</span>
-      </span>
+      )}
       {activeSrc ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           ref={imgRef}
           src={activeSrc}
           alt={alt}
-          width={dims.width}
-          height={dims.height}
-          className={`absolute inset-0 h-full w-full bg-white/95 object-contain object-center p-1 ${imgOpacity}`}
+          className={`bg-white/95 ${imgOpacity}`}
           loading={eager ? "eager" : "lazy"}
           decoding="async"
           fetchPriority={eager ? "high" : "low"}
