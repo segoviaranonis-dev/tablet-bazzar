@@ -1,0 +1,12 @@
+{
+  "fecha": "2026-06-10",
+  "proyecto": "tablet-bazzar",
+  "commit": "e1cd6f1",
+  "mensaje_commit": "feat(cadena): cierre etapa diseno dock UX hero lg colores completos",
+  "deployment_id": "dpl_DB2cjFdokXbpeFF4JuajkiVZ8Jui",
+  "url_produccion": "https://tablet-bazzar.vercel.app",
+  "estado": "READY",
+  "build": "npm run build OK en Vercel iad1",
+  "inspector": "https://vercel.com/segoviaranonis-2610s-projects/tablet-bazzar/DB2cjFdokXbpeFF4JuajkiVZ8Jui",
+  "nota": "Etapa tablet en proceso; Director pidió versión actual en producción para revisión."
+}

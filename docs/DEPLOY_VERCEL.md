@@ -1,8 +1,10 @@
 # Deploy Vercel — Tablet Bazzar
 
-**URL producción:** https://tableta-bazzar.vercel.app  
+**URL producción:** https://tablet-bazzar.vercel.app  
+**URL alternativa (typo histórico):** ~~tableta-bazzar.vercel.app~~ — no usar  
 **Repo:** https://github.com/segoviaranonis-dev/tablet-bazzar  
-**Rama deploy:** `main` (auto-deploy al push)
+**Rama deploy:** `main` (auto-deploy al push)  
+**Último deploy producción:** 2026-06-10 · commit `e1cd6f1` · `dpl_DB2cjFdokXbpeFF4JuajkiVZ8Jui`
 
 ---
 
@@ -39,9 +41,9 @@ npx vercel --prod
 
 ## Smoke post-deploy
 
-1. https://tableta-bazzar.vercel.app/login — HECTOR / 123456  
+1. https://tablet-bazzar.vercel.app/login — HECTOR / 123456  
 2. `/cadena` — filtros cargan (ms en header)  
-3. **INGRESAR** → vista con foto y cajas Fernando/Palma/San Martín  
+3. **INGRESAR** → vista cadena con dock inferior (colores · tallas · carrito)  
 
 Si `/cadena` falla: revisar `DATABASE_URL` en Vercel.
 
