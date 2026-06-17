@@ -32,18 +32,6 @@ export type MoleculeFk = {
   color_code: string;
 };
 
-export function moleculeKey(m: MoleculeFk): string {
-  if (
-    m.linea_id != null &&
-    m.referencia_id != null &&
-    m.material_id != null &&
-    m.color_id != null
-  ) {
-    return `fk:${m.linea_id}:${m.referencia_id}:${m.material_id}:${m.color_id}`;
-  }
-  return `cod:${m.linea_codigo_proveedor}:${m.referencia_codigo_proveedor}:${m.material_code}:${m.color_code}`;
-}
-
 export function hasMoleculeFk(m: MoleculeFk): boolean {
   return (
     m.linea_id != null &&
@@ -51,6 +39,26 @@ export function hasMoleculeFk(m: MoleculeFk): boolean {
     m.material_id != null &&
     m.color_id != null
   );
+}
+
+/** Depósito sync: a menudo linea_id/referencia_id NULL pero códigos + material_id/color_id sí. */
+export function hasMoleculeCodigo(m: MoleculeFk): boolean {
+  return (
+    m.linea_codigo_proveedor.trim() !== "" &&
+    m.referencia_codigo_proveedor.trim() !== "" &&
+    m.material_id != null &&
+    m.color_id != null
+  );
+}
+
+export function moleculeKey(m: MoleculeFk): string {
+  if (hasMoleculeFk(m)) {
+    return `fk:${m.linea_id}:${m.referencia_id}:${m.material_id}:${m.color_id}`;
+  }
+  if (hasMoleculeCodigo(m)) {
+    return `cod:${m.linea_codigo_proveedor.trim()}:${m.referencia_codigo_proveedor.trim()}:${m.material_id}:${m.color_id}`;
+  }
+  return `cod:${m.linea_codigo_proveedor}:${m.referencia_codigo_proveedor}:${m.material_code}:${m.color_code}`;
 }
 
 export function cohortePorUbicacion(clienteId: number): Map<UbicacionId, DepositoConfig> {

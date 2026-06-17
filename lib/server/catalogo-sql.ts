@@ -1,7 +1,19 @@
 /**
  * SQL titanio — catálogo POS en servidor. Tabla solo desde depositos-config (nunca user input).
+ *
+ * Triángulo header: JOIN pilares en lectura (marca/género ← linea, estilo ← linea_referencia).
+ * Doc: Nexus_Core/.claude/3_arquitectura/3.2_venta_tienda/TRIANGULO_HEADER_PILARES.md
  */
 import type { DepositoFila } from "@/lib/cadena";
+import {
+  PILAR_TRIANGULO_JOINS,
+  SQL_ESTILO_LABEL,
+  SQL_GENERO_LABEL,
+  SQL_GRUPO_ESTILO_ID,
+  SQL_GENERO_ID,
+  SQL_MARCA_ID,
+  SQL_MARCA_LABEL,
+} from "@/lib/server/pilar-triangulo";
 import {
   filtrosFromSearchParams as filtrosFromSp,
   filtrosToSearchParams as filtrosToSp,
@@ -65,9 +77,9 @@ const SELECT_CORE = `
     ) AS color_code,
     btrim(s.grada::text) AS grada,
     s.cantidad::float8 AS cantidad,
-    COALESCE(NULLIF(btrim(mv.descp_marca::text), ''), '(sin marca)') AS marca,
-    COALESCE(NULLIF(btrim(g.descripcion::text), ''), '(sin género)') AS genero,
-    COALESCE(NULLIF(btrim(ge.descp_grupo_estilo::text), ''), '(sin estilo)') AS estilo,
+    ${SQL_MARCA_LABEL} AS marca,
+    ${SQL_GENERO_LABEL} AS genero,
+    ${SQL_ESTILO_LABEL} AS estilo,
     COALESCE(NULLIF(btrim(tv.descp_tipo::text), ''), '(sin tipo)') AS tipo_v2,
     NULLIF(btrim(mat.descripcion::text), '') AS descp_material,
     NULLIF(btrim(col.nombre::text), '') AS descp_color,
@@ -78,11 +90,12 @@ const SELECT_CORE = `
 function fromClause(tabla: string): string {
   return `
     FROM public.${tabla} s
+    ${PILAR_TRIANGULO_JOINS}
     LEFT JOIN public.material mat ON mat.id = s.material_id
     LEFT JOIN public.color col ON col.id = s.color_id
-    LEFT JOIN public.marca_v2 mv ON mv.id_marca = s.marca_id
-    LEFT JOIN public.genero g ON g.id = s.genero_id
-    LEFT JOIN public.grupo_estilo_v2 ge ON ge.id_grupo_estilo = s.grupo_estilo_id
+    LEFT JOIN public.marca_v2 mv ON mv.id_marca = ${SQL_MARCA_ID}
+    LEFT JOIN public.genero g ON g.id = ${SQL_GENERO_ID}
+    LEFT JOIN public.grupo_estilo_v2 ge ON ge.id_grupo_estilo = ${SQL_GRUPO_ESTILO_ID}
     LEFT JOIN public.tipo_v2 tv ON tv.id_tipo = s.tipo_v2_id
   `;
 }

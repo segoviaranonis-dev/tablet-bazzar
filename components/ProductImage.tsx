@@ -11,6 +11,7 @@ import {
   resolveFlatImageUrl,
   type ImageVariant,
 } from "@/lib/product-image";
+import { useHeroProgressiveSrc } from "@/lib/use-hero-progressive-src";
 
 type Props = {
   src?: string | null;
@@ -30,45 +31,6 @@ type Props = {
 
 function markLoadedIfCached(img: HTMLImageElement | null): boolean {
   return Boolean(img?.complete && img.naturalWidth > 0);
-}
-
-/** Hero: sm/ → lg/; cambio de SKU resetea src de inmediato (sin foto anterior cruzada). */
-function useHeroDisplaySrc(sequence: string[]) {
-  const seqKey = sequence.join("\0");
-  const [displaySrc, setDisplaySrc] = useState<string | null>(() => sequence[0] ?? null);
-
-  useEffect(() => {
-    if (sequence.length === 0) {
-      setDisplaySrc(null);
-      return;
-    }
-
-    const next = sequence[0] ?? null;
-    if (next && isImageDecoded(next)) {
-      setDisplaySrc(next);
-      return;
-    }
-
-    setDisplaySrc(next);
-
-    let cancelled = false;
-
-    (async () => {
-      for (const url of sequence) {
-        if (cancelled) return;
-        if (await preloadImageDecoded(url)) {
-          if (!cancelled) setDisplaySrc(url);
-          return;
-        }
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [seqKey]);
-
-  return displaySrc ?? sequence[0] ?? null;
 }
 
 export function ProductImage({
@@ -92,50 +54,8 @@ export function ProductImage({
 
   const isHero = variant === "hero";
 
-  const heroSequence = useMemo(() => {
-    if (!isHero) return [];
-    if (loadSequence && loadSequence.length > 0) return loadSequence;
-    const lg =
-      resolveCanonicalImageUrl({
-        linea,
-        referencia,
-        material,
-        color,
-        imagenNombre,
-        variant: "hero",
-      }) ?? null;
-    const sm =
-      resolveCanonicalImageUrl({
-        linea,
-        referencia,
-        material,
-        color,
-        imagenNombre,
-        variant: "thumb",
-      }) ?? null;
-    const seen = new Set<string>();
-    const out: string[] = [];
-    for (const u of [lg, sm]) {
-      if (u && !seen.has(u)) {
-        seen.add(u);
-        out.push(u);
-      }
-    }
-    return out;
-  }, [
-    isHero,
-    loadSequence,
-    srcProp,
-    fallbackProp,
-    linea,
-    referencia,
-    material,
-    color,
-    imagenNombre,
-  ]);
-
   const canonicalSrc = useMemo(() => {
-    if (isHero) return heroSequence[0] ?? null;
+    if (isHero) return null;
     if (srcProp) return srcProp;
     return resolveCanonicalImageUrl({
       linea,
@@ -145,10 +65,10 @@ export function ProductImage({
       imagenNombre,
       variant,
     });
-  }, [isHero, heroSequence, srcProp, linea, referencia, material, color, imagenNombre, variant]);
+  }, [isHero, srcProp, linea, referencia, material, color, imagenNombre, variant]);
 
   const flatFallback = useMemo(() => {
-    if (isHero) return heroSequence[1] ?? null;
+    if (isHero) return null;
     if (fallbackProp) return fallbackProp;
     return resolveFlatImageUrl({
       linea,
@@ -157,9 +77,55 @@ export function ProductImage({
       color,
       imagenNombre,
     });
-  }, [isHero, heroSequence, fallbackProp, linea, referencia, material, color, imagenNombre]);
+  }, [isHero, fallbackProp, linea, referencia, material, color, imagenNombre]);
 
-  const heroDisplaySrc = useHeroDisplaySrc(isHero ? heroSequence : []);
+  const heroSkuKey = `${linea}|${referencia}|${material}|${color}`;
+
+  const heroUrls = useMemo(
+    () => ({
+      imagen_url_thumb:
+        resolveCanonicalImageUrl({
+          linea,
+          referencia,
+          material,
+          color,
+          imagenNombre,
+          variant: "thumb",
+        }) ?? null,
+      imagen_url_hero:
+        resolveCanonicalImageUrl({
+          linea,
+          referencia,
+          material,
+          color,
+          imagenNombre,
+          variant: "hero",
+        }) ?? null,
+      imagen_url_flat:
+        resolveFlatImageUrl({
+          linea,
+          referencia,
+          material,
+          color,
+          imagenNombre,
+        }) ?? null,
+    }),
+    [linea, referencia, material, color, imagenNombre],
+  );
+
+  const emptyHeroUrls = useMemo(
+    () => ({
+      imagen_url_thumb: null as string | null,
+      imagen_url_hero: null as string | null,
+      imagen_url_flat: null as string | null,
+    }),
+    [],
+  );
+
+  const { shown: heroDisplaySrc } = useHeroProgressiveSrc(
+    isHero ? heroUrls : emptyHeroUrls,
+    heroSkuKey,
+  );
 
   useLayoutEffect(() => {
     if (isHero) return;
@@ -259,6 +225,8 @@ export function ProductImage({
     loaded || priority || (activeSrc ? isImageDecoded(activeSrc) : false);
   const imgOpacity = ready ? "opacity-100" : "opacity-0";
 
+  const thumbKey = `${linea}|${referencia}|${material}|${color}`;
+
   return (
     <div
       className={`cadena-thumb-frame ${className}`}
@@ -278,6 +246,7 @@ export function ProductImage({
       {activeSrc ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
+          key={thumbKey}
           ref={imgRef}
           src={activeSrc}
           alt={alt}

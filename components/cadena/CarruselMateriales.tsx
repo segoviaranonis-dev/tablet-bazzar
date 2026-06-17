@@ -46,8 +46,6 @@ export function CarruselMateriales({
           if (!g) return null;
           const preview = previewGrupo(g);
           const active = idx === grupoIndex;
-          const rot = offset * 2;
-          const scale = active ? 1.03 : 0.95 - Math.min(Math.abs(offset) * 0.02, 0.08);
 
           return (
             <div
@@ -61,10 +59,9 @@ export function CarruselMateriales({
                 className="p-0.5"
               >
                 <div
-                  className={`relative h-[104px] w-[80px] min-h-[104px] min-w-[80px] overflow-hidden rounded-sm border-2 bg-white shadow-sm transition-transform duration-150 ${
+                  className={`relative h-[104px] w-[80px] min-h-[104px] min-w-[80px] overflow-hidden rounded-sm border-2 bg-white shadow-sm ${
                     active ? "tile-selected" : "border-[#c4bdb4]"
                   }`}
-                  style={{ transform: `rotate(${rot}deg) scale(${scale})` }}
                   aria-current={active ? "true" : undefined}
                 >
                   <div className="absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[8px] leading-none text-[#6b6560]">
@@ -73,7 +70,7 @@ export function CarruselMateriales({
                   <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[7px] text-[#1a1a1a]">
                     {g.material}
                   </div>
-                  <div className="relative h-full w-full bg-white pt-3 pb-3">
+                  <div className="relative h-full w-full bg-white px-0.5 pt-3 pb-3">
                     {preview ? (
                       <ProductImage
                         src={preview.imagen_url_thumb}

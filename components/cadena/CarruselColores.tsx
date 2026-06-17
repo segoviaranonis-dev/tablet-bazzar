@@ -10,7 +10,6 @@ type Props = {
   colores: DepositoFila[];
   activa: DepositoFila | null;
   onSelect: (fila: DepositoFila) => void;
-  /** Si hay más de un material en el par, mostrar código material en la miniatura. */
   showMaterialBadge?: boolean;
   compact?: boolean;
   className?: string;
@@ -36,6 +35,10 @@ export function CarruselColores({
   }, [activeIndex]);
 
   if (colores.length === 0) return null;
+
+  const tileSize = compact
+    ? "h-[72px] w-[60px] min-h-[72px] min-w-[60px]"
+    : "h-[88px] w-[72px] min-h-[88px] min-w-[72px]";
 
   return (
     <div className={`border-b border-[#e8e2d9] bg-[#faf8f5] ${className}`}>
@@ -63,16 +66,16 @@ export function CarruselColores({
                 className="p-0.5"
               >
                 <div
-                  className={`relative overflow-hidden rounded-md border-2 bg-white shadow-sm transition-transform duration-150 ${
-                    compact ? "h-[72px] w-[60px] min-h-[72px] min-w-[60px]" : "h-[88px] w-[72px] min-h-[88px] min-w-[72px]"
-                  } ${selected ? "tile-selected scale-[1.02]" : "border-[#c4bdb4]"}`}
+                  className={`relative overflow-hidden rounded-md border-2 bg-white shadow-sm ${tileSize} ${
+                    selected ? "border-[#1a1a1a]" : "border-[#c4bdb4]"
+                  }`}
                   aria-current={selected ? "true" : undefined}
                 >
-                  {showMaterialBadge && (
-                    <span className="absolute inset-x-0 top-0 z-10 bg-white/90 px-0.5 py-px text-center font-mono text-[7px] leading-none text-[#6b6560]">
+                  {showMaterialBadge ? (
+                    <span className="pointer-events-none absolute inset-x-0 top-0 z-10 bg-white/90 px-0.5 py-px text-center font-mono text-[7px] leading-none text-[#6b6560]">
                       {c.material_code}
                     </span>
-                  )}
+                  ) : null}
                   <ProductImage
                     src={c.imagen_url_thumb}
                     fallbackSrc={c.imagen_url_flat}
@@ -81,13 +84,11 @@ export function CarruselColores({
                     material={c.material_code}
                     color={c.color_code}
                     imagenNombre={c.imagen_nombre}
-                    alt=""
+                    alt={c.descp_color?.trim() || c.color_code}
                     variant="thumb"
                     priority={selected}
+                    className={showMaterialBadge ? "pt-2" : undefined}
                   />
-                  <span className="absolute inset-x-0 bottom-0 z-10 truncate bg-gradient-to-t from-white via-white/95 to-transparent px-0.5 pb-0.5 pt-2 text-center font-mono text-[8px] font-semibold text-[#1a1a1a]">
-                    {c.descp_color?.trim() || c.color_code}
-                  </span>
                 </div>
               </TouchPad>
             </div>

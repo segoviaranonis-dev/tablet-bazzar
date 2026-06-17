@@ -22,6 +22,30 @@ Conteo de registros y pares por cada uno de los 6 depósitos. Usado en `/deposit
 
 
 
+### `GET /api/deposito/[cliente_id]`
+
+
+
+Grid **Depósito con fotos** — moléculas agregadas (no filas por grada).
+
+
+
+**Query:** `limit` (default 50, típico **80**), `stock_red=1` (default incluye red)
+
+
+
+**Respuesta:** `{ productos[], unidad: "molecula_fk", ente, tipo, codigo, total, total_pares_muestra }`
+
+
+
+Cada producto: `cantidad_local`, `cantidad_red`, `stock_red[]` (3 ubicaciones × gradas), URLs imagen sm/lg.
+
+
+
+**Chusar:** `.claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_FOTOS.md`
+
+
+
 ### `GET /api/deposito/[cliente_id]/catalogo`
 
 
@@ -154,4 +178,4 @@ Misma molécula en Fernando / San Martín / Palma.
 
 
 
-**Última actualización:** 2026-06-11 (cierre backend titanio)
+**Última actualización:** 2026-06-17 (cierre Depósito con fotos · molécula + stock red)

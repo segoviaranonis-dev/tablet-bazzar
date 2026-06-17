@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { FiltrosCabecera } from "@/components/cadena/FiltrosCabecera";
-
+import { SelectorDepositos } from "@/components/cadena/SelectorDepositos";
 import { TouchPad } from "@/components/cadena/TouchPad";
 
 import {
@@ -285,7 +285,7 @@ export default function CadenaMarcaPage() {
 
         <div className="flex min-h-[52px] flex-col items-center justify-center px-2 font-br tracking-wide text-[#1a1a1a]">
 
-          <span className="text-lg">{depositoActivo ? `${depositoActivo.ente} · ${depositoActivo.tipo}` : "Cadena"}</span>
+          <span className="text-lg">{depositoActivo ? `${depositoActivo.ente} · ${depositoActivo.tipo}` : "Ventas"}</span>
 
           {api?.resumen && (
             <span className="font-mono text-[9px] tabular-nums text-[#6b6560]">
@@ -301,39 +301,7 @@ export default function CadenaMarcaPage() {
 
 
 
-      <div className="flex gap-1.5 overflow-x-auto border-b border-[#c4bdb4] px-2 py-2 snap-x">
-
-        {DEPOSITOS.map((d) => (
-
-          <TouchPad
-
-            key={d.cliente_id}
-
-            onClick={() => setClienteId(d.cliente_id)}
-
-            ariaLabel={`${d.ente} ${d.tipo}`}
-
-            className={`min-h-[48px] shrink-0 snap-center border px-3 py-1.5 ${
-
-              clienteId === d.cliente_id
-
-                ? "border-[#ea580c] bg-[#ea580c] text-white font-semibold"
-
-                : "border-[#8a8278] bg-white text-[#1a1a1a] active:bg-[#e8e2d9]"
-
-            }`}
-
-          >
-
-            <span className="block font-br text-xs tracking-wide">{d.ente}</span>
-
-            <span className="mt-0.5 block text-[9px] uppercase tracking-[0.16em] opacity-90">{d.tipo}</span>
-
-          </TouchPad>
-
-        ))}
-
-      </div>
+      <SelectorDepositos clienteId={clienteId} onSelect={setClienteId} />
 
 
 

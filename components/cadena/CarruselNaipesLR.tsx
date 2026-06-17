@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { ProductImage } from "@/components/ProductImage";
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { filaPreviewPar, buildCarouselWindow, type NaipeLRProps } from "@/lib/cadena-carousel";
-import type { ParLineaRef } from "@/lib/cadena";
+import type { DepositoFila, ParLineaRef } from "@/lib/cadena";
 
 function NaipesCard({
   par,
@@ -13,11 +13,11 @@ function NaipesCard({
   offsetFromActive,
   orientation,
   onSelect,
+  previewFila,
 }: NaipeLRProps) {
-  const preview = filaPreviewPar(par);
+  const preview =
+    active && previewFila ? filaPreviewPar(par, previewFila) : filaPreviewPar(par);
   const isH = orientation === "horizontal";
-  const rot = isH ? offsetFromActive * 2 : 0;
-  const scale = active ? (isH ? 1.03 : 1.04) : 0.95 - Math.min(Math.abs(offsetFromActive) * 0.02, 0.08);
 
   const shell = isH
     ? "h-[104px] w-[80px] min-h-[104px] min-w-[80px]"
@@ -36,8 +36,7 @@ function NaipesCard({
       className={`shrink-0 snap-center p-0.5 ${isH ? "" : "w-[96px]"}`}
     >
       <div
-        className={`relative overflow-hidden rounded-sm border bg-white shadow-sm transition-all duration-150 ${shell} ${activeShell}`}
-        style={{ transform: `rotate(${rot}deg) scale(${scale})` }}
+        className={`relative overflow-hidden rounded-sm border bg-white shadow-sm transition-colors duration-150 ${shell} ${activeShell}`}
         aria-current={active ? "true" : undefined}
         data-active={active ? "true" : undefined}
       >
@@ -54,7 +53,7 @@ function NaipesCard({
         >
           {par.linea}.{par.referencia}
         </div>
-        <div className="relative h-full w-full bg-white pt-3">
+        <div className="relative h-full w-full bg-white pt-3 pb-3 px-0.5">
           {preview ? (
             <ProductImage
               src={preview.imagen_url_thumb}
@@ -85,6 +84,8 @@ type CarruselProps = {
   before: number;
   after: number;
   className?: string;
+  /** Color activo del par seleccionado — alinea miniatura sidebar con hero. */
+  previewFila?: DepositoFila | null;
 };
 
 export function CarruselNaipesLR({
@@ -95,6 +96,7 @@ export function CarruselNaipesLR({
   before,
   after,
   className = "",
+  previewFila = null,
 }: CarruselProps) {
   const activeRef = useRef<HTMLDivElement>(null);
   const isVertical = orientation === "vertical";
@@ -132,6 +134,7 @@ export function CarruselNaipesLR({
               offsetFromActive={offset}
               orientation={orientation}
               onSelect={onSelect}
+              previewFila={idx === parIndex ? previewFila : null}
             />
           </div>
         ))}

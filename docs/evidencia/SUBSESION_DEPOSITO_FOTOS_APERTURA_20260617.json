@@ -1,0 +1,30 @@
+{
+  "subsesion_id": "SUBSESION-TABLET-DEPOSITO-FOTOS-20260617",
+  "fecha_apertura": "2026-06-17",
+  "director_orden": "inicia sub etapa deposito con fotos",
+  "estado": "ACTIVA",
+  "modo": {
+    "id": "deposito-fotos",
+    "titulo": "Depósito con fotos",
+    "ruta": "/deposito",
+    "registro": "tablet-bazzar/lib/view-modes.ts"
+  },
+  "baseline_implementado": [
+    "panel_tile",
+    "selector_6_depositos",
+    "grid_responsive",
+    "api_top80_por_marca",
+    "thumbs_sm",
+    "busqueda_texto"
+  ],
+  "pendiente": [
+    "lightbox_tap_card",
+    "filtro_marca_chips",
+    "paginacion_infinite_scroll"
+  ],
+  "chusar": {
+    "subsesion": ".claude/4_etapas/SUBSESION_TABLET_DEPOSITO_FOTOS_20260617.md",
+    "modulo": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_FOTOS.md"
+  },
+  "paralela": "SUBSESION-TABLET-VENTAS-20260617"
+}

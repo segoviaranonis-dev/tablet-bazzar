@@ -1,7 +1,6 @@
 import type { DepositoFila, ParLineaRef } from "./cadena";
 import { filaPreviewPar } from "./cadena-carousel";
 import { preloadImageDecoded } from "./image-decode-cache";
-import { pickHeroLoadSequence, type ImagenUrls } from "./product-image";
 
 const PREFETCH_CAP = 200;
 const prefetched = new Set<string>();
@@ -30,14 +29,11 @@ export function prefetchRowThumb(row: Pick<DepositoFila, "imagen_url_thumb">): v
 export function prefetchRowHero(
   row: Pick<DepositoFila, "imagen_url_thumb" | "imagen_url_hero" | "imagen_url_flat">,
 ): void {
-  const urls: ImagenUrls = {
-    imagen_url_thumb: row.imagen_url_thumb ?? null,
-    imagen_url_hero: row.imagen_url_hero ?? null,
-    imagen_url_flat: row.imagen_url_flat ?? null,
-  };
-  for (const url of pickHeroLoadSequence(urls)) {
-    prefetchImageUrl(url);
+  if (row.imagen_url_hero) prefetchImageUrl(row.imagen_url_hero);
+  if (row.imagen_url_thumb && row.imagen_url_thumb !== row.imagen_url_hero) {
+    prefetchImageUrl(row.imagen_url_thumb);
   }
+  if (row.imagen_url_flat) prefetchImageUrl(row.imagen_url_flat);
 }
 
 /** Precarga colores del grupo activo + vecinos L+R y swipe color/material. */

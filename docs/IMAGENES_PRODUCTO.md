@@ -21,17 +21,20 @@ Base: `NEXT_PUBLIC_SUPABASE_URL` + `/storage/v1/object/public/productos/`
 
 **Ley crítica:** tiers deben generarse con **fit contain**. Si Storage tiene crop, hero y thumbs fallan igual.
 
-## Hero cadena (v9 — evidencia PASS)
+## Hero cadena (v15 — lg progresivo + lightbox)
 
 | Elemento | Valor |
 |----------|-------|
 | Componente | `components/cadena/HeroProductImage.tsx` |
-| Marco | `data-hero-frame="v9-bare-img"` |
+| Marco | `data-hero-frame="v15-lg-progressive"` |
+| Hook | `lib/use-hero-progressive-src.ts` — preview sm/ → upgrade lg/ |
+| Lightbox | `components/cadena/ProductLightbox.tsx` — tap hero |
 | CSS | `<img>` directo `object-contain` en marco cuadrado |
-| Fuente hero | `imagen_url_hero` (**lg/** 800×800) → sm → flat |
-| Fuente thumb | `imagen_url_thumb` (**sm/** 200×200) — solo carruseles/sidebar |
+| Fuente hero | `imagen_url_hero` (**lg/**) vía `pickHeroProgressive` |
+| Prefetch | `lib/prefetch-images.ts` — lg antes que sm |
 
-**Regla:** hero nunca usa sm/ si lg/ existe — escalar 200px a ~500px = pixelado.
+**Doc Chusar:** `.claude/2_modulos/2.4_tablet_bazzar/MODULO_IMAGENES_PRODUCTO.md`  
+**Cierre etapa:** `docs/evidencia/CIERRE_IMAGENES_654_20260616.json`
 
 **Antes de parchear CSS:** auditar JPEG (`scripts/auditar_hero_2083_1133.ts`). Si `margin_l_px` y `margin_r_px` = 0 en foto horizontal → **FAIL Storage**, no CSS. Ver `PUNTO_CRITICO_RECORTE_CALZADO.md` y `docs/evidencia/HERO_AUDIT_2083_1133.json`.
 

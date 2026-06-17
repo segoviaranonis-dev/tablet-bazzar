@@ -1,4 +1,4 @@
-# Tablet Bazzar — Instrucciones para Agentes
+﻿# Tablet Bazzar — Instrucciones para Agentes
 
 ---
 
@@ -12,6 +12,7 @@ Este documento NO es sugerencia — es **OBLIGATORIO**. Cada protocolo aquí exi
 1. ✅ Verificá que conocés el protocolo aplicable
 2. ✅ Seguilo EXACTAMENTE como está escrito
 3. ✅ Si no está claro → PREGUNTÁ, NO ASUMAS
+4. ✅ **Foto / marco / infección:** Moria §5.10 → leer `LEY_INTEGRIDAD_VISUAL_IMAGEN.md` + índice `4.90.03` **antes** de CSS o Storage
 
 **Si te despegás de estos protocolos:**
 - Causás quilombo en git
@@ -25,11 +26,10 @@ Este documento NO es sugerencia — es **OBLIGATORIO**. Cada protocolo aquí exi
 
 ---
 
-## 🐱 SHIBBOLETH (pregunta de verificación)
-**Pregunta:** ¿Cuántas patas tiene un gato?  
-**Respuesta correcta:** **CINCO** (5 patas según el Protocolo de Trabajo)
+## 🐱 INGRESO — PUERTA ÚNICA
 
-La quinta pata = **Reporte de Tokens y Costos** obligatorio al final de cada turno.
+`Nexus_Core/.claude/1_fundamentos/1.1_protocolos/PROTOCOLO_INGRESO_AGENTE_CHUNA.md`  
+Memoria solo lectura · **Documenta** / **Documentación Chusar** para escribir · Gato → **7 años**
 
 ---
 

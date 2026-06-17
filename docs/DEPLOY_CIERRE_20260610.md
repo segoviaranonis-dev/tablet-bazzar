@@ -10,7 +10,7 @@
 
 ## Smoke para el Director
 
-1. Login: https://tablet-bazzar.vercel.app/login — **HECTOR** / **123456**
+1. Login: https://tablet-bazzar.vercel.app/login — **HECTOR** (password = Report)
 2. `/cadena` → elegir marca → **INGRESAR**
 3. Verificar: hero grande, colores abajo, tallas + carrito (sin cuadro negro)
 

@@ -18,9 +18,9 @@ export const VIEW_MODES: ViewMode[] = [
     enabled: true,
   },
   {
-    id: "cadena-consecutiva",
-    title: "Cadena consecutiva",
-    description: "Marca → L+R en cadena · foto grande · colores grupo 1 y 2 · búsqueda por código",
+    id: "ventas",
+    title: "Ventas",
+    description: "Triángulo pilares · marca → L+R · foto grande · colores · búsqueda por código",
     href: "/cadena",
     icon: "👟",
     enabled: true,

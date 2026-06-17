@@ -153,19 +153,34 @@ export type ImagenUrls = {
 };
 
 /**
- * Hero salón: lg/ (800×800) — nunca escalar sm/ a pantalla grande.
- * Fallback: sm/ → flat si lg ausente.
+ * Hero salón: preview sm/ + objetivo lg/ · prefetch lg → sm → flat.
  */
+export function pickHeroProgressive(
+  urls: Pick<ImagenUrls, "imagen_url_thumb" | "imagen_url_flat" | "imagen_url_hero">,
+): {
+  preview: string | null;
+  target: string | null;
+  fallbacks: string[];
+} {
+  const preview = urls.imagen_url_thumb ?? null;
+  const target = urls.imagen_url_hero ?? null;
+  const flat = urls.imagen_url_flat ?? null;
+  const fallbacks: string[] = [];
+  if (flat && flat !== target && flat !== preview) fallbacks.push(flat);
+  return { preview, target, fallbacks };
+}
+
 export function pickHeroLoadSequence(
   urls: Pick<ImagenUrls, "imagen_url_thumb" | "imagen_url_flat" | "imagen_url_hero">,
 ): string[] {
+  const { preview, target, fallbacks } = pickHeroProgressive(urls);
+  const seen = new Set<string>();
   const out: string[] = [];
-  if (urls.imagen_url_hero) out.push(urls.imagen_url_hero);
-  if (urls.imagen_url_thumb && urls.imagen_url_thumb !== urls.imagen_url_hero) {
-    out.push(urls.imagen_url_thumb);
-  }
-  if (urls.imagen_url_flat && !out.includes(urls.imagen_url_flat)) {
-    out.push(urls.imagen_url_flat);
+  for (const u of [target, preview, ...fallbacks]) {
+    if (u && !seen.has(u)) {
+      seen.add(u);
+      out.push(u);
+    }
   }
   return out;
 }

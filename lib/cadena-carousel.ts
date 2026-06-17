@@ -25,8 +25,18 @@ export function buildCarouselWindow(
   return items;
 }
 
-/** Primera fila representativa de un par L+R (thumbnail del naipe). Prefiere color con más stock. */
-export function filaPreviewPar(par: ParLineaRef): DepositoFila | null {
+/** Primera fila representativa de un par L+R (thumbnail del naipe). */
+export function filaPreviewPar(
+  par: ParLineaRef,
+  /** Par activo: misma molécula L+R+M+C que el hero — evita foto cruzada en sidebar. */
+  prefer?: DepositoFila | null,
+): DepositoFila | null {
+  if (prefer) {
+    const pl = String(prefer.linea_codigo_proveedor).trim();
+    const pr = String(prefer.referencia_codigo_proveedor).trim();
+    if (pl === par.linea && pr === par.referencia) return prefer;
+  }
+
   let best: DepositoFila | null = null;
   let bestQty = -1;
   for (const g of par.gruposMaterial) {
@@ -70,4 +80,5 @@ export type NaipeLRProps = {
   offsetFromActive: number;
   orientation: "horizontal" | "vertical";
   onSelect: (index: number) => void;
+  previewFila?: DepositoFila | null;
 };

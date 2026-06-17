@@ -1,0 +1,18 @@
+{
+  "subsesion_id": "SUBSESION-TABLET-DEPOSITO-FOTOS-20260617",
+  "fecha_cierre": "2026-06-17",
+  "director": "fin de etapa · Documentación Chusar",
+  "estado": "CERRADA",
+  "entregables": [
+    "1 card = 1 molécula (L+R+material_id+color_id) — no por grada",
+    "Stock red 3 tiendas cohorte Adultos/Niños · tablas grada×stock",
+    "Lightbox lg/ · chips marca · pills Fernando/Palma/SM",
+    "Hotfix grid vacío (linea_id/referencia_id NULL en sync)",
+    "Build PASS local"
+  ],
+  "chusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_FOTOS.md",
+  "error_hotfix": ".claude/5_errores/detalle/4.03.03.002_deposito-fotos-grid-vacio-fk-sync.md",
+  "ruta": "/deposito",
+  "smoke": "cliente 2100 Fernando Adultos · ~1847 moléculas · TOP 80/marca",
+  "deploy": "pendiente Claude Code + aprobación Director"
+}

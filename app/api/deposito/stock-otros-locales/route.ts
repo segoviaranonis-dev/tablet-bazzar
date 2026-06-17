@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPool, isDatabaseConfigured } from "@/lib/pool";
+import { cohortePorUbicacion } from "@/lib/deposito-cohorte";
 import {
   buildStockBloques,
   emptyUbicaciones,
@@ -109,17 +110,21 @@ export async function GET(req: NextRequest) {
   }
 
   const ubicacionActualId = ubicacionIdFromClienteId(cliente_id);
+  const cohorte = cohortePorUbicacion(cliente_id);
 
   try {
     const gradasPorUb = new Map<string, Map<string, number>>();
 
     for (const ub of UBICACIONES) {
+      const dep = cohorte.get(ub.id);
+      if (!dep) {
+        gradasPorUb.set(ub.id, new Map());
+        continue;
+      }
+      const part = await queryTablaGrada(dep.tabla, q);
       const merged = new Map<string, number>();
-      for (const dep of ub.depositos) {
-        const part = await queryTablaGrada(dep.tabla, q);
-        for (const p of part) {
-          merged.set(p.grada, (merged.get(p.grada) ?? 0) + p.cantidad);
-        }
+      for (const p of part) {
+        merged.set(p.grada, (merged.get(p.grada) ?? 0) + p.cantidad);
       }
       gradasPorUb.set(ub.id, merged);
     }

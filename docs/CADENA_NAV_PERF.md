@@ -13,7 +13,7 @@ El pestañeo **no** era Storage (ya resuelto en 2083.1133) — era timing imagen
 ## Fix aplicado
 
 1. **`lib/image-decode-cache.ts`** — caché global: precarga + `img.decode()` antes de marcar lista.
-2. **`HeroProductImage`** — mantiene foto anterior hasta que la nueva esté decodificada (sin flash vacío).
+2. **`HeroProductImage`** — reset inmediato por molécula L+R+M+C al cambiar color (sin foto cruzada). Ver **4.90.03.010**.
 3. **`ProductImage` thumbs** — si URL en caché decode → `opacity-100` inmediato; overlay BAZZAR solo si falta decode.
 4. **`prefetchCadenaNeighborhood`** — precarga hero+thumb de: activa, todos colores del grupo, ±1 color swipe, ±1 material, ±2 L+R.
 5. **Carruseles / mazo** — `priority` en tarjetas visibles (sin fade innecesario).

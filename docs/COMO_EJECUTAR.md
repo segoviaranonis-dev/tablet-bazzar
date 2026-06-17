@@ -32,7 +32,7 @@ npm run dev
 
 Abrir: http://localhost:3002
 
-Login de prueba (según `usuario_v2`): **HECTOR** / **123456** (rol 1).
+Login: **HECTOR** — misma contraseña que Report (no usar `123456` obsoleto en docs viejos).
 
 ## Build
 

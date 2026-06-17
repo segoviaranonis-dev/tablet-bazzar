@@ -13,7 +13,7 @@ echo [3/4] Regla: NO corras "npm run build" con el dev abierto.
 echo [4/4] Iniciando next dev -p 3002...
 echo.
 echo URL: http://localhost:3002/cadena
-echo Login prueba: HECTOR / 123456
+echo Login: HECTOR — misma password que Report
 echo.
 npm run dev
 if errorlevel 1 (

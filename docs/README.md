@@ -29,6 +29,7 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 | [MEMORIA_CADENA_UI.md](./MEMORIA_CADENA_UI.md) | Resumen denso (cuestionario / verificación) |
 | [API_DEPOSITO.md](./API_DEPOSITO.md) | Endpoints catálogo y status |
 | [BACKEND_POS.md](./BACKEND_POS.md) | Capa SQL titanio — filtros, ingresar, live |
+| [TRIANGULO_HEADER_PILARES.md](./TRIANGULO_HEADER_PILARES.md) | JOIN pilares · propagación Report `/pilares` |
 | [IMAGENES_PRODUCTO.md](./IMAGENES_PRODUCTO.md) | Thumbs, convención L-R-M-C, prefetch |
 | [ETAPA_4_TICKET_BOTON.md](./ETAPA_4_TICKET_BOTON.md) | **Etapa activa** — botón tikeCT / Ticket ORO |
 
@@ -40,8 +41,9 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 |-----------|------|
 | Índice módulo 2.4 | `.claude/2_modulos/2.4_tablet_bazzar/INDICE.md` |
 | Agrupación 2 niveles (LEY) | `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md` |
-| Etapa activa | `.claude/4_etapas/ETAPA_TABLET_BAZZAR.md` |
-| Propuesta cierre cadena UI | `.claude/4_etapas/ETAPA_TABLET_CADENA_UI_NAV_PROPUESTA_CIERRE.md` |
+| Etapa activa | `.claude/4_etapas/ETAPA_TABLET_FINAL.md` |
+| Sub-sesión triángulo (pausada) | `.claude/4_etapas/SUBSESION_TABLET_TRIANGULO_PILARES_20260616.md` |
+| Triángulo header canónico | `.claude/3_arquitectura/3.2_venta_tienda/TRIANGULO_HEADER_PILARES.md` |
 | Depósitos 6 tiendas | `.claude/3_arquitectura/3.2_venta_tienda/depositos.md` |
 
 ---
@@ -70,4 +72,4 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 
 ---
 
-**Última actualización:** 2026-06-11 (propuesta cierre sub-etapa cadena UI)
+**Última actualización:** 2026-06-16 · sub-sesión triángulo documentada — retomar vía SUBSESION
