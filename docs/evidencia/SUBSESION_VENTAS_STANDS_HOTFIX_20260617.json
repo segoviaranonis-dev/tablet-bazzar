@@ -1,0 +1,40 @@
+{
+  "id": "SUBSESION-TABLET-VENTAS-STANDS-HOTFIX-20260617",
+  "fecha": "2026-06-17",
+  "sub_sesion": "SUBSESION-TABLET-VENTAS-20260617",
+  "error": "4.03.03.001",
+  "auditoria_auto": "PASS",
+  "caso_prueba": {
+    "marca": "VIZZANO",
+    "par": "1184.1101",
+    "cliente_id": 2100,
+    "deposito": "Fernando Adultos",
+    "pares_ingresar": 214,
+    "gradas_esperadas": ["34", "35", "36", "37", "38", "39", "40"],
+    "suma_gradas": 214
+  },
+  "causa_raiz": [
+    "linea_id/referencia_id NULL en retail",
+    "useStockOtrosLocales exigía 4 FK",
+    "/live agregaba molécula no par L+R"
+  ],
+  "archivos": [
+    "lib/server/stock-par-grada.ts",
+    "lib/deposito-cohorte.ts",
+    "app/api/deposito/[cliente_id]/live/route.ts",
+    "lib/stock-otros-locales.ts",
+    "components/cadena/StockOtrosLocales.tsx",
+    "components/pos/GradaVentaStrip.tsx",
+    "app/cadena/vista/page.tsx"
+  ],
+  "build_local": "PASS",
+  "deploy": {
+    "target": "https://tablet-bazzar.vercel.app",
+    "rama": "main"
+  },
+  "pendiente": [
+    "tikeCT confirm BD migración",
+    "precio LPN server",
+    "rename ruta /ventas"
+  ]
+}

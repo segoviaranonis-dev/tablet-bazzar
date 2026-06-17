@@ -10,6 +10,7 @@ import { MultiSelectFlotante } from "@/components/cadena/MultiSelectFlotante";
 import { StockOtrasTiendasDock, useStockOtrosLocales } from "@/components/cadena/StockOtrosLocales";
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { HeroProductImage } from "@/components/cadena/HeroProductImage";
+import { TrianguloResumenStrip } from "@/components/cadena/TrianguloResumenStrip";
 import type { DepositoFila, ParLineaRef } from "@/lib/cadena";
 import {
   FILTROS_VACIOS,
@@ -148,7 +149,7 @@ function CadenaVistaInner() {
     : null;
 
   const { ubicaciones: stockUbicaciones, cantidadLocal } =
-    useStockOtrosLocales(clienteId, activaBase);
+    useStockOtrosLocales(clienteId, parNav);
 
   const activa = activaBase;
   const cantidadMostrada =
@@ -378,7 +379,7 @@ function CadenaVistaInner() {
       <Link
         href="/cadena"
         className="flex min-h-[52px] min-w-[52px] items-center justify-center border border-[#8a8278] text-lg text-[#1a1a1a] active:bg-[#e8e2d9]"
-        aria-label="Marcas"
+        aria-label="Ventas — filtros"
       >
         ←
       </Link>
@@ -411,6 +412,7 @@ function CadenaVistaInner() {
             before={2}
             after={4}
             className="h-full"
+            previewFila={activa}
           />
         </div>
       ) : null}
@@ -430,10 +432,10 @@ function CadenaVistaInner() {
       <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 bg-[#f4f1ec] p-6">
         <TouchPad
           onClick={() => router.push("/cadena")}
-          ariaLabel="Volver a marcas"
+          ariaLabel="Volver a Ventas"
           className="border border-[#1a1a1a] bg-[#1a1a1a] px-8 py-4 font-br text-lg tracking-wide text-[#f4f1ec]"
         >
-          ← Marcas
+          ← Ventas
         </TouchPad>
       </div>
     );
@@ -453,6 +455,7 @@ function CadenaVistaInner() {
   return (
     <div className="flex h-[100dvh] flex-col overflow-hidden touch-manipulation" style={bgStyle}>
       {header}
+      <TrianguloResumenStrip searchParams={sp} clienteId={clienteId} marca={marca} />
 
       <div className="flex min-h-0 flex-1">
         <PanelColapsable open={estiloPanelOpen} widthClass="w-[108px]">
@@ -508,7 +511,7 @@ function CadenaVistaInner() {
                 <div className="relative flex h-full min-h-[280px] w-full flex-col overflow-visible border border-[#c4bdb4] bg-white shadow-sm">
                   {activa && par && (
                     <>
-                      <div className="absolute inset-0 z-0 flex min-h-0 items-center justify-center overflow-hidden bg-white px-1 pt-[3.25rem] pb-2">
+                      <div className="absolute inset-0 z-0 flex min-h-0 items-center justify-center overflow-visible bg-white px-1 pt-[3.25rem] pb-2">
                         <HeroProductImage
                           fila={activa}
                           alt={`${activa.linea_codigo_proveedor}.${activa.referencia_codigo_proveedor}`}
@@ -616,6 +619,7 @@ function CadenaVistaInner() {
           ) : null}
           <GradaVentaStrip
             activa={activa}
+            par={parNav}
             clienteId={clienteId}
             marca={marca}
             ubicaciones={stockUbicaciones}

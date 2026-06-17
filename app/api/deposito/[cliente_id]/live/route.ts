@@ -1,38 +1,46 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cohortePorUbicacion } from "@/lib/deposito-cohorte";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { getPool, isDatabaseConfigured } from "@/lib/pool";
+import {
+  queryParGradaEnTabla,
+  queryParTotalEnTabla,
+  type ParStockQuery,
+} from "@/lib/server/stock-par-grada";
 import { buildStockBloques, emptyUbicaciones } from "@/lib/stock-otros-locales";
 import { UBICACIONES, ubicacionIdFromClienteId } from "@/lib/ubicaciones";
-import { sqlCantidadMolecula } from "@/lib/server/catalogo-sql";
 
 type RouteCtx = { params: Promise<{ cliente_id: string }> };
 
-async function queryUbicacionGrada(
-  pool: ReturnType<typeof getPool>,
-  tablas: string[],
-  fk: { linea_id: number; referencia_id: number; material_id: number; color_id: number },
-): Promise<Map<string, number>> {
-  const merged = new Map<string, number>();
-  const sql = `
-    SELECT btrim(grada::text) AS grada, SUM(cantidad::float8)::float8 AS cantidad
-    FROM public.__TABLA__
-    WHERE cantidad > 0
-      AND linea_id = $1 AND referencia_id = $2 AND material_id = $3 AND color_id = $4
-      AND grada IS NOT NULL AND btrim(grada::text) <> ''
-    GROUP BY btrim(grada::text)
-  `;
-  const params = [fk.linea_id, fk.referencia_id, fk.material_id, fk.color_id];
-  const results = await Promise.all(
-    tablas.map((tabla) =>
-      pool.query<{ grada: string; cantidad: string }>(sql.replace("__TABLA__", tabla), params),
-    ),
-  );
-  for (const { rows } of results) {
-    for (const r of rows) {
-      merged.set(r.grada, (merged.get(r.grada) ?? 0) + (Number(r.cantidad) || 0));
-    }
+function parseIntParam(v: string | null): number | null {
+  if (!v?.trim()) return null;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : null;
+}
+
+function parsePar(sp: URLSearchParams): ParStockQuery | null {
+  const linea = (sp.get("linea") ?? sp.get("linea_codigo") ?? "").trim();
+  const referencia = (sp.get("referencia") ?? sp.get("referencia_codigo") ?? "").trim();
+  const linea_id = parseIntParam(sp.get("linea_id"));
+  const referencia_id = parseIntParam(sp.get("referencia_id"));
+
+  if (linea && referencia) {
+    return {
+      linea_id,
+      referencia_id,
+      linea_codigo_proveedor: linea,
+      referencia_codigo_proveedor: referencia,
+    };
   }
-  return merged;
+  if (linea_id != null && referencia_id != null) {
+    return {
+      linea_id,
+      referencia_id,
+      linea_codigo_proveedor: linea,
+      referencia_codigo_proveedor: referencia,
+    };
+  }
+  return null;
 }
 
 export async function GET(req: NextRequest, ctx: RouteCtx) {
@@ -46,42 +54,31 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     return NextResponse.json({ configured: true, error: "cliente_id inválido" }, { status: 400 });
   }
 
-  const sp = req.nextUrl.searchParams;
-  const linea_id = Number(sp.get("linea_id"));
-  const referencia_id = Number(sp.get("referencia_id"));
-  const material_id = Number(sp.get("material_id"));
-  const color_id = Number(sp.get("color_id"));
-  const grada = sp.get("grada");
-
-  if (![linea_id, referencia_id, material_id, color_id].every(Number.isFinite)) {
-    return NextResponse.json({ configured: true, error: "FK molécula incompletas" }, { status: 400 });
+  const par = parsePar(req.nextUrl.searchParams);
+  if (!par) {
+    return NextResponse.json(
+      { configured: true, error: "Par L+R incompleto (linea+referencia o FK)" },
+      { status: 400 },
+    );
   }
 
   const pool = getPool();
   const ubicacionActualId = ubicacionIdFromClienteId(cliente_id);
+  const cohorte = cohortePorUbicacion(cliente_id);
   const t0 = Date.now();
 
   try {
-    const qLocal = sqlCantidadMolecula(config.tabla, {
-      linea_id,
-      referencia_id,
-      material_id,
-      color_id,
-      grada,
-    });
-    const localR = await pool.query<{ cantidad: number }>(qLocal.text, qLocal.params);
-    const cantidad_local = Number(localR.rows[0]?.cantidad) || 0;
+    const cantidad_local = await queryParTotalEnTabla(pool, config.tabla, par);
 
     const gradasPorUb = new Map<string, Map<string, number>>();
     await Promise.all(
       UBICACIONES.map(async (ub) => {
-        const tablas = ub.depositos.map((d) => d.tabla);
-        const gm = await queryUbicacionGrada(pool, tablas, {
-          linea_id,
-          referencia_id,
-          material_id,
-          color_id,
-        });
+        const dep = cohorte.get(ub.id);
+        if (!dep) {
+          gradasPorUb.set(ub.id, new Map());
+          return;
+        }
+        const gm = await queryParGradaEnTabla(pool, dep.tabla, par);
         gradasPorUb.set(ub.id, gm);
       }),
     );
@@ -93,6 +90,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
       server_time: new Date().toISOString(),
       cantidad_local,
       ubicaciones,
+      scope: "par_lr",
       ms: Date.now() - t0,
     });
   } catch (e) {

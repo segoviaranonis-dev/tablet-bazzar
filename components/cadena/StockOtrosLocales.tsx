@@ -1,6 +1,6 @@
 "use client";
 
-import type { DepositoFila } from "@/lib/cadena";
+import type { DepositoFila, ParLineaRef } from "@/lib/cadena";
 import { stockBloquesEqual } from "@/lib/stock-snapshot-equal";
 import {
   formatGradaDisplay,
@@ -34,32 +34,40 @@ export const StockOtrasTiendasDock = memo(function StockOtrasTiendasDock({
         {otras.map((bloque) => (
           <div
             key={bloque.id}
-            className="flex min-w-0 flex-1 basis-[140px] items-center gap-2 rounded-md border border-[#c4bdb4] bg-[#faf8f5] px-2 py-1.5"
+            className="flex min-w-0 flex-1 basis-[160px] flex-col overflow-hidden rounded-md border border-[#c4bdb4] bg-[#faf8f5]"
           >
-            <div className="shrink-0 text-center">
-              <p className="text-[10px] font-bold uppercase tracking-wide text-[#1b2a41]">
-                {bloque.label}
-              </p>
-              <p className="text-xs font-bold tabular-nums text-[#1a1a1a]">{fmt(bloque.stockTotal)}</p>
+            <div className="flex items-center justify-between gap-1 border-b border-[#c4bdb4] px-2 py-1">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-[#1b2a41]">{bloque.label}</p>
+              <p className="text-xs font-bold tabular-nums text-[#1a1a1a]">{fmt(bloque.stockTotal)} p</p>
             </div>
             {bloque.tallas.length > 0 ? (
-              <div className="flex min-w-0 flex-1 flex-wrap gap-1">
-                {bloque.tallas.map((t, i) => {
-                  const n = bloque.stock[i] ?? 0;
-                  return (
-                    <span
-                      key={`${t}-${i}`}
-                      className={`rounded px-1 py-0.5 font-mono text-[9px] tabular-nums ${
-                        n > 0 ? "bg-white font-semibold text-[#1b2a41]" : "text-[#c4bdb4]"
-                      }`}
-                    >
-                      {formatGradaDisplay(t)}:{n}
-                    </span>
-                  );
-                })}
-              </div>
+              <table className="w-full border-collapse text-center text-[9px] text-[#1a1a1a]">
+                <thead>
+                  <tr className="bg-white/90">
+                    {bloque.tallas.map((t) => (
+                      <th key={t} className="border-b border-[#e8e2d9] px-0.5 py-0.5 font-semibold tabular-nums">
+                        {formatGradaDisplay(t)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {bloque.stock.map((n, i) => (
+                      <td
+                        key={`${bloque.tallas[i]}-${i}`}
+                        className={`px-0.5 py-1 tabular-nums font-semibold ${
+                          n > 0 ? "text-[#1b2a41]" : "text-[#c4bdb4]"
+                        }`}
+                      >
+                        {n > 0 ? n : "—"}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
             ) : (
-              <span className="text-[10px] text-[#9a9288]">Sin stock</span>
+              <span className="px-2 py-2 text-center text-[10px] text-[#9a9288]">Sin stock</span>
             )}
           </div>
         ))}
@@ -68,14 +76,33 @@ export const StockOtrasTiendasDock = memo(function StockOtrasTiendasDock({
   );
 });
 
-export function useStockOtrosLocales(clienteId: number, activa: DepositoFila | null) {
+function parLiveQuery(par: ParLineaRef): {
+  linea_id: number | null;
+  referencia_id: number | null;
+  linea_codigo_proveedor: string;
+  referencia_codigo_proveedor: string;
+} {
+  const sample =
+    par.coloresLR[0] ??
+    par.gruposMaterial[0]?.colores[0] ??
+    par.gruposMaterial[0]?.filas[0] ??
+    null;
+  return {
+    linea_id: sample?.linea_id ?? null,
+    referencia_id: sample?.referencia_id ?? null,
+    linea_codigo_proveedor: par.linea,
+    referencia_codigo_proveedor: par.referencia,
+  };
+}
+
+export function useStockOtrosLocales(clienteId: number, par: ParLineaRef | null) {
   const [ubicaciones, setUbicaciones] = useState<StockUbicacionBloque[]>([]);
   const [cantidadLocal, setCantidadLocal] = useState<number | null>(null);
   const [bootLoading, setBootLoading] = useState(false);
   const cantidadRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (!activa?.linea_id || !activa.referencia_id || !activa.material_id || !activa.color_id) {
+    if (!par?.linea?.trim() || !par.referencia?.trim()) {
       setUbicaciones([]);
       setCantidadLocal(null);
       cantidadRef.current = null;
@@ -86,21 +113,12 @@ export function useStockOtrosLocales(clienteId: number, activa: DepositoFila | n
     const ac = new AbortController();
     let mounted = true;
     let first = true;
+    const livePar = parLiveQuery(par);
 
     async function tick() {
-      if (!activa) return;
       if (first) setBootLoading(true);
 
-      const url = stockLiveUrl(
-        clienteId,
-        {
-          linea_id: activa.linea_id!,
-          referencia_id: activa.referencia_id!,
-          material_id: activa.material_id!,
-          color_id: activa.color_id!,
-        },
-        activa.grada,
-      );
+      const url = stockLiveUrl(clienteId, livePar);
 
       try {
         const r = await fetch(url, { cache: "no-store", signal: ac.signal });
@@ -141,14 +159,7 @@ export function useStockOtrosLocales(clienteId: number, activa: DepositoFila | n
       clearInterval(iv);
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, [
-    clienteId,
-    activa?.linea_id,
-    activa?.referencia_id,
-    activa?.material_id,
-    activa?.color_id,
-    activa?.grada,
-  ]);
+  }, [clienteId, par?.linea, par?.referencia, par?.key]);
 
   return { ubicaciones, bootLoading, cantidadLocal };
 }

@@ -97,19 +97,26 @@ export function stockOtrosLocalesUrl(clienteId: number, fila: StockMoleculaQuery
   return `/api/deposito/stock-otros-locales?${p.toString()}`;
 }
 
-/** Poll en vivo — stock local + 3 ubicaciones (SQL servidor). */
-export function stockLiveUrl(
-  clienteId: number,
-  fk: Pick<StockMoleculaQuery, "linea_id" | "referencia_id" | "material_id" | "color_id">,
-  grada?: string | null,
-): string {
+/** Poll en vivo — stock por par L+R en 3 ubicaciones (cuadra con INGRESAR «214 p»). */
+export type ParStockLiveQuery = {
+  linea_id: number | null;
+  referencia_id: number | null;
+  linea_codigo_proveedor: string;
+  referencia_codigo_proveedor: string;
+};
+
+export function totalStockRed(ubicaciones: StockUbicacionBloque[] | undefined): number {
+  if (!ubicaciones?.length) return 0;
+  return ubicaciones.reduce((s, u) => s + u.stockTotal, 0);
+}
+
+export function stockLiveUrl(clienteId: number, par: ParStockLiveQuery): string {
   const p = new URLSearchParams();
-  p.set("linea_id", String(fk.linea_id));
-  p.set("referencia_id", String(fk.referencia_id));
-  p.set("material_id", String(fk.material_id));
-  p.set("color_id", String(fk.color_id));
-  if (grada?.trim()) p.set("grada", grada.trim());
-  return `/api/deposito/${clienteId}/live?${p}`;
+  p.set("linea", par.linea_codigo_proveedor.trim());
+  p.set("referencia", par.referencia_codigo_proveedor.trim());
+  if (par.linea_id != null) p.set("linea_id", String(par.linea_id));
+  if (par.referencia_id != null) p.set("referencia_id", String(par.referencia_id));
+  return `/api/deposito/${clienteId}/live?${p.toString()}`;
 }
 
 export type StockLiveResponse = {
