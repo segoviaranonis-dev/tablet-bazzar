@@ -14,5 +14,11 @@
   "error_hotfix": ".claude/5_errores/detalle/4.03.03.002_deposito-fotos-grid-vacio-fk-sync.md",
   "ruta": "/deposito",
   "smoke": "cliente 2100 Fernando Adultos · ~1847 moléculas · TOP 80/marca",
-  "deploy": "pendiente Claude Code + aprobación Director"
+  "deploy": {
+    "commit": "4328358",
+    "branch": "main",
+    "push_at": "2026-06-17",
+    "url": "https://tablet-bazzar.vercel.app/deposito",
+    "orden": "Director — cierra etapa = deploy Vercel ya"
+  }
 }
