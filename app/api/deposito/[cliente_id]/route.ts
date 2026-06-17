@@ -1,18 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { parseDepositoFiltersFromSearchParams, DEPOSITO_LIMIT_OPTIONS } from "@/lib/deposito-filters";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { moleculeKey, type MoleculeFk } from "@/lib/deposito-cohorte";
 import { getPool, isDatabaseConfigured } from "@/lib/pool";
 import { enrichDepositoFilaImagenes } from "@/lib/product-image";
+import { sqlDepositoMolecules } from "@/lib/server/deposito-filtros-sql";
 import { fetchStockRedBatch } from "@/lib/server/stock-red-batch";
-import {
-  PILAR_TRIANGULO_JOINS,
-  SQL_ESTILO_LABEL,
-  SQL_GENERO_LABEL,
-  SQL_GRUPO_ESTILO_ID,
-  SQL_GENERO_ID,
-  SQL_MARCA_ID,
-  SQL_MARCA_LABEL,
-} from "@/lib/server/pilar-triangulo";
 import type { StockUbicacionBloque } from "@/lib/stock-otros-locales";
 import { totalStockRed } from "@/lib/stock-otros-locales";
 import { ubicacionIdFromClienteId } from "@/lib/ubicaciones";
@@ -42,6 +35,14 @@ export type DepositoProducto = {
 
 type MoleculeRow = Omit<DepositoProducto, "cantidad_red" | "imagen_url_thumb" | "imagen_url_hero" | "stock_red">;
 
+function parseLimit(raw: string | null): number | null {
+  if (raw === "all") return null;
+  const n = Number(raw ?? "80");
+  if (!Number.isFinite(n) || n <= 0) return 80;
+  if ((DEPOSITO_LIMIT_OPTIONS as readonly number[]).includes(n)) return n;
+  return 80;
+}
+
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ cliente_id: string }> },
@@ -63,109 +64,14 @@ export async function GET(
     );
   }
 
-  const limitParam = new URL(req.url).searchParams.get("limit") ?? "50";
-  const limit = limitParam === "all" ? null : Number(limitParam) || 50;
-  const includeRed = new URL(req.url).searchParams.get("stock_red") !== "0";
-  const whereClause = limit ? `WHERE rank_por_marca <= ${limit}` : "";
+  const sp = new URL(req.url).searchParams;
+  const filtros = parseDepositoFiltersFromSearchParams(sp);
+  const limit = parseLimit(sp.get("limit"));
+  const includeRed = sp.get("stock_red") !== "0";
 
   const pool = getPool();
-  const { rows } = await pool.query<MoleculeRow>(`
-    WITH sku_rows AS (
-      SELECT
-        s.linea_id,
-        s.referencia_id,
-        s.material_id,
-        s.color_id,
-        trim(s.linea_codigo_proveedor::text) AS linea_codigo_proveedor,
-        trim(s.referencia_codigo_proveedor::text) AS referencia_codigo_proveedor,
-        COALESCE(
-          NULLIF(btrim(s.excel_material_code::text), ''),
-          CASE WHEN mat.id IS NULL OR mat.codigo_proveedor = -999001::bigint THEN NULL
-               ELSE trim(mat.codigo_proveedor::text) END,
-          ''
-        ) AS material_code,
-        COALESCE(
-          NULLIF(btrim(s.excel_color_code::text), ''),
-          CASE WHEN col.id IS NULL OR col.codigo_proveedor = -999001::bigint THEN NULL
-               ELSE trim(col.codigo_proveedor::text) END,
-          ''
-        ) AS color_code,
-        s.cantidad::float8 AS cantidad,
-        ${SQL_MARCA_LABEL} AS marca,
-        ${SQL_MARCA_ID} AS marca_id,
-        ${SQL_GENERO_LABEL} AS genero,
-        ${SQL_ESTILO_LABEL} AS estilo,
-        COALESCE(NULLIF(btrim(tv.descp_tipo::text), ''), '(sin tipo)') AS tipo_v2,
-        NULLIF(btrim(mat.descripcion::text), '') AS descp_material,
-        NULLIF(btrim(col.nombre::text), '') AS descp_color,
-        NULLIF(btrim(s.imagen_nombre::text), '') AS imagen_nombre
-      FROM public.${config.tabla} s
-      ${PILAR_TRIANGULO_JOINS}
-      LEFT JOIN public.material mat ON mat.id = s.material_id
-      LEFT JOIN public.color col ON col.id = s.color_id
-      LEFT JOIN public.marca_v2 mv ON mv.id_marca = ${SQL_MARCA_ID}
-      LEFT JOIN public.genero g ON g.id = ${SQL_GENERO_ID}
-      LEFT JOIN public.grupo_estilo_v2 ge ON ge.id_grupo_estilo = ${SQL_GRUPO_ESTILO_ID}
-      LEFT JOIN public.tipo_v2 tv ON tv.id_tipo = s.tipo_v2_id
-      WHERE s.cantidad > 0
-        AND btrim(s.linea_codigo_proveedor::text) <> ''
-        AND btrim(s.referencia_codigo_proveedor::text) <> ''
-        AND s.material_id IS NOT NULL
-        AND s.color_id IS NOT NULL
-    ),
-    molecule_agg AS (
-      SELECT
-        MAX(linea_id) AS linea_id,
-        MAX(referencia_id) AS referencia_id,
-        material_id,
-        color_id,
-        linea_codigo_proveedor,
-        referencia_codigo_proveedor,
-        MAX(material_code) AS material_code,
-        MAX(color_code) AS color_code,
-        MAX(marca) AS marca,
-        MAX(marca_id) AS marca_id,
-        MAX(genero) AS genero,
-        MAX(estilo) AS estilo,
-        MAX(tipo_v2) AS tipo_v2,
-        MAX(descp_material) AS descp_material,
-        MAX(descp_color) AS descp_color,
-        SUM(cantidad) AS cantidad_local,
-        MAX(imagen_nombre) AS imagen_nombre
-      FROM sku_rows
-      GROUP BY
-        linea_codigo_proveedor,
-        referencia_codigo_proveedor,
-        material_id,
-        color_id
-    ),
-    ranked_molecules AS (
-      SELECT
-        *,
-        ROW_NUMBER() OVER (PARTITION BY marca ORDER BY cantidad_local DESC) AS rank_por_marca
-      FROM molecule_agg
-    )
-    SELECT
-      linea_id,
-      referencia_id,
-      material_id,
-      color_id,
-      linea_codigo_proveedor,
-      referencia_codigo_proveedor,
-      material_code,
-      color_code,
-      marca,
-      genero,
-      estilo,
-      tipo_v2,
-      descp_material,
-      descp_color,
-      cantidad_local,
-      imagen_nombre
-    FROM ranked_molecules
-    ${whereClause}
-    ORDER BY marca, cantidad_local DESC
-  `);
+  const q = sqlDepositoMolecules(config.tabla, filtros, limit);
+  const { rows } = await pool.query<MoleculeRow>(q.text, q.params);
 
   const totalPares = rows.reduce((sum, r) => sum + Number(r.cantidad_local), 0);
 
@@ -240,6 +146,7 @@ export async function GET(
     productos,
     total: rows.length,
     total_pares_muestra: totalPares,
+    limit: limit ?? "all",
     unidad: "molecula_fk",
   });
 }

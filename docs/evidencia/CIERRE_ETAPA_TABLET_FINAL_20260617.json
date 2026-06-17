@@ -1,0 +1,35 @@
+{
+  "id": "CIERRE-ETAPA-TABLET-FINAL-20260617",
+  "fecha": "2026-06-17",
+  "etapa": "ETAPA_TABLET_FINAL",
+  "estado": "CERRADA",
+  "deploy": {
+    "url": "https://tablet-bazzar.vercel.app",
+    "repo": "tablet-bazzar",
+    "branch": "main"
+  },
+  "subsesiones_cerradas": [
+    "SUBSESION-TABLET-DEPOSITO-FOTOS-20260617",
+    "SUBSESION-TABLET-DEPOSITO-HEADER-PILARES-20260617",
+    "SUBSESION-TABLET-VENTAS-20260617",
+    "SUBSESION-TABLET-CALIDAD-IMAGEN-20260616"
+  ],
+  "subsesion_abierta": "SUBSESION-TABLET-TICKETS-20260617",
+  "chusar": [
+    "CHUSAR_TABLET_VENTAS.md",
+    "CHUSAR_TABLET_DEPOSITO_FOTOS.md",
+    "CHUSAR_TABLET_DEPOSITO_HEADER_PILARES.md",
+    "MODULO_IMAGENES_PRODUCTO.md"
+  ],
+  "entregables_codigo": [
+    "DepositoFiltrosHeader.tsx",
+    "deposito-filters.ts",
+    "deposito-filtros-sql.ts",
+    "api/deposito/[cliente_id]/filtros-header",
+    "deposito page collapse 100dvh"
+  ],
+  "verificacion": {
+    "build_local": "PASS",
+    "prod_url_deposito": "https://tablet-bazzar.vercel.app/deposito"
+  }
+}

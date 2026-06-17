@@ -3,7 +3,7 @@
 **App:** PWA POS para vendedores en tiendas Bazzar  
 **Repo:** `tablet-bazzar/`  
 **Puerto dev:** 3002  
-**Deploy:** `tablet-bazzar.vercel.app` (pendiente env producción)
+**Deploy:** https://tablet-bazzar.vercel.app ✅
 
 ---
 
@@ -23,15 +23,11 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 | Documento | Contenido |
 |-----------|-----------|
 | [COMO_EJECUTAR.md](./COMO_EJECUTAR.md) | Entorno, `.env.local`, dev, build |
-| [MODOS_VISTA.md](./MODOS_VISTA.md) | Panel de control y rutas |
-| [CADENA_CONSECUTIVA.md](./CADENA_CONSECUTIVA.md) | Modo cadena: navegación, filtros, UI BR |
-| [NAVEGACION_CADENA.md](./NAVEGACION_CADENA.md) | Teclado, 2 niveles, refs URL, smoke test |
-| [MEMORIA_CADENA_UI.md](./MEMORIA_CADENA_UI.md) | Resumen denso (cuestionario / verificación) |
-| [API_DEPOSITO.md](./API_DEPOSITO.md) | Endpoints catálogo y status |
-| [BACKEND_POS.md](./BACKEND_POS.md) | Capa SQL titanio — filtros, ingresar, live |
-| [TRIANGULO_HEADER_PILARES.md](./TRIANGULO_HEADER_PILARES.md) | JOIN pilares · propagación Report `/pilares` |
-| [IMAGENES_PRODUCTO.md](./IMAGENES_PRODUCTO.md) | Thumbs, convención L-R-M-C, prefetch |
-| [ETAPA_4_TICKET_BOTON.md](./ETAPA_4_TICKET_BOTON.md) | **Etapa activa** — botón tikeCT / Ticket ORO |
+| [MODOS_VISTA.md](./MODOS_VISTA.md) | Panel y rutas |
+| [MODULO_DEPOSITO_HEADER_PILARES.md](./MODULO_DEPOSITO_HEADER_PILARES.md) | Header pilares `/deposito` |
+| [CADENA_CONSECUTIVA.md](./CADENA_CONSECUTIVA.md) | Modo cadena |
+| [TRIANGULO_HEADER_PILARES.md](./TRIANGULO_HEADER_PILARES.md) | JOIN pilares cadena |
+| [ETAPA_4_TICKET_BOTON.md](./ETAPA_4_TICKET_BOTON.md) | **Sub-sesión activa** — tikeCT / Ticket ORO |
 
 ---
 
@@ -40,36 +36,20 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 | Documento | Ruta |
 |-----------|------|
 | Índice módulo 2.4 | `.claude/2_modulos/2.4_tablet_bazzar/INDICE.md` |
-| Agrupación 2 niveles (LEY) | `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md` |
-| Etapa activa | `.claude/4_etapas/ETAPA_TABLET_FINAL.md` |
-| Sub-sesión triángulo (pausada) | `.claude/4_etapas/SUBSESION_TABLET_TRIANGULO_PILARES_20260616.md` |
-| Triángulo header canónico | `.claude/3_arquitectura/3.2_venta_tienda/TRIANGULO_HEADER_PILARES.md` |
-| Depósitos 6 tiendas | `.claude/3_arquitectura/3.2_venta_tienda/depositos.md` |
+| **Etapa CERRADA** | `.claude/4_etapas/ETAPA_TABLET_FINAL_CERRADA.md` |
+| **Tickets ABIERTO** | `.claude/4_etapas/SUBSESION_TABLET_TICKETS_20260617.md` |
+| Chusar depósito header | `.claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_HEADER_PILARES.md` |
 
 ---
 
-## Estado al 2026-06-11 (cadena UI + filtros — propuesta cierre)
+## Estado al 2026-06-17
 
 | Área | Estado |
 |------|--------|
-| Auth JWT + middleware | ✅ |
-| Panel modos de vista | ✅ |
-| Depósito con fotos (grid) | ✅ |
-| Cadena consecutiva — UI 2 niveles + teclado | ✅ |
-| Fix filtros / INGRESAR / refs URL | ✅ |
-| Backend titanio (filtros / ingresar / cadena / live) | ✅ |
-| Botón INGRESAR + sesión POS 12 h | ✅ |
-| Stock live 3 ubicaciones | ✅ |
-| Precio LPN desde Motor | ⏳ |
-| Carrito / tickets ORO (tikeCT) | 🟡 Etapa 4 abierta |
-| PWA offline | ⏳ |
-| Deploy Vercel prod + git push | ⏳ |
+| Etapa FINAL | ✅ CERRADA |
+| Ventas `/cadena` | ✅ |
+| Depósito grid + header pilares | ✅ |
+| Tickets ORO | ⏳ sub-sesión activa |
+| Deploy Vercel | ✅ |
 
-**Propuesta cierre:** `.claude/4_etapas/ETAPA_TABLET_CADENA_UI_NAV_PROPUESTA_CIERRE.md`  
-**Bug P0 filtros:** `BUG_FILTROS_BUSQUEDA.md` (RESUELTO)
-
-**Depósito prueba:** Fernando Adultos (`cliente_id` 2100) — ~5.660 SKUs.
-
----
-
-**Última actualización:** 2026-06-16 · sub-sesión triángulo documentada — retomar vía SUBSESION
+Evidencia: [evidencia/CIERRE_ETAPA_TABLET_FINAL_20260617.json](./evidencia/CIERRE_ETAPA_TABLET_FINAL_20260617.json)

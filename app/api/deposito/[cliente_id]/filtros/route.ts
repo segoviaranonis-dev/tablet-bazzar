@@ -21,6 +21,7 @@ function toChips(rows: { id: string; cnt: number }[]): ChipSql[] {
   return rows.map((r) => ({ id: r.id, label: r.id, count: r.cnt }));
 }
 
+/** Filtros cascada cadena POS — labels texto (Ventas `/cadena`). */
 export async function GET(req: NextRequest, ctx: RouteCtx) {
   if (!isDatabaseConfigured()) {
     return NextResponse.json({ configured: false, error: "DATABASE_URL no configurada" }, { status: 500 });
