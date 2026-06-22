@@ -3,12 +3,18 @@
 **Tipo:** Módulo Web Interno  
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
-**Puerto:** 3003  
-**Última actualización:** 2026-06-09
+**Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
+**Última actualización:** 2026-06-22 (Chusar — **2.3.1.7.2 Importación precios CERRADA**)
 
 ---
 
-## 🎯 DESCRIPCIÓN
+## 🎯 MUDANZA (objetivo general)
+
+**CHUSAR padre:** [CHUSAR_MUDANZA_REPORT.md](CHUSAR_MUDANZA_REPORT.md) · **Etapa:** [ETAPA_MUDANZA_REPORT.md](../4_etapas/ETAPA_MUDANZA_REPORT.md)
+
+Portar ciclo importadora RIMEC Streamlit → Report por sub-etapas (Motor · Excel · IC-DG-PP · CL-Fact-Dep).
+
+---
 
 Report es el sistema de reportes institucionales de Nexus, implementando el estándar NIIF UI completo.
 
@@ -18,10 +24,14 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 
 **Módulos activos:**
 - ✅ Aprobaciones (NIIF 100%)
+- ✅ **Administrador de Pilares** (`/pilares` — **2.3.5 CERRADA** 2026-06-17)
+- ✅ **RRHH** (`/rrhh` — **2.3.10** · subcuentas 2.3.10.1–2.3.10.2)
+- ✅ **Proceso importación** (`/proceso-importacion` — **2.3.1.7** · **2.3.1.7.2 Importación precios CERRADA** ✅)
 - Stock / Retail
 - Ventas
 - Ventas + Fotos
-- Depósitos (6 tiendas BAZZAR)
+- **Depósitos Bazzar (2.3.6)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
+- **Motor de Precios (2.3.1.7.1 — Report)** 🆕
 
 ---
 
@@ -30,19 +40,74 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 ```
 2.3_report/
 ├── INDICE.md (este archivo)
+├── depositos/                   — 2.3.6 Depósitos Bazzar (Report admin)
+│   └── INDICE.md
+├── rrhh/                        — 2.3.10 RRHH (+ 2.3.10.1 · 2.3.10.2)
+│   ├── INDICE.md
+│   └── FUNCIONAMIENTO_ACTUAL.md
+├── proceso_importacion/         — 2.3.1.7 ciclo importación (+ 7.1–7.5)
+│   ├── INDICE.md
+│   ├── CHUSAR_CICLO_IMPORTACION_REPORT.md
+│   └── CHUSAR_*.md + inventarios Streamlit
+├── motor_precios/               — 2.3.1.7.1 Motor (Corazón 1)
+│   ├── INDICE.md
+│   └── CHUSAR_MOTOR_PRECIOS.md
+├── pilares/                     — 2.3.5 Administrador Pilares
+│   ├── INDICE.md
+│   └── CHUSAR_ADMINISTRADOR_PILARES.md
 ├── README.md
 ├── DEPLOY_VERCEL.md
-├── VERCEL_EMERGENCY_CONFIG.md
 └── docs/
     ├── DEPLOY_VERCEL_REPORT.md
     ├── DISENO_DATOS_SQL_KPI_JERARQUIA.md
     ├── DISENO_DESCRIPCION_8_TABLAS_INFORME_VENTAS.md
-    └── RETAIL_FILTERS_ROBUSTNESS_REPORT.md
+    ├── RETAIL_FILTERS_ROBUSTNESS_REPORT.md
+    └── ADMINISTRADOR_PILARES.md
 ```
 
 ---
 
 ## 📚 DOCUMENTOS CLAVE
+
+### **RRHH (2.3.10)**
+- **[rrhh/INDICE.md](rrhh/INDICE.md)** — subcuentas **2.3.10.1** Vacaciones · **2.3.10.2** Funcionarios
+- **[rrhh/FUNCIONAMIENTO_ACTUAL.md](rrhh/FUNCIONAMIENTO_ACTUAL.md)** — operación + tablas DB
+
+### **Proceso importación (2.3.1.7 · dentro RIMEC)**
+- **[proceso_importacion/INDICE.md](proceso_importacion/INDICE.md)** — plan de cuentas 7.1–7.5
+- **[CHUSAR_CICLO_IMPORTACION_REPORT.md](proceso_importacion/CHUSAR_CICLO_IMPORTACION_REPORT.md)** — CHUSAR padre
+- **[motor_precios/CHUSAR_MOTOR_PRECIOS.md](motor_precios/CHUSAR_MOTOR_PRECIOS.md)** — **2.3.1.7.1** Corazón 1
+- **2.3.1.7.2 Importación precios** — [CHUSAR_IMPORTACION_PRECIOS.md](proceso_importacion/CHUSAR_IMPORTACION_PRECIOS.md) · **✅ CERRADA**
+- **Cierre etapa:** [ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md](../4_etapas/ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md)
+- **Inventario profundo:** [IMPORTACION_PRECIOS.md](proceso_importacion/IMPORTACION_PRECIOS.md)
+- **App doc:** [report/docs/IMPORTACION_PRECIOS_REPORT.md](../../report/docs/IMPORTACION_PRECIOS_REPORT.md)
+- **[CHUSAR_INTENCION_COMPRA.md](proceso_importacion/CHUSAR_INTENCION_COMPRA.md)** · **[CHUSAR_DIGITACION.md](proceso_importacion/CHUSAR_DIGITACION.md)** · **[CHUSAR_PEDIDO_PROVEEDOR.md](proceso_importacion/CHUSAR_PEDIDO_PROVEEDOR.md)** — 7.3–7.5
+- **Etapa doc:** [ETAPA_CICLO_IMPORTACION_DOC_CHUSAR.md](../4_etapas/ETAPA_CICLO_IMPORTACION_DOC_CHUSAR.md)
+- Navegador: http://localhost:3004/modulos/report · http://localhost:3004/procesos/importacion
+
+### **Pilares (2.3.5 — Report)**
+- **[pilares/CHUSAR_ADMINISTRADOR_PILARES.md](pilares/CHUSAR_ADMINISTRADOR_PILARES.md)** — CHUSAR operativo · 2.3.5 / 2.3.5.1 / 2.3.5.2 · miniaturas L×R
+- **[pilares/INDICE.md](pilares/INDICE.md)** — índice subcuenta
+- **docs/ADMINISTRADOR_PILARES.md** — doc profunda arquitectura
+- **Cierre:** `.claude/4_etapas/ETAPA_ADMINISTRADOR_PILARES_REPORT_CERRADA.md`
+- **Sub-sesión tablet:** `.claude/4_etapas/SUBSESION_TABLET_TRIANGULO_PILARES_20260616.md`
+- **Evidencia:** `report/docs/EVIDENCIA_SESION_PILARES_TRIANGULO_20260616.md`
+- **Kyly:** `.claude/3_arquitectura/3.2_venta_tienda/CONFECCIONES_TIPO_V2_2.md`
+
+### **Depósitos Bazzar (2.3.6 — Report)**
+- **[depositos/INDICE.md](depositos/INDICE.md)** — subcuenta Report · admin sync
+- **[DEPOSITOS_BAZZAR_ADMIN.md](../../../report/docs/DEPOSITOS_BAZZAR_ADMIN.md)** — doc app
+- **Etapa:** `.claude/4_etapas/ETAPA_DEPOSITOS_BAZZAR.md`
+
+### **Motor de Precios (2.3.1.7.1 — Report)** 🆕
+- **[motor_precios/CHUSAR_MOTOR_PRECIOS.md](motor_precios/CHUSAR_MOTOR_PRECIOS.md)** — biblioteca · eventos
+- **[motor_precios/INDICE.md](motor_precios/INDICE.md)** — índice subcuenta
+- **[MOTOR_PRECIOS_REPORT.md](../../../report/docs/MOTOR_PRECIOS_REPORT.md)** — plan app
+- **Etapa doc:** [ETAPA_MOTOR_PRECIOS_REPORT.md](../4_etapas/ETAPA_MOTOR_PRECIOS_REPORT.md) · **Importación:** [ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md](../4_etapas/ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md)
+- **Ley:** `.claude/1_fundamentos/1.2_leyes/motor_precios_dos_corazones.md`
+
+### **Depósitos Bazzar (legacy 2.6 — redirigido)**
+- Ver [2.6_depositos_bazzar/INDICE.md](../2.6_depositos_bazzar/INDICE.md) → apunta a 2.3.6
 
 ### **Deploy y Configuración**
 - **DEPLOY_VERCEL.md** - Guía de deploy a Vercel
@@ -155,6 +220,19 @@ card-bg:    #ffffff  (Blanco puro)
 - Catálogo con imágenes
 - Trazabilidad por foto
 
+### **6. Administrador de Pilares** ✅
+**Estado:** **CERRADA 2026-06-17** · Vercel prod · multi-proveedor 654+638
+
+**Norte:** Abandonar edición pilares en Streamlit Motor (confidencialidad). Paridad `_render_admin_lineas` + `_render_linea_referencia`, UX mejor en Report.
+
+**Funciones (entregadas):**
+- Selector proveedor **654** (calzado) / **638** (confecciones `tipo_v2=2`)
+- Editar `linea`: marca, género · filtros chip · datos generales
+- Editar `linea_referencia`: estilo, tipo_1 · cascada marcas · buscador multi-línea · editor rango
+- Triángulo header instantáneo → RIMEC Web + Tablet
+
+**Doc:** `report/docs/ADMINISTRADOR_PILARES.md` · Cierre: `.claude/4_etapas/ETAPA_ADMINISTRADOR_PILARES_REPORT_CERRADA.md`
+
 ### **5. Depósitos BAZZAR**
 **Estado:** Producción
 
@@ -209,5 +287,22 @@ Ver: `docs/DISENO_DESCRIPCION_8_TABLAS_INFORME_VENTAS.md`
 
 ---
 
-**Última actualización:** 2026-06-09  
-**Responsable:** Claude Sonnet 4.5
+---
+
+## 🧭 Navegador holding (Portal 2)
+
+**App:** `nexus-navegador-holding/` · http://localhost:3004/modulos/report
+
+| Pantalla | Rol |
+|----------|-----|
+| `/modulos` | Report (2.3) badge **NEW** + fecha último `git log` en `report/` |
+| `/modulos/report` | Acordeón RIMEC / Bazzar · tarjetas NIIF uniformes |
+| `/modulos/report/rrhh` | Grid 2.3.10.1 · 2.3.10.2 |
+| `/modulos/report/proceso-importacion` | Grid 2.3.11.1 · 2.3.11.2 |
+
+Doc programa: [CHUSAR_NAVEGADOR_PROGRAMA.md](../../1_fundamentos/CHUSAR_NAVEGADOR_PROGRAMA.md) · config: `nexus-navegador-holding/config/arbol-modulos.json`
+
+---
+
+**Última actualización:** 2026-06-22  
+**Responsable:** Cursor (Chusar autorizado Director)
