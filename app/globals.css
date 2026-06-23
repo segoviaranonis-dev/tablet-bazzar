@@ -1,79 +1,70 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f1ec;
-  --foreground: #1a1a1a;
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+  --bazzar-orange: #ea580c;
+  --bazzar-orange-dark: #c2410c;
+  --bazzar-orange-light: #fb923c;
+  --rimec-navy: #002b4e;
 }
 
 @theme inline {
-  --color-background: #f4f1ec;
-  --color-foreground: #1a1a1a;
-  --color-br-cream: #f4f1ec;
-  --color-br-sand: #e8e2d9;
-  --color-br-stone: #6b6560;
-  --color-br-charcoal: #1a1a1a;
-  --color-br-navy: #1b2a41;
+  --color-background: #f1f5f9;
+  --color-foreground: #0f172a;
+  --color-app-bg: #f1f5f9;
+  --color-app-bg-alt: #e2e8f0;
+  --color-card-bg: #ffffff;
+  --color-rimec-azul: #002b4e;
+  --color-rimec-azul-dark: #001829;
+  --color-rimec-azul-light: #003d6b;
+  --color-bazzar-naranja: #ea580c;
+  --color-bazzar-naranja-dark: #c2410c;
+  --color-bazzar-naranja-light: #fb923c;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-br: var(--font-cormorant);
 }
 
-/* Estándares Apple HIG + Material Design */
 html {
-  /* Prevenir ajustes automáticos de texto en iOS */
   -webkit-text-size-adjust: 100%;
-  /* Suavizar scroll */
   scroll-behavior: smooth;
-  /* Touch optimizations */
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
 
 body {
-  background: #f4f1ec;
-  color: #1a1a1a;
+  background: var(--background);
+  color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
-  /* Prevenir overscroll bounce en iOS */
   overscroll-behavior: none;
-  /* Touch manipulation */
   touch-action: manipulation;
-  /* Suavizar fuentes en Apple */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Prevenir selección de texto no deseada en touch */
   -webkit-user-select: none;
   user-select: none;
 }
 
-.font-br {
-  font-family: var(--font-cormorant), Georgia, "Times New Roman", serif;
-}
-
-/* Botones táctiles — cumple estándar Apple HIG (44x44px) y Material (48x48dp) */
-button, a, input[type="button"], input[type="submit"] {
-  color: #1a1a1a;
-  /* Mínimo 44px touch target (Apple HIG) */
+button,
+a,
+input[type="button"],
+input[type="submit"] {
+  color: inherit;
   min-height: 44px;
   min-width: 44px;
-  /* Cursor pointer para indicar interactividad */
   cursor: pointer;
-  /* Optimización táctil */
   touch-action: manipulation;
-  /* Prevenir highlight azul en iOS */
   -webkit-tap-highlight-color: transparent;
-  /* Prevenir callout en iOS */
   -webkit-touch-callout: none;
 }
 
-/* Inputs: prevenir zoom en iOS (font-size >= 16px) */
-input, textarea, select {
+input,
+textarea,
+select {
   font-size: 16px;
-  /* Permitir selección de texto en inputs */
   -webkit-user-select: text;
   user-select: text;
 }
 
-/* Links y áreas clickeables deben tener área mínima */
 a {
   min-height: 44px;
   display: inline-flex;
@@ -82,68 +73,192 @@ a {
 }
 
 @layer components {
-  .chip-br {
-    min-height: 52px;
-    flex-shrink: 0;
-    border: 1px solid #8a8278;
-    background: #ffffff;
-    color: #1a1a1a;
-    padding: 0.75rem 1.25rem;
-    transition: background-color 150ms, color 150ms, border-color 150ms;
-  }
-  .chip-br:active {
-    background: #e8e2d9;
-  }
-  .chip-br-active {
-    border-color: #1b2a41;
-    background: #ffffff;
-    color: #1a1a1a !important;
-    box-shadow: inset 0 0 0 2px #1b2a41;
-  }
-  .chip-br-active .chip-br-sub {
-    color: #6b6560 !important;
-  }
-  .chip-br-sub {
-    display: block;
-    margin-top: 0.125rem;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #6b6560;
+  /* ── Banda header catálogo (Bazzar web + RIMEC navy) ── */
+  .bazzar-band {
+    background: linear-gradient(120deg, #002b4e 0%, #003d6b 48%, #ea580c 100%);
+    color: #ffffff;
   }
 
-  /* Filtro cabecera — activo naranja Bazzar (entrada cadena) */
+  .bazzar-band-subtle {
+    background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+    border-bottom: 1px solid #fed7aa;
+  }
+
+  /* ── Badges stats ── */
+  .bazzar-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgb(234 88 12 / 0.15);
+    color: #c2410c;
+    border: 1px solid rgb(234 88 12 / 0.25);
+  }
+
+  .bazzar-badge-navy {
+    background: rgb(0 43 78 / 0.08);
+    color: #002b4e;
+    border-color: rgb(0 43 78 / 0.15);
+  }
+
+  /* ── Cards catálogo ── */
+  .bazzar-card {
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgb(15 23 42 / 0.04);
+  }
+
+  .bazzar-card-accent {
+    border-top: 3px solid #ea580c;
+    box-shadow: 0 8px 28px rgb(234 88 12 / 0.08);
+  }
+
+  .bazzar-ref-row {
+    display: flex;
+    min-height: 56px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-radius: 0.875rem;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #fed7aa;
+    background: #ffffff;
+    padding: 0.625rem 0.875rem;
+    text-align: left;
+    box-shadow: 0 2px 10px rgb(15 23 42 / 0.04);
+    transition: border-color 150ms, box-shadow 150ms, background-color 150ms;
+  }
+
+  .bazzar-ref-row:active {
+    border-left-color: #ea580c;
+    background: #fff7ed;
+    box-shadow: 0 6px 20px rgb(234 88 12 / 0.12);
+  }
+
+  /* ── CTA principal ── */
+  .bazzar-btn-primary {
+    min-height: 72px;
+    width: 100%;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, #fb923c 0%, #ea580c 55%, #c2410c 100%);
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    box-shadow: 0 10px 30px rgb(234 88 12 / 0.35);
+    transition: transform 120ms, box-shadow 120ms;
+  }
+
+  .bazzar-btn-primary:active {
+    transform: scale(0.985);
+    box-shadow: 0 6px 18px rgb(234 88 12 / 0.28);
+  }
+
+  .bazzar-btn-primary:disabled {
+    background: #94a3b8;
+    box-shadow: none;
+    opacity: 0.6;
+  }
+
+  /* ── Chips filtro ── */
   .chip-filter {
     min-height: 44px;
     flex-shrink: 0;
-    border: 1px solid #d4d0c8;
+    border: 1px solid #e2e8f0;
     border-radius: 9999px;
     background: #ffffff;
-    color: #1a1a1a;
+    color: #0f172a;
     padding: 0.5rem 1rem;
     font-size: 13px;
-    transition: background-color 150ms, color 150ms, border-color 150ms;
+    font-weight: 600;
+    transition: background-color 150ms, color 150ms, border-color 150ms, box-shadow 150ms;
   }
+
   .chip-filter:active {
     background: #fff7ed;
   }
+
   .chip-filter-active {
     border-color: #ea580c;
-    background: #ea580c;
+    background: linear-gradient(135deg, #fb923c, #ea580c);
     color: #ffffff !important;
+    box-shadow: 0 4px 14px rgb(234 88 12 / 0.28);
   }
+
   .chip-filter-active .chip-filter-sub {
-    color: #ffffffb0;
+    color: rgb(255 255 255 / 0.75);
   }
+
   .chip-filter-sub {
     display: block;
     margin-top: 0.125rem;
     font-size: 9px;
     letter-spacing: 0.12em;
-    color: #6b6560;
+    color: #64748b;
   }
 
-  /* Thumbs cadena — contain obligatorio (IMG-FAIL-OVERFLOW-THUMB) */
+  .chip-filter-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #002b4e;
+  }
+
+  /** Host hero — card completo; contain + zoom leve (sin recortar punta/tacón). */
+  .cadena-hero-host {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .cadena-hero-frame {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button.cadena-hero-frame {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  .cadena-hero-frame > img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    transform: scale(1.12);
+    transform-origin: center center;
+    border: none;
+  }
+
+  .cadena-hero-frame:focus-visible {
+    outline: 2px solid #ea580c;
+    outline-offset: 6px;
+  }
+
   .cadena-thumb-frame {
     position: relative;
     height: 100%;
@@ -164,18 +279,42 @@ a {
     object-position: center;
   }
 
-  /* Selección táctil — borde visible, texto siempre legible (no relleno negro) */
   .tile-selected {
-    border-color: #1b2a41 !important;
-    background-color: #ffffff !important;
-    color: #1a1a1a !important;
-    box-shadow: inset 0 0 0 1px #1b2a41;
+    border-color: #ea580c !important;
+    background-color: #fff7ed !important;
+    color: #0f172a !important;
+    box-shadow: inset 0 0 0 1px #ea580c, 0 4px 12px rgb(234 88 12 / 0.15);
   }
+
   .tile-selected,
   .tile-selected span {
-    color: #1a1a1a !important;
+    color: #0f172a !important;
   }
+
   .tile-selected-sub {
-    color: #6b6560 !important;
+    color: #c2410c !important;
+    font-weight: 700;
+  }
+
+  .bazzar-input {
+    min-height: 52px;
+    width: 100%;
+    flex: 1;
+    border-radius: 0.75rem;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    padding: 0 1rem;
+    font-size: 1rem;
+    color: #0f172a;
+  }
+
+  .bazzar-input::placeholder {
+    color: #94a3b8;
+  }
+
+  .bazzar-input:focus {
+    outline: none;
+    border-color: #ea580c;
+    box-shadow: 0 0 0 3px rgb(234 88 12 / 0.15);
   }
 }

@@ -27,7 +27,7 @@ function NaipesCard({
     ? isH
       ? "tile-selected shadow-sm"
       : "tile-selected shadow-sm"
-    : "border-[#c4bdb4] opacity-90";
+    : "border-[#e2e8f0] opacity-90";
 
   return (
     <TouchPad
@@ -42,13 +42,13 @@ function NaipesCard({
       >
         {!isH && active ? (
           <span
-            className="pointer-events-none absolute left-0 top-0 z-20 h-full w-1 bg-[#1b2a41]"
+            className="pointer-events-none absolute left-0 top-0 z-20 h-full w-1 bg-[#002B4E]"
             aria-hidden
           />
         ) : null}
         <div
           className={`absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[8px] leading-none ${
-            active ? "font-bold text-[#1a1a1a]" : "text-[#6b6560]"
+            active ? "font-bold text-slate-900" : "text-[#64748b]"
           }`}
         >
           {par.linea}.{par.referencia}
@@ -105,8 +105,8 @@ export function CarruselNaipesLR({
 
   useEffect(() => {
     activeRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: isVertical ? "center" : "nearest",
+      behavior: "auto",
+      block: isVertical ? "nearest" : "nearest",
       inline: isVertical ? "nearest" : "center",
     });
   }, [parIndex, isVertical]);
@@ -118,7 +118,7 @@ export function CarruselNaipesLR({
       <div
         className={`flex min-h-0 flex-1 gap-1.5 overflow-auto scroll-smooth ${
           isVertical
-            ? "flex-col items-center py-1 snap-y snap-mandatory px-1"
+            ? "flex-col items-center snap-y snap-mandatory px-1 py-3"
             : "flex-row items-center justify-center px-1 snap-x snap-mandatory"
         }`}
       >

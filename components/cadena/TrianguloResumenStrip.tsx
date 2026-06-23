@@ -9,7 +9,6 @@ type Props = {
   marca?: string;
 };
 
-/** Vista cadena — muestra triángulo activo (URL) y enlace a editar en `/cadena`. */
 export function TrianguloResumenStrip({ searchParams, clienteId, marca }: Props) {
   const f = filtrosFromSearchParams(searchParams);
   const chips: string[] = [];
@@ -25,20 +24,20 @@ export function TrianguloResumenStrip({ searchParams, clienteId, marca }: Props)
   const editHref = `/cadena?${editQs.toString()}`;
 
   return (
-    <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-[#c4bdb4] bg-white/90 px-2 py-1.5 text-[10px] text-[#6b6560]">
-      <span className="font-bold uppercase tracking-[0.14em] text-[#1a1a1a]">Triángulo</span>
+    <div className="flex shrink-0 flex-wrap items-center gap-2 border-b border-orange-100 bg-gradient-to-r from-orange-50/80 to-white px-2 py-2 text-[10px] text-slate-600">
+      <span className="bazzar-badge bazzar-badge-navy">Triángulo</span>
       {chips.length === 0 ? (
-        <span>Sin filtros de entrada</span>
+        <span className="text-slate-500">Sin filtros de entrada</span>
       ) : (
         chips.map((c) => (
-          <span key={c} className="rounded-sm border border-[#c4bdb4] bg-[#faf8f5] px-2 py-0.5">
+          <span key={c} className="rounded-full border border-orange-200 bg-white px-2.5 py-0.5 font-semibold text-bazzar-naranja">
             {c}
           </span>
         ))
       )}
       <Link
         href={editHref}
-        className="ml-auto min-h-[36px] rounded-sm border border-[#8a8278] px-3 py-1 font-semibold text-[#1a1a1a] active:bg-[#e8e2d9]"
+        className="ml-auto min-h-[36px] rounded-full border border-bazzar-naranja bg-bazzar-naranja px-3 py-1 text-xs font-bold text-white active:bg-bazzar-naranja-dark"
       >
         Editar filtros
       </Link>

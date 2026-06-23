@@ -60,14 +60,14 @@ export function CarruselMateriales({
               >
                 <div
                   className={`relative h-[104px] w-[80px] min-h-[104px] min-w-[80px] overflow-hidden rounded-sm border-2 bg-white shadow-sm ${
-                    active ? "tile-selected" : "border-[#c4bdb4]"
+                    active ? "tile-selected" : "border-[#e2e8f0]"
                   }`}
                   aria-current={active ? "true" : undefined}
                 >
-                  <div className="absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[8px] leading-none text-[#6b6560]">
+                  <div className="absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[8px] leading-none text-[#64748b]">
                     {g.linea}.{g.referencia}
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[7px] text-[#1a1a1a]">
+                  <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-white/95 to-transparent px-1 py-0.5 text-center font-mono text-[7px] text-slate-900">
                     {g.material}
                   </div>
                   <div className="relative h-full w-full bg-white px-0.5 pt-3 pb-3">

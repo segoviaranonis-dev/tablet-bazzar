@@ -3,6 +3,9 @@ import { cohortePorUbicacion } from "@/lib/deposito-cohorte";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { getPool, isDatabaseConfigured } from "@/lib/pool";
 import {
+  moleculeFromSearchParams,
+  queryMoleculeGradaEnTabla,
+  queryMoleculeTotalEnTabla,
   queryParGradaEnTabla,
   queryParTotalEnTabla,
   type ParStockQuery,
@@ -62,13 +65,21 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     );
   }
 
+  const molecule = moleculeFromSearchParams(req.nextUrl.searchParams, {
+    linea: par.linea_codigo_proveedor,
+    referencia: par.referencia_codigo_proveedor,
+  });
+  const scope = molecule ? "molecule" : "par_lr";
+
   const pool = getPool();
   const ubicacionActualId = ubicacionIdFromClienteId(cliente_id);
   const cohorte = cohortePorUbicacion(cliente_id);
   const t0 = Date.now();
 
   try {
-    const cantidad_local = await queryParTotalEnTabla(pool, config.tabla, par);
+    const cantidad_local = molecule
+      ? await queryMoleculeTotalEnTabla(pool, config.tabla, molecule)
+      : await queryParTotalEnTabla(pool, config.tabla, par);
 
     const gradasPorUb = new Map<string, Map<string, number>>();
     await Promise.all(
@@ -78,21 +89,40 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
           gradasPorUb.set(ub.id, new Map());
           return;
         }
-        const gm = await queryParGradaEnTabla(pool, dep.tabla, par);
+        const gm = molecule
+          ? await queryMoleculeGradaEnTabla(pool, dep.tabla, molecule)
+          : await queryParGradaEnTabla(pool, dep.tabla, par);
         gradasPorUb.set(ub.id, gm);
       }),
     );
 
     const ubicaciones = buildStockBloques(gradasPorUb, ubicacionActualId);
 
-    return NextResponse.json({
+    const payload: Record<string, unknown> = {
       configured: true,
       server_time: new Date().toISOString(),
       cantidad_local,
       ubicaciones,
-      scope: "par_lr",
+      scope,
       ms: Date.now() - t0,
-    });
+    };
+
+    if (req.nextUrl.searchParams.get("debug") === "1") {
+      payload.debug = {
+        cliente_id,
+        cohorte: config.tipo,
+        ubicacion_actual: ubicacionActualId,
+        tablas: [...cohorte.entries()].map(([ubId, dep]) => ({
+          ubicacion: ubId,
+          cliente_id: dep.cliente_id,
+          ente: dep.ente,
+          tipo: dep.tipo,
+          tabla: dep.tabla,
+        })),
+      };
+    }
+
+    return NextResponse.json(payload);
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Error live stock";
     return NextResponse.json(

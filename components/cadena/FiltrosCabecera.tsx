@@ -18,9 +18,7 @@ function FilaChips({ label, todosLabel, items, selected, onToggle, onClear }: Ro
 
   return (
     <div className="flex flex-col gap-1.5 sm:flex-row sm:items-start sm:gap-3">
-      <span className="shrink-0 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b6560] sm:w-20">
-        {label}
-      </span>
+      <span className="chip-filter-label shrink-0 pt-2 sm:w-20">{label}</span>
       <div className="flex min-w-0 flex-1 gap-1.5 overflow-x-auto pb-0.5 snap-x">
         <TouchPad
           onClick={onClear}
@@ -64,20 +62,13 @@ export function FiltrosCabecera({
   marcas,
   estilos,
   tipos,
-  referencias,
   onChange,
   onEnter,
 }: Props) {
   const set = (patch: Partial<FiltrosEntrada>) => onChange({ ...filtros, ...patch });
 
-  const refChips = referencias.slice(0, 48).map((r) => ({
-    id: r.key,
-    label: `${r.linea}.${r.referencia}`,
-    count: r.count ?? 0,
-  }));
-
   return (
-    <div className="space-y-3 rounded-sm border border-[#c4bdb4] bg-white p-3 shadow-sm">
+    <div className="bazzar-card bazzar-card-accent space-y-3 p-3">
       <FilaChips
         label="Género"
         todosLabel="Todos"
@@ -111,9 +102,7 @@ export function FiltrosCabecera({
         onClear={() => set({ tipos: [] })}
       />
       <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
-        <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b6560] sm:w-20">
-          Buscar
-        </span>
+        <span className="chip-filter-label shrink-0 sm:w-20">Buscar</span>
         <input
           type="search"
           value={filtros.buscar}
@@ -125,7 +114,7 @@ export function FiltrosCabecera({
             }
           }}
           placeholder="Línea, ref, marca, material, color…"
-          className="min-h-[52px] w-full flex-1 border border-[#8a8278] bg-[#faf9f7] px-4 text-base text-[#1a1a1a] placeholder:text-[#9a9288] focus:border-[#ea580c] focus:outline-none"
+          className="bazzar-input"
         />
       </div>
     </div>

@@ -41,9 +41,9 @@ export function CarruselColores({
     : "h-[88px] w-[72px] min-h-[88px] min-w-[72px]";
 
   return (
-    <div className={`border-b border-[#e8e2d9] bg-[#faf8f5] ${className}`}>
+    <div className={`border-b border-[#f1f5f9] bg-[#f8fafc] ${className}`}>
       {!compact && (
-        <p className="px-2 pb-0.5 pt-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#6b6560]">
+        <p className="px-2 pb-0.5 pt-1 text-[9px] font-bold uppercase tracking-[0.14em] text-[#64748b]">
           Colores · {colores.length}
         </p>
       )}
@@ -67,12 +67,12 @@ export function CarruselColores({
               >
                 <div
                   className={`relative overflow-hidden rounded-md border-2 bg-white shadow-sm ${tileSize} ${
-                    selected ? "border-[#1a1a1a]" : "border-[#c4bdb4]"
+                    selected ? "border-[#002B4E]" : "border-[#e2e8f0]"
                   }`}
                   aria-current={selected ? "true" : undefined}
                 >
                   {showMaterialBadge ? (
-                    <span className="pointer-events-none absolute inset-x-0 top-0 z-10 bg-white/90 px-0.5 py-px text-center font-mono text-[7px] leading-none text-[#6b6560]">
+                    <span className="pointer-events-none absolute inset-x-0 top-0 z-10 bg-white/90 px-0.5 py-px text-center font-mono text-[7px] leading-none text-[#64748b]">
                       {c.material_code}
                     </span>
                   ) : null}

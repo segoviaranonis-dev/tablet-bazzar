@@ -1,17 +1,18 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CarruselColores } from "@/components/cadena/CarruselColores";
 import { CarruselNaipesLR } from "@/components/cadena/CarruselNaipesLR";
 import { LineaReferenciaHero } from "@/components/cadena/LineaReferenciaHero";
 import { MultiSelectFlotante } from "@/components/cadena/MultiSelectFlotante";
-import { StockOtrasTiendasDock, useStockOtrosLocales } from "@/components/cadena/StockOtrosLocales";
+import { useStockOtrosLocales } from "@/components/cadena/StockOtrosLocales";
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { HeroProductImage } from "@/components/cadena/HeroProductImage";
+import { CadenaVistaHeader } from "@/components/cadena/CadenaVistaHeader";
 import { TrianguloResumenStrip } from "@/components/cadena/TrianguloResumenStrip";
 import type { DepositoFila, ParLineaRef } from "@/lib/cadena";
+import { resolverNavCohorte } from "@/lib/cadena";
 import {
   FILTROS_VACIOS,
   filtrarPares,
@@ -38,6 +39,8 @@ import {
 } from "@/lib/codigo-busqueda";
 import { GradaVentaStrip } from "@/components/pos/GradaVentaStrip";
 import { PosCartSheet } from "@/components/pos/PosCartSheet";
+import { VendedorPinButton } from "@/components/pos/VendedorPinButton";
+import { StagingTicketsPanel } from "@/components/pos/StagingTicketsPanel";
 import { usePosCart } from "@/lib/cart/PosCartContext";
 
 const DEFAULT_CLIENTE = 2100;
@@ -53,7 +56,7 @@ function PanelColapsable({
 }) {
   return (
     <div
-      className={`shrink-0 overflow-hidden border-[#c4bdb4] bg-[#f4f1ec] transition-[width,opacity] duration-200 ease-out ${
+      className={`shrink-0 overflow-hidden border-[#e2e8f0] bg-[#f1f5f9] transition-[width,opacity] duration-200 ease-out ${
         open ? `${widthClass} opacity-100` : "w-0 opacity-0"
       }`}
     >
@@ -92,13 +95,16 @@ function CadenaVistaInner() {
   const [estiloPanelOpen, setEstiloPanelOpen] = useState(false);
   const [referenciaPanelOpen, setReferenciaPanelOpen] = useState(false);
 
-  const [parIndex, setParIndex] = useState(0);
+  const [cohorteEstilo, setCohorteEstilo] = useState("");
+  const [parKeyActivo, setParKeyActivo] = useState<string | null>(null);
+
   const [grupoIndex, setGrupoIndex] = useState(0);
   const [colorG1, setColorG1] = useState(0);
   const [colorG2, setColorG2] = useState(0);
   const [detalleOpen, setDetalleOpen] = useState(false);
 
   const [searchOpen, setSearchOpen] = useState(false);
+  const [stagingOpen, setStagingOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [searchError, setSearchError] = useState<string | null>(null);
 
@@ -126,7 +132,15 @@ function CadenaVistaInner() {
   }, [paresAll, filtros.estilos, filtros.referenciaKeys]);
 
   const pares = useMemo(() => filtrarPares(paresAll, filtros), [paresAll, filtros]);
-  const paresNav = pares.length > 0 ? pares : paresAll;
+  const paresBase = useMemo(() => (pares.length > 0 ? pares : paresAll), [pares, paresAll]);
+
+  const {
+    paresNav,
+    parIndex,
+  } = useMemo(
+    () => resolverNavCohorte(paresBase, cohorteEstilo, parKeyActivo),
+    [paresBase, cohorteEstilo, parKeyActivo],
+  );
 
   const estiloItems = useMemo(
     () => opciones.estilos.map((e) => ({ id: e.value, label: e.value, sub: `${e.count}` })),
@@ -143,13 +157,14 @@ function CadenaVistaInner() {
   );
 
   const parNav: ParLineaRef | null = paresNav[parIndex] ?? null;
-  const par: ParLineaRef | null = pares[parIndex] ?? parNav;
+  const par: ParLineaRef | null =
+    parNav && pares.some((p) => p.key === parNav.key) ? parNav : parNav;
   const activaBase = par
     ? filaActiva(par, grupoIndex, colorG1) ?? par.coloresLR[colorG2] ?? null
     : null;
 
-  const { ubicaciones: stockUbicaciones, cantidadLocal } =
-    useStockOtrosLocales(clienteId, parNav);
+  const { ubicaciones: stockUbicaciones, cantidadLocal, bootLoading: stockBootLoading, error: stockError, retry: stockRetry } =
+    useStockOtrosLocales(clienteId, par, activaBase);
 
   const activa = activaBase;
   const cantidadMostrada =
@@ -175,22 +190,26 @@ function CadenaVistaInner() {
 
   const applyBootPosition = useCallback(
     (serverPos?: { parIndex: number; grupoIndex: number; colorG1: number; colorG2: number } | null) => {
-      if (paresNav.length === 0) return;
+      if (paresBase.length === 0) return;
       const nav = resolveCadenaBootState({
-        paresNav,
+        paresNav: paresBase,
         posUrl,
         serverPosicion: serverPos ?? serverPosicionRef.current,
         qBuscar,
         filtros,
       });
-      setParIndex(nav.parIndex);
+      const bootPar = paresBase[nav.parIndex] ?? paresBase[0];
+      if (bootPar) {
+        setCohorteEstilo((bootPar.estilo ?? "").trim());
+        setParKeyActivo(bootPar.key);
+      }
       setGrupoIndex(nav.grupoIndex);
       setColorG1(nav.colorG1);
       setColorG2(nav.colorG2);
       setPosApplied(true);
       bootFiltrosKeyRef.current = filtrosKey;
     },
-    [paresNav, posUrl, qBuscar, filtros, filtrosKey],
+    [paresBase, posUrl, qBuscar, filtros, filtrosKey],
   );
 
   useEffect(() => {
@@ -210,6 +229,8 @@ function CadenaVistaInner() {
     if (seed) {
       serverPosicionRef.current = seed.posicion ?? null;
       setParesAll(seed.paresAll);
+      setCohorteEstilo("");
+      setParKeyActivo(null);
       setLoading(false);
       setError(null);
       setPosApplied(false);
@@ -218,6 +239,8 @@ function CadenaVistaInner() {
 
     setLoading(true);
     setPosApplied(false);
+    setCohorteEstilo("");
+    setParKeyActivo(null);
     serverPosicionRef.current = null;
     fetch(`/api/deposito/${clienteId}/cadena?${cadenaQueryString}`)
       .then((r) => r.json())
@@ -232,32 +255,35 @@ function CadenaVistaInner() {
   }, [marca, clienteId, router, cadenaQueryString]);
 
   useEffect(() => {
-    if (posApplied || paresNav.length === 0 || loading) return;
+    if (posApplied || paresBase.length === 0 || loading) return;
     applyBootPosition(serverPosicionRef.current);
-  }, [posApplied, paresNav.length, loading, applyBootPosition]);
+  }, [posApplied, paresBase.length, loading, applyBootPosition]);
 
   useEffect(() => {
     if (!posApplied || bootFiltrosKeyRef.current === filtrosKey) return;
     setDetalleOpen(false);
-    const next = resolveFiltrosChangeState(paresNav, filtros, posUrl.pi);
+    const next = resolveFiltrosChangeState(paresBase, filtros, posUrl.pi);
     if (next) {
-      setParIndex(next.parIndex);
+      const bootPar = paresBase[next.parIndex] ?? paresBase[0];
+      if (bootPar) {
+        setCohorteEstilo((bootPar.estilo ?? "").trim());
+        setParKeyActivo(bootPar.key);
+      }
       setGrupoIndex(next.grupoIndex);
       setColorG1(next.colorG1);
       setColorG2(next.colorG2);
     }
     bootFiltrosKeyRef.current = filtrosKey;
-  }, [filtrosKey, paresNav, posApplied, filtros, posUrl.pi]);
+  }, [filtrosKey, paresBase, posApplied, filtros, posUrl.pi]);
 
   useEffect(() => {
-    if (parIndex >= paresNav.length && paresNav.length > 0) setParIndex(0);
-    if (!posApplied || !par || !filtros.colorCode) return;
-    const next = resolveColorFilterState(par, filtros.colorCode);
+    if (!posApplied || !parNav || !filtros.colorCode) return;
+    const next = resolveColorFilterState(parNav, filtros.colorCode);
     if (next) {
       setGrupoIndex(next.grupoIndex);
       setColorG1(next.colorG1);
     }
-  }, [parIndex, paresNav.length, par, filtros.colorCode, posApplied]);
+  }, [parNav, filtros.colorCode, posApplied]);
 
   useEffect(() => {
     if (paresNav.length === 0) return;
@@ -268,7 +294,12 @@ function CadenaVistaInner() {
     (next: number) => {
       if (paresNav.length === 0) return;
       const i = ((next % paresNav.length) + paresNav.length) % paresNav.length;
-      setParIndex(i);
+      const p = paresNav[i];
+      if (p) {
+        setParKeyActivo(p.key);
+        const e = (p.estilo ?? "").trim();
+        if (e && e !== cohorteEstilo) setCohorteEstilo(e);
+      }
       if (!filtros.colorCode) {
         setGrupoIndex(0);
         setColorG1(0);
@@ -276,7 +307,7 @@ function CadenaVistaInner() {
       }
       setDetalleOpen(false);
     },
-    [paresNav.length, filtros.colorCode],
+    [paresNav, filtros.colorCode, cohorteEstilo],
   );
 
   const stepPar = useCallback((delta: number) => irPar(parIndex + delta), [irPar, parIndex]);
@@ -364,9 +395,8 @@ function CadenaVistaInner() {
     setEstiloPanelOpen(false);
     setReferenciaPanelOpen(false);
     const target = paresAll[idx.parIndex];
-    const filtered = filtrarPares(paresAll, FILTROS_VACIOS);
-    const parIdx = filtered.findIndex((p) => p.key === target?.key);
-    setParIndex(parIdx >= 0 ? parIdx : 0);
+    setCohorteEstilo((target?.estilo ?? "").trim());
+    setParKeyActivo(target?.key ?? null);
     setGrupoIndex(idx.grupoIndex);
     setColorG1(idx.colorGrupo1Index);
     setColorG2(idx.colorGrupo2Index);
@@ -375,33 +405,23 @@ function CadenaVistaInner() {
   }
 
   const header = (
-    <header className="z-30 grid shrink-0 grid-cols-[52px_1fr_52px] gap-1 border-b border-[#c4bdb4] bg-[#f4f1ec] px-1 py-1">
-      <Link
-        href="/cadena"
-        className="flex min-h-[52px] min-w-[52px] items-center justify-center border border-[#8a8278] text-lg text-[#1a1a1a] active:bg-[#e8e2d9]"
-        aria-label="Ventas — filtros"
-      >
-        ←
-      </Link>
-      <Link
-        href="/cadena"
-        className="flex min-h-[52px] items-center justify-center truncate px-2 font-br text-lg tracking-wide text-[#1a1a1a] active:bg-[#e8e2d9]"
-        aria-label={`Marca ${marca}`}
-      >
-        {marca}
-      </Link>
-      <TouchPad
-        onClick={() => setSearchOpen(true)}
-        ariaLabel="Buscar"
-        className="flex min-h-[52px] min-w-[52px] items-center justify-center border border-[#8a8278] text-lg text-[#1a1a1a] active:bg-[#e8e2d9]"
-      >
-        ⌕
-      </TouchPad>
-    </header>
+    <>
+      <CadenaVistaHeader marca={marca} onSearch={() => setSearchOpen(true)} />
+      <div className="bazzar-band-subtle flex items-center justify-end gap-2 px-3 py-2">
+        <VendedorPinButton clienteId={clienteId} />
+        <button
+          type="button"
+          onClick={() => setStagingOpen(true)}
+          className="rounded-lg border border-[#002B4E]/20 bg-white px-3 py-2 text-[10px] font-bold uppercase text-[#002B4E]"
+        >
+          Tickets
+        </button>
+      </div>
+    </>
   );
 
   const asideFotos = parNav ? (
-    <aside className="flex w-[100px] shrink-0 flex-col border-l border-[#c4bdb4] bg-[#f4f1ec]/80">
+    <aside className="flex w-[100px] shrink-0 flex-col border-l border-[#e2e8f0] bg-[#f1f5f9]/80">
       {paresNav.length > 1 ? (
         <div className="min-h-0 flex-1" {...parCarouselTouch}>
           <CarruselNaipesLR
@@ -421,19 +441,19 @@ function CadenaVistaInner() {
 
   if (loading) {
     return (
-      <div className="flex min-h-[100dvh] w-full items-center justify-center bg-[#f4f1ec]">
-        <span className="inline-block h-10 w-10 animate-pulse rounded-full bg-[#9a9288]/40" />
+      <div className="flex min-h-[100dvh] w-full items-center justify-center bg-[#f1f5f9]">
+        <span className="inline-block h-10 w-10 animate-pulse rounded-full bg-[#94a3b8]/40" />
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 bg-[#f4f1ec] p-6">
+      <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 bg-[#f1f5f9] p-6">
         <TouchPad
           onClick={() => router.push("/cadena")}
           ariaLabel="Volver a Ventas"
-          className="border border-[#1a1a1a] bg-[#1a1a1a] px-8 py-4 font-br text-lg tracking-wide text-[#f4f1ec]"
+          className="border border-[#002B4E] bg-[#002B4E] px-8 py-4 font-semibold text-lg tracking-wide text-[#f1f5f9]"
         >
           ← Ventas
         </TouchPad>
@@ -443,10 +463,10 @@ function CadenaVistaInner() {
 
   if (paresAll.length === 0) {
     return (
-      <div className="flex h-[100dvh] flex-col bg-[#f4f1ec]">
+      <div className="flex h-[100dvh] flex-col bg-[#f1f5f9]">
         {header}
         <div className="flex flex-1 items-center justify-center p-6">
-          <p className="font-br text-lg text-[#6b6560]">Sin stock en esta marca</p>
+          <p className="font-semibold text-lg text-[#64748b]">Sin stock en esta marca</p>
         </div>
       </div>
     );
@@ -459,7 +479,7 @@ function CadenaVistaInner() {
 
       <div className="flex min-h-0 flex-1">
         <PanelColapsable open={estiloPanelOpen} widthClass="w-[108px]">
-          <div className="h-full border-r border-[#c4bdb4]">
+          <div className="h-full border-r border-[#e2e8f0]">
             <MultiSelectFlotante
               titulo="Estilo"
               items={estiloItems}
@@ -471,20 +491,20 @@ function CadenaVistaInner() {
           </div>
         </PanelColapsable>
 
-        <main className="relative flex min-h-0 min-w-0 flex-1 flex-col">
+        <main className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
           <div
-            className="relative flex min-h-0 flex-1 items-stretch justify-center p-1"
+            className="relative flex min-h-0 flex-1 items-stretch justify-center overflow-hidden p-1"
             {...heroTouch}
           >
             <div className="relative h-full w-full">
               {sinResultados ? (
-                <div className="flex h-full flex-col items-center justify-center gap-4 border border-[#c4bdb4] bg-white/90 p-6">
+                <div className="flex h-full flex-col items-center justify-center gap-4 border border-[#e2e8f0] bg-white/90 p-6">
                   <div className="flex gap-2">
                     <TouchPad
                       onClick={() => setEstiloPanelOpen((v) => !v)}
                       ariaLabel="Estilos"
-                      className={`min-h-[52px] border px-4 font-br active:bg-[#e8e2d9] ${
-                        estiloPanelOpen ? "tile-selected" : "border-[#8a8278]"
+                      className={`min-h-[52px] border px-4 font-semibold active:bg-[#f1f5f9] ${
+                        estiloPanelOpen ? "tile-selected" : "border-[#cbd5e1]"
                       }`}
                     >
                       Estilos
@@ -492,8 +512,8 @@ function CadenaVistaInner() {
                     <TouchPad
                       onClick={() => setReferenciaPanelOpen((v) => !v)}
                       ariaLabel="Referencias"
-                      className={`min-h-[52px] border px-4 font-br active:bg-[#e8e2d9] ${
-                        referenciaPanelOpen ? "tile-selected" : "border-[#8a8278]"
+                      className={`min-h-[52px] border px-4 font-semibold active:bg-[#f1f5f9] ${
+                        referenciaPanelOpen ? "tile-selected" : "border-[#cbd5e1]"
                       }`}
                     >
                       Referencias
@@ -502,16 +522,16 @@ function CadenaVistaInner() {
                   <TouchPad
                     onClick={() => setFiltros(FILTROS_VACIOS)}
                     ariaLabel="Limpiar filtros"
-                    className="border border-[#1a1a1a] px-6 py-3 font-br text-lg text-[#1a1a1a] active:bg-[#e8e2d9]"
+                    className="border border-[#002B4E] px-6 py-3 font-semibold text-lg text-slate-900 active:bg-[#f1f5f9]"
                   >
                     Sin coincidencias · limpiar
                   </TouchPad>
                 </div>
               ) : (
-                <div className="relative flex h-full min-h-[280px] w-full flex-col overflow-visible border border-[#c4bdb4] bg-white shadow-sm">
+                <div className="bazzar-card relative h-full min-h-0 w-full overflow-hidden shadow-lg">
                   {activa && par && (
                     <>
-                      <div className="absolute inset-0 z-0 flex min-h-0 items-center justify-center overflow-visible bg-white px-1 pt-[3.25rem] pb-2">
+                      <div className="cadena-hero-host absolute inset-0 z-0">
                         <HeroProductImage
                           fila={activa}
                           alt={`${activa.linea_codigo_proveedor}.${activa.referencia_codigo_proveedor}`}
@@ -520,7 +540,7 @@ function CadenaVistaInner() {
                       <LineaReferenciaHero
                         activa={activa}
                         parIndex={parIndex}
-                        total={pares.length}
+                        total={paresNav.length}
                         estiloPanelOpen={estiloPanelOpen}
                         referenciaPanelOpen={referenciaPanelOpen}
                         estilosActivos={filtros.estilos.length}
@@ -529,20 +549,20 @@ function CadenaVistaInner() {
                         onToggleReferenciaPanel={() => setReferenciaPanelOpen((v) => !v)}
                       />
                       {detalleOpen && (
-                        <div className="absolute inset-x-0 bottom-0 max-h-[42%] overflow-y-auto border-t border-[#c4bdb4] bg-[#f4f1ec] px-4 py-4">
-                          <p className="font-br text-lg text-[#1a1a1a]">{activa.estilo || "—"}</p>
-                          <p className="mt-1 font-mono text-xs tracking-wider text-[#6b6560]">
+                        <div className="absolute inset-x-0 bottom-0 max-h-[42%] overflow-y-auto border-t border-[#e2e8f0] bg-[#f1f5f9] px-4 py-4">
+                          <p className="font-semibold text-lg text-slate-900">{activa.estilo || "—"}</p>
+                          <p className="mt-1 font-mono text-xs tracking-wider text-[#64748b]">
                             {activa.linea_codigo_proveedor}.{activa.referencia_codigo_proveedor}
                           </p>
-                          <p className="mt-2 text-sm text-[#1a1a1a]">
+                          <p className="mt-2 text-sm text-slate-900">
                             {activa.material_code}
                             {activa.descp_material ? ` · ${activa.descp_material}` : ""}
                           </p>
-                          <p className="text-sm text-[#1a1a1a]">
+                          <p className="text-sm text-slate-900">
                             {activa.color_code}
                             {activa.descp_color ? ` · ${activa.descp_color}` : ""}
                           </p>
-                          <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#6b6560]">
+                          <p className="mt-2 text-xs uppercase tracking-[0.18em] text-[#64748b]">
                             {activa.grada} · {Math.round(cantidadMostrada)} pares
                           </p>
                         </div>
@@ -573,7 +593,7 @@ function CadenaVistaInner() {
         </main>
 
         <PanelColapsable open={referenciaPanelOpen} widthClass="w-[116px]">
-          <div className="h-full border-l border-[#c4bdb4]">
+          <div className="h-full border-l border-[#e2e8f0]">
             <MultiSelectFlotante
               titulo="Referencia"
               items={refItems}
@@ -589,12 +609,11 @@ function CadenaVistaInner() {
       </div>
 
       {!sinResultados && activa && parNav && (
-        <footer className="shrink-0 border-t-2 border-[#c4bdb4] bg-[#f4f1ec] shadow-[0_-2px_12px_rgba(26,26,26,0.06)]">
-          <StockOtrasTiendasDock ubicaciones={stockUbicaciones} />
+        <footer className="shrink-0 border-t-2 border-orange-200 bg-gradient-to-b from-white to-orange-50/50 shadow-[0_-8px_24px_rgba(234,88,12,0.08)]">
           {parNav.coloresLR.length > 0 ? (
             <>
               <div className="flex items-center justify-between gap-2 px-2 pt-1">
-                <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[#6b6560]">
+                <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[#64748b]">
                   Colores · {parNav.coloresLR.length}
                 </p>
               </div>
@@ -619,25 +638,28 @@ function CadenaVistaInner() {
           ) : null}
           <GradaVentaStrip
             activa={activa}
-            par={parNav}
+            par={par}
             clienteId={clienteId}
             marca={marca}
             ubicaciones={stockUbicaciones}
             cantidadLocal={cantidadLocal}
+            bootLoading={stockBootLoading}
+            stockError={stockError}
+            onStockRetry={stockRetry}
           />
         </footer>
       )}
 
       {searchOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#1a1a1a]/40 p-2 pb-6">
-          <div className="w-full max-w-lg border border-[#c4bdb4] bg-[#f4f1ec] p-4 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-rimec-azul/40 p-2 pb-6 backdrop-blur-sm">
+          <div className="bazzar-card bazzar-card-accent w-full max-w-lg p-4 shadow-2xl">
             <input
               type="text"
               inputMode="decimal"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder="1122.828"
-              className="w-full border border-[#8a8278] bg-white px-4 py-4 font-mono text-xl text-[#1a1a1a] focus:border-[#1a1a1a] focus:outline-none"
+              className="bazzar-input font-mono text-xl"
               autoFocus
             />
             {searchError && (
@@ -650,14 +672,14 @@ function CadenaVistaInner() {
                   setSearchError(null);
                 }}
                 ariaLabel="Cerrar"
-                className="min-h-[52px] border border-[#8a8278] text-lg"
+                className="min-h-[52px] border border-[#cbd5e1] text-lg"
               >
                 ✕
               </TouchPad>
               <TouchPad
                 onClick={runSearch}
                 ariaLabel="Ir"
-                className="min-h-[52px] bg-[#1a1a1a] text-lg text-[#f4f1ec] active:bg-[#1b2a41]"
+                className="min-h-[52px] rounded-xl bg-bazzar-naranja text-lg text-white active:bg-bazzar-naranja-dark"
               >
                 →
               </TouchPad>
@@ -667,6 +689,7 @@ function CadenaVistaInner() {
       )}
 
       <PosCartSheet />
+      <StagingTicketsPanel clienteId={clienteId} open={stagingOpen} onClose={() => setStagingOpen(false)} />
     </div>
   );
 }
@@ -675,8 +698,8 @@ export default function CadenaVistaPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-[100dvh] items-center justify-center bg-[#f4f1ec]">
-          <span className="h-10 w-10 animate-pulse rounded-full bg-[#9a9288]/40" />
+        <div className="flex min-h-[100dvh] items-center justify-center bg-[#f1f5f9]">
+          <span className="h-10 w-10 animate-pulse rounded-full bg-[#94a3b8]/40" />
         </div>
       }
     >

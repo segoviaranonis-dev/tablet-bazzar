@@ -97,7 +97,7 @@ export function stockOtrosLocalesUrl(clienteId: number, fila: StockMoleculaQuery
   return `/api/deposito/stock-otros-locales?${p.toString()}`;
 }
 
-/** Poll en vivo — stock por par L+R en 3 ubicaciones (cuadra con INGRESAR «214 p»). */
+/** Poll en vivo — stock por par L+R o molécula (color activo) en 3 ubicaciones. */
 export type ParStockLiveQuery = {
   linea_id: number | null;
   referencia_id: number | null;
@@ -105,24 +105,54 @@ export type ParStockLiveQuery = {
   referencia_codigo_proveedor: string;
 };
 
+export type StockLiveQuery = ParStockLiveQuery & Partial<StockMoleculaQuery>;
+
 export function totalStockRed(ubicaciones: StockUbicacionBloque[] | undefined): number {
   if (!ubicaciones?.length) return 0;
   return ubicaciones.reduce((s, u) => s + u.stockTotal, 0);
 }
 
-export function stockLiveUrl(clienteId: number, par: ParStockLiveQuery): string {
+export function stockLiveUrl(clienteId: number, q: StockLiveQuery): string {
   const p = new URLSearchParams();
-  p.set("linea", par.linea_codigo_proveedor.trim());
-  p.set("referencia", par.referencia_codigo_proveedor.trim());
-  if (par.linea_id != null) p.set("linea_id", String(par.linea_id));
-  if (par.referencia_id != null) p.set("referencia_id", String(par.referencia_id));
+  p.set("linea", q.linea_codigo_proveedor.trim());
+  p.set("referencia", q.referencia_codigo_proveedor.trim());
+  if (q.linea_id != null) p.set("linea_id", String(q.linea_id));
+  if (q.referencia_id != null) p.set("referencia_id", String(q.referencia_id));
+  if (q.material_id != null) p.set("material_id", String(q.material_id));
+  if (q.color_id != null) p.set("color_id", String(q.color_id));
+  if (q.material_code?.trim()) p.set("material", q.material_code.trim());
+  if (q.color_code?.trim()) p.set("color", q.color_code.trim());
   return `/api/deposito/${clienteId}/live?${p.toString()}`;
+}
+
+/** Las 2 tiendas que no son la actual — siempre 2 paneles en dock. */
+export function otrasUbicacionesDock(ubicaciones: StockUbicacionBloque[]): StockUbicacionBloque[] {
+  const actualId = ubicaciones.find((b) => b.esActual)?.id ?? null;
+  const otras = ubicaciones.filter((b) => !b.esActual);
+  if (otras.length >= 2) return otras.slice(0, 2);
+
+  const padded = [...otras];
+  for (const id of UBICACION_ORDER) {
+    if (id === actualId) continue;
+    if (padded.some((b) => b.id === id)) continue;
+    padded.push({
+      id,
+      label: UBICACION_LABELS[id],
+      esActual: false,
+      tallas: [],
+      stock: [],
+      stockTotal: 0,
+    });
+    if (padded.length >= 2) break;
+  }
+  return padded.slice(0, 2);
 }
 
 export type StockLiveResponse = {
   configured: boolean;
   cantidad_local: number;
   ubicaciones: StockUbicacionBloque[];
+  scope?: "par_lr" | "molecule";
   server_time?: string;
   ms?: number;
   error?: string;

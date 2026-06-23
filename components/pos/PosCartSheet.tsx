@@ -2,39 +2,244 @@
 
 import { useState, useTransition } from "react";
 import { gradaLabelCorta } from "@/lib/cart/pos-cart";
+import { dispatchPosCobrarOk } from "@/lib/pos-events";
 import { usePosCart } from "@/lib/cart/PosCartContext";
+import { useVendedorTienda } from "@/lib/vendedor/VendedorContext";
 import { TouchPad } from "@/components/cadena/TouchPad";
+
+type TipoPersona = "fisica" | "juridica";
+
+type ClienteForm = {
+  cedula: string;
+  nombre: string;
+  apellido: string;
+  telefono: string;
+  razon_social: string;
+  ruc: string;
+};
+
+type ModoCliente = "idle" | "encontrado" | "registro";
+
+type PantallaCliente = "buscar" | "registro";
+
+function limpiarCliente(): ClienteForm {
+  return { cedula: "", nombre: "", apellido: "", telefono: "", razon_social: "", ruc: "" };
+}
+
+function tituloDesdeCliente(c: ClienteForm): string {
+  const parts = [c.nombre.trim(), c.apellido.trim()].filter(Boolean);
+  return parts.join(" ") || c.razon_social.trim() || "Cliente";
+}
 
 export function PosCartSheet() {
   const { items, count, open, setOpen, removeItem, updateQty, clear, session } = usePosCart();
-  const [cedula, setCedula] = useState("");
+  const clienteId = session?.cliente_id ?? 0;
+  const { vendedor } = useVendedorTienda(clienteId || 2100);
+  const [cliente, setCliente] = useState<ClienteForm>(limpiarCliente);
+  const [modo, setModo] = useState<ModoCliente>("idle");
+  const [pantallaCliente, setPantallaCliente] = useState<PantallaCliente>("buscar");
+  const [tipoPersona, setTipoPersona] = useState<TipoPersona>("fisica");
+  const [cedulaBuscando, setCedulaBuscando] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [okMsg, setOkMsg] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
   if (!open) return null;
 
+  const inputClass =
+    "mt-1 w-full border border-[#cbd5e1] bg-white px-4 py-3 text-base text-slate-900 focus:border-[#002B4E] focus:outline-none";
+
+  const btnBuscarClass =
+    "mb-0.5 min-h-[52px] shrink-0 rounded-lg border-2 border-[#002B4E] bg-[#002B4E] px-5 text-sm font-bold uppercase tracking-wide !text-white active:bg-[#001a33] disabled:opacity-40";
+
+  function resetClienteUi() {
+    setCliente(limpiarCliente());
+    setModo("idle");
+    setPantallaCliente("buscar");
+    setTipoPersona("fisica");
+    setCedulaBuscando(false);
+  }
+
   function cerrar() {
     if (pending) return;
     setOpen(false);
     setError(null);
     setOkMsg(null);
+    resetClienteUi();
+  }
+
+  function volverABuscar() {
+    setError(null);
+    setPantallaCliente("buscar");
+    setModo("idle");
+    setTipoPersona("fisica");
+    setCliente((prev) => ({
+      ...limpiarCliente(),
+      cedula: prev.cedula,
+    }));
+  }
+
+  function cambiarTipoPersona(tipo: TipoPersona) {
+    setTipoPersona(tipo);
+    setError(null);
+    if (tipo === "juridica") {
+      setCliente((prev) => ({ ...prev, nombre: "", apellido: "" }));
+    } else {
+      setCliente((prev) => ({ ...prev, razon_social: "" }));
+    }
+  }
+
+  async function buscarCedula() {
+    const digits = cliente.cedula.replace(/\D/g, "");
+    if (digits.length < 5) {
+      setError("Ingresá una cédula válida (mín. 5 dígitos)");
+      return;
+    }
+
+    setError(null);
+    setCedulaBuscando(true);
+
+    try {
+      const r = await fetch(`/api/clients-bazaar/buscar?cedula=${encodeURIComponent(digits)}`);
+      const data = await r.json();
+
+      if (!r.ok || !data.ok) {
+        setError(data.error ?? "No se pudo buscar");
+        return;
+      }
+
+      if (data.cliente) {
+        setCliente({
+          cedula: data.cliente.cedula ?? digits,
+          nombre: data.cliente.nombre ?? "",
+          apellido: data.cliente.apellido ?? "",
+          telefono: data.cliente.telefono ?? "",
+          razon_social: data.cliente.razon_social ?? "",
+          ruc: "",
+        });
+        setModo("encontrado");
+        setPantallaCliente("buscar");
+        return;
+      }
+
+      setCliente({ ...limpiarCliente(), cedula: digits });
+      setModo("registro");
+      setTipoPersona("fisica");
+      setPantallaCliente("registro");
+    } catch {
+      setError("Error de red — intentá de nuevo");
+    } finally {
+      setCedulaBuscando(false);
+    }
+  }
+
+  function validarRegistro(): string | null {
+    if (tipoPersona === "juridica") {
+      if (!cliente.razon_social.trim()) return "Completá razón social";
+      if (!cliente.ruc.replace(/\D/g, "").trim()) return "Completá RUC";
+    } else {
+      if (!cliente.nombre.trim()) return "Completá nombre";
+    }
+    if (!cliente.telefono.trim()) return "Completá celular";
+    return null;
+  }
+
+  function payloadRegistro() {
+    if (tipoPersona === "juridica") {
+      return {
+        nombre: cliente.razon_social.trim() || null,
+        apellido: null,
+        telefono: cliente.telefono.trim() || null,
+        razon_social: cliente.razon_social.trim() || null,
+        ruc: cliente.ruc.replace(/\D/g, "").trim() || null,
+      };
+    }
+    return {
+      nombre: cliente.nombre.trim() || null,
+      apellido: cliente.apellido.trim() || null,
+      telefono: cliente.telefono.trim() || null,
+      razon_social: null,
+      ruc: cliente.ruc.replace(/\D/g, "").trim() || null,
+    };
+  }
+
+  function registrar() {
+    if (!session) return;
+    setError(null);
+
+    const err = validarRegistro();
+    if (err) {
+      setError(err);
+      return;
+    }
+
+    startTransition(async () => {
+      try {
+        const r = await fetch("/api/clients-bazaar/registrar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            cliente_id: session.cliente_id,
+            cedula: cliente.cedula,
+            ...payloadRegistro(),
+          }),
+        });
+
+        const data = await r.json();
+        if (!r.ok || !data.ok) {
+          setError(data.error ?? "No se pudo registrar");
+          return;
+        }
+
+        const c = data.cliente;
+        setCliente({
+          cedula: c?.cedula ?? cliente.cedula,
+          nombre: c?.nombre ?? cliente.nombre,
+          apellido: c?.apellido ?? cliente.apellido,
+          telefono: c?.telefono ?? cliente.telefono,
+          razon_social: c?.razon_social ?? cliente.razon_social,
+          ruc: "",
+        });
+        setModo("encontrado");
+        setPantallaCliente("buscar");
+        setTipoPersona("fisica");
+      } catch {
+        setError("Error de red — intentá de nuevo");
+      }
+    });
   }
 
   function cobrar() {
     if (!session || count === 0) return;
+    if (!vendedor) {
+      setError("Identificá vendedor con PIN antes de cobrar");
+      return;
+    }
     setError(null);
     setOkMsg(null);
 
+    const cedula = cliente.cedula.trim() || null;
+
     startTransition(async () => {
       try {
+        const payloadCliente =
+          cedula && modo === "encontrado"
+            ? {
+                nombre: cliente.nombre.trim() || null,
+                apellido: cliente.apellido.trim() || null,
+                telefono: cliente.telefono.trim() || null,
+              }
+            : null;
+
         const r = await fetch("/api/tickets/confirm", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             cliente_id: session.cliente_id,
             marca: session.marca,
-            cedula: cedula.trim() || null,
+            vendedor_bazzar_id: vendedor.id_vendedor,
+            cedula,
+            cliente: payloadCliente,
             items: items.map((i) => ({
               linea_id: i.linea_id,
               referencia_id: i.referencia_id,
@@ -54,15 +259,19 @@ export function PosCartSheet() {
             })),
           }),
         });
+
         const data = await r.json();
         if (!r.ok || !data.ok) {
           setError(data.error ?? "No se pudo confirmar la venta");
           return;
         }
+
         clear();
-        setCedula("");
-        const persistNote = data.persisted ? "" : " (pendiente migración BD)";
-        setOkMsg(`${data.total_pares} ticket${data.total_pares === 1 ? "" : "s"} emitido${data.total_pares === 1 ? "" : "s"}${persistNote}`);
+        resetClienteUi();
+        dispatchPosCobrarOk();
+        setOkMsg(
+          `Ticket abierto · ${data.total_pares} par${data.total_pares === 1 ? "" : "es"} · ${data.codigo_staging ?? ""}. Cerralo en Tickets → ORO.`,
+        );
         window.setTimeout(() => {
           setOkMsg(null);
           setOpen(false);
@@ -73,144 +282,360 @@ export function PosCartSheet() {
     });
   }
 
+  const tituloCliente = tituloDesdeCliente(cliente);
+  const enRegistro = pantallaCliente === "registro";
+  const clienteIdentificado = !enRegistro && modo === "encontrado" && Boolean(cliente.cedula);
+
   return (
     <>
       <div
-        className="fixed inset-0 z-[60] bg-[#1a1a1a]/50 backdrop-blur-[1px]"
+        className="fixed inset-0 z-[60] bg-[#002B4E]/50 backdrop-blur-[1px]"
         onClick={cerrar}
         aria-hidden
       />
 
       <div
-        className="fixed inset-x-0 bottom-0 z-[70] flex max-h-[min(88dvh,720px)] flex-col border-t-2 border-[#1a1a1a] bg-[#f4f1ec] shadow-[0_-12px_40px_rgba(26,26,26,0.25)]"
+        className="fixed inset-x-0 bottom-0 z-[70] flex max-h-[min(88dvh,720px)] flex-col border-t-2 border-[#002B4E] bg-[#f1f5f9] shadow-[0_-12px_40px_rgba(26,26,26,0.25)]"
         role="dialog"
-        aria-label="Venta en curso"
+        aria-label={enRegistro ? "Registro de cliente" : "Venta en curso"}
       >
-        <div className="flex items-center justify-between border-b border-[#c4bdb4] bg-[#1a1a1a] px-4 py-3 text-[#f4f1ec]">
-          <div>
-            <h2 className="font-br text-xl tracking-wide">Venta</h2>
-            <p className="text-[10px] uppercase tracking-[0.18em] opacity-80">
-              {count} par{count === 1 ? "" : "es"} · {session?.marca ?? "—"}
-            </p>
-          </div>
-          <TouchPad
-            onClick={cerrar}
-            ariaLabel="Cerrar"
-            className="min-h-[48px] min-w-[48px] border border-[#8a8278] px-3 text-2xl leading-none text-[#f4f1ec] active:bg-[#1b2a41]"
-          >
-            ×
-          </TouchPad>
-        </div>
-
-        <div className="flex-1 overflow-y-auto px-3 py-3">
-          {items.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-16 text-center">
-              <p className="font-br text-lg text-[#1a1a1a]">Vacío</p>
-              <p className="mt-1 text-sm text-[#6b6560]">Tocá una grada abajo para agregar pares</p>
+        <div className="flex items-center justify-between gap-3 border-b border-orange-200 bazzar-band px-4 py-3 text-white">
+          <div className="flex min-w-0 flex-1 items-center gap-2">
+            {enRegistro && (
+              <TouchPad
+                onClick={volverABuscar}
+                ariaLabel="Volver a buscar"
+                className="min-h-[44px] min-w-[44px] shrink-0 rounded-lg border border-white/30 px-2 text-xl !text-white active:bg-white/10"
+              >
+                ←
+              </TouchPad>
+            )}
+            <div className="min-w-0 flex-1">
+              {clienteIdentificado ? (
+                <>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-200">
+                    Cliente
+                  </p>
+                  <h2 className="truncate text-2xl font-bold leading-tight tracking-wide text-white drop-shadow-sm">
+                    {tituloCliente}
+                  </h2>
+                  <p className="mt-0.5 text-[10px] uppercase tracking-[0.16em] text-white/75">
+                    CI {cliente.cedula} · {count} par{count === 1 ? "" : "es"} · {session?.marca ?? "—"}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h2 className="text-xl font-semibold tracking-wide">
+                    {enRegistro ? "Registro cliente" : "Venta"}
+                  </h2>
+                  <p className="text-[10px] uppercase tracking-[0.18em] opacity-80">
+                    {enRegistro
+                      ? `CI ${cliente.cedula} · ${count} par${count === 1 ? "" : "es"}`
+                      : `${count} par${count === 1 ? "" : "es"} · ${session?.marca ?? "—"}`}
+                  </p>
+                </>
+              )}
             </div>
-          ) : (
-            <ul className="space-y-2">
-              {items.map((item) => (
-                <li
-                  key={item.key}
-                  className="flex gap-3 border border-[#c4bdb4] bg-white p-3"
-                >
-                  {item.imagen_url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={item.imagen_url}
-                      alt=""
-                      className="h-16 w-16 shrink-0 object-contain bg-[#f4f1ec]"
-                    />
-                  ) : (
-                    <div className="h-16 w-16 shrink-0 bg-[#e8e2d9]" />
-                  )}
-                  <div className="min-w-0 flex-1">
-                    <p className="font-br text-base leading-tight text-[#1a1a1a]">
-                      {item.linea_codigo}
-                      <span className="text-[#6b6560]"> · </span>
-                      {item.referencia_codigo}
-                    </p>
-                    <p className="truncate text-xs text-[#6b6560]">
-                      {item.descp_color ?? item.color_code} · G.{gradaLabelCorta(item.grada)}
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 flex-col items-end justify-between">
-                    <TouchPad
-                      onClick={() => removeItem(item.key)}
-                      ariaLabel="Quitar"
-                      className="min-h-[36px] min-w-[36px] text-lg text-[#9a9288] active:text-red-800"
-                    >
-                      ×
-                    </TouchPad>
-                    <div className="flex items-center gap-1 border border-[#c4bdb4] bg-[#f4f1ec]">
-                      <TouchPad
-                        onClick={() => updateQty(item.key, -1)}
-                        ariaLabel="Menos"
-                        className="min-h-[44px] min-w-[44px] text-xl font-bold active:bg-[#e8e2d9]"
-                      >
-                        −
-                      </TouchPad>
-                      <span className="min-w-[28px] text-center font-bold tabular-nums">{item.cantidad}</span>
-                      <TouchPad
-                        onClick={() => updateQty(item.key, 1)}
-                        ariaLabel="Más"
-                        disabled={item.cantidad >= item.stock_disponible}
-                        className="min-h-[44px] min-w-[44px] text-xl font-bold active:bg-[#e8e2d9] disabled:opacity-30"
-                      >
-                        +
-                      </TouchPad>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            {clienteIdentificado && (
+              <button
+                type="button"
+                onClick={resetClienteUi}
+                className="rounded-lg border border-white/40 bg-white/10 px-3 py-2 text-[10px] font-bold uppercase tracking-wide !text-white active:bg-white/20"
+              >
+                Cambiar
+              </button>
+            )}
+            <TouchPad
+              onClick={cerrar}
+              ariaLabel="Cerrar"
+              className="min-h-[48px] min-w-[48px] border border-[#cbd5e1] px-3 text-2xl leading-none !text-white active:bg-[#002B4E]"
+            >
+              ×
+            </TouchPad>
+          </div>
         </div>
 
-        <div className="shrink-0 space-y-3 border-t border-[#c4bdb4] bg-white px-4 py-4">
+        {enRegistro ? (
+          <div className="flex-1 overflow-y-auto px-4 py-4">
+            {error && (
+              <p className="mb-3 rounded-sm border border-red-300 bg-red-50 px-3 py-2 text-center text-sm text-red-900">
+                {error}
+              </p>
+            )}
+
+            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-amber-900">
+              Cliente nuevo · CI {cliente.cedula}
+            </p>
+
+            <div className="mt-4 flex gap-2">
+              <button
+                type="button"
+                onClick={() => cambiarTipoPersona("fisica")}
+                className={`min-h-[48px] flex-1 rounded-lg border-2 px-3 text-sm font-bold uppercase tracking-wide transition-colors ${
+                  tipoPersona === "fisica"
+                    ? "border-[#002B4E] bg-[#002B4E] !text-white"
+                    : "border-[#cbd5e1] bg-white text-[#002B4E]"
+                }`}
+              >
+                Persona física
+              </button>
+              <button
+                type="button"
+                onClick={() => cambiarTipoPersona("juridica")}
+                className={`min-h-[48px] flex-1 rounded-lg border-2 px-3 text-sm font-bold uppercase tracking-wide transition-colors ${
+                  tipoPersona === "juridica"
+                    ? "border-[#002B4E] bg-[#002B4E] !text-white"
+                    : "border-[#cbd5e1] bg-white text-[#002B4E]"
+                }`}
+              >
+                Persona jurídica
+              </button>
+            </div>
+
+            <div className="mt-4 space-y-3">
+              {tipoPersona === "juridica" ? (
+                <>
+                  <label className="block">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                      Razón social
+                    </span>
+                    <input
+                      type="text"
+                      value={cliente.razon_social}
+                      onChange={(e) => setCliente((prev) => ({ ...prev, razon_social: e.target.value }))}
+                      placeholder="Nombre de la empresa"
+                      className={inputClass}
+                      autoFocus
+                    />
+                  </label>
+                  <label className="block">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                      RUC · Registro único del contribuyente
+                    </span>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={cliente.ruc}
+                      onChange={(e) =>
+                        setCliente((prev) => ({ ...prev, ruc: e.target.value.replace(/[^\d-]/g, "") }))
+                      }
+                      placeholder="RUC"
+                      className={inputClass}
+                    />
+                  </label>
+                </>
+              ) : (
+                <>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="block">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                        Nombre
+                      </span>
+                      <input
+                        type="text"
+                        value={cliente.nombre}
+                        onChange={(e) => setCliente((prev) => ({ ...prev, nombre: e.target.value }))}
+                        placeholder="Nombre"
+                        className={inputClass}
+                        autoFocus
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                        Apellido
+                      </span>
+                      <input
+                        type="text"
+                        value={cliente.apellido}
+                        onChange={(e) => setCliente((prev) => ({ ...prev, apellido: e.target.value }))}
+                        placeholder="Apellido"
+                        className={inputClass}
+                      />
+                    </label>
+                  </div>
+                  <label className="block">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                      RUC (opcional)
+                    </span>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={cliente.ruc}
+                      onChange={(e) =>
+                        setCliente((prev) => ({ ...prev, ruc: e.target.value.replace(/[^\d-]/g, "") }))
+                      }
+                      placeholder="Solo si tiene"
+                      className={inputClass}
+                    />
+                  </label>
+                </>
+              )}
+
+              <label className="block">
+                <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                  Celular
+                </span>
+                <input
+                  type="tel"
+                  inputMode="tel"
+                  value={cliente.telefono}
+                  onChange={(e) => setCliente((prev) => ({ ...prev, telefono: e.target.value }))}
+                  placeholder="09xx xxx xxx"
+                  className={inputClass}
+                />
+              </label>
+            </div>
+          </div>
+        ) : (
+          <div className="flex-1 overflow-y-auto px-3 py-3">
+            {items.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-16 text-center">
+                <p className="text-lg font-semibold text-slate-900">Vacío</p>
+                <p className="mt-1 text-sm text-[#64748b]">Tocá una grada abajo para agregar pares</p>
+              </div>
+            ) : (
+              <ul className="space-y-2">
+                {items.map((item) => (
+                  <li key={item.key} className="flex gap-3 border border-[#e2e8f0] bg-white p-3">
+                    {item.imagen_url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={item.imagen_url}
+                        alt=""
+                        className="h-16 w-16 shrink-0 bg-[#f1f5f9] object-contain"
+                      />
+                    ) : (
+                      <div className="h-16 w-16 shrink-0 bg-[#f1f5f9]" />
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <p className="text-base font-semibold leading-tight text-slate-900">
+                        {item.linea_codigo}
+                        <span className="text-[#64748b]"> · </span>
+                        {item.referencia_codigo}
+                      </p>
+                      <p className="truncate text-xs text-[#64748b]">
+                        {item.descp_color ?? item.color_code} · G.{gradaLabelCorta(item.grada)}
+                      </p>
+                    </div>
+                    <div className="flex shrink-0 flex-col items-end justify-between">
+                      <TouchPad
+                        onClick={() => removeItem(item.key)}
+                        ariaLabel="Quitar"
+                        className="min-h-[36px] min-w-[36px] text-lg text-[#94a3b8] active:text-red-800"
+                      >
+                        ×
+                      </TouchPad>
+                      <div className="flex items-center gap-1 border border-[#e2e8f0] bg-[#f1f5f9]">
+                        <TouchPad
+                          onClick={() => updateQty(item.key, -1)}
+                          ariaLabel="Menos"
+                          className="min-h-[44px] min-w-[44px] text-xl font-bold active:bg-[#f1f5f9]"
+                        >
+                          −
+                        </TouchPad>
+                        <span className="min-w-[28px] text-center font-bold tabular-nums">{item.cantidad}</span>
+                        <TouchPad
+                          onClick={() => updateQty(item.key, 1)}
+                          ariaLabel="Más"
+                          disabled={item.cantidad >= item.stock_disponible}
+                          className="min-h-[44px] min-w-[44px] text-xl font-bold active:bg-[#f1f5f9] disabled:opacity-30"
+                        >
+                          +
+                        </TouchPad>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+
+        <div className="shrink-0 space-y-3 border-t border-[#e2e8f0] bg-white px-4 py-4">
           {okMsg && (
-            <p className="rounded-sm bg-[#1b2a41] px-3 py-3 text-center text-sm font-semibold text-[#f4f1ec]">
+            <p className="rounded-sm bg-[#002B4E] px-3 py-3 text-center text-sm font-semibold !text-[#f1f5f9]">
               {okMsg}
             </p>
           )}
-          {error && (
+          {error && !enRegistro && (
             <p className="rounded-sm border border-red-300 bg-red-50 px-3 py-2 text-center text-sm text-red-900">
               {error}
             </p>
           )}
 
-          <label className="block">
-            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#6b6560]">
-              Cédula cliente (opcional)
-            </span>
-            <input
-              type="text"
-              inputMode="numeric"
-              value={cedula}
-              onChange={(e) => setCedula(e.target.value.replace(/[^\d.]/g, ""))}
-              placeholder="Consumidor final si vacío"
-              className="mt-1 w-full border border-[#8a8278] bg-[#f4f1ec] px-4 py-3 text-base text-[#1a1a1a] focus:border-[#1a1a1a] focus:outline-none"
-            />
-          </label>
+          {!enRegistro && !clienteIdentificado && (
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-end gap-2">
+                <label className="block min-w-0 flex-1">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                    Cédula cliente
+                  </span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    value={cliente.cedula}
+                    onChange={(e) => {
+                      setModo("idle");
+                      setCliente((prev) => ({
+                        ...prev,
+                        cedula: e.target.value.replace(/[^\d]/g, ""),
+                      }));
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") void buscarCedula();
+                    }}
+                    placeholder="Número de cédula"
+                    className={inputClass}
+                  />
+                </label>
+                <TouchPad
+                  onClick={() => void buscarCedula()}
+                  ariaLabel="Buscar cédula"
+                  disabled={cedulaBuscando || cliente.cedula.replace(/\D/g, "").length < 5}
+                  className={btnBuscarClass}
+                >
+                  {cedulaBuscando ? "…" : "Buscar"}
+                </TouchPad>
+              </div>
 
-          <TouchPad
-            onClick={cobrar}
-            ariaLabel="Confirmar venta"
-            disabled={count === 0 || pending}
-            className="flex min-h-[60px] w-full items-center justify-center bg-[#1a1a1a] font-br text-xl tracking-wide text-[#f4f1ec] active:bg-[#1b2a41] disabled:opacity-40"
-          >
-            {pending ? "Confirmando…" : `COBRAR · ${count} par${count === 1 ? "" : "es"}`}
-          </TouchPad>
+              {modo === "idle" && (
+                <p className="text-xs text-[#64748b]">
+                  Ingresá cédula y tocá <strong>Buscar</strong>. Vacío = consumidor final.
+                </p>
+              )}
+            </div>
+          )}
 
-          {items.length > 0 && (
+          {enRegistro ? (
+            <TouchPad
+              onClick={registrar}
+              ariaLabel="Registrar cliente"
+              disabled={pending}
+              className="flex min-h-[60px] w-full items-center justify-center rounded-xl border-2 border-[#002B4E] bg-[#002B4E] text-xl font-semibold tracking-wide !text-white active:bg-[#001a33] disabled:opacity-40"
+            >
+              {pending ? "Registrando…" : "REGISTRAR"}
+            </TouchPad>
+          ) : (
+            <TouchPad
+              onClick={cobrar}
+              ariaLabel="Confirmar venta"
+              disabled={count === 0 || pending || !vendedor}
+              className="flex min-h-[60px] w-full items-center justify-center rounded-xl bg-bazzar-naranja text-xl font-semibold tracking-wide !text-white active:bg-bazzar-naranja-dark disabled:opacity-40"
+            >
+              {pending ? "Confirmando…" : vendedor ? `COBRAR · ${count} par${count === 1 ? "" : "es"}` : "PIN vendedor requerido"}
+            </TouchPad>
+          )}
+
+          {items.length > 0 && !enRegistro && (
             <TouchPad
               onClick={() => {
                 if (pending) return;
                 clear();
               }}
               ariaLabel="Vaciar venta"
-              className="w-full py-2 text-center text-xs text-[#6b6560] active:text-red-800"
+              className="w-full py-2 text-center text-xs text-[#64748b] active:text-red-800"
             >
               Vaciar todo
             </TouchPad>

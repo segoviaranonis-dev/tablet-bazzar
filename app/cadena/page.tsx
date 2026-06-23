@@ -1,14 +1,13 @@
 "use client";
 
-
-
-import Link from "next/link";
-
 import { useRouter } from "next/navigation";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { FiltrosCabecera } from "@/components/cadena/FiltrosCabecera";
+import { CadenaEntradaHeader } from "@/components/cadena/CadenaEntradaHeader";
+import { VendedorPinButton } from "@/components/pos/VendedorPinButton";
+import { StagingTicketsPanel } from "@/components/pos/StagingTicketsPanel";
 import { SelectorDepositos } from "@/components/cadena/SelectorDepositos";
 import { TouchPad } from "@/components/cadena/TouchPad";
 
@@ -29,6 +28,8 @@ import {
 import { cadenaQueryKey, saveCadenaSeed } from "@/lib/cadena-seed";
 
 import { DEPOSITOS } from "@/lib/depositos-config";
+
+import { POS_COBRAR_OK_EVENT } from "@/lib/pos-events";
 
 import { filtrosToSearchParams } from "@/lib/filtros-url";
 
@@ -95,6 +96,7 @@ export default function CadenaMarcaPage() {
   const [error, setError] = useState<string | null>(null);
 
   const [ingresoError, setIngresoError] = useState<string | null>(null);
+  const [stagingOpen, setStagingOpen] = useState(false);
 
 
 
@@ -159,6 +161,14 @@ export default function CadenaMarcaPage() {
     );
     return () => clearTimeout(t);
   }, [clienteId, filtrosKey, filtros.buscar, cargarFiltros]);
+
+  useEffect(() => {
+    function onCobrarOk() {
+      void cargarFiltros(clienteId, filtrosKey, false);
+    }
+    window.addEventListener(POS_COBRAR_OK_EVENT, onCobrarOk);
+    return () => window.removeEventListener(POS_COBRAR_OK_EVENT, onCobrarOk);
+  }, [clienteId, filtrosKey, cargarFiltros]);
 
 
 
@@ -264,48 +274,31 @@ export default function CadenaMarcaPage() {
 
 
   return (
-
-    <div className="flex min-h-[100dvh] flex-col touch-manipulation bg-[#f4f1ec]">
-
-      <header className="grid shrink-0 grid-cols-[52px_1fr] border-b border-[#c4bdb4] bg-[#f4f1ec]">
-
-        <Link
-
-          href="/"
-
-          className="flex min-h-[52px] items-center justify-center border-r border-[#c4bdb4] text-lg text-[#1a1a1a] active:bg-[#e8e2d9]"
-
-          aria-label="Panel"
-
-        >
-
-          ←
-
-        </Link>
-
-        <div className="flex min-h-[52px] flex-col items-center justify-center px-2 font-br tracking-wide text-[#1a1a1a]">
-
-          <span className="text-lg">{depositoActivo ? `${depositoActivo.ente} · ${depositoActivo.tipo}` : "Ventas"}</span>
-
-          {api?.resumen && (
-            <span className="font-mono text-[9px] tabular-nums text-[#6b6560]">
-              {api.resumen.skus.toLocaleString()} SKUs · {Math.round(api.resumen.pares).toLocaleString()} p
-              {api.ms != null ? ` · ${api.ms}ms` : ""}
-              {refreshing ? " · …" : ""}
-            </span>
-          )}
-
-        </div>
-
-      </header>
-
-
+    <div className="flex min-h-[100dvh] flex-col touch-manipulation bg-app-bg">
+      <CadenaEntradaHeader
+        titulo={depositoActivo ? `${depositoActivo.ente} · ${depositoActivo.tipo}` : "Ventas"}
+        registros={api?.resumen?.skus}
+        pares={api?.resumen?.pares}
+        ms={api?.ms}
+        refreshing={refreshing}
+        extra={
+          <div className="flex flex-col gap-1">
+            <VendedorPinButton clienteId={clienteId} />
+            <button
+              type="button"
+              onClick={() => setStagingOpen(true)}
+              className="rounded border border-white/30 px-2 py-1 text-[9px] font-bold uppercase text-white"
+            >
+              Tickets
+            </button>
+          </div>
+        }
+      />
+      <StagingTicketsPanel clienteId={clienteId} open={stagingOpen} onClose={() => setStagingOpen(false)} />
 
       <SelectorDepositos clienteId={clienteId} onSelect={setClienteId} />
 
-
-
-      <div className="shrink-0 border-b border-[#c4bdb4] p-2">
+      <div className="shrink-0 border-b border-orange-100 bg-gradient-to-b from-white to-orange-50/40 p-2">
 
         {api && (
           <FiltrosCabecera
@@ -348,7 +341,7 @@ export default function CadenaMarcaPage() {
 
             ariaLabel="Limpiar filtros"
 
-            className="mt-2 min-h-[44px] w-full border border-[#8a8278] text-sm text-[#6b6560] active:bg-[#e8e2d9]"
+            className="mt-2 min-h-[44px] w-full rounded-xl border border-orange-200 bg-white text-sm font-semibold text-bazzar-naranja active:bg-orange-50"
 
           >
 
@@ -362,11 +355,10 @@ export default function CadenaMarcaPage() {
 
 
 
-      <main className="min-h-0 flex-1 overflow-y-auto p-2 pb-28">
-
+      <main className="min-h-0 flex-1 overflow-y-auto p-3 pb-32">
         {bootLoading && !api && (
           <div className="flex items-center justify-center py-24">
-            <span className="h-10 w-10 animate-pulse rounded-full bg-[#9a9288]/40" />
+            <span className="h-12 w-12 animate-pulse rounded-full bg-gradient-to-br from-orange-200 to-orange-400" />
           </div>
         )}
 
@@ -392,7 +384,9 @@ export default function CadenaMarcaPage() {
 
         {!bootLoading && !error && refs.length === 0 && api && (
 
-          <p className="py-12 text-center font-br text-lg text-[#6b6560]">Aplicá filtros o usa INGRESAR</p>
+          <p className="py-12 text-center text-lg font-semibold text-slate-500">
+            Aplicá filtros o tocá <span className="text-bazzar-naranja">INGRESAR</span>
+          </p>
 
         )}
 
@@ -402,52 +396,38 @@ export default function CadenaMarcaPage() {
 
           <>
 
-            <p className="mb-2 px-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#6b6560]">
+            <div className="mb-3 flex items-center justify-between px-1">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-rimec-azul">
+                Referencias
+              </p>
+              <span className="bazzar-badge">{refs.length} encontradas</span>
+            </div>
 
-              {refs.length} Referencias encontradas
-
-            </p>
-
-            <div className="space-y-1">
-
+            <div className="space-y-2">
               {refs.slice(0, 120).map((r) => (
-
                 <TouchPad
-
                   key={r.key}
-
                   onClick={() => ingresar(r.marca, r.key)}
-
                   ariaLabel={`${r.linea}.${r.referencia}`}
-
-                  className="flex min-h-[52px] w-full items-center justify-between gap-2 border border-[#c4bdb4] bg-white px-3 py-2 text-left active:bg-[#fff7ed]"
-
+                  className="bazzar-ref-row"
                 >
-
                   <div className="min-w-0">
-
-                    <span className="font-mono text-sm font-semibold text-[#1a1a1a]">
-
-                      {r.linea}.{r.referencia}
-
+                    <span className="font-mono text-sm font-extrabold text-rimec-azul">
+                      {r.linea}
+                      <span className="text-bazzar-naranja">.{r.referencia}</span>
                     </span>
-
-                    <span className="mt-0.5 block truncate font-br text-xs text-[#6b6560]">{r.estilo}</span>
-
+                    <span className="mt-0.5 block truncate text-xs text-slate-500">{r.estilo}</span>
                   </div>
-
                   <div className="shrink-0 text-right">
-
-                    <span className="block text-[10px] uppercase tracking-wider text-[#9a9288]">{r.marca}</span>
-
-                    <span className="font-mono text-xs tabular-nums text-[#ea580c]">{Math.round(r.pares)} p</span>
-
+                    <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      {r.marca}
+                    </span>
+                    <span className="mt-0.5 inline-flex rounded-full bg-orange-100 px-2 py-0.5 font-mono text-xs font-bold tabular-nums text-bazzar-naranja">
+                      {Math.round(r.pares)} p
+                    </span>
                   </div>
-
                 </TouchPad>
-
               ))}
-
             </div>
 
           </>
@@ -458,38 +438,18 @@ export default function CadenaMarcaPage() {
 
 
 
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#c4bdb4] bg-[#f4f1ec]/95 p-3 backdrop-blur-sm">
-
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-orange-200 bg-white/95 p-3 shadow-[0_-8px_32px_rgba(234,88,12,0.12)] backdrop-blur-sm">
         {ingresoError && (
-
-          <p className="mb-2 text-center text-sm text-red-800">{ingresoError}</p>
-
+          <p className="mb-2 text-center text-sm font-semibold text-red-700">{ingresoError}</p>
         )}
-
         <TouchPad
-
           onClick={() => ingresar()}
-
           ariaLabel="Ingresar al catálogo"
-
           disabled={!puedeIngresar || ingresando}
-
-          className={`min-h-[72px] w-full font-br text-2xl tracking-[0.12em] shadow-lg ${
-
-            puedeIngresar && !ingresando
-
-              ? "bg-[#ea580c] text-white active:bg-[#c2410c]"
-
-              : "bg-[#9a9288] text-[#f4f1ec] opacity-60"
-
-          }`}
-
+          className="bazzar-btn-primary"
         >
-
           {ingresando ? "Ingresando…" : "INGRESAR"}
-
         </TouchPad>
-
       </div>
 
     </div>

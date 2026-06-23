@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getPool, isDatabaseConfigured } from "@/lib/pool";
 import { cohortePorUbicacion } from "@/lib/deposito-cohorte";
+import { getPool, isDatabaseConfigured } from "@/lib/pool";
+import { moleculeFromSearchParams, queryMoleculeGradaEnTabla } from "@/lib/server/stock-par-grada";
 import {
   buildStockBloques,
   emptyUbicaciones,
-  type StockMoleculaQuery,
   type StockOtrosLocalesResponse,
 } from "@/lib/stock-otros-locales";
 import { UBICACIONES, ubicacionIdFromClienteId } from "@/lib/ubicaciones";
@@ -13,63 +13,6 @@ function parseIntParam(v: string | null): number | null {
   if (!v?.trim()) return null;
   const n = Number(v);
   return Number.isFinite(n) ? n : null;
-}
-
-function hasFk(q: StockMoleculaQuery): boolean {
-  return (
-    q.linea_id != null &&
-    q.referencia_id != null &&
-    q.material_id != null &&
-    q.color_id != null
-  );
-}
-
-async function queryTablaGrada(
-  tabla: string,
-  q: StockMoleculaQuery,
-): Promise<{ grada: string; cantidad: number }[]> {
-  const pool = getPool();
-
-  if (hasFk(q)) {
-    const { rows } = await pool.query<{ grada: string; cantidad: string }>(
-      `
-      SELECT btrim(grada::text) AS grada, SUM(cantidad::float8)::text AS cantidad
-      FROM public.${tabla}
-      WHERE linea_id = $1
-        AND referencia_id = $2
-        AND material_id = $3
-        AND color_id = $4
-        AND cantidad > 0
-        AND grada IS NOT NULL
-        AND btrim(grada::text) <> ''
-      GROUP BY btrim(grada::text)
-      `,
-      [q.linea_id, q.referencia_id, q.material_id, q.color_id],
-    );
-    return rows.map((r) => ({ grada: r.grada, cantidad: Number(r.cantidad) || 0 }));
-  }
-
-  const { rows } = await pool.query<{ grada: string; cantidad: string }>(
-    `
-    SELECT btrim(grada::text) AS grada, SUM(cantidad::float8)::text AS cantidad
-    FROM public.${tabla}
-    WHERE trim(linea_codigo_proveedor::text) = $1
-      AND trim(referencia_codigo_proveedor::text) = $2
-      AND trim(COALESCE(excel_material_code::text, '')) = $3
-      AND trim(COALESCE(excel_color_code::text, '')) = $4
-      AND cantidad > 0
-      AND grada IS NOT NULL
-      AND btrim(grada::text) <> ''
-    GROUP BY btrim(grada::text)
-    `,
-    [
-      q.linea_codigo_proveedor.trim(),
-      q.referencia_codigo_proveedor.trim(),
-      q.material_code.trim(),
-      q.color_code.trim(),
-    ],
-  );
-  return rows.map((r) => ({ grada: r.grada, cantidad: Number(r.cantidad) || 0 }));
 }
 
 export async function GET(req: NextRequest) {
@@ -91,18 +34,8 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  const q: StockMoleculaQuery = {
-    linea_id: parseIntParam(sp.get("linea_id")),
-    referencia_id: parseIntParam(sp.get("referencia_id")),
-    material_id: parseIntParam(sp.get("material_id")),
-    color_id: parseIntParam(sp.get("color_id")),
-    linea_codigo_proveedor: sp.get("linea") ?? "",
-    referencia_codigo_proveedor: sp.get("referencia") ?? "",
-    material_code: sp.get("material") ?? "",
-    color_code: sp.get("color") ?? "",
-  };
-
-  if (!q.linea_codigo_proveedor.trim() && q.linea_id == null) {
+  const molecule = moleculeFromSearchParams(sp);
+  if (!molecule) {
     return NextResponse.json(
       { configured: true, ubicaciones: [], error: "molécula incompleta" } satisfies StockOtrosLocalesResponse,
       { status: 400 },
@@ -111,23 +44,22 @@ export async function GET(req: NextRequest) {
 
   const ubicacionActualId = ubicacionIdFromClienteId(cliente_id);
   const cohorte = cohortePorUbicacion(cliente_id);
+  const pool = getPool();
 
   try {
     const gradasPorUb = new Map<string, Map<string, number>>();
 
-    for (const ub of UBICACIONES) {
-      const dep = cohorte.get(ub.id);
-      if (!dep) {
-        gradasPorUb.set(ub.id, new Map());
-        continue;
-      }
-      const part = await queryTablaGrada(dep.tabla, q);
-      const merged = new Map<string, number>();
-      for (const p of part) {
-        merged.set(p.grada, (merged.get(p.grada) ?? 0) + p.cantidad);
-      }
-      gradasPorUb.set(ub.id, merged);
-    }
+    await Promise.all(
+      UBICACIONES.map(async (ub) => {
+        const dep = cohorte.get(ub.id);
+        if (!dep) {
+          gradasPorUb.set(ub.id, new Map());
+          return;
+        }
+        const gm = await queryMoleculeGradaEnTabla(pool, dep.tabla, molecule);
+        gradasPorUb.set(ub.id, gm);
+      }),
+    );
 
     const ubicaciones = buildStockBloques(gradasPorUb, ubicacionActualId);
 

@@ -140,6 +140,58 @@ export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string)
   return pares;
 }
 
+/** Pares L+R del mismo estilo — cohorte terciaria (Marca → Estilo). */
+export function paresMismoEstilo(pares: ParLineaRef[], estilo: string): ParLineaRef[] {
+  const e = (estilo ?? "").trim();
+  if (!e) return pares;
+  const cohort = pares.filter((p) => (p.estilo ?? "").trim() === e);
+  return cohort.length > 0 ? cohort : pares;
+}
+
+/** Alias canónico — agrupación terciaria acota sidebar y ←→ entre refs. */
+export const paresCohorteEstilo = paresMismoEstilo;
+
+/** Índice del par dentro de una lista (p. ej. cohorte secundaria). */
+export function indexParEnPares(pares: ParLineaRef[], parKey: string): number {
+  return pares.findIndex((p) => p.key === parKey);
+}
+
+/** Resuelve cohorte + índice al anclar o cambiar estilo hero. */
+export function resolverNavCohorte(
+  paresBase: ParLineaRef[],
+  estiloCohorte: string,
+  parKeyPreferido?: string | null,
+): { paresNav: ParLineaRef[]; parIndex: number; estiloCohorte: string } {
+  if (paresBase.length === 0) {
+    return { paresNav: [], parIndex: 0, estiloCohorte: "" };
+  }
+
+  let estilo = (estiloCohorte ?? "").trim();
+  const preferido = parKeyPreferido ? paresBase.find((p) => p.key === parKeyPreferido) : null;
+
+  if (!estilo && preferido) estilo = (preferido.estilo ?? "").trim();
+  if (!estilo) estilo = (paresBase[0]?.estilo ?? "").trim();
+
+  let paresNav = paresMismoEstilo(paresBase, estilo);
+  let parIndex = 0;
+
+  if (preferido) {
+    let i = indexParEnPares(paresNav, preferido.key);
+    if (i < 0) {
+      estilo = (preferido.estilo ?? "").trim();
+      paresNav = paresMismoEstilo(paresBase, estilo);
+      i = indexParEnPares(paresNav, preferido.key);
+    }
+    if (i >= 0) parIndex = i;
+  }
+
+  return { paresNav, parIndex, estiloCohorte: estilo };
+}
+
+export function parIndexEnPares(pares: ParLineaRef[], key: string): number {
+  return pares.findIndex((p) => p.key === key);
+}
+
 function dedupeColores(rows: DepositoFila[]): DepositoFila[] {
   const map = new Map<string, DepositoFila>();
   for (const r of rows) {

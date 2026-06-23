@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { PosCartProvider } from "@/lib/cart/PosCartContext";
+import { VendedorProvider } from "@/lib/vendedor/VendedorContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,12 +12,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -41,8 +36,8 @@ export const metadata: Metadata = {
 
   // Theme colors
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#1a1a1a" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
+    { media: "(prefers-color-scheme: light)", color: "#002B4E" },
+    { media: "(prefers-color-scheme: dark)", color: "#002B4E" },
   ],
 
   // Apple specific
@@ -77,7 +72,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -94,7 +89,9 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=no" />
       </head>
       <body className="min-h-full flex flex-col touch-manipulation overscroll-none">
-        <PosCartProvider>{children}</PosCartProvider>
+        <PosCartProvider>
+          <VendedorProvider>{children}</VendedorProvider>
+        </PosCartProvider>
       </body>
     </html>
   );

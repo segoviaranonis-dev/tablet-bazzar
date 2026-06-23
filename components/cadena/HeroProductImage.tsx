@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import type { DepositoFila } from "@/lib/cadena";
-import { intrinsicDimsFromImageUrl } from "@/lib/product-image";
 import { useHeroProgressiveSrc } from "@/lib/use-hero-progressive-src";
 import { ProductLightbox } from "@/components/cadena/ProductLightbox";
 
@@ -22,9 +21,8 @@ type Props = {
   alt: string;
 };
 
-/** Cuadrado contenido — nunca recortar por overflow del padre. */
-const HERO_BOX =
-  "relative grid aspect-square shrink-0 place-items-center overflow-hidden bg-[#F8FAFC] size-[min(58vmin,calc(100%-0.5rem),calc(100dvh-14rem))] max-h-full max-w-full cursor-zoom-in";
+/** Marco = 100% del host medido (sin vmin ni aspect-square). */
+const HERO_BOX = "cadena-hero-frame cursor-zoom-in";
 
 function filaKey(fila: Props["fila"]): string {
   return [
@@ -54,17 +52,15 @@ export function HeroProductImage({ fila, alt }: Props) {
     `${fila.linea_codigo_proveedor}.${fila.referencia_codigo_proveedor}` === "4215.1034";
 
   if (!shown) {
-    return <div className={HERO_BOX.replace("cursor-zoom-in", "")} aria-hidden data-hero-frame="v15-empty" />;
+    return <div className={HERO_BOX.replace("cursor-zoom-in", "")} aria-hidden data-hero-frame="v16-fill-host" />;
   }
-
-  const dims = intrinsicDimsFromImageUrl(shown);
 
   return (
     <>
       <button
         type="button"
         className={HERO_BOX}
-        data-hero-frame="v15-lg-progressive"
+        data-hero-frame="v16-fill-host"
         data-hero-quality={isHighQuality ? "lg" : "preview"}
         data-hero-sku={isAuditSku ? "4215.1034" : undefined}
         onClick={() => zoomSrc && setLightbox(true)}
@@ -75,12 +71,9 @@ export function HeroProductImage({ fila, alt }: Props) {
           key={skuKey}
           src={shown}
           alt={alt}
-          width={dims.width}
-          height={dims.height}
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          className="block h-full w-full object-contain object-center transition-opacity duration-200"
         />
       </button>
       {lightbox && zoomSrc ? (

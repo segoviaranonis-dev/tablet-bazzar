@@ -25,6 +25,14 @@ export const VIEW_MODES: ViewMode[] = [
     icon: "👟",
     enabled: true,
   },
+  {
+    id: "empaque",
+    title: "Empaque",
+    description: "Cierra el ciclo · bandeja Bobeda · QC · imposible bypass vendedor/cajero",
+    href: "/empaque",
+    icon: "📦",
+    enabled: false,
+  },
 ];
 
 export function getViewMode(id: string): ViewMode | undefined {
