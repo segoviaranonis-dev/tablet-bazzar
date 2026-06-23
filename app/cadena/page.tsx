@@ -32,9 +32,9 @@ import { filtrosToSearchParams } from "@/lib/filtros-url";
 import { POS_COBRAR_OK_EVENT } from "@/lib/pos-events";
 
 const TIENDA_STORAGE_KEY = "tablet_tienda_cliente_id";
+const DEFAULT_CLIENTE_ID = DEPOSITOS[0]?.cliente_id ?? 2100;
 
-function tiendaInicial(): number {
-  if (typeof window === "undefined") return 2900;
+function readStoredClienteId(): number {
   try {
     const raw = localStorage.getItem(TIENDA_STORAGE_KEY);
     const n = Number(raw);
@@ -42,7 +42,7 @@ function tiendaInicial(): number {
   } catch {
     /* ignore */
   }
-  return 2900;
+  return DEFAULT_CLIENTE_ID;
 }
 
 type FiltrosApi = {
@@ -93,7 +93,7 @@ export default function CadenaMarcaPage() {
 
   const router = useRouter();
 
-  const [clienteId, setClienteId] = useState(tiendaInicial);
+  const [clienteId, setClienteId] = useState(DEFAULT_CLIENTE_ID);
 
   const [filtros, setFiltros] = useState<FiltrosEntrada>(FILTROS_ENTRADA_VACIOS);
 
@@ -113,6 +113,10 @@ export default function CadenaMarcaPage() {
   const depositoActivo = DEPOSITOS.find((d) => d.cliente_id === clienteId);
 
   const hadApi = useRef(false);
+
+  useEffect(() => {
+    setClienteId(readStoredClienteId());
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(TIENDA_STORAGE_KEY, String(clienteId));
