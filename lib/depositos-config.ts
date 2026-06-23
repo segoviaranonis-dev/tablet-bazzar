@@ -1,7 +1,7 @@
 /**
- * Nomenclatura oficial depósitos Bazzar (Director 2026-06-17).
+ * Nomenclatura oficial depósitos Bazzar (Director 2026-06-17 · migración 114).
  *
- * Patrón: deposito_{nivel}_{enteSlug}_{tipoSlug}_{categoria}
+ * Patrón: deposito_{nivel}_{cliente_id}_{categoria}
  *   nivel 1 + tienda   → stock piso (sync Retail · Tablet POS)
  *   nivel 2 + guardado → reserva / bodega
  *   nivel 3 + averiado → mercadería dañada
@@ -79,11 +79,10 @@ const CATEGORIAS: readonly { nivel: 1 | 2 | 3; categoria: CategoriaDeposito }[] 
 
 export function nombreTablaDeposito(
   nivel: 1 | 2 | 3,
-  enteSlug: string,
-  tipoSlug: string,
+  cliente_id: number,
   categoria: CategoriaDeposito,
 ): string {
-  return `deposito_${nivel}_${enteSlug}_${tipoSlug}_${categoria}`;
+  return `deposito_${nivel}_${cliente_id}_${categoria}`;
 }
 
 export type DepositoConfig = DepositoTiendaBase & {
@@ -97,7 +96,7 @@ export const DEPOSITOS_MATRIZ: DepositoConfig[] = TIENDAS.flatMap((t) =>
     ...t,
     nivel: c.nivel,
     categoria: c.categoria,
-    tabla: nombreTablaDeposito(c.nivel, t.enteSlug, t.tipoSlug, c.categoria),
+    tabla: nombreTablaDeposito(c.nivel, t.cliente_id, c.categoria),
   })),
 );
 

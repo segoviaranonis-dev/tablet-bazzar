@@ -3,6 +3,10 @@
  */
 import type { DepositoFilterState } from "@/lib/deposito-filters";
 import {
+  SQL_ORDER_LINEA_REF,
+  SQL_SOLO_CALZADO,
+} from "@/lib/tipo-v2-scope";
+import {
   PILAR_TRIANGULO_JOINS,
   SQL_ESTILO_LABEL,
   SQL_GENERO_ID,
@@ -33,6 +37,7 @@ function fromClause(tabla: string): string {
 
 const SKU_BASE = `
   s.cantidad > 0
+  AND ${SQL_SOLO_CALZADO}
   AND btrim(s.linea_codigo_proveedor::text) <> ''
   AND btrim(s.referencia_codigo_proveedor::text) <> ''
   AND s.material_id IS NOT NULL
@@ -183,10 +188,7 @@ export function sqlDepositoChipsLinea(
       ${fromClause(tabla)}
       WHERE ${w.sql} AND COALESCE(l.id, s.linea_id) IS NOT NULL
       GROUP BY 1, 2
-      ORDER BY NULLIF(
-        COALESCE(NULLIF(btrim(l.codigo_proveedor::text), ''), trim(s.linea_codigo_proveedor::text)),
-        ''
-      )::bigint NULLS LAST,
+      ORDER BY ${SQL_ORDER_LINEA_REF},
       2
       LIMIT 400
     `,

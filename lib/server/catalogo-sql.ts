@@ -18,6 +18,11 @@ import {
   filtrosFromSearchParams as filtrosFromSp,
   filtrosToSearchParams as filtrosToSp,
 } from "@/lib/filtros-url";
+import {
+  SQL_ORDER_LINEA_REF,
+  SQL_ORDER_LINEA_REF_ALIASES,
+  SQL_SOLO_CALZADO,
+} from "@/lib/tipo-v2-scope";
 
 export type FiltrosSql = {
   generos: string[];
@@ -160,7 +165,7 @@ function buildWhere(
   f: FiltrosSql,
   excluir: "generos" | "marcas" | "estilos" | "tipos" | "referenciaKeys" | "buscar" | null,
 ): WhereBuild {
-  const w: WhereBuild = { sql: "s.cantidad > 0", params: [] };
+  const w: WhereBuild = { sql: `s.cantidad > 0 AND ${SQL_SOLO_CALZADO}`, params: [] };
   appendGenero(f, w, excluir === "generos");
   appendMarcas(f, w, excluir === "marcas");
   appendEstilos(f, w, excluir === "estilos");
@@ -175,7 +180,7 @@ export function sqlFilasStock(tabla: string, f: FiltrosSql): { text: string; par
   const w = buildWhere(f, null);
   return {
     text: `${SELECT_CORE} ${fromClause(tabla)} WHERE ${w.sql}
-      ORDER BY marca, s.linea_codigo_proveedor::bigint NULLS LAST, s.referencia_codigo_proveedor::bigint NULLS LAST, material_code, color_code`,
+      ORDER BY marca, ${SQL_ORDER_LINEA_REF}, material_code, color_code`,
     params: w.params,
   };
 }
@@ -276,7 +281,7 @@ export function sqlReferenciasAgregado(tabla: string, f: FiltrosSql): { text: st
         WHERE ${w.sql}
         GROUP BY 1, 2, 3, 4, 5
       ) refs
-      ORDER BY NULLIF(refs.linea, '')::bigint NULLS LAST, NULLIF(refs.referencia, '')::bigint NULLS LAST
+      ORDER BY ${SQL_ORDER_LINEA_REF_ALIASES}
       LIMIT 500
     `,
     params: w.params,
@@ -292,8 +297,78 @@ export function sqlResumenDeposito(tabla: string): { text: string; params: unkno
         COALESCE(SUM(cantidad) FILTER (WHERE cantidad > 0), 0)::float8 AS pares,
         MAX(COALESCE(s.created_at, NOW())) AS ultima_carga
       FROM public.${tabla} s
+      WHERE ${SQL_SOLO_CALZADO}
     `,
     params: [],
+  };
+}
+
+/** Descuenta 1 par de una fila con stock (atómico por unidad). */
+export function sqlDecrementarUnParMolecula(
+  tabla: string,
+  p: {
+    linea_id: number;
+    referencia_id: number;
+    material_id: number;
+    color_id: number;
+    grada: string;
+  },
+): { text: string; params: unknown[] } {
+  const grada = p.grada.trim();
+  return {
+    text: `
+      UPDATE public.${tabla} s
+      SET cantidad = cantidad - 1
+      WHERE s.id = (
+        SELECT id
+        FROM public.${tabla}
+        WHERE cantidad > 0
+          AND linea_id = $1
+          AND referencia_id = $2
+          AND material_id = $3
+          AND color_id = $4
+          AND btrim(grada::text) = $5
+        ORDER BY id
+        FOR UPDATE SKIP LOCKED
+        LIMIT 1
+      )
+      RETURNING cantidad
+    `,
+    params: [p.linea_id, p.referencia_id, p.material_id, p.color_id, grada],
+  };
+}
+
+/** Devuelve 1 par a la sesión de stock (arrepentimiento / cancelación). */
+export function sqlIncrementarUnParMolecula(
+  tabla: string,
+  p: {
+    linea_id: number;
+    referencia_id: number;
+    material_id: number;
+    color_id: number;
+    grada: string;
+  },
+): { text: string; params: unknown[] } {
+  const grada = p.grada.trim();
+  return {
+    text: `
+      UPDATE public.${tabla} s
+      SET cantidad = cantidad + 1
+      WHERE s.id = (
+        SELECT id
+        FROM public.${tabla}
+        WHERE linea_id = $1
+          AND referencia_id = $2
+          AND material_id = $3
+          AND color_id = $4
+          AND btrim(grada::text) = $5
+        ORDER BY id
+        FOR UPDATE
+        LIMIT 1
+      )
+      RETURNING cantidad
+    `,
+    params: [p.linea_id, p.referencia_id, p.material_id, p.color_id, grada],
   };
 }
 

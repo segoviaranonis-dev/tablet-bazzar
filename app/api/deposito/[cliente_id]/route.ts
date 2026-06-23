@@ -1,20 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { parseDepositoFiltersFromSearchParams, DEPOSITO_LIMIT_OPTIONS } from "@/lib/deposito-filters";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
-import { moleculeKey, type MoleculeFk } from "@/lib/deposito-cohorte";
 import { getPool, isDatabaseConfigured } from "@/lib/pool";
 import { enrichDepositoFilaImagenes } from "@/lib/product-image";
-import { sqlDepositoMolecules } from "@/lib/server/deposito-filtros-sql";
-import { fetchStockRedBatch } from "@/lib/server/stock-red-batch";
-import type { StockUbicacionBloque } from "@/lib/stock-otros-locales";
-import { totalStockRed } from "@/lib/stock-otros-locales";
-import { ubicacionIdFromClienteId } from "@/lib/ubicaciones";
+import {
+  PILAR_TRIANGULO_JOINS,
+  SQL_ESTILO_LABEL,
+  SQL_GENERO_LABEL,
+  SQL_GRUPO_ESTILO_ID,
+  SQL_GENERO_ID,
+  SQL_MARCA_ID,
+  SQL_MARCA_LABEL,
+} from "@/lib/server/pilar-triangulo";
+import { SQL_SOLO_CALZADO } from "@/lib/tipo-v2-scope";
 
 export type DepositoProducto = {
-  linea_id: number | null;
-  referencia_id: number | null;
-  material_id: number | null;
-  color_id: number | null;
   linea_codigo_proveedor: string;
   referencia_codigo_proveedor: string;
   material_code: string;
@@ -25,23 +24,12 @@ export type DepositoProducto = {
   tipo_v2: string;
   descp_material: string | null;
   descp_color: string | null;
-  cantidad_local: number;
-  cantidad_red: number;
+  grada: string;
+  cantidad: number;
   imagen_nombre: string | null;
   imagen_url_thumb: string | null;
   imagen_url_hero: string | null;
-  stock_red?: StockUbicacionBloque[];
 };
-
-type MoleculeRow = Omit<DepositoProducto, "cantidad_red" | "imagen_url_thumb" | "imagen_url_hero" | "stock_red">;
-
-function parseLimit(raw: string | null): number | null {
-  if (raw === "all") return null;
-  const n = Number(raw ?? "80");
-  if (!Number.isFinite(n) || n <= 0) return 80;
-  if ((DEPOSITO_LIMIT_OPTIONS as readonly number[]).includes(n)) return n;
-  return 80;
-}
 
 export async function GET(
   req: NextRequest,
@@ -64,89 +52,86 @@ export async function GET(
     );
   }
 
-  const sp = new URL(req.url).searchParams;
-  const filtros = parseDepositoFiltersFromSearchParams(sp);
-  const limit = parseLimit(sp.get("limit"));
-  const includeRed = sp.get("stock_red") !== "0";
+  const limitParam = new URL(req.url).searchParams.get("limit") ?? "50";
+  const limit = limitParam === "all" ? null : Number(limitParam) || 50;
+  const whereClause = limit ? `WHERE rank_por_marca <= ${limit}` : "";
 
   const pool = getPool();
-  const q = sqlDepositoMolecules(config.tabla, filtros, limit);
-  const { rows } = await pool.query<MoleculeRow>(q.text, q.params);
 
-  const totalPares = rows.reduce((sum, r) => sum + Number(r.cantidad_local), 0);
+  try {
+    const { rows } = await pool.query<DepositoProducto>(`
+    WITH ranked_products AS (
+      SELECT
+        s.linea_codigo_proveedor,
+        s.referencia_codigo_proveedor,
+        COALESCE(
+          NULLIF(btrim(s.excel_material_code::text), ''),
+          CASE WHEN mat.id IS NULL OR mat.codigo_proveedor = -999001::bigint THEN NULL
+               ELSE trim(mat.codigo_proveedor::text) END,
+          ''
+        ) AS material_code,
+        COALESCE(
+          NULLIF(btrim(s.excel_color_code::text), ''),
+          CASE WHEN col.id IS NULL OR col.codigo_proveedor = -999001::bigint THEN NULL
+               ELSE trim(col.codigo_proveedor::text) END,
+          ''
+        ) AS color_code,
+        s.grada,
+        s.cantidad::float8 AS cantidad,
+        ${SQL_MARCA_LABEL} AS marca,
+        ${SQL_GENERO_LABEL} AS genero,
+        ${SQL_ESTILO_LABEL} AS estilo,
+        COALESCE(NULLIF(btrim(tv.descp_tipo::text), ''), '(sin tipo)') AS tipo_v2,
+        NULLIF(btrim(mat.descripcion::text), '') AS descp_material,
+        NULLIF(btrim(col.nombre::text), '') AS descp_color,
+        NULLIF(btrim(s.imagen_nombre::text), '') AS imagen_nombre,
+        ROW_NUMBER() OVER (PARTITION BY ${SQL_MARCA_ID} ORDER BY s.cantidad DESC) AS rank_por_marca
+      FROM public.${config.tabla} s
+      ${PILAR_TRIANGULO_JOINS}
+      LEFT JOIN public.material mat ON mat.id = s.material_id
+      LEFT JOIN public.color col ON col.id = s.color_id
+      LEFT JOIN public.marca_v2 mv ON mv.id_marca = ${SQL_MARCA_ID}
+      LEFT JOIN public.genero g ON g.id = ${SQL_GENERO_ID}
+      LEFT JOIN public.grupo_estilo_v2 ge ON ge.id_grupo_estilo = ${SQL_GRUPO_ESTILO_ID}
+      LEFT JOIN public.tipo_v2 tv ON tv.id_tipo = s.tipo_v2_id
+      WHERE ${SQL_SOLO_CALZADO}
+    )
+    SELECT
+      linea_codigo_proveedor,
+      referencia_codigo_proveedor,
+      material_code,
+      color_code,
+      grada,
+      cantidad,
+      marca,
+      genero,
+      estilo,
+      tipo_v2,
+      descp_material,
+      descp_color,
+      imagen_nombre
+    FROM ranked_products
+    ${whereClause}
+    ORDER BY marca, cantidad DESC
+  `);
 
-  let stockRedMap = new Map<string, StockUbicacionBloque[]>();
-  if (includeRed && rows.length > 0) {
-    const molecules: MoleculeFk[] = rows.map((r) => ({
-      linea_id: r.linea_id != null ? Number(r.linea_id) : null,
-      referencia_id: r.referencia_id != null ? Number(r.referencia_id) : null,
-      material_id: r.material_id != null ? Number(r.material_id) : null,
-      color_id: r.color_id != null ? Number(r.color_id) : null,
-      linea_codigo_proveedor: r.linea_codigo_proveedor,
-      referencia_codigo_proveedor: r.referencia_codigo_proveedor,
-      material_code: r.material_code,
-      color_code: r.color_code,
-    }));
-    stockRedMap = await fetchStockRedBatch(
-      pool,
+    const totalPares = rows.reduce((sum, r) => sum + Number(r.cantidad), 0);
+
+    return NextResponse.json({
+      configured: true,
       cliente_id,
-      molecules,
-      ubicacionIdFromClienteId(cliente_id),
+      ente: config.ente,
+      tipo: config.tipo,
+      codigo: config.codigo,
+      productos: rows.map(enrichDepositoFilaImagenes),
+      total: rows.length,
+      total_pares_muestra: totalPares,
+    });
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : "Error SQL depósito";
+    return NextResponse.json(
+      { configured: true, productos: [], error: msg },
+      { status: 500 },
     );
   }
-
-  const productos: DepositoProducto[] = rows.map((r) => {
-    const mk = moleculeKey({
-      linea_id: r.linea_id != null ? Number(r.linea_id) : null,
-      referencia_id: r.referencia_id != null ? Number(r.referencia_id) : null,
-      material_id: r.material_id != null ? Number(r.material_id) : null,
-      color_id: r.color_id != null ? Number(r.color_id) : null,
-      linea_codigo_proveedor: r.linea_codigo_proveedor,
-      referencia_codigo_proveedor: r.referencia_codigo_proveedor,
-      material_code: r.material_code,
-      color_code: r.color_code,
-    });
-    const stock_red = stockRedMap.get(mk);
-    const enriched = enrichDepositoFilaImagenes({
-      ...r,
-      grada: "",
-      cantidad: r.cantidad_local,
-    });
-    const cantidad_red = stock_red ? totalStockRed(stock_red) : r.cantidad_local;
-    return {
-      linea_id: r.linea_id,
-      referencia_id: r.referencia_id,
-      material_id: r.material_id,
-      color_id: r.color_id,
-      linea_codigo_proveedor: r.linea_codigo_proveedor,
-      referencia_codigo_proveedor: r.referencia_codigo_proveedor,
-      material_code: r.material_code,
-      color_code: r.color_code,
-      marca: r.marca,
-      genero: r.genero,
-      estilo: r.estilo,
-      tipo_v2: r.tipo_v2,
-      descp_material: r.descp_material,
-      descp_color: r.descp_color,
-      cantidad_local: r.cantidad_local,
-      cantidad_red,
-      imagen_nombre: r.imagen_nombre,
-      imagen_url_thumb: enriched.imagen_url_thumb,
-      imagen_url_hero: enriched.imagen_url_hero,
-      ...(stock_red ? { stock_red } : {}),
-    };
-  });
-
-  return NextResponse.json({
-    configured: true,
-    cliente_id,
-    ente: config.ente,
-    tipo: config.tipo,
-    codigo: config.codigo,
-    productos,
-    total: rows.length,
-    total_pares_muestra: totalPares,
-    limit: limit ?? "all",
-    unidad: "molecula_fk",
-  });
 }
