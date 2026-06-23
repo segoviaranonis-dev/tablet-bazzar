@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { gradaLabelCorta } from "@/lib/cart/pos-cart";
+import { usePosCart } from "@/lib/cart/PosCartContext";
 import { dispatchPosCobrarOk } from "@/lib/pos-events";
 
 type StagingLinea = {
@@ -29,6 +30,7 @@ type Props = {
 };
 
 export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
+  const { items, count, session } = usePosCart();
   const [tickets, setTickets] = useState<StagingTicket[]>([]);
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
@@ -93,6 +95,11 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
 
   if (!open) return null;
 
+  const carritoActivo =
+    session?.cliente_id === clienteId && count > 0
+      ? { pares: count, marca: session.marca }
+      : null;
+
   return (
     <>
       <div className="fixed inset-0 z-[80] bg-[#002B4E]/50" onClick={onClose} aria-hidden />
@@ -113,10 +120,19 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
           {loading ? (
             <p className="text-slate-500">Cargando…</p>
           ) : tickets.length === 0 ? (
-            <p className="text-slate-500">
-              Sin borradores ABIERTO/CERRADO. Si ya cerraste venta y fue a caja, editá solo antes del CERRAR en tablet
-              — Bobeda queda fija para cajero y empaque.
-            </p>
+            <div className="space-y-3 text-sm text-slate-600">
+              {carritoActivo ? (
+                <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-amber-950">
+                  Venta F1 en carrito: <strong>{carritoActivo.pares}</strong> par
+                  {carritoActivo.pares === 1 ? "" : "es"} ({carritoActivo.marca}). Todavía no es staging — entrá al
+                  catálogo, abrí el carrito y tocá <strong>CERRAR</strong> para crear ticket ABIERTO acá.
+                </p>
+              ) : null}
+              <p>
+                Sin staging ABIERTO/CERRADO en base. Flujo: CERRAR venta → staging editable →{" "}
+                <strong>→ caja</strong> (Bobeda) → ahí nace empaque (pendiente módulo).
+              </p>
+            </div>
           ) : (
             <ul className="space-y-4">
               {tickets.map((t) => (
