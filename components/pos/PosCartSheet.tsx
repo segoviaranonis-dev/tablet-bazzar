@@ -4,8 +4,10 @@ import { useState, useTransition } from "react";
 import { gradaLabelCorta } from "@/lib/cart/pos-cart";
 import { dispatchPosCobrarOk } from "@/lib/pos-events";
 import { usePosCart } from "@/lib/cart/PosCartContext";
+import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { useVendedorTienda } from "@/lib/vendedor/VendedorContext";
 import { TouchPad } from "@/components/cadena/TouchPad";
+import { VendedorEnteSwitch } from "@/components/pos/VendedorEnteSwitch";
 
 type TipoPersona = "fisica" | "juridica";
 
@@ -33,13 +35,17 @@ function tituloDesdeCliente(c: ClienteForm): string {
 
 export function PosCartSheet() {
   const { items, count, open, setOpen, removeItem, updateQty, clear, session } = usePosCart();
-  const clienteId = session?.cliente_id ?? 0;
-  const { vendedor } = useVendedorTienda(clienteId || 2100);
+  const tiendaId = session?.cliente_id ?? null;
+  const tiendaActiva = tiendaId ? getDepositoByClienteId(tiendaId) : null;
+  const { vendedor, identificarPin, clearVendedor } = useVendedorTienda(tiendaId ?? 2100);
   const [cliente, setCliente] = useState<ClienteForm>(limpiarCliente);
   const [modo, setModo] = useState<ModoCliente>("idle");
   const [pantallaCliente, setPantallaCliente] = useState<PantallaCliente>("buscar");
   const [tipoPersona, setTipoPersona] = useState<TipoPersona>("fisica");
   const [cedulaBuscando, setCedulaBuscando] = useState(false);
+  const [codigoVendedorOpen, setCodigoVendedorOpen] = useState(false);
+  const [codigoVendedor, setCodigoVendedor] = useState("");
+  const [codigoVendedorBusy, setCodigoVendedorBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [okMsg, setOkMsg] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -58,6 +64,16 @@ export function PosCartSheet() {
     setPantallaCliente("buscar");
     setTipoPersona("fisica");
     setCedulaBuscando(false);
+  }
+
+  function vaciarCarrito() {
+    if (pending) return;
+    clear();
+    resetClienteUi();
+    clearVendedor();
+    setCodigoVendedorOpen(false);
+    setCodigoVendedor("");
+    setError(null);
   }
 
   function cerrar() {
@@ -211,8 +227,13 @@ export function PosCartSheet() {
 
   function cobrar() {
     if (!session || count === 0) return;
+    if (!clienteIdentificado) {
+      setError("Identificá al cliente (cédula + Buscar) antes de cerrar");
+      return;
+    }
     if (!vendedor) {
-      setError("Identificá vendedor con PIN antes de cobrar");
+      setError(null);
+      setCodigoVendedorOpen(true);
       return;
     }
     setError(null);
@@ -268,9 +289,12 @@ export function PosCartSheet() {
 
         clear();
         resetClienteUi();
+        clearVendedor();
+        setCodigoVendedorOpen(false);
         dispatchPosCobrarOk();
         setOkMsg(
-          `Ticket abierto · ${data.total_pares} par${data.total_pares === 1 ? "" : "es"} · ${data.codigo_staging ?? ""}. Cerralo en Tickets → ORO.`,
+          data.mensaje ??
+            `Enviado a caja · ${data.total_pares} par${data.total_pares === 1 ? "" : "es"} · ${data.codigo_staging ?? ""}`,
         );
         window.setTimeout(() => {
           setOkMsg(null);
@@ -282,9 +306,29 @@ export function PosCartSheet() {
     });
   }
 
+  async function confirmarCodigoVendedor(codigo?: string) {
+    const digits = (codigo ?? codigoVendedor).replace(/\D/g, "");
+    if (!tiendaId || digits.length < 2) {
+      setError("Ingresá el código de vendedor (mín. 2 dígitos)");
+      return;
+    }
+    if (codigoVendedorBusy) return;
+    setError(null);
+    setCodigoVendedorBusy(true);
+    const r = await identificarPin(tiendaId, digits);
+    setCodigoVendedorBusy(false);
+    if (!r.ok) {
+      setError(r.error ?? "Código no reconocido en esta tienda");
+      return;
+    }
+    setCodigoVendedor("");
+    setCodigoVendedorOpen(false);
+  }
+
   const tituloCliente = tituloDesdeCliente(cliente);
   const enRegistro = pantallaCliente === "registro";
   const clienteIdentificado = !enRegistro && modo === "encontrado" && Boolean(cliente.cedula);
+  const puedeCerrar = Boolean(vendedor && clienteIdentificado && count > 0 && !pending);
 
   return (
     <>
@@ -313,21 +357,26 @@ export function PosCartSheet() {
             <div className="min-w-0 flex-1">
               {clienteIdentificado ? (
                 <>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-200">
-                    Cliente
-                  </p>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-200">
+                      Cliente
+                    </p>
+                  </div>
                   <h2 className="truncate text-2xl font-bold leading-tight tracking-wide text-white drop-shadow-sm">
                     {tituloCliente}
                   </h2>
                   <p className="mt-0.5 text-[10px] uppercase tracking-[0.16em] text-white/75">
                     CI {cliente.cedula} · {count} par{count === 1 ? "" : "es"} · {session?.marca ?? "—"}
+                    {tiendaActiva ? ` · ${tiendaActiva.codigo}` : ""}
                   </p>
                 </>
               ) : (
                 <>
-                  <h2 className="text-xl font-semibold tracking-wide">
-                    {enRegistro ? "Registro cliente" : "Venta"}
-                  </h2>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h2 className="text-xl font-semibold tracking-wide">
+                      {enRegistro ? "Registro cliente" : "Venta"}
+                    </h2>
+                  </div>
                   <p className="text-[10px] uppercase tracking-[0.18em] opacity-80">
                     {enRegistro
                       ? `CI ${cliente.cedula} · ${count} par${count === 1 ? "" : "es"}`
@@ -338,6 +387,9 @@ export function PosCartSheet() {
             </div>
           </div>
           <div className="flex shrink-0 items-center gap-2">
+            {vendedor && tiendaId ? (
+              <VendedorEnteSwitch clienteId={tiendaId} />
+            ) : null}
             {clienteIdentificado && (
               <button
                 type="button"
@@ -602,7 +654,7 @@ export function PosCartSheet() {
 
               {modo === "idle" && (
                 <p className="text-xs text-[#64748b]">
-                  Ingresá cédula y tocá <strong>Buscar</strong>. Vacío = consumidor final.
+                  Ingresá cédula y tocá <strong>Buscar</strong> — obligatorio para cerrar la venta.
                 </p>
               )}
             </div>
@@ -617,23 +669,76 @@ export function PosCartSheet() {
             >
               {pending ? "Registrando…" : "REGISTRAR"}
             </TouchPad>
+          ) : codigoVendedorOpen && !vendedor ? (
+            <div className="space-y-2">
+              <label className="block">
+                <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                  Código de vendedor
+                </span>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  autoFocus
+                  maxLength={6}
+                  value={codigoVendedor}
+                  onChange={(e) => setCodigoVendedor(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") void confirmarCodigoVendedor();
+                  }}
+                  placeholder="Ej. 36"
+                  className={inputClass}
+                />
+              </label>
+              <div className="flex gap-2">
+                <TouchPad
+                  onClick={() => void confirmarCodigoVendedor()}
+                  ariaLabel="Confirmar código de vendedor"
+                  disabled={codigoVendedorBusy || codigoVendedor.replace(/\D/g, "").length < 2}
+                  className="flex min-h-[52px] flex-1 items-center justify-center rounded-xl bg-bazzar-naranja text-lg font-semibold tracking-wide !text-white active:bg-bazzar-naranja-dark disabled:opacity-40"
+                >
+                  {codigoVendedorBusy ? "…" : "Confirmar"}
+                </TouchPad>
+                <TouchPad
+                  onClick={() => {
+                    setCodigoVendedorOpen(false);
+                    setCodigoVendedor("");
+                    setError(null);
+                  }}
+                  ariaLabel="Cancelar código de vendedor"
+                  className="min-h-[52px] rounded-xl border border-[#cbd5e1] px-4 text-sm font-semibold text-[#64748b]"
+                >
+                  ×
+                </TouchPad>
+              </div>
+            </div>
           ) : (
             <TouchPad
               onClick={cobrar}
-              ariaLabel="Confirmar venta"
-              disabled={count === 0 || pending || !vendedor}
+              ariaLabel={
+                puedeCerrar
+                  ? "Cerrar venta"
+                  : !vendedor
+                    ? "Ingresar código de vendedor"
+                    : "Identificar cliente"
+              }
+              disabled={
+                count === 0 || pending || (Boolean(vendedor) && !clienteIdentificado)
+              }
               className="flex min-h-[60px] w-full items-center justify-center rounded-xl bg-bazzar-naranja text-xl font-semibold tracking-wide !text-white active:bg-bazzar-naranja-dark disabled:opacity-40"
             >
-              {pending ? "Confirmando…" : vendedor ? `COBRAR · ${count} par${count === 1 ? "" : "es"}` : "PIN vendedor requerido"}
+              {pending
+                ? "Confirmando…"
+                : puedeCerrar
+                  ? "CERRAR"
+                  : !vendedor
+                    ? "Código vendedor requerido"
+                    : "Cliente requerido"}
             </TouchPad>
           )}
 
           {items.length > 0 && !enRegistro && (
             <TouchPad
-              onClick={() => {
-                if (pending) return;
-                clear();
-              }}
+              onClick={vaciarCarrito}
               ariaLabel="Vaciar venta"
               className="w-full py-2 text-center text-xs text-[#64748b] active:text-red-800"
             >

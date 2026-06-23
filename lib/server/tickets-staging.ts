@@ -28,6 +28,8 @@ export type StagingTicket = {
   vendedor_bazzar_id: number;
   vendedor_nombre: string;
   cedula_cliente: string | null;
+  clients_bazaar_id: number | null;
+  snapshot_cliente: Record<string, unknown> | null;
   estado: StagingEstado;
   created_at: string;
   cerrado_at: string | null;
@@ -161,12 +163,14 @@ async function fetchStagingById(pool: ReturnType<typeof getPool>, id: number): P
     vendedor_bazzar_id: string;
     vendedor_nombre: string;
     cedula_cliente: string | null;
+    clients_bazaar_id: string | null;
+    snapshot_cliente: Record<string, unknown> | null;
     estado: StagingEstado;
     created_at: Date;
     cerrado_at: Date | null;
   }>(
     `SELECT id, codigo_staging, cliente_id, marca, vendedor_bazzar_id, vendedor_nombre,
-            cedula_cliente, estado, created_at, cerrado_at
+            cedula_cliente, clients_bazaar_id, snapshot_cliente, estado, created_at, cerrado_at
      FROM public.ticket_pos_staging WHERE id = $1`,
     [id],
   );
@@ -200,6 +204,8 @@ async function fetchStagingById(pool: ReturnType<typeof getPool>, id: number): P
     vendedor_bazzar_id: Number(head.vendedor_bazzar_id),
     vendedor_nombre: head.vendedor_nombre,
     cedula_cliente: head.cedula_cliente,
+    clients_bazaar_id: head.clients_bazaar_id != null ? Number(head.clients_bazaar_id) : null,
+    snapshot_cliente: head.snapshot_cliente,
     estado: head.estado,
     created_at: head.created_at.toISOString(),
     cerrado_at: head.cerrado_at?.toISOString() ?? null,
@@ -251,7 +257,7 @@ export async function crearStagingDesdeCarrito(
 
   const vb = await getVendedorById(input.vendedor_bazzar_id, input.cliente_id);
   if (!vb || vb.id_vendedor !== vendedor.id_vendedor) {
-    return { ok: false, error: "Vendedor no válido para esta tienda" };
+    return { ok: false, error: "Vendedor no válido en esta sucursal" };
   }
 
   const pool = getPool();
@@ -584,14 +590,22 @@ export async function promoverStagingAOro(
     await client.query("BEGIN");
 
     for (const linea of staging.lineas.filter((l) => l.activo && l.cantidad > 0)) {
-      const snap = linea.snapshot_json ?? {};
-      const lineaCodigo = typeof snap.linea_codigo === "string" ? snap.linea_codigo : "?";
-      const refCodigo = typeof snap.referencia_codigo === "string" ? snap.referencia_codigo : "?";
+      const baseSnap = linea.snapshot_json ?? {};
+      const cli = staging.snapshot_cliente ?? {};
+      const snapObj = {
+        ...baseSnap,
+        nombre_cliente: typeof cli.nombre === "string" ? cli.nombre : null,
+        apellido_cliente: typeof cli.apellido === "string" ? cli.apellido : null,
+        telefono_cliente: typeof cli.telefono === "string" ? cli.telefono : null,
+        cedula_cliente: staging.cedula_cliente,
+      };
+      const lineaCodigo = typeof baseSnap.linea_codigo === "string" ? baseSnap.linea_codigo : "?";
+      const refCodigo = typeof baseSnap.referencia_codigo === "string" ? baseSnap.referencia_codigo : "?";
 
       for (let u = 0; u < linea.cantidad; u++) {
         idx += 1;
         const codigo = codigoTicket(clienteId, idx);
-        const snapshot = JSON.stringify(snap);
+        const snapshot = JSON.stringify(snapObj);
 
         if (conFkCliente) {
           await client.query(
@@ -600,7 +614,7 @@ export async function promoverStagingAOro(
                 codigo_ticket, cliente_id, marca, vendedor_id, vendedor_nombre, vendedor_bazzar_id, staging_id,
                 cedula_cliente, clients_bazaar_id, linea_id, referencia_id, material_id, color_id,
                 grada, cantidad, estado, snapshot_json
-              ) VALUES ($1,$2,$3,NULL,$4,$5,$6,$7,NULL,$8,$9,$10,$11,$12,1,'EMITIDO',$13::jsonb)
+              ) VALUES ($1,$2,$3,NULL,$4,$5,$6,$7,$8,$9,$10,$11,$12,1,'EMITIDO',$13::jsonb)
             `,
             [
               codigo,
@@ -610,6 +624,7 @@ export async function promoverStagingAOro(
               staging.vendedor_bazzar_id,
               stagingId,
               staging.cedula_cliente,
+              staging.clients_bazaar_id,
               linea.linea_id,
               linea.referencia_id,
               linea.material_id,
@@ -660,6 +675,7 @@ export async function promoverStagingAOro(
       [stagingId],
     );
     await client.query("COMMIT");
+    // ORO no toca depósito — stock ya bajó al crear staging (CERRAR tablet).
     return { ok: true, tickets, total_pares: tickets.length, stock_decrementado: false };
   } catch (e) {
     await client.query("ROLLBACK");
@@ -667,4 +683,29 @@ export async function promoverStagingAOro(
   } finally {
     client.release();
   }
+}
+
+/** Cierra staging ABIERTO y promueve a ORO — cola caja Report (EMITIDO). */
+export async function enviarStagingACaja(
+  stagingId: number,
+  clienteId: number,
+): Promise<
+  | { ok: true; tickets: TicketEmitido[]; total_pares: number }
+  | { ok: false; error: string }
+> {
+  const cur = await fetchStagingById(getPool(), stagingId);
+  if (!cur || cur.cliente_id !== clienteId) {
+    return { ok: false, error: "Ticket no encontrado" };
+  }
+
+  if (cur.estado === "ABIERTO") {
+    const cerrar = await cambiarEstadoStaging(stagingId, clienteId, "CERRADO");
+    if (!cerrar.ok) return cerrar;
+  } else if (cur.estado !== "CERRADO") {
+    return { ok: false, error: `Estado ${cur.estado} no se puede enviar a caja` };
+  }
+
+  const oro = await promoverStagingAOro(stagingId, clienteId);
+  if (!oro.ok) return oro;
+  return { ok: true, tickets: oro.tickets, total_pares: oro.total_pares };
 }

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readTabletSession } from "@/lib/auth/tablet-session";
-import { crearStagingDesdeCarrito } from "@/lib/server/tickets-staging";
+import { crearStagingDesdeCarrito, enviarStagingACaja } from "@/lib/server/tickets-staging";
 import type { ConfirmarTicketsInput } from "@/lib/server/tickets-confirm";
 import { getVendedorById } from "@/lib/server/vendedor-bazzar";
 
@@ -37,13 +37,22 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(result, { status: 400 });
   }
 
+  const caja = await enviarStagingACaja(result.staging.id, body.cliente_id);
+  if (!caja.ok) {
+    return NextResponse.json(caja, { status: 400 });
+  }
+
+  const codigos = caja.tickets.map((t) => t.codigo_ticket).join(", ");
+
   return NextResponse.json({
     ok: true,
     staging: result.staging,
     codigo_staging: result.codigo_staging,
-    total_pares: result.total_pares,
+    tickets_oro: caja.tickets,
+    total_pares: caja.total_pares,
     persisted: true,
+    promovido_oro: true,
     stock_decrementado: true,
-    mensaje: "Ticket abierto — stock descontado en sesión. Cerralo y promové a ORO.",
+    mensaje: `Enviado a caja · ${caja.total_pares} ticket${caja.total_pares === 1 ? "" : "s"} ORO · ${codigos}`,
   });
 }

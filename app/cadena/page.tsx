@@ -6,7 +6,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { FiltrosCabecera } from "@/components/cadena/FiltrosCabecera";
 import { CadenaEntradaHeader } from "@/components/cadena/CadenaEntradaHeader";
-import { VendedorPinButton } from "@/components/pos/VendedorPinButton";
 import { StagingTicketsPanel } from "@/components/pos/StagingTicketsPanel";
 import { SelectorDepositos } from "@/components/cadena/SelectorDepositos";
 import { TouchPad } from "@/components/cadena/TouchPad";
@@ -29,11 +28,22 @@ import { cadenaQueryKey, saveCadenaSeed } from "@/lib/cadena-seed";
 
 import { DEPOSITOS } from "@/lib/depositos-config";
 
+import { filtrosToSearchParams } from "@/lib/filtros-url";
 import { POS_COBRAR_OK_EVENT } from "@/lib/pos-events";
 
-import { filtrosToSearchParams } from "@/lib/filtros-url";
+const TIENDA_STORAGE_KEY = "tablet_tienda_cliente_id";
 
-
+function tiendaInicial(): number {
+  if (typeof window === "undefined") return 2900;
+  try {
+    const raw = localStorage.getItem(TIENDA_STORAGE_KEY);
+    const n = Number(raw);
+    if (Number.isFinite(n) && DEPOSITOS.some((d) => d.cliente_id === n)) return n;
+  } catch {
+    /* ignore */
+  }
+  return 2900;
+}
 
 type FiltrosApi = {
 
@@ -83,7 +93,7 @@ export default function CadenaMarcaPage() {
 
   const router = useRouter();
 
-  const [clienteId, setClienteId] = useState(2100);
+  const [clienteId, setClienteId] = useState(tiendaInicial);
 
   const [filtros, setFiltros] = useState<FiltrosEntrada>(FILTROS_ENTRADA_VACIOS);
 
@@ -103,6 +113,10 @@ export default function CadenaMarcaPage() {
   const depositoActivo = DEPOSITOS.find((d) => d.cliente_id === clienteId);
 
   const hadApi = useRef(false);
+
+  useEffect(() => {
+    localStorage.setItem(TIENDA_STORAGE_KEY, String(clienteId));
+  }, [clienteId]);
 
   useEffect(() => {
     hadApi.current = false;
@@ -282,16 +296,13 @@ export default function CadenaMarcaPage() {
         ms={api?.ms}
         refreshing={refreshing}
         extra={
-          <div className="flex flex-col gap-1">
-            <VendedorPinButton clienteId={clienteId} />
-            <button
-              type="button"
-              onClick={() => setStagingOpen(true)}
-              className="rounded border border-white/30 px-2 py-1 text-[9px] font-bold uppercase text-white"
-            >
-              Tickets
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => setStagingOpen(true)}
+            className="rounded border border-white/30 bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase text-white"
+          >
+            Tickets
+          </button>
         }
       />
       <StagingTicketsPanel clienteId={clienteId} open={stagingOpen} onClose={() => setStagingOpen(false)} />

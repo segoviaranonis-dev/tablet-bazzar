@@ -32,6 +32,7 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
   const [tickets, setTickets] = useState<StagingTicket[]>([]);
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
+  const [busyKey, setBusyKey] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -52,12 +53,14 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
 
   async function accion(id: number, accionName: string) {
     setMsg(null);
+    setBusyKey(`stg:${id}`);
     const r = await fetch(`/api/tickets/staging/${id}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ cliente_id: clienteId, accion: accionName }),
     });
     const data = await r.json();
+    setBusyKey(null);
     if (!r.ok || !data.ok) {
       setMsg(data.error ?? "Error");
       return;
@@ -69,6 +72,7 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
 
   async function patchLinea(stagingId: number, lineaId: number, delta: number, linea: StagingLinea) {
     const next = Math.max(0, linea.cantidad + delta);
+    setBusyKey(`linea:${lineaId}`);
     const r = await fetch(`/api/tickets/staging/${stagingId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -78,10 +82,12 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
       }),
     });
     const data = await r.json();
+    setBusyKey(null);
     if (!r.ok || !data.ok) {
       setMsg(data.error ?? "Error al editar");
       return;
     }
+    if (delta < 0) dispatchPosCobrarOk();
     void load();
   }
 
@@ -90,9 +96,14 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
   return (
     <>
       <div className="fixed inset-0 z-[80] bg-[#002B4E]/50" onClick={onClose} aria-hidden />
-      <div className="fixed inset-x-4 top-[10dvh] z-[90] mx-auto flex max-h-[80dvh] max-w-lg flex-col rounded-2xl border-2 border-[#002B4E] bg-white shadow-xl">
+      <div className="fixed inset-x-4 top-[8dvh] z-[90] mx-auto flex max-h-[84dvh] max-w-lg flex-col rounded-2xl border-2 border-[#002B4E] bg-white shadow-xl">
         <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
-          <h2 className="font-bold text-[#002B4E]">Tickets por puesto</h2>
+          <div>
+            <h2 className="font-bold text-[#002B4E]">Tickets · staging sesión</h2>
+            <p className="text-[10px] text-slate-500">
+              Editar ítem a ítem solo acá (ABIERTO) · Bobeda/ORO no se toca
+            </p>
+          </div>
           <TouchPad onClick={onClose} ariaLabel="Cerrar" className="min-h-[40px] min-w-[40px] text-xl">
             ×
           </TouchPad>
@@ -102,7 +113,10 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
           {loading ? (
             <p className="text-slate-500">Cargando…</p>
           ) : tickets.length === 0 ? (
-            <p className="text-slate-500">Sin tickets abiertos o cerrados pendientes.</p>
+            <p className="text-slate-500">
+              Sin borradores ABIERTO/CERRADO. Si ya cerraste venta y fue a caja, editá solo antes del CERRAR en tablet
+              — Bobeda queda fija para cajero y empaque.
+            </p>
           ) : (
             <ul className="space-y-4">
               {tickets.map((t) => (
@@ -112,20 +126,24 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
                       <p className="text-xs font-bold uppercase text-slate-500">{t.estado}</p>
                       <p className="font-semibold text-slate-900">{t.vendedor_nombre}</p>
                       <p className="text-[10px] text-slate-400">{t.codigo_staging}</p>
-                      <p className="text-sm">{t.total_pares} par{t.total_pares === 1 ? "" : "es"}</p>
+                      <p className="text-sm">
+                        {t.total_pares} par{t.total_pares === 1 ? "" : "es"}
+                      </p>
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {t.estado === "ABIERTO" && (
                         <>
                           <button
                             type="button"
+                            disabled={busyKey === `stg:${t.id}`}
                             onClick={() => void accion(t.id, "cerrar")}
-                            className="rounded bg-[#002B4E] px-2 py-1 text-[10px] font-bold text-white"
+                            className="rounded bg-[#002B4E] px-2 py-1 text-[10px] font-bold text-white disabled:opacity-50"
                           >
                             Cerrar
                           </button>
                           <button
                             type="button"
+                            disabled={busyKey === `stg:${t.id}`}
                             onClick={() => void accion(t.id, "cancelar")}
                             className="rounded border border-red-300 px-2 py-1 text-[10px] text-red-700"
                           >
@@ -137,6 +155,7 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
                         <>
                           <button
                             type="button"
+                            disabled={busyKey === `stg:${t.id}`}
                             onClick={() => void accion(t.id, "reabrir")}
                             className="rounded border border-slate-300 px-2 py-1 text-[10px]"
                           >
@@ -144,10 +163,11 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
                           </button>
                           <button
                             type="button"
+                            disabled={busyKey === `stg:${t.id}`}
                             onClick={() => void accion(t.id, "promover")}
-                            className="rounded bg-bazzar-naranja px-2 py-1 text-[10px] font-bold text-white"
+                            className="rounded bg-bazzar-naranja px-2 py-1 text-[10px] font-bold text-white disabled:opacity-50"
                           >
-                            → ORO
+                            → caja
                           </button>
                         </>
                       )}
@@ -169,16 +189,18 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
                               <div className="flex items-center gap-1">
                                 <button
                                   type="button"
+                                  disabled={busyKey === `linea:${l.id}`}
                                   onClick={() => void patchLinea(t.id, l.id, -1, l)}
-                                  className="min-w-[28px] rounded border px-1"
+                                  className="min-w-[28px] rounded border px-1 disabled:opacity-40"
                                 >
                                   −
                                 </button>
                                 <span className="min-w-[20px] text-center font-bold">{l.cantidad}</span>
                                 <button
                                   type="button"
+                                  disabled={busyKey === `linea:${l.id}`}
                                   onClick={() => void patchLinea(t.id, l.id, 1, l)}
-                                  className="min-w-[28px] rounded border px-1"
+                                  className="min-w-[28px] rounded border px-1 disabled:opacity-40"
                                 >
                                   +
                                 </button>
@@ -192,6 +214,16 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
               ))}
             </ul>
           )}
+        </div>
+        <div className="border-t border-slate-200 px-4 py-2">
+          <button
+            type="button"
+            onClick={() => void load()}
+            disabled={loading}
+            className="w-full rounded-lg border border-slate-300 py-2 text-sm font-semibold text-[#002B4E] disabled:opacity-50"
+          >
+            {loading ? "…" : "Actualizar lista"}
+          </button>
         </div>
       </div>
     </>
