@@ -22,7 +22,7 @@ export const PILAR_TRIANGULO_JOINS = `
 export const SQL_MARCA_ID = "COALESCE(l.marca_id, s.marca_id)";
 export const SQL_GENERO_ID = "COALESCE(l.genero_id, s.genero_id)";
 export const SQL_GRUPO_ESTILO_ID = "COALESCE(lr.grupo_estilo_id, s.grupo_estilo_id)";
-export const SQL_TIPO_1_ID = "COALESCE(l.tipo_1_id, s.tipo_1_id)";
+export const SQL_TIPO_1_ID = "COALESCE(lr.tipo_1_id, s.tipo_1_id)";
 
 export const SQL_MARCA_LABEL = `
   COALESCE(

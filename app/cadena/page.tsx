@@ -55,6 +55,8 @@ type FiltrosApi = {
 
   tipos: OpcionChip[];
 
+  tipo1s: OpcionChip[];
+
   marcasEntrada: { marca: string; skus: number; pares: number }[];
 
   referencias: ReferenciaEntrada[];
@@ -78,6 +80,8 @@ function filtrosEntradaToSql(f: FiltrosEntrada) {
     estilos: f.estilos,
 
     tipos: f.tipos,
+
+    tipo1s: f.tipo1s,
 
     referenciaKeys: f.referenciaKeys,
 
@@ -154,6 +158,7 @@ export default function CadenaMarcaPage() {
         marcas: data.marcas ?? [],
         estilos: data.estilos ?? [],
         tipos: data.tipos ?? [],
+        tipo1s: data.tipo1s ?? [],
         marcasEntrada: data.marcasEntrada ?? [],
         referencias: data.referencias ?? [],
         resumen: data.resumen ?? { skus: 0, pares: 0, ultima_carga: null },
@@ -207,6 +212,8 @@ export default function CadenaMarcaPage() {
         estilos: filtros.estilos,
 
         tipos: filtros.tipos,
+
+        tipo1s: filtros.tipo1s,
 
         referenciaKeys: refKey ? [refKey] : filtros.referenciaKeys,
 
@@ -327,6 +334,8 @@ export default function CadenaMarcaPage() {
             estilos={api.estilos}
 
             tipos={api.tipos}
+
+            tipo1s={api.tipo1s}
 
             referencias={refs.map((r) => ({
 

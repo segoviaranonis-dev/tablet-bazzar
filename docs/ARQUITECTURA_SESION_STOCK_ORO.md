@@ -1,73 +1,56 @@
-# Arquitectura sesión stock · vendedor · ORO
+# Arquitectura sesión stock · bandeja única · ORO
 
-## Tres capas
+**Actualizado:** 2026-06-24 · Migraciones **007–009**  
+**Doc completo:** [LOGICA_OPERATIVA_POS_BAZZAR.md](./LOGICA_OPERATIVA_POS_BAZZAR.md)
 
-| Capa | Tabla | Stock sesión |
-|------|--------|--------------|
-| **Intermedia** | `ticket_pos_staging` | **Sí** |
-| **Bandeja cajero** | `ticket_bandeja_cajero` | No · efímera |
-| **Bobeda (ORO)** | `bobeda_venta_pos` | No · permanente |
+## Dos capas operativas + Bobeda
 
-Doc protocolo: `.claude/2_modulos/2.3_report/caja_bazzar/P-12_PROTOCOLO_CAJERO_BOBINA.md`  
-Migración: `supabase/migrations/005_bandeja_bobeda_split.sql`
+| Capa | Tabla | Visible tablet | Visible caja Report |
+|------|--------|----------------|---------------------|
+| **Stock piso** | `deposito_1_*_tienda` | Catálogo vendible | Admin sync |
+| **Operativa** | `ticket_bandeja_cajero` | `ABIERTO` (edición) | `PENDIENTE_CAJA` · `CSV_DESCARGADO` |
+| **ORO histórico** | `bobeda_venta_pos` | Empaque | Facturado / métricas |
 
-## Dos tablas BD (técnico)
+**Regla Director:** nunca `ABIERTO` y `PENDIENTE_CAJA` a la vez — mismo lote (`staging_id`), cambio de `estado`.
 
-| Rol | Tabla | Qué es |
-|-----|--------|--------|
-| **Intermedia (sesión)** | `ticket_pos_staging` + `ticket_pos_staging_linea` | Vive solo mientras dura la sesión de stock del día |
-| **Bandeja cajero** | `ticket_bandeja_cajero` | Cola Report · CSV · titular · quitar par |
-| **Bobeda ORO** | `bobeda_venta_pos` | Histórico importable · Empaque · Sales Report Bazzar futuro |
-| ~~Legacy~~ | `ticket_venta_pos` | Deprecar tras smoke · fallback pre-005 |
+**Legacy (solo lectura / no escribir):** `ticket_pos_staging`, `ticket_venta_pos`.
 
-## Vendedor (RRHH + PIN)
-
-Canónico RRHH Report:
-
-- `funcionarios` — empleado, **`ente_id`** → `entes` (RIMEC=1, Fernando=2, San Martín=3, Palma=4)
-- Módulo: `/rrhh` · queries en `src/app/rrhh/lib/rrhh-queries.ts`
-
-Extensión POS (tablet):
-
-- `vendedor_bazzar` — FK `funcionario_id` + `ente_id` + **`codigo_pin`** único por ente (migración **004**)
-- Identificación por **ente** del piso (Fernando 2100/2900 comparten vendedores; San Martín 2400/2700; Palma 3100/3200)
-- UI: código vendedor en carrito · `VendedorEnteSwitch` para cambiar entre vendedores del mismo ente
-- **No persistir** vendedor en `localStorage` — tablet pasa de mano en mano
-
-## Ciclo de vida del stock (sesión)
+## Máquina de estados — `ticket_bandeja_cajero.estado`
 
 ```
-Excel Retail → registro_st_vt_rc_reposicion
-     ↓ Actualizar stock (sync depósitos)
-deposito_1_{cliente_id}_tienda  ← sesión del día (6 locales)
-     ↓ ventas tablet
-ticket_pos_staging  ← AQUÍ baja/sube stock (+ arrepentimiento)
-     ↓ Cerrar → Promover ORO
-ticket_venta_pos  ← registro permanente (sin tocar stock otra vez)
-     ↓ Actualizar stock (fin sesión)
-DELETE depósito + reimport — stock sesión desaparece
-ticket_venta_pos queda (único recuerdo operativo)
+Carrito tablet → INSERT filas ABIERTO (stock −)
+     │ sync-cart: validar (depósito + reserva bandeja) · restaurar · re-insert
+     ▼ CERRAR (único botón tablet · reservarNumeroFiFa)
+PENDIENTE_CAJA  ← visible Report caja · FI_FA asignado
+     │
+     ├── FACTURAS → Abrir → ABIERTO (desaparece de caja · stock sigue reservado)
+     │        └── CERRAR otra vez → PENDIENTE_CAJA (mismo FI_FA)
+     │
+     ├── CSV → CSV_DESCARGADO
+     └── Enviar a Empaque → DELETE bandeja · INSERT bobeda (corte ORO)
 ```
 
-## Reglas implementadas
+| Estado | Tablet FACTURAS | Report caja | Stock depósito |
+|--------|-----------------|-------------|----------------|
+| `ABIERTO` | Edición catálogo | **No** | Descontado (reservado bandeja) |
+| `PENDIENTE_CAJA` | Lista “en caja” (solo abrir) | **Sí** | Descontado |
+| `CSV_DESCARGADO` | idem | **Sí** | Descontado |
+| `CANCELADO` | — | **No** | Restaurado |
 
-1. **CERRAR** → crea staging **ABIERTO** y **descuenta stock** en depósito tienda (requiere cliente + vendedor).
-2. **Editar / cancelar** staging → restaura o ajusta stock (arrepentimiento).
-3. **→ ORO** → copia a `ticket_venta_pos` **sin** mover stock otra vez.
-4. **Actualizar stock** (`POST /api/depositos/sync`) → **bloqueado** si existe staging `ABIERTO` o `CERRADO` (409).
+## Acciones permitidas
 
-Estados staging: `ABIERTO` · `CERRADO` · `CANCELADO` · `ORO`
+- **Tablet:** solo **CERRAR** envía a caja. **FACTURAS → Abrir** reabre desde caja.
+- **Report caja:** titular, quitar par, CSV, **Enviar a Empaque** (handoff → `bobeda_venta_pos`).
+- **Prohibido:** botón “Listo → caja” en panel FACTURAS (eliminado).
 
-Pendiente = `ABIERTO` | `CERRADO` (aún no archivado en ORO).
+## Agrupación lote
 
-## Tres módulos tablet (ciclo cerrado)
+- `staging_id` = **ID de lote** (`ticket_bandeja_lote_id_seq`).
+- `numero_fi_fa` por tienda · contador `pos_fi_fa_counter` · **009** corrige unicidad (no por fila).
+- Formato UI: `{Cliente} - FI_FA: {n}`.
 
-| Módulo | Función |
-|--------|---------|
-| Depósito | Stock sesión |
-| Venta | Staging intermedia |
-| **Empaque** | Bobeda · anti-bypass |
+## Bobeda
 
-Ver: `.claude/2_modulos/2.4_tablet_bazzar/P-01_TRES_MODULOS_CICLO_CERRADO.md`
+Tras handoff la fila **sale** de bandeja y queda inmutable en `bobeda_venta_pos` (`PENDIENTE_ENTREGA` → `ENTREGADO`).
 
-Nexus/Report orbita la caja: CSV + ticket ORO. La factura fiscal sigue en el sistema legacy — nosotros no la emitimos.
+Doc protocolo: `.claude/2_modulos/2.3_report/caja_bazzar/P-12_PROTOCOLO_CAJERO_BOBINA.md`

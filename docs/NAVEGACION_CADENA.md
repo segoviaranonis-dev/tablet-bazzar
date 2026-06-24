@@ -3,11 +3,24 @@
 **Ruta:** `/cadena/vista`  
 **Orquestación:** `app/cadena/vista/page.tsx`  
 **Doc madre:** [CADENA_CONSECUTIVA.md](./CADENA_CONSECUTIVA.md)  
-**Ley agrupación:** `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md`
+**Ley agrupación:** `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md` · **terciaria:** [agrupacion_terciaria.md](../../../.claude/2_modulos/2.4_tablet_bazzar/agrupacion_terciaria.md)
 
 ---
 
-## Dos niveles (sin duplicar fotos)
+## Cuatro capas (jerarquía)
+
+| Capa | Clave | Dónde en UI | Eje |
+|------|-------|-------------|-----|
+| **Terciaria** | Marca + **estilo hero** | Delimita sidebar L+R | ←→ si >1 ref en cohorte |
+| **Secundaria** | L + R | Sidebar vertical | ←→ (dentro cohorte) |
+| **Primaria** | L + R + material | Footer naipes | ←→ si 1 ref |
+| **Color** | `color_code` | Mazo + hero | ↑↓ |
+
+**Regla Director:** hero Chatita → costado solo chatitas de esa marca. Doc: [agrupacion_terciaria.md](../../../.claude/2_modulos/2.4_tablet_bazzar/agrupacion_terciaria.md)
+
+---
+
+## Dos niveles (sin duplicar fotos) — referencia rápida
 
 | Nivel | Clave | Dónde en UI | Eje de navegación |
 |-------|-------|-------------|-------------------|

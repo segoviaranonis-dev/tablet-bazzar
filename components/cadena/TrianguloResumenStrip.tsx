@@ -15,7 +15,8 @@ export function TrianguloResumenStrip({ searchParams, clienteId, marca }: Props)
   if (f.generos.length) chips.push(`Género: ${f.generos.join(" · ")}`);
   if (f.marcas.length) chips.push(`Marca: ${f.marcas.join(" · ")}`);
   if (f.estilos.length) chips.push(`Estilo: ${f.estilos.join(" · ")}`);
-  if (f.tipos.length) chips.push(`Producto: ${f.tipos.join(" · ")}`);
+  if (f.tipos.length) chips.push(`Categoría: ${f.tipos.join(" · ")}`);
+  if (f.tipo1s.length) chips.push(`Tipo 1: ${f.tipo1s.join(" · ")}`);
   if (f.buscar.trim()) chips.push(`Buscar: ${f.buscar.trim()}`);
   if (marca) chips.push(`Cadena: ${marca}`);
 

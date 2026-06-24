@@ -1,0 +1,39 @@
+{
+  "id": "ETAPA-TICKETS-POS-Apertura-20260622",
+  "fecha": "2026-06-22",
+  "tipo": "apertura_etapa",
+  "etapa": "ETAPA_TABLET_TICKETS_POS_STOCK_REPORT",
+  "estado": "ABIERTA",
+  "codigos_navegador": {
+    "tablet": "2.4.2.3",
+    "report_monitoreo": "2.3.2.2",
+    "report_depositos": "2.3.2.1"
+  },
+  "documentacion_creada": [
+    ".claude/4_etapas/ETAPA_TABLET_TICKETS_POS_STOCK_REPORT.md",
+    ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TICKETS_POS_STOCK.md",
+    ".claude/2_modulos/2.3_report/tickets_pos/CHUSAR_MONITOREO_TICKETS_POS.md",
+    "tablet-bazzar/docs/ETAPA_TICKETS_POS_STOCK.md",
+    "report/docs/TICKETS_POS_MONITOREO.md"
+  ],
+  "navegador_actualizado": [
+    "nexus-navegador-holding/config/etapas.json",
+    "nexus-navegador-holding/config/arbol-modulos.json",
+    ".claude/4_etapas/ACTUAL.md"
+  ],
+  "objetivo": "COBRAR Tablet: validar stock depósito sesión, decrementar cantidad, insertar ticket_venta_pos, monitoreo Report, refresh live ~60 tablets",
+  "brecha_critica": "tickets-confirm.ts no decrementa cantidad en deposito_1_*_tienda",
+  "codigo_pendiente": [
+    "UPDATE cantidad atómico en confirmarTicketsPos",
+    "GET /api/tickets/pos en report",
+    "UI listado tickets /tablet-bazzar",
+    "invalidación live post-COBRAR"
+  ],
+  "tablas": {
+    "tickets": "public.ticket_venta_pos",
+    "stock_venta": "deposito_1_{2100|2900|2400|2700|3100|3200}_tienda"
+  },
+  "regla_negocio": "1 ticket = 1 par; stock solo depósito sesión; Sales Report blindado",
+  "ejecutor_siguiente_turno": "cursor",
+  "director": "Hector"
+}

@@ -125,6 +125,7 @@ export async function listarFacturasCajaPendientes(clienteId: number): Promise<F
         FROM public.ticket_bandeja_cajero
         WHERE cliente_id = $1
           AND upper(btrim(estado)) IN ('PENDIENTE_CAJA', 'CSV_DESCARGADO')
+          AND activo = true
         ORDER BY created_at DESC
         LIMIT 200
       `,

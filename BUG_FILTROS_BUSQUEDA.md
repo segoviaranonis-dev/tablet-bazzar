@@ -76,7 +76,7 @@
 1. **Queries SQL funcionan correctamente:**
 ```sql
 -- Query ejecutada directamente retorna 20 filas
-SELECT * FROM deposito_tienda_fernando_adultos s
+SELECT * FROM deposito_2_fernando_adultos_tienda s
 LEFT JOIN marca_v2 mv ON mv.id_marca = s.marca_id
 WHERE s.cantidad > 0
   AND trim(s.linea_codigo_proveedor::text) ILIKE '%1184%'
@@ -87,7 +87,7 @@ LIMIT 20;
 ```
 
 2. **Base de datos tiene datos correctos:**
-   - ✅ Tabla `deposito_tienda_fernando_adultos` existe
+   - ✅ Tabla `deposito_2_fernando_adultos_tienda` existe
    - ✅ Columna `tipo_v2_id` existe
    - ✅ Datos de referencia 1184.* existen con stock
    - ✅ Marca VIZZANO existe
@@ -184,7 +184,7 @@ lib/
 
 ### Base de Datos
 ```
-Tabla: deposito_tienda_fernando_adultos
+Tabla: deposito_2_fernando_adultos_tienda
 Columnas clave:
 - linea_codigo_proveedor (text)      # ⚠️ Puede tener espacios
 - referencia_codigo_proveedor (text) # ⚠️ Puede tener espacios
@@ -283,7 +283,7 @@ Columnas clave:
 ### Solución 1: LIMPIAR DATOS EN BD (Recomendado)
 ```sql
 -- Ejecutar en PostgreSQL
-UPDATE deposito_tienda_fernando_adultos
+UPDATE deposito_2_fernando_adultos_tienda
 SET 
   linea_codigo_proveedor = trim(linea_codigo_proveedor),
   referencia_codigo_proveedor = trim(referencia_codigo_proveedor),

@@ -1,0 +1,94 @@
+{
+  "id": "ETAPA-TABLET-ASPECTO-VISUAL-20260616",
+  "fecha_cierre": "2026-06-16",
+  "estado": "CERRADA",
+  "director_veredicto": "perfecto perfecto perfecto",
+  "build": "v16-fill-host",
+  "ruta_qa": "http://localhost:3002/cadena/vista",
+  "objetivo": "Hero cadena llena card blanco; zapato entero; sin niebla; sin cover crop",
+  "criterios_pass": {
+    "contenedor_hero_absolute_inset_0": true,
+    "labels_overlay_sin_gradiente": true,
+    "object_fit_contain": true,
+    "transform_scale_1_12": true,
+    "object_fit_cover_rechazado": true,
+    "sin_58vmin_aspect_square": true,
+    "sin_width_height_html_img": true,
+    "data_hero_frame": "v16-fill-host"
+  },
+  "archivos": [
+    "components/cadena/HeroProductImage.tsx",
+    "components/cadena/LineaReferenciaHero.tsx",
+    "app/cadena/vista/page.tsx",
+    "app/globals.css"
+  ],
+  "css_canonico": {
+    "cadena-hero-host": {
+      "position": "absolute",
+      "inset": "0",
+      "overflow": "hidden"
+    },
+    "cadena-hero-frame": {
+      "position": "absolute",
+      "inset": "0",
+      "width": "100%",
+      "height": "100%",
+      "background": "transparent"
+    },
+    "cadena-hero-frame_img": {
+      "position": "absolute",
+      "inset": "0",
+      "width": "100%",
+      "height": "100%",
+      "object_fit": "contain",
+      "object_position": "center center",
+      "transform": "scale(1.12)",
+      "transform_origin": "center center"
+    }
+  },
+  "anti_patrones_prohibidos": [
+    "object-fit: cover en hero",
+    "aspect-square / size min(58vmin)",
+    "bg-gradient-to-b from-white via-white/95 en overlay",
+    "filter drop-shadow en img hero",
+    "width height HTML attrs en img hero",
+    "hero flex-1 con labels en flujo cuando se busca max area"
+  ],
+  "cronologia_sesion": [
+    { "paso": 1, "accion": "Quitar gradiente niebla LineaReferenciaHero", "resultado": "ok" },
+    { "paso": 2, "accion": "Labels en flujo + hero flex-1", "resultado": "foto achicada" },
+    { "paso": 3, "accion": "absolute inset-0 sin img absolute", "resultado": "zapato invisible" },
+    { "paso": 4, "accion": "fill host + contain sin aspect-square", "resultado": "mejora parcial" },
+    { "paso": 5, "accion": "object-fit cover", "resultado": "recorte punta tacón rechazado" },
+    { "paso": 6, "accion": "contain + scale 1.12 + host absolute inset-0", "resultado": "aprobado director" }
+  ],
+  "skus_regression": [
+    { "sku": "4202.500", "marca": "ACTVITTA", "nota": "cover fail documentado" },
+    { "sku": "9077.202", "marca": "BEIRA RIO", "nota": "botas altas contain" },
+    { "sku": "4215.1034", "marca": "ACTVITTA", "nota": "audit data-hero-sku" },
+    { "sku": "2083.1133", "marca": "MOLEKINHA", "nota": "Storage hotfix si persiste recorte" }
+  ],
+  "documentacion_publicada": [
+    "tablet-bazzar/docs/ETAPA_ASPECTO_VISUAL_CIERRE.md",
+    "tablet-bazzar/docs/IMAGENES_PRODUCTO.md",
+    ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_ASPECTO_VISUAL_HERO.md",
+    ".claude/4_etapas/ETAPA_TABLET_ASPECTO_VISUAL_CERRADA.md",
+    ".claude/2_modulos/2.4_tablet_bazzar/INDICE.md"
+  ],
+  "publicacion": {
+    "indice_modulo": "publicado",
+    "git_commit": "pendiente_claude_code",
+    "merge_main": "pendiente_aprobacion_director",
+    "vercel_deploy": "pendiente_post_merge"
+  },
+  "deuda_aceptada": [
+    "QA 50 swaps tablet fisica",
+    "JPEG margen blanco excesivo ops Storage",
+    "Deploy Vercel produccion"
+  ],
+  "docs_holding": {
+    "cierre": ".claude/4_etapas/ETAPA_TABLET_ASPECTO_VISUAL_CERRADA.md",
+    "chusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_ASPECTO_VISUAL_HERO.md",
+    "etapa_madre": ".claude/4_etapas/ETAPA_TABLET_DISENO.md"
+  }
+}

@@ -7,6 +7,7 @@ import {
   sqlChipsGenero,
   sqlChipsMarcas,
   sqlChipsTipo,
+  sqlChipsTipo1,
   sqlMarcasAgregado,
   sqlReferenciasAgregado,
   sqlResumenDeposito,
@@ -18,7 +19,11 @@ import {
 type RouteCtx = { params: Promise<{ cliente_id: string }> };
 
 function toChips(rows: { id: string; cnt: number }[]): ChipSql[] {
-  return rows.map((r) => ({ id: r.id, label: r.id, count: r.cnt }));
+  return rows.map((r) => ({
+    id: r.id,
+    label: r.cnt > 0 ? `${r.id} (${r.cnt})` : r.id,
+    count: r.cnt,
+  }));
 }
 
 /** Filtros cascada cadena POS — labels texto (Ventas `/cadena`). */
@@ -43,15 +48,17 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     const qMar = sqlChipsMarcas(tabla, filtros);
     const qEst = sqlChipsEstilo(tabla, filtros);
     const qTip = sqlChipsTipo(tabla, filtros);
+    const qTipo1 = sqlChipsTipo1(tabla, filtros);
     const qMarcasAgg = sqlMarcasAgregado(tabla, filtros);
     const qRefs = sqlReferenciasAgregado(tabla, filtros);
     const qRes = sqlResumenDeposito(tabla);
 
-    const [generos, marcas, estilos, tipos, marcasAgg, refs, resumen] = await Promise.all([
+    const [generos, marcas, estilos, tipos, tipo1s, marcasAgg, refs, resumen] = await Promise.all([
       pool.query<{ id: string; cnt: number }>(qGen.text, qGen.params),
       pool.query<{ id: string; cnt: number }>(qMar.text, qMar.params),
       pool.query<{ id: string; cnt: number }>(qEst.text, qEst.params),
       pool.query<{ id: string; cnt: number }>(qTip.text, qTip.params),
+      pool.query<{ id: string; cnt: number }>(qTipo1.text, qTipo1.params),
       pool.query<MarcaSql>(qMarcasAgg.text, qMarcasAgg.params),
       pool.query<ReferenciaSql>(qRefs.text, qRefs.params),
       pool.query<{ skus: number; pares: number; ultima_carga: string }>(qRes.text, qRes.params),
@@ -66,6 +73,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
       marcas: toChips(marcas.rows),
       estilos: toChips(estilos.rows),
       tipos: toChips(tipos.rows),
+      tipo1s: toChips(tipo1s.rows),
       marcasEntrada: marcasAgg.rows,
       referencias: refs.rows,
       resumen: resumen.rows[0] ?? { skus: 0, pares: 0, ultima_carga: null },

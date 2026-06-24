@@ -13,6 +13,7 @@ export type DepositoFila = {
   genero: string;
   estilo: string;
   tipo_v2: string;
+  tipo_1: string;
   descp_material: string | null;
   descp_color: string | null;
   grada: string;

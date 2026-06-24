@@ -1,138 +1,112 @@
-"use client"
+"use client";
 
-import { useState, FormEvent } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const router = useRouter()
-  const [usuario, setUsuario] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const router = useRouter();
+  const [usuario, setUsuario] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(e: FormEvent) {
-    e.preventDefault()
-    setError('')
-    setLoading(true)
-
-    console.log('[LOGIN] Iniciando login para usuario:', usuario)
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ usuario, password }),
-        credentials: 'same-origin', // CRÍTICO: asegurar que cookies se envíen
-      })
+        credentials: "same-origin",
+      });
 
-      console.log('[LOGIN] Response status:', res.status)
-      const data = await res.json()
-      console.log('[LOGIN] Response data:', data)
+      const data = await res.json();
 
       if (!res.ok) {
-        console.error('[LOGIN] Login falló:', data.error)
-        setError(data.error || 'Error al iniciar sesión')
-        setLoading(false)
-        return
+        setError(data.error || "Error al iniciar sesión");
+        setLoading(false);
+        return;
       }
 
-      console.log('[LOGIN] Login exitoso, redirigiendo a /')
-      // Redirigir al panel de control
-      router.push('/')
-      router.refresh()
+      router.push("/");
+      router.refresh();
     } catch (err) {
-      console.error('[LOGIN] Excepción:', err)
-      setError('Error de conexión: ' + (err instanceof Error ? err.message : String(err)))
-      setLoading(false)
+      setError("Error de conexión: " + (err instanceof Error ? err.message : String(err)));
+      setLoading(false);
     }
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-4">
+    <div className="flex min-h-screen items-center justify-center bg-app-bg p-4">
       <div className="w-full max-w-md">
-        {/* Logo/Header */}
-        <div className="text-center mb-8">
-          <div className="text-6xl mb-4">📱</div>
-          <h1 className="text-4xl font-bold text-white mb-2">
-            Tablet Bazzar
-          </h1>
-          <p className="text-blue-200">
-            Sistema POS para Vendedores
-          </p>
+        <div className="mb-8 text-center">
+          <div className="mb-4 text-6xl">📱</div>
+          <p className="text-xs font-bold uppercase tracking-wider text-bazzar-naranja">Tablet Bazzar</p>
+          <h1 className="text-3xl font-bold text-rimec-azul">Iniciar sesión</h1>
+          <p className="mt-2 text-sm text-slate-600">Sistema POS para vendedores</p>
         </div>
 
-        {/* Login Form */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl shadow-2xl border border-white/20 p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Usuario */}
+        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-blue-200 mb-2">
-                Usuario
-              </label>
+              <label className="mb-2 block text-sm font-semibold text-slate-700">Usuario</label>
               <input
                 type="text"
                 value={usuario}
                 onChange={(e) => setUsuario(e.target.value)}
                 required
                 disabled={loading}
-                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent disabled:opacity-50 uppercase"
+                className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 uppercase text-slate-900 placeholder:text-slate-400 focus:border-rimec-azul focus:outline-none focus:ring-2 focus:ring-rimec-azul/20 disabled:opacity-50"
                 placeholder="HECTOR"
                 autoComplete="username"
               />
             </div>
 
-            {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-blue-200 mb-2">
-                Contraseña
-              </label>
+              <label className="mb-2 block text-sm font-semibold text-slate-700">Contraseña</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 disabled={loading}
-                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent disabled:opacity-50"
+                className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-rimec-azul focus:outline-none focus:ring-2 focus:ring-rimec-azul/20 disabled:opacity-50"
                 placeholder="••••••••"
                 autoComplete="current-password"
               />
             </div>
 
-            {/* Error Message */}
             {error && (
-              <div className="bg-red-500/20 border border-red-400/30 rounded-xl p-4">
-                <p className="text-red-300 text-sm text-center">{error}</p>
+              <div className="rounded-xl border border-red-200 bg-red-50 p-4">
+                <p className="text-center text-sm text-red-700">{error}</p>
               </div>
             )}
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-blue-500/50 text-white font-semibold py-4 px-6 rounded-xl transition-colors disabled:cursor-not-allowed shadow-lg"
+              className="w-full rounded-xl bg-rimec-azul py-4 font-semibold text-white shadow-sm transition hover:bg-rimec-azul-dark disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+              {loading ? "Iniciando sesión…" : "Iniciar sesión"}
             </button>
           </form>
 
-          {/* Info */}
-          <div className="mt-6 pt-6 border-t border-white/10 text-center">
-            <p className="text-sm text-slate-400">
-              Acceso para <span className="text-yellow-300 font-semibold">ADMIN</span> y <span className="text-blue-300 font-semibold">SU</span>
+          <div className="mt-6 border-t border-slate-200 pt-6 text-center">
+            <p className="text-sm text-slate-600">
+              Acceso para <span className="font-semibold text-rimec-azul">ADMIN</span> y{" "}
+              <span className="font-semibold text-rimec-azul">SU</span>
             </p>
-            <p className="text-xs text-slate-500 mt-1">
-              Vendedores: usar Report
-            </p>
+            <p className="mt-1 text-xs text-slate-500">Vendedores: usar Report</p>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-6 text-center">
-          <p className="text-sm text-slate-400">
-            RIMEC Holding · {new Date().getFullYear()}
-          </p>
-        </div>
+        <p className="mt-6 text-center text-sm text-slate-500">
+          RIMEC Holding · {new Date().getFullYear()}
+        </p>
       </div>
     </div>
-  )
+  );
 }

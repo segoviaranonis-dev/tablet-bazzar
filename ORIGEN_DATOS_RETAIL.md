@@ -19,7 +19,7 @@ registro_st_vt_rc_reposicion (Tabla staging)
         ↓
 Report (Sincronización/Transformación)
         ↓
-deposito_tienda_* (6 tablas - una por tienda)
+deposito_{N}_{ubicacion}_{adultos|ninos}_tienda (6 tablas)
         ↓
 Tablet Bazzar (Consumo)
 ```
@@ -95,22 +95,22 @@ origen_holding: Fernando
 - Lee `registro_st_vt_rc_reposicion`
 - Agrupa por tienda (usando `origen_holding`)
 - Transforma a nivel molécula (SKU individual)
-- Escribe en tablas `deposito_tienda_*`
+- Escribe en tablas `deposito_*_*_*_tienda`
 
 ### **Tablas destino:** 6 tablas de depósito
 
 | Tienda | Tabla BD | Cliente ID |
 |--------|----------|------------|
-| Fernando Adultos | `deposito_tienda_fernando_adultos` | 2100 |
-| Fernando Niños | `deposito_tienda_fernando_ninos` | 2900 |
-| San Martín Adultos | `deposito_tienda_san_martin_adultos` | 2400 |
-| San Martín Niños | `deposito_tienda_san_martin_ninos` | 2700 |
-| Palma Adultos | `deposito_tienda_palma_adultos` | 3100 |
-| Palma Niños | `deposito_tienda_palma_ninos` | 3200 |
+| Fernando Adultos | `deposito_2_fernando_adultos_tienda` | 2100 |
+| Fernando Niños | `deposito_2_fernando_ninos_tienda` | 2900 |
+| San Martín Adultos | `deposito_3_sanmartin_adultos_tienda` | 2400 |
+| San Martín Niños | `deposito_3_sanmartin_ninos_tienda` | 2700 |
+| Palma Adultos | `deposito_1_palma_adultos_tienda` | 3100 |
+| Palma Niños | `deposito_1_palma_ninos_tienda` | 3200 |
 
 **Estructura de cada tabla:**
 ```sql
-CREATE TABLE deposito_tienda_fernando_adultos (
+CREATE TABLE deposito_2_fernando_adultos_tienda (
   -- IDs (FKs a pilares)
   linea_id bigint,
   referencia_id bigint,
@@ -169,7 +169,7 @@ CREATE TABLE deposito_tienda_fernando_adultos (
 1. **Endpoint `/api/deposito/[cliente_id]/filtros`**
    ```sql
    SELECT marca, COUNT(*) 
-   FROM deposito_tienda_fernando_adultos
+   FROM deposito_2_fernando_adultos_tienda
    WHERE cantidad > 0
    GROUP BY marca;
    ```
@@ -177,7 +177,7 @@ CREATE TABLE deposito_tienda_fernando_adultos (
 2. **Endpoint `/api/deposito/[cliente_id]/cadena`**
    ```sql
    SELECT *
-   FROM deposito_tienda_fernando_adultos
+   FROM deposito_2_fernando_adultos_tienda
    WHERE cantidad > 0
      AND marca = 'VIZZANO'
      AND linea_codigo_proveedor ILIKE '%1184%'
@@ -200,7 +200,7 @@ export const DEPOSITOS = [
     cliente_id: 2100,
     ente: "Fernando",
     tipo: "ADULTOS",
-    tabla: "deposito_tienda_fernando_adultos",
+    tabla: "deposito_2_fernando_adultos_tienda",
   },
   // ... 5 más
 ];
@@ -258,7 +258,7 @@ WHERE trim(linea_codigo_proveedor) = '1184'
 -- Ver estructura de tabla
 SELECT column_name, data_type
 FROM information_schema.columns
-WHERE table_name = 'deposito_tienda_fernando_adultos'
+WHERE table_name = 'deposito_2_fernando_adultos_tienda'
 ORDER BY ordinal_position;
 
 -- Conteo de SKUs por tienda
@@ -266,14 +266,14 @@ SELECT
   'Fernando Adultos' AS tienda,
   COUNT(*) AS total_skus,
   COUNT(*) FILTER (WHERE cantidad > 0) AS con_stock
-FROM deposito_tienda_fernando_adultos;
+FROM deposito_2_fernando_adultos_tienda;
 
 -- Verificar espacios en códigos
 SELECT 
   linea_codigo_proveedor,
   length(linea_codigo_proveedor) AS len,
   trim(linea_codigo_proveedor) AS trimmed
-FROM deposito_tienda_fernando_adultos
+FROM deposito_2_fernando_adultos_tienda
 WHERE linea_codigo_proveedor != trim(linea_codigo_proveedor)
 LIMIT 10;
 
@@ -286,7 +286,7 @@ SELECT
   marca,
   cantidad,
   grada
-FROM deposito_tienda_fernando_adultos
+FROM deposito_2_fernando_adultos_tienda
 WHERE cantidad > 0
 LIMIT 10;
 ```
@@ -300,7 +300,7 @@ ERP/Sistema Externo
         ↓ (API automática)
 Supabase (trigger)
         ↓
-deposito_tienda_* (update incremental)
+deposito_*_*_*_tienda (update incremental)
         ↓
 Tablet Bazzar (subscripción realtime)
         ↓
@@ -342,7 +342,7 @@ PWA offline-first (cache local)
 
 **Flujo:**
 1. Control Central importa Excel → `registro_st_vt_rc_reposicion`
-2. Report sincroniza → 6 tablas `deposito_tienda_*`
+2. Report sincroniza → 6 tablas codificadas `deposito_{N}_{ubicacion}_{adultos|ninos}_tienda`
 3. Tablet Bazzar consulta → Server-side SQL
 4. Backend Titanio agrupa → UI cadena consecutiva
 

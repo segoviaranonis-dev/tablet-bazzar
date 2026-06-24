@@ -1,0 +1,45 @@
+{
+  "etapa_id": "ETAPA-PROTOCOLO-IMAGENES-100-20260616",
+  "fecha_cierre": "2026-06-16",
+  "director_aprobacion": "imagenes perfectas aprobado",
+  "proveedor": "654",
+  "catalogo": {
+    "total_deposito_tablet": 6686,
+    "storage_contain_ok": 6677,
+    "omitidas_sin_jpg": 9,
+    "omitidas_lista": [
+      "108-619--PI.jpg",
+      "1447-105-7286-101441.jpg",
+      "1447-105-7286-15745.jpg",
+      "3092-102-23572-15745.jpg",
+      "3093-101-25561-90283.jpg",
+      "6506-126-7286-35312.jpg",
+      "6850-107-25365-15745.jpg",
+      "8488-108-30720-100203.jpg",
+      "9074-103-23654-89673.jpg"
+    ]
+  },
+  "incidentes_resueltos": [
+    "4.90.03.002",
+    "4.03.02.001",
+    "4.90.03.008"
+  ],
+  "tablet_codigo": {
+    "hero_frame": "v15-lg-progressive",
+    "archivos": [
+      "lib/product-image.ts",
+      "lib/use-hero-progressive-src.ts",
+      "lib/prefetch-images.ts",
+      "components/cadena/HeroProductImage.tsx",
+      "components/cadena/ProductLightbox.tsx",
+      "components/ProductImage.tsx"
+    ]
+  },
+  "evidencia_ops": "ERRADICAR_RECORTE_TABLET_20260616_172850.json",
+  "chusar": {
+    "etapa_cerrada": ".claude/4_etapas/ETAPA_PROTOCOLO_IMAGENES_100_CERRADA.md",
+    "modulo": ".claude/2_modulos/2.4_tablet_bazzar/MODULO_IMAGENES_PRODUCTO.md",
+    "subsesion_cerrada": ".claude/4_etapas/SUBSESION_TABLET_CALIDAD_IMAGEN_20260616_CERRADA.md"
+  },
+  "git_deploy": "pendiente Claude Code — protocolo 1.1.10 pasos 3-5"
+}

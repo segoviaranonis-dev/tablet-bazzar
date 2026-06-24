@@ -25,7 +25,7 @@ const sp = new URLSearchParams(
 );
 const filtros = filtrosFromSearchParams(sp);
 filtros.marcaCadena = "VIZZANO";
-const tabla = "deposito_tienda_fernando_adultos";
+const tabla = "deposito_2_fernando_adultos_tienda";
 
 const q = sqlFilasStock(tabla, filtros);
 const { rows } = await pool.query(q.text, q.params);

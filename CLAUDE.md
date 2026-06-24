@@ -1,4 +1,4 @@
-﻿# Tablet Bazzar — Instrucciones para Agentes
+# Tablet Bazzar — Instrucciones para Agentes
 
 ---
 

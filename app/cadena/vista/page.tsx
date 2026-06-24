@@ -10,7 +10,7 @@ import { useStockOtrosLocales } from "@/components/cadena/StockOtrosLocales";
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { HeroProductImage } from "@/components/cadena/HeroProductImage";
 import { CadenaVistaHeader } from "@/components/cadena/CadenaVistaHeader";
-import { TrianguloResumenStrip } from "@/components/cadena/TrianguloResumenStrip";
+import { CadenaDockToggles } from "@/components/cadena/CadenaDockToggles";
 import { FrancoTiradorButton, type FrancoTiradorScope } from "@/components/cadena/FrancoTiradorButton";
 import type { DepositoFila, ParLineaRef } from "@/lib/cadena";
 import { buildCadenaFromFilas, resolverNavCohorte } from "@/lib/cadena";
@@ -41,7 +41,7 @@ import {
 } from "@/lib/codigo-busqueda";
 import { GradaVentaStrip } from "@/components/pos/GradaVentaStrip";
 import { PosCartSheet } from "@/components/pos/PosCartSheet";
-import { VendedorPinButton } from "@/components/pos/VendedorPinButton";
+import { PosCartIconButton } from "@/components/pos/PosCartIconButton";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { usePosCart } from "@/lib/cart/PosCartContext";
 import { consumeOpenCartFlag } from "@/lib/pos-reopen";
@@ -97,6 +97,9 @@ function CadenaVistaInner() {
   const [filtros, setFiltros] = useState<FiltrosCadena>(FILTROS_VACIOS);
   const [estiloPanelOpen, setEstiloPanelOpen] = useState(false);
   const [referenciaPanelOpen, setReferenciaPanelOpen] = useState(false);
+  /** Agrupaciones secundarias — ocultas por defecto (vista 100% producto). */
+  const [sidebarParOpen, setSidebarParOpen] = useState(false);
+  const [coloresDockOpen, setColoresDockOpen] = useState(false);
 
   const [cohorteEstilo, setCohorteEstilo] = useState("");
   const [parKeyActivo, setParKeyActivo] = useState<string | null>(null);
@@ -448,6 +451,8 @@ function CadenaVistaInner() {
     setFiltros(FILTROS_VACIOS);
     setEstiloPanelOpen(false);
     setReferenciaPanelOpen(false);
+    setSidebarParOpen(false);
+    setColoresDockOpen(false);
     setParesAll(pares);
     setFrancoNav(true);
     const nav = pickNavFranco(pares, meta.grada);
@@ -460,24 +465,33 @@ function CadenaVistaInner() {
     bootFiltrosKeyRef.current = "||";
   }, []);
 
-  const header = (
+  const headerToolbar = (
     <>
-      <CadenaVistaHeader marca={marca} onSearch={() => setSearchOpen(true)} />
-      <div className="bazzar-band-subtle flex items-center justify-end gap-2 px-3 py-2">
-        <VendedorPinButton clienteId={clienteId} />
-        <FrancoTiradorButton
-          clienteId={clienteId}
-          scope={francoScope}
-          disabled={!activa}
-          onAplicar={onFrancoAplicar}
-        />
-      </div>
+      <CadenaDockToggles
+        sidebarParOpen={sidebarParOpen}
+        coloresDockOpen={coloresDockOpen}
+        showSidebar={!!parNav && paresNav.length > 1}
+        showColores={!!parNav && parNav.coloresLR.length > 0}
+        onToggleSidebar={() => setSidebarParOpen((v) => !v)}
+        onToggleColores={() => setColoresDockOpen((v) => !v)}
+      />
+      <FrancoTiradorButton
+        clienteId={clienteId}
+        scope={francoScope}
+        disabled={!activa}
+        onAplicar={onFrancoAplicar}
+      />
+      <PosCartIconButton />
     </>
   );
 
-  const asideFotos = parNav ? (
-    <aside className="flex w-[100px] shrink-0 flex-col border-l border-[#e2e8f0] bg-[#f1f5f9]/80">
-      {paresNav.length > 1 ? (
+  const header = (
+    <CadenaVistaHeader marca={marca} onSearch={() => setSearchOpen(true)} toolbar={headerToolbar} />
+  );
+
+  const asideFotos = parNav && paresNav.length > 1 ? (
+    <PanelColapsable open={sidebarParOpen} widthClass="w-[100px]">
+      <aside className="flex h-full w-[100px] flex-col border-l border-[#e2e8f0] bg-[#f1f5f9]/80">
         <div className="min-h-0 flex-1" {...parCarouselTouch}>
           <CarruselNaipesLR
             pares={paresNav}
@@ -490,8 +504,8 @@ function CadenaVistaInner() {
             previewFila={activa}
           />
         </div>
-      ) : null}
-    </aside>
+      </aside>
+    </PanelColapsable>
   ) : null;
 
   if (loading) {
@@ -530,7 +544,6 @@ function CadenaVistaInner() {
   return (
     <div className="flex h-[100dvh] flex-col overflow-hidden touch-manipulation" style={bgStyle}>
       {header}
-      <TrianguloResumenStrip searchParams={sp} clienteId={clienteId} marca={marca} />
 
       <div className="flex min-h-0 flex-1">
         <PanelColapsable open={estiloPanelOpen} widthClass="w-[108px]">
@@ -547,10 +560,7 @@ function CadenaVistaInner() {
         </PanelColapsable>
 
         <main className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-          <div
-            className="relative flex min-h-0 flex-1 items-stretch justify-center overflow-hidden p-1"
-            {...heroTouch}
-          >
+          <div className="relative flex min-h-0 flex-1 items-stretch justify-center overflow-hidden" {...heroTouch}>
             <div className="relative h-full w-full">
               {sinResultados ? (
                 <div className="flex h-full flex-col items-center justify-center gap-4 border border-[#e2e8f0] bg-white/90 p-6">
@@ -583,7 +593,7 @@ function CadenaVistaInner() {
                   </TouchPad>
                 </div>
               ) : (
-                <div className="bazzar-card relative h-full min-h-0 w-full overflow-hidden shadow-lg">
+                <div className="bazzar-card relative h-full min-h-0 w-full overflow-hidden shadow-lg ring-1 ring-[#e2e8f0]/60">
                   {activa && par && (
                     <>
                       <div className="cadena-hero-host absolute inset-0 z-0">
@@ -665,12 +675,19 @@ function CadenaVistaInner() {
 
       {!sinResultados && activa && parNav && (
         <footer className="shrink-0 border-t-2 border-orange-200 bg-gradient-to-b from-white to-orange-50/50 shadow-[0_-8px_24px_rgba(234,88,12,0.08)]">
-          {parNav.coloresLR.length > 0 ? (
+          {coloresDockOpen && parNav.coloresLR.length > 0 ? (
             <>
               <div className="flex items-center justify-between gap-2 px-2 pt-1">
                 <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[#64748b]">
                   Colores · {parNav.coloresLR.length}
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setColoresDockOpen(false)}
+                  className="min-h-[32px] px-2 text-[10px] font-bold text-slate-400"
+                >
+                  Ocultar
+                </button>
               </div>
               <CarruselColores
                 colores={parNav.coloresLR}
@@ -680,16 +697,6 @@ function CadenaVistaInner() {
                 compact
               />
             </>
-          ) : paresNav.length > 1 ? (
-            <CarruselNaipesLR
-              pares={paresNav}
-              parIndex={parIndex}
-              onSelect={irPar}
-              orientation="horizontal"
-              before={1}
-              after={3}
-              className="min-h-[100px]"
-            />
           ) : null}
           <GradaVentaStrip
             activa={activa}

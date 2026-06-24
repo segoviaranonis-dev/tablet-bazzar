@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useTransition, useEffect } from "react";
+import { useState, useTransition, useEffect, useRef, useCallback } from "react";
 import { gradaLabelCorta } from "@/lib/cart/pos-cart";
 import { dispatchPosCobrarOk } from "@/lib/pos-events";
 import { usePosCart } from "@/lib/cart/PosCartContext";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { useVendedorTienda } from "@/lib/vendedor/VendedorContext";
+import { formatFacturaInternaPos } from "@/lib/fi-fa-display";
 import {
   clearReopenSession,
   getReopenStagingId,
   readReopenCliente,
+  readReopenFiFa,
   readReopenVendedor,
 } from "@/lib/pos-reopen";
 import { TouchPad } from "@/components/cadena/TouchPad";
@@ -55,9 +57,12 @@ export function PosCartSheet() {
   const [error, setError] = useState<string | null>(null);
   const [okMsg, setOkMsg] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  const [numeroFiFa, setNumeroFiFa] = useState<number | null>(null);
+  const syncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (!open) return;
+    setNumeroFiFa(readReopenFiFa());
     const reopenCliente = readReopenCliente();
     const reopenVendedor = readReopenVendedor();
     if (reopenCliente) {
@@ -76,6 +81,97 @@ export function PosCartSheet() {
       setVendedor(reopenVendedor);
     }
   }, [open, setVendedor]);
+
+  const buildSyncPayload = useCallback(() => {
+    if (!session || !vendedor) return null;
+    const cedula = cliente.cedula.trim() || null;
+    const payloadCliente =
+      cedula && modo === "encontrado"
+        ? {
+            nombre: cliente.nombre.trim() || null,
+            apellido: cliente.apellido.trim() || null,
+            telefono: cliente.telefono.trim() || null,
+          }
+        : null;
+    return {
+      cliente_id: session.cliente_id,
+      marca: session.marca,
+      vendedor_bazzar_id: vendedor.id_vendedor,
+      cedula,
+      cliente: payloadCliente,
+      items: items.map((i) => ({
+        linea_id: i.linea_id,
+        referencia_id: i.referencia_id,
+        material_id: i.material_id,
+        color_id: i.color_id,
+        linea_codigo: i.linea_codigo,
+        referencia_codigo: i.referencia_codigo,
+        material_code: i.material_code,
+        color_code: i.color_code,
+        descp_material: i.descp_material,
+        descp_color: i.descp_color,
+        estilo: i.estilo,
+        marca_label: i.marca_label,
+        grada: i.grada,
+        imagen_url: i.imagen_url,
+        cantidad: i.cantidad,
+      })),
+    };
+  }, [session, vendedor, cliente, modo, items]);
+
+  const persistReopenCart = useCallback(async (): Promise<boolean> => {
+    const stagingId = getReopenStagingId();
+    const payload = buildSyncPayload();
+    if (!stagingId || !payload) return true;
+
+    try {
+      const r = await fetch(`/api/tickets/staging/${stagingId}/sync-cart`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await r.json();
+      if (!r.ok || !data.ok) {
+        setError(data.error ?? "No se pudo guardar cambios en el pedido");
+        return false;
+      }
+      if (data.cancelled) {
+        clearReopenSession();
+        clear();
+        resetClienteUi();
+        clearVendedor();
+        setNumeroFiFa(null);
+        dispatchPosCobrarOk();
+        setOpen(false);
+        return false;
+      }
+      if (data.staging?.numero_fi_fa != null) {
+        setNumeroFiFa(Number(data.staging.numero_fi_fa));
+      }
+      return true;
+    } catch {
+      setError("Error de red — intentá de nuevo");
+      return false;
+    }
+  }, [buildSyncPayload, clear, clearVendedor, setOpen]);
+
+  const schedulePersistCart = useCallback(() => {
+    if (!getReopenStagingId()) return;
+    if (syncTimerRef.current) clearTimeout(syncTimerRef.current);
+    syncTimerRef.current = setTimeout(() => {
+      void persistReopenCart();
+    }, 450);
+  }, [persistReopenCart]);
+
+  function handleRemoveItem(key: string) {
+    removeItem(key);
+    schedulePersistCart();
+  }
+
+  function handleUpdateQty(key: string, delta: number) {
+    updateQty(key, delta);
+    schedulePersistCart();
+  }
 
   if (!open) return null;
 
@@ -134,6 +230,22 @@ export function PosCartSheet() {
 
   function cerrar() {
     if (pending) return;
+    const stagingId = getReopenStagingId();
+    if (stagingId && session && vendedor && clienteIdentificado) {
+      startTransition(async () => {
+        if (syncTimerRef.current) {
+          clearTimeout(syncTimerRef.current);
+          syncTimerRef.current = null;
+        }
+        const ok = await persistReopenCart();
+        if (!ok && getReopenStagingId()) return;
+        setOpen(false);
+        setError(null);
+        setOkMsg(null);
+        resetClienteUi();
+      });
+      return;
+    }
     setOpen(false);
     setError(null);
     setOkMsg(null);
@@ -282,7 +394,9 @@ export function PosCartSheet() {
   }
 
   function cobrar() {
-    if (!session || count === 0) return;
+    if (!session) return;
+    const reopenStagingId = getReopenStagingId();
+    if (count === 0 && !reopenStagingId) return;
     if (!clienteIdentificado) {
       setError("Identificá al cliente (cédula + Buscar) antes de cerrar");
       return;
@@ -346,6 +460,22 @@ export function PosCartSheet() {
           return;
         }
 
+        if (data.cancelled) {
+          clearReopenSession();
+          clear();
+          resetClienteUi();
+          clearVendedor();
+          setCodigoVendedorOpen(false);
+          setNumeroFiFa(null);
+          dispatchPosCobrarOk();
+          setOkMsg(data.mensaje ?? "Pedido cancelado · stock restaurado");
+          window.setTimeout(() => {
+            setOkMsg(null);
+            setOpen(false);
+          }, 1800);
+          return;
+        }
+
         clearReopenSession();
         clear();
         resetClienteUi();
@@ -388,7 +518,17 @@ export function PosCartSheet() {
   const tituloCliente = tituloDesdeCliente(cliente);
   const enRegistro = pantallaCliente === "registro";
   const clienteIdentificado = !enRegistro && modo === "encontrado" && Boolean(cliente.cedula);
-  const puedeCerrar = Boolean(vendedor && clienteIdentificado && count > 0 && !pending);
+  const reopenActivo = Boolean(getReopenStagingId());
+  const puedeCerrar =
+    Boolean(vendedor && clienteIdentificado && (count > 0 || reopenActivo) && !pending);
+  const etiquetaFacturaInterna =
+    numeroFiFa != null
+      ? formatFacturaInternaPos({
+          nombre_cliente: tituloCliente,
+          cedula_cliente: cliente.cedula,
+          numero_fi_fa: numeroFiFa,
+        })
+      : null;
 
   return (
     <>
@@ -417,14 +557,31 @@ export function PosCartSheet() {
             <div className="min-w-0 flex-1">
               {clienteIdentificado ? (
                 <>
-                  <div className="flex items-baseline justify-between gap-3">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-200">
-                      Cliente
-                    </p>
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-orange-200">
+                        Cliente
+                      </p>
+                      <h2 className="truncate text-2xl font-bold leading-tight tracking-wide text-white drop-shadow-sm">
+                        {tituloCliente}
+                      </h2>
+                    </div>
+                    {numeroFiFa != null ? (
+                      <div className="shrink-0 rounded-lg border-2 border-yellow-300/90 bg-yellow-400/25 px-3 py-1.5 text-right shadow-sm">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.14em] text-yellow-100">
+                          Factura interna
+                        </p>
+                        <p className="text-xl font-black tabular-nums leading-none text-yellow-50">
+                          FI_FA: {numeroFiFa}
+                        </p>
+                      </div>
+                    ) : null}
                   </div>
-                  <h2 className="truncate text-2xl font-bold leading-tight tracking-wide text-white drop-shadow-sm">
-                    {tituloCliente}
-                  </h2>
+                  {etiquetaFacturaInterna ? (
+                    <p className="mt-1 truncate text-xs font-semibold tracking-wide text-yellow-100/95">
+                      {etiquetaFacturaInterna}
+                    </p>
+                  ) : null}
                   <p className="mt-0.5 text-[10px] uppercase tracking-[0.16em] text-white/75">
                     CI {cliente.cedula} · {count} par{count === 1 ? "" : "es"} · {session?.marca ?? "—"}
                     {tiendaActiva ? ` · ${tiendaActiva.codigo}` : ""}
@@ -633,7 +790,7 @@ export function PosCartSheet() {
                     </div>
                     <div className="flex shrink-0 flex-col items-end justify-between">
                       <TouchPad
-                        onClick={() => removeItem(item.key)}
+                        onClick={() => handleRemoveItem(item.key)}
                         ariaLabel="Quitar"
                         className="min-h-[36px] min-w-[36px] text-lg text-[#94a3b8] active:text-red-800"
                       >
@@ -641,7 +798,7 @@ export function PosCartSheet() {
                       </TouchPad>
                       <div className="flex items-center gap-1 border border-[#e2e8f0] bg-[#f1f5f9]">
                         <TouchPad
-                          onClick={() => updateQty(item.key, -1)}
+                          onClick={() => handleUpdateQty(item.key, -1)}
                           ariaLabel="Menos"
                           className="min-h-[44px] min-w-[44px] text-xl font-bold active:bg-[#f1f5f9]"
                         >
@@ -649,7 +806,7 @@ export function PosCartSheet() {
                         </TouchPad>
                         <span className="min-w-[28px] text-center font-bold tabular-nums">{item.cantidad}</span>
                         <TouchPad
-                          onClick={() => updateQty(item.key, 1)}
+                          onClick={() => handleUpdateQty(item.key, 1)}
                           ariaLabel="Más"
                           disabled={item.cantidad >= item.stock_disponible}
                           className="min-h-[44px] min-w-[44px] text-xl font-bold active:bg-[#f1f5f9] disabled:opacity-30"

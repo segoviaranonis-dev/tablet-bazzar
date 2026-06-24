@@ -21,17 +21,29 @@ Base: `NEXT_PUBLIC_SUPABASE_URL` + `/storage/v1/object/public/productos/`
 
 **Ley crítica:** tiers deben generarse con **fit contain**. Si Storage tiene crop, hero y thumbs fallan igual.
 
-## Hero cadena (v15 — lg progresivo + lightbox)
+## Hero cadena (v16 — fill-host · contain + zoom leve)
 
 | Elemento | Valor |
 |----------|-------|
 | Componente | `components/cadena/HeroProductImage.tsx` |
-| Marco | `data-hero-frame="v15-lg-progressive"` |
+| Marco | `data-hero-frame="v16-fill-host"` |
 | Hook | `lib/use-hero-progressive-src.ts` — preview sm/ → upgrade lg/ |
 | Lightbox | `components/cadena/ProductLightbox.tsx` — tap hero |
-| CSS | `<img>` directo `object-contain` en marco cuadrado |
+| Layout | `.cadena-hero-host` **absolute inset-0** en card; labels overlay |
+| CSS img | `object-fit: contain` · `transform: scale(1.12)` · **sin** `cover` |
 | Fuente hero | `imagen_url_hero` (**lg/**) vía `pickHeroProgressive` |
 | Prefetch | `lib/prefetch-images.ts` — lg antes que sm |
+
+**Cierre aspecto visual:** [ETAPA_ASPECTO_VISUAL_CIERRE.md](./ETAPA_ASPECTO_VISUAL_CIERRE.md) · evidencia `docs/evidencia/ETAPA_ASPECTO_VISUAL_CIERRE_20260616.json`  
+**Chusar agentes:** `.claude/2_modulos/2.4_tablet_bazzar/CHUSAR_ASPECTO_VISUAL_HERO.md`
+
+**Prohibido en hero v16:**
+
+- `object-fit: cover` (recorta punta/tacón)
+- `aspect-square` / `58vmin` / marco cuadrado fijo
+- Gradiente `from-white via-white/95` en overlay
+- `width`/`height` HTML en `<img>`
+- `filter: drop-shadow` en img hero
 
 **Doc Chusar:** `.claude/2_modulos/2.4_tablet_bazzar/MODULO_IMAGENES_PRODUCTO.md`  
 **Cierre etapa:** `docs/evidencia/CIERRE_IMAGENES_654_20260616.json`
@@ -64,7 +76,7 @@ Origen fotos: `C:\Users\hecto\Documents\Prg_locales\proyectos\imagenes\`
 
 | Componente | Uso |
 |------------|-----|
-| `HeroProductImage` | Hero central — lg/ + contain |
+| `HeroProductImage` | Hero central — **v16-fill-host** · lg/ + contain + scale 1.12 |
 | `ProductImage` variant thumb | Carruseles, mazo, naipes |
 | `lib/prefetch-images.ts` | Prefetch thumb + hero |
 
@@ -72,6 +84,8 @@ Origen fotos: `C:\Users\hecto\Documents\Prg_locales\proyectos\imagenes\`
 
 | Doc | Contenido |
 |-----|-----------|
+| **[ETAPA_ASPECTO_VISUAL_CIERRE.md](./ETAPA_ASPECTO_VISUAL_CIERRE.md)** | **✅ Cierre hero v16-fill-host (2026-06-16)** |
+| `docs/evidencia/ETAPA_ASPECTO_VISUAL_CIERRE_20260616.json` | Evidencia máquina aspecto visual |
 | [HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md](./HOTFIX_HERO_RECORTE_MOLEKINHA_2083_1133.md) | **Error crítico hero + solución (2026-06-15)** |
 | `docs/evidencia/HERO_REGEN_2083_1133.json` | Evidencia Storage antes/después 1133 |
 | `docs/evidencia/HERO_CASO_4215_1034.json` | Mapa error + fix Storage 4215 |
@@ -85,4 +99,4 @@ Reinicio sin `EADDRINUSE`: `REINICIAR_DEV.bat` (puerto 3002).
 
 ---
 
-**Última actualización:** 2026-06-14 — solución crítica recorte documentada
+**Última actualización:** 2026-06-16 — **v16-fill-host** cierre aspecto visual hero

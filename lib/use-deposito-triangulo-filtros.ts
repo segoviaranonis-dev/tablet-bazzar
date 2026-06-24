@@ -14,6 +14,7 @@ export type FiltrosTrianguloApi = {
   marcas: OpcionChip[];
   estilos: OpcionChip[];
   tipos: OpcionChip[];
+  tipo1s: OpcionChip[];
   marcasEntrada: { marca: string; skus: number; pares: number }[];
   referencias: ReferenciaEntrada[];
   resumen: { skus: number; pares: number; ultima_carga: string | null };
@@ -26,6 +27,7 @@ function filtrosEntradaToSql(f: FiltrosEntrada): URLSearchParams {
     marcas: f.marcas,
     estilos: f.estilos,
     tipos: f.tipos,
+    tipo1s: f.tipo1s,
     referenciaKeys: f.referenciaKeys,
     buscar: f.buscar,
   });
@@ -69,6 +71,7 @@ export function useDepositoTrianguloFiltros(clienteId: number) {
         marcas: data.marcas ?? [],
         estilos: data.estilos ?? [],
         tipos: data.tipos ?? [],
+        tipo1s: data.tipo1s ?? [],
         marcasEntrada: data.marcasEntrada ?? [],
         referencias: data.referencias ?? [],
         resumen: data.resumen ?? { skus: 0, pares: 0, ultima_carga: null },

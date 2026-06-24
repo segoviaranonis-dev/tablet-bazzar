@@ -4,13 +4,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { DepositoFila } from "@/lib/cadena";
 import type { FrancoAplicarMeta } from "@/lib/franco-tirador";
 import {
-  coloresQueCoinciden,
   francoFiltersToSearchParams,
   labelsRemovidos,
   uniqLabels,
+  uniqTerminosColor,
   type FrancoFilterItem,
   type FrancoTiradorFilterState,
 } from "@/lib/franco-tirador-filters";
+import type { TonoEstandarRow } from "@/lib/color-canon-franco";
 import { TouchPad } from "@/components/cadena/TouchPad";
 
 export type FrancoTiradorScope = {
@@ -25,7 +26,7 @@ export type FrancoTiradorScope = {
 type FrancoOpciones = {
   marcas: FrancoFilterItem[];
   estilos: FrancoFilterItem[];
-  colores: string[];
+  tonosEstandar: TonoEstandarRow[];
 };
 
 type Props = {
@@ -46,8 +47,203 @@ function TargetIcon({ className = "" }: { className?: string }) {
   );
 }
 
-function uniqStr(vals: string[]): string[] {
-  return uniqLabels(vals);
+/** Vía A — tono canónico en burbuja táctil (tablet/celular). */
+function ColorTonoPicker({
+  tonos,
+  selected,
+  onSelect,
+}: {
+  tonos: TonoEstandarRow[];
+  selected?: string;
+  onSelect: (etiqueta: string | undefined) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const selectedRow = tonos.find((t) => t.etiqueta === selected);
+
+  useEffect(() => {
+    function h(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
+  }, []);
+
+  if (!tonos.length) return null;
+
+  function pick(etiqueta: string | undefined) {
+    onSelect(etiqueta);
+    setOpen(false);
+  }
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen(!open)}
+        className={`flex min-h-[48px] w-full items-center justify-between gap-3 rounded-xl border-2 px-4 py-2 text-sm font-semibold transition ${
+          selected
+            ? "border-orange-500 bg-orange-50 text-orange-800"
+            : "border-slate-200 bg-white text-slate-600"
+        }`}
+      >
+        <span className="flex min-w-0 items-center gap-3 truncate text-left">
+          {selectedRow ? (
+            <>
+              <span
+                className="h-8 w-8 shrink-0 rounded-full border-2 border-white shadow-sm ring-1 ring-slate-200"
+                style={{ backgroundColor: selectedRow.hex }}
+                aria-hidden
+              />
+              <span className="truncate">{selectedRow.etiqueta}</span>
+            </>
+          ) : (
+            <span className="truncate">Todos los tonos</span>
+          )}
+        </span>
+        <span className="shrink-0 text-slate-400">{open ? "▴" : "▾"}</span>
+      </button>
+
+      {open ? (
+        <div className="absolute left-0 top-full z-[100] mt-2 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+          <div className="border-b border-slate-100 px-4 py-3">
+            <p className="text-[10px] font-bold uppercase tracking-wide text-slate-500">Elegí un tono</p>
+          </div>
+          <div className="grid max-h-[min(52dvh,320px)] grid-cols-4 gap-3 overflow-y-auto p-4 sm:grid-cols-5">
+            <button
+              type="button"
+              aria-label="Todos los tonos"
+              onClick={() => pick(undefined)}
+              className={`flex flex-col items-center gap-1.5 rounded-xl p-2 transition active:scale-95 ${
+                !selected ? "bg-orange-50 ring-2 ring-orange-400" : "hover:bg-slate-50"
+              }`}
+            >
+              <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-dashed border-slate-300 bg-slate-50 text-lg text-slate-400">
+                ∅
+              </span>
+              <span className="max-w-full truncate text-[10px] font-semibold text-slate-500">Todos</span>
+            </button>
+            {tonos.map((t) => {
+              const active = selected === t.etiqueta;
+              return (
+                <button
+                  key={t.etiqueta}
+                  type="button"
+                  aria-label={t.etiqueta}
+                  aria-pressed={active}
+                  onClick={() => pick(active ? undefined : t.etiqueta)}
+                  className={`flex flex-col items-center gap-1.5 rounded-xl p-2 transition active:scale-95 ${
+                    active ? "bg-orange-50 ring-2 ring-orange-400" : "hover:bg-slate-50"
+                  }`}
+                >
+                  <span
+                    className={`h-14 w-14 rounded-full border-2 shadow-sm ${
+                      active ? "border-orange-500 ring-2 ring-orange-300 ring-offset-2" : "border-white"
+                    }`}
+                    style={{ backgroundColor: t.hex }}
+                  />
+                  <span
+                    className={`max-w-full truncate text-[10px] font-semibold ${
+                      active ? "text-orange-700" : "text-slate-600"
+                    }`}
+                  >
+                    {t.etiqueta}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="flex items-center justify-between border-t border-slate-100 p-3">
+            <button
+              type="button"
+              onClick={() => pick(undefined)}
+              className="min-h-[44px] px-2 text-xs font-bold text-slate-400"
+            >
+              Limpiar
+            </button>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="min-h-[44px] rounded-xl bg-orange-600 px-6 text-sm font-bold text-white"
+            >
+              Listo
+            </button>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+/** Vía B — texto + Enter (sin lista de checkboxes). */
+function ColorTextoFranco({
+  terminos,
+  onChange,
+}: {
+  terminos: string[];
+  onChange: (next: string[]) => void;
+}) {
+  const [query, setQuery] = useState("");
+
+  function confirmTerm() {
+    const t = query.trim();
+    if (t.length < 2) return;
+    onChange(uniqTerminosColor([...terminos, t]));
+    setQuery("");
+  }
+
+  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    confirmTerm();
+  }
+
+  function removeTerm(t: string) {
+    onChange(terminos.filter((x) => x.toLowerCase() !== t.toLowerCase()));
+  }
+
+  const activo = terminos.length > 0 || query.trim().length >= 2;
+
+  return (
+    <div
+      className={`flex min-h-[44px] flex-wrap items-center gap-1.5 rounded-xl border-2 px-2 py-1.5 transition ${
+        activo ? "border-orange-500 bg-orange-50" : "border-slate-200 bg-white"
+      }`}
+    >
+      {terminos.map((t) => (
+        <span
+          key={t.toLowerCase()}
+          className="inline-flex max-w-full items-center gap-1 rounded-lg bg-white px-2 py-1 text-xs font-bold text-orange-800 shadow-sm"
+        >
+          <span className="truncate">{t}</span>
+          <button
+            type="button"
+            aria-label={`Quitar ${t}`}
+            onClick={() => removeTerm(t)}
+            className="shrink-0 text-orange-400 hover:text-orange-700"
+          >
+            ×
+          </button>
+        </span>
+      ))}
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={onKeyDown}
+        placeholder={terminos.length ? "Otro término + Enter…" : "Ej. bronce, negro… + Enter"}
+        className="min-w-[8rem] flex-1 bg-transparent py-1.5 text-sm font-semibold text-[#002B4E] outline-none placeholder:font-normal placeholder:text-slate-400"
+      />
+      {terminos.length > 0 ? (
+        <button
+          type="button"
+          onClick={() => onChange([])}
+          className="shrink-0 text-[10px] font-bold text-slate-400"
+        >
+          Limpiar
+        </button>
+      ) : null}
+    </div>
+  );
 }
 
 /** Multi-select por etiqueta (descp_marca / descp_grupo_estilo) — paridad catalogo-sql. */
@@ -184,192 +380,18 @@ function DropdownMultiLabels({
   );
 }
 
-/** Color: escribir + Enter selecciona todos los que contienen el texto. */
-function ColorFrancoInput({
-  options,
-  selected,
-  colorBuscar,
-  onChange,
-  onBuscarChange,
-}: {
-  options: string[];
-  selected: string[];
-  colorBuscar: string;
-  onChange: (vals: string[]) => void;
-  onBuscarChange: (q: string) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState(colorBuscar);
-  /** Términos confirmados con Enter (ej. azul, negro) — visibles aunque ya no estén en el input. */
-  const [terminos, setTerminos] = useState<string[]>([]);
-  const ref = useRef<HTMLDivElement>(null);
+function allMarcaLabels(marcas: FrancoFilterItem[]): string[] {
+  return uniqLabels(marcas.map((m) => m.label));
+}
 
-  useEffect(() => {
-    setQuery(colorBuscar);
-  }, [colorBuscar]);
-
-  useEffect(() => {
-    function h(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    }
-    document.addEventListener("mousedown", h);
-    return () => document.removeEventListener("mousedown", h);
-  }, []);
-
-  const filtered =
-    query.length >= 2 ? options.filter((o) => o.toLowerCase().includes(query.toLowerCase())) : options;
-
-  function addTermino(needle: string) {
-    const t = needle.trim();
-    if (t.length < 2) return;
-    setTerminos((prev) => {
-      if (prev.some((x) => x.toLowerCase() === t.toLowerCase())) return prev;
-      return [...prev, t];
-    });
+function defaultEstiloLabels(estilos: FrancoFilterItem[], estiloDefault?: string): string[] {
+  if (!estilos.length) return [];
+  const pref = estiloDefault?.trim();
+  if (pref) {
+    const match = estilos.find((e) => e.label.trim().toUpperCase() === pref.toUpperCase());
+    if (match) return [match.label];
   }
-
-  function applyQuery(q: string) {
-    const needle = q.trim();
-    if (needle.length < 2) return;
-    const matches = coloresQueCoinciden(options, needle);
-    if (matches.length) {
-      onChange(uniqStr([...selected, ...matches]));
-      addTermino(needle);
-      setQuery("");
-      onBuscarChange("");
-      setOpen(true);
-    } else {
-      onBuscarChange(needle);
-      onChange([]);
-    }
-  }
-
-  function removeTermino(termino: string) {
-    const tl = termino.toLowerCase();
-    setTerminos((prev) => {
-      const otros = prev.filter((t) => t.toLowerCase() !== tl);
-      const keep = new Set(otros.flatMap((t) => coloresQueCoinciden(options, t)));
-      const quitar = new Set(coloresQueCoinciden(options, termino));
-      onChange(selected.filter((c) => keep.has(c) || !quitar.has(c)));
-      return otros;
-    });
-  }
-
-  function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key !== "Enter") return;
-    e.preventDefault();
-    applyQuery(query);
-  }
-
-  const totalSel = selected.length;
-  const activo = totalSel > 0 || terminos.length > 0 || colorBuscar.length >= 2;
-
-  return (
-    <div ref={ref} className="relative">
-      <div
-        className={`flex min-h-[44px] flex-wrap items-center gap-1.5 rounded-xl border-2 px-2 py-1.5 transition ${
-          activo ? "border-orange-500 bg-orange-50" : "border-slate-200 bg-white"
-        }`}
-      >
-        {terminos.map((t) => (
-          <span
-            key={t.toLowerCase()}
-            className="inline-flex max-w-full items-center gap-1 rounded-lg bg-white px-2 py-1 text-xs font-bold text-orange-800 shadow-sm"
-          >
-            <span className="truncate">{t}</span>
-            <button
-              type="button"
-              aria-label={`Quitar ${t}`}
-              onClick={() => removeTermino(t)}
-              className="shrink-0 text-orange-400 hover:text-orange-700"
-            >
-              ×
-            </button>
-          </span>
-        ))}
-        <input
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            onBuscarChange(e.target.value);
-            setOpen(true);
-          }}
-          onFocus={() => setOpen(true)}
-          onKeyDown={onKeyDown}
-          placeholder={terminos.length ? "Otro color + Enter…" : "Escribí color (ej. negro) + Enter"}
-          className="min-w-[8rem] flex-1 bg-transparent py-1.5 text-sm font-semibold text-[#002B4E] outline-none placeholder:font-normal placeholder:text-slate-400"
-        />
-        {totalSel > 0 ? (
-          <span className="shrink-0 rounded-md bg-white px-1.5 py-0.5 text-[10px] font-bold tabular-nums text-orange-700">
-            {totalSel}
-          </span>
-        ) : colorBuscar.length >= 2 ? (
-          <span className="shrink-0 text-[10px] font-bold text-orange-600">buscar</span>
-        ) : null}
-        <button type="button" onClick={() => setOpen(!open)} className="shrink-0 px-1 text-slate-400">
-          {open ? "▴" : "▾"}
-        </button>
-      </div>
-      {open && options.length > 0 ? (
-        <div className="absolute left-0 top-full z-50 mt-2 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
-          {query.length >= 2 ? (
-            <div className="border-b border-orange-100 bg-orange-50 px-3 py-2">
-              <button
-                type="button"
-                onClick={() => applyQuery(query)}
-                className="text-[10px] font-bold uppercase text-orange-700"
-              >
-                Enter · seleccionar {filtered.length} con &quot;{query.trim()}&quot;
-              </button>
-            </div>
-          ) : null}
-          <div className="max-h-48 overflow-y-auto">
-            {filtered.slice(0, 80).map((o, idx) => {
-              const sel = selected.includes(o);
-              const safeKey = o.length > 0 ? o : `__empty_${idx}`;
-              return (
-                <button
-                  key={safeKey}
-                  type="button"
-                  onClick={() => {
-                    const next = sel ? selected.filter((x) => x !== o) : uniqStr([...selected, o]);
-                    onChange(next);
-                    onBuscarChange("");
-                  }}
-                  className="flex w-full items-center gap-3 px-4 py-2 text-left text-xs hover:bg-slate-50"
-                >
-                  <span
-                    className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border ${
-                      sel ? "border-orange-600 bg-orange-600 text-white" : "border-slate-300"
-                    }`}
-                  >
-                    {sel ? "✓" : ""}
-                  </span>
-                  <span className={sel ? "font-bold text-orange-700" : "text-slate-600"}>{o}</span>
-                </button>
-              );
-            })}
-          </div>
-          {selected.length > 0 || terminos.length > 0 ? (
-            <div className="border-t border-slate-100 p-2">
-              <button
-                type="button"
-                onClick={() => {
-                  onChange([]);
-                  onBuscarChange("");
-                  setTerminos([]);
-                  setQuery("");
-                }}
-                className="text-[10px] font-bold text-slate-400"
-              >
-                Limpiar selección ({selected.length})
-              </button>
-            </div>
-          ) : null}
-        </div>
-      ) : null}
-    </div>
-  );
+  return [estilos[0].label];
 }
 
 export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: Props) {
@@ -378,14 +400,14 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
     tipo: "",
     marcas: [],
     estilos: [],
-    colores: [],
-    colorBuscar: "",
+    colorTexto: [],
   });
   const [gradaInput, setGradaInput] = useState("");
   const [opciones, setOpciones] = useState<FrancoOpciones | null>(null);
   const [loadingOpciones, setLoadingOpciones] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const defaultsAppliedRef = useRef(false);
 
   const resetResults = useCallback(() => {
     setGradaInput("");
@@ -401,7 +423,7 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
           tipo: f.tipo,
           marcas: f.marcas,
           estilos: f.estilos,
-          colores: [],
+          colorTexto: [],
         });
         p.set("modo", "opciones");
         const r = await fetch(`/api/deposito/${clienteId}/franco-tirador?${p}`, { cache: "no-store" });
@@ -410,7 +432,7 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
         setOpciones({
           marcas: data.marcas ?? [],
           estilos: data.estilos ?? [],
-          colores: data.colores ?? [],
+          tonosEstandar: data.tonosEstandar ?? [],
         });
       } catch {
         setOpciones(null);
@@ -424,12 +446,12 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
   function openModal() {
     if (!scope) return;
     resetResults();
+    defaultsAppliedRef.current = false;
     const initial: FrancoTiradorFilterState = {
       tipo: scope.tipo,
-      marcas: scope.marcaLabelDefault ? [scope.marcaLabelDefault] : [],
+      marcas: [],
       estilos: [],
-      colores: [],
-      colorBuscar: "",
+      colorTexto: [],
     };
     setFiltros(initial);
     setOpen(true);
@@ -437,13 +459,32 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
   }
 
   useEffect(() => {
-    if (!open || !opciones || filtros.estilos.length) return;
-    if (!scope?.estiloDefault) return;
-    const match = opciones.estilos.find(
-      (e) => e.label.trim().toUpperCase() === scope.estiloDefault.trim().toUpperCase(),
-    );
-    if (match) setFiltros((prev) => ({ ...prev, estilos: [match.label] }));
-  }, [open, opciones, scope?.estiloDefault, filtros.estilos.length]);
+    if (!open || !opciones) return;
+
+    setFiltros((prev) => {
+      let marcas = prev.marcas;
+      let estilos = prev.estilos;
+      let changed = false;
+
+      if (!defaultsAppliedRef.current && opciones.marcas.length > 0) {
+        marcas = allMarcaLabels(opciones.marcas);
+        changed = true;
+        defaultsAppliedRef.current = true;
+      }
+
+      if (opciones.estilos.length > 0) {
+        const valid =
+          estilos.length > 0 && estilos.every((e) => opciones.estilos.some((o) => o.label === e));
+        if (!valid) {
+          estilos = defaultEstiloLabels(opciones.estilos, scope?.estiloDefault);
+          changed = true;
+        }
+      }
+
+      if (!changed) return prev;
+      return { ...prev, marcas, estilos };
+    });
+  }, [open, opciones, scope?.estiloDefault]);
 
   const cascadeKey = `${filtros.tipo}|${filtros.marcas.join("\0")}|${filtros.estilos.join("\0")}`;
   useEffect(() => {
@@ -452,7 +493,7 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
       tipo: filtros.tipo,
       marcas: filtros.marcas,
       estilos: filtros.estilos,
-      colores: [],
+      colorTexto: [],
     };
     const t = window.setTimeout(() => void loadOpciones(snapshot), 120);
     return () => window.clearTimeout(t);
@@ -463,12 +504,12 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
       const next = { ...prev, ...p };
       if (p.marcas && labelsRemovidos(prev.marcas, p.marcas)) {
         next.estilos = [];
-        next.colores = [];
-        next.colorBuscar = "";
+        next.tonoEstandar = undefined;
+        next.colorTexto = [];
       }
       if (p.estilos && labelsRemovidos(prev.estilos, p.estilos)) {
-        next.colores = [];
-        next.colorBuscar = "";
+        next.tonoEstandar = undefined;
+        next.colorTexto = [];
       }
       return next;
     });
@@ -479,21 +520,10 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
     if (!scope) return;
     const grada = gradaInput.trim();
 
-    let colores = filtros.colores;
-    let colorBuscar = filtros.colorBuscar?.trim() ?? "";
-    if (!colores.length && colorBuscar.length >= 2 && opciones?.colores.length) {
-      colores = coloresQueCoinciden(opciones.colores, colorBuscar);
-    }
-
     setLoading(true);
     setError(null);
     try {
-      const payload: FrancoTiradorFilterState = {
-        ...filtros,
-        colores,
-        colorBuscar: colores.length ? undefined : colorBuscar.length >= 2 ? colorBuscar : undefined,
-      };
-      const p = francoFiltersToSearchParams(payload);
+      const p = francoFiltersToSearchParams(filtros);
       if (grada) p.set("grada", grada);
       const r = await fetch(`/api/deposito/${clienteId}/franco-tirador?${p}`, { cache: "no-store" });
       const data = await r.json();
@@ -583,22 +613,34 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
                   uppercaseLabels
                   options={opciones?.estilos ?? []}
                   selectedLabels={filtros.estilos}
-                  onChange={(estilos) => patchFiltros({ estilos: uniqLabels(estilos) })}
+                  onChange={(estilos) => {
+                    const next = uniqLabels(estilos);
+                    if (next.length === 0) return;
+                    patchFiltros({ estilos: next });
+                  }}
                 />
               </div>
 
-              <div>
-                <span className="mb-1 block text-xs font-bold uppercase tracking-wide text-[#002B4E]">
-                  Color <span className="font-normal normal-case text-[#64748b]">(opcional)</span>
-                </span>
-                <ColorFrancoInput
-                  key={`${filtros.marcas.join("|")}|${filtros.estilos.join("|")}`}
-                  options={opciones?.colores ?? []}
-                  selected={filtros.colores}
-                  colorBuscar={filtros.colorBuscar ?? ""}
-                  onChange={(colores) => patchFiltros({ colores, colorBuscar: "" })}
-                  onBuscarChange={(q) => setFiltros((prev) => ({ ...prev, colorBuscar: q }))}
-                />
+              <div className="space-y-2">
+                <div>
+                  <span className="mb-1 block text-xs font-bold uppercase tracking-wide text-[#002B4E]">
+                    Tono <span className="font-normal normal-case text-[#64748b]">(principal · opcional)</span>
+                  </span>
+                  <ColorTonoPicker
+                    tonos={opciones?.tonosEstandar ?? []}
+                    selected={filtros.tonoEstandar}
+                    onSelect={(tonoEstandar) => patchFiltros({ tonoEstandar })}
+                  />
+                </div>
+                <div>
+                  <span className="mb-1 block text-xs font-bold uppercase tracking-wide text-[#002B4E]">
+                    Texto <span className="font-normal normal-case text-[#64748b]">(Enter · opcional)</span>
+                  </span>
+                  <ColorTextoFranco
+                    terminos={filtros.colorTexto}
+                    onChange={(colorTexto) => patchFiltros({ colorTexto: uniqTerminosColor(colorTexto) })}
+                  />
+                </div>
               </div>
 
               <label className="block">

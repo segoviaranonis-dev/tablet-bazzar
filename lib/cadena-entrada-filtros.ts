@@ -7,6 +7,7 @@ export type FiltrosEntrada = {
   marcas: string[];
   estilos: string[];
   tipos: string[];
+  tipo1s: string[];
   referenciaKeys: string[];
   buscar: string;
 };
@@ -16,6 +17,7 @@ export const FILTROS_ENTRADA_VACIOS: FiltrosEntrada = {
   marcas: [],
   estilos: [],
   tipos: [],
+  tipo1s: [],
   referenciaKeys: [],
   buscar: "",
 };
@@ -91,6 +93,9 @@ export function filasEntradaFiltradas(
   }
   if (filtros.tipos.length > 0 && excluir !== "tipos") {
     rows = rows.filter((f) => filtros.tipos.includes(f.tipo_v2?.trim() ?? ""));
+  }
+  if (filtros.tipo1s.length > 0 && excluir !== "tipo1s") {
+    rows = rows.filter((f) => filtros.tipo1s.includes(f.tipo_1?.trim() ?? ""));
   }
   if (filtros.referenciaKeys.length > 0 && excluir !== "referenciaKeys") {
     rows = rows.filter((f) => filtros.referenciaKeys.includes(keyLR(f)));
@@ -202,6 +207,7 @@ export function hayFiltrosEntradaActivos(f: FiltrosEntrada): boolean {
     f.marcas.length > 0 ||
     f.estilos.length > 0 ||
     f.tipos.length > 0 ||
+    f.tipo1s.length > 0 ||
     f.referenciaKeys.length > 0 ||
     f.buscar.trim().length > 0
   );
@@ -233,6 +239,7 @@ export function parseFiltrosEntradaFromUrl(sp: URLSearchParams): FiltrosEntrada 
     marcas: sp.get("marcas") ? sp.get("marcas")!.split("|").filter(Boolean) : [],
     estilos: sp.get("estilos") ? sp.get("estilos")!.split("|").filter(Boolean) : [],
     tipos: sp.get("tipo") ? [sp.get("tipo")!] : [],
+    tipo1s: sp.get("tipo1s") ? sp.get("tipo1s")!.split("|").filter(Boolean) : [],
     referenciaKeys: parseReferenciaKeysParam(sp.get("refs")),
     buscar: sp.get("q") ?? "",
   };

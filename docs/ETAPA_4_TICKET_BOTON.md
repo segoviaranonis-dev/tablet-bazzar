@@ -1,5 +1,7 @@
 # ETAPA 4 — Botón tikeCT (Ticket ORO · inicio)
 
+> **⚠️ Superseded parcial (2026-06-22):** etapa vigente → [ETAPA_TICKETS_POS_STOCK.md](./ETAPA_TICKETS_POS_STOCK.md) · holding [ETAPA_TABLET_TICKETS_POS_STOCK_REPORT.md](../../../.claude/4_etapas/ETAPA_TABLET_TICKETS_POS_STOCK_REPORT.md)
+
 **Fecha apertura:** 2026-06-14  
 **Estado:** EN CURSO — carrito POS v1 implementado 2026-06-14  
 **App:** `tablet-bazzar/` · puerto dev **3002**  

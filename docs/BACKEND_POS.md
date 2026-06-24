@@ -1,5 +1,8 @@
 # Backend POS — Capa titanio (Tablet Bazzar)
 
+> **POS ventas / bandeja / CERRAR:** doc canónico → [LOGICA_OPERATIVA_POS_BAZZAR.md](./LOGICA_OPERATIVA_POS_BAZZAR.md)  
+> Este archivo cubre **catálogo depósito** (filtros, cadena, live). No duplica lógica `ticket_bandeja_cajero`.
+
 **Principio:** nada crítico en el navegador. Filtros, agregados, cadena y stock viven en Postgres vía API Next.js.
 
 **Cierre sub-etapa:** 2026-06-11

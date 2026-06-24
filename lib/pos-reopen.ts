@@ -2,6 +2,7 @@ export const REOPEN_STAGING_KEY = "tablet_reopen_staging_id";
 export const REOPEN_OPEN_CART_KEY = "tablet_reopen_open_cart";
 export const REOPEN_CLIENTE_KEY = "tablet_reopen_cliente_json";
 export const REOPEN_VENDEDOR_KEY = "tablet_reopen_vendedor_json";
+export const REOPEN_FI_FA_KEY = "tablet_reopen_fi_fa";
 
 export type ReopenClienteSnapshot = {
   cedula: string;
@@ -20,6 +21,7 @@ export function setReopenSession(payload: {
   stagingId: number;
   cliente: ReopenClienteSnapshot | null;
   vendedor: ReopenVendedorSnapshot;
+  numero_fi_fa?: number | null;
 }) {
   sessionStorage.setItem(REOPEN_STAGING_KEY, String(payload.stagingId));
   sessionStorage.setItem(REOPEN_OPEN_CART_KEY, "1");
@@ -29,6 +31,11 @@ export function setReopenSession(payload: {
     sessionStorage.removeItem(REOPEN_CLIENTE_KEY);
   }
   sessionStorage.setItem(REOPEN_VENDEDOR_KEY, JSON.stringify(payload.vendedor));
+  if (payload.numero_fi_fa != null && Number.isFinite(payload.numero_fi_fa)) {
+    sessionStorage.setItem(REOPEN_FI_FA_KEY, String(payload.numero_fi_fa));
+  } else {
+    sessionStorage.removeItem(REOPEN_FI_FA_KEY);
+  }
 }
 
 export function clearReopenSession() {
@@ -36,6 +43,13 @@ export function clearReopenSession() {
   sessionStorage.removeItem(REOPEN_OPEN_CART_KEY);
   sessionStorage.removeItem(REOPEN_CLIENTE_KEY);
   sessionStorage.removeItem(REOPEN_VENDEDOR_KEY);
+  sessionStorage.removeItem(REOPEN_FI_FA_KEY);
+}
+
+export function readReopenFiFa(): number | null {
+  const raw = sessionStorage.getItem(REOPEN_FI_FA_KEY);
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? n : null;
 }
 
 export function getReopenStagingId(): number | null {

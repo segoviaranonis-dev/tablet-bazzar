@@ -17,13 +17,14 @@ Resumen denso para verificación de contexto. Doc extendida: [CADENA_CONSECUTIVA
 
 ---
 
-## Ley de agrupación (2 niveles)
+## Ley de agrupación (4 capas)
 
-1. **Nivel principal:** L + R + **material** → footer naipes + precio futuro
-2. **Nivel color:** `color_code` → mazo apilado sidebar; eje ↑↓
-3. **Cadena secundaria:** L + R sin material → sidebar vertical (solo si >1 ref); eje ←→
+0. **Terciaria:** Marca + **estilo hero** → acota sidebar y ←→ (Chatita solo chatitas)
+1. **Secundaria:** L + R → sidebar vertical (solo si >1 ref en cohorte)
+2. **Primaria:** L + R + material → footer · ←→ si 1 ref
+3. **Color:** `color_code` → mazo · ↑↓
 
-Código: `lib/cadena.ts` · Ley holding: `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md`
+Código: `lib/cadena.ts` (`paresMismoEstilo` pendiente cablear) · Ley: [agrupacion_terciaria.md](../../../.claude/2_modulos/2.4_tablet_bazzar/agrupacion_terciaria.md) · [agrupacion_dos_niveles.md](../../../.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md)
 
 ---
 

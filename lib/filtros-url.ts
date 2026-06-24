@@ -5,6 +5,7 @@ export type FiltrosUrl = {
   marcas: string[];
   estilos: string[];
   tipos: string[];
+  tipo1s: string[];
   referenciaKeys: string[];
   buscar: string;
   marcaCadena?: string;
@@ -33,6 +34,7 @@ export function filtrosToSearchParams(f: FiltrosUrl): URLSearchParams {
   if (f.marcas.length) p.set("marcas", f.marcas.join("|"));
   if (f.estilos.length) p.set("estilos", f.estilos.join("|"));
   if (f.tipos.length) p.set("tipos", f.tipos.join("|"));
+  if (f.tipo1s.length) p.set("tipo1s", f.tipo1s.join("|"));
   if (f.referenciaKeys.length) p.set("refs", serializeReferenciaKeysParam(f.referenciaKeys));
   if (f.buscar.trim()) p.set("q", f.buscar.trim());
   if (f.marcaCadena) p.set("marca", f.marcaCadena);
@@ -45,6 +47,7 @@ export function filtrosFromSearchParams(sp: URLSearchParams): FiltrosUrl {
     marcas: sp.get("marcas")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
     estilos: sp.get("estilos")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
     tipos: sp.get("tipos")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
+    tipo1s: sp.get("tipo1s")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
     referenciaKeys: parseReferenciaKeysParam(sp.get("refs")),
     buscar: (sp.get("q") ?? "").trim(),
     marcaCadena: sp.get("marca")?.trim() || undefined,

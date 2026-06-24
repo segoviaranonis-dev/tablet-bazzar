@@ -47,6 +47,7 @@ async function medirMarca(marca: string) {
     marcas: [],
     estilos: [],
     tipos: [],
+    tipo1s: [],
     referenciaKeys: [],
     buscar: "",
     marcaCadena: marca,

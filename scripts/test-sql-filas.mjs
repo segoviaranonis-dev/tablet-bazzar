@@ -12,7 +12,7 @@ const filtros = {
   marcaCadena: "VIZZANO",
 };
 
-const tabla = "deposito_tienda_fernando_adultos";
+const tabla = "deposito_2_fernando_adultos_tienda";
 
 function appendRefs(f, w, excluir) {
   if (excluir || f.referenciaKeys.length === 0) return;

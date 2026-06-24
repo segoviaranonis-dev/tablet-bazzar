@@ -34,12 +34,12 @@ export default function ControlPanelPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f1f5f9] text-slate-900">
-      <header className="border-b border-orange-200 bg-white px-6 py-5 shadow-sm">
+    <div className="min-h-screen bg-app-bg text-slate-900">
+      <header className="border-b border-slate-200 bg-white px-6 py-5 shadow-sm">
         <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wider text-orange-600">Tablet Bazzar</p>
-            <h1 className="text-2xl font-bold text-orange-800">Panel de control</h1>
+            <p className="text-xs font-bold uppercase tracking-wider text-bazzar-naranja">Tablet Bazzar</p>
+            <h1 className="text-2xl font-bold text-rimec-azul">Panel de control</h1>
             {user?.nombre && (
               <p className="mt-1 text-sm text-slate-600">
                 {user.nombre}
@@ -51,7 +51,7 @@ export default function ControlPanelPage() {
             type="button"
             onClick={handleLogout}
             disabled={loggingOut}
-            className="min-h-[44px] rounded-xl border-2 border-slate-300 bg-white px-5 text-sm font-semibold text-slate-700 hover:border-orange-300 hover:text-orange-700 disabled:opacity-50"
+            className="min-h-[44px] rounded-xl border-2 border-slate-300 bg-white px-5 text-sm font-semibold text-slate-700 hover:border-rimec-azul hover:text-rimec-azul disabled:opacity-50"
           >
             {loggingOut ? "Saliendo…" : "Cerrar sesión"}
           </button>
@@ -71,10 +71,10 @@ export default function ControlPanelPage() {
                 <Link
                   key={mode.id}
                   href={mode.href}
-                  className="group flex min-h-[120px] flex-col rounded-2xl border-2 border-orange-200 bg-white p-6 shadow-sm transition hover:border-orange-500 hover:shadow-md active:scale-[0.99]"
+                  className="group flex min-h-[120px] flex-col rounded-2xl border-2 border-slate-200 bg-white p-6 shadow-sm transition hover:border-rimec-azul hover:shadow-md active:scale-[0.99]"
                 >
                   <span className="mb-3 text-4xl">{mode.icon}</span>
-                  <span className="text-lg font-bold text-orange-800 group-hover:text-orange-600">
+                  <span className="text-lg font-bold text-rimec-azul group-hover:text-rimec-azul-light">
                     {mode.title}
                   </span>
                   <span className="mt-2 text-sm leading-relaxed text-slate-600">{mode.description}</span>

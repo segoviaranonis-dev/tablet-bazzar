@@ -109,14 +109,14 @@ async function resolveStem(): Promise<{ stem: string; row: Record<string, unknow
         NULLIF(btrim(excel_material_code::text), '') AS excel_material_code,
         NULLIF(btrim(excel_color_code::text), '') AS excel_color_code,
         NULLIF(btrim(imagen_nombre::text), '') AS imagen_nombre
-      FROM public.deposito_tienda_fernando_ninos
+      FROM public.deposito_2_fernando_ninos_tienda
       WHERE trim(linea_codigo_proveedor::text) = '2083'
         AND trim(referencia_codigo_proveedor::text) ILIKE '%1133%'
         AND cantidad > 0
       LIMIT 1
     `);
     const row = r.rows[0];
-    if (!row) throw new Error("SKU 2083.1133 no encontrado en deposito_tienda_fernando_ninos");
+    if (!row) throw new Error("SKU 2083.1133 no encontrado en deposito_2_fernando_ninos_tienda");
 
     if (row.imagen_nombre) {
       const stem = row.imagen_nombre.replace(/^productos\//i, "").replace(/^(sm|md|lg)\//i, "");

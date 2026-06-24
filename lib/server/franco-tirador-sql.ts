@@ -5,6 +5,11 @@ import type { FrancoTiradorSearchInput } from "@/lib/franco-tirador-filters";
 import type { FrancoTiradorFilterState } from "@/lib/franco-tirador-filters";
 import { esTipoCalzadoScope } from "@/lib/franco-tirador-filters";
 import {
+  PROVEEDOR_COLOR_CALZADO,
+  sqlColorMatchTexto,
+  sqlColorMatchTonoEstandar,
+} from "@/lib/color-canon-franco";
+import {
   PILAR_TRIANGULO_JOINS,
   SQL_ESTILO_LABEL,
   SQL_GENERO_LABEL,
@@ -14,8 +19,6 @@ import {
   SQL_MARCA_LABEL,
 } from "@/lib/server/pilar-triangulo";
 import { SQL_ORDER_LINEA_REF, SQL_SOLO_CALZADO } from "@/lib/tipo-v2-scope";
-
-const SQL_COLOR_LABEL = `COALESCE(NULLIF(btrim(col.nombre::text), ''), '')`;
 
 const SELECT_FRANCO = `
   SELECT
@@ -99,14 +102,23 @@ function buildFrancoWhere(f: FrancoTiradorFilterState, excluir: ExcluirDim): Whe
   }
 
   if (excluir !== "color") {
-    const lista = f.colores.map((c) => c.trim()).filter(Boolean);
-    const buscar = f.colorBuscar?.trim() ?? "";
-    if (lista.length) {
-      w.params.push(lista);
-      w.sql += ` AND ${SQL_COLOR_LABEL} = ANY($${w.params.length}::text[])`;
-    } else if (buscar.length >= 2) {
-      w.params.push(`%${buscar}%`);
-      w.sql += ` AND lower(${SQL_COLOR_LABEL}) LIKE lower($${w.params.length})`;
+    const tono = f.tonoEstandar?.trim();
+    const textos = (f.colorTexto ?? []).map((t) => t.trim()).filter((t) => t.length >= 2);
+
+    if (tono) {
+      w.params.push(tono);
+      w.params.push(PROVEEDOR_COLOR_CALZADO);
+      w.sql += ` AND (${sqlColorMatchTonoEstandar(w.params.length - 1, w.params.length)})`;
+    }
+
+    if (textos.length) {
+      const orParts: string[] = [];
+      for (const t of textos) {
+        w.params.push(t);
+        w.params.push(PROVEEDOR_COLOR_CALZADO);
+        orParts.push(`(${sqlColorMatchTexto(w.params.length - 1, w.params.length)})`);
+      }
+      w.sql += tono ? ` AND (${orParts.join(" OR ")})` : ` AND (${orParts.join(" OR ")})`;
     }
   }
 
@@ -156,24 +168,6 @@ export function sqlFrancoTiradorOpcionesEstilos(
         AND ${SQL_GRUPO_ESTILO_ID} IS NOT NULL
         AND ${SQL_ESTILO_LABEL} <> '(sin estilo)'
       GROUP BY 1, 2 ORDER BY 2
-    `,
-    params: w.params,
-  };
-}
-
-export function sqlFrancoTiradorOpcionesColores(
-  tabla: string,
-  f: FrancoTiradorFilterState,
-): { text: string; params: unknown[] } {
-  const w = buildFrancoWhere(f, "color");
-  return {
-    text: `
-      SELECT ${SQL_COLOR_LABEL} AS label,
-        COUNT(*)::int AS count
-      ${fromClause(tabla)}
-      WHERE ${w.sql} AND ${SQL_COLOR_LABEL} <> ''
-      GROUP BY 1 ORDER BY 1
-      LIMIT 400
     `,
     params: w.params,
   };

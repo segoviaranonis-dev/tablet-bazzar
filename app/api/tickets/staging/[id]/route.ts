@@ -1,13 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readTabletSession } from "@/lib/auth/tablet-session";
 import {
-  cambiarEstadoStaging,
   cancelarPedidoCompleto,
   editarLineasStaging,
   enviarStagingACaja,
-  promoverStagingAOro,
   reabrirStagingCompleto,
-  reabrirStagingDesdeCaja,
   type LineaPatch,
 } from "@/lib/server/tickets-staging";
 import { getVendedorById } from "@/lib/server/vendedor-bazzar";
@@ -68,43 +65,16 @@ export async function POST(req: NextRequest, ctx: RouteCtx) {
   }
 
   switch (body.accion) {
-    case "cerrar": {
-      const r = await cambiarEstadoStaging(stagingId, clienteId, "CERRADO");
-      if (!r.ok) return NextResponse.json(r, { status: 400 });
-      return NextResponse.json({ ok: true, staging: r.staging });
-    }
-    case "reabrir": {
-      const r = await cambiarEstadoStaging(stagingId, clienteId, "ABIERTO");
-      if (!r.ok) return NextResponse.json(r, { status: 400 });
-      return NextResponse.json({ ok: true, staging: r.staging });
-    }
-    case "cancelar": {
-      const r = await cambiarEstadoStaging(stagingId, clienteId, "CANCELADO");
-      if (!r.ok) return NextResponse.json(r, { status: 400 });
-      return NextResponse.json({ ok: true, staging: r.staging });
-    }
+    case "cerrar":
+    case "enviar_caja":
     case "promover": {
-      const r = await promoverStagingAOro(stagingId, clienteId);
-      if (!r.ok) return NextResponse.json(r, { status: 400 });
-      const { ok: _ok, ...rest } = r;
-      return NextResponse.json({ ok: true, ...rest });
-    }
-    case "enviar_caja": {
       const r = await enviarStagingACaja(stagingId, clienteId);
       if (!r.ok) return NextResponse.json(r, { status: 400 });
       const { ok: _ok, ...rest } = r;
       return NextResponse.json({ ok: true, ...rest });
     }
-    case "reabrir_caja": {
-      const r = await reabrirStagingDesdeCaja(stagingId, clienteId);
-      if (!r.ok) return NextResponse.json(r, { status: 400 });
-      return NextResponse.json({ ok: true, staging: r.staging });
-    }
-    case "cancelar_pedido": {
-      const r = await cancelarPedidoCompleto(stagingId, clienteId);
-      if (!r.ok) return NextResponse.json(r, { status: 400 });
-      return NextResponse.json({ ok: true, staging: r.staging });
-    }
+    case "reabrir":
+    case "reabrir_caja":
     case "reabrir_completo": {
       const r = await reabrirStagingCompleto(stagingId, clienteId);
       if (!r.ok) return NextResponse.json(r, { status: 400 });
@@ -120,6 +90,12 @@ export async function POST(req: NextRequest, ctx: RouteCtx) {
             }
           : null,
       });
+    }
+    case "cancelar":
+    case "cancelar_pedido": {
+      const r = await cancelarPedidoCompleto(stagingId, clienteId);
+      if (!r.ok) return NextResponse.json(r, { status: 400 });
+      return NextResponse.json({ ok: true, staging: r.staging });
     }
     default:
       return NextResponse.json({ ok: false, error: "accion inválida" }, { status: 400 });

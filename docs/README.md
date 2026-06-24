@@ -20,17 +20,21 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 
 ---
 
-## Etapa activa — Tickets POS + vendedor
+## Etapa activa — POS bandeja única v2
 
 | Documento | Contenido |
 |-----------|-----------|
-| **[ETAPA_TICKETS_POS_STOCK.md](./ETAPA_TICKETS_POS_STOCK.md)** | Etapa abierta · CERRAR · staging · ORO |
-| **[ARQUITECTURA_SESION_STOCK_ORO.md](./ARQUITECTURA_SESION_STOCK_ORO.md)** | 3 capas stock · ciclo sesión |
-| **[MEMORIA_SECUNDARIA_CONEXIONES_INTERNAS.md](../../.claude/2_modulos/2.3_report/caja_bazzar/MEMORIA_SECUNDARIA_CONEXIONES_INTERNAS.md)** | **2.3.2.2.10 · conexiones tablet ↔ caja ↔ Bobeda (holding)** |
-| **[PRUEBA_VENDEDOR_STAGING.md](./PRUEBA_VENDEDOR_STAGING.md)** | Smoke manual pre-cierre |
-| [ETAPA_4_TICKET_BOTON.md](./ETAPA_4_TICKET_BOTON.md) | Histórico carrito v1 (superseded) |
+| **[LOGICA_OPERATIVA_POS_BAZZAR.md](./LOGICA_OPERATIVA_POS_BAZZAR.md)** | **Doc canónico v2** — estados, stock, CERRAR, funciones |
+| [REGLAS_BANDEJA_UNICA_POS.md](./REGLAS_BANDEJA_UNICA_POS.md) | Reglas inviolables resumidas |
+| [ARQUITECTURA_SESION_STOCK_ORO.md](./ARQUITECTURA_SESION_STOCK_ORO.md) | 3 capas stock · ciclo sesión |
+| [MICRO_ECOSISTEMA_POS_BAZZAR.md](./MICRO_ECOSISTEMA_POS_BAZZAR.md) | Tablet ↔ Report ↔ BD |
+| [../report/docs/INDICE_POS_BAZZAR.md](../report/docs/INDICE_POS_BAZZAR.md) | Índice central holding |
+| [ETAPA_TICKETS_POS_STOCK.md](./ETAPA_TICKETS_POS_STOCK.md) | ⚠️ Histórico pre-v2 (dual staging) |
+| [PRUEBA_VENDEDOR_STAGING.md](./PRUEBA_VENDEDOR_STAGING.md) | Smoke manual pre-cierre |
 
-**CHUSAR holding:** `.claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TICKETS_POS_STOCK.md` · `CHUSAR_TABLET_VENDEDOR_STAGING.md`
+| Franco Tirador | **[MODULO_FRANCO_TIRADOR.md](./MODULO_FRANCO_TIRADOR.md)** | Sniper · Procesar carga cadena |
+
+**CHUSAR holding:** `.claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_FRANCO_TIRADOR.md` · POS v2 → `LOGICA_OPERATIVA_POS_BAZZAR.md`
 
 ---
 
@@ -52,6 +56,7 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 | [NAVEGACION_CADENA.md](./NAVEGACION_CADENA.md) | Teclado, 2 niveles, refs URL |
 | [MEMORIA_CADENA_UI.md](./MEMORIA_CADENA_UI.md) | Resumen denso (cuestionario) |
 | [HOTFIX_VENTAS_STANDS_STOCK_PAR_LR.md](./HOTFIX_VENTAS_STANDS_STOCK_PAR_LR.md) | Stands par L+R · `/live` |
+| **[MODULO_FRANCO_TIRADOR.md](./MODULO_FRANCO_TIRADOR.md)** | **Franco Tirador · filtros · Procesar → cadena** |
 | [ESTILO_CATALOGO_BAZZAR_NIIF.md](./ESTILO_CATALOGO_BAZZAR_NIIF.md) | Ley visual salón |
 
 ### Depósito / backend
@@ -90,19 +95,19 @@ Carpeta [`evidencia/`](./evidencia/) — JSON de cierres y aperturas de sub-sesi
 
 ---
 
-## Estado al 2026-06-22
+## Estado al 2026-06-24
 
 | Área | Estado |
 |------|--------|
 | Auth JWT + middleware | ✅ |
 | Cadena + stands + carrito | ✅ |
-| Vendedor código por ente | ✅ local |
-| Staging + stock sesión | ✅ BD · smoke ⏳ |
-| Promover ORO + panel Tickets | ✅ local |
+| Bandeja única + CERRAR → caja | ✅ v2 |
+| Validación stock reabrir FI_FA | ✅ |
+| Migración 009 FI_FA | ✅ local |
 | Deploy Vercel + git push | ⏳ |
 
 **Depósito prueba:** Fernando Adultos (`cliente_id` 2100) — 6256 filas.
 
 ---
 
-**Última actualización:** 2026-06-22 · Chusar indexación pre-cierre etapa venta
+**Última actualización:** 2026-06-24 · Doc canónico POS v2 indexado

@@ -42,6 +42,16 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(result, { status: 400 });
   }
 
+  if (result.total_pares === 0) {
+    return NextResponse.json({
+      ok: true,
+      cancelled: true,
+      staging: result.staging,
+      total_pares: 0,
+      mensaje: "Pedido cancelado · stock restaurado",
+    });
+  }
+
   const caja = await enviarStagingACaja(result.staging.id, body.cliente_id);
   if (!caja.ok) {
     return NextResponse.json(caja, { status: 400 });

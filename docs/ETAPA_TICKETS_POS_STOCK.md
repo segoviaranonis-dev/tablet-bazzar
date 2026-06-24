@@ -1,5 +1,9 @@
 # ETAPA — Tickets POS · Stock · Report
 
+> **⚠️ SUPERSEDED parcialmente (2026-06-24):** implementación actual = bandeja única v2.  
+> **Doc canónico:** [LOGICA_OPERATIVA_POS_BAZZAR.md](./LOGICA_OPERATIVA_POS_BAZZAR.md) · Índice: [INDICE_POS_BAZZAR.md](../../report/docs/INDICE_POS_BAZZAR.md)  
+> Este archivo conserva contexto etapa 2026-06-22 (dual staging + ORO en `ticket_venta_pos`).
+
 **ID:** `ETAPA-TICKETS-POS-STOCK-20260622`  
 **Estado:** 🟢 ABIERTA · código ✅ · **smoke venta ⏳**  
 **Etapa holding:** `.claude/4_etapas/ETAPA_TABLET_TICKETS_POS_STOCK_REPORT.md`  

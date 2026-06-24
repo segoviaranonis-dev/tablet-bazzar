@@ -20,6 +20,7 @@ type StagingTicket = {
   total_pares: number;
   cedula_cliente: string | null;
   snapshot_cliente: Record<string, unknown> | null;
+  numero_fi_fa: number | null;
   lineas: StagingLinea[];
 };
 
@@ -43,7 +44,6 @@ type Props = {
 export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
   const router = useRouter();
   const { count, session, replaceCart } = usePosCart();
-  const [tickets, setTickets] = useState<StagingTicket[]>([]);
   const [cajaPendientes, setCajaPendientes] = useState<CajaPendiente[]>([]);
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
@@ -52,15 +52,8 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
   const load = useCallback(async () => {
     setLoading(true);
     try {
-      const [stgR, cajaR] = await Promise.all([
-        fetch(`/api/tickets/staging?cliente_id=${clienteId}&estado=ABIERTO,CERRADO`, {
-          cache: "no-store",
-        }),
-        fetch(`/api/tickets/caja?cliente_id=${clienteId}`, { cache: "no-store" }),
-      ]);
-      const stgData = await stgR.json();
+      const cajaR = await fetch(`/api/tickets/caja?cliente_id=${clienteId}`, { cache: "no-store" });
       const cajaData = await cajaR.json();
-      setTickets(stgData.tickets ?? []);
       setCajaPendientes(cajaData.facturas ?? []);
     } finally {
       setLoading(false);
@@ -145,6 +138,7 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
           }
         : null,
       vendedor,
+      numero_fi_fa: staging.numero_fi_fa,
     });
 
     const cartItems = stagingLineasToCartItems(clienteId, staging.marca, staging.lineas);
@@ -209,7 +203,7 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
           <div>
             <h2 className="font-bold text-[#002B4E]">Facturas internas</h2>
             <p className="text-[10px] text-slate-500">
-              Abrir en catálogo para editar · CERRAR reenvía a caja · Cancelar restaura stock
+              Solo facturas en caja · Abrir saca de caja y edita en tablet · CERRAR en tablet las reenvía
             </p>
           </div>
           <TouchPad onClick={onClose} ariaLabel="Cerrar" className="min-h-[40px] min-w-[40px] text-xl">
@@ -234,9 +228,8 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
                         className="rounded-xl border border-orange-200 bg-orange-50/80 p-3 text-sm"
                       >
                         <p className="text-xs font-bold uppercase text-orange-800">PENDIENTE CAJA</p>
-                        <p className="font-semibold text-slate-900">
-                          {f.nombre_cliente ?? "Cliente"} · {f.display_id}
-                        </p>
+                        <p className="text-lg font-bold text-slate-900">{f.nombre_cliente ?? "Cliente"}</p>
+                        <p className="text-sm font-bold tracking-wide text-[#002B4E]">{f.display_id}</p>
                         <p className="text-xs text-slate-600">
                           {f.pares} par{f.pares === 1 ? "" : "es"} · {f.marca} · {f.vendedor_nombre ?? "—"}
                         </p>
@@ -246,7 +239,7 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
                               type="button"
                               disabled={busyKey === `stg:${f.staging_id}`}
                               onClick={() => void continuarEnCatalogo(f.staging_id!)}
-                              className="w-full rounded-lg bg-[#002B4E] py-2 text-[10px] font-bold uppercase text-white disabled:opacity-50"
+                              className="w-full rounded-lg bg-[#002B4E] py-2.5 text-xs font-bold uppercase !text-white shadow-sm disabled:opacity-50"
                             >
                               Abrir en catálogo
                             </button>
@@ -266,72 +259,18 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
                 </section>
               )}
 
-              {tickets.length === 0 ? (
+              {cajaPendientes.length === 0 ? (
                 <div className="space-y-3 text-sm text-slate-600">
                   {carritoActivo ? (
                     <p className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-amber-950">
                       Venta en carrito: <strong>{carritoActivo.pares}</strong> par
-                      {carritoActivo.pares === 1 ? "" : "es"} ({carritoActivo.marca}). COBRAR crea pedido nuevo.
+                      {carritoActivo.pares === 1 ? "" : "es"} ({carritoActivo.marca}). Usá CERRAR en el carrito.
                     </p>
-                  ) : null}
-                  {!carritoActivo && cajaPendientes.length === 0 ? (
-                    <p>Sin pedidos pendientes en esta tienda.</p>
-                  ) : null}
+                  ) : (
+                    <p>Sin facturas en caja en esta tienda.</p>
+                  )}
                 </div>
-              ) : (
-                <section>
-                  <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-500">
-                    Staging sesión
-                  </p>
-                  <ul className="space-y-4">
-                    {tickets.map((t) => (
-                      <li key={t.id} className="rounded-xl border border-slate-200 p-3">
-                        <div className="flex flex-wrap items-start justify-between gap-2">
-                          <div>
-                            <p className="text-xs font-bold uppercase text-slate-500">{t.estado}</p>
-                            <p className="font-semibold text-slate-900">{t.vendedor_nombre}</p>
-                            <p className="text-[10px] text-slate-400">{t.codigo_staging}</p>
-                            <p className="text-sm">
-                              {t.total_pares} par{t.total_pares === 1 ? "" : "es"}
-                            </p>
-                          </div>
-                          <div className="flex flex-col gap-1">
-                            <button
-                              type="button"
-                              disabled={busyKey === `stg:${t.id}`}
-                              onClick={() => void continuarEnCatalogo(t.id)}
-                              className="rounded bg-[#002B4E] px-2 py-1 text-[10px] font-bold text-white disabled:opacity-50"
-                            >
-                              Abrir en catálogo
-                            </button>
-                            {(t.estado === "ABIERTO" || t.estado === "CERRADO") && (
-                              <>
-                                <button
-                                  type="button"
-                                  disabled={busyKey === `stg:${t.id}`}
-                                  onClick={() => void accion(t.id, "enviar_caja")}
-                                  className="rounded bg-bazzar-naranja px-2 py-1 text-[10px] font-bold text-white disabled:opacity-50"
-                                >
-                                  Listo → caja
-                                </button>
-                                <button
-                                  type="button"
-                                  disabled={busyKey === `stg:${t.id}`}
-                                  onClick={() => void accion(t.id, "cancelar_pedido")}
-                                  className="rounded border border-red-300 px-2 py-1 text-[10px] font-bold text-red-700 disabled:opacity-50"
-                                >
-                                  Cancelar pedido
-                                </button>
-                              </>
-                            )}
-                          </div>
-                        </div>
-                        {lineasReadOnly(t)}
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              )}
+              ) : null}
             </div>
           )}
         </div>

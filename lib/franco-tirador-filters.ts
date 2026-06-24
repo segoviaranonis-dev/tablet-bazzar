@@ -6,8 +6,10 @@ export type FrancoTiradorFilterState = {
   marcas: string[];
   /** `descp_grupo_estilo` — multi (BOTAS + CHANCLAS + …). */
   estilos: string[];
-  colores: string[];
-  colorBuscar?: string;
+  /** Vía A — etiqueta `color_tono_estandar` (círculo · principal). */
+  tonoEstandar?: string;
+  /** Vía B — términos Enter (predominante + canónico · sin checkboxes). */
+  colorTexto: string[];
 };
 
 export type FrancoTiradorSearchInput = FrancoTiradorFilterState & {
@@ -24,8 +26,8 @@ function parseStringList(raw: string | null | undefined): string[] {
 }
 
 export function parseFrancoFiltersFromSearchParams(sp: URLSearchParams): FrancoTiradorFilterState {
-  const colores = sp.getAll("colores").map((c) => c.trim()).filter(Boolean);
-  const colorBuscar = sp.get("color_buscar")?.trim() ?? "";
+  const colorTexto = sp.getAll("color_texto").map((c) => c.trim()).filter((c) => c.length >= 2);
+  const tonoEstandar = sp.get("tono_estandar")?.trim() || undefined;
   const marcas = sp.getAll("marcas").length
     ? sp.getAll("marcas").map((m) => m.trim()).filter(Boolean)
     : parseStringList(sp.get("marcas_csv"));
@@ -36,8 +38,8 @@ export function parseFrancoFiltersFromSearchParams(sp: URLSearchParams): FrancoT
     tipo: sp.get("tipo")?.trim() ?? "",
     marcas,
     estilos,
-    colores,
-    colorBuscar: colorBuscar || undefined,
+    tonoEstandar,
+    colorTexto,
   };
 }
 
@@ -50,17 +52,11 @@ export function francoFiltersToSearchParams(f: FrancoTiradorFilterState): URLSea
   for (const e of f.estilos) {
     if (e.trim()) p.append("estilos", e.trim());
   }
-  for (const c of f.colores) {
-    if (c.trim()) p.append("colores", c.trim());
+  if (f.tonoEstandar?.trim()) p.set("tono_estandar", f.tonoEstandar.trim());
+  for (const t of f.colorTexto) {
+    if (t.trim().length >= 2) p.append("color_texto", t.trim());
   }
-  if (f.colorBuscar?.trim()) p.set("color_buscar", f.colorBuscar.trim());
   return p;
-}
-
-export function coloresQueCoinciden(options: string[], q: string): string[] {
-  const needle = q.trim().toLowerCase();
-  if (needle.length < 2) return [];
-  return options.filter((o) => o.toLowerCase().includes(needle));
 }
 
 export function labelsRemovidos(prev: string[], next: string[]): boolean {
@@ -75,4 +71,18 @@ export function uniqLabels(vals: string[]): string[] {
 export function esTipoCalzadoScope(tipo: string): boolean {
   const t = tipo.trim().toLowerCase();
   return t === "calzados" || t === "calzado" || t === "calz";
+}
+
+export function uniqTerminosColor(vals: string[]): string[] {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const v of vals) {
+    const t = v.trim();
+    if (t.length < 2) continue;
+    const k = t.toLowerCase();
+    if (seen.has(k)) continue;
+    seen.add(k);
+    out.push(t);
+  }
+  return out;
 }

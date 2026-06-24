@@ -51,6 +51,7 @@ type Props = {
   marcas: OpcionChip[];
   estilos: OpcionChip[];
   tipos: OpcionChip[];
+  tipo1s: OpcionChip[];
   referencias: { key: string; linea: string; referencia: string; count?: number }[];
   onChange: (next: FiltrosEntrada) => void;
   onEnter?: () => void;
@@ -62,6 +63,7 @@ export function FiltrosCabecera({
   marcas,
   estilos,
   tipos,
+  tipo1s,
   onChange,
   onEnter,
 }: Props) {
@@ -94,7 +96,15 @@ export function FiltrosCabecera({
         onClear={() => set({ estilos: [] })}
       />
       <FilaChips
-        label="Producto"
+        label="Tipo 1"
+        todosLabel="Todos"
+        items={tipo1s}
+        selected={filtros.tipo1s}
+        onToggle={(id) => set({ tipo1s: toggleChip(filtros.tipo1s, id) })}
+        onClear={() => set({ tipo1s: [] })}
+      />
+      <FilaChips
+        label="Categoría"
         todosLabel="Todos"
         items={tipos}
         selected={filtros.tipos}

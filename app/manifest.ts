@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'Sistema punto de venta para vendedores de tiendas Bazzar',
     start_url: '/cadena',
     display: 'standalone',
-    background_color: '#f4f1ec',
-    theme_color: '#1a1a1a',
+    background_color: '#f1f5f9',
+    theme_color: '#002B4E',
     orientation: 'landscape-primary',
     icons: [
       {

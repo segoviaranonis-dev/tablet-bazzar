@@ -77,7 +77,7 @@ export const GradaVentaStrip = memo(function GradaVentaStrip({
   stockError,
   onStockRetry,
 }: Props) {
-  const { addPar, count, setOpen, flashGrada } = usePosCart();
+  const { addPar, flashGrada } = usePosCart();
   const [errMsg, setErrMsg] = useState<string | null>(null);
 
   const laterales = useMemo(() => panelesLateralesVentas(ubicaciones), [ubicaciones]);
@@ -153,7 +153,7 @@ export const GradaVentaStrip = memo(function GradaVentaStrip({
         </div>
       ) : null}
 
-      <div className="relative px-1 pb-2 pt-1.5 pr-[5.75rem]">
+      <div className="relative px-1 pb-2 pt-1.5">
         <div className="flex justify-center">
           <div className="inline-flex max-w-full items-end gap-[1cm]">
             <StockTiendaMiniPanel bloque={laterales.izquierda} loading={bootLoading} accent="blue" />
@@ -198,22 +198,6 @@ export const GradaVentaStrip = memo(function GradaVentaStrip({
 
             <StockTiendaMiniPanel bloque={laterales.derecha} loading={bootLoading} accent="purple" />
           </div>
-        </div>
-
-        <div className="absolute bottom-2 right-2 z-20">
-          <TouchPad
-            onClick={() => setOpen(true)}
-            ariaLabel={`Ver carrito, ${count} pares`}
-            className="relative flex min-h-[80px] min-w-[80px] flex-col items-center justify-center rounded-2xl border-[3px] border-bazzar-naranja bg-gradient-to-br from-orange-50 to-white px-2 shadow-lg active:scale-[0.98]"
-          >
-            <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-bazzar-naranja">Carrito</span>
-            <span className="text-3xl font-extrabold leading-none tabular-nums text-rimec-azul">{count}</span>
-            {count > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-6 min-w-[24px] items-center justify-center rounded-full bg-bazzar-naranja px-1.5 text-[11px] font-bold text-white">
-                {count > 99 ? "99+" : count}
-              </span>
-            )}
-          </TouchPad>
         </div>
       </div>
     </div>

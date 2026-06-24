@@ -17,7 +17,7 @@ async function testQuery() {
       SELECT
         COALESCE(NULLIF(btrim(tv.descp_tipo::text), ''), '(sin tipo)') AS id,
         COUNT(*)::int AS cnt
-      FROM public.deposito_tienda_fernando_adultos s
+      FROM public.deposito_2_fernando_adultos_tienda s
       LEFT JOIN public.material mat ON mat.id = s.material_id
       LEFT JOIN public.color col ON col.id = s.color_id
       LEFT JOIN public.marca_v2 mv ON mv.id_marca = s.marca_id

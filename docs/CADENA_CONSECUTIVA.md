@@ -13,13 +13,14 @@ Recorrer el catálogo de una **marca** en una tienda como una **cadena ordenada*
 
 ## Ley de agrupación (2 niveles)
 
-Documento canónico holding: `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md`
+Documento canónico holding: `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md` · **terciaria:** [agrupacion_terciaria.md](../../../.claude/2_modulos/2.4_tablet_bazzar/agrupacion_terciaria.md)
 
-| Nivel | Clave | UI en cadena |
-|-------|-------|----------------|
-| **1 — Principal** | `linea` + `referencia` + `material` | Mazo de naipes (colores apilados) abajo-derecha |
-| **2 — Color** | `color_id` / `color_code` | Swipe ↑↓ · tap en mazo · filtro Color (pendiente UI) |
-| **Cadena** | `linea` + `referencia` (sin material) | Carruseles vertical + horizontal · swipe ←→ |
+| Capa | Clave | UI en cadena |
+|------|-------|----------------|
+| **Terciaria** | Marca + estilo (hero) | Acota sidebar L+R y ←→ entre refs |
+| **Secundaria** | `linea` + `referencia` | Carrusel vertical (solo si >1 ref en cohorte) |
+| **Primaria** | L+R+Mat | Footer materiales · ←→ si 1 ref |
+| **Color** | `color_id` / `color_code` | Mazo · ↑↓ |
 
 Implementación: `lib/cadena.ts` → `buildCadenaFromFilas`, `ParLineaRef`, `GrupoPrincipal`.
 

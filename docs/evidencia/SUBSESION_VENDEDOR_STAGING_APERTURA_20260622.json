@@ -1,0 +1,31 @@
+{
+  "id": "SUBSESION-VENDEDOR-STAGING-Apertura-20260622",
+  "fecha": "2026-06-22",
+  "modulo": "tablet-bazzar",
+  "codigo": "2.4.2.3.1",
+  "accion": "documentacion_chusar_indexacion",
+  "estado": "pre_cierre_smoke_pendiente",
+  "chusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_VENDEDOR_STAGING.md",
+  "subsesion": ".claude/4_etapas/SUBSESION_TABLET_VENDEDOR_STAGING_20260622.md",
+  "bd_verificada": {
+    "ticket_pos_staging": true,
+    "ticket_pos_staging_linea": true,
+    "ticket_venta_pos": true,
+    "vendedor_bazzar_rows": 4,
+    "deposito_2100_rows": 6256
+  },
+  "vendedores": [
+    { "ente": "Fernando", "codigo": "36", "nombre": "Sara Caceres" },
+    { "ente": "Fernando", "codigo": "2", "nombre": "Marly Arami Mendoza Mora" },
+    { "ente": "San Martín", "codigo": "505", "nombre": "Cynthia Elena Barboza" },
+    { "ente": "San Martín", "codigo": "18", "nombre": "Sergio Martinez" }
+  ],
+  "indices_actualizados": [
+    ".claude/2_modulos/2.4_tablet_bazzar/INDICE.md",
+    "tablet-bazzar/docs/README.md",
+    "nexus-navegador-holding/config/etapas.json",
+    "nexus-navegador-holding/config/arbol-modulos.json",
+    ".claude/4_etapas/ACTUAL.md"
+  ],
+  "siguiente": "smoke_e2e_cedula_codigo_cerrar_oro"
+}

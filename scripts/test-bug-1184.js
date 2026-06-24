@@ -7,7 +7,7 @@ const { Pool } = pg;
 
 const DATABASE_URL = process.env.DATABASE_URL;
 const pool = new Pool({ connectionString: DATABASE_URL });
-const tabla = 'deposito_tienda_fernando_adultos';
+const tabla = 'deposito_2_fernando_adultos_tienda';
 
 async function testBug() {
   console.log('🐛 Reproduciendo bug: buscar="1184" + marca="VIZZANO"\n');

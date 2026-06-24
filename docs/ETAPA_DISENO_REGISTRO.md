@@ -180,4 +180,24 @@ Log ACTVITTA: `control_central/reportes_upload/gap_cierre_actvitta_continua.log`
 
 ---
 
-**Registrado por Cursor — etapa CERRADA 2026-06-10. Ver ETAPA_DISENO_CIERRE.md.**
+## Cierre aspecto visual hero v16 — 2026-06-16 ✅
+
+**Director:** «perfecto perfecto perfecto» · **Build:** `v16-fill-host`
+
+| Área | Cambio |
+|------|--------|
+| Layout | `.cadena-hero-host` `absolute inset-0` — foto = card completo |
+| Overlay | `LineaReferenciaHero` absolute top — sin gradiente niebla |
+| CSS img | `object-fit: contain` + `transform: scale(1.12)` |
+| Rechazado | `object-fit: cover` (recorte punta/tacón ACTVITTA 4202.500) |
+| Rechazado | `58vmin` / `aspect-square` / `bg-[#F8FAFC]` marco |
+| Componente | `HeroProductImage` — sin `width`/`height` HTML en img |
+| Evidencia | `docs/evidencia/ETAPA_ASPECTO_VISUAL_CIERRE_20260616.json` |
+
+**Docs cierre:** [ETAPA_ASPECTO_VISUAL_CIERRE.md](./ETAPA_ASPECTO_VISUAL_CIERRE.md) · holding [ETAPA_TABLET_ASPECTO_VISUAL_CERRADA.md](../../.claude/4_etapas/ETAPA_TABLET_ASPECTO_VISUAL_CERRADA.md) · [CHUSAR_ASPECTO_VISUAL_HERO.md](../../.claude/2_modulos/2.4_tablet_bazzar/CHUSAR_ASPECTO_VISUAL_HERO.md)
+
+**Git/deploy:** pendiente Claude Code post-aprobación Director.
+
+---
+
+**Registrado por Cursor — etapa aspecto visual CERRADA 2026-06-16. Histórico dock: ETAPA_DISENO_CIERRE.md (2026-06-10).**

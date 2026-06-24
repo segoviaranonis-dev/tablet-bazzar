@@ -13,6 +13,7 @@ import {
   SQL_GENERO_ID,
   SQL_MARCA_ID,
   SQL_MARCA_LABEL,
+  SQL_TIPO_1_ID,
 } from "@/lib/server/pilar-triangulo";
 import {
   filtrosFromSearchParams as filtrosFromSp,
@@ -29,6 +30,7 @@ export type FiltrosSql = {
   marcas: string[];
   estilos: string[];
   tipos: string[];
+  tipo1s: string[];
   /** linea|referencia */
   referenciaKeys: string[];
   buscar: string;
@@ -41,6 +43,7 @@ export const FILTROS_SQL_VACIOS: FiltrosSql = {
   marcas: [],
   estilos: [],
   tipos: [],
+  tipo1s: [],
   referenciaKeys: [],
   buscar: "",
 };
@@ -86,6 +89,7 @@ const SELECT_CORE = `
     ${SQL_GENERO_LABEL} AS genero,
     ${SQL_ESTILO_LABEL} AS estilo,
     COALESCE(NULLIF(btrim(tv.descp_tipo::text), ''), '(sin tipo)') AS tipo_v2,
+    COALESCE(NULLIF(btrim(t1.descp_tipo_1::text), ''), '(sin tipo 1)') AS tipo_1,
     NULLIF(btrim(mat.descripcion::text), '') AS descp_material,
     NULLIF(btrim(col.nombre::text), '') AS descp_color,
     NULLIF(btrim(s.imagen_nombre::text), '') AS imagen_nombre,
@@ -102,6 +106,7 @@ function fromClause(tabla: string): string {
     LEFT JOIN public.genero g ON g.id = ${SQL_GENERO_ID}
     LEFT JOIN public.grupo_estilo_v2 ge ON ge.id_grupo_estilo = ${SQL_GRUPO_ESTILO_ID}
     LEFT JOIN public.tipo_v2 tv ON tv.id_tipo = s.tipo_v2_id
+    LEFT JOIN public.tipo_1 t1 ON t1.id_tipo_1 = ${SQL_TIPO_1_ID}
   `;
 }
 
@@ -129,6 +134,12 @@ function appendTipos(f: FiltrosSql, w: WhereBuild, excluir: boolean): void {
   if (excluir || f.tipos.length === 0) return;
   w.params.push(f.tipos);
   w.sql += ` AND COALESCE(NULLIF(btrim(tv.descp_tipo::text), ''), '(sin tipo)') = ANY($${w.params.length}::text[])`;
+}
+
+function appendTipo1(f: FiltrosSql, w: WhereBuild, excluir: boolean): void {
+  if (excluir || f.tipo1s.length === 0) return;
+  w.params.push(f.tipo1s);
+  w.sql += ` AND COALESCE(NULLIF(btrim(t1.descp_tipo_1::text), ''), '(sin tipo 1)') = ANY($${w.params.length}::text[])`;
 }
 
 function appendRefs(f: FiltrosSql, w: WhereBuild, excluir: boolean): void {
@@ -163,13 +174,14 @@ function appendMarcaCadena(f: FiltrosSql, w: WhereBuild): void {
 
 function buildWhere(
   f: FiltrosSql,
-  excluir: "generos" | "marcas" | "estilos" | "tipos" | "referenciaKeys" | "buscar" | null,
+  excluir: "generos" | "marcas" | "estilos" | "tipos" | "tipo1s" | "referenciaKeys" | "buscar" | null,
 ): WhereBuild {
   const w: WhereBuild = { sql: `s.cantidad > 0 AND ${SQL_SOLO_CALZADO}`, params: [] };
   appendGenero(f, w, excluir === "generos");
   appendMarcas(f, w, excluir === "marcas");
   appendEstilos(f, w, excluir === "estilos");
   appendTipos(f, w, excluir === "tipos");
+  appendTipo1(f, w, excluir === "tipo1s");
   appendRefs(f, w, excluir === "referenciaKeys");
   appendBuscar(f, w, excluir === "buscar");
   appendMarcaCadena(f, w);
@@ -258,6 +270,22 @@ export function sqlChipsTipo(tabla: string, f: FiltrosSql): { text: string; para
         COUNT(*)::int AS cnt
       ${fromClause(tabla)}
       WHERE ${w.sql}
+      GROUP BY 1 ORDER BY 1
+    `,
+    params: w.params,
+  };
+}
+
+export function sqlChipsTipo1(tabla: string, f: FiltrosSql): { text: string; params: unknown[] } {
+  const w = buildWhere(f, "tipo1s");
+  return {
+    text: `
+      SELECT
+        COALESCE(NULLIF(btrim(t1.descp_tipo_1::text), ''), '(sin tipo 1)') AS id,
+        COUNT(*)::int AS cnt
+      ${fromClause(tabla)}
+      WHERE ${w.sql}
+        AND COALESCE(NULLIF(btrim(t1.descp_tipo_1::text), ''), '(sin tipo 1)') <> '(sin tipo 1)'
       GROUP BY 1 ORDER BY 1
     `,
     params: w.params,
@@ -410,6 +438,7 @@ export function filtrosFromBody(body: Record<string, unknown>): FiltrosSql {
     marcas: arr(body.marcas),
     estilos: arr(body.estilos),
     tipos: arr(body.tipos),
+    tipo1s: arr(body.tipo1s),
     referenciaKeys: arr(body.referenciaKeys ?? body.refs),
     buscar: typeof body.buscar === "string" ? body.buscar : "",
     marcaCadena: typeof body.marca === "string" ? body.marca : undefined,

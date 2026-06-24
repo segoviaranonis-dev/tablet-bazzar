@@ -16,7 +16,7 @@ INGRESAR muestra **214 p** en ref `1184.1101`. Vista Ventas mostraba **1 grada**
 |-------|--------|
 | `lib/server/stock-par-grada.ts` | SQL agregado por par L+R (código o FK) |
 | `/api/deposito/{id}/live` | `scope=par_lr` · cohorte 3 ubicaciones |
-| `useStockOtrosLocales` | Poll por `parNav`, no molécula |
+| `useStockOtrosLocales` | Poll `/live` · `par` + **color activo** (molécula) · reintentar |
 | `StockOtrasTiendasDock` | Mini-tabla tallas (stands) |
 | `GradaVentaStrip` | Total «214 p» + botones 34–40 · carrito |
 

@@ -4,7 +4,7 @@
 **URL alternativa (typo histórico):** ~~tableta-bazzar.vercel.app~~ — no usar  
 **Repo:** https://github.com/segoviaranonis-dev/tablet-bazzar  
 **Rama deploy:** `main` (auto-deploy al push)  
-**Último deploy producción:** 2026-06-17 · hotfix stands Ventas par L+R (`SUBSESION_VENTAS_STANDS_HOTFIX_20260617`)
+**Último deploy producción:** 2026-06-10 · commit `e1cd6f1` · `dpl_DB2cjFdokXbpeFF4JuajkiVZ8Jui`
 
 ---
 

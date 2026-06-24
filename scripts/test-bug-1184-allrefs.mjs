@@ -17,7 +17,7 @@ const pool = new pg.Pool({
   ssl: env.DATABASE_URL?.includes("localhost") ? false : { rejectUnauthorized: false },
 });
 
-const tabla = "deposito_tienda_fernando_adultos";
+const tabla = "deposito_2_fernando_adultos_tienda";
 const marca = "VIZZANO";
 const buscar = "1184";
 

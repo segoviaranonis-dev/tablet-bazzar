@@ -25,21 +25,23 @@ Tres módulos tablet + caja Report forman un **micro-ecosistema cerrado** por ti
                     ┌─────────────────────────┐
                     │ registro_st_vt_rc_*     │  Retail Excel
                     └───────────┬─────────────┘
-                                │ sync (Report)
+                                │ sync (Report) · DELETE+INSERT
                                 ▼
 ┌───────────────────────────────────────────────────────────┐
 │ deposito_1_{2100|2900|2400|2700|3100|3200}_tienda  (×6) │
 └───────────────────────────┬───────────────────────────────┘
-                            │ COBRAR / cancelar
+                            │ sync-cart / cancelar (± stock)
                             ▼
-              ticket_pos_staging + ticket_pos_staging_linea
-                            │ Listo → caja
-                            ▼
-              ticket_bandeja_cajero  ◄─── Report bandeja + Tablet caja-read
+              ticket_bandeja_cajero  ◄─── tablet + Report caja
+              (ABIERTO → PENDIENTE_CAJA → CSV → handoff)
                             │ Enviar a Empaque
                             ▼
-              bobeda_venta_pos  ◄─── Empaque · import histórico · Sales Report Bazzar
+              bobeda_venta_pos  ◄─── Empaque · import histórico
 ```
+
+**Doc:** [LOGICA_OPERATIVA_POS_BAZZAR.md](./LOGICA_OPERATIVA_POS_BAZZAR.md)
+
+**Legacy (no escribir):** `ticket_pos_staging`, `ticket_venta_pos`.
 
 **Prohibido:** mezclar bandeja y Bobeda en una tabla (error legacy `ticket_venta_pos`).
 
@@ -71,8 +73,8 @@ Toda API valida sesión + `cliente_id`. Cross-store dock = **lectura** stock aje
 
 | Estado | Tabla | Tablet Ventas | Tablet Empaque | Report Caja |
 |--------|-------|---------------|----------------|-------------|
-| ABIERTO/CERRADO | staging | Panel Facturas | — | — |
-| PENDIENTE_CAJA | bandeja | En caja Report | — | Bandeja A |
+| ABIERTO | bandeja | Panel FACTURAS (reabierto) | — | — |
+| PENDIENTE_CAJA | bandeja | En caja Report (solo abrir) | — | Bandeja operativa |
 | CSV_DESCARGADO | bandeja | — | — | Bandeja A |
 | PENDIENTE_ENTREGA | bobeda | — | Bandeja | — |
 | ENTREGADO | bobeda | — | Archivo | Card B ⏳ |
@@ -82,7 +84,7 @@ Toda API valida sesión + `cliente_id`. Cross-store dock = **lectura** stock aje
 ## 6. Leyes de robustez
 
 1. **Transacciones** — staging+stock, handoff bandeja→bobeda: BEGIN/COMMIT.
-2. **Guard 409** — sync depósito bloqueado si staging ABIERTO/CERRADO.
+2. **Guard 409** — sync depósito bloqueado si bandeja `ABIERTO` (no PENDIENTE_CAJA).
 3. **Sin filtro “hoy”** en pendientes bandeja/bobeda operativos.
 4. **Bobeda inmutable** — usuarios solo `ENTREGADO`; Director ANULADO.
 5. **Import histórico** — solo `bobeda_venta_pos`, nunca bandeja.
