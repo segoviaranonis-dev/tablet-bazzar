@@ -300,11 +300,11 @@ function DropdownMultiLabels({
         onClick={() => setOpen(!open)}
         className={`flex min-h-[44px] w-full items-center justify-between gap-2 rounded-xl border-2 px-4 text-xs font-semibold transition ${
           selectedLabels.length
-            ? "border-orange-500 bg-orange-50 text-orange-800"
-            : "border-slate-200 bg-white text-slate-600"
+            ? "border-orange-500 bg-orange-50 text-orange-900"
+            : "border-slate-200 bg-white text-slate-700"
         }`}
       >
-        <span className="truncate text-left">
+        <span className="truncate text-left text-inherit">
           {selectedLabels.length === 0
             ? emptyLabel
             : preview.length
