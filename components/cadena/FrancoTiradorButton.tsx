@@ -33,6 +33,8 @@ type Props = {
   clienteId: number;
   scope: FrancoTiradorScope | null;
   disabled?: boolean;
+  /** Modo sniper activo — catálogo reemplazado por hits Franco Tirador. */
+  active?: boolean;
   /** Carga la cadena detrás con los hits del sniper. */
   onAplicar: (hits: DepositoFila[], meta: FrancoAplicarMeta) => void;
 };
@@ -394,7 +396,7 @@ function defaultEstiloLabels(estilos: FrancoFilterItem[], estiloDefault?: string
   return [estilos[0].label];
 }
 
-export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: Props) {
+export function FrancoTiradorButton({ clienteId, scope, disabled, active = false, onAplicar }: Props) {
   const [open, setOpen] = useState(false);
   const [filtros, setFiltros] = useState<FrancoTiradorFilterState>({
     tipo: "",
@@ -559,11 +561,28 @@ export function FrancoTiradorButton({ clienteId, scope, disabled, onAplicar }: P
         type="button"
         disabled={disabled || !scope}
         onClick={openModal}
-        title="Franco Tirador"
-        aria-label="Franco Tirador"
-        className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/40 bg-white/10 text-white transition active:bg-white/25 disabled:opacity-40"
+        title={
+          active
+            ? "Franco Tirador ACTIVO — catálogo muy limitado por el filtro sniper"
+            : "Franco Tirador — filtro sniper"
+        }
+        aria-label={
+          active ? "Franco Tirador activo — catálogo limitado" : "Franco Tirador — abrir filtro sniper"
+        }
+        aria-pressed={active}
+        className={`relative flex h-9 w-9 items-center justify-center rounded-lg border-2 transition disabled:opacity-40 ${
+          active
+            ? "border-[#fef08a] bg-[#facc15] text-[#001829] shadow-[0_0_0_2px_#002B4E,0_0_16px_rgba(250,204,21,0.95)]"
+            : "border-white/40 bg-white/10 text-white active:bg-white/25"
+        }`}
       >
-        <TargetIcon className="h-5 w-5" />
+        <TargetIcon className={`h-5 w-5 ${active ? "stroke-[2.5]" : ""}`} />
+        {active ? (
+          <span
+            className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#002B4E] bg-[#ea580c]"
+            aria-hidden
+          />
+        ) : null}
       </button>
 
       {open && scope ? (

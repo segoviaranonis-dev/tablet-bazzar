@@ -35,8 +35,6 @@ import {
 import { parseFiltrosCadenaFromUrl } from "@/lib/cadena-entrada-filtros";
 import {
   filaActiva,
-  parseCodigoVendedor,
-  resolveCodigoEnCadena,
   resolveIndicesForFila,
 } from "@/lib/codigo-busqueda";
 import { GradaVentaStrip } from "@/components/pos/GradaVentaStrip";
@@ -111,9 +109,7 @@ function CadenaVistaInner() {
   const [colorG2, setColorG2] = useState(0);
   const [detalleOpen, setDetalleOpen] = useState(false);
 
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
-  const [searchError, setSearchError] = useState<string | null>(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const opciones = useMemo(() => {
     const estMap = new Map<string, number>();
@@ -385,7 +381,7 @@ function CadenaVistaInner() {
   );
 
   useCadenaKeyboard({
-    enabled: !loading && !searchOpen && paresAll.length > 0 && !sinResultados,
+    enabled: !loading && !settingsOpen && paresAll.length > 0 && !sinResultados,
     onLeft: () => stepHorizontalNav(-1),
     onRight: () => stepHorizontalNav(1),
     onUp: () => stepVertical(-1),
@@ -406,31 +402,6 @@ function CadenaVistaInner() {
     onUp: () => stepVertical(-1),
     onDown: () => stepVertical(1),
   });
-
-  function runSearch() {
-    setSearchError(null);
-    const parsed = parseCodigoVendedor(searchInput);
-    if (!parsed) {
-      setSearchError("Formato inválido");
-      return;
-    }
-    const idx = resolveCodigoEnCadena(paresAll, parsed);
-    if (!idx) {
-      setSearchError("No encontrado");
-      return;
-    }
-    setFiltros(FILTROS_VACIOS);
-    setEstiloPanelOpen(false);
-    setReferenciaPanelOpen(false);
-    const target = paresAll[idx.parIndex];
-    setCohorteEstilo((target?.estilo ?? "").trim());
-    setParKeyActivo(target?.key ?? null);
-    setGrupoIndex(idx.grupoIndex);
-    setColorG1(idx.colorGrupo1Index);
-    setColorG2(idx.colorGrupo2Index);
-    setSearchOpen(false);
-    setSearchInput("");
-  }
 
   const depConfig = getDepositoByClienteId(clienteId);
   const francoScope: FrancoTiradorScope | null =
@@ -478,6 +449,7 @@ function CadenaVistaInner() {
       <FrancoTiradorButton
         clienteId={clienteId}
         scope={francoScope}
+        active={francoNav}
         disabled={!activa}
         onAplicar={onFrancoAplicar}
       />
@@ -486,7 +458,7 @@ function CadenaVistaInner() {
   );
 
   const header = (
-    <CadenaVistaHeader marca={marca} onSearch={() => setSearchOpen(true)} toolbar={headerToolbar} />
+    <CadenaVistaHeader marca={marca} onSettings={() => setSettingsOpen(true)} toolbar={headerToolbar} />
   );
 
   const asideFotos = parNav && paresNav.length > 1 ? (
@@ -712,43 +684,34 @@ function CadenaVistaInner() {
         </footer>
       )}
 
-      {searchOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-rimec-azul/40 p-2 pb-6 backdrop-blur-sm">
-          <div className="bazzar-card bazzar-card-accent w-full max-w-lg p-4 shadow-2xl">
-            <input
-              type="text"
-              inputMode="decimal"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              placeholder="1122.828"
-              className="bazzar-input font-mono text-xl"
-              autoFocus
-            />
-            {searchError && (
-              <p className="mt-2 text-center text-sm text-red-800">{searchError}</p>
-            )}
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              <TouchPad
-                onClick={() => {
-                  setSearchOpen(false);
-                  setSearchError(null);
-                }}
-                ariaLabel="Cerrar"
-                className="min-h-[52px] border border-[#cbd5e1] text-lg"
-              >
-                ✕
-              </TouchPad>
-              <TouchPad
-                onClick={runSearch}
-                ariaLabel="Ir"
-                className="min-h-[52px] rounded-xl bg-bazzar-naranja text-lg text-white active:bg-bazzar-naranja-dark"
-              >
-                →
-              </TouchPad>
+      {settingsOpen ? (
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-rimec-azul/40 p-4 pb-8 backdrop-blur-sm sm:items-center">
+          <div className="bazzar-card w-full max-w-sm p-6 shadow-2xl">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#f1f5f9] text-[#002B4E]">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6" aria-hidden>
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                </svg>
+              </span>
+              <div>
+                <h2 className="text-lg font-bold text-[#002B4E]">Ajustes</h2>
+                <p className="text-sm text-slate-500">Próximamente</p>
+              </div>
             </div>
+            <p className="text-sm text-slate-600">
+              Opciones de vista y comportamiento del catálogo en esta pantalla. Lógica pendiente de definición.
+            </p>
+            <TouchPad
+              onClick={() => setSettingsOpen(false)}
+              ariaLabel="Cerrar ajustes"
+              className="mt-5 min-h-[52px] w-full rounded-xl border border-[#cbd5e1] text-base font-semibold text-[#002B4E]"
+            >
+              Cerrar
+            </TouchPad>
           </div>
         </div>
-      )}
+      ) : null}
 
       <PosCartSheet />
     </div>
