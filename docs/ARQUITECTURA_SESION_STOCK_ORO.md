@@ -5,17 +5,20 @@
 | Capa | Tabla | Stock sesión |
 |------|--------|--------------|
 | **Intermedia** | `ticket_pos_staging` | **Sí** |
-| **Bandeja cajero** | UI Report (pre-Bobeda) | No |
-| **Bobeda (ORO)** | `ticket_venta_pos` | No · permanente |
+| **Bandeja cajero** | `ticket_bandeja_cajero` | No · efímera |
+| **Bobeda (ORO)** | `bobeda_venta_pos` | No · permanente |
 
-Doc protocolo: `.claude/2_modulos/2.3_report/caja_bazzar/P-12_PROTOCOLO_CAJERO_BOBINA.md`
+Doc protocolo: `.claude/2_modulos/2.3_report/caja_bazzar/P-12_PROTOCOLO_CAJERO_BOBINA.md`  
+Migración: `supabase/migrations/005_bandeja_bobeda_split.sql`
 
 ## Dos tablas BD (técnico)
 
 | Rol | Tabla | Qué es |
 |-----|--------|--------|
 | **Intermedia (sesión)** | `ticket_pos_staging` + `ticket_pos_staging_linea` | Vive solo mientras dura la sesión de stock del día |
-| **ORO (permanente)** | `ticket_venta_pos` | Venta efectiva — sobrevive al “Actualizar stock” |
+| **Bandeja cajero** | `ticket_bandeja_cajero` | Cola Report · CSV · titular · quitar par |
+| **Bobeda ORO** | `bobeda_venta_pos` | Histórico importable · Empaque · Sales Report Bazzar futuro |
+| ~~Legacy~~ | `ticket_venta_pos` | Deprecar tras smoke · fallback pre-005 |
 
 ## Vendedor (RRHH + PIN)
 

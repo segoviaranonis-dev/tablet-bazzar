@@ -118,16 +118,33 @@ async function tablaStagingExiste(pool: ReturnType<typeof getPool>): Promise<boo
   return Boolean(r.rows[0]?.reg);
 }
 
-async function tieneColumnaClientsBazaarId(pool: ReturnType<typeof getPool>): Promise<boolean> {
-  const r = await pool.query<{ ok: boolean }>(
-    `
-      SELECT EXISTS (
-        SELECT 1 FROM information_schema.columns
-        WHERE table_schema = 'public' AND table_name = 'ticket_venta_pos' AND column_name = 'clients_bazaar_id'
-      ) AS ok
-    `,
+async function tablaBandejaExiste(pool: ReturnType<typeof getPool>): Promise<boolean> {
+  const r = await pool.query<{ reg: boolean }>(
+    `SELECT to_regclass('public.ticket_bandeja_cajero') IS NOT NULL AS reg`,
   );
-  return Boolean(r.rows[0]?.ok);
+  return Boolean(r.rows[0]?.reg);
+}
+
+async function deletePendienteBandejaPorStaging(
+  client: { query: (text: string, params?: unknown[]) => Promise<{ rowCount: number | null }> },
+  pool: ReturnType<typeof getPool>,
+  stagingId: number,
+): Promise<number> {
+  if (await tablaBandejaExiste(pool)) {
+    const del = await client.query(
+      `DELETE FROM public.ticket_bandeja_cajero
+       WHERE staging_id = $1
+         AND upper(btrim(estado)) IN ('PENDIENTE_CAJA', 'CSV_DESCARGADO')`,
+      [stagingId],
+    );
+    return del.rowCount ?? 0;
+  }
+  const del = await client.query(
+    `DELETE FROM public.ticket_venta_pos
+     WHERE staging_id = $1 AND upper(btrim(estado)) = 'EMITIDO'`,
+    [stagingId],
+  );
+  return del.rowCount ?? 0;
 }
 
 function mapLinea(row: {
@@ -550,12 +567,29 @@ export async function editarLineasStaging(
   return { ok: true, staging };
 }
 
-function codigoTicket(clienteId: number, idx: number): string {
+function codigoBandeja(clienteId: number, idx: number): string {
   const t = new Date();
   const pad = (n: number) => String(n).padStart(2, "0");
   const stamp = `${t.getFullYear()}${pad(t.getMonth() + 1)}${pad(t.getDate())}${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`;
   const rnd = Math.random().toString(36).slice(2, 6).toUpperCase();
   return `POS-${clienteId}-${stamp}-${rnd}-${idx}`;
+}
+
+async function reservarNumeroFiFa(
+  client: { query: (text: string, params?: unknown[]) => Promise<{ rows: { last_num: string }[] }> },
+  clienteId: number,
+): Promise<number> {
+  const r = await client.query(
+    `
+      INSERT INTO public.pos_fi_fa_counter (cliente_id, last_num)
+      VALUES ($1, 1)
+      ON CONFLICT (cliente_id) DO UPDATE
+        SET last_num = public.pos_fi_fa_counter.last_num + 1
+      RETURNING last_num
+    `,
+    [clienteId],
+  );
+  return Number(r.rows[0]?.last_num ?? 1);
 }
 
 export async function promoverStagingAOro(
@@ -574,20 +608,28 @@ export async function promoverStagingAOro(
   }
   if (staging.total_pares === 0) return { ok: false, error: "Ticket sin pares activos" };
 
-  const oroExists = await pool.query<{ reg: boolean }>(
-    `SELECT to_regclass('public.ticket_venta_pos') IS NOT NULL AS reg`,
-  );
-  if (!oroExists.rows[0]?.reg) {
-    return { ok: false, error: "Tabla ticket_venta_pos no existe" };
+  const bandejaOk = await tablaBandejaExiste(pool);
+  if (!bandejaOk) {
+    const legacy = await pool.query<{ reg: boolean }>(
+      `SELECT to_regclass('public.ticket_venta_pos') IS NOT NULL AS reg`,
+    );
+    if (!legacy.rows[0]?.reg) {
+      return { ok: false, error: "Tabla ticket_bandeja_cajero no existe — aplicar migración 005" };
+    }
   }
 
-  const conFkCliente = await tieneColumnaClientsBazaarId(pool);
   const tickets: TicketEmitido[] = [];
   let idx = 0;
 
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
+
+    const numeroFiFa = await reservarNumeroFiFa(client, clienteId);
+    await client.query(
+      `UPDATE public.ticket_pos_staging SET numero_fi_fa = $1 WHERE id = $2 AND cliente_id = $3`,
+      [numeroFiFa, stagingId, clienteId],
+    );
 
     for (const linea of staging.lineas.filter((l) => l.activo && l.cantidad > 0)) {
       const baseSnap = linea.snapshot_json ?? {};
@@ -604,17 +646,17 @@ export async function promoverStagingAOro(
 
       for (let u = 0; u < linea.cantidad; u++) {
         idx += 1;
-        const codigo = codigoTicket(clienteId, idx);
+        const codigo = codigoBandeja(clienteId, idx);
         const snapshot = JSON.stringify(snapObj);
 
-        if (conFkCliente) {
+        if (bandejaOk) {
           await client.query(
             `
-              INSERT INTO public.ticket_venta_pos (
-                codigo_ticket, cliente_id, marca, vendedor_id, vendedor_nombre, vendedor_bazzar_id, staging_id,
+              INSERT INTO public.ticket_bandeja_cajero (
+                codigo_bandeja, cliente_id, marca, vendedor_id, vendedor_nombre, vendedor_bazzar_id, staging_id,
                 cedula_cliente, clients_bazaar_id, linea_id, referencia_id, material_id, color_id,
-                grada, cantidad, estado, snapshot_json
-              ) VALUES ($1,$2,$3,NULL,$4,$5,$6,$7,$8,$9,$10,$11,$12,1,'EMITIDO',$13::jsonb)
+                grada, cantidad, estado, snapshot_json, numero_fi_fa, numero_factura_legal
+              ) VALUES ($1,$2,$3,NULL,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,1,'PENDIENTE_CAJA',$14::jsonb,$15,$16)
             `,
             [
               codigo,
@@ -631,6 +673,8 @@ export async function promoverStagingAOro(
               linea.color_id,
               linea.grada,
               snapshot,
+              numeroFiFa,
+              null,
             ],
           );
         } else {
@@ -638,9 +682,9 @@ export async function promoverStagingAOro(
             `
               INSERT INTO public.ticket_venta_pos (
                 codigo_ticket, cliente_id, marca, vendedor_id, vendedor_nombre, vendedor_bazzar_id, staging_id,
-                cedula_cliente, linea_id, referencia_id, material_id, color_id,
+                cedula_cliente, clients_bazaar_id, linea_id, referencia_id, material_id, color_id,
                 grada, cantidad, estado, snapshot_json
-              ) VALUES ($1,$2,$3,NULL,$4,$5,$6,$7,$8,$9,$10,$11,1,'EMITIDO',$12::jsonb)
+              ) VALUES ($1,$2,$3,NULL,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,1,'EMITIDO',$14::jsonb)
             `,
             [
               codigo,
@@ -650,6 +694,7 @@ export async function promoverStagingAOro(
               staging.vendedor_bazzar_id,
               stagingId,
               staging.cedula_cliente,
+              staging.clients_bazaar_id,
               linea.linea_id,
               linea.referencia_id,
               linea.material_id,
@@ -708,4 +753,272 @@ export async function enviarStagingACaja(
   const oro = await promoverStagingAOro(stagingId, clienteId);
   if (!oro.ok) return oro;
   return { ok: true, tickets: oro.tickets, total_pares: oro.total_pares };
+}
+
+/** Devuelve factura de caja (ORO) a staging ABIERTO para editar ítems desde portada /cadena. */
+export async function reabrirStagingDesdeCaja(
+  stagingId: number,
+  clienteId: number,
+): Promise<{ ok: true; staging: StagingTicket } | { ok: false; error: string }> {
+  if (!isDatabaseConfigured()) return { ok: false, error: "Base de datos no configurada" };
+  const pool = getPool();
+  const cur = await fetchStagingById(pool, stagingId);
+  if (!cur || cur.cliente_id !== clienteId) return { ok: false, error: "Factura no encontrada" };
+  if (cur.estado !== "ORO") {
+    return { ok: false, error: `Solo se reabre desde caja (estado ORO). Actual: ${cur.estado}` };
+  }
+
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    const deleted = await deletePendienteBandejaPorStaging(client, pool, stagingId);
+    if (!deleted) {
+      await client.query("ROLLBACK");
+      return { ok: false, error: "Ya no está pendiente en caja (enviado a Empaque o sin filas)" };
+    }
+    await client.query(
+      `UPDATE public.ticket_pos_staging
+       SET estado = 'ABIERTO', cerrado_at = NULL, promovido_at = NULL
+       WHERE id = $1 AND cliente_id = $2`,
+      [stagingId, clienteId],
+    );
+    await client.query("COMMIT");
+  } catch (e) {
+    await client.query("ROLLBACK");
+    return { ok: false, error: e instanceof Error ? e.message : "Error al reabrir factura" };
+  } finally {
+    client.release();
+  }
+
+  const staging = await fetchStagingById(pool, stagingId);
+  if (!staging) return { ok: false, error: "Error al leer factura reabierta" };
+  return { ok: true, staging };
+}
+
+/** CERRADO → ABIERTO o ORO → ABIERTO (saca de caja Report). */
+export async function reabrirStagingCompleto(
+  stagingId: number,
+  clienteId: number,
+): Promise<{ ok: true; staging: StagingTicket } | { ok: false; error: string }> {
+  const pool = getPool();
+  const cur = await fetchStagingById(pool, stagingId);
+  if (!cur || cur.cliente_id !== clienteId) return { ok: false, error: "Pedido no encontrado" };
+  if (cur.estado === "ORO") return reabrirStagingDesdeCaja(stagingId, clienteId);
+  if (cur.estado === "CERRADO") return cambiarEstadoStaging(stagingId, clienteId, "ABIERTO");
+  if (cur.estado === "ABIERTO") return { ok: true, staging: cur };
+  return { ok: false, error: `Estado ${cur.estado} no se puede continuar` };
+}
+
+/** Sincroniza staging ABIERTO con carrito (valida stock tras liberar reserva del pedido). */
+export async function sincronizarStagingDesdeCarrito(
+  stagingId: number,
+  input: ConfirmarTicketsInput & { vendedor_bazzar_id: number },
+  vendedor: VendedorBazzar,
+): Promise<CrearStagingResult> {
+  if (!isDatabaseConfigured()) return { ok: false, error: "Base de datos no configurada" };
+  if (!input.items.length) {
+    const cancel = await cancelarPedidoCompleto(stagingId, input.cliente_id);
+    if (!cancel.ok) return cancel;
+    return {
+      ok: true,
+      staging: cancel.staging,
+      codigo_staging: cancel.staging.codigo_staging,
+      total_pares: 0,
+    };
+  }
+
+  const config = getDepositoByClienteId(input.cliente_id);
+  if (!config) return { ok: false, error: "Depósito de tienda inválido" };
+
+  const vb = await getVendedorById(input.vendedor_bazzar_id, input.cliente_id);
+  if (!vb || vb.id_vendedor !== vendedor.id_vendedor) {
+    return { ok: false, error: "Vendedor no válido en esta sucursal" };
+  }
+
+  const pool = getPool();
+  const cur = await fetchStagingById(pool, stagingId);
+  if (!cur || cur.cliente_id !== input.cliente_id) return { ok: false, error: "Pedido no encontrado" };
+  if (cur.estado !== "ABIERTO") return { ok: false, error: "Solo editable en estado ABIERTO" };
+
+  const cedula = input.cedula?.replace(/\D/g, "").trim() || null;
+  const clienteNombre = input.cliente?.nombre?.trim() || null;
+  const clienteApellido = input.cliente?.apellido?.trim() || null;
+  const clienteTelefono = input.cliente?.telefono?.trim() || null;
+  const clienteRuc = input.cliente?.ruc?.replace(/\D/g, "").trim() || null;
+  const clienteRazonSocial = input.cliente?.razon_social?.trim() || null;
+
+  let clientsBazaarId: number | null = cur.clients_bazaar_id;
+  if (cedula && (clienteNombre || clienteTelefono)) {
+    const origen = origenDesdeTiendaClienteId(input.cliente_id);
+    if (!origen) return { ok: false, error: "Tienda sin origen entes válido" };
+    clientsBazaarId = await upsertClienteBazaar({
+      cedula,
+      nombre: clienteNombre,
+      apellido: clienteApellido,
+      telefono: clienteTelefono,
+      ruc: clienteRuc,
+      razon_social: clienteRazonSocial,
+      origen,
+    });
+  }
+
+  const snapshotCliente = JSON.stringify({
+    nombre: clienteNombre,
+    apellido: clienteApellido,
+    telefono: clienteTelefono,
+    cedula,
+  });
+
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    await restaurarLineasStaging(client, config.tabla, cur.lineas);
+
+    for (const item of input.items) {
+      if (item.cantidad <= 0) throw new Error("Cantidad inválida");
+      if (!item.grada?.trim()) throw new Error("Grada requerida");
+      const q = sqlCantidadMolecula(config.tabla, {
+        linea_id: item.linea_id,
+        referencia_id: item.referencia_id,
+        material_id: item.material_id,
+        color_id: item.color_id,
+        grada: item.grada,
+      });
+      const stockR = await client.query<{ cantidad: number }>(q.text, q.params);
+      const stock = Number(stockR.rows[0]?.cantidad) || 0;
+      if (stock < item.cantidad) {
+        throw new Error(
+          `Sin stock: ${item.linea_codigo}.${item.referencia_codigo} G.${item.grada} (hay ${Math.floor(stock)}, pediste ${item.cantidad})`,
+        );
+      }
+    }
+
+    await client.query(`DELETE FROM public.ticket_pos_staging_linea WHERE staging_id = $1`, [stagingId]);
+
+    for (const item of input.items) {
+      await moverStockMolecula(
+        client,
+        config.tabla,
+        {
+          linea_id: item.linea_id,
+          referencia_id: item.referencia_id,
+          material_id: item.material_id,
+          color_id: item.color_id,
+          grada: item.grada,
+        },
+        item.cantidad,
+      );
+
+      const snap = JSON.stringify({
+        linea_codigo: item.linea_codigo,
+        referencia_codigo: item.referencia_codigo,
+        material_code: item.material_code,
+        color_code: item.color_code,
+        descp_material: item.descp_material,
+        descp_color: item.descp_color,
+        estilo: item.estilo,
+        marca_label: item.marca_label,
+        imagen_url: item.imagen_url,
+      });
+      await client.query(
+        `
+          INSERT INTO public.ticket_pos_staging_linea (
+            staging_id, linea_id, referencia_id, material_id, color_id, grada, cantidad, snapshot_json
+          ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8::jsonb)
+        `,
+        [
+          stagingId,
+          item.linea_id,
+          item.referencia_id,
+          item.material_id,
+          item.color_id,
+          item.grada,
+          item.cantidad,
+          snap,
+        ],
+      );
+    }
+
+    await client.query(
+      `
+        UPDATE public.ticket_pos_staging
+        SET vendedor_bazzar_id = $1, vendedor_nombre = $2,
+            cedula_cliente = $3, clients_bazaar_id = $4, snapshot_cliente = $5::jsonb
+        WHERE id = $6 AND cliente_id = $7
+      `,
+      [
+        vendedor.id_vendedor,
+        vendedor.nombre_display,
+        cedula,
+        clientsBazaarId,
+        snapshotCliente,
+        stagingId,
+        input.cliente_id,
+      ],
+    );
+
+    await client.query("COMMIT");
+  } catch (e) {
+    await client.query("ROLLBACK");
+    return { ok: false, error: e instanceof Error ? e.message : "Error al sincronizar carrito" };
+  } finally {
+    client.release();
+  }
+
+  const staging = await fetchStagingById(pool, stagingId);
+  if (!staging) return { ok: false, error: "Error al leer pedido actualizado" };
+  return {
+    ok: true,
+    staging,
+    codigo_staging: staging.codigo_staging,
+    total_pares: staging.total_pares,
+  };
+}
+
+/** Cancela pedido en cualquier estado pendiente (ABIERTO, CERRADO, ORO) y restaura stock. */
+export async function cancelarPedidoCompleto(
+  stagingId: number,
+  clienteId: number,
+): Promise<{ ok: true; staging: StagingTicket } | { ok: false; error: string }> {
+  if (!isDatabaseConfigured()) return { ok: false, error: "Base de datos no configurada" };
+  const pool = getPool();
+  const cur = await fetchStagingById(pool, stagingId);
+  if (!cur || cur.cliente_id !== clienteId) return { ok: false, error: "Pedido no encontrado" };
+  if (cur.estado === "CANCELADO") return { ok: false, error: "El pedido ya está cancelado" };
+
+  const config = getDepositoByClienteId(clienteId);
+  if (!config) return { ok: false, error: "Tienda inválida" };
+
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+
+    if (cur.estado === "ORO") {
+      const deleted = await deletePendienteBandejaPorStaging(client, pool, stagingId);
+      if (!deleted) {
+        await client.query("ROLLBACK");
+        return { ok: false, error: "Ya no está pendiente en caja (enviado a Empaque o sin filas)" };
+      }
+    }
+
+    await restaurarLineasStaging(client, config.tabla, cur.lineas);
+
+    await client.query(
+      `UPDATE public.ticket_pos_staging
+       SET estado = 'CANCELADO', cancelado_at = now(), cerrado_at = NULL, promovido_at = NULL
+       WHERE id = $1 AND cliente_id = $2`,
+      [stagingId, clienteId],
+    );
+
+    await client.query("COMMIT");
+  } catch (e) {
+    await client.query("ROLLBACK");
+    return { ok: false, error: e instanceof Error ? e.message : "Error al cancelar pedido" };
+  } finally {
+    client.release();
+  }
+
+  const staging = await fetchStagingById(pool, stagingId);
+  if (!staging) return { ok: false, error: "Error al leer pedido cancelado" };
+  return { ok: true, staging };
 }

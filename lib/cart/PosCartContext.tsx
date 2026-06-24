@@ -29,6 +29,7 @@ type PosCartContextValue = {
   removeItem: (key: string) => void;
   updateQty: (key: string, delta: number) => void;
   clear: () => void;
+  replaceCart: (session: PosSession, items: PosCartItem[]) => void;
 };
 
 const PosCartContext = createContext<PosCartContextValue | null>(null);
@@ -114,6 +115,11 @@ export function PosCartProvider({ children }: { children: ReactNode }) {
 
   const clear = useCallback(() => setItems([]), []);
 
+  const replaceCart = useCallback((s: PosSession, next: PosCartItem[]) => {
+    setSessionState(s);
+    setItems(next);
+  }, []);
+
   const count = useMemo(() => items.reduce((s, i) => s + i.cantidad, 0), [items]);
 
   const value = useMemo(
@@ -129,8 +135,9 @@ export function PosCartProvider({ children }: { children: ReactNode }) {
       removeItem,
       updateQty,
       clear,
+      replaceCart,
     }),
-    [items, count, open, flashGrada, session, addPar, removeItem, updateQty, clear],
+    [items, count, open, flashGrada, session, addPar, removeItem, updateQty, clear, replaceCart],
   );
 
   return <PosCartContext.Provider value={value}>{children}</PosCartContext.Provider>;

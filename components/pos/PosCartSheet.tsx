@@ -1,11 +1,17 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { gradaLabelCorta } from "@/lib/cart/pos-cart";
 import { dispatchPosCobrarOk } from "@/lib/pos-events";
 import { usePosCart } from "@/lib/cart/PosCartContext";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { useVendedorTienda } from "@/lib/vendedor/VendedorContext";
+import {
+  clearReopenSession,
+  getReopenStagingId,
+  readReopenCliente,
+  readReopenVendedor,
+} from "@/lib/pos-reopen";
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { VendedorEnteSwitch } from "@/components/pos/VendedorEnteSwitch";
 
@@ -37,7 +43,7 @@ export function PosCartSheet() {
   const { items, count, open, setOpen, removeItem, updateQty, clear, session } = usePosCart();
   const tiendaId = session?.cliente_id ?? null;
   const tiendaActiva = tiendaId ? getDepositoByClienteId(tiendaId) : null;
-  const { vendedor, identificarPin, clearVendedor } = useVendedorTienda(tiendaId ?? 2100);
+  const { vendedor, identificarPin, clearVendedor, setVendedor } = useVendedorTienda(tiendaId ?? 2100);
   const [cliente, setCliente] = useState<ClienteForm>(limpiarCliente);
   const [modo, setModo] = useState<ModoCliente>("idle");
   const [pantallaCliente, setPantallaCliente] = useState<PantallaCliente>("buscar");
@@ -49,6 +55,27 @@ export function PosCartSheet() {
   const [error, setError] = useState<string | null>(null);
   const [okMsg, setOkMsg] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+
+  useEffect(() => {
+    if (!open) return;
+    const reopenCliente = readReopenCliente();
+    const reopenVendedor = readReopenVendedor();
+    if (reopenCliente) {
+      setCliente({
+        cedula: reopenCliente.cedula,
+        nombre: reopenCliente.nombre,
+        apellido: reopenCliente.apellido,
+        telefono: reopenCliente.telefono,
+        razon_social: "",
+        ruc: "",
+      });
+      setModo("encontrado");
+      setPantallaCliente("buscar");
+    }
+    if (reopenVendedor) {
+      setVendedor(reopenVendedor);
+    }
+  }, [open, setVendedor]);
 
   if (!open) return null;
 
@@ -68,6 +95,35 @@ export function PosCartSheet() {
 
   function vaciarCarrito() {
     if (pending) return;
+    const stagingId = getReopenStagingId();
+    if (stagingId && session) {
+      startTransition(async () => {
+        try {
+          const r = await fetch(`/api/tickets/staging/${stagingId}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ cliente_id: session.cliente_id, accion: "cancelar_pedido" }),
+          });
+          const data = await r.json();
+          if (!r.ok || !data.ok) {
+            setError(data.error ?? "No se pudo cancelar el pedido");
+            return;
+          }
+          clearReopenSession();
+          clear();
+          resetClienteUi();
+          clearVendedor();
+          setCodigoVendedorOpen(false);
+          setCodigoVendedor("");
+          setError(null);
+          dispatchPosCobrarOk();
+          setOpen(false);
+        } catch {
+          setError("Error de red — intentá de nuevo");
+        }
+      });
+      return;
+    }
     clear();
     resetClienteUi();
     clearVendedor();
@@ -252,6 +308,8 @@ export function PosCartSheet() {
               }
             : null;
 
+        const reopenStagingId = getReopenStagingId();
+
         const r = await fetch("/api/tickets/confirm", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -259,6 +317,7 @@ export function PosCartSheet() {
             cliente_id: session.cliente_id,
             marca: session.marca,
             vendedor_bazzar_id: vendedor.id_vendedor,
+            staging_id: reopenStagingId,
             cedula,
             cliente: payloadCliente,
             items: items.map((i) => ({
@@ -287,6 +346,7 @@ export function PosCartSheet() {
           return;
         }
 
+        clearReopenSession();
         clear();
         resetClienteUi();
         clearVendedor();

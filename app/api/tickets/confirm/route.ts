@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readTabletSession } from "@/lib/auth/tablet-session";
-import { crearStagingDesdeCarrito, enviarStagingACaja } from "@/lib/server/tickets-staging";
+import { crearStagingDesdeCarrito, enviarStagingACaja, sincronizarStagingDesdeCarrito } from "@/lib/server/tickets-staging";
 import type { ConfirmarTicketsInput } from "@/lib/server/tickets-confirm";
 import { getVendedorById } from "@/lib/server/vendedor-bazzar";
 
@@ -31,7 +31,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: false, error: "Vendedor no válido para esta tienda" }, { status: 400 });
   }
 
-  const result = await crearStagingDesdeCarrito({ ...body, vendedor_bazzar_id: vendedorId }, vendedor);
+  const stagingId =
+    body.staging_id != null && Number.isFinite(Number(body.staging_id)) ? Number(body.staging_id) : null;
+
+  const result = stagingId
+    ? await sincronizarStagingDesdeCarrito(stagingId, { ...body, vendedor_bazzar_id: vendedorId }, vendedor)
+    : await crearStagingDesdeCarrito({ ...body, vendedor_bazzar_id: vendedorId }, vendedor);
 
   if (!result.ok) {
     return NextResponse.json(result, { status: 400 });

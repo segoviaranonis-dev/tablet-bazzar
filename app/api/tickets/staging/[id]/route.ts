@@ -2,10 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { readTabletSession } from "@/lib/auth/tablet-session";
 import {
   cambiarEstadoStaging,
+  cancelarPedidoCompleto,
   editarLineasStaging,
+  enviarStagingACaja,
   promoverStagingAOro,
+  reabrirStagingCompleto,
+  reabrirStagingDesdeCaja,
   type LineaPatch,
 } from "@/lib/server/tickets-staging";
+import { getVendedorById } from "@/lib/server/vendedor-bazzar";
 
 type RouteCtx = { params: Promise<{ id: string }> };
 
@@ -83,6 +88,38 @@ export async function POST(req: NextRequest, ctx: RouteCtx) {
       if (!r.ok) return NextResponse.json(r, { status: 400 });
       const { ok: _ok, ...rest } = r;
       return NextResponse.json({ ok: true, ...rest });
+    }
+    case "enviar_caja": {
+      const r = await enviarStagingACaja(stagingId, clienteId);
+      if (!r.ok) return NextResponse.json(r, { status: 400 });
+      const { ok: _ok, ...rest } = r;
+      return NextResponse.json({ ok: true, ...rest });
+    }
+    case "reabrir_caja": {
+      const r = await reabrirStagingDesdeCaja(stagingId, clienteId);
+      if (!r.ok) return NextResponse.json(r, { status: 400 });
+      return NextResponse.json({ ok: true, staging: r.staging });
+    }
+    case "cancelar_pedido": {
+      const r = await cancelarPedidoCompleto(stagingId, clienteId);
+      if (!r.ok) return NextResponse.json(r, { status: 400 });
+      return NextResponse.json({ ok: true, staging: r.staging });
+    }
+    case "reabrir_completo": {
+      const r = await reabrirStagingCompleto(stagingId, clienteId);
+      if (!r.ok) return NextResponse.json(r, { status: 400 });
+      const vb = await getVendedorById(r.staging.vendedor_bazzar_id, clienteId);
+      return NextResponse.json({
+        ok: true,
+        staging: r.staging,
+        vendedor: vb
+          ? {
+              id_vendedor: vb.id_vendedor,
+              nombre_display: vb.nombre_display,
+              ente_codigo: vb.ente_codigo,
+            }
+          : null,
+      });
     }
     default:
       return NextResponse.json({ ok: false, error: "accion inválida" }, { status: 400 });

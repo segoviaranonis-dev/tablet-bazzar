@@ -305,7 +305,7 @@ export default function CadenaMarcaPage() {
             onClick={() => setStagingOpen(true)}
             className="rounded border border-white/30 bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase text-white"
           >
-            Tickets
+            Facturas
           </button>
         }
       />

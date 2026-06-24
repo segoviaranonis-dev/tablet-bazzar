@@ -82,12 +82,15 @@ function qty(v: number | string): number {
   return Number.isFinite(n) ? n : 0;
 }
 
-export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string): ParLineaRef[] {
-  const mf = normMarca(marcaFiltro);
-  const deMarca = filas.filter((f) => normMarca(f.marca) === mf && qty(f.cantidad) > 0);
+export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro?: string): ParLineaRef[] {
+  let rows = filas.filter((f) => qty(f.cantidad) > 0);
+  if (marcaFiltro != null && marcaFiltro.trim() !== "") {
+    const mf = normMarca(marcaFiltro);
+    rows = rows.filter((f) => normMarca(f.marca) === mf);
+  }
   const porLR = new Map<string, DepositoFila[]>();
 
-  for (const f of deMarca) {
+  for (const f of rows) {
     const k = keyLR(f);
     if (!porLR.has(k)) porLR.set(k, []);
     porLR.get(k)!.push(f);
@@ -95,11 +98,11 @@ export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string)
 
   const pares: ParLineaRef[] = [];
 
-  for (const [, rows] of porLR) {
-    rows.sort(compareLineaRef);
-    const first = rows[0];
+  for (const [, lrRows] of porLR) {
+    lrRows.sort(compareLineaRef);
+    const first = lrRows[0];
     const porMat = new Map<string, DepositoFila[]>();
-    for (const r of rows) {
+    for (const r of lrRows) {
       const mk = keyLRM(r);
       if (!porMat.has(mk)) porMat.set(mk, []);
       porMat.get(mk)!.push(r);
@@ -128,7 +131,7 @@ export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro: string)
       referencia: String(first.referencia_codigo_proveedor).trim(),
       estilo: first.estilo,
       gruposMaterial,
-      coloresLR: dedupeColores(rows),
+      coloresLR: dedupeColores(lrRows),
     });
   }
 

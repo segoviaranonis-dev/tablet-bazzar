@@ -31,7 +31,7 @@ export const VIEW_MODES: ViewMode[] = [
     description: "Cierra el ciclo · bandeja Bobeda · QC · imposible bypass vendedor/cajero",
     href: "/empaque",
     icon: "📦",
-    enabled: false,
+    enabled: true,
   },
 ];
 

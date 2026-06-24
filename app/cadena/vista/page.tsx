@@ -11,8 +11,10 @@ import { TouchPad } from "@/components/cadena/TouchPad";
 import { HeroProductImage } from "@/components/cadena/HeroProductImage";
 import { CadenaVistaHeader } from "@/components/cadena/CadenaVistaHeader";
 import { TrianguloResumenStrip } from "@/components/cadena/TrianguloResumenStrip";
+import { FrancoTiradorButton, type FrancoTiradorScope } from "@/components/cadena/FrancoTiradorButton";
 import type { DepositoFila, ParLineaRef } from "@/lib/cadena";
-import { resolverNavCohorte } from "@/lib/cadena";
+import { buildCadenaFromFilas, resolverNavCohorte } from "@/lib/cadena";
+import { pickNavFranco, type FrancoAplicarMeta } from "@/lib/franco-tirador";
 import {
   FILTROS_VACIOS,
   filtrarPares,
@@ -40,8 +42,9 @@ import {
 import { GradaVentaStrip } from "@/components/pos/GradaVentaStrip";
 import { PosCartSheet } from "@/components/pos/PosCartSheet";
 import { VendedorPinButton } from "@/components/pos/VendedorPinButton";
-import { StagingTicketsPanel } from "@/components/pos/StagingTicketsPanel";
+import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { usePosCart } from "@/lib/cart/PosCartContext";
+import { consumeOpenCartFlag } from "@/lib/pos-reopen";
 
 const DEFAULT_CLIENTE = 2100;
 
@@ -68,7 +71,7 @@ function PanelColapsable({
 function CadenaVistaInner() {
   const router = useRouter();
   const sp = useSearchParams();
-  const { setSession } = usePosCart();
+  const { setSession, setOpen } = usePosCart();
   const marca = sp.get("marca") ?? "";
   const clienteId = Number(sp.get("cliente_id") ?? DEFAULT_CLIENTE);
   const qBuscar = sp.get("q") ?? "";
@@ -97,6 +100,8 @@ function CadenaVistaInner() {
 
   const [cohorteEstilo, setCohorteEstilo] = useState("");
   const [parKeyActivo, setParKeyActivo] = useState<string | null>(null);
+  /** Franco Tirador reemplazó paresAll — sidebar muestra todos los hits, sin cohorte por estilo. */
+  const [francoNav, setFrancoNav] = useState(false);
 
   const [grupoIndex, setGrupoIndex] = useState(0);
   const [colorG1, setColorG1] = useState(0);
@@ -104,7 +109,6 @@ function CadenaVistaInner() {
   const [detalleOpen, setDetalleOpen] = useState(false);
 
   const [searchOpen, setSearchOpen] = useState(false);
-  const [stagingOpen, setStagingOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [searchError, setSearchError] = useState<string | null>(null);
 
@@ -137,10 +141,17 @@ function CadenaVistaInner() {
   const {
     paresNav,
     parIndex,
-  } = useMemo(
-    () => resolverNavCohorte(paresBase, cohorteEstilo, parKeyActivo),
-    [paresBase, cohorteEstilo, parKeyActivo],
-  );
+  } = useMemo(() => {
+    if (francoNav) {
+      const idx = parKeyActivo ? paresBase.findIndex((p) => p.key === parKeyActivo) : 0;
+      return {
+        paresNav: paresBase,
+        parIndex: idx >= 0 ? idx : 0,
+        estiloCohorte: cohorteEstilo,
+      };
+    }
+    return resolverNavCohorte(paresBase, cohorteEstilo, parKeyActivo);
+  }, [francoNav, paresBase, cohorteEstilo, parKeyActivo]);
 
   const estiloItems = useMemo(
     () => opciones.estilos.map((e) => ({ id: e.value, label: e.value, sub: `${e.count}` })),
@@ -219,6 +230,12 @@ function CadenaVistaInner() {
   }, [marca, clienteId, setSession]);
 
   useEffect(() => {
+    if (consumeOpenCartFlag()) {
+      setOpen(true);
+    }
+  }, [setOpen]);
+
+  useEffect(() => {
     if (!marca) {
       router.replace("/cadena");
       return;
@@ -229,6 +246,7 @@ function CadenaVistaInner() {
     if (seed) {
       serverPosicionRef.current = seed.posicion ?? null;
       setParesAll(seed.paresAll);
+      setFrancoNav(false);
       setCohorteEstilo("");
       setParKeyActivo(null);
       setLoading(false);
@@ -239,6 +257,7 @@ function CadenaVistaInner() {
 
     setLoading(true);
     setPosApplied(false);
+    setFrancoNav(false);
     setCohorteEstilo("");
     setParKeyActivo(null);
     serverPosicionRef.current = null;
@@ -262,6 +281,12 @@ function CadenaVistaInner() {
   useEffect(() => {
     if (!posApplied || bootFiltrosKeyRef.current === filtrosKey) return;
     setDetalleOpen(false);
+    if (
+      francoNav &&
+      (filtros.estilos.length > 0 || filtros.referenciaKeys.length > 0 || filtros.colorCode)
+    ) {
+      setFrancoNav(false);
+    }
     const next = resolveFiltrosChangeState(paresBase, filtros, posUrl.pi);
     if (next) {
       const bootPar = paresBase[next.parIndex] ?? paresBase[0];
@@ -274,7 +299,7 @@ function CadenaVistaInner() {
       setColorG2(next.colorG2);
     }
     bootFiltrosKeyRef.current = filtrosKey;
-  }, [filtrosKey, paresBase, posApplied, filtros, posUrl.pi]);
+  }, [filtrosKey, paresBase, posApplied, filtros, posUrl.pi, francoNav]);
 
   useEffect(() => {
     if (!posApplied || !parNav || !filtros.colorCode) return;
@@ -404,18 +429,48 @@ function CadenaVistaInner() {
     setSearchInput("");
   }
 
+  const depConfig = getDepositoByClienteId(clienteId);
+  const francoScope: FrancoTiradorScope | null =
+    activa?.tipo_v2 && activa.tipo_v2 !== "(sin tipo)"
+      ? {
+          tipo: activa.tipo_v2,
+          marcaIdDefault: activa.marca_id ?? null,
+          marcaLabelDefault: (activa.marca ?? "").trim(),
+          estiloDefault: (activa.estilo ?? parNav?.estilo ?? "").trim(),
+          colorDefault: String(activa.descp_color ?? "").trim(),
+          depositoLabel: depConfig ? `${depConfig.ente} · ${depConfig.tipo}` : `Tienda ${clienteId}`,
+        }
+      : null;
+
+  const onFrancoAplicar = useCallback((hits: DepositoFila[], meta: FrancoAplicarMeta) => {
+    const pares = buildCadenaFromFilas(hits);
+    if (pares.length === 0) return;
+    setFiltros(FILTROS_VACIOS);
+    setEstiloPanelOpen(false);
+    setReferenciaPanelOpen(false);
+    setParesAll(pares);
+    setFrancoNav(true);
+    const nav = pickNavFranco(pares, meta.grada);
+    setCohorteEstilo(nav.estilo);
+    setParKeyActivo(nav.parKey);
+    setGrupoIndex(nav.grupoIndex);
+    setColorG1(nav.colorG1);
+    setColorG2(nav.colorG2);
+    setPosApplied(true);
+    bootFiltrosKeyRef.current = "||";
+  }, []);
+
   const header = (
     <>
       <CadenaVistaHeader marca={marca} onSearch={() => setSearchOpen(true)} />
       <div className="bazzar-band-subtle flex items-center justify-end gap-2 px-3 py-2">
         <VendedorPinButton clienteId={clienteId} />
-        <button
-          type="button"
-          onClick={() => setStagingOpen(true)}
-          className="rounded-lg border border-[#002B4E]/20 bg-white px-3 py-2 text-[10px] font-bold uppercase text-[#002B4E]"
-        >
-          Tickets
-        </button>
+        <FrancoTiradorButton
+          clienteId={clienteId}
+          scope={francoScope}
+          disabled={!activa}
+          onAplicar={onFrancoAplicar}
+        />
       </div>
     </>
   );
@@ -689,7 +744,6 @@ function CadenaVistaInner() {
       )}
 
       <PosCartSheet />
-      <StagingTicketsPanel clienteId={clienteId} open={stagingOpen} onClose={() => setStagingOpen(false)} />
     </div>
   );
 }

@@ -56,6 +56,9 @@ export type ConfirmarTicketsInput = {
 
   cliente?: ClienteWebConfirm | null;
 
+  /** Pedido reabierto desde Facturas — actualiza staging existente al CERRAR. */
+  staging_id?: number | null;
+
   items: Pick<
 
     PosCartItem,
