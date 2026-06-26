@@ -96,10 +96,9 @@ export default function LoginPage() {
 
           <div className="mt-6 border-t border-slate-200 pt-6 text-center">
             <p className="text-sm text-slate-600">
-              Acceso para <span className="font-semibold text-rimec-azul">ADMIN</span> y{" "}
-              <span className="font-semibold text-rimec-azul">SU</span>
+              Acceso <span className="font-semibold text-rimec-azul">ADMIN</span> tienda y{" "}
+              <span className="font-semibold text-rimec-azul">VENDEDOR</span> POS
             </p>
-            <p className="mt-1 text-xs text-slate-500">Vendedores: usar Report</p>
           </div>
         </div>
 
