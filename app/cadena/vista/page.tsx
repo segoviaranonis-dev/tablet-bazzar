@@ -33,6 +33,7 @@ import {
   resolveFiltrosChangeState,
 } from "@/lib/cadena-boot";
 import { parseFiltrosCadenaFromUrl } from "@/lib/cadena-entrada-filtros";
+import { parseReferenciaKeysParam } from "@/lib/filtros-url";
 import {
   filaActiva,
   resolveIndicesForFila,
@@ -41,6 +42,8 @@ import { GradaVentaStrip } from "@/components/pos/GradaVentaStrip";
 import { PosCartSheet } from "@/components/pos/PosCartSheet";
 import { PosCartIconButton } from "@/components/pos/PosCartIconButton";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
+import { MULTI_MARCA } from "@/lib/server/cadena-server";
+import type { ColorEstandar } from "@/lib/tono/colores-estandar";
 import { usePosCart } from "@/lib/cart/PosCartContext";
 import { consumeOpenCartFlag } from "@/lib/pos-reopen";
 
@@ -70,7 +73,9 @@ function CadenaVistaInner() {
   const router = useRouter();
   const sp = useSearchParams();
   const { setSession, setOpen } = usePosCart();
-  const marca = sp.get("marca") ?? "";
+  const marcaRaw = sp.get("marca") ?? "";
+  const multiMarca = sp.get("multi") === "1" || marcaRaw === MULTI_MARCA;
+  const marcaLabel = multiMarca ? "Varias marcas" : marcaRaw;
   const clienteId = Number(sp.get("cliente_id") ?? DEFAULT_CLIENTE);
   const qBuscar = sp.get("q") ?? "";
   const posUrl = {
@@ -79,6 +84,10 @@ function CadenaVistaInner() {
     c1: Number(sp.get("c1") ?? NaN),
     c2: Number(sp.get("c2") ?? NaN),
   };
+
+  const refKeysUrl = useMemo(() => parseReferenciaKeysParam(sp.get("refs")), [sp]);
+  /** Entrada multi-ref / multi-marca — navegar todos los pares sin cohorte por estilo. */
+  const navPlano = multiMarca || refKeysUrl.length > 1;
 
   const [paresAll, setParesAll] = useState<ParLineaRef[]>([]);
   const [loading, setLoading] = useState(true);
@@ -110,6 +119,21 @@ function CadenaVistaInner() {
   const [detalleOpen, setDetalleOpen] = useState(false);
 
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [tonoCatalog, setTonoCatalog] = useState<ColorEstandar[]>([]);
+  const [tonoEditable, setTonoEditable] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/tono", { cache: "no-store" })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.estandar?.length) setTonoCatalog(d.estandar);
+      })
+      .catch(() => {});
+    fetch("/api/auth/me", { credentials: "same-origin", cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => setTonoEditable(Number(d?.user?.rol_id) === 1))
+      .catch(() => setTonoEditable(false));
+  }, []);
 
   const opciones = useMemo(() => {
     const estMap = new Map<string, number>();
@@ -134,23 +158,30 @@ function CadenaVistaInner() {
     return { estilos, referencias: refs, colores: [] as { code: string; label: string; count: number }[] };
   }, [paresAll, filtros.estilos, filtros.referenciaKeys]);
 
-  const pares = useMemo(() => filtrarPares(paresAll, filtros), [paresAll, filtros]);
+  const pares = useMemo(() => {
+    const f =
+      filtros.referenciaKeys.length > 0
+        ? filtros
+        : refKeysUrl.length > 0
+          ? { ...filtros, referenciaKeys: refKeysUrl }
+          : filtros;
+    return filtrarPares(paresAll, f);
+  }, [paresAll, filtros, refKeysUrl]);
   const paresBase = useMemo(() => (pares.length > 0 ? pares : paresAll), [pares, paresAll]);
 
   const {
     paresNav,
     parIndex,
   } = useMemo(() => {
-    if (francoNav) {
+    if (francoNav || navPlano) {
       const idx = parKeyActivo ? paresBase.findIndex((p) => p.key === parKeyActivo) : 0;
       return {
         paresNav: paresBase,
         parIndex: idx >= 0 ? idx : 0,
-        estiloCohorte: cohorteEstilo,
       };
     }
     return resolverNavCohorte(paresBase, cohorteEstilo, parKeyActivo);
-  }, [francoNav, paresBase, cohorteEstilo, parKeyActivo]);
+  }, [francoNav, navPlano, paresBase, cohorteEstilo, parKeyActivo]);
 
   const estiloItems = useMemo(
     () => opciones.estilos.map((e) => ({ id: e.value, label: e.value, sub: `${e.count}` })),
@@ -198,6 +229,17 @@ function CadenaVistaInner() {
     return p.toString();
   }, [sp]);
 
+  const reloadCadena = useCallback(() => {
+    if (!marcaRaw || !Number.isFinite(clienteId)) return;
+    fetch(`/api/deposito/${clienteId}/cadena?${cadenaQueryString}`, { cache: "no-store" })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.error) throw new Error(data.error);
+        setParesAll(data.paresAll ?? data.pares ?? []);
+      })
+      .catch(() => {});
+  }, [marcaRaw, clienteId, cadenaQueryString]);
+
   const applyBootPosition = useCallback(
     (serverPos?: { parIndex: number; grupoIndex: number; colorG1: number; colorG2: number } | null) => {
       if (paresBase.length === 0) return;
@@ -210,7 +252,7 @@ function CadenaVistaInner() {
       });
       const bootPar = paresBase[nav.parIndex] ?? paresBase[0];
       if (bootPar) {
-        setCohorteEstilo((bootPar.estilo ?? "").trim());
+        if (!navPlano) setCohorteEstilo((bootPar.estilo ?? "").trim());
         setParKeyActivo(bootPar.key);
       }
       setGrupoIndex(nav.grupoIndex);
@@ -219,14 +261,14 @@ function CadenaVistaInner() {
       setPosApplied(true);
       bootFiltrosKeyRef.current = filtrosKey;
     },
-    [paresBase, posUrl, qBuscar, filtros, filtrosKey],
+    [paresBase, posUrl, qBuscar, filtros, filtrosKey, navPlano],
   );
 
   useEffect(() => {
-    if (marca && Number.isFinite(clienteId)) {
-      setSession({ cliente_id: clienteId, marca });
+    if (marcaRaw && Number.isFinite(clienteId)) {
+      setSession({ cliente_id: clienteId, marca: multiMarca ? MULTI_MARCA : marcaRaw });
     }
-  }, [marca, clienteId, setSession]);
+  }, [marcaRaw, multiMarca, clienteId, setSession]);
 
   useEffect(() => {
     if (consumeOpenCartFlag()) {
@@ -235,13 +277,13 @@ function CadenaVistaInner() {
   }, [setOpen]);
 
   useEffect(() => {
-    if (!marca) {
+    if (!marcaRaw) {
       router.replace("/cadena");
       return;
     }
 
     const qKey = cadenaQueryKey(cadenaQueryString);
-    const seed = loadCadenaSeed(clienteId, marca, qKey);
+    const seed = loadCadenaSeed(clienteId, marcaRaw, qKey);
     if (seed) {
       serverPosicionRef.current = seed.posicion ?? null;
       setParesAll(seed.paresAll);
@@ -270,7 +312,11 @@ function CadenaVistaInner() {
       })
       .catch((e) => setError(e instanceof Error ? e.message : "Error"))
       .finally(() => setLoading(false));
-  }, [marca, clienteId, router, cadenaQueryString]);
+  }, [marcaRaw, clienteId, router, cadenaQueryString]);
+
+  useEffect(() => {
+    if (navPlano && paresBase.length > 1) setSidebarParOpen(true);
+  }, [navPlano, paresBase.length]);
 
   useEffect(() => {
     if (posApplied || paresBase.length === 0 || loading) return;
@@ -290,7 +336,7 @@ function CadenaVistaInner() {
     if (next) {
       const bootPar = paresBase[next.parIndex] ?? paresBase[0];
       if (bootPar) {
-        setCohorteEstilo((bootPar.estilo ?? "").trim());
+        if (!navPlano) setCohorteEstilo((bootPar.estilo ?? "").trim());
         setParKeyActivo(bootPar.key);
       }
       setGrupoIndex(next.grupoIndex);
@@ -298,7 +344,7 @@ function CadenaVistaInner() {
       setColorG2(next.colorG2);
     }
     bootFiltrosKeyRef.current = filtrosKey;
-  }, [filtrosKey, paresBase, posApplied, filtros, posUrl.pi, francoNav]);
+  }, [filtrosKey, paresBase, posApplied, filtros, posUrl.pi, francoNav, navPlano]);
 
   useEffect(() => {
     if (!posApplied || !parNav || !filtros.colorCode) return;
@@ -321,8 +367,10 @@ function CadenaVistaInner() {
       const p = paresNav[i];
       if (p) {
         setParKeyActivo(p.key);
-        const e = (p.estilo ?? "").trim();
-        if (e && e !== cohorteEstilo) setCohorteEstilo(e);
+        if (!navPlano) {
+          const e = (p.estilo ?? "").trim();
+          if (e && e !== cohorteEstilo) setCohorteEstilo(e);
+        }
       }
       if (!filtros.colorCode) {
         setGrupoIndex(0);
@@ -331,7 +379,7 @@ function CadenaVistaInner() {
       }
       setDetalleOpen(false);
     },
-    [paresNav, filtros.colorCode, cohorteEstilo],
+    [paresNav, filtros.colorCode, cohorteEstilo, navPlano],
   );
 
   const stepPar = useCallback((delta: number) => irPar(parIndex + delta), [irPar, parIndex]);
@@ -458,7 +506,7 @@ function CadenaVistaInner() {
   );
 
   const header = (
-    <CadenaVistaHeader marca={marca} onSettings={() => setSettingsOpen(true)} toolbar={headerToolbar} />
+    <CadenaVistaHeader marca={marcaLabel} onSettings={() => setSettingsOpen(true)} toolbar={headerToolbar} />
   );
 
   const asideFotos = parNav && paresNav.length > 1 ? (
@@ -582,8 +630,11 @@ function CadenaVistaInner() {
                         referenciaPanelOpen={referenciaPanelOpen}
                         estilosActivos={filtros.estilos.length}
                         referenciasActivas={filtros.referenciaKeys.length}
+                        tonoCatalog={tonoCatalog}
+                        tonoEditable={tonoEditable}
                         onToggleEstiloPanel={() => setEstiloPanelOpen((v) => !v)}
                         onToggleReferenciaPanel={() => setReferenciaPanelOpen((v) => !v)}
+                        onTonoAssigned={reloadCadena}
                       />
                       {detalleOpen && (
                         <div className="absolute inset-x-0 bottom-0 max-h-[42%] overflow-y-auto border-t border-[#e2e8f0] bg-[#f1f5f9] px-4 py-4">
@@ -674,7 +725,7 @@ function CadenaVistaInner() {
             activa={activa}
             par={par}
             clienteId={clienteId}
-            marca={marca}
+            marca={multiMarca ? (activa?.marca ?? marcaRaw) : marcaRaw}
             ubicaciones={stockUbicaciones}
             cantidadLocal={cantidadLocal}
             bootLoading={stockBootLoading}

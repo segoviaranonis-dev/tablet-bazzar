@@ -1,0 +1,25 @@
+{
+  "etapa": "TABLET-PRUEBA-FINAL-20260626",
+  "fecha": "2026-06-26",
+  "director_orden": "Cerrar etapa tablet · deploy Vercel · reset ventas · reiniciar contadores",
+  "reset_pos": {
+    "script": "report/scripts/reset_pos_bazzar_ventas.mjs",
+    "stock_restaurado": 2,
+    "bandeja": 0,
+    "bobeda": 0,
+    "legacy_ticket_venta_pos": 0,
+    "pos_fi_fa_counter": 0,
+    "proximo_lote": 1,
+    "proximo_fi_fa": 1
+  },
+  "build": {
+    "comando": "npm run build",
+    "resultado": "PASS",
+    "next": "16.2.7"
+  },
+  "deploy": {
+    "url": "https://tablet-bazzar.vercel.app",
+    "repo": "segoviaranonis-dev/tablet-bazzar"
+  },
+  "notas": "Depósito catálogo NO tocado por reset. Bandeja vacía lista para prueba final piso."
+}

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { getPool, isDatabaseConfigured } from "@/lib/pool";
+import { loadTonoEstandar } from "@/lib/server/tono-sql";
 import {
   filtrosFromSearchParams,
   sqlChipsEstilo,
@@ -53,7 +54,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     const qRefs = sqlReferenciasAgregado(tabla, filtros);
     const qRes = sqlResumenDeposito(tabla);
 
-    const [generos, marcas, estilos, tipos, tipo1s, marcasAgg, refs, resumen] = await Promise.all([
+    const [generos, marcas, estilos, tipos, tipo1s, marcasAgg, refs, resumen, tonoEstandar] = await Promise.all([
       pool.query<{ id: string; cnt: number }>(qGen.text, qGen.params),
       pool.query<{ id: string; cnt: number }>(qMar.text, qMar.params),
       pool.query<{ id: string; cnt: number }>(qEst.text, qEst.params),
@@ -62,6 +63,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
       pool.query<MarcaSql>(qMarcasAgg.text, qMarcasAgg.params),
       pool.query<ReferenciaSql>(qRefs.text, qRefs.params),
       pool.query<{ skus: number; pares: number; ultima_carga: string }>(qRes.text, qRes.params),
+      loadTonoEstandar(pool),
     ]);
 
     return NextResponse.json({
@@ -76,6 +78,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
       tipo1s: toChips(tipo1s.rows),
       marcasEntrada: marcasAgg.rows,
       referencias: refs.rows,
+      tonoEstandar,
       resumen: resumen.rows[0] ?? { skus: 0, pares: 0, ultima_carga: null },
       ms: Date.now() - t0,
     });

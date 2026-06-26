@@ -1,8 +1,10 @@
 "use client";
 
 import { TouchPad } from "@/components/cadena/TouchPad";
+import { FiltroTonoRow } from "@/components/tono/EditorTono";
 import type { FiltrosEntrada, OpcionChip } from "@/lib/cadena-entrada-filtros";
 import { toggleChip } from "@/lib/cadena-entrada-filtros";
+import type { ColorEstandar } from "@/lib/tono/colores-estandar";
 
 type RowProps = {
   label: string;
@@ -52,6 +54,7 @@ type Props = {
   estilos: OpcionChip[];
   tipos: OpcionChip[];
   tipo1s: OpcionChip[];
+  tonoCatalog?: ColorEstandar[];
   referencias: { key: string; linea: string; referencia: string; count?: number }[];
   onChange: (next: FiltrosEntrada) => void;
   onEnter?: () => void;
@@ -64,6 +67,7 @@ export function FiltrosCabecera({
   estilos,
   tipos,
   tipo1s,
+  tonoCatalog = [],
   onChange,
   onEnter,
 }: Props) {
@@ -127,6 +131,12 @@ export function FiltrosCabecera({
           className="bazzar-input"
         />
       </div>
+      <FiltroTonoRow
+        catalog={tonoCatalog}
+        tonos={filtros.tonos}
+        sinTono={filtros.sinTono}
+        onChange={(patch) => set({ ...patch })}
+      />
     </div>
   );
 }

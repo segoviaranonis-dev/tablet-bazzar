@@ -28,6 +28,7 @@ Ejecutor de venta en tienda física. **Report** administra y monitorea; **Tablet
 | [REGLAS_BANDEJA_UNICA_POS.md](./REGLAS_BANDEJA_UNICA_POS.md) | Reglas inviolables resumidas |
 | [ARQUITECTURA_SESION_STOCK_ORO.md](./ARQUITECTURA_SESION_STOCK_ORO.md) | 3 capas stock · ciclo sesión |
 | [MICRO_ECOSISTEMA_POS_BAZZAR.md](./MICRO_ECOSISTEMA_POS_BAZZAR.md) | Tablet ↔ Report ↔ BD |
+| [../../.claude/4_etapas/ETAPA_POS_BAZZAR_DOCUMENTACION_CERRADA.md](../../.claude/4_etapas/ETAPA_POS_BAZZAR_DOCUMENTACION_CERRADA.md) | **✅ Cierre doc Moria** |
 | [../report/docs/INDICE_POS_BAZZAR.md](../report/docs/INDICE_POS_BAZZAR.md) | Índice central holding |
 | [ETAPA_TICKETS_POS_STOCK.md](./ETAPA_TICKETS_POS_STOCK.md) | ⚠️ Histórico pre-v2 (dual staging) |
 | [PRUEBA_VENDEDOR_STAGING.md](./PRUEBA_VENDEDOR_STAGING.md) | Smoke manual pre-cierre |

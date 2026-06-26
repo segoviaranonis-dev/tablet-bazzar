@@ -16,6 +16,10 @@ export type DepositoFila = {
   tipo_1: string;
   descp_material: string | null;
   descp_color: string | null;
+  /** tono_canon.etiqueta — filtro TONO. */
+  tono_etiqueta?: string | null;
+  /** JSON tono_canon desde pilar color. */
+  tono_canon?: unknown;
   grada: string;
   cantidad: number;
   imagen_nombre: string | null;

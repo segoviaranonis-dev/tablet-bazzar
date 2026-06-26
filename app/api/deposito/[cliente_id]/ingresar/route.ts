@@ -62,9 +62,17 @@ export async function POST(req: NextRequest, ctx: RouteCtx) {
       );
     }
 
-    filtros.marcaCadena = dest.marca;
-    if (dest.refKey) {
+    const multiMarca = dest.multiMarca === true;
+    if (dest.refKeys?.length) {
+      filtros.referenciaKeys = dest.refKeys;
+    } else if (dest.refKey) {
       filtros.referenciaKeys = [dest.refKey];
+    }
+
+    if (multiMarca) {
+      filtros.marcaCadena = undefined;
+    } else {
+      filtros.marcaCadena = dest.marca;
     }
 
     const qFilas = sqlFilasStock(tabla, filtros);
@@ -74,11 +82,17 @@ export async function POST(req: NextRequest, ctx: RouteCtx) {
     const pares = filtrarParesServer(paresAll, filtros);
     const paresNav = pares.length > 0 ? pares : paresAll;
     const posicion = posicionInicialCadena(paresNav, {
-      refKey: dest.refKey,
+      refKey: dest.refKey ?? dest.refKeys?.[0],
       buscar: filtros.buscar,
     });
 
-    const vistaParams = filtrosToSearchParams({ ...filtros, marcaCadena: dest.marca });
+    const vistaParams = filtrosToSearchParams({ ...filtros, marcaCadena: multiMarca ? undefined : dest.marca });
+    if (multiMarca) {
+      vistaParams.set("marca", dest.marca);
+      vistaParams.set("multi", "1");
+    } else {
+      vistaParams.set("marca", dest.marca);
+    }
     vistaParams.set("cliente_id", String(cliente_id));
     const vistaUrl = `/cadena/vista?${vistaParams.toString()}`;
     const wire = buildCadenaWireResponse(paresAll, pares);

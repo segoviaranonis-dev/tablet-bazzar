@@ -8,6 +8,10 @@ export type FiltrosUrl = {
   tipo1s: string[];
   referenciaKeys: string[];
   buscar: string;
+  /** Etiquetas canónicas tono_canon (Vía A TONO). */
+  tonos: string[];
+  /** Solo ítems sin tono_canon asignado. */
+  sinTono: boolean;
   marcaCadena?: string;
 };
 
@@ -37,6 +41,8 @@ export function filtrosToSearchParams(f: FiltrosUrl): URLSearchParams {
   if (f.tipo1s.length) p.set("tipo1s", f.tipo1s.join("|"));
   if (f.referenciaKeys.length) p.set("refs", serializeReferenciaKeysParam(f.referenciaKeys));
   if (f.buscar.trim()) p.set("q", f.buscar.trim());
+  if (f.tonos.length) p.set("tonos", f.tonos.join("|"));
+  if (f.sinTono) p.set("sin_tono", "1");
   if (f.marcaCadena) p.set("marca", f.marcaCadena);
   return p;
 }
@@ -50,6 +56,8 @@ export function filtrosFromSearchParams(sp: URLSearchParams): FiltrosUrl {
     tipo1s: sp.get("tipo1s")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
     referenciaKeys: parseReferenciaKeysParam(sp.get("refs")),
     buscar: (sp.get("q") ?? "").trim(),
+    tonos: sp.get("tonos")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
+    sinTono: sp.get("sin_tono") === "1",
     marcaCadena: sp.get("marca")?.trim() || undefined,
   };
 }

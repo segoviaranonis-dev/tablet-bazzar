@@ -16,14 +16,15 @@ import {
   SQL_TIPO_1_ID,
 } from "@/lib/server/pilar-triangulo";
 import {
-  filtrosFromSearchParams as filtrosFromSp,
-  filtrosToSearchParams as filtrosToSp,
-} from "@/lib/filtros-url";
-import {
   SQL_ORDER_LINEA_REF,
   SQL_ORDER_LINEA_REF_ALIASES,
   SQL_SOLO_CALZADO,
 } from "@/lib/tipo-v2-scope";
+import {
+  filtrosFromSearchParams as filtrosFromSp,
+  filtrosToSearchParams as filtrosToSp,
+} from "@/lib/filtros-url";
+import { SQL_COLOR_SIN_TONO } from "@/lib/tono/color-canon";
 
 export type FiltrosSql = {
   generos: string[];
@@ -34,6 +35,8 @@ export type FiltrosSql = {
   /** linea|referencia */
   referenciaKeys: string[];
   buscar: string;
+  tonos: string[];
+  sinTono: boolean;
   /** Obligatorio para cadena */
   marcaCadena?: string;
 };
@@ -46,6 +49,8 @@ export const FILTROS_SQL_VACIOS: FiltrosSql = {
   tipo1s: [],
   referenciaKeys: [],
   buscar: "",
+  tonos: [],
+  sinTono: false,
 };
 
 export type ChipSql = { id: string; label: string; count: number };
@@ -92,6 +97,8 @@ const SELECT_CORE = `
     COALESCE(NULLIF(btrim(t1.descp_tipo_1::text), ''), '(sin tipo 1)') AS tipo_1,
     NULLIF(btrim(mat.descripcion::text), '') AS descp_material,
     NULLIF(btrim(col.nombre::text), '') AS descp_color,
+    NULLIF(btrim(col.tono_canon->>'etiqueta'), '') AS tono_etiqueta,
+    col.tono_canon AS tono_canon,
     NULLIF(btrim(s.imagen_nombre::text), '') AS imagen_nombre,
     trim(s.linea_codigo_proveedor::text) || '|' || trim(s.referencia_codigo_proveedor::text) AS lr_key
 `;
@@ -172,9 +179,20 @@ function appendMarcaCadena(f: FiltrosSql, w: WhereBuild): void {
   w.sql += ` AND COALESCE(NULLIF(btrim(mv.descp_marca::text), ''), '(sin marca)') = $${w.params.length}`;
 }
 
+function appendTono(f: FiltrosSql, w: WhereBuild, excluir: boolean): void {
+  if (excluir) return;
+  if (f.sinTono) {
+    w.sql += ` AND ${SQL_COLOR_SIN_TONO}`;
+    return;
+  }
+  if (f.tonos.length === 0) return;
+  w.params.push(f.tonos);
+  w.sql += ` AND btrim(col.tono_canon->>'etiqueta') = ANY($${w.params.length}::text[])`;
+}
+
 function buildWhere(
   f: FiltrosSql,
-  excluir: "generos" | "marcas" | "estilos" | "tipos" | "tipo1s" | "referenciaKeys" | "buscar" | null,
+  excluir: "generos" | "marcas" | "estilos" | "tipos" | "tipo1s" | "referenciaKeys" | "buscar" | "tonos" | null,
 ): WhereBuild {
   const w: WhereBuild = { sql: `s.cantidad > 0 AND ${SQL_SOLO_CALZADO}`, params: [] };
   appendGenero(f, w, excluir === "generos");
@@ -184,6 +202,7 @@ function buildWhere(
   appendTipo1(f, w, excluir === "tipo1s");
   appendRefs(f, w, excluir === "referenciaKeys");
   appendBuscar(f, w, excluir === "buscar");
+  appendTono(f, w, excluir === "tonos");
   appendMarcaCadena(f, w);
   return w;
 }
@@ -441,6 +460,8 @@ export function filtrosFromBody(body: Record<string, unknown>): FiltrosSql {
     tipo1s: arr(body.tipo1s),
     referenciaKeys: arr(body.referenciaKeys ?? body.refs),
     buscar: typeof body.buscar === "string" ? body.buscar : "",
+    tonos: arr(body.tonos),
+    sinTono: body.sinTono === true || body.sin_tono === true || body.sin_tono === "1",
     marcaCadena: typeof body.marca === "string" ? body.marca : undefined,
   };
 }

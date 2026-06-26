@@ -30,6 +30,8 @@ function filtrosEntradaToSql(f: FiltrosEntrada): URLSearchParams {
     tipo1s: f.tipo1s,
     referenciaKeys: f.referenciaKeys,
     buscar: f.buscar,
+    tonos: f.tonos,
+    sinTono: f.sinTono,
   });
 }
 

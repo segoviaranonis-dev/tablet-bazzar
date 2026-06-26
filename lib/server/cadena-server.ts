@@ -3,6 +3,16 @@ import { buildCadenaFromFilas, keyLR, type DepositoFila } from "@/lib/cadena";
 import { parseCodigoVendedor, resolveCodigoEnCadena } from "@/lib/codigo-busqueda";
 import type { FiltrosSql } from "@/lib/server/catalogo-sql";
 
+/** Sesión cadena con refs de varias marcas (filtro entrada). */
+export const MULTI_MARCA = "__MULTI__";
+
+export type IngresoDestino = {
+  marca: string;
+  refKey?: string;
+  refKeys?: string[];
+  multiMarca?: boolean;
+};
+
 export type PosicionCadena = {
   parIndex: number;
   grupoIndex: number;
@@ -26,15 +36,28 @@ function refsCoincidenBuscar(
   );
 }
 
+function destinoMultiref(
+  referencias: { key: string; marca: string }[],
+): IngresoDestino {
+  const marcasSet = new Set(referencias.map((r) => r.marca.trim()));
+  const multiMarca = marcasSet.size > 1;
+  return {
+    marca: multiMarca ? MULTI_MARCA : [...marcasSet][0]!,
+    refKeys: referencias.map((r) => normKey(r.key)),
+    multiMarca,
+  };
+}
+
 export function buildCadenaServer(filas: DepositoFila[], marca: string): ParLineaRef[] {
-  return buildCadenaFromFilas(filas, marca.trim());
+  const mf = marca.trim();
+  return buildCadenaFromFilas(filas, mf === MULTI_MARCA ? "" : mf);
 }
 
 export function resolverMarcaIngreso(
   f: FiltrosSql,
   marcas: { marca: string }[],
   referencias: { key: string; marca: string; linea: string; referencia: string }[],
-): { marca: string; refKey?: string } | null {
+): IngresoDestino | null {
   if (marcas.length === 0) return null;
 
   if (f.referenciaKeys.length === 1) {
@@ -58,13 +81,17 @@ export function resolverMarcaIngreso(
       return { marca: ref.marca.trim(), refKey: normKey(ref.key) };
     }
     if (matching.length > 1) {
-      return { marca: matching[0]!.marca.trim() };
+      return destinoMultiref(matching);
     }
   }
 
   if (referencias.length === 1) {
     const r = referencias[0]!;
     return { marca: r.marca.trim(), refKey: normKey(r.key) };
+  }
+
+  if (f.referenciaKeys.length === 0 && referencias.length > 1) {
+    return destinoMultiref(referencias);
   }
 
   const marca =

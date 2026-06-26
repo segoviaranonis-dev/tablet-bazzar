@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { FiltrosCabecera } from "@/components/cadena/FiltrosCabecera";
 import { CadenaEntradaHeader } from "@/components/cadena/CadenaEntradaHeader";
+import { UsuarioDestaque } from "@/components/cadena/UsuarioDestaque";
 import { StagingTicketsPanel } from "@/components/pos/StagingTicketsPanel";
 import { SelectorDepositos } from "@/components/cadena/SelectorDepositos";
 import { TouchPad } from "@/components/cadena/TouchPad";
@@ -30,6 +31,12 @@ import { DEPOSITOS } from "@/lib/depositos-config";
 
 import { filtrosToSearchParams } from "@/lib/filtros-url";
 import { POS_COBRAR_OK_EVENT } from "@/lib/pos-events";
+import {
+  mensajeAccesoCatalogoVentas,
+  resolverAccesoCatalogo,
+  type AccesoCatalogo,
+} from "@/lib/acceso-catalogo";
+import { type TabletSessionUser } from "@/lib/nivel-dios";
 
 const TIENDA_STORAGE_KEY = "tablet_tienda_cliente_id";
 const DEFAULT_CLIENTE_ID = DEPOSITOS[0]?.cliente_id ?? 2100;
@@ -61,6 +68,8 @@ type FiltrosApi = {
 
   referencias: ReferenciaEntrada[];
 
+  tonoEstandar?: import("@/lib/tono/colores-estandar").ColorEstandar[];
+
   resumen: { skus: number; pares: number; ultima_carga: string | null };
 
   ms?: number;
@@ -87,6 +96,10 @@ function filtrosEntradaToSql(f: FiltrosEntrada) {
 
     buscar: f.buscar,
 
+    tonos: f.tonos,
+
+    sinTono: f.sinTono,
+
   });
 
 }
@@ -111,6 +124,9 @@ export default function CadenaMarcaPage() {
 
   const [ingresoError, setIngresoError] = useState<string | null>(null);
   const [stagingOpen, setStagingOpen] = useState(false);
+  const [sessionUser, setSessionUser] = useState<TabletSessionUser | null>(null);
+  const [sessionChecked, setSessionChecked] = useState(false);
+  const [acceso, setAcceso] = useState<AccesoCatalogo | null>(null);
 
 
 
@@ -119,12 +135,31 @@ export default function CadenaMarcaPage() {
   const hadApi = useRef(false);
 
   useEffect(() => {
-    setClienteId(readStoredClienteId());
+    fetch("/api/auth/me", { credentials: "same-origin", cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        const user = (data?.user ?? null) as TabletSessionUser | null;
+        setSessionUser(user);
+        const resolved = resolverAccesoCatalogo(user);
+        setAcceso(resolved);
+        if (resolved.ok && resolved.scope === "tienda") {
+          setClienteId(resolved.clienteId);
+        } else if (resolved.ok && resolved.scope === "dios") {
+          setClienteId(readStoredClienteId());
+        }
+      })
+      .catch(() => {
+        setSessionUser(null);
+        setAcceso(resolverAccesoCatalogo(null));
+      })
+      .finally(() => setSessionChecked(true));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(TIENDA_STORAGE_KEY, String(clienteId));
-  }, [clienteId]);
+    if (acceso?.ok && acceso.scope === "dios") {
+      localStorage.setItem(TIENDA_STORAGE_KEY, String(clienteId));
+    }
+  }, [clienteId, acceso]);
 
   useEffect(() => {
     hadApi.current = false;
@@ -161,6 +196,7 @@ export default function CadenaMarcaPage() {
         tipo1s: data.tipo1s ?? [],
         marcasEntrada: data.marcasEntrada ?? [],
         referencias: data.referencias ?? [],
+        tonoEstandar: data.tonoEstandar ?? [],
         resumen: data.resumen ?? { skus: 0, pares: 0, ultima_carga: null },
         ms: data.ms,
       });
@@ -218,6 +254,10 @@ export default function CadenaMarcaPage() {
         referenciaKeys: refKey ? [refKey] : filtros.referenciaKeys,
 
         buscar: filtros.buscar,
+
+        tonos: filtros.tonos,
+
+        sinTono: filtros.sinTono,
 
       };
 
@@ -296,7 +336,38 @@ export default function CadenaMarcaPage() {
 
   const puedeIngresar = !bootLoading && !error;
 
+  const accesoOk = acceso?.ok === true;
 
+  if (sessionChecked && !accesoOk) {
+    return (
+      <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-app-bg px-6 text-center">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-bazzar-naranja">Catálogo · Ventas</p>
+        <h1 className="mt-2 text-xl font-bold text-rimec-azul">Acceso restringido</h1>
+        <p className="mt-3 max-w-sm text-sm text-slate-600">
+          {acceso && !acceso.ok ? acceso.reason : mensajeAccesoCatalogoVentas()}
+        </p>
+        {!sessionUser && (
+          <a
+            href="/login"
+            className="mt-6 rounded-xl bg-bazzar-naranja px-6 py-3 text-sm font-bold uppercase text-white"
+          >
+            Iniciar sesión
+          </a>
+        )}
+        <a href="/" className="mt-4 text-sm font-semibold text-rimec-azul underline-offset-2 hover:underline">
+          ← Panel de control
+        </a>
+      </div>
+    );
+  }
+
+  if (!sessionChecked) {
+    return (
+      <div className="flex min-h-[100dvh] items-center justify-center bg-app-bg">
+        <span className="h-12 w-12 animate-pulse rounded-full bg-gradient-to-br from-orange-200 to-orange-400" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex min-h-[100dvh] flex-col touch-manipulation bg-app-bg">
@@ -306,6 +377,11 @@ export default function CadenaMarcaPage() {
         pares={api?.resumen?.pares}
         ms={api?.ms}
         refreshing={refreshing}
+        usuarioDestaque={
+          sessionUser?.nombre ? (
+            <UsuarioDestaque nombre={sessionUser.nombre} categoria={sessionUser.categoria} />
+          ) : undefined
+        }
         extra={
           <button
             type="button"
@@ -318,7 +394,11 @@ export default function CadenaMarcaPage() {
       />
       <StagingTicketsPanel clienteId={clienteId} open={stagingOpen} onClose={() => setStagingOpen(false)} />
 
-      <SelectorDepositos clienteId={clienteId} onSelect={setClienteId} />
+      <SelectorDepositos
+        clienteId={clienteId}
+        onSelect={setClienteId}
+        locked={acceso?.ok === true && acceso.scope === "tienda"}
+      />
 
       <div className="shrink-0 border-b border-orange-100 bg-gradient-to-b from-white to-orange-50/40 p-2">
 
@@ -336,6 +416,8 @@ export default function CadenaMarcaPage() {
             tipos={api.tipos}
 
             tipo1s={api.tipo1s}
+
+            tonoCatalog={api.tonoEstandar ?? []}
 
             referencias={refs.map((r) => ({
 

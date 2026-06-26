@@ -10,11 +10,22 @@ type Props = {
   pares?: number;
   ms?: number;
   refreshing?: boolean;
+  /** Destaque del usuario logueado (entre título y acciones). */
+  usuarioDestaque?: ReactNode;
   extra?: ReactNode;
 };
 
 /** Cabecera catálogo entrada — banda Bazzar + stats (pares principal). */
-export function CadenaEntradaHeader({ titulo, subtitulo, registros, pares, ms, refreshing, extra }: Props) {
+export function CadenaEntradaHeader({
+  titulo,
+  subtitulo,
+  registros,
+  pares,
+  ms,
+  refreshing,
+  usuarioDestaque,
+  extra,
+}: Props) {
   return (
     <header className="shrink-0 shadow-md">
       <div className="bazzar-band grid grid-cols-[52px_1fr_auto] items-center">
@@ -30,7 +41,14 @@ export function CadenaEntradaHeader({ titulo, subtitulo, registros, pares, ms, r
           <h1 className="text-lg font-extrabold tracking-tight text-white">{titulo}</h1>
           {subtitulo ? <p className="text-[10px] text-orange-100/90">{subtitulo}</p> : null}
         </div>
-        {extra ? <div className="px-2">{extra}</div> : <div className="w-2" />}
+        {usuarioDestaque || extra ? (
+          <div className="flex items-center gap-2 px-2">
+            {usuarioDestaque}
+            {extra}
+          </div>
+        ) : (
+          <div className="w-2" />
+        )}
       </div>
       {registros != null && pares != null && (
         <div className="bazzar-band-subtle flex flex-wrap items-center justify-center gap-3 px-3 py-2">

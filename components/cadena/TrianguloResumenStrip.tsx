@@ -18,6 +18,8 @@ export function TrianguloResumenStrip({ searchParams, clienteId, marca }: Props)
   if (f.tipos.length) chips.push(`Categoría: ${f.tipos.join(" · ")}`);
   if (f.tipo1s.length) chips.push(`Tipo 1: ${f.tipo1s.join(" · ")}`);
   if (f.buscar.trim()) chips.push(`Buscar: ${f.buscar.trim()}`);
+  if (f.sinTono) chips.push("TONO: sin asignar");
+  if (f.tonos.length) chips.push(`TONO: ${f.tonos.join(" · ")}`);
   if (marca) chips.push(`Cadena: ${marca}`);
 
   const editQs = filtrosToSearchParams({ ...f, marcaCadena: marca });

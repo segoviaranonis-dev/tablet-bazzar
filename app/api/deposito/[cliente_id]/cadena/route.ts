@@ -5,6 +5,7 @@ import {
   buildCadenaServer,
   filtrarParesServer,
   posicionInicialCadena,
+  MULTI_MARCA,
 } from "@/lib/server/cadena-server";
 import { cookiePosIngreso } from "@/lib/server/pos-sesion";
 import { filtrosFromSearchParams, sqlFilasStock } from "@/lib/server/catalogo-sql";
@@ -30,9 +31,12 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
 
   const ingreso = await cookiePosIngreso(req);
   const filtros = filtrosFromSearchParams(req.nextUrl.searchParams);
-  const marca = (filtros.marcaCadena ?? ingreso?.marca)?.trim();
+  const multiMarca =
+    req.nextUrl.searchParams.get("multi") === "1" || ingreso?.marca === MULTI_MARCA;
+  const marcaRaw = (filtros.marcaCadena ?? ingreso?.marca)?.trim() ?? "";
+  const marca = multiMarca ? MULTI_MARCA : marcaRaw;
 
-  if (!marca) {
+  if (!marca && filtros.referenciaKeys.length === 0) {
     return NextResponse.json(
       { configured: true, error: "marca requerida — ingresá desde /cadena" },
       { status: 400 },
@@ -43,7 +47,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     return NextResponse.json({ configured: true, error: "sesión POS otro depósito" }, { status: 403 });
   }
 
-  filtros.marcaCadena = marca;
+  filtros.marcaCadena = multiMarca ? undefined : marcaRaw || undefined;
   const pool = getPool();
   const t0 = Date.now();
 

@@ -1,0 +1,27 @@
+{
+  "id": "CIERRE-DOC-POS-BAZZAR-V2-20260624",
+  "fecha": "2026-06-24",
+  "tipo": "cierre_documentacion",
+  "etapa_moria": "ETAPA_POS_BAZZAR_DOCUMENTACION_CERRADA",
+  "modelo": "bandeja_unica_v2",
+  "tabla_operativa": "ticket_bandeja_cajero",
+  "tabla_oro": "bobeda_venta_pos",
+  "legacy_no_escribir": ["ticket_pos_staging", "ticket_venta_pos"],
+  "docs_canonicos": [
+    "tablet-bazzar/docs/LOGICA_OPERATIVA_POS_BAZZAR.md",
+    "report/docs/INDICE_POS_BAZZAR.md",
+    "report/docs/LOGICA_STOCK_DEPOSITO_SYNC.md",
+    "report/docs/FLUJO_CANONICO_POS_BAZZAR.md"
+  ],
+  "modulos_moria": [
+    ".claude/2_modulos/2.4_tablet_bazzar/MODULO_POS_BANDEJA_UNICA_V2.md",
+    ".claude/2_modulos/2.3_report/caja_bazzar/MODULO_POS_BANDEJA_UNICA_V2.md"
+  ],
+  "migraciones_sql": ["007", "008", "009"],
+  "deploy": {
+    "report": "rimec-report.vercel.app",
+    "tablet": "tablet-bazzar.vercel.app",
+    "commits": ["13cc149", "d58358f"]
+  },
+  "pendiente_no_doc": ["smoke_piso_fi_fa", "migracion_009_todos_entornos", "settings_cadena_logica"]
+}

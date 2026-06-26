@@ -10,6 +10,8 @@ export type FiltrosEntrada = {
   tipo1s: string[];
   referenciaKeys: string[];
   buscar: string;
+  tonos: string[];
+  sinTono: boolean;
 };
 
 export const FILTROS_ENTRADA_VACIOS: FiltrosEntrada = {
@@ -20,6 +22,8 @@ export const FILTROS_ENTRADA_VACIOS: FiltrosEntrada = {
   tipo1s: [],
   referenciaKeys: [],
   buscar: "",
+  tonos: [],
+  sinTono: false,
 };
 
 export type OpcionChip = { id: string; label: string; count: number };
@@ -209,7 +213,9 @@ export function hayFiltrosEntradaActivos(f: FiltrosEntrada): boolean {
     f.tipos.length > 0 ||
     f.tipo1s.length > 0 ||
     f.referenciaKeys.length > 0 ||
-    f.buscar.trim().length > 0
+    f.buscar.trim().length > 0 ||
+    f.tonos.length > 0 ||
+    f.sinTono
   );
 }
 
@@ -242,6 +248,8 @@ export function parseFiltrosEntradaFromUrl(sp: URLSearchParams): FiltrosEntrada 
     tipo1s: sp.get("tipo1s") ? sp.get("tipo1s")!.split("|").filter(Boolean) : [],
     referenciaKeys: parseReferenciaKeysParam(sp.get("refs")),
     buscar: sp.get("q") ?? "",
+    tonos: sp.get("tonos")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
+    sinTono: sp.get("sin_tono") === "1",
   };
 }
 

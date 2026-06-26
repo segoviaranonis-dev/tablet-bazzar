@@ -1,7 +1,9 @@
 "use client";
 
 import { TouchPad } from "@/components/cadena/TouchPad";
+import { EditorTonoBadge } from "@/components/tono/EditorTono";
 import type { DepositoFila } from "@/lib/cadena";
+import type { ColorEstandar } from "@/lib/tono/colores-estandar";
 
 type Props = {
   activa: DepositoFila;
@@ -11,8 +13,11 @@ type Props = {
   referenciaPanelOpen: boolean;
   estilosActivos: number;
   referenciasActivas: number;
+  tonoCatalog?: ColorEstandar[];
+  tonoEditable?: boolean;
   onToggleEstiloPanel: () => void;
   onToggleReferenciaPanel: () => void;
+  onTonoAssigned?: () => void;
 };
 
 export function LineaReferenciaHero({
@@ -23,11 +28,13 @@ export function LineaReferenciaHero({
   referenciaPanelOpen,
   estilosActivos,
   referenciasActivas,
+  tonoCatalog,
+  tonoEditable = true,
   onToggleEstiloPanel,
   onToggleReferenciaPanel,
+  onTonoAssigned,
 }: Props) {
   const estilo = activa.estilo?.trim();
-  const colorLabel = activa.descp_color?.trim() || activa.color_code;
 
   return (
     <div className="pointer-events-none absolute inset-x-0 top-0 z-20 px-4 pb-2 pt-3">
@@ -77,12 +84,15 @@ export function LineaReferenciaHero({
             )}
           </TouchPad>
         </div>
-        <div className="shrink-0 rounded-xl border border-orange-200 bg-gradient-to-br from-orange-50 to-white px-3 py-2 shadow-sm">
-          <span className="block max-w-[96px] truncate text-[10px] font-bold uppercase tracking-[0.1em] text-rimec-azul">
-            {colorLabel}
-          </span>
-          <span className="mt-0.5 block font-mono text-[9px] text-slate-500">{activa.color_code}</span>
-        </div>
+        <EditorTonoBadge
+          catalog={tonoCatalog}
+          tonoCanon={activa.tono_canon}
+          tonoEtiqueta={activa.tono_etiqueta}
+          colorId={activa.color_id}
+          colorNombre={activa.descp_color}
+          editable={tonoEditable}
+          onAssigned={() => onTonoAssigned?.()}
+        />
       </div>
       <span className="mt-2 block text-[10px] font-bold tabular-nums tracking-[0.18em] text-bazzar-naranja">
         {parIndex + 1} / {total}

@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join } from "path";
 import { getPool, isDatabaseConfigured } from "../lib/pool";
 import { getDepositoByClienteId } from "../lib/depositos-config";
-import { sqlFilasStock } from "../lib/server/catalogo-sql";
+import { sqlFilasStock, FILTROS_SQL_VACIOS } from "../lib/server/catalogo-sql";
 import { buildCadenaServer } from "../lib/server/cadena-server";
 import type { DepositoFila } from "../lib/cadena";
 import { enrichDepositoFilaImagenes } from "../lib/product-image";
@@ -42,16 +42,7 @@ async function medirMarca(marca: string) {
   if (!config) throw new Error("cliente_id 2100 no configurado");
 
   const pool = getPool();
-  const filtros = {
-    generos: [],
-    marcas: [],
-    estilos: [],
-    tipos: [],
-    tipo1s: [],
-    referenciaKeys: [],
-    buscar: "",
-    marcaCadena: marca,
-  };
+  const filtros = { ...FILTROS_SQL_VACIOS, marcaCadena: marca };
 
   const t0 = Date.now();
   const q = sqlFilasStock(config.tabla, filtros);
