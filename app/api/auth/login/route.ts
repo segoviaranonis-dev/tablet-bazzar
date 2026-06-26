@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
       descp_usuario: usuario.descp_usuario,
       email: usuario.email,
       rol_id: rolId,
-      categoria: usuario.categoria,
+      categoria: rolId === 1 ? "DIOS" : usuario.categoria,
       ente_id: usuario.ente_id,
       ente_codigo: rolId === 1 ? 1 : undefined,
     });
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
         nombre: usuario.descp_usuario,
         email: usuario.email,
         rol_id: rolId,
-        categoria: usuario.categoria,
+        categoria: rolId === 1 ? "DIOS" : usuario.categoria,
         ente_codigo: rolId === 1 ? 1 : null,
         scope: rolId === 1 ? "dios" : "tienda",
       },

@@ -31,7 +31,9 @@ export default function LoginPage() {
         return;
       }
 
-      router.push("/");
+      const dest =
+        data.user?.scope === "dios" || Number(data.user?.rol_id) === 1 ? "/cadena" : "/";
+      router.push(dest);
       router.refresh();
     } catch (err) {
       setError("Error de conexión: " + (err instanceof Error ? err.message : String(err)));
@@ -59,9 +61,11 @@ export default function LoginPage() {
                 onChange={(e) => setUsuario(e.target.value)}
                 required
                 disabled={loading}
-                className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 uppercase text-slate-900 placeholder:text-slate-400 focus:border-rimec-azul focus:outline-none focus:ring-2 focus:ring-rimec-azul/20 disabled:opacity-50"
-                placeholder="HECTOR"
+                className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-rimec-azul focus:outline-none focus:ring-2 focus:ring-rimec-azul/20 disabled:opacity-50"
+                placeholder="director"
                 autoComplete="username"
+                autoCapitalize="none"
+                spellCheck={false}
               />
             </div>
 
@@ -94,10 +98,9 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-6 border-t border-slate-200 pt-6 text-center">
-            <p className="text-sm text-slate-600">
-              Acceso <span className="font-semibold text-rimec-azul">ADMIN</span> tienda y{" "}
-              <span className="font-semibold text-rimec-azul">VENDEDOR</span> POS
+          <div className="mt-6 border-t border-slate-200 pt-6 text-center text-sm text-slate-600">
+            <p>
+              Usuario <span className="font-semibold">sin importar mayúsculas</span> · Director entra directo a Ventas
             </p>
           </div>
         </div>
