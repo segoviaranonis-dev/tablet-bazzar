@@ -44,6 +44,7 @@ import { PosCartIconButton } from "@/components/pos/PosCartIconButton";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { MULTI_MARCA } from "@/lib/server/cadena-server";
 import type { ColorEstandar } from "@/lib/tono/colores-estandar";
+import { isDirectorNivelTablet } from "@/lib/nivel-dios";
 import { usePosCart } from "@/lib/cart/PosCartContext";
 import { consumeOpenCartFlag } from "@/lib/pos-reopen";
 
@@ -131,7 +132,7 @@ function CadenaVistaInner() {
       .catch(() => {});
     fetch("/api/auth/me", { credentials: "same-origin", cache: "no-store" })
       .then((r) => (r.ok ? r.json() : null))
-      .then((d) => setTonoEditable(Number(d?.user?.rol_id) === 1))
+      .then((d) => setTonoEditable(isDirectorNivelTablet(d?.user ?? null)))
       .catch(() => setTonoEditable(false));
   }, []);
 

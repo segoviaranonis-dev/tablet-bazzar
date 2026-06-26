@@ -32,8 +32,13 @@ type UsuarioJwtInput = {
 };
 
 export async function signTabletSessionToken(user: UsuarioJwtInput): Promise<string> {
-  const ente_codigo =
+  let ente_codigo =
     user.ente_codigo != null ? Number(user.ente_codigo) : await resolveEnteCodigo(user.ente_id);
+
+  const cat = String(user.categoria ?? "").toUpperCase().trim();
+  if (user.rol_id === 1 && (cat === "DIOS" || ente_codigo == null)) {
+    ente_codigo = 1;
+  }
 
   return new SignJWT({
     user_id: user.id_usuario,

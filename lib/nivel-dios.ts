@@ -21,3 +21,13 @@ export function isDiosEnte1Rol1(user: TabletSessionUser | null | undefined): boo
     user.ente_codigo === NIVEL_DIOS_ENTE_CODIGO
   );
 }
+
+/** Tablet POS — rol holding gerente (Director paga · prueba final · 6 tiendas). */
+export function isDirectorNivelTablet(user: TabletSessionUser | null | undefined): boolean {
+  if (!user?.rol_id) return false;
+  if (user.rol_id !== NIVEL_DIOS_ROL_ID) return false;
+  const cat = (user.categoria ?? "").toUpperCase().trim();
+  if (cat === NIVEL_DIOS_CATEGORIA) return true;
+  const ente = user.ente_codigo != null ? Number(user.ente_codigo) : NIVEL_DIOS_ENTE_CODIGO;
+  return ente === NIVEL_DIOS_ENTE_CODIGO;
+}

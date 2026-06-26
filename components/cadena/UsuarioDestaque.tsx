@@ -17,7 +17,7 @@ export function UsuarioDestaque({ nombre, categoria }: Props) {
         {nombre}
       </span>
       <span className="text-[8px] font-bold uppercase tracking-[0.16em] text-amber-100">
-        {cat === "DIOS" ? "Nivel Dios" : cat || "—"}
+        {cat === "DIOS" ? "Director · Nivel Dios" : cat || "—"}
       </span>
     </div>
   );

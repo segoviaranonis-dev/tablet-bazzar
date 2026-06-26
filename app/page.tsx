@@ -8,6 +8,7 @@ import { VIEW_MODES } from "@/lib/view-modes";
 type SessionUser = {
   nombre?: string;
   rol_id?: number;
+  categoria?: string | null;
 };
 
 export default function ControlPanelPage() {
@@ -43,7 +44,11 @@ export default function ControlPanelPage() {
             {user?.nombre && (
               <p className="mt-1 text-sm text-slate-600">
                 {user.nombre}
-                {user.rol_id != null ? ` · Rol ${user.rol_id}` : ""}
+                {user.rol_id === 1 && (user.categoria ?? "").toUpperCase() === "DIOS"
+                  ? " · Director · Nivel Dios"
+                  : user.rol_id != null
+                    ? ` · Rol ${user.rol_id}`
+                    : ""}
               </p>
             )}
           </div>

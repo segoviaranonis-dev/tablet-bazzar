@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
     const categoria = String(usuario.categoria ?? "").toUpperCase();
 
     if (rolId === 1) {
-      // RIMEC holding — acceso total tablet
+      // RIMEC holding — acceso total tablet (Director / Nivel Dios)
     } else if (rolId === 2) {
       const ok =
         categoria === "ADMIN" ||
@@ -62,8 +62,13 @@ export async function POST(request: NextRequest) {
     }
 
     const token = await signTabletSessionToken({
-      ...usuario,
+      id_usuario: usuario.id_usuario,
+      descp_usuario: usuario.descp_usuario,
+      email: usuario.email,
       rol_id: rolId,
+      categoria: usuario.categoria,
+      ente_id: usuario.ente_id,
+      ente_codigo: rolId === 1 ? 1 : undefined,
     });
 
     const response = NextResponse.json({
@@ -74,6 +79,8 @@ export async function POST(request: NextRequest) {
         email: usuario.email,
         rol_id: rolId,
         categoria: usuario.categoria,
+        ente_codigo: rolId === 1 ? 1 : null,
+        scope: rolId === 1 ? "dios" : "tienda",
       },
     });
 

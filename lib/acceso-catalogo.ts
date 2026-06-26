@@ -1,6 +1,6 @@
 import { DEPOSITOS } from "@/lib/depositos-config";
 import { depositoMatchesEnteCodigo, resolveClienteIdFromUsuario } from "@/lib/usuario-deposito";
-import { isDiosEnte1Rol1, type TabletSessionUser } from "@/lib/nivel-dios";
+import { isDirectorNivelTablet, type TabletSessionUser } from "@/lib/nivel-dios";
 
 /** Categoría nivel 2 triada holding (ADMIN) · VENDEDOR = POS tienda. */
 const CATEGORIAS_TIENDA_OK = new Set(["ADMIN", "SU", "VENDEDOR"]);
@@ -28,7 +28,7 @@ export function resolverAccesoCatalogo(user: TabletSessionUser | null | undefine
     return { ok: false, reason: "Iniciá sesión para acceder al catálogo." };
   }
 
-  if (isDiosEnte1Rol1(user)) {
+  if (isDirectorNivelTablet(user)) {
     return {
       ok: true,
       scope: "dios",
