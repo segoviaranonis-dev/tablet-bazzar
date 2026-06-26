@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { jwtVerify } from 'jose'
+import { aplicarAccesoCanonicoBzz } from '@/lib/auth/bzz-acceso'
 
 function getSecret() {
   if (!process.env.TABLET_SESSION_SECRET) {
@@ -11,15 +12,19 @@ function getSecret() {
 
 const PUBLIC_PATHS = ['/login', '/api/auth/login', '/login-simple', '/api/auth/login-simple', '/api/auth/auto-login']
 
+/** Matriz: rol 2 ADMIN + VENDEDOR tienda → Tablet POS total. */
+function categoriaTabletOk(categoria: unknown): boolean {
+  const cat = String(categoria ?? '').toUpperCase().trim()
+  return cat === 'ADMIN' || cat === 'SU' || cat === 'VENDEDOR'
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Permitir rutas públicas
   if (PUBLIC_PATHS.includes(pathname)) {
     return NextResponse.next()
   }
 
-  // Verificar token
   const token = request.cookies.get('tablet-session')?.value
 
   if (!token) {
@@ -29,29 +34,27 @@ export async function middleware(request: NextRequest) {
   try {
     const { payload } = await jwtVerify(token, getSecret())
 
-    // Validación de acceso a Tablet Bazzar
-    // ROL 1: Acceso total (sin restricciones)
-    // ROL 2: Solo ADMIN y SU (no VENDEDOR)
-    if (payload.rol_id === 1) {
-      // Rol 1: Acceso total
+    const nombre = String(payload.nombre ?? '')
+    const bzz = aplicarAccesoCanonicoBzz(
+      nombre,
+      Number(payload.rol_id) || 0,
+      payload.ente_codigo != null ? Number(payload.ente_codigo) : null,
+    )
+    const rolId = bzz.rol_id
+    const categoria = String(payload.categoria ?? '').toUpperCase().trim()
+
+    if (rolId === 1) {
       return NextResponse.next()
-    } else if (payload.rol_id === 2) {
-      // Rol 2: Validar categoría
-      const categoriaPermitida = payload.categoria === 'ADMIN' || payload.categoria === 'SU'
-      if (!categoriaPermitida) {
-        const response = NextResponse.redirect(new URL('/login', request.url))
-        response.cookies.delete('tablet-session')
-        return response
-      }
-      return NextResponse.next()
-    } else {
-      // Rol no permitido
-      const response = NextResponse.redirect(new URL('/login', request.url))
-      response.cookies.delete('tablet-session')
-      return response
     }
-  } catch (error) {
-    // Token inválido o expirado
+
+    if (rolId === 2 && categoriaTabletOk(categoria)) {
+      return NextResponse.next()
+    }
+
+    const response = NextResponse.redirect(new URL('/login', request.url))
+    response.cookies.delete('tablet-session')
+    return response
+  } catch {
     const response = NextResponse.redirect(new URL('/login', request.url))
     response.cookies.delete('tablet-session')
     return response
