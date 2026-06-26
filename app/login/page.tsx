@@ -62,7 +62,7 @@ export default function LoginPage() {
                 required
                 disabled={loading}
                 className="w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-rimec-azul focus:outline-none focus:ring-2 focus:ring-rimec-azul/20 disabled:opacity-50"
-                placeholder="director"
+                placeholder="R.M.C."
                 autoComplete="username"
                 autoCapitalize="none"
                 spellCheck={false}
