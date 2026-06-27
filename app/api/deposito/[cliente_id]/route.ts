@@ -29,6 +29,7 @@ export type DepositoProducto = {
   imagen_nombre: string | null;
   imagen_url_thumb: string | null;
   imagen_url_hero: string | null;
+  imagen_url_flat: string | null;
 };
 
 export async function GET(

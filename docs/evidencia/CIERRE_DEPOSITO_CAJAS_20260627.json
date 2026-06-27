@@ -1,0 +1,47 @@
+{
+  "etapa": "ETAPA-DEP-OP-TABLET-CAJAS-20260627",
+  "codigos": ["2.3.2.1.1.1", "2.3.2.1.1.2", "2.4.3.4"],
+  "fecha": "2026-06-27",
+  "builds": {
+    "tablet-bazzar": {
+      "comando": "npm run build",
+      "resultado": "PASS",
+      "next": "16.2.7"
+    },
+    "report": {
+      "comando": "npm run build",
+      "resultado": "PASS",
+      "next": "15.5.18"
+    }
+  },
+  "archivos_tablet_clave": [
+    "app/deposito/page.tsx",
+    "app/api/deposito/status/route.ts",
+    "lib/depositos-config.ts",
+    "lib/depositos/agrupar-cajas.ts",
+    "components/deposito/GrillaCajasDeposito.tsx",
+    "components/deposito/TablaGradaDeposito.tsx"
+  ],
+  "archivos_report_clave": [
+    "src/app/depositos-bazzar/[cliente_id]/components/TrianguloHeaderDeposito.tsx",
+    "src/app/depositos-bazzar/[cliente_id]/components/FiltroCantidadOperativa.tsx",
+    "src/app/depositos-bazzar/[cliente_id]/components/FiltroGradaOperativa.tsx",
+    "src/app/depositos-bazzar/[cliente_id]/components/VitalesStockDeposito.tsx",
+    "src/app/depositos-bazzar/[cliente_id]/components/GrillaOperativaDeposito.tsx",
+    "src/app/depositos-bazzar/[cliente_id]/components/TabFiltrosIndice.tsx",
+    "src/lib/depositos/agrupar-operativa.ts",
+    "src/lib/depositos/filtros-indice.ts",
+    "src/lib/depositos/operativa-filters.ts"
+  ],
+  "smoke_local": [
+    "http://localhost:3001/depositos-bazzar/2100?tab=operativa",
+    "http://localhost:3001/depositos-bazzar/2100?tab=filtros-indice",
+    "http://localhost:3000/deposito",
+    "http://localhost:3000/api/deposito/status"
+  ],
+  "deploy": {
+    "tablet_url": "https://tablet-bazzar.vercel.app",
+    "report_url": "https://rimec-report.vercel.app/depositos-bazzar",
+    "estado": "PENDIENTE_PUSH"
+  }
+}

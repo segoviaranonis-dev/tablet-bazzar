@@ -105,6 +105,48 @@ export const DEPOSITOS = DEPOSITOS_MATRIZ.filter((d) => d.categoria === "tienda"
 
 export type DepositoTienda = (typeof DEPOSITOS)[number];
 
+export const CATEGORIA_DEPOSITO_META: Record<
+  CategoriaDeposito,
+  { label: string; nivel: 1 | 2 | 3; tablet: boolean; descripcion: string }
+> = {
+  tienda: {
+    label: "TIENDA",
+    nivel: 1,
+    tablet: true,
+    descripcion: "Stock piso · sync Retail · Tablet + Report",
+  },
+  guardado: {
+    label: "GUARDADO",
+    nivel: 2,
+    tablet: false,
+    descripcion: "Bodega · solo Report admin",
+  },
+  averiado: {
+    label: "AVERIADO",
+    nivel: 3,
+    tablet: false,
+    descripcion: "Dañado · solo Report admin",
+  },
+};
+
+export const ENTES_MAP: Record<number, { ente: string; tipo: string; codigo: string }> =
+  Object.fromEntries(DEPOSITOS.map((d) => [d.cliente_id, { ente: d.ente, tipo: d.tipo, codigo: d.codigo }]));
+
+export const DEPOSITOS_MAP: Record<number, string> = Object.fromEntries(
+  DEPOSITOS.map((d) => [d.cliente_id, d.tabla]),
+);
+
+export function getDepositoConfig(
+  cliente_id: number,
+  categoria: CategoriaDeposito = "tienda",
+): DepositoConfig | undefined {
+  return DEPOSITOS_MATRIZ.find((d) => d.cliente_id === cliente_id && d.categoria === categoria);
+}
+
+export function getDepositosByCategoria(categoria: CategoriaDeposito): DepositoConfig[] {
+  return DEPOSITOS_MATRIZ.filter((d) => d.categoria === categoria);
+}
+
 export function getDepositoByClienteId(cliente_id: number): DepositoTienda | undefined {
   return DEPOSITOS.find((d) => d.cliente_id === cliente_id);
 }
