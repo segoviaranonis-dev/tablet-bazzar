@@ -61,3 +61,10 @@ export function filtrosFromSearchParams(sp: URLSearchParams): FiltrosUrl {
     marcaCadena: sp.get("marca")?.trim() || undefined,
   };
 }
+
+/** Query cadena/vista — conserva TONO de entrada (Director 2026-06-28). Asignación pilar = patch en memoria, sin refetch. */
+export function cadenaStockQueryFromSearchParams(sp: URLSearchParams): string {
+  const p = filtrosToSearchParams(filtrosFromSearchParams(sp));
+  for (const k of ["pi", "gi", "c1", "c2"]) p.delete(k);
+  return p.toString();
+}

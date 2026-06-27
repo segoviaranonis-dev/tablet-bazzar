@@ -328,7 +328,7 @@ export function sqlReferenciasAgregado(tabla: string, f: FiltrosSql): { text: st
         WHERE ${w.sql}
         GROUP BY 1, 2, 3, 4, 5
       ) refs
-      ORDER BY ${SQL_ORDER_LINEA_REF_ALIASES}
+      ORDER BY refs.pares DESC, ${SQL_ORDER_LINEA_REF_ALIASES}
       LIMIT 500
     `,
     params: w.params,
@@ -467,6 +467,11 @@ export function filtrosFromBody(body: Record<string, unknown>): FiltrosSql {
 }
 
 export function filtrosFromSearchParams(sp: URLSearchParams): FiltrosSql {
+  return filtrosFromSp(sp);
+}
+
+/** Vista cadena — mismos filtros URL incl. TONO (entrada). Patch tono pilar no refetch. */
+export function filtrosSqlCadenaVista(sp: URLSearchParams): FiltrosSql {
   return filtrosFromSp(sp);
 }
 

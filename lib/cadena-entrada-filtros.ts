@@ -171,6 +171,8 @@ export function buildOpcionesEntrada(
   }
 
   const referencias = [...refMap.values()].sort((a, b) => {
+    const dp = b.pares - a.pares;
+    if (dp !== 0) return dp;
     const dl = numCodigo(a.linea) - numCodigo(b.linea);
     if (dl !== 0) return dl;
     return numCodigo(a.referencia) - numCodigo(b.referencia);
@@ -236,6 +238,8 @@ export function buildVistaQuery(
   if (entrada.generos.length === 1) p.set("genero", entrada.generos[0]!);
   if (entrada.tipos.length === 1) p.set("tipo", entrada.tipos[0]!);
   if (entrada.buscar.trim()) p.set("q", entrada.buscar.trim());
+  if (entrada.tonos.length) p.set("tonos", entrada.tonos.join("|"));
+  if (entrada.sinTono) p.set("sin_tono", "1");
   return `/cadena/vista?${p.toString()}`;
 }
 
