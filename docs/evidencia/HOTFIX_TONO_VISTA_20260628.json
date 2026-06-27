@@ -1,0 +1,16 @@
+{
+  "tipo": "hotfix_publicacion",
+  "modulo": "tablet-bazzar/cadena",
+  "fecha": "2026-06-27",
+  "commit": "9569eb2",
+  "url_prod": "https://tablet-bazzar.vercel.app/cadena",
+  "sintoma": "Colores fuera de TONO en /cadena/vista tras INGRESAR",
+  "caso_fundador": "1184.1101 VINO visible con filtro marrón",
+  "archivos": [
+    "lib/cadena-entrada-filtros.ts",
+    "lib/filtros-url.ts",
+    "lib/server/catalogo-sql.ts"
+  ],
+  "moria_error": "4.03.02.002",
+  "chusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_CADENA_TONO.md"
+}

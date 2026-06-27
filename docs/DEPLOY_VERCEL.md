@@ -1,10 +1,7 @@
 # Deploy Vercel — Tablet Bazzar
 
 **URL producción:** https://tablet-bazzar.vercel.app  
-**URL alternativa (typo histórico):** ~~tableta-bazzar.vercel.app~~ — no usar  
-**Repo:** https://github.com/segoviaranonis-dev/tablet-bazzar  
-**Rama deploy:** `main` (auto-deploy al push)  
-**Último deploy producción:** 2026-06-10 · commit `e1cd6f1` · `dpl_DB2cjFdokXbpeFF4JuajkiVZ8Jui`
+**Último deploy producción:** 2026-06-27 · commit `9569eb2` · hotfix TONO cadena/vista (+ `7177533` depósito vidriera)
 
 ---
 
@@ -44,9 +41,10 @@ npx vercel --prod
 1. https://tablet-bazzar.vercel.app/login — HECTOR (password = Report)
 2. `/cadena` — filtros cargan (ms en header)  
 3. **INGRESAR** → vista cadena con dock inferior (colores · tallas · carrito)  
+4. Filtro **TONO** en entrada → INGRESAR → solo colores del tono ([HOTFIX_TONO_VISTA_20260628.md](./HOTFIX_TONO_VISTA_20260628.md))
 
 Si `/cadena` falla: revisar `DATABASE_URL` en Vercel.
 
 ---
 
-**Última actualización:** 2026-06-11
+**Última actualización:** 2026-06-28

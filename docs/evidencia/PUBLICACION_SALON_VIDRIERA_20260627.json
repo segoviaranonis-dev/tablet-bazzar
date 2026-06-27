@@ -1,0 +1,14 @@
+{
+  "etapa": "ETAPA-DEP-BAZZAR-SALON-20260627",
+  "fecha": "2026-06-27",
+  "commits": {
+    "tablet-bazzar": "7177533",
+    "report": "4e62230"
+  },
+  "deploy": {
+    "tablet": "https://tablet-bazzar.vercel.app/deposito",
+    "report": "https://rimec-report.vercel.app/depositos-bazzar/2100?tab=operativa"
+  },
+  "usuario": "Jefa de salón — faltantes vidriera",
+  "build": "PASS"
+}
