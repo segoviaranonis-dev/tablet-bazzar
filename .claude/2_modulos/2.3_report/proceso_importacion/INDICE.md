@@ -6,7 +6,7 @@
 
 **CHUSAR padre:** [CHUSAR_CICLO_IMPORTACION_REPORT.md](./CHUSAR_CICLO_IMPORTACION_REPORT.md)  
 
-**Actualizado:** 2026-06-22 · **2.3.1.7.2 CERRADA** · Clon bib→bib 2.3.1.7.1.1.1 documentado
+**Actualizado:** 2026-07-09 · **7.3.3 Inyección IC ✅ CERRADA** · 373 IC bandeja · UI import-batch fase 2
 
 
 
@@ -20,7 +20,8 @@
 
 Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN** (4 cards en launcher Streamlit · solo 2.3.1.7).  
 
-**Cimiento:** [PIEDRA_CIMIENTO_COSTO_ARTICULO.md](../../1_fundamentos/PIEDRA_CIMIENTO_COSTO_ARTICULO.md) — COSTO · ARTÍCULO · estrategias.
+**Cimiento:** [PIEDRA_CIMIENTO_COSTO_ARTICULO.md](../../1_fundamentos/PIEDRA_CIMIENTO_COSTO_ARTICULO.md) — COSTO · ARTÍCULO · estrategias.  
+**Mapa motor + estrategias:** [CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md](../motor_precios/CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md)
 
 **Importación Excel (Corazón 2)** vive **dentro** de Motor de precios (2.3.1.7.1), no como card hermana en el hub ciclo.
 
@@ -60,11 +61,56 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | — | Historial listas | `…/importacion-precios/historial` | CHUSAR_IMP | IMPORTACION_PRECIOS |
 
-| **2.3.1.7.3** | Intención compra | `…/intencion-compra` | [CHUSAR_IC](./CHUSAR_INTENCION_COMPRA.md) | [INTENCION_COMPRA.md](./INTENCION_COMPRA.md) · [TABLAS §7.3](./TABLAS_MUDANZA_IC_DIG_PP.md) |
+| **2.3.1.7.3** | Intención compra | `…/intencion-compra` | [CHUSAR_IC](./CHUSAR_INTENCION_COMPRA.md) | [INTENCION_COMPRA.md](./INTENCION_COMPRA.md) · **[Problema 2 LP](./CHUSAR_IC_PROBLEMA_2_LISTADO_LP.md)** · [TABLAS §7.3](./TABLAS_MUDANZA_IC_DIG_PP.md) |
+
+| 2.3.1.7.3.1 | Bandeja IC | `…/intencion-compra/bandeja` | CHUSAR_IC | [IC_BANDEJA.md](./IC_BANDEJA.md) |
+
+| 2.3.1.7.3.2 | Nueva IC | `…/intencion-compra/nueva` | CHUSAR_IC | INTENCION_COMPRA |
+| **2.3.1.7.3.3** | **Inyección datos en tránsito · IC Excel batch** | `…/intencion-compra/import-batch` *(fase 2)* | [CHUSAR_INYECCION_DATOS_TRANSITO_IC](./CHUSAR_INYECCION_DATOS_TRANSITO_IC.md) | ✅ **373 IC script** · [CERRADA](../../../4_etapas/ETAPA_INYECCION_DATOS_TRANSITO_IC_20260709_CERRADA.md) |
+| **2.3.1.7.3.3.1** | **Ejecución inyección 2026-07-09** | script | [CHUSAR_INYECCION_IC_EJECUCION_20260709](./CHUSAR_INYECCION_IC_EJECUCION_20260709.md) | ✅ IC-0112→0484 · orden invertido · prod |
 
 | **2.3.1.7.4** | Digitación | `…/digitacion` | [CHUSAR_DG](./CHUSAR_DIGITACION.md) | [DIGITACION.md](./DIGITACION.md) · [TABLAS §7.4](./TABLAS_MUDANZA_IC_DIG_PP.md) |
 
+| 2.3.1.7.4.1 | Bandeja digitación | `…/digitacion` | CHUSAR_DG | [MAPA_DG_BANDEJA](./MAPA_ACCESO_RAPIDO_DG_BANDEJA.md) |
+
+| **2.3.1.7.4.1a** | **Admin Compra previa** | `…/digitacion?ramo=compra_previa` | CHUSAR_DG | IC `categoria_id=2` · `AUTORIZADO` sin PP |
+
+| **2.3.1.7.4.1b** | **Admin Programado** | `…/digitacion?ramo=programado` | CHUSAR_DG | IC `categoria_id=3` · bandeja + autorizadas · caso proforma 8604 |
+
+| 2.3.1.7.4.2 | Asignar IC → PP | `…/digitacion/asignar/[icId]` | CHUSAR_DG | [DIGITACION_ASIGNAR.md](./DIGITACION_ASIGNAR.md) |
+
 | **2.3.1.7.5** | Pedido proveedor | `…/pedido-proveedor` | [CHUSAR_PP](./CHUSAR_PEDIDO_PROVEEDOR.md) | [PEDIDO_PROVEEDOR.md](./PEDIDO_PROVEEDOR.md) · [TABLAS §7.5](./TABLAS_MUDANZA_IC_DIG_PP.md) |
+
+| 2.3.1.7.5.1 | Lista por quincena | `…/pedido-proveedor` | CHUSAR_PP | PEDIDO_PROVEEDOR |
+
+| **2.3.1.7.5.1a** | **Lista Compra previa** | `…/pedido-proveedor?ramo=compra_previa` | CHUSAR_PP | PP `categoria_id=2` |
+
+| **2.3.1.7.5.1b** | **Lista Programado** | `…/pedido-proveedor?ramo=programado` | CHUSAR_PP | PP `categoria_id=3` · PP programación |
+
+| **2.3.1.7.5.2** | **Mapa 5 botones acceso rápido** | fila lista PP | CHUSAR_PP | [MAPA_PP_LISTA](./MAPA_ACCESO_RAPIDO_PP_LISTA.md) |
+
+| **2.3.1.7.5.3** | **Detalle PP · 3 pestañas** | `…/pedido-proveedor/[ppId]` | CHUSAR_PP | [MAPA_PP_DETALLE](./MAPA_ACCESO_RAPIDO_PP_DETALLE.md) · [CHUSAR_PP_CABECERA](./CHUSAR_PP_CABECERA_EDITABLE.md) |
+
+| 2.3.1.7.5.3.3 | **Protocolo import programado SHOP↔IC** | doc | [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) | Alejandro Magno · PP-15 ✅ · PP-16 ✅ · PP-17 🟡 |
+| **2.3.1.7.5.3.3.5** | **CHUSAR PP-17 · 3ª proforma PROGRAMADO** | doc | [CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO](./CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO.md) | 🟡 handoff 2026-07-09 · 98 IC · evento #45 · sin hotfix código |
+| **2.3.1.7.5.3.3.6** | **CHUSAR Deploy Alfredo prod 2026-07-09** | doc | [CHUSAR_DEPLOY_ALFREDO_20260709](./CHUSAR_DEPLOY_ALFREDO_20260709.md) | ✅ EMAXCONN · 504 conversión · motor→PP |
+| **2.3.1.7.5.3.3.2** | **CHUSAR Caso Alfredo PP-16** | doc | [CHUSAR_CASO_ALFREDO_PP16_PROGRAMADO](./CHUSAR_CASO_ALFREDO_PP16_PROGRAMADO.md) | ✅ **CERRADO** 2026-07-09 · error `4.02.03.006` resuelto |
+| **2.3.1.7.5.3.3.4** | **CHUSAR PP-16 éxito · errores detalle** | doc | [CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE](./CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE.md) | ✅ 722 PPD · 39 FI · 8.880 pares |
+| **2.3.1.7.5.3.3.3** | **CHUSAR Borrar import proforma** | doc | [CHUSAR_BORRAR_IMPORT_PROFORMA_PROGRAMADO](./CHUSAR_BORRAR_IMPORT_PROFORMA_PROGRAMADO.md) | ✅ 2026-07-09 · gate venta Web · reserva FI no bloquea |
+| **2.3.1.7.5.3.4** | **CHUSAR PROGRAMADO instrumento venta AM** | doc | [CHUSAR_PROGRAMADO_INSTRUMENTO_VENTA_AM](./CHUSAR_PROGRAMADO_INSTRUMENTO_VENTA_AM.md) | ✅ aritmética 100% BD · tier LP · audit script |
+| 2.3.1.7.5.3.4 | **CSV veneno Carlos · tab FI** | `GET …/csv-ventas` | [CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO](./CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md) | 🟢 v2 · 1 FI = 1 SHOP |
+
+| 2.3.1.7.5.3.1 | **Tab Stock · Fase 1** | `?tab=stock` | [CHUSAR_PP_TAB_STOCK](./CHUSAR_PP_TAB_STOCK.md) | [MUDANZA_PP_INVENTARIO](../../../../../report/docs/MUDANZA_PP_DETALLE_INVENTARIO.md) |
+
+| **2.3.1.7.5.3.2** | **Tab FI · Ala Sur · NIIF** | `?tab=fi` | [CHUSAR_PP_TAB_FI](./CHUSAR_PP_TAB_FI.md) | `PpFiCard` · CSV · PDF |
+
+| **2.3.1.7.5.5** | **Universo tránsito · quién controla** | doc | [CHUSAR_UNIVERSO_TRANSITO_PP](./CHUSAR_UNIVERSO_TRANSITO_PP.md) | CP + programado + mix 50/50 · hasta ENVIADO |
+
+| **2.3.1.16** | **Mercadería en tránsito · Panel · informes** | doc | [CHUSAR_MERCADERIA_EN_TRANSITO](../gestion_compra/CHUSAR_MERCADERIA_EN_TRANSITO.md) | Concepto madre STOCK+VENTAS · Alejandro Magno |
+
+| **2.3.1.16.1** | **Mapa Panel CP STOCK+VENTAS** | doc | [MAPA_PANEL_CP_TRANSITO](../gestion_compra/MAPA_PANEL_CP_TRANSITO_STOCK_VENTAS.md) | FI Web → pares_vendidos · paridad Estadísticas |
+
+| 2.3.1.7.5.3.2 | **Vinculación listado Motor** | panel Stock | [CHUSAR_VINCULACION_LISTADO](./CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md) | Motor 7.1/7.2 |
 
 **Fuera de 7 (hermanos RIMEC):** [CADENA_OPERATIVA_RIMEC.md](../CADENA_OPERATIVA_RIMEC.md) · 2.3.1.8 Compra legal · 2.3.1.9 Facturación · 2.3.1.10 Depósito RIMEC
 
@@ -95,10 +141,17 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 │       └── nuevo/memoria/                   ← 2.3.1.7.2.1 + 2.3.1.7.2.1.1 copiar casos
 
 ├── intencion-compra/                        ← 2.3.1.7.3
+│   ├── bandeja/                             ← 2.3.1.7.3.1
+│   ├── nueva/                               ← 2.3.1.7.3.2
+│   └── import-batch/                        ← 2.3.1.7.3.3 inyección Excel (plan)
 
 ├── digitacion/                              ← 2.3.1.7.4
+│   ├── ?ramo=compra_previa|programado       ← 2.3.1.7.4.1a/b
+│   └── asignar/[icId]/                      ← 2.3.1.7.4.2
 
 └── pedido-proveedor/                        ← 2.3.1.7.5
+    ├── ?ramo=compra_previa|programado       ← 2.3.1.7.5.1a/b
+    └── [ppId]/                              ← 2.3.1.7.5.3 · ?tab=ics|stock|fi
 
 /compra-legal                                ← 2.3.1.8 (hermano)
 
@@ -162,7 +215,7 @@ Legacy redirect: `/proceso-importacion/importacion-precios/*` → bajo motor.
 
 | **2.3.1.7.2.1.1** | ✅ Copiar casos bib→evento |
 
-| 2.3.1.7.3–5 | 🟡 Mudanza IC · DG · PP |
+| 2.3.1.7.3–5 | ▶ **FOCO** Mudanza IC · DG · PP · [etapa](../../../4_etapas/ETAPA_MUDANZA_IC_DIG_PP_REPORT.md) · PP Stock **Fase 1 ✅** |
 
 
 
