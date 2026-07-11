@@ -1,0 +1,573 @@
+{
+  "actualizado": "2026-07-11-deploy-stock-transito-ventas-caso",
+  "sesionActiva": {
+    "code": "ADMIN-IC-PP28-20260711",
+    "alias": "Administrador IC · PP-28 · 8051/2026",
+    "maraton": "PROGRAMADO · parejas IC↔Pre-FI · GENERAR F.I.",
+    "ejecutor": "cursor",
+    "foco": "Smoke parejas Admin IC · tab FI · caso 8581",
+    "mdChusar": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28.md",
+    "mdEtapa": ".claude/4_etapas/ETAPA_ADMIN_IC_PP28_PROGRAMADO.md"
+  },
+  "trabajoVivo": [
+    {
+      "code": "ADMIN-IC-PP28-20260711",
+      "moduloSlug": "report",
+      "subcuentaSlug": "proceso-importacion",
+      "label": "Administrador IC · PP-28 · reconstrucción SHOP 8051/2026",
+      "md": ".claude/4_etapas/ETAPA_ADMIN_IC_PP28_PROGRAMADO.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28.md",
+      "mdChusarAdmin": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_ADMINISTRADOR_IC_PROGRAMADO.md",
+      "appPath": "/proceso-importacion/pedido-proveedor/28?tab=admin-ic",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": true,
+      "enlaceCruzado": "OPERATIVO-ALEJANDRO-MAGNO-2026"
+    },
+    {
+      "code": "INYECCION-IMAGENES-20260710",
+      "moduloSlug": "control-central",
+      "subcuentaSlug": "imagenes-producto",
+      "label": "Inyección imágenes · lote Supabase flat+sm/md/lg",
+      "md": ".claude/4_etapas/ETAPA_INYECCION_IMAGENES_20260710_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.1_control_central/docs/CHUSAR_INYECCION_IMAGENES_EJECUCION_20260710.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "focoMaraton": false
+    },
+    {
+      "code": "INYECCION-DATOS-TRANSITO-IC-20260709",
+      "moduloSlug": "report",
+      "subcuentaSlug": "proceso-importacion",
+      "label": "Inyección datos en tránsito · IC PROGRAMADO Excel",
+      "md": ".claude/4_etapas/ETAPA_INYECCION_DATOS_TRANSITO_IC_20260709.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_INYECCION_DATOS_TRANSITO_IC.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "focoMaraton": false,
+      "enlaceCruzado": "OPERATIVO-ALEJANDRO-MAGNO-2026"
+    },
+    {
+      "code": "2.3.1.7.3-5",
+      "moduloSlug": "report",
+      "subcuentaSlug": "proceso-importacion",
+      "label": "IC · Digitación · PP · prueba final maratón",
+      "md": ".claude/4_etapas/ETAPA_PRUEBA_FINAL_IC_MARATON_20260703.md",
+      "mdMudanza": ".claude/4_etapas/ETAPA_MUDANZA_IC_DIG_PP_REPORT.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_CICLO_IMPORTACION_REPORT.md",
+      "mdChusarPadre": ".claude/2_modulos/2.3_report/CHUSAR_MUDANZA_REPORT.md",
+      "mdTablas": ".claude/2_modulos/2.3_report/proceso_importacion/TABLAS_MUDANZA_IC_DIG_PP.md",
+      "mdApp": "report/docs/proceso-importacion/README.md",
+      "mdAppIc": "report/docs/INTENCION_COMPRA_REPORT.md",
+      "mdAppDg": "report/docs/DIGITACION_REPORT.md",
+      "mdAppPp": "report/docs/PEDIDO_PROVEEDOR_REPORT.md",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "subEtapas": [
+        "2.3.1.7.3",
+        "2.3.1.7.4",
+        "2.3.1.7.5"
+      ],
+      "unificado": "ETAPA-PRUEBA-FINAL-IC-MARATON-20260703 absorbe tarjeta duplicada 2.3.1.7.3-prueba-final"
+    },
+    {
+      "code": "OPERATIVO-ALEJANDRO-MAGNO-2026",
+      "moduloSlug": "report",
+      "subcuentaSlug": "gestion-compra",
+      "label": "Alejandro Magno · Panel Control · Stock PE · 8604",
+      "md": ".claude/4_etapas/ETAPA_OPERATIVO_ALEJANDRO_MAGNO.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md",
+      "mdStock": ".claude/4_etapas/ETAPA_MUDANZA_CL_FACT_DEP_REPORT.md",
+      "mdChusarStock": ".claude/2_modulos/2.3_report/CADENA_OPERATIVA_RIMEC.md",
+      "mdTablasStock": ".claude/2_modulos/2.3_report/TABLAS_ABASTECIMIENTO_8_9_10.md",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "subEtapas": ["2.3.1.8", "2.3.1.9", "2.3.1.10"],
+      "enlaceCruzado": "PRIMER-AYUDANTE-ANDRES-2026",
+      "unificado": "Absorbe 2.3.1.8-10 · Compra legal · Facturación · Depósito RIMEC"
+    },
+    {
+      "code": "2.3.1.8-10",
+      "moduloSlug": "report",
+      "subcuentaSlug": "grupo-rimec",
+      "label": "Compra legal · Facturación · Depósito RIMEC",
+      "md": ".claude/4_etapas/ETAPA_MUDANZA_CL_FACT_DEP_REPORT.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/CADENA_OPERATIVA_RIMEC.md",
+      "mdChusarPadre": ".claude/2_modulos/2.3_report/CHUSAR_MUDANZA_REPORT.md",
+      "mdTablas": ".claude/2_modulos/2.3_report/TABLAS_ABASTECIMIENTO_8_9_10.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "subEtapas": ["2.3.1.8", "2.3.1.9", "2.3.1.10"],
+      "absorbidaPor": "OPERATIVO-ALEJANDRO-MAGNO-2026",
+      "unificado": "OPERATIVO-ALEJANDRO-MAGNO-2026 absorbe Stock · Compra legal · Facturación · Depósito RIMEC"
+    },
+    {
+      "code": "RIMEC-WEB-PE-LOCAL-20260706",
+      "moduloSlug": "rimec-web",
+      "subcuentaSlug": "catalogo-pe",
+      "label": "RIMEC Web · PE + CP · solo local",
+      "md": ".claude/4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706.md",
+      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_CATALOGO_DEPLOY_20260706.md",
+      "mdApp": "ot/DEPLOY-RIMEC-WEB-SELLADO-20260706.md",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": false,
+      "enlaceCruzado": "CHUSAR_NIIF_IMAGENES_PRONTA_ENTREGA"
+    },
+    {
+      "code": "PRIMER-AYUDANTE-ANDRES-2026",
+      "moduloSlug": "nexus-navegador",
+      "subcuentaSlug": "moria-chusar",
+      "label": "Primer ayudante · Andrés · Reclutamiento · Moria Chusar",
+      "md": ".claude/4_etapas/ETAPA_PRIMER_AYUDANTE_ANDRES.md",
+      "mdChusar": ".claude/1_fundamentos/CHUSAR_AYUDANTE_ANDRES.md",
+      "mdReclutamiento": ".claude/4_etapas/ETAPA_RECLUTAMIENTO.md",
+      "mdChusarReclutamiento": ".claude/1_fundamentos/CHUSAR_RECLUTAMIENTO.md",
+      "mdApp": "nexus-navegador-holding/docs/CHUSAR_AYUDANTE_ANDRES.md",
+      "ejecutor": "andres",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": true,
+      "audience": "ayudante-andres",
+      "subEtapas": ["HOLD-RECLUTAMIENTO-2026"],
+      "enlaceCruzado": "OPERATIVO-ALEJANDRO-MAGNO-2026",
+      "unificado": "Absorbe HOLD-RECLUTAMIENTO-2026 · demo IA Nexus"
+    },
+    {
+      "code": "HOLD-RECLUTAMIENTO-2026",
+      "moduloSlug": "report",
+      "subcuentaSlug": "pilares",
+      "label": "Reclutamiento · demo IA Nexus",
+      "md": ".claude/4_etapas/ETAPA_RECLUTAMIENTO.md",
+      "mdChusar": ".claude/1_fundamentos/CHUSAR_RECLUTAMIENTO.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "absorbidaPor": "PRIMER-AYUDANTE-ANDRES-2026",
+      "unificado": "PRIMER-AYUDANTE-ANDRES-2026 absorbe Reclutamiento · demo IA Nexus"
+    },
+    {
+      "code": "GESTION-COMPRA-DIRECTOR-2026",
+      "moduloSlug": "report",
+      "subcuentaSlug": "gestion-compra",
+      "label": "🔍🕵️ Gestión de compra · Director · PAUSADA",
+      "md": ".claude/4_etapas/ETAPA_GESTION_COMPRA_DIRECTOR.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_GESTION_COMPRA_DIRECTOR.md",
+      "mdCabecera": ".claude/3_arquitectura/3.2_venta_tienda/CABECERA_DE_FILTROS.md",
+      "mdVentas": ".claude/2_modulos/2.3_report/docs/DISENO_DESCRIPCION_8_TABLAS_INFORME_VENTAS.md",
+      "mdTransito": ".claude/2_modulos/2.2_rimec_web/INDICE.md",
+      "mdDeposito": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_CAJAS.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "pausadaPorDirector": "2026-07-04 · diseño doc · retomar post-reclutamiento",
+      "nuevo": true,
+      "audience": "director-presidente",
+      "hubOrden": "entre-rimec-y-ventas-fotos"
+    },
+    {
+      "code": "2.3.5.3",
+      "moduloSlug": "report",
+      "subcuentaSlug": "pilares-color",
+      "label": "Pilar Color · tono_canon",
+      "md": ".claude/4_etapas/ETAPA_PILAR_COLOR_TONO_CANON_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/pilares/CHUSAR_PILAR_COLOR_TONO_CANON.md",
+      "mdApp": "report/docs/evidencia/CIERRE_PILAR_COLOR_TONO_20260628.json",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "subEtapaAbierta": "2.3.5.3.1"
+    },
+    {
+      "code": "2.3.5.4",
+      "moduloSlug": "report",
+      "subcuentaSlug": "pilares-usuarios",
+      "label": "Administrador Usuarios · LOCAL",
+      "md": ".claude/4_etapas/ETAPA_USUARIOS_ADMIN_PILARES_REPORT.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/pilares/CHUSAR_USUARIOS_ADMIN.md",
+      "mdApp": "report/docs/USUARIOS_ADMIN_LOCAL.md",
+      "ejecutor": "cursor",
+      "estado": "hecho"
+    },
+    {
+      "code": "2.3.2.1",
+      "moduloSlug": "report",
+      "subcuentaSlug": "depositos-bazzar",
+      "label": "Depósitos Bazzar · admin sync",
+      "md": ".claude/4_etapas/ETAPA_DEPOSITOS_BAZZAR_CERRADA.md",
+      "mdApp": "report/docs/DEPOSITOS_BAZZAR_ADMIN.md",
+      "ejecutor": "cursor",
+      "estado": "hecho"
+    },
+    {
+      "code": "2.3.2.1.1",
+      "parentCode": "2.3.2.1",
+      "moduloSlug": "report",
+      "subcuentaSlug": "admin-stock-dinamico",
+      "label": "Administrador dinámico de stock Bazzar · CERRADA",
+      "md": ".claude/4_etapas/ETAPA_ADMIN_STOCK_BAZZAR_DINAMICO_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/depositos/CHUSAR_ADMIN_STOCK_BAZZAR_DINAMICO.md",
+      "mdApp": "report/docs/VISION_PANEL_DEPOSITO_HIEDRA_2.3.2.1.1.md",
+      "mdIndice": ".claude/2_modulos/2.3_report/depositos/INDICE.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true
+    },
+    {
+      "code": "2.3.2.1.1.2",
+      "parentCode": "2.3.2.1.1",
+      "moduloSlug": "report",
+      "subcuentaSlug": "filtros-indice-deposito",
+      "label": "Filtros por índice · puente Motor Precios",
+      "md": ".claude/4_etapas/ETAPA_ADMIN_STOCK_BAZZAR_DINAMICO.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/depositos/CHUSAR_FILTROS_POR_INDICE_DEPOSITO.md",
+      "mdPuente": ".claude/3_arquitectura/3.3_integracion/PUENTE_MOTOR_PRECIOS_DEPOSITO_BAZZAR.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "enlaceCruzado": "2.3.1.7.1"
+    },
+    {
+      "code": "2.3.2.1.1.3",
+      "parentCode": "2.3.2.1.1",
+      "moduloSlug": "report",
+      "subcuentaSlug": "import-csv-pilares",
+      "label": "Import CSV · pilares + stock",
+      "md": ".claude/4_etapas/ETAPA_ADMIN_STOCK_BAZZAR_DINAMICO.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/depositos/CHUSAR_IMPORT_CSV_PILARES_PROVISION.md",
+      "mdPadre": ".claude/2_modulos/2.3_report/depositos/CHUSAR_IMPORT_CSV_HIEDRA_VENENOSA.md",
+      "mdIntegracion": ".claude/2_modulos/2.3_report/depositos/CHUSAR_DEPOSITO_INTEGRACION_COMPLETA_20260628.md",
+      "mdApp": "report/docs/MAPA_CSV_ENTES_BAZZAR.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "enlaceCruzado": "2.4.2.3",
+      "cerradoConPadre": "2.3.2.1.1"
+    },
+    {
+      "code": "2.3.2.2",
+      "moduloSlug": "report",
+      "subcuentaSlug": "caja-bazzar",
+      "label": "Caja Bazzar · bandeja única v2",
+      "md": ".claude/4_etapas/ETAPA_POS_BAZZAR_DOCUMENTACION_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/caja_bazzar/CHUSAR_CAJA_BAZZAR_REPORT.md",
+      "mdApp": "report/docs/INDICE_POS_BAZZAR.md",
+      "mdIndice": ".claude/2_modulos/2.3_report/caja_bazzar/MODULO_POS_BANDEJA_UNICA_V2.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "enlaceCruzado": "2.4.2.3"
+    },
+    {
+      "code": "BOVEDA-STRESS-BZZ-2026",
+      "moduloSlug": "tablet-bazzar",
+      "subcuentaSlug": "boveda-stress",
+      "label": "Bóveda POS · stress · tablet sin precio · CERRADA",
+      "md": ".claude/4_etapas/ETAPA_BOVEDA_STRESS_TEST_BAZZAR_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_BOVEDA_STRESS_TEST_BAZZAR.md",
+      "mdApp": "tablet-bazzar/docs/PRUEBA_BOVEDA_STRESS_FASE1.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "focoManana": true,
+      "subEtapas": [
+        "FASE1-BOVEDA-2100",
+        "FASE2-METRICAS",
+        "FASE3-MULTI-TIENDA"
+      ],
+      "enlaceCruzado": "PRUEBA-STOCK-BZZ-2026"
+    },
+    {
+      "code": "PRUEBA-STOCK-BZZ-2026",
+      "moduloSlug": "tablet-bazzar",
+      "subcuentaSlug": "integridad-stock",
+      "label": "Prueba integridad stock · Fase 1 ✅ CERRADA",
+      "md": ".claude/4_etapas/ETAPA_PRUEBA_INTEGRIDAD_STOCK_BAZZAR_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_PRUEBA_INTEGRIDAD_STOCK_BAZZAR.md",
+      "mdApp": "tablet-bazzar/docs/PRUEBA_INTEGRIDAD_STOCK_FASE1.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "subEtapas": [
+        "FASE1-UNA-TIENDA",
+        "FASE2-SYNC-6"
+      ],
+      "enlaceCruzado": "BOVEDA-STRESS-BZZ-2026"
+    },
+    {
+      "code": "PANEL-CONTROL-CABECERA-2026",
+      "moduloSlug": "tablet-bazzar",
+      "subcuentaSlug": "manual-deposito",
+      "label": "Panel Control · CABECERA tablet · CERRADA",
+      "md": ".claude/4_etapas/ETAPA_PANEL_CONTROL_CABECERA_TABLET_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_MANUAL_OPERACIONES_TABLET_DEPOSITO.md",
+      "mdBotones": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md",
+      "mdTablet": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_CABECERA_ESTANDAR.md",
+      "mdToolbar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_TOOLBAR_PISO.md",
+      "mdGrada": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_GRADA_INTEGRIDAD.md",
+      "mdEstandar": ".claude/3_arquitectura/3.2_venta_tienda/CABECERA_DE_FILTROS.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "enlaceCruzado": "2.4.3.11"
+    },
+    {
+      "code": "2.4.2.3",
+      "moduloSlug": "tablet-bazzar",
+      "subcuentaSlug": "tickets-pos",
+      "label": "Tickets POS · bandeja única v2",
+      "md": ".claude/4_etapas/ETAPA_POS_BAZZAR_DOCUMENTACION_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TICKETS_POS_STOCK.md",
+      "mdApp": "report/docs/INDICE_POS_BAZZAR.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "enlaceCruzado": "2.3.2.2"
+    },
+    {
+      "code": "2.4.3.4",
+      "parentCode": "2.4.3",
+      "moduloSlug": "tablet-bazzar",
+      "subcuentaSlug": "deposito-cajas",
+      "label": "Depósito · agrupación cajas · matriz 18",
+      "md": ".claude/4_etapas/ETAPA_DEPOSITO_OPERATIVA_TABLET_CAJAS_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_CAJAS.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "enlaceCruzado": "2.3.2.1.1.1"
+    },
+    {
+      "code": "2.4.3.5",
+      "parentCode": "2.4.3",
+      "moduloSlug": "tablet-bazzar",
+      "subcuentaSlug": "vidriera-estrellas",
+      "label": "Vidriera · estrellas · jefa salón faltantes",
+      "md": ".claude/4_etapas/ETAPA_DEPOSITO_SALON_VIDRIERA_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_VIDRIERA_ESTRELLAS.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "enlaceCruzado": "2.4.3.4"
+    }
+  ],
+  "ultimaCerradaPorModulo": {
+    "tablet-bazzar": {
+      "code": "BOVEDA-STRESS-BZZ-2026",
+      "label": "Bóveda POS · stress test · ORO",
+      "fecha": "2026-07-03",
+      "md": ".claude/4_etapas/ETAPA_BOVEDA_STRESS_TEST_BAZZAR_CERRADA.md",
+      "deploy": "https://tablet-bazzar.vercel.app/empaque",
+      "nuevo": true
+    },
+    "report": {
+      "code": "2.3.2.1.1",
+      "label": "Administrador dinámico stock Bazzar",
+      "fecha": "2026-07-03",
+      "md": ".claude/4_etapas/ETAPA_ADMIN_STOCK_BAZZAR_DINAMICO_CERRADA.md",
+      "deploy": "https://rimec-report.vercel.app/depositos-bazzar",
+      "nuevo": true
+    }
+  },
+  "cerradasPorModulo": {
+    "control-central": [
+      {
+        "code": "INYECCION-IMAGENES-20260710",
+        "label": "Inyección imágenes · 1510 JPG Supabase flat+sm/md/lg",
+        "fecha": "2026-07-10",
+        "md": ".claude/4_etapas/ETAPA_INYECCION_IMAGENES_20260710_CERRADA.md",
+        "nuevo": true
+      }
+    ],
+    "tablet-bazzar": [
+      {
+        "code": "BOVEDA-STRESS-BZZ-2026",
+        "label": "Bóveda POS · stress · ORO",
+        "fecha": "2026-07-03",
+        "md": ".claude/4_etapas/ETAPA_BOVEDA_STRESS_TEST_BAZZAR_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "PRUEBA-STOCK-BZZ-2026",
+        "label": "Integridad stock Bazzar · Fase 1",
+        "fecha": "2026-07-03",
+        "md": ".claude/4_etapas/ETAPA_PRUEBA_INTEGRIDAD_STOCK_BAZZAR_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "PANEL-CONTROL-CABECERA-2026",
+        "label": "Panel Control · CABECERA tablet · botones índice",
+        "fecha": "2026-07-03",
+        "md": ".claude/4_etapas/ETAPA_PANEL_CONTROL_CABECERA_TABLET_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.4.3.5",
+        "label": "Vidriera estrellas · jefa salón faltantes",
+        "fecha": "2026-06-27",
+        "md": ".claude/4_etapas/ETAPA_DEPOSITO_SALON_VIDRIERA_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.4.2.3",
+        "label": "Tickets POS · bandeja única v2",
+        "fecha": "2026-06-24",
+        "md": ".claude/4_etapas/ETAPA_POS_BAZZAR_DOCUMENTACION_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.4.2",
+        "label": "Ventas · stands par L+R",
+        "fecha": "2026-06-17",
+        "md": ".claude/4_etapas/SUBSESION_TABLET_VENTAS_20260617_CERRADA.md"
+      },
+      {
+        "code": "2.4.3",
+        "label": "Depósito fotos",
+        "fecha": "2026-06-17",
+        "md": ".claude/4_etapas/SUBSESION_TABLET_DEPOSITO_FOTOS_20260617_CERRADA.md"
+      },
+      {
+        "code": "2.4.3",
+        "label": "Depósito header pilares",
+        "fecha": "2026-06-17",
+        "md": ".claude/4_etapas/SUBSESION_TABLET_DEPOSITO_HEADER_PILARES_20260617_CERRADA.md"
+      },
+      {
+        "code": "2.4",
+        "label": "Tablet FINAL (etapa)",
+        "fecha": "2026-06-17",
+        "md": ".claude/4_etapas/ETAPA_TABLET_FINAL_CERRADA.md",
+        "nuevo": true
+      }
+    ],
+    "report": [
+      {
+        "code": "INYECCION-DATOS-TRANSITO-IC-20260709",
+        "label": "Inyección IC PROGRAMADO · Excel batch · 373 IC",
+        "fecha": "2026-07-09",
+        "md": ".claude/4_etapas/ETAPA_INYECCION_DATOS_TRANSITO_IC_20260709_CERRADA.md",
+        "deploy": "https://rimec-report.vercel.app/proceso-importacion/intencion-compra/bandeja",
+        "nuevo": true
+      },
+      {
+        "code": "PP16-ALFREDO-PROGRAMADO-20260708",
+        "label": "PP-16 Alfredo · import PROGRAMADO · 39 FI",
+        "fecha": "2026-07-09",
+        "md": ".claude/4_etapas/ETAPA_PP16_ALFREDO_PROGRAMADO_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.2.1.1",
+        "label": "Administrador dinámico stock Bazzar · Panel Depósito",
+        "fecha": "2026-07-03",
+        "md": ".claude/4_etapas/ETAPA_ADMIN_STOCK_BAZZAR_DINAMICO_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.5.3",
+        "label": "Pilar Color · tono_canon",
+        "fecha": "2026-06-28",
+        "md": ".claude/4_etapas/ETAPA_PILAR_COLOR_TONO_CANON_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.2.1.1",
+        "label": "Depósito operativa + índice · publicado salón",
+        "fecha": "2026-06-27",
+        "md": ".claude/4_etapas/ETAPA_DEPOSITO_SALON_VIDRIERA_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "HOLD-ACCESOS-BZZ-2026",
+        "label": "Accesos holding · Bazzar · RIMEC Web · passwords BZZ",
+        "fecha": "2026-06-10",
+        "md": ".claude/4_etapas/ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.5.4",
+        "label": "Administrador Usuarios · acreditación ente",
+        "fecha": "2026-06-10",
+        "md": ".claude/4_etapas/ETAPA_USUARIOS_ADMIN_ACREDITACION_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.2.2",
+        "label": "Caja Bazzar · bandeja única v2",
+        "fecha": "2026-06-24",
+        "md": ".claude/4_etapas/ETAPA_POS_BAZZAR_DOCUMENTACION_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.2.1",
+        "label": "Depósitos Bazzar · admin sync",
+        "fecha": "2026-06-17",
+        "md": ".claude/4_etapas/ETAPA_DEPOSITOS_BAZZAR_CERRADA.md"
+      },
+      {
+        "code": "2.3.1.7.2",
+        "label": "Importación precios · pasos 0–4 + historial",
+        "fecha": "2026-06-22",
+        "md": ".claude/4_etapas/ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.1.7.1",
+        "label": "Motor de Precios · biblioteca + clon bib→bib",
+        "fecha": "2026-06-22",
+        "md": ".claude/4_etapas/ETAPA_MOTOR_PRECIOS_REPORT_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.0",
+        "label": "Hub tres entes · índice Report",
+        "fecha": "2026-06-18",
+        "md": ".claude/4_etapas/ETAPA_REPORT_HUB_TRES_ENTES_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.5",
+        "label": "Administrador Pilares",
+        "fecha": "2026-06-17",
+        "md": ".claude/4_etapas/ETAPA_ADMINISTRADOR_PILARES_REPORT_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.1",
+        "label": "NIIF Report completo",
+        "fecha": "2026-06-09",
+        "md": ".claude/4_etapas/ETAPA_NIIF_REPORT_COMPLETO_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.4",
+        "label": "Aprobaciones · Nivel Dios",
+        "fecha": "2026-06-09",
+        "md": ".claude/4_etapas/ETAPA_APROBACIONES_NIVEL_DIOS_CERRADA.md"
+      },
+      {
+        "code": "2.3.4",
+        "label": "Aprobaciones · CSV general",
+        "fecha": "2026-06-09",
+        "md": ".claude/4_etapas/ETAPA_APROBACIONES_CSV_GENERAL_CERRADA.md"
+      },
+      {
+        "code": "2.3",
+        "label": "Roles y accesos",
+        "fecha": "2026-06-09",
+        "md": ".claude/4_etapas/ETAPA_ROLES_Y_ACCESOS_CERRADA.md"
+      },
+      {
+        "code": "2.3.11",
+        "label": "RRHH vacaciones",
+        "fecha": "2026-06-09",
+        "md": ".claude/4_etapas/ETAPA_RRHH_CERRADA.md"
+      }
+    ]
+  }
+}

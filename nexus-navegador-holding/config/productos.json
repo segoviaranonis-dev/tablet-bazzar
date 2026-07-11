@@ -1,0 +1,65 @@
+{
+  "productos": [
+    {
+      "code": "2.0",
+      "slug": "nexus-navegador",
+      "label": "Navegador Holding",
+      "stack": "Next.js local",
+      "hubHtml": "nexus-navegador-holding/docs/CHUSAR_NAVEGADOR.md",
+      "docIndice": ".claude/1_fundamentos/CHUSAR_NAVEGADOR_PROGRAMA.md",
+      "gitPath": "nexus-navegador-holding/",
+      "ultimoDeployActivo": false
+    },
+    {
+      "code": "2.1",
+      "slug": "control-central",
+      "label": "Control Central",
+      "stack": "Streamlit",
+      "hubHtml": "2-modulos/2.1-control-central/index.html",
+      "modulosConfig": "config/modulos/2.1-control-central.json",
+      "docIndice": ".claude/2_modulos/2.1_control_central/INDICE.md",
+      "gitPath": "control_central/"
+    },
+    {
+      "code": "2.2",
+      "slug": "rimec-web",
+      "label": "RIMEC Web",
+      "stack": "Next.js Vercel",
+      "hubHtml": "2-modulos/2.2-rimec-web/index.html",
+      "appKey": "rimecWeb",
+      "docIndice": ".claude/2_modulos/2.2_rimec_web/INDICE.md",
+      "gitPath": "rimec-web/"
+    },
+    {
+      "code": "2.3",
+      "slug": "report",
+      "label": "Report",
+      "stack": "Next.js Vercel",
+      "hubHtml": "2-modulos/2.3-report/index.html",
+      "appKey": "report",
+      "docIndice": ".claude/2_modulos/2.3_report/INDICE.md",
+      "gitPath": "report/",
+      "ultimoDeployActivo": true
+    },
+    {
+      "code": "2.4",
+      "slug": "tablet-bazzar",
+      "label": "Tablet Bazzar",
+      "stack": "Next.js Vercel",
+      "hubHtml": "2-modulos/2.4-tablet-bazzar/index.html",
+      "appKey": "tablet",
+      "docIndice": ".claude/2_modulos/2.4_tablet_bazzar/INDICE.md",
+      "gitPath": "tablet-bazzar/"
+    },
+    {
+      "code": "2.5",
+      "slug": "bazzar-web",
+      "label": "Bazzar Web",
+      "stack": "Next.js Vercel",
+      "hubHtml": "2-modulos/2.5-bazzar-web/index.html",
+      "appKey": "bazzarWeb",
+      "docIndice": ".claude/2_modulos/2.5_bazzar_web/INDICE.md",
+      "gitPath": "bazzar-web/"
+    }
+  ]
+}

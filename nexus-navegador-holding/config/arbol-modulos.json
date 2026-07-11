@@ -1,0 +1,858 @@
+{
+  "version": "0.2.0",
+  "productos": {
+    "nexus-navegador": {
+      "secciones": [
+        {
+          "code": "2.0.1",
+          "slug": "moria-chusar-sec",
+          "label": "Moria Chusar · Reclutamiento",
+          "lead": "Primer ayudante Andrés · portal etapas · memoria",
+          "subcuentas": ["moria-chusar"]
+        }
+      ],
+      "children": [
+        {
+          "code": "2.0.1",
+          "slug": "moria-chusar",
+          "label": "Ayudante Andrés · CHUSAR",
+          "lead": "Etapa reclutamiento · Moria web · shibboleth.",
+          "appPath": "/chusar",
+          "md": ".claude/1_fundamentos/CHUSAR_AYUDANTE_ANDRES.md",
+          "mdEtapa": ".claude/4_etapas/ETAPA_PRIMER_AYUDANTE_ANDRES.md"
+        },
+        {
+          "code": "2.0.2",
+          "slug": "organigrama-rama-unica",
+          "label": "Organigrama · rama única",
+          "lead": "Tarjetas sucesivas · hermanos se ocultan · fullscreen · Bazzar Web visible.",
+          "appPath": "/modulos/report",
+          "md": ".claude/1_fundamentos/CHUSAR_ORGANIGRAMA_RAMA_UNICA.md",
+          "nuevo": true
+        }
+      ]
+    },
+    "rimec-web": {
+      "secciones": [
+        {
+          "code": "2.2.1",
+          "slug": "catalogo-web-sec",
+          "label": "Catálogo · CP + Pronta entrega",
+          "lead": "Local :3001 · prod sellada · NIIF imágenes",
+          "subcuentas": ["catalogo-pe"]
+        }
+      ],
+      "children": [
+        { "code": "2.2.1", "slug": "catalogo", "label": "Catálogo", "lead": "Tarjetas multi-origen · stock PP · filtros pilares.", "appPath": "", "nuevo": true,
+          "children": [
+            { "code": "2.2.1.1", "slug": "cabecera-filtros", "label": "CABECERA DE FILTROS", "lead": "Género→TONO · pills naranja · enrich color.tono_canon.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CATALOGO_CABECERA_FILTROS.md", "nuevo": true }
+          ]
+        },
+        { "code": "2.2.2", "slug": "estadisticas", "label": "Estadísticas", "lead": "Árbol PP → género → marca → estilo · Inicial/Vendido/Saldo.", "appPath": "/estadisticas" },
+        { "code": "2.2.3", "slug": "filtros", "label": "Filtros catálogo", "lead": "Estilo/Tipo1 desde linea_referencia · v_stock_rimec.", "md": ".claude/2_modulos/2.2_rimec_web/INDICE.md" },
+        { "code": "2.2.4", "slug": "carrito", "label": "Carrito / preventa", "lead": "Carrito híbrido Supabase · PE validar app · CP+PE enrich.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CARRITO_PE_VALIDAR_LOCAL.md", "nuevo": true }
+      ]
+    },
+    "report": {
+      "secciones": [
+        {
+          "code": "2.3.1.11",
+          "slug": "gestion-compra-sec",
+          "label": "Gestión compra · Panel Control",
+          "lead": "Alejandro Magno · tres entidades · cabecera grilla sellada",
+          "subcuentas": ["gestion-compra", "grupo-rimec"]
+        },
+        {
+          "code": "2.3.1.7",
+          "slug": "proceso-importacion-sec",
+          "label": "Proceso importación",
+          "lead": "IC · Digitación · PP · inyección Excel batch",
+          "subcuentas": ["proceso-importacion"]
+        },
+        {
+          "code": "2.3.1.4",
+          "slug": "pilares-sec",
+          "label": "Administrador Pilares",
+          "lead": "Color · usuarios · reclutamiento demo",
+          "subcuentas": ["pilares", "pilares-color", "pilares-usuarios"]
+        },
+        {
+          "code": "2.3.2",
+          "slug": "bazzar-report-sec",
+          "label": "Bazzar · Report",
+          "lead": "Depósitos · admin stock · caja POS · CSV",
+          "subcuentas": [
+            "depositos-bazzar",
+            "admin-stock-dinamico",
+            "filtros-indice-deposito",
+            "import-csv-pilares",
+            "caja-bazzar"
+          ]
+        }
+      ],
+      "children": [
+        {
+          "code": "2.3.1",
+          "slug": "grupo-rimec",
+          "label": "RIMEC",
+          "lead": "RIMEC · Sales · Pilares · RRHH · Importación · Compra · Facturación · Depósito.",
+          "md": ".claude/2_modulos/2.3_report/INDICE.md",
+          "children": [
+            {
+              "code": "2.3.1.1",
+              "slug": "rimec",
+              "label": "Sales Report",
+              "lead": "Informe gerencial · 4 mundos · 8 tablas.",
+              "appPath": "/rimec",
+              "md": ".claude/2_modulos/2.3_report/docs/DISENO_DESCRIPCION_8_TABLAS_INFORME_VENTAS.md"
+            },
+            {
+              "code": "2.3.1.11",
+              "slug": "gestion-compra",
+              "label": "🔍🕵️ Gestión de compra · Director",
+              "lead": "Presidente ve ventas + stock piso + tránsito · CABECERA · grilla · slider depósito.",
+              "appPath": "/gestion-compra",
+              "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_GESTION_COMPRA_DIRECTOR.md",
+              "mdEtapa": ".claude/4_etapas/ETAPA_GESTION_COMPRA_DIRECTOR.md",
+              "nuevo": true,
+              "children": [
+                {
+                  "code": "2.3.1.20",
+                  "slug": "panel-control-grilla-header",
+                  "label": "Panel CP · CABECERA grilla",
+                  "lead": "Stack sellado PE/CP/Programado · PanelControlGrillaStack · Género→TONO.",
+                  "appPath": "/rimec?mundo=panel-control",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_PANEL_CONTROL_GRILLA_HEADER.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.21",
+                  "slug": "grilla-stock-tres-categorias-vision",
+                  "label": "Grilla stock · 3 categorías · visión",
+                  "lead": "Operativa+Artículos · PE 90% CP 60% PROG 40% · SR blindado · roadmap.",
+                  "appPath": "/rimec?mundo=panel-control",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_GRILLA_STOCK_TRES_CATEGORIAS_VISION.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.16.1",
+                  "slug": "stock-programado-grilla-v1",
+                  "label": "Stock Programado · grilla v1",
+                  "lead": "Tabs Operativa+Artículos · CABECERA · PPD cat. 3.",
+                  "appPath": "/stock-programado",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_STOCK_PROGRAMADO_GRILLA_V1.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.14.1",
+                  "slug": "stock-transito-ventas-caso",
+                  "label": "Tránsito ventas · filtro caso",
+                  "lead": "PROMOCIONAL · BCL + caso_precio · grilla ventas.",
+                  "appPath": "/stock-transito/ventas",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_STOCK_TRANSITO_VENTAS_CASO.md",
+                  "nuevo": true
+                }
+              ]
+            },
+            {
+              "code": "2.3.1.2",
+              "slug": "ventas-fotos",
+              "label": "Ventas + Fotos",
+              "lead": "PDF ventas con imágenes · hasta 80 filas · filtros pilares.",
+              "appPath": "/ventas-fotos",
+              "md": ".claude/2_modulos/2.3_report/CHUSAR_VENTAS_FOTOS_PDF.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.3.1.3",
+              "slug": "aprobaciones",
+              "label": "Aprobaciones",
+              "lead": "Gestión FI · PE badge · confirmadas · NIIF UI.",
+              "appPath": "/aprobaciones",
+              "md": ".claude/2_modulos/2.1_control_central/modules/aprobacion_pedidos/CHUSAR_APROBACIONES_PE_BADGE.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.3.1.4",
+              "slug": "pilares",
+              "label": "Administrador Pilares",
+              "lead": "linea · linea_referencia · color tono_canon · tipo_v2",
+              "appPath": "/pilares",
+              "md": "report/docs/ADMINISTRADOR_PILARES.md",
+              "children": [
+                {
+                  "code": "2.3.5.3",
+                  "slug": "pilares-color",
+                  "label": "Color · tono_canon",
+                  "lead": "Catálogo BD · 2 vías búsqueda (círculos + texto Enter). Prohibido multi-select.",
+                  "appPath": "/pilares/color",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_BUSQUEDA_COLOR_CANALES.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.4",
+                  "slug": "pilares-usuarios",
+                  "label": "Usuarios · roles y categorías",
+                  "lead": "SOLO LOCAL · no producción · maestro_rol_acceso + usuario_categoria.",
+                  "appPath": "/pilares/usuarios",
+                  "md": "report/docs/USUARIOS_ADMIN_LOCAL.md",
+                  "mdCierre": ".claude/4_etapas/ETAPA_USUARIOS_ADMIN_ACREDITACION_CERRADA.md"
+                }
+              ]
+            },
+            {
+              "code": "2.3.1.5",
+              "slug": "rrhh",
+              "label": "RRHH",
+              "lead": "Vacaciones dual + funcionarios · app Report.",
+              "appPath": "/rrhh",
+              "md": ".claude/2_modulos/2.3_report/rrhh/INDICE.md",
+              "children": [
+                {
+                  "code": "2.3.1.5.1",
+                  "slug": "rrhh-vacaciones",
+                  "label": "Vacaciones",
+                  "lead": "Dual días + horas · entes · funcionarios.",
+                  "appPath": "/rrhh/vacaciones",
+                  "md": ".claude/2_modulos/2.3_report/rrhh/FUNCIONAMIENTO_ACTUAL.md"
+                },
+                {
+                  "code": "2.3.1.5.2",
+                  "slug": "rrhh-funcionarios",
+                  "label": "Funcionarios",
+                  "lead": "Listado y alta funcionarios holding.",
+                  "appPath": "/rrhh",
+                  "md": ".claude/2_modulos/2.3_report/rrhh/INDICE.md"
+                }
+              ]
+            },
+            {
+              "code": "2.3.1.7",
+              "slug": "proceso-importacion",
+              "label": "Proceso de importación",
+              "lead": "Motor ✅ · IC · Digitación · PP en curso · 7.1/7.2 cerrados.",
+              "appPath": "/proceso-importacion",
+              "md": ".claude/2_modulos/2.3_report/proceso_importacion/INDICE.md",
+              "children": [
+                {
+                  "code": "2.3.1.7.1",
+                  "slug": "motor-precios",
+                  "label": "Motor de Precios",
+                  "lead": "✅ CERRADA · Biblioteca 1905 · Corazón 1+2.",
+                  "estado": "cerrada",
+                  "appPath": "/proceso-importacion/motor-precios",
+                  "md": ".claude/2_modulos/2.3_report/motor_precios/INDICE.md",
+                  "mdCierre": ".claude/4_etapas/ETAPA_MOTOR_PRECIOS_REPORT_CERRADA.md",
+                  "children": [
+                    {
+                      "code": "2.3.1.7.1.1",
+                      "slug": "motor-biblioteca",
+                      "label": "Biblioteca de precios",
+                      "lead": "Histórico activo · referencia canónica 1905.",
+                      "appPath": "/proceso-importacion/motor-precios/biblioteca",
+                      "md": ".claude/2_modulos/2.3_report/motor_precios/INDICE.md",
+                      "children": [
+                        {
+                          "code": "2.3.1.7.1.1.1",
+                          "slug": "copiar-casos-biblioteca-editor",
+                          "label": "Clon casos bib→bib",
+                          "lead": "Copiar matriz comercial sin vaciar origen · MIG-118 · Corazón 1.",
+                          "appPath": "/proceso-importacion/motor-precios/biblioteca",
+                          "md": ".claude/2_modulos/2.3_report/motor_precios/COPIAR_CASOS_BIBLIOTECA_EDITOR.md",
+                          "nuevo": true
+                        }
+                      ]
+                    },
+                    {
+                      "code": "2.3.1.7.1.2",
+                      "slug": "motor-biblioteca-nueva",
+                      "label": "Crear biblioteca",
+                      "lead": "Alta maestro biblioteca_precio · casos comerciales.",
+                      "appPath": "/proceso-importacion/motor-precios/biblioteca/nueva",
+                      "md": ".claude/2_modulos/2.3_report/motor_precios/CREAR_BIBLIOTECA.md"
+                    },
+                    {
+                      "code": "2.3.1.7.2",
+                      "slug": "importacion-precios",
+                      "label": "Importación de precios",
+                      "lead": "✅ CERRADA · pasos 0–4 · historial listas.",
+                      "estado": "cerrada",
+                      "appPath": "/proceso-importacion/motor-precios/importacion-precios",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/IMPORTACION_PRECIOS.md",
+                      "mdCierre": ".claude/4_etapas/ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md",
+                      "children": [
+                        {
+                          "code": "2.3.1.7.2.0",
+                          "slug": "importacion-precios-nuevo",
+                          "label": "Paso 0 · Carga Excel",
+                          "lead": "Upload proveedor · ley género · precio_evento.",
+                          "appPath": "/proceso-importacion/motor-precios/importacion-precios/nuevo",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/PASO0_CARGA_EXCEL.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.2.1",
+                          "slug": "importacion-precios-memoria",
+                          "label": "Paso 1 · Memoria",
+                          "lead": "Biblioteca vinculada · matriz precio_evento_caso.",
+                          "appPath": "/proceso-importacion/motor-precios/importacion-precios/nuevo/memoria",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/IMPORTACION_PRECIOS.md",
+                          "nuevo": true,
+                          "children": [
+                            {
+                              "code": "2.3.1.7.2.1.1",
+                              "slug": "copiar-casos-biblioteca-anterior",
+                              "label": "Copiar casos biblioteca anterior",
+                              "lead": "Botón Memoria · BCL → precio_evento_caso · FK biblioteca_precio_id.",
+                              "appPath": "/proceso-importacion/motor-precios/importacion-precios/nuevo/memoria",
+                              "md": ".claude/2_modulos/2.3_report/proceso_importacion/COPIAR_CASOS_BIBLIOTECA_ANTERIOR.md",
+                              "nuevo": true
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "code": "2.3.1.7.3",
+                  "slug": "intencion-compra",
+                  "label": "Intención de compra",
+                  "lead": "▶ FOCO · FECHA DE EMBARQUE · bandeja pendientes.",
+                  "appPath": "/proceso-importacion/intencion-compra",
+                  "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_INTENCION_COMPRA.md",
+                  "mdApp": "report/docs/INTENCION_COMPRA_REPORT.md",
+                  "mdFechaEmbarque": ".claude/2_modulos/2.3_report/proceso_importacion/FECHA_DE_EMBARQUE.md",
+                  "estado": "en_curso",
+                  "focoMaraton": true,
+                  "children": [
+                    {
+                      "code": "2.3.1.7.3.1",
+                      "slug": "intencion-compra-bandeja",
+                      "label": "Bandeja IC",
+                      "lead": "PENDIENTES · DEVUELTAS · HISTORIAL · autorizar.",
+                      "appPath": "/proceso-importacion/intencion-compra/bandeja",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/IC_BANDEJA.md"
+                    },
+                    {
+                      "code": "2.3.1.7.3.2",
+                      "slug": "intencion-compra-nueva",
+                      "label": "Nueva IC",
+                      "lead": "Paso A tipo+categoría · formulario cabecera financiera.",
+                      "appPath": "/proceso-importacion/intencion-compra/nueva",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/INTENCION_COMPRA.md"
+                    }
+                  ]
+                },
+                {
+                  "code": "2.3.1.7.4",
+                  "slug": "digitacion",
+                  "label": "Digitación",
+                  "lead": "▶ FOCO · Nro. fábrica · IC → agrupa PP.",
+                  "appPath": "/proceso-importacion/digitacion",
+                  "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_DIGITACION.md",
+                  "mdApp": "report/docs/DIGITACION_REPORT.md",
+                  "estado": "en_curso",
+                  "focoMaraton": true,
+                  "children": [
+                    {
+                      "code": "2.3.1.7.4.1",
+                      "slug": "digitacion-bandeja",
+                      "label": "Bandeja digitación",
+                      "lead": "PENDIENTES · EN PROCESO · CERRADOS.",
+                      "appPath": "/proceso-importacion/digitacion",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/MAPA_ACCESO_RAPIDO_DG_BANDEJA.md"
+                    },
+                    {
+                      "code": "2.3.1.7.4.2",
+                      "slug": "digitacion-asignar",
+                      "label": "Asignar IC → PP",
+                      "lead": "Evento cerrado · nro. fábrica · nace PP.",
+                      "appPath": "/proceso-importacion/digitacion/asignar",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/DIGITACION_ASIGNAR.md"
+                    }
+                  ]
+                },
+                {
+                  "code": "2.3.1.7.5",
+                  "slug": "pedido-proveedor",
+                  "label": "Pedido proveedor",
+                  "lead": "▶ FOCO · lista quincena · F9 · FI · tránsito.",
+                  "appPath": "/proceso-importacion/pedido-proveedor",
+                  "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_PEDIDO_PROVEEDOR.md",
+                  "mdApp": "report/docs/PEDIDO_PROVEEDOR_REPORT.md",
+                  "estado": "en_curso",
+                  "focoMaraton": true,
+                  "children": [
+                    {
+                      "code": "2.3.1.7.5.1",
+                      "slug": "pedido-proveedor-lista",
+                      "label": "Lista por quincena",
+                      "lead": "Acordeón FECHA DE EMBARQUE · KPI preventas.",
+                      "appPath": "/proceso-importacion/pedido-proveedor",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/PEDIDO_PROVEEDOR.md"
+                    },
+                    {
+                      "code": "2.3.1.7.5.2",
+                      "slug": "pedido-proveedor-acceso-rapido",
+                      "label": "Mapa 5 botones acceso rápido",
+                      "lead": "Abrir · ICs · Stock · FI · CSV — fila lista.",
+                      "appPath": "/proceso-importacion/pedido-proveedor",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/MAPA_ACCESO_RAPIDO_PP_LISTA.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.1.7.5.3",
+                      "slug": "pedido-proveedor-detalle",
+                      "label": "Detalle PP · 4 pestañas",
+                      "lead": "ICs · Admin IC · Importación/Stock · Facturas internas.",
+                      "appPath": "/proceso-importacion/pedido-proveedor",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/MAPA_ACCESO_RAPIDO_PP_DETALLE.md",
+                      "nuevo": true,
+                      "children": [
+                        {
+                          "code": "2.3.1.7.5.3.1",
+                          "slug": "pp-tab-stock",
+                          "label": "Tab Stock · Ala Norte",
+                          "lead": "Fase 1 ✅ · quincena duro · descuentos · vincular listado · Ala Norte Fase 2 ⏳",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_PP_TAB_STOCK.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.2",
+                          "slug": "pp-vinculacion-listado",
+                          "label": "Vinculación listado Motor",
+                          "lead": "precio_evento · vincular · recalc FI.",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.4",
+                          "slug": "pp-csv-veneno-carlos",
+                          "label": "CSV veneno Carlos · tab FI",
+                          "lead": "8604-26.csv · formato ; · desplazamiento sistema Carlos.",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.5",
+                          "slug": "administrador-ic-programado",
+                          "label": "Administrador de IC · PROGRAMADO",
+                          "lead": "Tab admin-ic · paneles IC↔Pre-FI · GENERAR F.I. · abandona 1 IC = 1 FI.",
+                          "appPath": "/proceso-importacion/pedido-proveedor/28?tab=admin-ic",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_ADMINISTRADOR_IC_PROGRAMADO.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.7",
+                          "slug": "reconstruccion-shop-proforma-pp28",
+                          "label": "Reconstrucción SHOP · PP-28 · 8051/2026",
+                          "lead": "_shop Excel canónico · shop 286 fix · 108 IC · etapa abierta.",
+                          "appPath": "/proceso-importacion/pedido-proveedor/28?tab=admin-ic",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.3.5",
+                          "slug": "pp17-tercera-proforma-programado",
+                          "label": "PP-17 · 3ª proforma PROGRAMADO",
+                          "lead": "98 IC · evento #45 · 5436/2026 · handoff Alfredo · código prod OK.",
+                          "appPath": "/proceso-importacion/pedido-proveedor/26?tab=stock",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.3.6",
+                          "slug": "deploy-alfredo-report-20260709",
+                          "label": "Deploy Alfredo Report 2026-07-09",
+                          "lead": "EMAXCONN · 504 conversión · motor→PP prod.",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_DEPLOY_ALFREDO_20260709.md",
+                          "nuevo": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "2.3.1.8",
+              "slug": "compra-legal",
+              "label": "Compra legal",
+              "lead": "Consolidación PPs · compras legales · traspasos.",
+              "appPath": "/compra-legal",
+              "md": ".claude/2_modulos/2.3_report/compra_legal/INDICE.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.3.1.9",
+              "slug": "facturacion-rimec",
+              "label": "Facturación",
+              "lead": "Hub FI · proceso vs Pronta entrega · cliente 5000.",
+              "appPath": "/facturacion",
+              "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_FACTURACION.md",
+              "nuevo": true,
+              "children": [
+                {
+                  "code": "2.3.1.9.A",
+                  "slug": "facturacion-transito",
+                  "label": "Facturación de proceso",
+                  "lead": "FI tránsito · Compra Legal · PROCESO_PP.",
+                  "appPath": "/facturacion/transito",
+                  "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_FACTURACION.md"
+                },
+                {
+                  "code": "2.3.1.9.B",
+                  "slug": "facturacion-pronta-entrega",
+                  "label": "Facturación Pronta entrega",
+                  "lead": "FI PE · PPD · agrupado por fecha · STOCK_IMPORTADO.",
+                  "appPath": "/facturacion/pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_FACTURACION_PRONTA_ENTREGA.md",
+                  "nuevo": true
+                }
+              ]
+            },
+            {
+              "code": "2.3.1.10",
+              "slug": "deposito-rimec",
+              "label": "Depósito RIMEC",
+              "lead": "Saldo físico importadora · ALM_DEPOSITO_RIMEC.",
+              "appPath": "/deposito-rimec",
+              "md": ".claude/2_modulos/2.3_report/deposito_rimec/INDICE.md",
+              "nuevo": true
+            }
+          ]
+        },
+        {
+          "code": "2.3.2",
+          "slug": "bazzar",
+          "label": "Bazzar",
+          "lead": "Tiendas físicas · depósitos · monitoreo tablet POS.",
+          "md": ".claude/2_modulos/CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md",
+          "children": [
+            {
+              "code": "2.3.2.00",
+              "slug": "bazzar-hub-operativo-admin",
+              "label": "Hub · Operativo vs Admin",
+              "lead": "Tablet 2.4 ejecutor · Report 2.3.2 admin · ciclo ORO · deploy 2026-07-03.",
+              "md": ".claude/2_modulos/CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.3.2.0",
+              "slug": "retail",
+              "label": "Stock / Retail",
+              "lead": "Stock multi-tienda · catálogo · análisis · informe.",
+              "appPath": "/retail",
+              "md": ".claude/2_modulos/2.1_control_central/docs/RETAIL_IMPORT_MODULO.md"
+            },
+            {
+              "code": "2.3.2.1",
+              "slug": "depositos-bazzar",
+              "label": "Depósitos Bazzar",
+              "lead": "18 tablas · import CSV pilares · admin Report.",
+              "appPath": "/depositos-bazzar",
+              "md": ".claude/2_modulos/2.3_report/depositos/INDICE.md",
+              "children": [
+                {
+                  "code": "2.3.2.1.1",
+                  "slug": "admin-stock-dinamico",
+                  "label": "Panel Depósito · Hiedra",
+                  "lead": "✅ CERRADA 2026-07-03 · admin stock = tablet stock · operativa + sync.",
+                  "appPath": "/depositos-bazzar",
+                  "md": ".claude/4_etapas/ETAPA_ADMIN_STOCK_BAZZAR_DINAMICO_CERRADA.md",
+                  "nuevo": true,
+                  "children": [
+                    {
+                      "code": "2.3.2.1.1.2",
+                      "slug": "filtros-indice-deposito",
+                      "label": "Filtros por índice",
+                      "lead": "Puente Motor Precios → stock Bazzar · casos BCL · sin calcular precio.",
+                      "appPath": "/depositos-bazzar",
+                      "md": ".claude/2_modulos/2.3_report/depositos/CHUSAR_FILTROS_POR_INDICE_DEPOSITO.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.2.1.1.3",
+                      "slug": "import-csv-pilares",
+                      "label": "Import CSV · pilares + stock",
+                      "lead": "sdfm/sdsm/sdpl · bulk REPLACE · pilares ciegos · LPN precio · ritual 4708.",
+                      "appPath": "/depositos-bazzar",
+                      "md": ".claude/2_modulos/2.3_report/depositos/CHUSAR_IMPORT_CSV_PILARES_PROVISION.md",
+                      "mdPadre": ".claude/2_modulos/2.3_report/depositos/CHUSAR_IMPORT_CSV_HIEDRA_VENENOSA.md",
+                      "mdIntegracion": ".claude/2_modulos/2.3_report/depositos/CHUSAR_DEPOSITO_INTEGRACION_COMPLETA_20260628.md",
+                      "mdMapa": "report/docs/MAPA_CSV_ENTES_BAZZAR.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.2.1.1.4",
+                      "slug": "hub-metricas-import-vendido",
+                      "label": "Hub 3 entes · import · vendido",
+                      "lead": "Fernando/SM/Palma · fecha lote · cantidad_importada MIG-131.",
+                      "appPath": "/depositos-bazzar",
+                      "md": ".claude/2_modulos/2.3_report/depositos/CHUSAR_HUB_TRES_ENTES_METRICAS.md",
+                      "mdApp": "report/docs/HUB_DEPOSITOS_BAZZAR.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.2.1.2",
+                      "slug": "panel-control-bazzar",
+                      "label": "Panel Control · visión escalonada",
+                      "lead": "Catálogo depósito Report · módulo futuro junto tarjeta hub.",
+                      "appPath": "/depositos-bazzar",
+                      "md": ".claude/2_modulos/2.3_report/depositos/CHUSAR_PANEL_CONTROL_BAZZAR.md",
+                      "mdEtapa": ".claude/4_etapas/ETAPA_PANEL_CONTROL_CABECERA_TABLET_CERRADA.md",
+                      "nuevo": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "code": "2.3.2.2",
+              "slug": "caja-bazzar",
+              "label": "Caja Bazzar · bandeja v2",
+              "lead": "✅ doc+código cerrado 2026-06-24 · smoke piso ⏳",
+              "appPath": "/tablet-bazzar",
+              "md": ".claude/2_modulos/2.3_report/caja_bazzar/MODULO_POS_BANDEJA_UNICA_V2.md",
+              "children": [
+                {
+                  "code": "2.3.2.2.0",
+                  "slug": "hub-cajas",
+                  "label": "Hub · 6 cajas",
+                  "lead": "Selector tienda · cards retail.",
+                  "appPath": "/tablet-bazzar",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/00_HUB_SEIS_CAJAS.md"
+                },
+                {
+                  "code": "2.3.2.2.1",
+                  "slug": "caja-2100",
+                  "label": "Fernando Adultos",
+                  "lead": "Caja 2100 · depósito tienda · tickets.",
+                  "appPath": "/tablet-bazzar/2100",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/CAJAS/2100_FER_ADULTOS.md",
+                  "children": [
+                    { "code": "2.3.2.2.1.1", "slug": "2100-operativa", "label": "A · Caja operativa (P-12)", "lead": "Bandeja CSV · Pendiente · Enviar Bobeda", "appPath": "/tablet-bazzar/2100?mod=operativa", "md": ".claude/2_modulos/2.3_report/caja_bazzar/03_MODULO_CAJA_OPERATIVA.md" },
+                    { "code": "2.3.2.2.1.2", "slug": "2100-facturable", "label": "B · Facturable / archivo", "lead": "Tickets FACTURADO del día", "appPath": "/tablet-bazzar/2100?mod=facturable", "md": ".claude/2_modulos/2.3_report/caja_bazzar/04_MODULO_FACTURABLE_ARCHIVO.md" },
+                    { "code": "2.3.2.2.1.3", "slug": "2100-metricas", "label": "C · Métricas turno", "lead": "KPIs pares · pendientes", "appPath": "/tablet-bazzar/2100?mod=metricas", "md": ".claude/2_modulos/2.3_report/caja_bazzar/05_MODULO_METRICAS_GRAFICOS.md" }
+                  ]
+                },
+                {
+                  "code": "2.3.2.2.2",
+                  "slug": "caja-2900",
+                  "label": "Fernando Niños",
+                  "lead": "Caja 2900.",
+                  "appPath": "/tablet-bazzar/2900",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/CAJAS/2900_FER_NINOS.md",
+                  "children": [
+                    { "code": "2.3.2.2.2.1", "slug": "2900-operativa", "label": "A · Caja operativa (P-12)", "appPath": "/tablet-bazzar/2900?mod=operativa", "md": ".claude/2_modulos/2.3_report/caja_bazzar/03_MODULO_CAJA_OPERATIVA.md" },
+                    { "code": "2.3.2.2.2.2", "slug": "2900-facturable", "label": "B · Facturable / archivo", "appPath": "/tablet-bazzar/2900?mod=facturable", "md": ".claude/2_modulos/2.3_report/caja_bazzar/04_MODULO_FACTURABLE_ARCHIVO.md" },
+                    { "code": "2.3.2.2.2.3", "slug": "2900-metricas", "label": "C · Métricas turno", "appPath": "/tablet-bazzar/2900?mod=metricas", "md": ".claude/2_modulos/2.3_report/caja_bazzar/05_MODULO_METRICAS_GRAFICOS.md" }
+                  ]
+                },
+                {
+                  "code": "2.3.2.2.3",
+                  "slug": "caja-2400",
+                  "label": "San Martín Adultos",
+                  "lead": "Caja 2400.",
+                  "appPath": "/tablet-bazzar/2400",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/CAJAS/2400_SM_ADULTOS.md",
+                  "children": [
+                    { "code": "2.3.2.2.3.1", "slug": "2400-operativa", "label": "A · Caja operativa (P-12)", "appPath": "/tablet-bazzar/2400?mod=operativa", "md": ".claude/2_modulos/2.3_report/caja_bazzar/03_MODULO_CAJA_OPERATIVA.md" },
+                    { "code": "2.3.2.2.3.2", "slug": "2400-facturable", "label": "B · Facturable / archivo", "appPath": "/tablet-bazzar/2400?mod=facturable", "md": ".claude/2_modulos/2.3_report/caja_bazzar/04_MODULO_FACTURABLE_ARCHIVO.md" },
+                    { "code": "2.3.2.2.3.3", "slug": "2400-metricas", "label": "C · Métricas turno", "appPath": "/tablet-bazzar/2400?mod=metricas", "md": ".claude/2_modulos/2.3_report/caja_bazzar/05_MODULO_METRICAS_GRAFICOS.md" }
+                  ]
+                },
+                {
+                  "code": "2.3.2.2.4",
+                  "slug": "caja-2700",
+                  "label": "San Martín Niños",
+                  "lead": "Caja 2700.",
+                  "appPath": "/tablet-bazzar/2700",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/CAJAS/2700_SM_NINOS.md",
+                  "children": [
+                    { "code": "2.3.2.2.4.1", "slug": "2700-operativa", "label": "A · Caja operativa (P-12)", "appPath": "/tablet-bazzar/2700?mod=operativa", "md": ".claude/2_modulos/2.3_report/caja_bazzar/03_MODULO_CAJA_OPERATIVA.md" },
+                    { "code": "2.3.2.2.4.2", "slug": "2700-facturable", "label": "B · Facturable / archivo", "appPath": "/tablet-bazzar/2700?mod=facturable", "md": ".claude/2_modulos/2.3_report/caja_bazzar/04_MODULO_FACTURABLE_ARCHIVO.md" },
+                    { "code": "2.3.2.2.4.3", "slug": "2700-metricas", "label": "C · Métricas turno", "appPath": "/tablet-bazzar/2700?mod=metricas", "md": ".claude/2_modulos/2.3_report/caja_bazzar/05_MODULO_METRICAS_GRAFICOS.md" }
+                  ]
+                },
+                {
+                  "code": "2.3.2.2.5",
+                  "slug": "caja-3100",
+                  "label": "Palma Adultos",
+                  "lead": "Caja 3100.",
+                  "appPath": "/tablet-bazzar/3100",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/CAJAS/3100_PAL_ADULTOS.md",
+                  "children": [
+                    { "code": "2.3.2.2.5.1", "slug": "3100-operativa", "label": "A · Caja operativa (P-12)", "appPath": "/tablet-bazzar/3100?mod=operativa", "md": ".claude/2_modulos/2.3_report/caja_bazzar/03_MODULO_CAJA_OPERATIVA.md" },
+                    { "code": "2.3.2.2.5.2", "slug": "3100-facturable", "label": "B · Facturable / archivo", "appPath": "/tablet-bazzar/3100?mod=facturable", "md": ".claude/2_modulos/2.3_report/caja_bazzar/04_MODULO_FACTURABLE_ARCHIVO.md" },
+                    { "code": "2.3.2.2.5.3", "slug": "3100-metricas", "label": "C · Métricas turno", "appPath": "/tablet-bazzar/3100?mod=metricas", "md": ".claude/2_modulos/2.3_report/caja_bazzar/05_MODULO_METRICAS_GRAFICOS.md" }
+                  ]
+                },
+                {
+                  "code": "2.3.2.2.6",
+                  "slug": "caja-3200",
+                  "label": "Palma Niños",
+                  "lead": "Caja 3200.",
+                  "appPath": "/tablet-bazzar/3200",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/CAJAS/3200_PAL_NINOS.md",
+                  "children": [
+                    { "code": "2.3.2.2.6.1", "slug": "3200-operativa", "label": "A · Caja operativa (P-12)", "appPath": "/tablet-bazzar/3200?mod=operativa", "md": ".claude/2_modulos/2.3_report/caja_bazzar/03_MODULO_CAJA_OPERATIVA.md" },
+                    { "code": "2.3.2.2.6.2", "slug": "3200-facturable", "label": "B · Facturable / archivo", "appPath": "/tablet-bazzar/3200?mod=facturable", "md": ".claude/2_modulos/2.3_report/caja_bazzar/04_MODULO_FACTURABLE_ARCHIVO.md" },
+                    { "code": "2.3.2.2.6.3", "slug": "3200-metricas", "label": "C · Métricas turno", "appPath": "/tablet-bazzar/3200?mod=metricas", "md": ".claude/2_modulos/2.3_report/caja_bazzar/05_MODULO_METRICAS_GRAFICOS.md" }
+                  ]
+                },
+                {
+                  "code": "2.3.2.2.7",
+                  "slug": "p12-protocolo-cajero",
+                  "label": "P-12 · Protocolo cajero · Bobeda",
+                  "lead": "Bandeja VACÍO · CSV · Enviar a Bobeda · ticket_venta_pos",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/P-12_PROTOCOLO_CAJERO_BOBINA.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.2.2.8",
+                  "slug": "p13-entregas-bobeda",
+                  "label": "P-13 · Entregas · QC · ENTREGADO",
+                  "lead": "Consulta Bobeda PENDIENTE_ENTREGA · miniaturas calzado",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/P-13_MODULO_ENTREGAS_BOBINA.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.2.2.9",
+                  "slug": "flujo-p12-p13",
+                  "label": "Flujo P-12/P-13 · índice implementación",
+                  "lead": "End-to-end · APIs · estados · módulos 2.3.2.x + 2.4.2.x",
+                  "md": "report/docs/FLUJO_P12_P13_CAJA_BAZZAR.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.2.2.10",
+                  "slug": "memoria-secundaria-conexiones",
+                  "label": "Memoria secundaria · conexiones internas",
+                  "lead": "Staging · bandeja · Bobeda · qué edita quién · APIs · archivos",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/MEMORIA_SECUNDARIA_CONEXIONES_INTERNAS.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.2.2.12",
+                  "slug": "handoff-boveda-oro",
+                  "label": "Handoff · Enviar a Empaque → ORO",
+                  "lead": "Único puente bandeja → bobeda · snapshot congelado · serial legal",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/CHUSAR_HANDOFF_BOVEDA_ORO.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.2.2.14",
+                  "slug": "factura-legal-caja",
+                  "label": "Factura legal · serial Activa",
+                  "lead": "Barra 6 cajas · Activa · Siguiente · Anterior · vital bóveda · migración 011",
+                  "appPath": "/tablet-bazzar/2900?mod=operativa",
+                  "md": ".claude/2_modulos/2.3_report/caja_bazzar/CHUSAR_FACTURA_LEGAL_CAJA.md",
+                  "nuevo": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "code": "2.3.3",
+          "slug": "bazzar-web-modulo",
+          "label": "Bazzar Web",
+          "lead": "E-commerce · compra web · informes internos.",
+          "md": ".claude/2_modulos/2.5_bazzar_web/INDICE.md",
+          "children": [
+            {
+              "code": "2.3.3.1",
+              "slug": "bazzar-web",
+              "label": "Bazzar Web (Report)",
+              "lead": "Compra web · motor precio · depósito desde Report.",
+              "appPath": "/bazzar-web"
+            },
+            {
+              "code": "2.3.3.2",
+              "slug": "informes",
+              "label": "Informes",
+              "lead": "Rutas informes internos.",
+              "appPath": "/informes"
+            }
+          ]
+        }
+      ]
+    },
+    "tablet-bazzar": {
+      "secciones": [
+        {
+          "code": "2.4.2",
+          "slug": "ventas",
+          "label": "Ventas · ORO",
+          "lead": "Cadena · tickets POS · bóveda stress · integridad stock",
+          "subcuentas": [
+            "cadena",
+            "pos-cliente",
+            "tickets-pos",
+            "boveda-stress",
+            "integridad-stock"
+          ],
+          "md": ".claude/4_etapas/ETAPA_TABLET_TICKETS_POS_STOCK_REPORT.md"
+        },
+        {
+          "code": "2.4.3",
+          "slug": "deposito-bazzar",
+          "label": "Depósito Bazzar",
+          "lead": "CABECERA · manual piso · cajas · vidriera · API live",
+          "subcuentas": [
+            "deposito",
+            "live-api",
+            "manual-deposito",
+            "deposito-cajas",
+            "vidriera-estrellas"
+          ],
+          "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_FOTOS.md"
+        }
+      ],
+      "children": [
+        { "code": "2.4.0", "slug": "hub-operativo-admin", "label": "Hub · vs Report admin", "lead": "Operativo tablet · administrativo Report 2.3.2 · ciclo ORO.", "md": ".claude/2_modulos/CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md", "nuevo": true },
+        { "code": "2.4.1", "slug": "panel", "label": "Panel modos", "lead": "Selector Ventas / Depósito / modos tablet.", "appPath": "" },
+        { "code": "2.4.2", "slug": "cadena", "label": "Ventas · Cadena", "lead": "Grilla miniaturas · GRADA · stands molécula · stock 2 tiendas.", "appPath": "/cadena", "md": ".claude/2_modulos/2.4_tablet_bazzar/INDICE.md", "nuevo": true },
+        { "code": "2.4.2.6", "slug": "cadena-grada-grilla", "label": "Cadena · GRADA + grilla", "lead": "Entrada /cadena · FiltroGradaDeposito · GrillaCajasDeposito · tap → ingresar.", "appPath": "/cadena", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_CADENA_GRADA_GRILLA.md", "nuevo": true },
+        { "code": "2.4.2.1", "slug": "pos-cliente", "label": "POS · Cliente cédula", "lead": "Carrito → cédula/celular → lookup clients_bazaar.", "appPath": "/cadena/vista", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_POS_CLIENTE_CEDULA.md", "nuevo": true },
+        { "code": "2.4.2.2", "slug": "otras-tiendas", "label": "Otras tiendas · stock", "lead": "Dock cross-local · /live molécula · San Martín + Palma.", "appPath": "/cadena/vista", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_OTRAS_TIENDAS_STOCK.md", "nuevo": true },
+        { "code": "2.4.2.3", "slug": "tickets-pos", "label": "Tickets POS · bandeja v2", "lead": "✅ doc+código cerrado 2026-06-24 · bandeja única · smoke ⏳", "appPath": "/cadena/vista", "md": ".claude/4_etapas/ETAPA_POS_BAZZAR_DOCUMENTACION_CERRADA.md" },
+        { "code": "2.4.2.3.1", "slug": "vendedor-staging", "label": "Vendedor · código · CERRAR", "lead": "RRHH vendedor_bazzar · doc cerrada 2026-06-24.", "appPath": "/cadena/vista", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_VENDEDOR_STAGING.md" },
+        { "code": "2.4.2.4", "slug": "empaque-p13", "label": "Empaque · Entregas (P-13)", "lead": "QC Bobeda · numero_factura_legal · PENDIENTE_ENTREGA → ENTREGADO.", "appPath": "/empaque", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_EMPAQUE.md", "nuevo": true },
+        { "code": "2.4.4.1", "slug": "boveda-stress", "label": "Bóveda stress · ORO", "lead": "✅ CERRADA 2026-07-03 · ciclo venta→caja→bobeda.", "appPath": "/empaque", "md": ".claude/4_etapas/ETAPA_BOVEDA_STRESS_TEST_BAZZAR_CERRADA.md", "nuevo": true },
+        { "code": "2.4.4.2", "slug": "integridad-stock", "label": "Integridad stock · Fase 1", "lead": "✅ CERRADA 2026-07-03 · circuito 2100 · tablet=Report stock.", "md": ".claude/4_etapas/ETAPA_PRUEBA_INTEGRIDAD_STOCK_BAZZAR_CERRADA.md", "mdEtapa": ".claude/4_etapas/ETAPA_PRUEBA_INTEGRIDAD_STOCK_BAZZAR_CERRADA.md", "nuevo": true },
+        { "code": "2.4.3", "slug": "deposito", "label": "Depósito fotos", "lead": "Toolbar piso · cajas · vidriera ⭐ · CABECERA estándar.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_TOOLBAR_PISO.md", "nuevo": true },
+        { "code": "2.4.3.6", "slug": "deposito-cabecera-estandar", "label": "CABECERA depósito tablet", "lead": "✅ CERRADA · estándar holding · TONO · Panel Control Report = fase 2.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_CABECERA_ESTANDAR.md", "mdEtapa": ".claude/4_etapas/ETAPA_PANEL_CONTROL_CABECERA_TABLET_CERRADA.md", "nuevo": true },
+        { "code": "2.4.3.7", "slug": "deposito-toolbar-piso", "label": "Toolbar piso · stock protagonista", "lead": "✅ CERRADA · ATRÁS 48px · tabs · CABECERA cerrada default.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_TOOLBAR_PISO.md", "mdEtapa": ".claude/4_etapas/ETAPA_PANEL_CONTROL_CABECERA_TABLET_CERRADA.md", "nuevo": true },
+        { "code": "2.4.3.8", "slug": "deposito-grada-integridad", "label": "Integridad grada · TOP cajas", "lead": "✅ CERRADA · SQL limit molécula · diag 2900.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_GRADA_INTEGRIDAD.md", "nuevo": true },
+        { "code": "2.4.3.10", "slug": "manual-deposito", "label": "Manual operaciones · depósito piso", "lead": "✅ CERRADA 2026-07-03 · paso a paso CABECERA · toolbar · gradas · alertas.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_MANUAL_OPERACIONES_TABLET_DEPOSITO.md", "mdEtapa": ".claude/4_etapas/ETAPA_PANEL_CONTROL_CABECERA_TABLET_CERRADA.md", "nuevo": true,
+          "children": [
+            { "code": "2.4.3.11", "slug": "botones-deposito-indice", "label": "Índice botones · mapa 20 controles", "lead": "Tabla maestra toolbar + CABECERA + grilla · enlaces anchor.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md", "nuevo": true },
+            { "code": "2.4.3.10.1", "slug": "btn-toolbar-deposito", "label": "Toolbar · ATRÁS · tabs · CABECERA", "lead": "7 controles fila única · lógica · optimización sessionStorage.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md", "mdHash": "toolbar", "nuevo": true },
+            { "code": "2.4.3.10.2", "slug": "btn-cabecera-filtros", "label": "CABECERA · 8 filas filtros", "lead": "Género→TONO→Grada · cascada filtros-header · Pills + dropdown.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md", "mdHash": "cabecera", "nuevo": true },
+            { "code": "2.4.3.10.3", "slug": "btn-top-marca-limit", "label": "Top/marca · 80–1000", "lead": "Limita cajas NO gradas · diag 2900 · integridad SQL.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md", "mdHash": "top-marca", "nuevo": true },
+            { "code": "2.4.3.10.4", "slug": "btn-stock-grilla", "label": "Stock · grilla · fullscreen", "lead": "Cajas molécula · TablaGrada · tap foto · Ver gradas.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md", "mdHash": "stock-grilla", "nuevo": true },
+            { "code": "2.4.3.10.5", "slug": "btn-alertas-vidriera", "label": "Alertas · vidriera ⭐", "lead": "Tab naranja · badge · listarAlertasVidriera.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md", "mdHash": "alertas", "nuevo": true },
+            { "code": "2.4.3.10.6", "slug": "btn-estadisticas", "label": "Estadísticas · KPIs · gráficos", "lead": "Pares/Precio Gs · paridad Report · roadmap 01–06.", "appPath": "/deposito", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md", "mdHash": "estadisticas", "nuevo": true },
+            { "code": "2.4.3.10.7", "slug": "plan-optimizacion-deposito", "label": "Plan optimización futura", "lead": "Roadmap P0 Panel Control Report · P1 paridad · P2 perf.", "md": ".claude/2_modulos/2.4_tablet_bazzar/CHUSAR_TABLET_DEPOSITO_BOTONES_INDICE.md", "mdHash": "optimizacion-futura", "nuevo": true }
+          ]
+        },
+        { "code": "2.4.4", "slug": "live-api", "label": "API Live", "lead": "Endpoints /api/deposito · /api/live stock.", "md": ".claude/2_modulos/2.4_tablet_bazzar/CONTEXT.md" }
+      ]
+    },
+    "bazzar-web": {
+      "children": [
+        { "code": "2.5.1", "slug": "catalogo", "label": "Catálogo público", "lead": "MVP e-commerce Bazar · publicación.", "appPath": "" },
+        { "code": "2.5.2", "slug": "motor-precio", "label": "Motor precio", "lead": "Reglas precio web · catálogo.", "md": ".claude/2_modulos/2.5_bazzar_web/INDICE.md" },
+        { "code": "2.5.3", "slug": "compra", "label": "Compra web", "lead": "Flujo compra cliente final.", "md": ".claude/2_modulos/2.5_bazzar_web/docs/CONTEXT.md" },
+        { "code": "2.5.4", "slug": "checkout-cliente", "label": "Checkout · cliente cédula", "lead": "CartDrawer → checkout → buscarClientePorCedula · tabla cliente_web.", "appPath": "/checkout", "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_CHECKOUT_CLIENTE_CEDULA.md", "nuevo": true }
+      ]
+    }
+  }
+}
