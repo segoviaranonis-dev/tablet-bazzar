@@ -17,6 +17,8 @@
 | **[CHUSAR_UNIVERSO_TRANSITO_PP.md](../proceso_importacion/CHUSAR_UNIVERSO_TRANSITO_PP.md)** | **Universo tránsito Director** · quién controla · CP/programado/mix · hasta ENVIADO |
 | **[CHUSAR_STOCK_PROGRAMADO_ESTRATEGIA_VENTAS.md](./CHUSAR_STOCK_PROGRAMADO_ESTRATEGIA_VENTAS.md)** | **Panel programado** · `/stock-programado` · PPD cat. 3 · sin RIMEC Web |
 | **[CHUSAR_STOCK_PROGRAMADO_GRILLA_V1.md](./CHUSAR_STOCK_PROGRAMADO_GRILLA_V1.md)** | **Grilla v1** · Operativa + Artículos · **2.3.1.16.1** ✅ 2026-07-10 |
+| **[CHUSAR_STOCK_PROGRAMADO_VENTAS_FI_20260712.md](./CHUSAR_STOCK_PROGRAMADO_VENTAS_FI_20260712.md)** | **Ventas FI 8051** · verde venta · acordeones · deploy · **2.3.1.16.3** 🟢 2026-07-12 |
+| **[DOC_CANON_VENTAS_EJECUTADAS_PROGRAMADO_20260712.md](./DOC_CANON_VENTAS_EJECUTADAS_PROGRAMADO_20260712.md)** | **Canon Ventas ejecutadas** · mapa UI CP → réplica Programado · **2.3.1.16.2** 🟢 2026-07-12 |
 | **[CHUSAR_PANEL_CORAZON_CASO_PRUEBA_DUAL.md](./CHUSAR_PANEL_CORAZON_CASO_PRUEBA_DUAL.md)** | **Corazón Panel** · vendido real PE+CP · Aprobaciones dual · caso +12 · programado 8604 |
 | **[CHUSAR_PANEL_CONTROL_HUB_NAVEGACION.md](./CHUSAR_PANEL_CONTROL_HUB_NAVEGACION.md)** | **Hub compacto** · KPIs only · «Ver productos →» · grilla en hoja interior |
 | **[CHUSAR_GRILLA_STOCK_TRES_CATEGORIAS_VISION.md](./CHUSAR_GRILLA_STOCK_TRES_CATEGORIAS_VISION.md)** | **Visión 2026-07-09** · Operativa+Artículos × 3 cat. · % avance · SR blindado · roadmap · **2.3.1.21** |
