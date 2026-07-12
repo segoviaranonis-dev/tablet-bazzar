@@ -6,7 +6,7 @@
 
 **CHUSAR padre:** [CHUSAR_CICLO_IMPORTACION_REPORT.md](./CHUSAR_CICLO_IMPORTACION_REPORT.md)  
 
-**Actualizado:** 2026-07-09 · **7.3.3 Inyección IC ✅ CERRADA** · 373 IC bandeja · UI import-batch fase 2
+**Actualizado:** 2026-07-11 · **7.5.3.9 DOC proceso PROGRAMADO completo** · handoff réplica mañana
 
 
 
@@ -89,16 +89,26 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | **2.3.1.7.5.2** | **Mapa 5 botones acceso rápido** | fila lista PP | CHUSAR_PP | [MAPA_PP_LISTA](./MAPA_ACCESO_RAPIDO_PP_LISTA.md) |
 
-| **2.3.1.7.5.3** | **Detalle PP · 3 pestañas** | `…/pedido-proveedor/[ppId]` | CHUSAR_PP | [MAPA_PP_DETALLE](./MAPA_ACCESO_RAPIDO_PP_DETALLE.md) · [CHUSAR_PP_CABECERA](./CHUSAR_PP_CABECERA_EDITABLE.md) |
+| **2.3.1.7.5.3** | **Detalle PP · 4 pestañas** | `…/pedido-proveedor/[ppId]` | CHUSAR_PP | [MAPA_PP_DETALLE](./MAPA_ACCESO_RAPIDO_PP_DETALLE.md) · [CHUSAR_PP_CABECERA](./CHUSAR_PP_CABECERA_EDITABLE.md) |
 
-| 2.3.1.7.5.3.3 | **Protocolo import programado SHOP↔IC** | doc | [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) | Alejandro Magno · PP-15 ✅ · PP-16 ✅ · PP-17 🟡 |
+| **2.3.1.7.5.3.5** | **Administrador de IC · PROGRAMADO** | `?tab=admin-ic` | [CHUSAR_ADMINISTRADOR_IC_PROGRAMADO](./CHUSAR_ADMINISTRADOR_IC_PROGRAMADO.md) | 🟢 **CANÓNICO 2026-07-10** · abandona IC=FI · paneles IC↔PF · vínculo monto |
+| **2.3.1.7.5.3.5.1** | **Protocolo Chusa · FI por lote** | `?tab=admin-ic` | [PROTOCOLO_CHUSA_ADMIN_IC_LOTE](./PROTOCOLO_CHUSA_ADMIN_IC_LOTE.md) | 🟢 **CANÓNICO 2026-07-11** · 3 niveles · contadores · canon · lote |
+| **2.3.1.7.5.3.5.2** | **Auditoría PP-28 · Chusa · veneno** | doc | [AUDITORIA_ADMIN_IC_PP28_CHUSA_VENENO_20260711](./AUDITORIA_ADMIN_IC_PP28_CHUSA_VENENO_20260711.md) | 🟢 **2026-07-11** · OK condicional lote · CSV post-FI |
+| **2.3.1.7.5.3.5.3** | **DOC PP-28 · lote · errores · réplica PROGRAMADO** | doc | [DOC_ADMIN_IC_LOTE_PROGRAMADO_PP28_ERRORES_SOLUCIONES_20260711](./DOC_ADMIN_IC_LOTE_PROGRAMADO_PP28_ERRORES_SOLUCIONES_20260711.md) | 🟢 **2026-07-11** · 13 errores · sin LPN · handoff mañana |
+| **2.3.1.7.5.3.9** | **DOC Proceso PROGRAMADO completo · errores · soluciones** | doc | [DOC_PROCESO_PROGRAMADO_COMPLETO_ERRORES_SOLUCIONES_20260711](./DOC_PROCESO_PROGRAMADO_COMPLETO_ERRORES_SOLUCIONES_20260711.md) | 🟢 **2026-07-11** · Motor→IC→PP→FI · PP-16/17/28 · handoff |
+
+| **2.3.1.7.5.3.7** | **Reconstrucción SHOP proforma · PP-28** | doc | [CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28](./CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28.md) | 🟢 **2026-07-11** · `_shop` Excel canónico · 8051/2026 · etapa abierta |
+| **2.3.1.7.5.3.10** | **Vulnerabilidad import proforma · pilares** | doc | [CHUSAR_VULNERABILIDAD_IMPORT_PROFORMA_PILARES](./CHUSAR_VULNERABILIDAD_IMPORT_PROFORMA_PILARES.md) | 🟡 **2026-07-12** · error `4.02.03.009` · motor TS añadido · backfill parcial |
+| **2.3.1.7.5.3.11** | **DOC Reparación pilares · casos · PF programado** | doc | [DOC_REPARACION_PROGRAMADO_PILARES_CASOS_20260712](./DOC_REPARACION_PROGRAMADO_PILARES_CASOS_20260712.md) | 🟢 **2026-07-12** · PELE sync BCL · FI flota · ley biblioteca |
+
+| 2.3.1.7.5.3.3 | **Protocolo import programado SHOP↔IC** | doc | [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) | Import PPD ✅ · preview SHOP×BRAND · FI auto ⛔ |
 | **2.3.1.7.5.3.3.5** | **CHUSAR PP-17 · 3ª proforma PROGRAMADO** | doc | [CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO](./CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO.md) | 🟡 handoff 2026-07-09 · 98 IC · evento #45 · sin hotfix código |
 | **2.3.1.7.5.3.3.6** | **CHUSAR Deploy Alfredo prod 2026-07-09** | doc | [CHUSAR_DEPLOY_ALFREDO_20260709](./CHUSAR_DEPLOY_ALFREDO_20260709.md) | ✅ EMAXCONN · 504 conversión · motor→PP |
 | **2.3.1.7.5.3.3.2** | **CHUSAR Caso Alfredo PP-16** | doc | [CHUSAR_CASO_ALFREDO_PP16_PROGRAMADO](./CHUSAR_CASO_ALFREDO_PP16_PROGRAMADO.md) | ✅ **CERRADO** 2026-07-09 · error `4.02.03.006` resuelto |
 | **2.3.1.7.5.3.3.4** | **CHUSAR PP-16 éxito · errores detalle** | doc | [CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE](./CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE.md) | ✅ 722 PPD · 39 FI · 8.880 pares |
 | **2.3.1.7.5.3.3.3** | **CHUSAR Borrar import proforma** | doc | [CHUSAR_BORRAR_IMPORT_PROFORMA_PROGRAMADO](./CHUSAR_BORRAR_IMPORT_PROFORMA_PROGRAMADO.md) | ✅ 2026-07-09 · gate venta Web · reserva FI no bloquea |
 | **2.3.1.7.5.3.4** | **CHUSAR PROGRAMADO instrumento venta AM** | doc | [CHUSAR_PROGRAMADO_INSTRUMENTO_VENTA_AM](./CHUSAR_PROGRAMADO_INSTRUMENTO_VENTA_AM.md) | ✅ aritmética 100% BD · tier LP · audit script |
-| 2.3.1.7.5.3.4 | **CSV veneno Carlos · tab FI** | `GET …/csv-ventas` | [CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO](./CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md) | 🟢 v2 · 1 FI = 1 SHOP |
+| 2.3.1.7.5.3.4 | **CSV veneno Carlos · ventas + inicial** | `csv-ventas` · `csv-inicial` | [CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO](./CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md) | 🟢 v3 · dual CSV |
 
 | 2.3.1.7.5.3.1 | **Tab Stock · Fase 1** | `?tab=stock` | [CHUSAR_PP_TAB_STOCK](./CHUSAR_PP_TAB_STOCK.md) | [MUDANZA_PP_INVENTARIO](../../../../../report/docs/MUDANZA_PP_DETALLE_INVENTARIO.md) |
 
