@@ -100,6 +100,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.5.3.7** | **Reconstrucción SHOP proforma · PP-28** | doc | [CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28](./CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28.md) | 🟢 **2026-07-11** · `_shop` Excel canónico · 8051/2026 · etapa abierta |
 | **2.3.1.7.5.3.10** | **Vulnerabilidad import proforma · pilares** | doc | [CHUSAR_VULNERABILIDAD_IMPORT_PROFORMA_PILARES](./CHUSAR_VULNERABILIDAD_IMPORT_PROFORMA_PILARES.md) | 🟡 **2026-07-12** · error `4.02.03.009` · motor TS añadido · backfill parcial |
 | **2.3.1.7.5.3.11** | **DOC Reparación pilares · casos · PF programado** | doc | [DOC_REPARACION_PROGRAMADO_PILARES_CASOS_20260712](./DOC_REPARACION_PROGRAMADO_PILARES_CASOS_20260712.md) | 🟢 **2026-07-12** · PELE sync BCL · FI flota · ley biblioteca |
+| **2.3.1.7.5.3.12** | **Error Admin IC · botón verde no recalcula FI** | doc | [4.02.03.010](../../../5_errores/detalle/4.02.03.010_admin-ic-boton-verde-no-recalcula-fi.md) | 🟡 **2026-07-12** · PP-0015 · hotfix `regenerar` |
 
 | 2.3.1.7.5.3.3 | **Protocolo import programado SHOP↔IC** | doc | [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) | Import PPD ✅ · preview SHOP×BRAND · FI auto ⛔ |
 | **2.3.1.7.5.3.3.5** | **CHUSAR PP-17 · 3ª proforma PROGRAMADO** | doc | [CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO](./CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO.md) | 🟡 handoff 2026-07-09 · 98 IC · evento #45 · sin hotfix código |

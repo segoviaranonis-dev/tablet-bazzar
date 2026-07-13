@@ -184,4 +184,14 @@ Antes de declarar import cerrado:
 
 ---
 
+## 9 · Error colateral — botón verde no recalculaba FI (`4.02.03.010`)
+
+**Detectado:** PP-2026-0015 · cliente **2894** · FI 15-PV008 con montos viejos tras corrección PF.
+
+**Causa agente:** reparación batch regeneró FI sin garantizar paridad Admin IC; API devolvía `already_done` si conteo cuadraba.
+
+**Ley:** ver [4.02.03.010](../../../5_errores/detalle/4.02.03.010_admin-ic-boton-verde-no-recalcula-fi.md) · hotfix `regenerar` en API + UI.
+
+---
+
 *Director: esta sesión cierra la confusión biblioteca/libres/caso erróneo. La ley pilares en import queda codificada; backfill estilo LR = siguiente OT si se exige 0 gaps.*
