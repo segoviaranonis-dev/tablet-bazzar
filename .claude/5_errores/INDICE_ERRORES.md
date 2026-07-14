@@ -20,6 +20,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.01.03.001_rimec-web-login-bazzar-vendedor-bloqueado.md`* · ✅ **RESUELTO 2026-07-07** · commit `e380dd7` · deploy `dpl_2ERKN7yrXBjj2k1tyeywRXY47ywN`
 
+### 4.01.04.001 · Precio visible en lightbox sin activar venta
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.001_rimec-web-precio-lightbox-pre-activacion.md`* · 🔴 **ABIERTO 2026-07-14** · doc `2.2_rimec_web/DOC_VULNERABILIDAD_PRECIO_LIGHTBOX_20260714.md`
+
 ---
 
 ## 4.02 · Report
@@ -71,6 +75,10 @@
 ### 4.02.03.007 · Bandeja IC/Digitación — orden Excel invertido roto por quincena
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.007_ic-bandeja-orden-quincena-vs-excel.md`* · ✅ **RESUELTO 2026-07-09** · commits `bd004c9` · `df38085` · prod Vercel READY
+
+### 4.02.03.010 · Vincular listado PP — FI no recalcula en prod (TS sin Python)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.010_vincular-listado-prod-fi-sin-recalc.md`* · ✅ **RESUELTO 2026-07-14** · `recalcular-fis-pp.ts` · PP14 rescate BD · push `7b7d5d7`
 
 ### 4.02.02.004 · Ventas + Fotos PDF — serverless 25 filas vs banner 80
 
