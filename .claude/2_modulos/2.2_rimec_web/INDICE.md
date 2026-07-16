@@ -4,7 +4,7 @@
 **Tecnología:** Next.js + Vercel  
 **Estado:** Producción  
 **URL:** https://rimec-web.vercel.app  
-**Última actualización:** 2026-06-09
+**Última actualización:** 2026-07-16 · deploy descuentos FI + liquidación + casos (**2.2.4.0.13**)
 
 ---
 
@@ -50,6 +50,9 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 ### **Arquitectura**
 - **arquitectura.md** - Arquitectura del sistema
 
+### **Hotfix UI · Nivel Superior (2026-07-16)**
+- **[LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md](../../1_fundamentos/1.3_politicas/LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md)** — **5.01.00.020** · login `:3001` muestra SUPERIOR · error `4.05.02.001` ✅
+
 ### **Imágenes NIIF (2026-07-06)**
 - **[CHUSAR_NIIF_IMAGENES_PRONTA_ENTREGA.md](./CHUSAR_NIIF_IMAGENES_PRONTA_ENTREGA.md)** — tiers sm/md/lg · ProductImage · PE + carrito + modal (paridad Tablet depósito)
 - **[PROTOCOLO_IMAGENES_CARGA_INTEGRAL_RIMEC_WEB.md](./PROTOCOLO_IMAGENES_CARGA_INTEGRAL_RIMEC_WEB.md)** — **2026-07-07** · keywords `imagen` / `desbordamiento` / prefetch PE tras CP · default Calzados en PE
@@ -79,7 +82,9 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **[CHUSAR_AUDITORIA_PRE_PROD_20260713.md](./CHUSAR_AUDITORIA_PRE_PROD_20260713.md)** — OK local + checklist pre-deploy
 - **[CHUSAR_POST_IMPORT_STOCK_VALIDAR_CARRITOS.md](./CHUSAR_POST_IMPORT_STOCK_VALIDAR_CARRITOS.md)** — **2.2.4.0.2** · VALIDAR tras import stock real
 - **[CHUSAR_CARRITO_PE_VALIDAR_LOCAL.md](./CHUSAR_CARRITO_PE_VALIDAR_LOCAL.md)** — **2.2.4.0.1** · RPC bypass PE · enrich CP+PE · anti-doble confirm · duplicado PVR pendiente anular
-- **[CHUSAR_DESCUENTOS_FI_TRANSACCION_20260715.md](./docs/CHUSAR_DESCUENTOS_FI_TRANSACCION_20260715.md)** — **2.2.4.0.12** · descuentos por FI · MIG-160 · floor centenas Gs. · elimina Desc. lote · modal Guardar descuento · auditoría PP/Aprobaciones 🔴
+- **[CHUSAR_DESCUENTOS_FI_TRANSACCION_20260715.md](./docs/CHUSAR_DESCUENTOS_FI_TRANSACCION_20260715.md)** — **2.2.4.0.12** · descuentos por FI · MIG-160 **aplicada** · floor Gs. · modal Guardar descuento · Aprobaciones
+- **[CHUSAR_MARCA_LIQUIDACION_PE.md](./CHUSAR_MARCA_LIQUIDACION_PE.md)** — **2.2.1.0.13** · badge Liq. PE · `es_liquidacion` · filtro comercial
+- **[CHUSAR_DEPLOY_DESCUENTOS_LIQUIDACION_CASOS_20260716.md](./CHUSAR_DEPLOY_DESCUENTOS_LIQUIDACION_CASOS_20260716.md)** — **2.2.4.0.13** · deploy prod Web+Report · casos PP/PC/PE · orden directa Director
 
 ### **Handoff Cursor (2026-07-09 noche)**
 - **[CURSOR_CONTINUAR_RIMEC_WEB_PE_LOCAL.md](../../1_fundamentos/1.1_protocolos/CURSOR_CONTINUAR_RIMEC_WEB_PE_LOCAL.md)** — pendientes mañana · terminales cerradas · checklist smoke
@@ -106,7 +111,7 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 
 ---
 
-**Última actualización:** 2026-07-16 · **2.2.1.2.3** reversión PVR→carrito completa (PVR-144866)
+**Última actualización:** 2026-07-16 · **2.2.4.0.13** deploy descuentos + liquidación + casos
 
 ---
 
