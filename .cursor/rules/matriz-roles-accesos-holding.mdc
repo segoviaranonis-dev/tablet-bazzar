@@ -14,17 +14,19 @@ Doc completa: `.claude/1_fundamentos/1.3_politicas/MATRIZ_ROLES_ACCESOS_HOLDING.
 | **DIOS** | TOTAL | TOTAL | TOTAL | TOTAL |
 | **ADMIN** | TOTAL | todo menos **Aprobaciones** | todo menos **Aprobaciones** | TOTAL |
 | **VENDEDOR** | TOTAL | solo **Ventas con fotos** | PROHIBIDO | PROHIBIDO |
+| **CAJA** | PROHIBIDO | solo **Facturación Pronta Entrega** | PROHIBIDO | PROHIBIDO |
 
 ## BAZZAR (`rol_id = 2`)
 
 | Categoria | RIMEC WEB | Report | Streamlit | Tablet |
 |-----------|-----------|--------|-----------|--------|
-| **ADMIN** | PROHIBIDO | solo **Bazzar** (sin hub RIMEC) | PROHIBIDO | TOTAL |
-| **VENDEDOR** | PROHIBIDO | PROHIBIDO | PROHIBIDO | TOTAL |
+| **ADMIN** | TOTAL (catálogo + carrito) | solo **Bazzar** (sin hub RIMEC) | PROHIBIDO | TOTAL |
+| **VENDEDOR** | TOTAL (catálogo + carrito + código cliente) | PROHIBIDO | PROHIBIDO | TOTAL |
 
 ## Reglas
 
 - **DIOS** = `rol_id=1` + `categoria=DIOS` → Nivel Dios, sin restricciones (incluye Aprobaciones).
 - **ADMIN RIMEC** ≠ DIOS: no Aprobación de pedidos.
+- **CAJA RIMEC** = `rol_id=1` + `categoria=CAJA` → solo `/facturacion/pronta-entrega` (usuario `CAJA_RIMEC`).
 - Antes de **módulo nuevo**: validar fila de matriz + actualizar middleware/registry.
 - Sales Report histórico (`registro_ventas_general_v2`) sigue **blindado** — no mezclar con pilares.

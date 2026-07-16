@@ -76,6 +76,7 @@ Ver [CHUSAR § Estado Report](./CHUSAR_FACTURACION.md#estado-report--implementac
 
 | **6b** | **[CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md](./CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md)** | **2.3.1.9.C** · DIOS · FI entera · reintegrar stock · Anulaciones · PE+tránsito+Aprobaciones |
 | **6c** | **[CHUSAR_FI_CASO_CABECERA_DESDE_PP.md](./CHUSAR_FI_CASO_CABECERA_DESDE_PP.md)** | **2.3.1.9.D** · caso/marca cabecera FI desde PP · Admin IC · backfill · resync |
+| **6d** | **[CHUSAR_USUARIO_CAJA_RIMEC_PE.md](./CHUSAR_USUARIO_CAJA_RIMEC_PE.md)** | **2.3.1.9.E** · usuario CAJA_RIMEC · solo Facturación Pronta Entrega |
 
 | 7 | [../TABLAS_ABASTECIMIENTO_8_9_10.md](../TABLAS_ABASTECIMIENTO_8_9_10.md) | Vista cruzada 8–10 |
 
