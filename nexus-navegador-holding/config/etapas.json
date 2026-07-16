@@ -1,15 +1,81 @@
 {
-  "actualizado": "2026-07-11-deploy-stock-transito-ventas-caso",
+  "actualizado": "2026-07-16-cierre-bazzar-web-y-catalogo-latencia",
   "sesionActiva": {
-    "code": "ADMIN-IC-PP28-20260711",
-    "alias": "Administrador IC · PP-28 · 8051/2026",
-    "maraton": "PROGRAMADO · parejas IC↔Pre-FI · GENERAR F.I.",
+    "code": null,
+    "alias": "Sin etapa en maratón — aguardar Nueva etapa",
+    "maraton": null,
     "ejecutor": "cursor",
-    "foco": "Smoke parejas Admin IC · tab FI · caso 8581",
-    "mdChusar": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28.md",
-    "mdEtapa": ".claude/4_etapas/ETAPA_ADMIN_IC_PP28_PROGRAMADO.md"
+    "foco": "Cierre masivo 2026-07-16 · Bazzar Web + Catálogo latencia",
+    "mdChusar": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_DEPOSITO_WEB_GRADA_Y_PURGE_5000.md",
+    "mdEtapa": ".claude/4_etapas/ACTUAL.md"
   },
   "trabajoVivo": [
+    {
+      "code": "BAZZAR-WEB-CATALOGO-3002-20260716",
+      "moduloSlug": "bazzar-web",
+      "subcuentaSlug": "catalogo-vendible",
+      "label": "Bazzar Web :3002 · Stock Sano · grilla · NIIF imágenes",
+      "md": ".claude/4_etapas/ETAPA_BAZZAR_WEB_CATALOGO_3002_20260716_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_DEPOSITO_WEB_GRADA_Y_PURGE_5000.md",
+      "mdPrepCierre": ".claude/4_etapas/ETAPA_PREP_CIERRE_MASIVO_20260716.md",
+      "appPath": "http://localhost:3002/catalogo",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "focoMaraton": false,
+      "subEtapas": [
+        "BZZ-WEB-T1",
+        "BZZ-WEB-T2",
+        "BZZ-WEB-T3",
+        "BZZ-WEB-T4",
+        "BZZ-WEB-T5"
+      ],
+      "enlaceCruzado": "CATALOGO-LATENCIA-20260713"
+    },
+    {
+      "code": "CATALOGO-LATENCIA-20260713",
+      "moduloSlug": "rimec-web",
+      "subcuentaSlug": "catalogo-latencia",
+      "label": "Catálogo latencia · 7 tareas · CP+PE+Todos · T8 confecciones 638",
+      "md": ".claude/4_etapas/ETAPA_CATALOGO_LATENCIA_20260713_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CATALOGO_LATENCIA_CIERRE_20260716.md",
+      "mdChusar638": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CONFECCIONES_REGLAS_PROPIAS_638.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "focoMaraton": false,
+      "subEtapas": [
+        "CAT-LAT-T1",
+        "CAT-LAT-T2",
+        "CAT-LAT-T3",
+        "CAT-LAT-T4",
+        "CAT-LAT-T5",
+        "CAT-LAT-T6",
+        "CAT-LAT-T7",
+        "CAT-LAT-T8-638"
+      ],
+      "enlaceCruzado": "DIA-OPERATIVO-20260713",
+      "cerrada": "2026-07-16"
+    },
+    {
+      "code": "DIA-OPERATIVO-20260713",
+      "moduloSlug": "report",
+      "subcuentaSlug": "dia-operativo",
+      "label": "Día 13-07-26 · PE sync · IC/PP · E2E cliente 5000",
+      "md": ".claude/4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/CHUSAR_DIA_OPERATIVO_20260713.md",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": false,
+      "focoMaraton": false,
+      "pausadaPor": "CATALOGO-LATENCIA-20260713",
+      "subEtapas": [
+        "TRACK-1-PE-SYNC-EXCEL",
+        "TRACK-2-IC-PP-CSV",
+        "TRACK-3-PE-E2E-5000-REVERSION"
+      ],
+      "enlaceCruzado": "OPERATIVO-ALEJANDRO-MAGNO-2026"
+    },
     {
       "code": "ADMIN-IC-PP28-20260711",
       "moduloSlug": "report",
@@ -20,10 +86,11 @@
       "mdChusarAdmin": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_ADMINISTRADOR_IC_PROGRAMADO.md",
       "appPath": "/proceso-importacion/pedido-proveedor/28?tab=admin-ic",
       "ejecutor": "cursor",
-      "estado": "en_curso",
+      "estado": "hecho",
       "nuevo": true,
-      "focoMaraton": true,
-      "enlaceCruzado": "OPERATIVO-ALEJANDRO-MAGNO-2026"
+      "focoMaraton": false,
+      "enlaceCruzado": "OPERATIVO-ALEJANDRO-MAGNO-2026",
+      "pausadaPor": "DIA-OPERATIVO-20260713"
     },
     {
       "code": "INYECCION-IMAGENES-20260710",
@@ -65,14 +132,15 @@
       "mdAppDg": "report/docs/DIGITACION_REPORT.md",
       "mdAppPp": "report/docs/PEDIDO_PROVEEDOR_REPORT.md",
       "ejecutor": "cursor",
-      "estado": "en_curso",
+      "estado": "hecho",
       "nuevo": true,
       "subEtapas": [
         "2.3.1.7.3",
         "2.3.1.7.4",
         "2.3.1.7.5"
       ],
-      "unificado": "ETAPA-PRUEBA-FINAL-IC-MARATON-20260703 absorbe tarjeta duplicada 2.3.1.7.3-prueba-final"
+      "unificado": "ETAPA-PRUEBA-FINAL-IC-MARATON-20260703 absorbe tarjeta duplicada 2.3.1.7.3-prueba-final",
+      "pausadaPor": "DIA-OPERATIVO-20260713"
     },
     {
       "code": "OPERATIVO-ALEJANDRO-MAGNO-2026",
@@ -85,11 +153,12 @@
       "mdChusarStock": ".claude/2_modulos/2.3_report/CADENA_OPERATIVA_RIMEC.md",
       "mdTablasStock": ".claude/2_modulos/2.3_report/TABLAS_ABASTECIMIENTO_8_9_10.md",
       "ejecutor": "cursor",
-      "estado": "en_curso",
+      "estado": "hecho",
       "nuevo": true,
       "subEtapas": ["2.3.1.8", "2.3.1.9", "2.3.1.10"],
       "enlaceCruzado": "PRIMER-AYUDANTE-ANDRES-2026",
-      "unificado": "Absorbe 2.3.1.8-10 · Compra legal · Facturación · Depósito RIMEC"
+      "unificado": "Absorbe 2.3.1.8-10 · Compra legal · Facturación · Depósito RIMEC",
+      "pausadaPor": "DIA-OPERATIVO-20260713"
     },
     {
       "code": "2.3.1.8-10",
@@ -111,12 +180,12 @@
       "code": "RIMEC-WEB-PE-LOCAL-20260706",
       "moduloSlug": "rimec-web",
       "subcuentaSlug": "catalogo-pe",
-      "label": "RIMEC Web · PE + CP · solo local",
-      "md": ".claude/4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706.md",
-      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_CATALOGO_DEPLOY_20260706.md",
+      "label": "RIMEC Web · go-live CP+PE · prod c757dbf",
+      "md": ".claude/4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_RIMEC_WEB_GO_LIVE_CP_PE.md",
       "mdApp": "ot/DEPLOY-RIMEC-WEB-SELLADO-20260706.md",
       "ejecutor": "cursor",
-      "estado": "en_curso",
+      "estado": "hecho",
       "nuevo": true,
       "focoMaraton": false,
       "enlaceCruzado": "CHUSAR_NIIF_IMAGENES_PRONTA_ENTREGA"
@@ -132,13 +201,14 @@
       "mdChusarReclutamiento": ".claude/1_fundamentos/CHUSAR_RECLUTAMIENTO.md",
       "mdApp": "nexus-navegador-holding/docs/CHUSAR_AYUDANTE_ANDRES.md",
       "ejecutor": "andres",
-      "estado": "en_curso",
+      "estado": "hecho",
       "nuevo": true,
-      "focoMaraton": true,
+      "focoMaraton": false,
       "audience": "ayudante-andres",
       "subEtapas": ["HOLD-RECLUTAMIENTO-2026"],
       "enlaceCruzado": "OPERATIVO-ALEJANDRO-MAGNO-2026",
-      "unificado": "Absorbe HOLD-RECLUTAMIENTO-2026 · demo IA Nexus"
+      "unificado": "Absorbe HOLD-RECLUTAMIENTO-2026 · demo IA Nexus",
+      "pausadaPor": "DIA-OPERATIVO-20260713"
     },
     {
       "code": "HOLD-RECLUTAMIENTO-2026",
@@ -356,6 +426,22 @@
     }
   ],
   "ultimaCerradaPorModulo": {
+    "bazzar-web": {
+      "code": "BAZZAR-WEB-CATALOGO-3002-20260716",
+      "label": "Bazzar Web :3002 · Stock Sano · Depósito grada 8/12",
+      "fecha": "2026-07-16",
+      "md": ".claude/4_etapas/ETAPA_BAZZAR_WEB_CATALOGO_3002_20260716_CERRADA.md",
+      "deploy": "https://rimec-report.vercel.app/bazzar-web/deposito-web",
+      "nuevo": true
+    },
+    "rimec-web": {
+      "code": "CATALOGO-LATENCIA-20260713",
+      "label": "Catálogo latencia · 7 tareas · cierre formal",
+      "fecha": "2026-07-16",
+      "md": ".claude/4_etapas/ETAPA_CATALOGO_LATENCIA_20260713_CERRADA.md",
+      "deploy": "https://rimec-web.vercel.app",
+      "nuevo": true
+    },
     "tablet-bazzar": {
       "code": "BOVEDA-STRESS-BZZ-2026",
       "label": "Bóveda POS · stress test · ORO",
@@ -365,15 +451,43 @@
       "nuevo": true
     },
     "report": {
-      "code": "2.3.2.1.1",
-      "label": "Administrador dinámico stock Bazzar",
-      "fecha": "2026-07-03",
-      "md": ".claude/4_etapas/ETAPA_ADMIN_STOCK_BAZZAR_DINAMICO_CERRADA.md",
-      "deploy": "https://rimec-report.vercel.app/depositos-bazzar",
+      "code": "DIA-OPERATIVO-20260713",
+      "label": "Pruebas E2E cliente 5000 · purge FI completo",
+      "fecha": "2026-07-16",
+      "md": ".claude/4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md",
+      "deploy": "https://rimec-report.vercel.app",
       "nuevo": true
     }
   },
   "cerradasPorModulo": {
+    "bazzar-web": [
+      {
+        "code": "BAZZAR-WEB-CATALOGO-3002-20260716",
+        "label": "Bazzar Web :3002 · Stock Sano · Depósito grada 8/12",
+        "fecha": "2026-07-16",
+        "md": ".claude/4_etapas/ETAPA_BAZZAR_WEB_CATALOGO_3002_20260716_CERRADA.md",
+        "deploy": "https://rimec-report.vercel.app/bazzar-web/deposito-web",
+        "nuevo": true
+      }
+    ],
+    "rimec-web": [
+      {
+        "code": "CATALOGO-LATENCIA-20260713",
+        "label": "Catálogo latencia + Confecciones 638 · T8 cierre",
+        "fecha": "2026-07-16",
+        "md": ".claude/4_etapas/ETAPA_CATALOGO_LATENCIA_20260713_CERRADA.md",
+        "deploy": "https://rimec-web.vercel.app",
+        "nuevo": true
+      },
+      {
+        "code": "RIMEC-WEB-PE-LOCAL-20260706",
+        "label": "RIMEC Web go-live · CP + PE · tip c757dbf",
+        "fecha": "2026-07-12",
+        "md": ".claude/4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md",
+        "deploy": "https://rimec-web.vercel.app",
+        "nuevo": true
+      }
+    ],
     "control-central": [
       {
         "code": "INYECCION-IMAGENES-20260710",
@@ -446,6 +560,35 @@
       }
     ],
     "report": [
+      {
+        "code": "DIA-OPERATIVO-20260713",
+        "label": "Pruebas E2E cliente 5000 · purge FI completo",
+        "fecha": "2026-07-16",
+        "md": ".claude/4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md",
+        "deploy": "https://rimec-report.vercel.app",
+        "nuevo": true
+      },
+      {
+        "code": "ADMIN-IC-PP28-20260711",
+        "label": "Admin IC PP-28 · pausa día operativo",
+        "fecha": "2026-07-13",
+        "md": ".claude/4_etapas/ETAPA_ADMIN_IC_PP28_PROGRAMADO_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "2.3.1.7.3-5",
+        "label": "Maratón IC·DG·PP · pausa",
+        "fecha": "2026-07-13",
+        "md": ".claude/4_etapas/ETAPA_PRUEBA_FINAL_IC_MARATON_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "OPERATIVO-ALEJANDRO-MAGNO-2026",
+        "label": "Alejandro Magno · pausa (continúa tracks 1 y 3)",
+        "fecha": "2026-07-13",
+        "md": ".claude/4_etapas/ETAPA_OPERATIVO_ALEJANDRO_MAGNO_PAUSADA_20260713.md",
+        "nuevo": true
+      },
       {
         "code": "INYECCION-DATOS-TRANSITO-IC-20260709",
         "label": "Inyección IC PROGRAMADO · Excel batch · 373 IC",

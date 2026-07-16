@@ -45,6 +45,7 @@
 | Hub | `report/src/app/facturacion/page.tsx` |
 | Queries | `report/src/lib/facturacion/queries.ts` |
 | APIs | `report/src/app/api/facturacion/` |
+| CSV PE Carlos | `report/src/lib/facturacion/csv-pe-ventas-export.ts` |
 | Ley FI UI | `report/src/app/bazzar-web/compra/components/CompraWebFiPanel.tsx` |
 
 Ver [CHUSAR § Estado Report](./CHUSAR_FACTURACION.md#estado-report--implementación-2026-06-19).
@@ -69,7 +70,14 @@ Ver [CHUSAR § Estado Report](./CHUSAR_FACTURACION.md#estado-report--implementac
 
 | 4 | [FLUJOS.md](./FLUJOS.md) | Estados FI · traspaso · secuencias envío web |
 
-| 5 | [../TABLAS_ABASTECIMIENTO_8_9_10.md](../TABLAS_ABASTECIMIENTO_8_9_10.md) | Vista cruzada 8–10 |
+| 5 | [CHUSAR_FACTURACION_PRONTA_ENTREGA.md](./CHUSAR_FACTURACION_PRONTA_ENTREGA.md) | Bandeja PE · hub 2 tarjetas |
+
+| 6 | **[CHUSAR_CSV_VENTAS_PE_CARLOS.md](./CHUSAR_CSV_VENTAS_PE_CARLOS.md)** | **CSV TSV 7954_3114 · inyección Carlos PE** |
+
+| **6b** | **[CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md](./CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md)** | **2.3.1.9.C** · DIOS · FI entera · reintegrar stock · Anulaciones · PE+tránsito+Aprobaciones |
+| **6c** | **[CHUSAR_FI_CASO_CABECERA_DESDE_PP.md](./CHUSAR_FI_CASO_CABECERA_DESDE_PP.md)** | **2.3.1.9.D** · caso/marca cabecera FI desde PP · Admin IC · backfill · resync |
+
+| 7 | [../TABLAS_ABASTECIMIENTO_8_9_10.md](../TABLAS_ABASTECIMIENTO_8_9_10.md) | Vista cruzada 8–10 |
 
 
 

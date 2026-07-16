@@ -4,7 +4,7 @@
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
 **Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
-**Última actualización:** 2026-06-22 (Chusar — **2.3.1.7.2 Importación precios CERRADA**)
+**Última actualización:** 2026-07-16 · FI caso cabecera **2.3.1.9.D** · Depósito Web grada cruza **2.5.1.2**
 
 ---
 
@@ -30,7 +30,10 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - Stock / Retail
 - Ventas
 - Ventas + Fotos
-- **Depósitos Bazzar (2.3.6)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
+- **🔍🕵️ Gestión de compra · Director (2.3.1.11)** 🆕 → [gestion_compra/INDICE.md](gestion_compra/INDICE.md)
+- **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16
+- **Depósitos Bazzar (2.3.2.1)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
+- **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
 - **Motor de Precios (2.3.1.7.1 — Report)** 🆕
 
 ---
@@ -40,8 +43,13 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 ```
 2.3_report/
 ├── INDICE.md (este archivo)
-├── depositos/                   — 2.3.6 Depósitos Bazzar (Report admin)
+├── depositos/                   — 2.3.2.1 Depósitos Bazzar (Report admin)
 │   └── INDICE.md
+├── caja_bazzar/                 — 2.3.2.2 Caja Bazzar · 6 tiendas · P-01…P-13
+│   ├── INDICE.md
+│   ├── CHUSAR_CAJA_BAZZAR_REPORT.md
+│   ├── P-12 · P-13 · 00…11 + CAJAS/
+│   └── report/docs/FLUJO_P12_P13_CAJA_BAZZAR.md
 ├── rrhh/                        — 2.3.10 RRHH (+ 2.3.10.1 · 2.3.10.2)
 │   ├── INDICE.md
 │   └── FUNCIONAMIENTO_ACTUAL.md
@@ -85,6 +93,13 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - **Etapa doc:** [ETAPA_CICLO_IMPORTACION_DOC_CHUSAR.md](../4_etapas/ETAPA_CICLO_IMPORTACION_DOC_CHUSAR.md)
 - Navegador: http://localhost:3004/modulos/report · http://localhost:3004/procesos/importacion
 
+### **Usuarios y accesos BZZ (Director)** 🎴
+- **[report/docs/AYUDA_MEMORIA_USUARIOS_ACCESOS_BZZ.md](../../../report/docs/AYUDA_MEMORIA_USUARIOS_ACCESOS_BZZ.md)** — tarjetas usuario · triada · módulos · depósitos
+- **[report/docs/ACCESOS_BZZ_RIMEC_WEB.md](../../../report/docs/ACCESOS_BZZ_RIMEC_WEB.md)** — accesos · passwords · enforcement (✅ etapa cerrada 2026-06-10)
+- **[ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md](../4_etapas/ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md)** — cierre etapa HOLD-ACCESOS-BZZ-2026
+- Índice Moria: [pilares/INDICE.md](pilares/INDICE.md) (tarjeta especial arriba)
+- Matriz: [MATRIZ_ROLES_ACCESOS_HOLDING.md](../1_fundamentos/1.3_politicas/MATRIZ_ROLES_ACCESOS_HOLDING.md)
+
 ### **Pilares (2.3.5 — Report)**
 - **[pilares/CHUSAR_ADMINISTRADOR_PILARES.md](pilares/CHUSAR_ADMINISTRADOR_PILARES.md)** — CHUSAR operativo · 2.3.5 / 2.3.5.1 / 2.3.5.2 · miniaturas L×R
 - **[pilares/INDICE.md](pilares/INDICE.md)** — índice subcuenta
@@ -111,6 +126,10 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 
 ### **Deploy y Configuración**
 - **DEPLOY_VERCEL.md** - Guía de deploy a Vercel
+- **DEPLOY_REPORT_20260705.md** - Deploy depósitos + IC PROGRAMADO (Director 2026-07-05)
+- **CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md** - Tres entidades · un PPD · proforma 8604 · CSV · SR · checklist import (gestion_compra/)
+- **PROTOCOLO_ALEJANDRO_MAGNO_PUERTA_CHUNA.md** - Puerta CHUNA etapa prioritaria (1.1_protocolos/)
+- **ANDRES_INTEGRANTE_EQUIPO.md** - Usuario ANDRES · aprendizaje (10_roles/)
 - **VERCEL_EMERGENCY_CONFIG.md** - Configuración de emergencia
 - **docs/DEPLOY_VERCEL_REPORT.md** - Deploy detallado
 
@@ -214,11 +233,14 @@ card-bg:    #ffffff  (Blanco puro)
 - KPIs jerárquicos
 
 ### **4. Ventas + Fotos**
-**Estado:** Producción (pendiente migración NIIF)
+**Estado:** Producción · PDF 80 filas serverless ✅ 2026-07-10
 
 **Funciones:**
 - Catálogo con imágenes
+- PDF ejecutivo hasta 80 filas · timeout 120s
 - Trazabilidad por foto
+
+**Doc:** [CHUSAR_VENTAS_FOTOS_PDF.md](CHUSAR_VENTAS_FOTOS_PDF.md) · **2.3.1.2.1**
 
 ### **6. Administrador de Pilares** ✅
 **Estado:** **CERRADA 2026-06-17** · Vercel prod · multi-proveedor 654+638
