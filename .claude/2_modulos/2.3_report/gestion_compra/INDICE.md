@@ -32,6 +32,7 @@
 | **[ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md](../../../4_etapas/ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md)** | **Etapa viva** · filtro adicional reposición · **2.3.1.26** 🟢 2026-07-16 |
 | **[CHUSAR_REPOSICION_SIDEBAR_MULTISELECT_TONO.md](./CHUSAR_REPOSICION_SIDEBAR_MULTISELECT_TONO.md)** | **Filtros duales** · Tipo · familias Material/Color · NN · Napa/Verniz · **2.3.1.26** Documenta 2026-07-17 |
 | **[CHUSAR_PP_ABIERTO_REPOSICION.md](./CHUSAR_PP_ABIERTO_REPOSICION.md)** | **PP abierto** · import proforma · KPI+filtro · MIG-170 · 10.152 pares · **2.3.1.29** 🟢 2026-07-20 |
+| **[CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md](./CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md)** | **Integridad AM** · tolerancia 0 · 5 ejes · scripts smoke · evidencia 2026-07-20 · **2.3.1.30** 🟢 |
 | **[CHUSAR_DEPLOY_PP_ABIERTO_REPOSICION_20260720.md](../CHUSAR_DEPLOY_PP_ABIERTO_REPOSICION_20260720.md)** | **Deploy 2.3.4.0.15** · PP abierto + filtro KPI prod |
 | **[CHUSAR_INYECCION_DATOS_TRANSITO_IC.md](../proceso_importacion/CHUSAR_INYECCION_DATOS_TRANSITO_IC.md)** | **Inyección Excel IC PROGRAMADO** · ≥412 · excepción Director · **2.3.1.7.3.3** 🔴 |
 | **[CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE.md](../proceso_importacion/CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE.md)** | **PP-16 PROGRAMADO cerrado** · 39 FI · catálogo errores · **2.3.1.7.5.3.3.4** ✅ |

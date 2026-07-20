@@ -178,6 +178,15 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.1.30",
+                  "slug": "auditoria-integridad-am-reposicion",
+                  "label": "Auditoría integridad AM reposición",
+                  "lead": "Tolerancia 0 · KPI = Σ tarjetas · vista ⊆ holding · scripts smoke · 2026-07-20.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.1.29",
                   "slug": "pp-abierto-reposicion",
                   "label": "PP abierto · reposición AM",
