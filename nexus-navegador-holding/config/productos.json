@@ -28,7 +28,8 @@
       "hubHtml": "2-modulos/2.2-rimec-web/index.html",
       "appKey": "rimecWeb",
       "docIndice": ".claude/2_modulos/2.2_rimec_web/INDICE.md",
-      "gitPath": "rimec-web/"
+      "gitPath": "rimec-web/",
+      "ultimoDeployActivo": false
     },
     {
       "code": "2.3",

@@ -178,6 +178,24 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.1.29",
+                  "slug": "pp-abierto-reposicion",
+                  "label": "PP abierto · reposición AM",
+                  "lead": "Import proforma · KPI 10.152 pares · filtro tarjetas · MIG-170 · pills índigo.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_PP_ABIERTO_REPOSICION.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.4.0.15",
+                  "slug": "deploy-pp-abierto-reposicion-20260720",
+                  "label": "Deploy · PP abierto reposición",
+                  "lead": "Prod Vercel · filtro KPI PP · import proforma · 2.3.4.0.15 · 2026-07-20.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/CHUSAR_DEPLOY_PP_ABIERTO_REPOSICION_20260720.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.4.0.14",
                   "slug": "deploy-superior-reposicion-20260717",
                   "label": "Deploy · Superior UI + reposición LIQ",
