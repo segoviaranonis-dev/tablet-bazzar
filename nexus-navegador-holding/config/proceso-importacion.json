@@ -1,0 +1,434 @@
+{
+
+  "modulo": {
+
+    "code": "2.3.1.7",
+
+    "slug": "importacion",
+
+    "label": "Proceso de importación",
+
+    "lead": "Cadena Streamlit → Report. Motor 7.1/7.2 ✅ cerrados · FOCO: IC · Digitación · PP.",
+
+    "parentModulo": "report",
+
+    "parentCode": "2.3.1",
+
+    "mdIndice": ".claude/2_modulos/2.3_report/proceso_importacion/INDICE.md",
+
+    "mdApp": "report/docs/PROCESO_IMPORTACION_REPORT.md",
+
+    "appPathPlan": "/proceso-importacion"
+
+  },
+
+  "procesos": [
+
+    {
+
+      "code": "2.3.1.7.1",
+
+      "slug": "motor-precios",
+
+      "label": "Motor de precios",
+
+      "lead": "✅ CERRADA · Corazón 1 biblioteca + Corazón 2 importación.",
+
+      "etapaCode": "2.3.1.7.1",
+
+      "estado": "cerrada",
+
+      "mdCierre": ".claude/4_etapas/ETAPA_MOTOR_PRECIOS_REPORT_CERRADA.md",
+
+      "md": ".claude/2_modulos/2.3_report/motor_precios/CHUSAR_MOTOR_PRECIOS.md",
+
+      "mdApp": "report/docs/MOTOR_PRECIOS_REPORT.md",
+
+      "appPathPlan": "/proceso-importacion/motor-precios",
+
+      "acciones": [
+
+        {
+
+          "slug": "historial-bibliotecas",
+
+          "code": "2.3.1.7.1.1",
+
+          "label": "Biblioteca de precios",
+
+          "lead": "Histórico · canónica 1905 · editor casos BCL.",
+
+          "appPathPlan": "/proceso-importacion/motor-precios/biblioteca",
+
+          "md": ".claude/2_modulos/2.3_report/motor_precios/HISTORIAL_BIBLIOTECAS.md",
+
+          "estado": "cerrada"
+
+        },
+
+        {
+
+          "slug": "crear-biblioteca",
+
+          "code": "2.3.1.7.1.2",
+
+          "label": "Crear biblioteca",
+
+          "lead": "Alta biblioteca_precio · casos comerciales.",
+
+          "appPathPlan": "/proceso-importacion/motor-precios/biblioteca/nueva",
+
+          "md": ".claude/2_modulos/2.3_report/motor_precios/CREAR_BIBLIOTECA.md",
+
+          "estado": "cerrada"
+
+        },
+
+        {
+
+          "slug": "importacion-precios",
+
+          "code": "2.3.1.7.2",
+
+          "label": "Importación de precios",
+
+          "lead": "✅ CERRADA · Excel → precio_evento → precio_lista · pasos 0–4 · historial.",
+
+          "parentCode": "2.3.1.7.1",
+
+          "etapaCode": "2.3.1.7.2",
+
+          "estado": "cerrada",
+
+          "mdCierre": ".claude/4_etapas/ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_IMPORTACION_PRECIOS.md",
+
+          "mdInventario": ".claude/2_modulos/2.3_report/proceso_importacion/IMPORTACION_PRECIOS.md",
+
+          "mdApp": "report/docs/IMPORTACION_PRECIOS_REPORT.md",
+
+          "appPathPlan": "/proceso-importacion/motor-precios/importacion-precios",
+
+          "acciones": [
+
+            {
+
+              "slug": "paso0-carga",
+
+              "code": "2.3.1.7.2.0",
+
+              "label": "Paso 0 · Carga Excel",
+
+              "lead": "Upload proveedor · ley género · precio_evento.",
+
+              "appPathPlan": "/proceso-importacion/motor-precios/importacion-precios/nuevo",
+
+              "md": ".claude/2_modulos/2.3_report/proceso_importacion/PASO0_CARGA_EXCEL.md",
+
+              "estado": "cerrada"
+
+            },
+
+            {
+
+              "slug": "historial-listas",
+
+              "code": "2.3.1.7.2.h",
+
+              "label": "Historial listas",
+
+              "lead": "Eventos cerrados · reabrir consulta.",
+
+              "appPathPlan": "/proceso-importacion/motor-precios/importacion-precios/historial",
+
+              "md": ".claude/2_modulos/2.3_report/proceso_importacion/IMPORTACION_PRECIOS.md",
+
+              "estado": "cerrada"
+
+            }
+
+          ]
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "code": "2.3.1.7.3",
+
+      "slug": "intencion-compra",
+
+      "label": "Intención de compra",
+
+      "lead": "▶ FOCO · Cabecera financiera · FECHA DE EMBARQUE (quincena 1–24).",
+
+      "etapaCode": "2.3.1.7.3-5",
+
+      "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_INTENCION_COMPRA.md",
+
+      "mdFechaEmbarque": ".claude/2_modulos/2.3_report/proceso_importacion/FECHA_DE_EMBARQUE.md",
+
+      "mdInventario": ".claude/2_modulos/2.3_report/proceso_importacion/INTENCION_COMPRA.md",
+
+      "mdApp": "report/docs/INTENCION_COMPRA_REPORT.md",
+
+      "appPathPlan": "/proceso-importacion/intencion-compra",
+
+      "estado": "en_curso",
+
+      "focoMaraton": true,
+
+      "acciones": [
+
+        {
+
+          "slug": "bandeja",
+
+          "code": "2.3.1.7.3.1",
+
+          "label": "Bandeja IC",
+
+          "lead": "PENDIENTES · DEVUELTAS · HISTORIAL · autorizar inline.",
+
+          "appPathPlan": "/proceso-importacion/intencion-compra/bandeja",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/IC_BANDEJA.md"
+
+        },
+
+        {
+
+          "slug": "nueva",
+
+          "code": "2.3.1.7.3.2",
+
+          "label": "Nueva IC",
+
+          "lead": "Paso A tipo+categoría · formulario · POST alta.",
+
+          "appPathPlan": "/proceso-importacion/intencion-compra/nueva",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/INTENCION_COMPRA.md"
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "code": "2.3.1.7.4",
+
+      "slug": "digitacion",
+
+      "label": "Digitación",
+
+      "lead": "▶ FOCO · Nro. fábrica · IC → agrupa PP · PP solo nace aquí.",
+
+      "etapaCode": "2.3.1.7.3-5",
+
+      "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_DIGITACION.md",
+
+      "mdInventario": ".claude/2_modulos/2.3_report/proceso_importacion/DIGITACION.md",
+
+      "mdApp": "report/docs/DIGITACION_REPORT.md",
+
+      "appPathPlan": "/proceso-importacion/digitacion",
+
+      "estado": "en_curso",
+
+      "focoMaraton": true,
+
+      "acciones": [
+
+        {
+
+          "slug": "bandeja",
+
+          "code": "2.3.1.7.4.1",
+
+          "label": "Bandeja digitación",
+
+          "lead": "PENDIENTES · EN PROCESO · CERRADOS.",
+
+          "appPathPlan": "/proceso-importacion/digitacion",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/MAPA_ACCESO_RAPIDO_DG_BANDEJA.md"
+
+        },
+
+        {
+
+          "slug": "asignar",
+
+          "code": "2.3.1.7.4.2",
+
+          "label": "Asignar IC → PP",
+
+          "lead": "Evento cerrado · nro. fábrica · crear/unir PP.",
+
+          "appPathPlan": "/proceso-importacion/digitacion/asignar",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/DIGITACION_ASIGNAR.md"
+
+        },
+
+        {
+
+          "slug": "asignar-lote",
+
+          "code": "2.3.1.7.4.3",
+
+          "label": "Multi-asignar IC → PP",
+
+          "lead": "PROGRAMADO · N IC → 1 PP.",
+
+          "appPathPlan": "/proceso-importacion/digitacion/asignar-lote",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_DIGITACION_MULTI_ASIGNAR_PROGRAMADO.md",
+
+          "nuevo": true
+
+        },
+
+        {
+
+          "slug": "bandeja-filtros-acordeon",
+
+          "code": "2.3.1.7.4.4",
+
+          "label": "Bandeja acordeón + filtros multi",
+
+          "lead": "Embarque · vendedor · nro fábrica · multi-select.",
+
+          "appPathPlan": "/proceso-importacion/digitacion",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_DIGITACION_BANDEJA_FILTROS_ACORDEON.md",
+
+          "nuevo": true
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "code": "2.3.1.7.5",
+
+      "slug": "pedido-proveedor",
+
+      "label": "Pedido proveedor",
+
+      "lead": "▶ FOCO · lista quincena · 5 botones · detalle 3 pestañas.",
+
+      "etapaCode": "2.3.1.7.3-5",
+
+      "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_PEDIDO_PROVEEDOR.md",
+
+      "mdInventario": ".claude/2_modulos/2.3_report/proceso_importacion/PEDIDO_PROVEEDOR.md",
+
+      "mdApp": "report/docs/PEDIDO_PROVEEDOR_REPORT.md",
+
+      "appPathPlan": "/proceso-importacion/pedido-proveedor",
+
+      "estado": "en_curso",
+
+      "focoMaraton": true,
+
+      "acciones": [
+
+        {
+
+          "slug": "lista",
+
+          "code": "2.3.1.7.5.1",
+
+          "label": "Lista por quincena",
+
+          "lead": "Acordeón FECHA DE EMBARQUE · KPI preventas · filas PP.",
+
+          "appPathPlan": "/proceso-importacion/pedido-proveedor",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/PEDIDO_PROVEEDOR.md"
+
+        },
+
+        {
+
+          "slug": "acceso-rapido",
+
+          "code": "2.3.1.7.5.2",
+
+          "label": "Mapa 5 botones acceso rápido",
+
+          "lead": "Abrir → · ICs · Stock · FI · CSV — columna lista Streamlit.",
+
+          "appPathPlan": "/proceso-importacion/pedido-proveedor",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/MAPA_ACCESO_RAPIDO_PP_LISTA.md"
+
+        },
+
+        {
+
+          "slug": "detalle",
+
+          "code": "2.3.1.7.5.3",
+
+          "label": "Detalle PP · 3 pestañas",
+
+          "lead": "ICs · Importación/Stock · FI · ?tab=ics|stock|fi.",
+
+          "appPathPlan": "/proceso-importacion/pedido-proveedor",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/MAPA_ACCESO_RAPIDO_PP_DETALLE.md"
+
+        },
+
+        {
+
+          "slug": "tab-stock",
+
+          "code": "2.3.1.7.5.3.1",
+
+          "label": "Tab Stock · Ala Norte + precios",
+
+          "lead": "Acordeón marca · grada JSON · proforma × precio_lista.",
+
+          "appPathPlan": "/proceso-importacion/pedido-proveedor",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_PP_TAB_STOCK.md"
+
+        },
+
+        {
+
+          "slug": "vinculacion-listado",
+
+          "code": "2.3.1.7.5.3.2",
+
+          "label": "Vinculación listado Motor",
+
+          "lead": "Evento precio_evento · vincular PP · recalc FI.",
+
+          "appPathPlan": "/proceso-importacion/pedido-proveedor",
+
+          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md"
+
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+

@@ -1,38 +1,70 @@
 # ACTUAL — Etapa activa Nexus
 
-**Actualizado:** 2026-07-16 · **Sin etapa en maratón** — aguardar **Nueva etapa**
+**Actualizado:** 2026-07-20 · Digitación bandeja `2.3.1.7.4.4` documentada + deploy rimec-report · **PARÉNTESIS compras masivas 5000** + maratón PF + Logística OK en paralelo
 
 ---
 
-## ✅ Deploy prod (orden directa Director · sin etapa nueva)
-
-| Paquete | Doc |
-|---------|-----|
-| Descuentos FI + Liq. PE + casos PP/PC/PE → Aprobaciones | [CHUSAR_DEPLOY_DESCUENTOS_LIQUIDACION_CASOS_20260716.md](../2_modulos/2.2_rimec_web/CHUSAR_DEPLOY_DESCUENTOS_LIQUIDACION_CASOS_20260716.md) **2.2.4.0.13** |
-| MIG-160 BD | aplicada · smoke neto OK |
-| Apps | rimec-web + rimec-report (push Vercel) |
-
----
-
-## ✅ Cierre documentado hoy (Documenta + Cierra etapa)
-
-| Etapa | Código | Doc CERRADA |
-|-------|--------|-------------|
-| Bazzar Web :3002 | `BAZZAR-WEB-CATALOGO-3002-20260716` · **2.5.1.1** | [ETAPA_…_CERRADA.md](./ETAPA_BAZZAR_WEB_CATALOGO_3002_20260716_CERRADA.md) |
-| Catálogo latencia | `CATALOGO-LATENCIA-20260713` · **2.2.1.0.5** | [ETAPA_…_CERRADA.md](./ETAPA_CATALOGO_LATENCIA_20260713_CERRADA.md) |
-| Prep cierre masivo | — | [ETAPA_PREP_CIERRE_MASIVO_20260716.md](./ETAPA_PREP_CIERRE_MASIVO_20260716.md) ✅ |
-
-**Portal :3004:** `etapas.json` · 0 `en_curso` · `sesionActiva.code = null`
-
----
-
-## ✅ Hotfix UI — Nivel Superior (Bug urgente)
+## 🟢 En curso — PARÉNTESIS · Compras masivas cliente 5000 (foco hoy)
 
 | Campo | Valor |
 |-------|--------|
-| **Ley** | [LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md](../1_fundamentos/1.3_politicas/LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md) · **5.01.00.020** |
-| **Error** | `4.05.02.001` · [detalle](../5_errores/detalle/4.05.02.001_ui-etiqueta-dios-ofensiva-usuario.md) |
-| **Foco** | Botón reposición · login RIMEC Web · aprobaciones · facturación |
+| **Etapa** | [ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md](./ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md) |
+| **Code** | `COMPRAS-MASIVAS-5000-20260719` · **2.2.1.17** |
+| **Foco** | Stress compra masiva · **solo cliente 5000** · **EOD purge** registros de hoy |
+| **Guion** | [CHUSAR_COMPRAS_MASIVAS_STRESS_5000_20260719.md](../2_modulos/2.2_rimec_web/CHUSAR_COMPRAS_MASIVAS_STRESS_5000_20260719.md) |
+| **Pre-flight** | ✅ 0 FI cliente 5000 (2026-07-19) |
+| **App** | RIMEC Web `:3001` / https://www.rimec.com.py · Report `:3000` aprobaciones/FI |
+
+### Pendiente inmediato
+
+| # | Qué | Quién |
+|---|-----|-------|
+| 1 | Ejecutar checklist stress (carrito masivo → confirmar → FI) | Director + Cursor |
+| 2 | Validar métricas AM solo 5000 | Director |
+| 3 | **EOD:** purge 5000 fecha hoy + **Cierra etapa** | Cursor + Director |
+
+---
+
+## 🟢 En curso — Logística OK (diseño · paralelo)
+
+| Campo | Valor |
+|-------|--------|
+| **Etapa** | [ETAPA_LOGISTICA_OK_20260719.md](./ETAPA_LOGISTICA_OK_20260719.md) |
+| **Code** | `LOGISTICA-OK-20260719` · **2.3.1.28** |
+| **Guion** | [CHUSAR_LOGISTICA_OK.md](../2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_OK.md) |
+| **App** | Report `:3000` · `/logistica-ok` |
+
+---
+
+## 🟢 En curso — maratón proformas (paralelo)
+
+| Campo | Valor |
+|-------|--------|
+| **Etapa** | [ETAPA_IMPORTACION_PROGRAMADOS_20260718.md](./ETAPA_IMPORTACION_PROGRAMADOS_20260718.md) |
+| **Code** | `IMPORTACION-PROGRAMADOS-20260718` · **2.3.1.27** |
+| **Foco** | Maratón · PP-0024 + PP-0025 (0839) · digitación bandeja acordeón/filtros |
+| **Guion** | [CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md](../2_modulos/2.3_report/proceso_importacion/CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md) |
+| **App** | Report `:3000` / prod · `/proceso-importacion/digitacion` · `/pedido-proveedor/38` |
+| **Carry** | [CHUSAR_DIGITACION_BANDEJA_FILTROS_ACORDEON](../2_modulos/2.3_report/proceso_importacion/CHUSAR_DIGITACION_BANDEJA_FILTROS_ACORDEON.md) · multi-asignar `2.3.1.7.4.3` |
+
+---
+
+## ⏸️ Pausada (no cerrada)
+
+| Etapa | Código | Nota |
+|-------|--------|------|
+| [Reposición filtro adicional](./ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md) | `REPOSICION-FILTRO-ADICIONAL-20260716` · **2.3.1.26** | Pausada |
+
+---
+
+## ✅ Cierre documentado reciente
+
+| Etapa | Código | Doc |
+|-------|--------|-----|
+| Hotfix catálogo precisión | deploy **2.2.1.16** | [CHUSAR_HOTFIX_CATALOGO_PRECISION_BANCARIA_20260719.md](../2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_CATALOGO_PRECISION_BANCARIA_20260719.md) |
+| Bazzar Web :3002 | `BAZZAR-WEB-CATALOGO-3002-20260716` · **2.5.1.1** | [CERRADA](./ETAPA_BAZZAR_WEB_CATALOGO_3002_20260716_CERRADA.md) |
+
+**Portal :3004:** `trabajoVivo` · `COMPRAS-MASIVAS-5000-20260719` (foco) + importación + logística OK
 
 ---
 
@@ -40,9 +72,8 @@
 
 | App | URL |
 |-----|-----|
+| Report | http://localhost:3000 · `/proceso-importacion` · `/aprobaciones` |
 | RIMEC Web | http://localhost:3001 |
-| Report | http://localhost:3000 · `/herramienta-reposicion` |
-| Bazzar Web | http://localhost:3002/catalogo |
 | Navegador | http://localhost:3004/etapas |
 
 ---

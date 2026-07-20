@@ -6,7 +6,7 @@
 
 **CHUSAR padre:** [CHUSAR_CICLO_IMPORTACION_REPORT.md](./CHUSAR_CICLO_IMPORTACION_REPORT.md)  
 
-**Actualizado:** 2026-07-11 · **7.5.3.9 DOC proceso PROGRAMADO completo** · handoff réplica mañana
+**Actualizado:** 2026-07-18 · **Maratón proformas** · [CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md](./CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md) · etapa **2.3.1.27** · [ETAPA](../../../4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718.md)
 
 
 
@@ -68,6 +68,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | 2.3.1.7.3.2 | Nueva IC | `…/intencion-compra/nueva` | CHUSAR_IC | INTENCION_COMPRA |
 | **2.3.1.7.3.3** | **Inyección datos en tránsito · IC Excel batch** | `…/intencion-compra/import-batch` *(fase 2)* | [CHUSAR_INYECCION_DATOS_TRANSITO_IC](./CHUSAR_INYECCION_DATOS_TRANSITO_IC.md) | ✅ **373 IC script** · [CERRADA](../../../4_etapas/ETAPA_INYECCION_DATOS_TRANSITO_IC_20260709_CERRADA.md) |
 | **2.3.1.7.3.3.1** | **Ejecución inyección 2026-07-09** | script | [CHUSAR_INYECCION_IC_EJECUCION_20260709](./CHUSAR_INYECCION_IC_EJECUCION_20260709.md) | ✅ IC-0112→0484 · orden invertido · prod |
+| **2.3.1.7.3.4** | **Metodología IC administrativa (liviana)** | doc | [CHUSAR_IC_METODOLOGIA_ADMINISTRATIVA_20260718](./CHUSAR_IC_METODOLOGIA_ADMINISTRATIVA_20260718.md) | 🟢 **2026-07-18** · D1–D4 · sin LP obligatorio |
 
 | **2.3.1.7.4** | Digitación | `…/digitacion` | [CHUSAR_DG](./CHUSAR_DIGITACION.md) | [DIGITACION.md](./DIGITACION.md) · [TABLAS §7.4](./TABLAS_MUDANZA_IC_DIG_PP.md) |
 
@@ -78,6 +79,10 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.4.1b** | **Admin Programado** | `…/digitacion?ramo=programado` | CHUSAR_DG | IC `categoria_id=3` · bandeja + autorizadas · caso proforma 8604 |
 
 | 2.3.1.7.4.2 | Asignar IC → PP | `…/digitacion/asignar/[icId]` | CHUSAR_DG | [DIGITACION_ASIGNAR.md](./DIGITACION_ASIGNAR.md) |
+
+| **2.3.1.7.4.3** | **Multi-asignar IC → PP (PROGRAMADO)** | `…/digitacion/asignar-lote` | [CHUSAR_DIGITACION_MULTI_ASIGNAR](./CHUSAR_DIGITACION_MULTI_ASIGNAR_PROGRAMADO.md) | 🟢 **2026-07-19** · N IC → 1 PP · [DIGITACION_ASIGNAR_LOTE](./DIGITACION_ASIGNAR_LOTE.md) |
+
+| **2.3.1.7.4.4** | **Bandeja · acordeón embarque + filtros multi** | `…/digitacion` pendientes | [CHUSAR_DIGITACION_BANDEJA_FILTROS](./CHUSAR_DIGITACION_BANDEJA_FILTROS_ACORDEON.md) | 🟢 **2026-07-20** · vendedor · nro fábrica · multi-select |
 
 | **2.3.1.7.5** | Pedido proveedor | `…/pedido-proveedor` | [CHUSAR_PP](./CHUSAR_PEDIDO_PROVEEDOR.md) | [PEDIDO_PROVEEDOR.md](./PEDIDO_PROVEEDOR.md) · [TABLAS §7.5](./TABLAS_MUDANZA_IC_DIG_PP.md) |
 
@@ -90,6 +95,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.5.2** | **Mapa 5 botones acceso rápido** | fila lista PP | CHUSAR_PP | [MAPA_PP_LISTA](./MAPA_ACCESO_RAPIDO_PP_LISTA.md) |
 
 | **2.3.1.7.5.3** | **Detalle PP · 4 pestañas** | `…/pedido-proveedor/[ppId]` | CHUSAR_PP | [MAPA_PP_DETALLE](./MAPA_ACCESO_RAPIDO_PP_DETALLE.md) · [CHUSAR_PP_CABECERA](./CHUSAR_PP_CABECERA_EDITABLE.md) |
+| **2.3.1.7.5.3.L** | **Botón logística · Fecha de entrega Real** | cabecera PP CP+PROGRAMADO | [CHUSAR_LOGISTICA_OK](../logistica_ok/CHUSAR_LOGISTICA_OK.md) | 🟢 **2026-07-19** · bandera · sync FI → pendiente confirmación · **2.3.1.28** |
 
 | **2.3.1.7.5.3.5** | **Administrador de IC · PROGRAMADO** | `?tab=admin-ic` | [CHUSAR_ADMINISTRADOR_IC_PROGRAMADO](./CHUSAR_ADMINISTRADOR_IC_PROGRAMADO.md) | 🟢 **CANÓNICO 2026-07-10** · abandona IC=FI · paneles IC↔PF · vínculo monto |
 | **2.3.1.7.5.3.5.1** | **Protocolo Chusa · FI por lote** | `?tab=admin-ic` | [PROTOCOLO_CHUSA_ADMIN_IC_LOTE](./PROTOCOLO_CHUSA_ADMIN_IC_LOTE.md) | 🟢 **CANÓNICO 2026-07-11** · 3 niveles · contadores · canon · lote |
@@ -101,6 +107,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.5.3.10** | **Vulnerabilidad import proforma · pilares** | doc | [CHUSAR_VULNERABILIDAD_IMPORT_PROFORMA_PILARES](./CHUSAR_VULNERABILIDAD_IMPORT_PROFORMA_PILARES.md) | 🟡 **2026-07-12** · error `4.02.03.009` · motor TS añadido · backfill parcial |
 | **2.3.1.7.5.3.11** | **DOC Reparación pilares · casos · PF programado** | doc | [DOC_REPARACION_PROGRAMADO_PILARES_CASOS_20260712](./DOC_REPARACION_PROGRAMADO_PILARES_CASOS_20260712.md) | 🟢 **2026-07-12** · PELE sync BCL · FI flota · ley biblioteca |
 | **2.3.1.7.5.3.12** | **Error Admin IC · botón verde no recalcula FI** | doc | [4.02.03.010](../../../5_errores/detalle/4.02.03.010_admin-ic-boton-verde-no-recalcula-fi.md) | 🟡 **2026-07-12** · PP-0015 · hotfix `regenerar` |
+| **2.3.1.13.2** | **DOC Track 2 · contexto día operativo 13-07-26** | doc | [DOC_TRACK2_CONTEXTO_DIA_20260713](./DOC_TRACK2_CONTEXTO_DIA_20260713.md) | 🟢 **2026-07-13** · briefing Cursor · réplica PROGRAMADO |
 
 | 2.3.1.7.5.3.3 | **Protocolo import programado SHOP↔IC** | doc | [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) | Import PPD ✅ · preview SHOP×BRAND · FI auto ⛔ |
 | **2.3.1.7.5.3.3.5** | **CHUSAR PP-17 · 3ª proforma PROGRAMADO** | doc | [CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO](./CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO.md) | 🟡 handoff 2026-07-09 · 98 IC · evento #45 · sin hotfix código |
@@ -121,7 +128,13 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | **2.3.1.16.1** | **Mapa Panel CP STOCK+VENTAS** | doc | [MAPA_PANEL_CP_TRANSITO](../gestion_compra/MAPA_PANEL_CP_TRANSITO_STOCK_VENTAS.md) | FI Web → pares_vendidos · paridad Estadísticas |
 
-| 2.3.1.7.5.3.2 | **Vinculación listado Motor** | panel Stock | [CHUSAR_VINCULACION_LISTADO](./CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md) | Motor 7.1/7.2 |
+| **2.3.1.7.5.3.2** | **Vinculación listado · MIG-150 dos modos** | panel Stock | [CHUSAR_VINCULACION_LISTADO](./CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md) | ✅ **2026-07-14** · prod `7b7d5d7` · error `4.02.03.012` |
+| **2.3.1.7.5.3.2.H** | **Hotfix PP-14 · vincular FI + PDF FI** | doc | [CHUSAR_HOTFIX_REPORT_PP14_20260714](./CHUSAR_HOTFIX_REPORT_PP14_20260714.md) | ✅ deploy · rescate BD · errores `012`+`013` |
+| **2.3.1.27** | **Etapa · Importación programados** | doc | [CHUSAR_IMPORTACION_PROGRAMADOS_20260718](./CHUSAR_IMPORTACION_PROGRAMADOS_20260718.md) | 🟢 **2026-07-18** · [ETAPA](../../../4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718.md) |
+| **2.3.1.27.1** | **Maratón proformas PROGRAMADO** | doc | [CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718](./CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md) | 🟢 checklist · tabla lote · Cursor+Director |
+| **2.3.1.27.2** | **Lote IC 0839/26 → PP-0024** | doc | [CHUSAR_IC_LOTE_0839_PP24_20260718](./CHUSAR_IC_LOTE_0839_PP24_20260718.md) | ✅ **79 IC** · PP-37 · 7932 pares |
+
+| **2.3.1.7.5.3.2.P** | **Pendientes handoff pre-nueva etapa** | doc | [PENDIENTES_HANDOFF_20260714](./PENDIENTES_HANDOFF_20260714.md) | 🟡 smoke prod · protocolo Excel sin sellar |
 
 **Fuera de 7 (hermanos RIMEC):** [CADENA_OPERATIVA_RIMEC.md](../CADENA_OPERATIVA_RIMEC.md) · 2.3.1.8 Compra legal · 2.3.1.9 Facturación · 2.3.1.10 Depósito RIMEC
 
@@ -158,7 +171,8 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 ├── digitacion/                              ← 2.3.1.7.4
 │   ├── ?ramo=compra_previa|programado       ← 2.3.1.7.4.1a/b
-│   └── asignar/[icId]/                      ← 2.3.1.7.4.2
+│   ├── asignar/[icId]/                      ← 2.3.1.7.4.2
+│   └── asignar-lote/                        ← 2.3.1.7.4.3 multi PROGRAMADO
 
 └── pedido-proveedor/                        ← 2.3.1.7.5
     ├── ?ramo=compra_previa|programado       ← 2.3.1.7.5.1a/b
@@ -226,7 +240,8 @@ Legacy redirect: `/proceso-importacion/importacion-precios/*` → bajo motor.
 
 | **2.3.1.7.2.1.1** | ✅ Copiar casos bib→evento |
 
-| 2.3.1.7.3–5 | ▶ **FOCO** Mudanza IC · DG · PP · [etapa](../../../4_etapas/ETAPA_MUDANZA_IC_DIG_PP_REPORT.md) · PP Stock **Fase 1 ✅** |
+| 2.3.1.7.3–5 | ▶ **Track 2** · [DOC_TRACK2_CONTEXTO_DIA_20260713](./DOC_TRACK2_CONTEXTO_DIA_20260713.md) · [ETAPA_DIA_OPERATIVO_20260713](../../../4_etapas/ETAPA_DIA_OPERATIVO_20260713.md) |
+| 2.3.1.13.3 | ▶ **Track 3** · [DOC_TRACK3_CONTEXTO_DIA_20260713](./DOC_TRACK3_CONTEXTO_DIA_20260713.md) |
 
 
 

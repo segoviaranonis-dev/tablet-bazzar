@@ -45,7 +45,14 @@
       "children": [
         { "code": "2.2.1", "slug": "catalogo", "label": "Catálogo", "lead": "Tarjetas multi-origen · stock PP · filtros pilares.", "appPath": "", "nuevo": true,
           "children": [
-            { "code": "2.2.1.1", "slug": "cabecera-filtros", "label": "CABECERA DE FILTROS", "lead": "Género→TONO · pills naranja · enrich color.tono_canon.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CATALOGO_CABECERA_FILTROS.md", "nuevo": true }
+            { "code": "2.2.1.1", "slug": "cabecera-filtros", "label": "CABECERA DE FILTROS", "lead": "Género→TONO · pills naranja · enrich color.tono_canon.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CATALOGO_CABECERA_FILTROS.md", "nuevo": true },
+            { "code": "2.2.1.0.6", "slug": "filtro-ramo-confecciones", "label": "Filtro Confecciones · auditoría", "lead": "Fix meta CP+PE · sessionStorage · imágenes 638 94,4% · :3001.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_AUDITORIA_FILTRO_RAMO_CONFECCIONES_3001.md", "nuevo": true },
+            { "code": "2.2.1.0.7", "slug": "handoff-pendientes-20260714", "label": "Handoff pendientes Cursor", "lead": "Confecciones · 638 · latencia · MIG-150 Todos!!! · día operativo · Excel sin sellar.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PENDIENTES_HANDOFF_CURSOR_20260714.md", "nuevo": true },
+            { "code": "2.2.1.0.11", "slug": "corte-control-20260715", "label": "Corte 15-07 · precios · latencia · tono", "lead": "Ley LPN/LPC por lote · MIG-156/157 · tono único ficha · arranque frío diagnosticado · solo local.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CORTE_CONTROL_20260715_PRECIOS_LATENCIA_TONO.md", "nuevo": true },
+            { "code": "2.2.1.0.12", "slug": "confecciones-638-cierre", "label": "Confecciones 638 · cierre etapa", "lead": "638≠654 · prendas · botones talla × precio · 27 uds Milon · CERRADA 2026-07-16.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CATALOGO_LATENCIA_CIERRE_20260716.md", "nuevo": true },
+            { "code": "2.2.1.2", "slug": "go-live-cp-pe", "label": "Go-live CP + PE", "lead": "CERRADA 2026-07-12 · prod tip c757dbf · pruebas Héctor DIOS con reversión explícita.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_RIMEC_WEB_GO_LIVE_CP_PE.md", "nuevo": true },
+            { "code": "2.2.1.2.1", "slug": "pruebas-hector-dios", "label": "Pruebas Héctor DIOS · reversión", "lead": "FI/PVR de prueba → eliminar/revertir solo con orden explícita.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PRUEBAS_HECTOR_DIOS_REVERSION.md", "nuevo": true },
+            { "code": "2.2.1.15", "slug": "overlay-sincronizando", "label": "Overlay sincronizando · 30s", "lead": "Pantalla completa CP→PE→confecciones · tarjetas con foto · marquee · deploy 2026-07-17.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md", "nuevo": true }
           ]
         },
         { "code": "2.2.2", "slug": "estadisticas", "label": "Estadísticas", "lead": "Árbol PP → género → marca → estilo · Inicial/Vendido/Saldo.", "appPath": "/estadisticas" },
@@ -132,6 +139,51 @@
                   "lead": "Operativa+Artículos · PE 90% CP 60% PROG 40% · SR blindado · roadmap.",
                   "appPath": "/rimec?mundo=panel-control",
                   "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_GRILLA_STOCK_TRES_CATEGORIAS_VISION.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.22",
+                  "slug": "herramienta-reposicion-alejandro-magno",
+                  "label": "Herramienta de reposición!!!",
+                  "lead": "Culminación AM · PE+CP disp/vend+PROGRAMADO · acordeón VENTAS · sin clientes.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_HERRAMIENTA_REPOSICION_ALEJANDRO_MAGNO.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.24",
+                  "slug": "ordenamiento-compra-previa-reposicion",
+                  "label": "Ordenamiento 4 KPIs reposición",
+                  "lead": "PE/CP/Vend/Prog · overlay portal · Σ bancaria · MIG-158/159.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_ORDENAMIENTO_COMPRA_PREVIA_REPOSICION.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.25",
+                  "slug": "handoff-cierre-am-factura-5000",
+                  "label": "Handoff cierre AM · FI cliente 5000",
+                  "lead": "AM listo · bloqueo factura prueba 5000 · plantilla reporte · checklist deploy.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_HANDOFF_CIERRE_AM_FACTURA_5000.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.26",
+                  "slug": "reposicion-sidebar-multiselect-tono",
+                  "label": "Reposición · Filtros duales · Tipo · Familias Material/Color",
+                  "lead": "Dimensiones+Molécula ocultables · Tipo casos/SDRM · Material/Color familias texto+NN · Napa/Verniz · recurrencia · margen izquierdo.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_REPOSICION_SIDEBAR_MULTISELECT_TONO.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.4.0.14",
+                  "slug": "deploy-superior-reposicion-20260717",
+                  "label": "Deploy · Superior UI + reposición LIQ",
+                  "lead": "Ley 5.01.00.020 prod · latido liquidación/promo · sin Dios en pantalla · 2026-07-17.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/CHUSAR_DEPLOY_REPORT_SUPERIOR_REPOSICION_20260717.md",
                   "nuevo": true
                 },
                 {
@@ -341,6 +393,23 @@
                       "lead": "Paso A tipo+categoría · formulario cabecera financiera.",
                       "appPath": "/proceso-importacion/intencion-compra/nueva",
                       "md": ".claude/2_modulos/2.3_report/proceso_importacion/INTENCION_COMPRA.md"
+                    },
+                    {
+                      "code": "2.3.1.7.3.4",
+                      "slug": "ic-metodologia-administrativa",
+                      "label": "Metodología IC administrativa",
+                      "lead": "IC liviana · D1–D4 verdad cabecera · sin LP obligatorio.",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_IC_METODOLOGIA_ADMINISTRATIVA_20260718.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.1.27.2",
+                      "slug": "ic-lote-0839-pp24",
+                      "label": "Lote IC 0839 → PP-0024",
+                      "lead": "79 IC DIGITADO · 7932 pares · factura 0839/26.",
+                      "appPath": "/proceso-importacion/pedido-proveedor/37",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_IC_LOTE_0839_PP24_20260718.md",
+                      "nuevo": true
                     }
                   ]
                 },
@@ -370,6 +439,24 @@
                       "lead": "Evento cerrado · nro. fábrica · nace PP.",
                       "appPath": "/proceso-importacion/digitacion/asignar",
                       "md": ".claude/2_modulos/2.3_report/proceso_importacion/DIGITACION_ASIGNAR.md"
+                    },
+                    {
+                      "code": "2.3.1.7.4.3",
+                      "slug": "digitacion-asignar-lote",
+                      "label": "Multi-asignar IC → PP",
+                      "lead": "PROGRAMADO · N IC → 1 PP · checkboxes + barra.",
+                      "appPath": "/proceso-importacion/digitacion/asignar-lote",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_DIGITACION_MULTI_ASIGNAR_PROGRAMADO.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.1.7.4.4",
+                      "slug": "digitacion-bandeja-filtros-acordeon",
+                      "label": "Bandeja acordeón + filtros multi",
+                      "lead": "Embarque · pares/clientes · vendedor · nro fábrica · multi-select.",
+                      "appPath": "/proceso-importacion/digitacion",
+                      "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_DIGITACION_BANDEJA_FILTROS_ACORDEON.md",
+                      "nuevo": true
                     }
                   ]
                 },
@@ -422,10 +509,19 @@
                         {
                           "code": "2.3.1.7.5.3.2",
                           "slug": "pp-vinculacion-listado",
-                          "label": "Vinculación listado Motor",
-                          "lead": "precio_evento · vincular · recalc FI.",
+                          "label": "Vinculación listado · MIG-150",
+                          "lead": "Solo tránsito · Todos!!! (PPD vendidas) · BD OK · deploy Report ⏳",
                           "appPath": "/proceso-importacion/pedido-proveedor",
                           "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.2.P",
+                          "slug": "pp-pendientes-handoff-20260714",
+                          "label": "Pendientes handoff 2026-07-14",
+                          "lead": "Smoke Todos · deploy Report · latencia Cierra etapa · Excel sin sellar",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/PENDIENTES_HANDOFF_20260714.md",
                           "nuevo": true
                         },
                         {
@@ -512,6 +608,15 @@
                   "lead": "FI PE · PPD · agrupado por fecha · STOCK_IMPORTADO.",
                   "appPath": "/facturacion/pronta-entrega",
                   "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_FACTURACION_PRONTA_ENTREGA.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.9.C",
+                  "slug": "boton-dios-anular-reintegrar-fi",
+                  "label": "Botón DIOS · Anular FI + reintegrar",
+                  "lead": "FI entera · stock sin Excel · PE+tránsito+Aprobaciones · Anulaciones.",
+                  "appPath": "/facturacion/pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md",
                   "nuevo": true
                 }
               ]

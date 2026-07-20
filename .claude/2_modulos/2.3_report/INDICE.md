@@ -4,7 +4,7 @@
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
 **Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
-**Última actualización:** 2026-07-16 · FI caso cabecera **2.3.1.9.D** · Depósito Web grada cruza **2.5.1.2**
+**Última actualización:** 2026-07-17 · deploy Report **2.3.4.0.14** Superior UI + reposición LIQ
 
 ---
 
@@ -32,6 +32,8 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - Ventas + Fotos
 - **🔍🕵️ Gestión de compra · Director (2.3.1.11)** 🆕 → [gestion_compra/INDICE.md](gestion_compra/INDICE.md)
 - **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16
+- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **Grada abierta 638** [CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md](deposito_rimec/CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md) (**2.3.1.10.12** · cierre etapa catálogo 2026-07-16)
+- **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · entregas por vendedor · etapa `LOGISTICA-OK-20260719`
 - **Depósitos Bazzar (2.3.2.1)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
 - **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
 - **Motor de Precios (2.3.1.7.1 — Report)** 🆕
@@ -77,6 +79,10 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 
 ## 📚 DOCUMENTOS CLAVE
 
+### **Hotfix UI · Nivel Superior (2026-07-16)**
+- **[LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md](../1_fundamentos/1.3_politicas/LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md)** — **5.01.00.020** · aprobaciones · facturación · reposición · error `4.05.02.001` ✅
+- **[CHUSAR_DEPLOY_REPORT_SUPERIOR_REPOSICION_20260717.md](CHUSAR_DEPLOY_REPORT_SUPERIOR_REPOSICION_20260717.md)** — **2.3.4.0.14** · deploy prod Superior UI + reposición LIQ/PROMO · 2026-07-17
+
 ### **RRHH (2.3.10)**
 - **[rrhh/INDICE.md](rrhh/INDICE.md)** — subcuentas **2.3.10.1** Vacaciones · **2.3.10.2** Funcionarios
 - **[rrhh/FUNCIONAMIENTO_ACTUAL.md](rrhh/FUNCIONAMIENTO_ACTUAL.md)** — operación + tablas DB
@@ -89,7 +95,7 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - **Cierre etapa:** [ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md](../4_etapas/ETAPA_IMPORTACION_PRECIOS_REPORT_CERRADA.md)
 - **Inventario profundo:** [IMPORTACION_PRECIOS.md](proceso_importacion/IMPORTACION_PRECIOS.md)
 - **App doc:** [report/docs/IMPORTACION_PRECIOS_REPORT.md](../../report/docs/IMPORTACION_PRECIOS_REPORT.md)
-- **[CHUSAR_INTENCION_COMPRA.md](proceso_importacion/CHUSAR_INTENCION_COMPRA.md)** · **[CHUSAR_DIGITACION.md](proceso_importacion/CHUSAR_DIGITACION.md)** · **[CHUSAR_PEDIDO_PROVEEDOR.md](proceso_importacion/CHUSAR_PEDIDO_PROVEEDOR.md)** — 7.3–7.5
+- **[CHUSAR_INTENCION_COMPRA.md](proceso_importacion/CHUSAR_INTENCION_COMPRA.md)** · **[CHUSAR_DIGITACION.md](proceso_importacion/CHUSAR_DIGITACION.md)** · **[CHUSAR_DIGITACION_MULTI_ASIGNAR_PROGRAMADO.md](proceso_importacion/CHUSAR_DIGITACION_MULTI_ASIGNAR_PROGRAMADO.md)** · **[CHUSAR_DIGITACION_BANDEJA_FILTROS_ACORDEON.md](proceso_importacion/CHUSAR_DIGITACION_BANDEJA_FILTROS_ACORDEON.md)** · **[CHUSAR_PEDIDO_PROVEEDOR.md](proceso_importacion/CHUSAR_PEDIDO_PROVEEDOR.md)** — 7.3–7.5
 - **Etapa doc:** [ETAPA_CICLO_IMPORTACION_DOC_CHUSAR.md](../4_etapas/ETAPA_CICLO_IMPORTACION_DOC_CHUSAR.md)
 - Navegador: http://localhost:3004/modulos/report · http://localhost:3004/procesos/importacion
 
