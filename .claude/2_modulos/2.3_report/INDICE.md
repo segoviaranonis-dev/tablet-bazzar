@@ -4,7 +4,7 @@
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
 **Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
-**Última actualización:** 2026-07-20 · deploy Report **2.3.4.0.15** PP abierto reposición + filtro KPI
+**Última actualización:** 2026-07-21 · PP abierto **20.532** · integridad AM tolerancia 0 · prod `dd4379d`
 
 ---
 

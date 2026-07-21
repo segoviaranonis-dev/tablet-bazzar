@@ -2,7 +2,7 @@
 
 **Código:** **2.3.1.29**  
 **Keyword:** **Documenta** · Director 2026-07-20  
-**Estado:** 🟢 v1 deploy prod  
+**Estado:** 🟢 v2 prod · integridad + trazabilidad temporal cerradas  
 **App:** Report · http://localhost:3000/herramienta-reposicion · prod https://rimec-report.vercel.app/herramienta-reposicion  
 **Shibboleth:** Andrés, el que viene.
 
@@ -19,7 +19,7 @@ Quinto bucket de stock en **Alejandro Magno reposición**: pares de una **profor
 | Origen datos | Excel proforma · parser `parseProforma` (col **M = PAIRS**, col **L = BOXES**) |
 | BD | `pp_abierto_import` + `pp_abierto_import_fila` · MIG-170 |
 
-**Import inicial Director (2026-07-20):** factura **0004/2026** · **232 moléculas** · **10.152 pares**.
+**Import vigente Director (2026-07-21):** factura **0004/2026** · **505 filas Excel** · **463 moléculas** · **20.532 pares**.
 
 ---
 
@@ -77,4 +77,40 @@ node scripts/smoke_reposicion_pp_abierto.mjs
 
 ---
 
-**Última actualización:** 2026-07-20 · Documenta Director · deploy **2.3.4.0.15**
+## 7 · Cierre integridad 2026-07-21
+
+### Incidente A · KPI +120
+
+Excel y tabla activa contenían **20.532 pares**, pero AM mostraba **20.652**.
+`linea_referencia` tenía más de una fila para `8571.107`; el JOIN 1:N
+multiplicaba dos moléculas de 60 pares.
+
+**Fix:** `queries-pp-abierto.ts` usa `DISTINCT ON` por molécula +
+`LEFT JOIN LATERAL ... LIMIT 1` · commit `28cac35`.
+
+### Incidente B · factura `ITEM`
+
+El import buscaba metadatos solo en la primera hoja (`USAR PARA IMPORTACION`)
+y guardaba `factura_nro = ITEM`. La cabecera real estaba en `Fatura Proforma`.
+
+**Fix:** búsqueda prioritaria en hojas Fatura/Factura/Proforma; reimport id 4
+con `factura_nro=0004/2026`, fecha `2026-07-11` y 20.532 pares · `9ba7083`.
+
+### Incidente C · venta CP histórica como «Sin llegada»
+
+Una molécula con saldo CP cero desaparecía de `v_stock_rimec`. El rescate
+canónico conservaba la cantidad vendida, pero perdía PP/preventa/quincena.
+
+Caso auditado `2135-153-13958-76941`:
+
+- PP abierto nuevo `0004/2026`: 36 pares.
+- Venta histórica PP 6: `PP-4081` · `1ra Ago.` · 36 vendidos · saldo 0.
+
+**Fix:** `cp-vendido-canon.ts` conserva buckets temporales por PP, preventa y
+quincena · `dd4379d`.
+
+**Error indexado:** `4.02.03.016`.
+
+---
+
+**Última actualización:** 2026-07-21 · Documenta Director · prod `dd4379d`

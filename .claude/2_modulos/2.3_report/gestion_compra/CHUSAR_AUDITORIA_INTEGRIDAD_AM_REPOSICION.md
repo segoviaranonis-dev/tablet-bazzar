@@ -100,4 +100,40 @@ Fallo cualquiera → **abortar deploy**.
 
 ---
 
-**Última auditoría:** 2026-07-20 · 0 issues · Documenta Director
+## 8 · Reauditoría de riesgo 2026-07-21
+
+Ejecutada después del reimport `0004/2026` y los fixes `28cac35`, `9ba7083`,
+`dd4379d`.
+
+| Control holding | Resultado |
+|-----------------|-----------|
+| Moléculas API | **9.895** |
+| PE disponible | **198.182** |
+| CP disponible | **27.472** |
+| PP abierto | **20.532** |
+| CP vendido | **11.632** |
+| PROGRAMADO | **64.616** |
+| Integridad molecular | **0 issues** |
+| API KPI = suma tarjetas | **OK** |
+| PP abierto KPI vs import activo | **20.532 = 20.532** · delta 0 |
+| Buckets CP con lote | **526** · 11.632 pares |
+| Buckets CP sin lote | **0** |
+| Tarjetas PP abierto + «Sin llegada» | **0** |
+
+Molécula crítica `2135-153-13958-76941`:
+
+```text
+STOCK:  PP abierto 36
+VENTA:  PP-4081 · 1ra Ago. 36
+```
+
+La coexistencia es válida: compra futura nueva + venta histórica de otro PP.
+La UI ya conserva la procedencia temporal y no presenta ambos hechos como una
+misma cantidad.
+
+**Evidencia UI local:** KPI PP abierto 20.532, `PP-4081`, cero etiquetas
+«Sin llegada». **Prod:** Vercel Ready · `dd4379d`.
+
+---
+
+**Última auditoría:** 2026-07-21 · 0 issues · tolerancia 0 · Documenta Director
