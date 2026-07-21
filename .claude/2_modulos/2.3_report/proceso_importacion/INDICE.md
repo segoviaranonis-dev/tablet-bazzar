@@ -21,7 +21,7 @@
 Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN** (4 cards en launcher Streamlit · solo 2.3.1.7).  
 
 **Cimiento:** [PIEDRA_CIMIENTO_COSTO_ARTICULO.md](../../1_fundamentos/PIEDRA_CIMIENTO_COSTO_ARTICULO.md) — COSTO · ARTÍCULO · estrategias.  
-**Mapa motor + estrategias:** [CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md](../motor_precios/CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md)
+**Mapa motor + estrategias:** [CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md](../motor_precios/CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md) · **Cardinalidad bib↔listado 1:N:** §3.1 (**2.3.1.7.0.3** · Documenta 2026-07-21)
 
 **Importación Excel (Corazón 2)** vive **dentro** de Motor de precios (2.3.1.7.1), no como card hermana en el hub ciclo.
 
@@ -119,6 +119,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | 2.3.1.7.5.3.4 | **CSV veneno Carlos · ventas + inicial** | `csv-ventas` · `csv-inicial` | [CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO](./CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md) | 🟢 v3 · dual CSV |
 
 | 2.3.1.7.5.3.1 | **Tab Stock · Fase 1** | `?tab=stock` | [CHUSAR_PP_TAB_STOCK](./CHUSAR_PP_TAB_STOCK.md) | [MUDANZA_PP_INVENTARIO](../../../../../report/docs/MUDANZA_PP_DETALLE_INVENTARIO.md) |
+| **2.3.1.7.5.3.1a** | **Nº preventa Carlos · mapa propagación** | cabecera PP | [CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO](../gestion_compra/CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO.md) | 🟢 **2.3.1.31** · UI 2 filas · siamese · [sesión 2.3.1.32](../gestion_compra/CHUSAR_SESION_DURO_PREVENTA_UI_PRECIOS_20260720.md) |
 
 | **2.3.1.7.5.3.2** | **Tab FI · Ala Sur · NIIF** | `?tab=fi` | [CHUSAR_PP_TAB_FI](./CHUSAR_PP_TAB_FI.md) | `PpFiCard` · CSV · PDF |
 
@@ -128,6 +129,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | **2.3.1.16.1** | **Mapa Panel CP STOCK+VENTAS** | doc | [MAPA_PANEL_CP_TRANSITO](../gestion_compra/MAPA_PANEL_CP_TRANSITO_STOCK_VENTAS.md) | FI Web → pares_vendidos · paridad Estadísticas |
 
+| **2.3.1.7.5.3.13** | **Cabecera PP · Biblioteca política** | cabecera detalle PP | [CHUSAR_PP_CABECERA_BIBLIOTECA](./CHUSAR_PP_CABECERA_BIBLIOTECA.md) | 🟢 **v2 2026-07-21** · BCL reconstruye PF · marca IC · POST admin_ic |
 | **2.3.1.7.5.3.2** | **Vinculación listado · MIG-150 dos modos** | panel Stock | [CHUSAR_VINCULACION_LISTADO](./CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md) | ✅ **2026-07-14** · prod `7b7d5d7` · error `4.02.03.012` |
 | **2.3.1.7.5.3.2.H** | **Hotfix PP-14 · vincular FI + PDF FI** | doc | [CHUSAR_HOTFIX_REPORT_PP14_20260714](./CHUSAR_HOTFIX_REPORT_PP14_20260714.md) | ✅ deploy · rescate BD · errores `012`+`013` |
 | **2.3.1.27** | **Etapa · Importación programados** | doc | [CHUSAR_IMPORTACION_PROGRAMADOS_20260718](./CHUSAR_IMPORTACION_PROGRAMADOS_20260718.md) | 🟢 **2026-07-18** · [ETAPA](../../../4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718.md) |
@@ -135,6 +137,8 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.27.2** | **Lote IC 0839/26 → PP-0024** | doc | [CHUSAR_IC_LOTE_0839_PP24_20260718](./CHUSAR_IC_LOTE_0839_PP24_20260718.md) | ✅ **79 IC** · PP-37 · 7932 pares |
 
 | **2.3.1.7.5.3.2.P** | **Pendientes handoff pre-nueva etapa** | doc | [PENDIENTES_HANDOFF_20260714](./PENDIENTES_HANDOFF_20260714.md) | 🟡 smoke prod · protocolo Excel sin sellar |
+| **2.3.1.7.5.3.2.P2** | **Handoff 2026-07-20 · pre-nueva etapa** | doc | [PENDIENTES_HANDOFF_20260720](./PENDIENTES_HANDOFF_20260720.md) | ⏸ **esperando Nueva etapa** · FI encabezado · Logística deploy · CSV `015` |
+| **2.3.1.7.5.3.2.1** | **PP FI encabezado editable** | tab FI | [CHUSAR_PP_FI_ENCABEZADO_EDITABLE_20260720](./CHUSAR_PP_FI_ENCABEZADO_EDITABLE_20260720.md) | ✅ deploy `dc7839d`+ |
 
 **Fuera de 7 (hermanos RIMEC):** [CADENA_OPERATIVA_RIMEC.md](../CADENA_OPERATIVA_RIMEC.md) · 2.3.1.8 Compra legal · 2.3.1.9 Facturación · 2.3.1.10 Depósito RIMEC
 
