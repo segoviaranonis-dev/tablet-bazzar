@@ -94,7 +94,7 @@ node scripts/cirugia_ic5436_pp26.mjs --apply
 |-------|--------|
 | Repo | `segoviaranonis-dev/report` |
 | Rama | `main` |
-| Commit | *(post push 2026-07-21)* |
+| Commit | `c74df5e` |
 | Prod | `https://rimec-report.vercel.app` |
 
 ---
