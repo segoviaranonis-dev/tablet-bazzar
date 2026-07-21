@@ -120,6 +120,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.015_csv-general-duplicado-linea-proveedor.md`* · ✅ **RESUELTO 2026-07-20** · `8585.102` ×2 · deploy `e333107`
 
+### 4.02.03.016 · Alejandro Magno — PP abierto y CP vendido sin trazabilidad temporal
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.016_am-pp-abierto-cp-vendido-sin-trazabilidad.md`* · ✅ **RESUELTO 2026-07-21** · `2135.153` · PP abierto 36 ≠ venta histórica `PP-4081` 36
+
 ---
 
 ## 4.03 · Tablet Bazzar
