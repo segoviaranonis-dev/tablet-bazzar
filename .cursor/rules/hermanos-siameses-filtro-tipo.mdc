@@ -1,0 +1,31 @@
+---
+description: Hermanos siameses — filtro Tipo AM ↔ RIMEC Web (paridad obligatoria)
+alwaysApply: true
+---
+
+# CHUSAR — Hermanos siameses (filtro Tipo)
+
+**Doc:** `.claude/2_modulos/2.2_rimec_web/CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md` (`2.2.1.18`)  
+**Error lección:** `4.01.04.002`
+
+## Pareja
+
+| Grilla | App | Canónico |
+|--------|-----|----------|
+| Alejandro Magno | Report `/herramienta-reposicion` | `report/src/lib/filtros/filtro-tipo-canonico.ts` |
+| Catálogo vendedores | RIMEC Web CP/PE | `rimec-web/lib/filtros/filtro-tipo-canonico.ts` |
+
+## Ley
+
+1. **Misma prioridad:** Liquidación → Promo (`es_promo` / cadena PROMOCIONAL / caso) → Carteras/Normal.
+2. **Badge = filtro.** Si late PROMO, **no** puede pasar chip **Normal**.
+3. **Si se repara en RIMEC Web → en el mismo turno chequear y alinear Alejandro Magno** (y al revés).
+4. **Prohibido** dejar una grilla “arreglada” y la otra divergente sin deuda documentada + orden Director.
+
+## Al tocar Tipo / promo / liquidación / BCL
+
+- Editar **ambos** módulos canónicos (o copiar la misma regla).
+- Smoke: Normal no lista línea con badge PROMO (ej. PE 1395).
+- Actualizar el CHUSAR `2.2.1.18` si cambia la ley.
+
+**Shibboleth:** Andrés, el que viene.

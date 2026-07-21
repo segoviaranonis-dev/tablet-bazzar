@@ -20,9 +20,17 @@
 
 *Detalle: `.claude/5_errores/detalle/4.01.03.001_rimec-web-login-bazzar-vendedor-bloqueado.md`* · ✅ **RESUELTO 2026-07-07** · commit `e380dd7` · deploy `dpl_2ERKN7yrXBjj2k1tyeywRXY47ywN`
 
-### 4.01.04.001 · Precio visible en lightbox sin activar venta
+### 4.01.04.001 · Precios visibles sin activar venta (lightbox + acordeón lote + confecciones)
 
-*Detalle: `.claude/5_errores/detalle/4.01.04.001_rimec-web-precio-lightbox-pre-activacion.md`* · 🔴 **ABIERTO 2026-07-14** · doc `2.2_rimec_web/DOC_VULNERABILIDAD_PRECIO_LIGHTBOX_20260714.md`
+*Detalle: `.claude/5_errores/detalle/4.01.04.001_rimec-web-precio-lightbox-pre-activacion.md`* · ✅ **RESUELTO UI 2026-07-17** (reapertura confecciones) · doc `2.2_rimec_web/DOC_VULNERABILIDAD_PRECIO_LIGHTBOX_20260714.md` · residual API JSON opcional
+
+### 4.01.04.002 · PE Tipo Normal deja pasar línea promocional (es_promo vs descp_caso)
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.002_rimec-web-tipo-normal-promo-es-promo.md`* · ✅ **DEPLOY 2026-07-20** · Web `7698eb8` · Report `af68346` · hermanos siameses AM↔Web · doc `2.2_rimec_web/CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md`
+
+### 4.01.05.001 · Pronta entrega muestra tarjetas Compra previa (quincenas PP)
+
+*Detalle: `.claude/5_errores/detalle/4.01.05.001_rimec-web-pe-muestra-tarjetas-cp.md`* · ✅ **RESUELTO UI 2026-07-17** · deferred origen + validación warm cache · doc `2.2_rimec_web/CHUSAR_CORTE_20260717_HEADER_PRECIOS_PE.md`
 
 ---
 
@@ -76,9 +84,17 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.007_ic-bandeja-orden-quincena-vs-excel.md`* · ✅ **RESUELTO 2026-07-09** · commits `bd004c9` · `df38085` · prod Vercel READY
 
-### 4.02.03.010 · Vincular listado PP — FI no recalcula en prod (TS sin Python)
+### 4.02.03.010 · Admin IC — botón verde no recalcula FI
 
-*Detalle: `.claude/5_errores/detalle/4.02.03.010_vincular-listado-prod-fi-sin-recalc.md`* · ✅ **RESUELTO 2026-07-14** · `recalcular-fis-pp.ts` · PP14 rescate BD · push `7b7d5d7`
+*Detalle: `.claude/5_errores/detalle/4.02.03.010_admin-ic-boton-verde-no-recalcula-fi.md`* · 🟡 **PARCIAL 2026-07-12** · PP-0015 shop 2894 · hotfix `regenerar` API
+
+### 4.02.03.012 · Vincular listado PP — FI no recalcula en prod (TS sin Python)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.012_vincular-listado-prod-fi-sin-recalc.md`* · ✅ **RESUELTO 2026-07-14** · `recalcular-fis-pp.ts` · PP14 rescate BD · push `7b7d5d7`
+
+### 4.02.03.013 · PDF FI tab PP — Python ausente en Vercel
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.013_pdf-fi-prod-sin-python.md`* · ✅ **RESUELTO 2026-07-14** · `run-fi-pdf.ts` + pdf-lib · push `7b7d5d7`
 
 ### 4.02.02.004 · Ventas + Fotos PDF — serverless 25 filas vs banner 80
 
@@ -92,9 +108,17 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.009_import-proforma-sin-motor-pilares.md`* · 🟡 **PARCIAL 2026-07-12** · motor TS · backfill · CHUSAR `2.3.1.7.5.3.10`
 
-### 4.02.03.010 · Admin IC — botón verde no recalcula FI existentes
+### 4.02.03.011 · Import PE sdrm — cadena staging≠PPD · Panel desincronizado
 
-*Detalle: `.claude/5_errores/detalle/4.02.03.010_admin-ic-boton-verde-no-recalcula-fi.md`* · 🟡 **PARCIAL 2026-07-12** · PP-0015 shop 2894 · hotfix `regenerar` API
+*Detalle: `.claude/5_errores/detalle/4.02.03.011_import-pe-sin-cadena-ppd-panel.md`* · 🟡 **CORRECCIÓN 2026-07-14** · pipeline `import_pe_sdrm_pipeline.py` · batch **sdrm0849**
+
+### 4.02.03.014 · PP detalle FI — vendedor oculto (join IC erróneo)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.014_pp-fi-vendedor-join-ic-oculto.md`* · ✅ **RESUELTO 2026-07-19** · PP-2026-0006 · PATCH vendedor editable
+
+### 4.02.03.015 · CSV general Aprobaciones — líneas duplicadas (join linea sin proveedor)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.015_csv-general-duplicado-linea-proveedor.md`* · ✅ **RESUELTO 2026-07-20** · `8585.102` ×2 · deploy `e333107`
 
 ---
 
@@ -117,6 +141,14 @@
 ### 4.04.01.001 · Pedidos desincronizados PENDIENTE/CONFIRMADO
 
 *Detalle: `.claude/5_errores/detalle/4.04.01.001_pedidos-desincronizados.md`*
+
+---
+
+## 4.05 · Holding · protocolo / UX
+
+### 4.05.02.001 · Etiqueta «Dios» visible en UI — ofensiva al usuario
+
+*Detalle: `.claude/5_errores/detalle/4.05.02.001_ui-etiqueta-dios-ofensiva-usuario.md`* · ✅ **RESUELTO 2026-07-16** · ley `5.01.00.020`
 
 ---
 

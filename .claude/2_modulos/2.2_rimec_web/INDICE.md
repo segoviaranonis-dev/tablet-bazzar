@@ -89,8 +89,10 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 ### **Handoff Cursor (2026-07-09 noche)**
 - **[CURSOR_CONTINUAR_RIMEC_WEB_PE_LOCAL.md](../../1_fundamentos/1.1_protocolos/CURSOR_CONTINUAR_RIMEC_WEB_PE_LOCAL.md)** — pendientes mañana · terminales cerradas · checklist smoke
 
-### **CABECERA DE FILTROS catálogo (2026-07-08 · solo local)**
-- **[CHUSAR_CATALOGO_CABECERA_FILTROS.md](./CHUSAR_CATALOGO_CABECERA_FILTROS.md)** — **2.2.1.1** · Género→TONO · pills naranja · enrich `color.tono_canon` · hotfix columna vista
+### **CABECERA DE FILTROS catálogo (2026-07-08 · actualizado 2026-07-17)**
+- **[CHUSAR_CORTE_20260717_HEADER_PRECIOS_PE.md](./CHUSAR_CORTE_20260717_HEADER_PRECIOS_PE.md)** — **2.2.1.14** · corte Documenta+despliega: header CP/PE · fuga precios confecciones · PE≠PP
+- **[CHUSAR_HEADER_ORIGEN_CP_PE_20260717.md](./CHUSAR_HEADER_ORIGEN_CP_PE_20260717.md)** — **2.2.1.13** · header Compra previa \| Pronta entrega · sin mega género · filtros URL conservados
+- **[CHUSAR_CATALOGO_CABECERA_FILTROS.md](./CHUSAR_CATALOGO_CABECERA_FILTROS.md)** — **2.2.1.1** · Tono · sidebar Dimensiones/Molécula · enrich `color.tono_canon`
 - Estándar holding: [CABECERA_DE_FILTROS.md](../../3_arquitectura/3.2_venta_tienda/CABECERA_DE_FILTROS.md)
 
 ### **Go-live CP + PE (2026-07-12 · CERRADA · prod `c757dbf`)**
@@ -106,12 +108,27 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **Regla motor:** [CHUSAR_EXCEPCION_PROMOCIONAL_LPC03_LPN.md](../2.3_report/motor_precios/CHUSAR_EXCEPCION_PROMOCIONAL_LPC03_LPN.md) (**2.3.1.7.1.0.1**)
 - **Regla Director:** documentar cada micro-objetivo local antes de Git/Vercel
 
+### **Compras masivas · stress test cliente 5000 (2026-07-19 · ★ PARÉNTESIS EOD)**
+- **[CHUSAR_COMPRAS_MASIVAS_STRESS_5000_20260719.md](./CHUSAR_COMPRAS_MASIVAS_STRESS_5000_20260719.md)** — **2.2.1.17** · stress CP+PE · solo 5000 · purge EOD · [ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md](../../4_etapas/ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md)
+
+### **Handoff previo a nueva etapa (2026-07-20)**
+- **[CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md](./CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md)** — bug urgente RIMEC Web pendiente de ruta/síntoma · Report local `.next` pendiente · portón de nueva etapa
+
+### **Filtro Tipo · hermanos siameses AM↔Web (2026-07-20 · ★ Documenta + fix)**
+- **[CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md](./CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md)** — **2.2.1.18** · LIQ>Promo>Normal · `es_promo` gana · error `4.01.04.002` · línea 1395 PE
+
+### **Hotfix precisión bancaria catálogo (2026-07-19 · ★ Documenta + deploy prod)**
+- **[CHUSAR_HOTFIX_CATALOGO_PRECISION_BANCARIA_20260719.md](./CHUSAR_HOTFIX_CATALOGO_PRECISION_BANCARIA_20260719.md)** — **2.2.1.16** · arranque Todos · audit 30 s · TIPO+BCL · pulse Promo/LIQ · badge acordeón `4.02.04.002` · www.rimec.com.py
+
+### **Overlay sincronizando · arranque frío (2026-07-17 · ★ Documenta + deploy)**
+- **[CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md](./CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md)** — **2.2.1.15** · pantalla completa 30 s · CP→PE→confecciones · tarjetas con foto · marquee fondo · prod Vercel
+
 ### **Corte control 2026-07-15 · precios · latencia · tono (★ Documenta)**
 - **[CHUSAR_CORTE_CONTROL_20260715_PRECIOS_LATENCIA_TONO.md](./CHUSAR_CORTE_CONTROL_20260715_PRECIOS_LATENCIA_TONO.md)** — **2.2.1.0.11** · ley LPN/LPC · MIG-151/156/157 local · tono único ficha · arranque frío >1 min (diagnóstico) · ⛔ sin deploy
 
 ---
 
-**Última actualización:** 2026-07-16 · **2.2.4.0.13** deploy descuentos + liquidación + casos
+**Última actualización:** 2026-07-20 · **2.2.1.18** filtro Tipo hermanos siameses · `4.01.04.002` fix 1395 PE
 
 ---
 
