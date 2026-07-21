@@ -31,8 +31,8 @@
 | **[CHUSAR_HANDOFF_CIERRE_AM_FACTURA_5000.md](./CHUSAR_HANDOFF_CIERRE_AM_FACTURA_5000.md)** | **Handoff AM** · FI 5000 = 0 · etapa pruebas cerrada · **2.3.1.25** ✅ 2026-07-16 |
 | **[ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md](../../../4_etapas/ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md)** | **Etapa viva** · filtro adicional reposición · **2.3.1.26** 🟢 2026-07-16 |
 | **[CHUSAR_REPOSICION_SIDEBAR_MULTISELECT_TONO.md](./CHUSAR_REPOSICION_SIDEBAR_MULTISELECT_TONO.md)** | **Filtros duales** · Tipo · familias Material/Color · NN · Napa/Verniz · **2.3.1.26** Documenta 2026-07-17 |
-| **[CHUSAR_PP_ABIERTO_REPOSICION.md](./CHUSAR_PP_ABIERTO_REPOSICION.md)** | **PP abierto** · import proforma · KPI+filtro · MIG-170 · 10.152 pares · **2.3.1.29** 🟢 2026-07-20 |
-| **[CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md](./CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md)** | **Integridad AM** · tolerancia 0 · 5 ejes · scripts smoke · evidencia 2026-07-20 · **2.3.1.30** 🟢 |
+| **[CHUSAR_PP_ABIERTO_REPOSICION.md](./CHUSAR_PP_ABIERTO_REPOSICION.md)** | **PP abierto v2** · factura 0004/2026 · 20.532 pares · anti-JOIN ×N · trazabilidad CP · **2.3.1.29** 🟢 2026-07-21 |
+| **[CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md](./CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md)** | **Integridad AM** · tolerancia 0 · 9.895 moléculas · 0 issues · 0 buckets sin lote · **2.3.1.30** 🟢 2026-07-21 |
 | **[CHUSAR_DEPLOY_PP_ABIERTO_REPOSICION_20260720.md](../CHUSAR_DEPLOY_PP_ABIERTO_REPOSICION_20260720.md)** | **Deploy 2.3.4.0.15** · PP abierto + filtro KPI prod |
 | **[CHUSAR_INYECCION_DATOS_TRANSITO_IC.md](../proceso_importacion/CHUSAR_INYECCION_DATOS_TRANSITO_IC.md)** | **Inyección Excel IC PROGRAMADO** · ≥412 · excepción Director · **2.3.1.7.3.3** 🔴 |
 | **[CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE.md](../proceso_importacion/CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE.md)** | **PP-16 PROGRAMADO cerrado** · 39 FI · catálogo errores · **2.3.1.7.5.3.3.4** ✅ |
