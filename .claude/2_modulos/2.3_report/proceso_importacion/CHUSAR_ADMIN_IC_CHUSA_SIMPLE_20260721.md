@@ -63,6 +63,8 @@ Aplica **igual** a panel IC y panel PF · lote FI usa el mismo criterio (`ordena
 
 ## Cirugía IC PP-17 · Excel 5436 (BD operativa)
 
+**Doc completa multi-PP:** [CHUSAR_CIRUGIA_IC_EXCEL_PEDIDO_PROVEEDOR](./CHUSAR_CIRUGIA_IC_EXCEL_PEDIDO_PROVEEDOR.md) (**2.3.1.7.5.3.5.5**)
+
 **Script:** `report/scripts/cirugia_ic5436_pp26.mjs`  
 **PP:** `PP-2026-0017` · `pedido_proveedor.id = 26`  
 **Excel:** `IC-5436.xlsx` (98 filas · 9068 pares)
@@ -94,7 +96,8 @@ node scripts/cirugia_ic5436_pp26.mjs --apply
 |-------|--------|
 | Repo | `segoviaranonis-dev/report` |
 | Rama | `main` |
-| Commit | `c74df5e` |
+| Commit git | `c74df5e` |
+| Deploy Vercel prod | `Cu8yH6UAd` (2026-07-21 · `vercel deploy --prod`) |
 | Prod | `https://rimec-report.vercel.app` |
 
 ---

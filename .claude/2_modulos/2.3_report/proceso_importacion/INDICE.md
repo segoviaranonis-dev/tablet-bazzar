@@ -99,7 +99,8 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | **2.3.1.7.5.3.5** | **Administrador de IC · PROGRAMADO** | `?tab=admin-ic` | [CHUSAR_ADMINISTRADOR_IC_PROGRAMADO](./CHUSAR_ADMINISTRADOR_IC_PROGRAMADO.md) | 🟢 **CANÓNICO 2026-07-10** · abandona IC=FI · paneles IC↔PF · vínculo monto |
 | **2.3.1.7.5.3.5.1** | **Protocolo Chusa · FI por lote** | `?tab=admin-ic` | [PROTOCOLO_CHUSA_ADMIN_IC_LOTE](./PROTOCOLO_CHUSA_ADMIN_IC_LOTE.md) | 🟢 **CANÓNICO 2026-07-11** · v4 orden simple 2026-07-21 |
-| **2.3.1.7.5.3.5.4** | **Admin IC Chusa simple · cirugía PP-17** | doc | [CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721](./CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721.md) | 🟢 **2026-07-21** · contadores totales · sin empareje auto |
+| **2.3.1.7.5.3.5.4** | **Admin IC Chusa simple · cirugía PP-17** | doc | [CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721](./CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721.md) | 🟢 **2026-07-21** · contadores totales · deploy `c74df5e` |
+| **2.3.1.7.5.3.5.5** | **Cirugía IC · Excel == BD (multi PP)** | doc | [CHUSAR_CIRUGIA_IC_EXCEL_PEDIDO_PROVEEDOR](./CHUSAR_CIRUGIA_IC_EXCEL_PEDIDO_PROVEEDOR.md) | 🟢 **2026-07-21** · receteo sin digitación · frase orden Director |
 | **2.3.1.7.5.3.5.2** | **Auditoría PP-28 · Chusa · veneno** | doc | [AUDITORIA_ADMIN_IC_PP28_CHUSA_VENENO_20260711](./AUDITORIA_ADMIN_IC_PP28_CHUSA_VENENO_20260711.md) | 🟢 **2026-07-11** · OK condicional lote · CSV post-FI |
 | **2.3.1.7.5.3.5.3** | **DOC PP-28 · lote · errores · réplica PROGRAMADO** | doc | [DOC_ADMIN_IC_LOTE_PROGRAMADO_PP28_ERRORES_SOLUCIONES_20260711](./DOC_ADMIN_IC_LOTE_PROGRAMADO_PP28_ERRORES_SOLUCIONES_20260711.md) | 🟢 **2026-07-11** · 13 errores · sin LPN · handoff mañana |
 | **2.3.1.7.5.3.9** | **DOC Proceso PROGRAMADO completo · errores · soluciones** | doc | [DOC_PROCESO_PROGRAMADO_COMPLETO_ERRORES_SOLUCIONES_20260711](./DOC_PROCESO_PROGRAMADO_COMPLETO_ERRORES_SOLUCIONES_20260711.md) | 🟢 **2026-07-11** · Motor→IC→PP→FI · PP-16/17/28 · handoff |
