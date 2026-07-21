@@ -57,7 +57,7 @@ Nivel 3 — Cuadro verde superior · Generar FI por lote
 
 Solo si Nivel 1 pasó:
 
-1. Ordenar/alinear filas IC y PF con la **misma regla de orden** (cliente → marca → cantidad → desempate).
+1. Ordenar filas IC y PF con **`cmpAdminFilasGrilla`**: cliente → cod. marca → cantidad (asc).
 2. Emparejar **renglón i** IC con **renglón i** PF (misma posición visual).
 3. Para **cada** renglón, verificar las **3 columnas del canon** — coincidencia **100% · sin tolerancia**.
 

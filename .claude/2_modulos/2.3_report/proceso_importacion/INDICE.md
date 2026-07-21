@@ -98,7 +98,8 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.5.3.L** | **Botón logística · Fecha de entrega Real** | cabecera PP CP+PROGRAMADO | [CHUSAR_LOGISTICA_OK](../logistica_ok/CHUSAR_LOGISTICA_OK.md) | 🟢 **2026-07-19** · bandera · sync FI → pendiente confirmación · **2.3.1.28** |
 
 | **2.3.1.7.5.3.5** | **Administrador de IC · PROGRAMADO** | `?tab=admin-ic` | [CHUSAR_ADMINISTRADOR_IC_PROGRAMADO](./CHUSAR_ADMINISTRADOR_IC_PROGRAMADO.md) | 🟢 **CANÓNICO 2026-07-10** · abandona IC=FI · paneles IC↔PF · vínculo monto |
-| **2.3.1.7.5.3.5.1** | **Protocolo Chusa · FI por lote** | `?tab=admin-ic` | [PROTOCOLO_CHUSA_ADMIN_IC_LOTE](./PROTOCOLO_CHUSA_ADMIN_IC_LOTE.md) | 🟢 **CANÓNICO 2026-07-11** · 3 niveles · contadores · canon · lote |
+| **2.3.1.7.5.3.5.1** | **Protocolo Chusa · FI por lote** | `?tab=admin-ic` | [PROTOCOLO_CHUSA_ADMIN_IC_LOTE](./PROTOCOLO_CHUSA_ADMIN_IC_LOTE.md) | 🟢 **CANÓNICO 2026-07-11** · v4 orden simple 2026-07-21 |
+| **2.3.1.7.5.3.5.4** | **Admin IC Chusa simple · cirugía PP-17** | doc | [CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721](./CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721.md) | 🟢 **2026-07-21** · contadores totales · sin empareje auto |
 | **2.3.1.7.5.3.5.2** | **Auditoría PP-28 · Chusa · veneno** | doc | [AUDITORIA_ADMIN_IC_PP28_CHUSA_VENENO_20260711](./AUDITORIA_ADMIN_IC_PP28_CHUSA_VENENO_20260711.md) | 🟢 **2026-07-11** · OK condicional lote · CSV post-FI |
 | **2.3.1.7.5.3.5.3** | **DOC PP-28 · lote · errores · réplica PROGRAMADO** | doc | [DOC_ADMIN_IC_LOTE_PROGRAMADO_PP28_ERRORES_SOLUCIONES_20260711](./DOC_ADMIN_IC_LOTE_PROGRAMADO_PP28_ERRORES_SOLUCIONES_20260711.md) | 🟢 **2026-07-11** · 13 errores · sin LPN · handoff mañana |
 | **2.3.1.7.5.3.9** | **DOC Proceso PROGRAMADO completo · errores · soluciones** | doc | [DOC_PROCESO_PROGRAMADO_COMPLETO_ERRORES_SOLUCIONES_20260711](./DOC_PROCESO_PROGRAMADO_COMPLETO_ERRORES_SOLUCIONES_20260711.md) | 🟢 **2026-07-11** · Motor→IC→PP→FI · PP-16/17/28 · handoff |
@@ -129,7 +130,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | **2.3.1.16.1** | **Mapa Panel CP STOCK+VENTAS** | doc | [MAPA_PANEL_CP_TRANSITO](../gestion_compra/MAPA_PANEL_CP_TRANSITO_STOCK_VENTAS.md) | FI Web → pares_vendidos · paridad Estadísticas |
 
-| **2.3.1.7.5.3.13** | **Cabecera PP · Biblioteca política** | cabecera detalle PP | [CHUSAR_PP_CABECERA_BIBLIOTECA](./CHUSAR_PP_CABECERA_BIBLIOTECA.md) | 🟢 **v2 2026-07-21** · BCL reconstruye PF · marca IC · POST admin_ic |
+| **2.3.1.7.5.3.13** | **Cabecera PP · Biblioteca política** | cabecera detalle PP | [CHUSAR_PP_CABECERA_BIBLIOTECA](./CHUSAR_PP_CABECERA_BIBLIOTECA.md) | 🟢 **v4 2026-07-21** · Admin IC simple · BCL PF |
 | **2.3.1.7.5.3.2** | **Vinculación listado · MIG-150 dos modos** | panel Stock | [CHUSAR_VINCULACION_LISTADO](./CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md) | ✅ **2026-07-14** · prod `7b7d5d7` · error `4.02.03.012` |
 | **2.3.1.7.5.3.2.H** | **Hotfix PP-14 · vincular FI + PDF FI** | doc | [CHUSAR_HOTFIX_REPORT_PP14_20260714](./CHUSAR_HOTFIX_REPORT_PP14_20260714.md) | ✅ deploy · rescate BD · errores `012`+`013` |
 | **2.3.1.27** | **Etapa · Importación programados** | doc | [CHUSAR_IMPORTACION_PROGRAMADOS_20260718](./CHUSAR_IMPORTACION_PROGRAMADOS_20260718.md) | 🟢 **2026-07-18** · [ETAPA](../../../4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718.md) |

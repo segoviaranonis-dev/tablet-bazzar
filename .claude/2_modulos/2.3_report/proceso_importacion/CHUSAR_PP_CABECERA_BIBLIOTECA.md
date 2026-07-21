@@ -2,9 +2,13 @@
 
 **Código:** **2.3.1.7.5.3.13**  
 **Decisión Director:** 2026-07-21  
-**Estado:** 🟢 **CANÓNICO v2** — cabecera biblioteca · BCL reconstruye PF · marca IC  
-**Ruta:** `/proceso-importacion/pedido-proveedor/[ppId]` · cabecera  
+**Estado:** 🟢 **CANÓNICO v4** — cabecera biblioteca · BCL reconstruye PF · **Admin IC grilla simple** (sin empareje auto)  
+**Ruta:** `/proceso-importacion/pedido-proveedor/[ppId]` · cabecera · tab Admin IC  
 **Shibboleth:** Andrés, el que viene.
+
+**v4 (2026-07-21):** Admin IC **simple** — contadores IC/PF independientes (total cabeceras); orden cliente→marca→cantidad; **sin** IC virtuales ni banner huérfanas. Ver [CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721](./CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721.md). Cirugía Excel PP-17: script `cirugia_ic5436_pp26.mjs`.
+
+**v3 (2026-07-21 noche):** Admin IC con **modo biblioteca** — filas IC virtuales 1:1 con PF (cliente×marca×caso); banners canon/contadores corregidos; API sin thumbnails en carga inicial. Deploy Report **`b0d018a`**. *(Superseded en grilla por v4; BCL cabecera sigue.)*
 
 **v2 (2026-07-21 tarde):** al cambiar biblioteca, pre-facturas se **reconstruyen completas** desde **BCL cabecera** (no PELE evento IC). Marca PF = marca IC (caso ≠ marca · ej. BEIRA RIO + CHINELO).
 
@@ -57,36 +61,69 @@ Operadores profesionales · cambio **retroactivo** en cualquier momento (PP no E
    → RECONSTRUYE admin_ic (loadAdministradorIcPp) con BCL nueva
 4. Respuesta JSON incluye admin_ic · n_pf · casos_pf · pares_pf
 5. UI limpia cache Admin IC · escribe snapshot · tab admin-ic
-6. Operador re-empareja IC ↔ PF (Chusa) si contadores difieren
+6. Admin IC · orden cliente→marca→cantidad · contadores IC/PF totales · usuario alinea manual
 7. Asigna listado manual por IC / PF / FI
 8. Genera / imprime nuevas FI
 ```
 
-| Paso | Automático v2 | Manual obligatorio |
+| Paso | Automático v3 | Manual obligatorio |
 |------|---------------|-------------------|
 | Cambio biblioteca PP | ✅ | Elegir bib + confirmar |
 | Borrar FI + splits | ✅ | Confirmación doble |
 | Regenerar PF (BCL cabecera) | ✅ mismo POST | — |
 | Marca PF desde IC | ✅ | — |
-| Emparejar IC↔PF | — | ✅ Administrador IC |
+| Alinear grilla IC↔PF | — | ✅ manual · orden fijo · división PF (÷) |
 | Listado por FI/IC | — | ✅ manual · sin default |
 | Generar FI | — | ✅ botón lote Admin IC |
 
 ---
 
-## Código v2 Report
+## Código v3 Report
 
 | Pieza | Ruta |
 |-------|------|
 | Ley + POST cambio + rebuild PF | `report/src/lib/pedido-proveedor/cabecera-biblioteca.ts` |
 | **Contexto caso BCL cabecera** | `report/src/lib/pedido-proveedor/pp-caso-context.ts` |
 | Admin IC · PF desde PPD+IC | `report/src/lib/pedido-proveedor/administrador-ic-query.ts` |
+| **Chusa modo biblioteca · IC virtual** | `report/src/lib/pedido-proveedor/administrador-ic-monto.ts` |
 | Mapa BCL / PELE | `report/src/lib/motor-precios/caso-linea-evento.ts` |
 | FI · caso desde BCL | `report/src/lib/pedido-proveedor/proforma-programado-engine.ts` |
-| API | `…/pedido-proveedor/[ppId]/cambiar-biblioteca/route.ts` |
+| API admin IC | `…/administrador-ic/route.ts` → `chusa_modo_biblioteca` |
+| API lote FI | `…/administrador-ic/generar-fi-lote/route.ts` |
+| API cambio bib | `…/pedido-proveedor/[ppId]/cambiar-biblioteca/route.ts` |
+| UI Admin IC | `PpTabAdministradorIc.tsx` |
 | UI cabecera | `PpCabeceraBibliotecaPanel.tsx` |
 | Cache Admin IC | `pp-detalle-ui-cache.ts` → `clearAdminIcCache` |
 | Detalle query | `detail-query.ts` → `biblioteca_precio_id`, `biblioteca_nombre` |
+
+### Modo biblioteca — PF (caso BCL) · Admin IC v4
+
+La **biblioteca cabecera** sigue definiendo **caso** en líneas PF (`biblioteca_caso_linea`). La **grilla Admin IC v4** ya **no** expande IC virtuales ni filtra contadores.
+
+| Comportamiento | Detalle |
+|----------------|---------|
+| **PF** | Agrupa PPD por `id_cliente \| id_marca \| caso` (BCL) |
+| **IC grilla** | Una fila por cabecera IC · orden `cmpAdminFilasGrilla` |
+| **Contadores** | IC total ≠ PF total hasta que operador cuadre |
+| **Lote FI** | `ordenarUniversoLoteChusa` · fila i ↔ fila i |
+| **Carga API** | Sin thumbnails en snapshot inicial (v3) |
+
+Doc v4: [CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721](./CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721.md).
+
+### Modo biblioteca — Chusa Admin IC (v3 · obsoleto grilla)
+
+<details>
+<summary>Histórico v3 — no usar como referencia UI</summary>
+
+| Comportamiento | Detalle |
+|----------------|---------|
+| **IC grilla** | `expandIcFilasChusaBiblioteca` — 1 fila virtual por PF emparejable |
+| **IC huérfana** | Banner ámbar |
+| **Lote FI** | `modoBiblioteca: true` — bloqueaba huérfanas |
+
+</details>
+
+⛔ **78 IC cabecera ≠ 74 PF** es esperado antes de alinear: una IC física puede cubrir varios casos → varias filas virtuales; IC sin proforma quedan huérfanas.
 
 ### Prioridad fuente caso (`loadPpCasoContext`)
 
@@ -120,6 +157,13 @@ Esperado PP-38 + BIBLIOTECA MAYO #9: `reconstruccion_completa_biblioteca_mayo: t
 
 **Evidencia 2026-07-21:** PP-38 · 74 PF · casos PF = ACT-BRSPORT, BR-VZ, CHINELO, CLASICOS, TENIS (todos los casos BCL con líneas en PPD).
 
+**Evidencia v3 local:** PP-38 · 73 IC alineadas + 1 huérfana · sin banner rojo masivo «canon error vendedor». Deploy prod **`b0d018a`**.
+
+```bash
+cd report
+npx tsx scripts/audit_chusa_ic_pf_programado.ts 38
+```
+
 ---
 
 ## Mapa bibliotecas activas prod (2026-07-21 · proveedor 654)
@@ -137,12 +181,13 @@ Listados = `precio_evento` con `biblioteca_precio_id` → script `report/scripts
 
 ---
 
-## Qué NO hace v2 (iteración 3)
+## Qué NO hace v3 (iteración 4)
 
 - Auto-aplicar biblioteca a todos los `precio_evento` del PP
 - Auto-proponer último listado cerrado
 - Historial de bibliotecas en el mismo PP
-- Chusa nivel 1 automático (78 IC ≠ 74 PF) — empareje manual sigue
+- Lote FI con **una misma IC** repartida en **2+ casos** sin división PF (÷) previa
+- Thumbnails en carga inicial Admin IC (lazy en expandir artículo — pendiente)
 - Cambio biblioteca con FI CONFIRMADA sin confirmación explícita
 
 ---
@@ -161,4 +206,4 @@ Listados = `precio_evento` con `biblioteca_precio_id` → script `report/scripts
 | 4.02.03.010 | Admin IC botón verde no recalcula FI |
 | 4.02.03.012 | Vincular listado PP |
 
-**CHUSAR — integrado** · índice **2.3.1.7.5.3.13** · v2 BCL reconstrucción PF · 2026-07-21
+**CHUSAR — integrado** · índice **2.3.1.7.5.3.13** · v3 Chusa modo biblioteca · deploy `b0d018a` · 2026-07-21
