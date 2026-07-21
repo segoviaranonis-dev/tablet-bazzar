@@ -111,7 +111,8 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.5.3.12** | **Error Admin IC · botón verde no recalcula FI** | doc | [4.02.03.010](../../../5_errores/detalle/4.02.03.010_admin-ic-boton-verde-no-recalcula-fi.md) | 🟡 **2026-07-12** · PP-0015 · hotfix `regenerar` |
 | **2.3.1.13.2** | **DOC Track 2 · contexto día operativo 13-07-26** | doc | [DOC_TRACK2_CONTEXTO_DIA_20260713](./DOC_TRACK2_CONTEXTO_DIA_20260713.md) | 🟢 **2026-07-13** · briefing Cursor · réplica PROGRAMADO |
 
-| 2.3.1.7.5.3.3 | **Protocolo import programado SHOP↔IC** | doc | [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) | Import PPD ✅ · preview SHOP×BRAND · FI auto ⛔ |
+| 2.3.1.7.5.3.3 | **Protocolo import programado** | doc | [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) | Import PPD ✅ · preview totales · FI en Admin IC |
+| **2.3.1.7.5.3.3.7** | **Import proforma · preview totales · caso≠marca** | doc | [CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721](./CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721.md) | 🟢 **2026-07-21** · CHINELO · deploy Report |
 | **2.3.1.7.5.3.3.5** | **CHUSAR PP-17 · 3ª proforma PROGRAMADO** | doc | [CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO](./CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO.md) | 🟡 handoff 2026-07-09 · 98 IC · evento #45 · sin hotfix código |
 | **2.3.1.7.5.3.3.6** | **CHUSAR Deploy Alfredo prod 2026-07-09** | doc | [CHUSAR_DEPLOY_ALFREDO_20260709](./CHUSAR_DEPLOY_ALFREDO_20260709.md) | ✅ EMAXCONN · 504 conversión · motor→PP |
 | **2.3.1.7.5.3.3.2** | **CHUSAR Caso Alfredo PP-16** | doc | [CHUSAR_CASO_ALFREDO_PP16_PROGRAMADO](./CHUSAR_CASO_ALFREDO_PP16_PROGRAMADO.md) | ✅ **CERRADO** 2026-07-09 · error `4.02.03.006` resuelto |
