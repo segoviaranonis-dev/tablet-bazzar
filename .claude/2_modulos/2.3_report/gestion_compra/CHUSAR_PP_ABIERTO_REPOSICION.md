@@ -113,4 +113,4 @@ quincena · `dd4379d`.
 
 ---
 
-**Última actualización:** 2026-07-21 · Documenta Director · prod `dd4379d`
+**Última actualización:** 2026-07-21 · Documenta Director · fix `dd4379d` contenido en prod `124c15a`

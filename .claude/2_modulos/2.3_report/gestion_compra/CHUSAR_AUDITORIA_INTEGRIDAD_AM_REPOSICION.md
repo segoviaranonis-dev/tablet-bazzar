@@ -132,7 +132,7 @@ La UI ya conserva la procedencia temporal y no presenta ambos hechos como una
 misma cantidad.
 
 **Evidencia UI local:** KPI PP abierto 20.532, `PP-4081`, cero etiquetas
-«Sin llegada». **Prod:** Vercel Ready · `dd4379d`.
+«Sin llegada». **Prod:** Vercel Ready · `main=124c15a` contiene `dd4379d`.
 
 ---
 

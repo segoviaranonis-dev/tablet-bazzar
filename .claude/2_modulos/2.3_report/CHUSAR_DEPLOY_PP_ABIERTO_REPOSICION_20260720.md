@@ -58,11 +58,12 @@
 | `9ba7083` | Cabecera se lee desde hoja Fatura/Proforma | `ITEM` → **0004/2026** |
 | `dd4379d` | CP vendido conserva preventa + quincena con saldo 0 | `Sin llegada` → **PP-4081 · 1ra Ago.** |
 
-**Estado prod:** Vercel **Ready** · `dd4379d`.  
+**Estado prod:** Vercel **Ready** · `main=124c15a` contiene el hotfix
+`dd4379d` (ancestría Git verificada).  
 **Import activo:** id 4 · factura `0004/2026` · 505 filas · 463 moléculas ·
 20.532 pares.  
-**Decisión 2026-07-21:** no repetir deploy mientras `origin/main=dd4379d` y
-Vercel continúe Ready; los WIP locales de Programado/Admin IC quedan fuera.
+**Decisión 2026-07-21:** no repetir deploy mientras `origin/main=HEAD`, el
+hotfix `dd4379d` siga contenido y Vercel continúe Ready.
 
 ---
 
