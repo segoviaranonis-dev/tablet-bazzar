@@ -4,7 +4,7 @@
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
 **Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
-**Última actualización:** 2026-07-21 · PP abierto **20.532** · integridad AM tolerancia 0 · prod `124c15a` contiene `dd4379d`
+**Última actualización:** 2026-07-22 · PP abierto **20.532** · AM cache «Sin llegada» `a3fc3fd` · Admin IC build `c1ef8eb`
 
 ---
 
@@ -30,10 +30,11 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - Stock / Retail
 - Ventas
 - Ventas + Fotos
+- **Sales Report inmersivo (`/rimec` — 2.3.1.1)** → [CHUSAR_SALES_REPORT_FILTROS_CASCADA.md](CHUSAR_SALES_REPORT_FILTROS_CASCADA.md) · error **4.02.02.005** · v1.0.3
 - **🔍🕵️ Gestión de compra · Director (2.3.1.11)** 🆕 → [gestion_compra/INDICE.md](gestion_compra/INDICE.md)
 - **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16
-- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **Grada abierta 638** [CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md](deposito_rimec/CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md) (**2.3.1.10.12** · cierre etapa catálogo 2026-07-16)
-- **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · entregas por vendedor · etapa `LOGISTICA-OK-20260719`
+- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **Asignación descuentos** [CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md](deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md) (**2.3.1.10.1.4** · foco) · **Filtros PE 2/3 siameses** [CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md](deposito_rimec/CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md) (**2.3.1.10.1.3** · 99/99) · **Grada abierta 638** [CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md](deposito_rimec/CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md) (**2.3.1.10.12**)
+- **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · plan pestañas **2.3.1.28.5** · etapa `LOGISTICA-OK-20260719`
 - **Depósitos Bazzar (2.3.2.1)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
 - **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
 - **Motor de Precios (2.3.1.7.1 — Report)** 🆕
@@ -132,7 +133,7 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 
 ### **Deploy y Configuración**
 - **DEPLOY_VERCEL.md** - Guía de deploy a Vercel
-- **DEPLOY_REPORT_20260705.md** - Deploy depósitos + IC PROGRAMADO (Director 2026-07-05)
+- **DEPLOY_REPORT_20260726.md** - Deploy listado motor · Logística · PP · Hiedra PE · `2a18c90`
 - **CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md** - Tres entidades · un PPD · proforma 8604 · CSV · SR · checklist import (gestion_compra/)
 - **PROTOCOLO_ALEJANDRO_MAGNO_PUERTA_CHUNA.md** - Puerta CHUNA etapa prioritaria (1.1_protocolos/)
 - **ANDRES_INTEGRANTE_EQUIPO.md** - Usuario ANDRES · aprendizaje (10_roles/)
