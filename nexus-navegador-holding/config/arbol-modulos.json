@@ -52,6 +52,16 @@
             { "code": "2.2.1.0.12", "slug": "confecciones-638-cierre", "label": "Confecciones 638 · cierre etapa", "lead": "638≠654 · prendas · botones talla × precio · 27 uds Milon · CERRADA 2026-07-16.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CATALOGO_LATENCIA_CIERRE_20260716.md", "nuevo": true },
             { "code": "2.2.1.2", "slug": "go-live-cp-pe", "label": "Go-live CP + PE", "lead": "CERRADA 2026-07-12 · prod tip c757dbf · pruebas Héctor DIOS con reversión explícita.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_RIMEC_WEB_GO_LIVE_CP_PE.md", "nuevo": true },
             { "code": "2.2.1.2.1", "slug": "pruebas-hector-dios", "label": "Pruebas Héctor DIOS · reversión", "lead": "FI/PVR de prueba → eliminar/revertir solo con orden explícita.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PRUEBAS_HECTOR_DIOS_REVERSION.md", "nuevo": true },
+            { "code": "2.2.1.18", "slug": "filtro-tipo-hermanos-siameses", "label": "Filtro Tipo · hermanos siameses", "lead": "LIQ>Promo>Normal · AM↔Web · respuesta visual 3→2→1→Aplicando · no bloquea multiselección.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md", "nuevo": true },
+            { "code": "2.2.1.19", "slug": "hotfix-fi-casos-distintos", "label": "Hotfix FI · no mezclar CASOS", "lead": "R-FI-1 · caso_id · deploy 30a23b8 · error 4.01.06.001.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_FI_CASOS_DISTINTOS_20260722.md", "nuevo": true },
+            { "code": "2.2.1.20", "slug": "hotfix-fi-promo-liquidacion-cod-grupo", "label": "Hotfix FI · PROMO ≠ LIQUIDACIÓN", "lead": "R-FI-2 · COD.GRUPO Carlos dígito 04 · hydrate carrito · error 4.01.06.002.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_FI_PROMO_LIQUIDACION_COD_GRUPO_20260722.md", "nuevo": true },
+            { "code": "2.2.1.21", "slug": "cabecera-hueca-precio", "label": "Precio teclado↔slider + SQL", "lead": "Espejo teclado/slider · misma consulta SQL · venta en cabecera · Documenta 2026-07-23.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CABECERA_HUECA_PRECIO_ESTADO_20260723.md", "nuevo": true },
+            { "code": "2.2.1.22", "slug": "pe-descuento-grada-import-errores", "label": "PE · descuentos · grada · import sdrm1021", "lead": "Auditoría 12043/184031 · sim Enrique PVR-891496 · errores 4.01.07.003–004 · 4.02.04 · Documenta 2026-07-24.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PE_DESCUENTO_GRADA_IMPORT_ERRORES_20260724.md", "nuevo": true },
+            { "code": "2.2.1.23", "slug": "hecho-historico-enrique-zapatos-ingresos", "label": "HECHO HISTÓRICO · Enrique zapatos / ingresos", "lead": "🔴 Primera falla crítica con pérdida de ingresos de persona · 4.01.07.005 · Documenta 2026-07-24.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HECHO_HISTORICO_ENRIQUE_ZAPATOS_INGRESOS_20260724.md", "nuevo": true },
+            { "code": "2.2.1.24", "slug": "calzado-carteras-mario-bross", "label": "Calzado ≠ Carteras · Mario Bros", "lead": "Pill Calzado = NORMAL/PROMO/LIQ · carteras módulo propio · MIG-181 · 4.01.04.003 · Documenta 2026-07-24.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_ERROR_CALZADO_CARTERAS_MARIO_BROSS_20260724.md", "nuevo": true },
+            { "code": "2.2.1.25", "slug": "filtros-pe-tres-hermanos", "label": "Filtros PE · tres hermanos siameses", "lead": "Report 99/99 · paridad lógica 100% · diccionario TIPO · marcas MAYÚSCULAS.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md", "nuevo": true },
+            { "code": "2.2.1.27", "slug": "hermano3-am-diccionario-pe", "label": "Hermano 3 + AM · diccionario PE", "lead": "Siguiente objetivo · badges PRO/PROMO/LIQ · AM operativa-filters · visión general Panel.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HERMANO3_AM_DICCIONARIO_PE_20260726.md", "nuevo": true },
+            { "code": "2.2.1.21.G1", "slug": "grupo-uno-visual-casino-pe", "label": "Grupo uno · visual casino PE", "lead": "NORMAL slate · PRO fucsia cabecera · LIQ oro latido · CP azul convive · :3001.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_GRUPO_UNO_VISUAL_CASINO_PE_WEB.md", "nuevo": true },
             { "code": "2.2.1.15", "slug": "overlay-sincronizando", "label": "Overlay sincronizando · 30s", "lead": "Pantalla completa CP→PE→confecciones · tarjetas con foto · marquee · deploy 2026-07-17.", "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md", "nuevo": true }
           ]
         },
@@ -178,6 +188,15 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.1.34",
+                  "slug": "am-diccionario-pe-siamese",
+                  "label": "AM · diccionario PE siamese",
+                  "lead": "Siguiente objetivo · mismo TIPO PE que Stock PE + Web · visión general Panel · operativa-filters híbrido.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HERMANO3_AM_DICCIONARIO_PE_20260726.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.1.30",
                   "slug": "auditoria-integridad-am-reposicion",
                   "label": "Auditoría integridad AM reposición",
@@ -187,12 +206,40 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.1.33",
+                  "slug": "import-cp-confecciones-638-am",
+                  "label": "Import CP confecciones 638 · AM ramos",
+                  "lead": "Excel Primavera · KYLY 3131 + MILON 1857 · fotos 1323 · IC→PP · Panel CP split · siameses.",
+                  "appPath": "/proceso-importacion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_IMPORT_CP_CONFECCIONES_638_AM.md",
+                  "mdEtapa": ".claude/4_etapas/ETAPA_IMPORT_CP_CONFECCIONES_20260721.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.33.1",
+                  "slug": "cp638-pilares-filtros-web",
+                  "label": "CP 638 pilares · filtros Web",
+                  "lead": "COD.GRUPO col F · estilo col J · 919/919 PP-49 · trampita ref K · backfill scripts.",
+                  "appPath": "/",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_CP638_PILARES_FILTROS_WEB.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.1.29",
                   "slug": "pp-abierto-reposicion",
                   "label": "PP abierto · reposición AM",
                   "lead": "Import proforma · KPI 10.152 pares · filtro tarjetas · MIG-170 · pills índigo.",
                   "appPath": "/herramienta-reposicion",
                   "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_PP_ABIERTO_REPOSICION.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.32",
+                  "slug": "sesion-duro-preventa-ui-precios-20260720",
+                  "label": "Preventa · UI dato duro · precios · filtros siameses",
+                  "lead": "PP-NNNN · dos filas CP · centena próxima · respuesta 3→2→1→Aplicando en AM y Web.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_SESION_DURO_PREVENTA_UI_PRECIOS_20260720.md",
                   "nuevo": true
                 },
                 {
@@ -323,6 +370,15 @@
                   "md": ".claude/2_modulos/2.3_report/motor_precios/INDICE.md",
                   "mdCierre": ".claude/4_etapas/ETAPA_MOTOR_PRECIOS_REPORT_CERRADA.md",
                   "children": [
+                    {
+                      "code": "2.3.1.7.1.0.3",
+                      "slug": "precio-enterprise-arquitectura-bancaria",
+                      "label": "Arquitectura precios enterprise",
+                      "lead": "MIG-179/180 prod · snapshot único · cert 8 gates · Excel 100%.",
+                      "appPath": "/proceso-importacion/motor-precios",
+                      "md": ".claude/2_modulos/2.3_report/motor_precios/CHUSAR_PRECIO_ENTERPRISE_ARQUITECTURA_BANCARIA.md",
+                      "nuevo": true
+                    },
                     {
                       "code": "2.3.1.7.1.1",
                       "slug": "motor-biblioteca",
@@ -537,9 +593,45 @@
                           "code": "2.3.1.7.5.3.2",
                           "slug": "pp-vinculacion-listado",
                           "label": "Vinculación listado · MIG-150",
-                          "lead": "Solo tránsito · Todos!!! (PPD vendidas) · BD OK · deploy Report ⏳",
+                          "lead": "Solo tránsito · Todos!!! · cert post-vincular MIG-177",
                           "appPath": "/proceso-importacion/pedido-proveedor",
                           "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.8",
+                          "slug": "pp-certificacion-precios-cp",
+                          "label": "Certificación precios CP · Web",
+                          "lead": "6 gates · MIG-176/177 · unidad mando/dirección · npm certificar",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.14",
+                          "slug": "listado-motor-fi-pp",
+                          "label": "Listado motor por FI",
+                          "lead": "Select violeta · precio 0 sin match · reporte Logística · PP-38",
+                          "appPath": "/proceso-importacion/pedido-proveedor/38?tab=fi",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_LISTADO_MOTOR_FI_PP.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.10",
+                          "slug": "recalc-lp-logistica-post-compras",
+                          "label": "Recalc LP + Logística",
+                          "lead": "Botón único post-ENVIADO · montos exactos MIG-179",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_RECALC_LP_LOGISTICA_POST_COMPRAS.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.9",
+                          "slug": "import-cierre-carlos-nexus",
+                          "label": "Import cierre Carlos ↔ Nexus",
+                          "lead": "CSV IC + FI Nexus + Factura Real · puente pv_global · PP-38 piloto",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_IMPORT_CIERRE_CARLOS_NEXUS.md",
                           "nuevo": true
                         },
                         {
@@ -645,6 +737,15 @@
                   "appPath": "/facturacion/pronta-entrega",
                   "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md",
                   "nuevo": true
+                },
+                {
+                  "code": "2.3.1.9.F",
+                  "slug": "traductor-vendedor-carlos-pe",
+                  "label": "Traductor vendedor Carlos · PE",
+                  "lead": "Hoja2 · Código de vendedor real · matriz nombre+caso → CSV.",
+                  "appPath": "/facturacion/pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md",
+                  "nuevo": true
                 }
               ]
             },
@@ -655,7 +756,90 @@
               "lead": "Saldo físico importadora · ALM_DEPOSITO_RIMEC.",
               "appPath": "/deposito-rimec",
               "md": ".claude/2_modulos/2.3_report/deposito_rimec/INDICE.md",
-              "nuevo": true
+              "nuevo": true,
+              "children": [
+                {
+                  "code": "2.3.1.10.1.3",
+                  "slug": "filtros-pe-siamese-report",
+                  "label": "Filtros PE siamese · Report",
+                  "lead": "Hermano 1 · audit 99/99 · diccionario TIPO · par Web 2.2.1.25.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.10.1.4",
+                  "slug": "asignacion-descuentos-pe",
+                  "label": "Asignación de descuentos PE",
+                  "lead": "Dictador % · botón FILTRO WEB · modo sin grilla · sync RIMEC Web · Aprobaciones blanco/sombra.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.10.1.4.1",
+                  "slug": "ley-division-fi-lp03",
+                  "label": "Ley división FI · LP03 +10 %",
+                  "lead": "PE: N/P/LIQ/COMUN · CP: casos · 1 marca · grado 1 LP03 = 10 % aparte del dictador.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_LEY_DIVISION_FI_LP03_20260726.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.10.1.2",
+                  "slug": "grupo-uno-diccionario-pe-excel",
+                  "label": "Grupo uno · Diccionario PE Excel",
+                  "lead": "Palabra reservada grupo uno · sdrm1021 · sdrm0849 · Stock valorizado · NORMAL/PROMO/LIQ.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_GRUPO_UNO_DICCIONARIO_PE_EXCEL.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.10.1.H",
+                  "slug": "handoff-diccionario-grupo-uno-20260724",
+                  "label": "HANDOFF · Diccionario grupo uno",
+                  "lead": "Checkpoint 2026-07-24 · MIG-180 local · visual casino · derivar agentes.",
+                  "md": ".claude/4_etapas/HANDOFF_DICCIONARIO_GRUPO_UNO_20260724.md",
+                  "nuevo": true
+                }
+              ]
+            },
+            {
+              "code": "2.3.1.28",
+              "slug": "logistica-ok",
+              "label": "Logística OK",
+              "lead": "Pestañas · fecha_entrega_cliente · semáforo · PE↔CP · Documentación Chusar 2026-07-23.",
+              "appPath": "/logistica-ok",
+              "md": ".claude/2_modulos/2.3_report/logistica_ok/INDICE.md",
+              "nuevo": true,
+              "children": [
+                {
+                  "code": "2.3.1.28.5",
+                  "slug": "logistica-ok-plan-operativo",
+                  "label": "Plan operativo pestañas",
+                  "lead": "General · Vendedor · Confirmadas · Entregas del día · Registro exitosas · choferes.",
+                  "appPath": "/logistica-ok",
+                  "md": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_OK_PLAN_OPERATIVO_PESTANAS_20260723.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.28.7",
+                  "slug": "logistica-ok-sync-cierre-carlos",
+                  "label": "Sync cierre Carlos",
+                  "lead": "78 FI · import pv_global · bandera PP PUBLICADO.",
+                  "appPath": "/logistica-ok",
+                  "md": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_OK_SYNC_CIERRE_CARLOS.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.28.0",
+                  "slug": "logistica-ok-lexicono-fechas",
+                  "label": "Lexicono fechas",
+                  "lead": "Fecha de llegada · fecha_entrega_cliente · Confirmación.",
+                  "md": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_PALABRA_RESERVADA_FECHA_ENTREGA_REAL.md",
+                  "nuevo": true
+                }
+              ]
             }
           ]
         },

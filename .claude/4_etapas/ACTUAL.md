@@ -1,79 +1,82 @@
 # ACTUAL — Etapa activa Nexus
 
-**Actualizado:** 2026-07-20 · **Handoff documentado** · **⏸ Esperando Nueva etapa** (Director)
-**Doc:** [PRE_NUEVA_ETAPA_20260720.md](./PRE_NUEVA_ETAPA_20260720.md) · [PENDIENTES_HANDOFF_20260720.md](../2_modulos/2.3_report/proceso_importacion/PENDIENTES_HANDOFF_20260720.md) · [RIMEC Web handoff](../2_modulos/2.2_rimec_web/CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md)
+**Actualizado:** 2026-07-26 · **Asignación de descuentos PE** (foco)  
+**Shibboleth:** Andrés, el que viene.
 
 ---
 
-## ⏸ Pre-nueva etapa — sesión 2026-07-20 cerrada en código
-
-| Entrega | Estado código | Smoke prod |
-|---------|---------------|------------|
-| PP FI encabezado (plazo + desc + vendedor) | ✅ deploy Report | ⏳ |
-| Logística OK (`/logistica-ok` + bandera PP) | ✅ deploy `13df3ee`+ | ⏳ |
-| CSV general sin duplicados (`4.02.03.015`) | ✅ `e333107` | ⏳ |
-| Usuarios **ivan** (=ALFREDO) · **YRMA** (=ATI) | ✅ BD | ✅ |
-
-**Siguiente paso Director:** **Nueva etapa** / **Inicia etapa** con nombre y foco.
-
----
-
-## 🟡 Incidencias abiertas antes de la próxima etapa
-
-| Incidencia | Estado |
-|------------|--------|
-| Bug urgente RIMEC Web · Tipo Normal + promo 1395 | ✅ **FIX + deploy** Web `7698eb8` · Report AM `af68346` · `4.01.04.002` · protocolo siamés CHUSAR activo |
-| Report local `:3000` | `.next/server/pages/_document.js` terminó con `MODULE_NOT_FOUND`; producción no afectada |
-
----
-
-## 🟢 En curso — PARÉNTESIS · Compras masivas cliente 5000
+## 🟣 Sesión activa (foco maratón)
 
 | Campo | Valor |
 |-------|--------|
-| **Etapa** | [ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md](./ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md) |
-| **Code** | `COMPRAS-MASIVAS-5000-20260719` · **2.2.1.17** |
-| **Pendiente** | Stress carrito → FI · EOD purge · **Cierra etapa** |
+| **Code** | `ASIGNACION-DESCUENTOS-PE-20260726` |
+| **Módulo índice** | **2.3.1.10.1.4** · Asignación descuentos Stock PE · dictador |
+| **Par Web** | **2.2.1.26** · incrustar % · Aprobaciones blanco/sombra · división FI ⏳ |
+| **Etapa** | [ETAPA_ASIGNACION_DESCUENTOS_20260726.md](./ETAPA_ASIGNACION_DESCUENTOS_20260726.md) |
+| **Chusar** | [CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md](../2_modulos/2.3_report/deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md) |
+| **UI** | `:3000/stock-pronta-entrega` · botón en FILTRO CATÁLOGO RIMEC WEB |
+| **Meta** | Pruebas mañana · UI + persistencia + Web |
+| **Ley FI** | ✅ PE: N/P/LIQ/COMUN nunca juntas · CP: por caso · ambos: 1 marca · LP03 = +10 % grado 1 |
 
 ---
 
-## 🟢 En curso — Logística OK (paralelo)
+## Ley viva (resumen)
+
+- % entero o decimal (ej. 7.5) · todas las moléculas filtradas  
+- Vendedor puede alterar · Aprobaciones pinta si editó  
+- **Split PE:** NORMAL · PROMO · LIQ · COMUN → facturas distintas  
+- **Split CP:** por caso biblioteca  
+- **Marca:** nunca dos marcas en una FI  
+- **LP03:** grado 1 = **+10 %**, aparte del % dictado  
+
+
+---
+
+## 🟢 Checkpoint — Filtros PE · 2/3 hermanos siameses (2026-07-25)
 
 | Campo | Valor |
 |-------|--------|
-| **Etapa** | [ETAPA_LOGISTICA_OK_20260719.md](./ETAPA_LOGISTICA_OK_20260719.md) |
-| **Code** | `LOGISTICA-OK-20260719` · **2.3.1.28** |
-| **Deploy** | ✅ prod commits `13df3ee` · `46f43c9` |
-| **Pendiente** | Smoke prod · MIG prod si falta · **Cierra etapa** |
+| **Doc** | [CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md](../2_modulos/2.2_rimec_web/CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md) (**2.2.1.25**) |
+| **Hermano 1** | Report PE **99/99** audit |
+| **Hermano 2** | Paridad lógica **5/5 módulos · 6/6 vectores · 100%** |
+| **Hermano 3** | Web `:3001` runtime 🟡 ~85% · badges OK · smoke MEDIAS abierto |
+| **Siguiente** | [2.2.1.27](../2.2_rimec_web/CHUSAR_HERMANO3_AM_DICCIONARIO_PE_20260726.md) · AM diccionario PE + visión general |
 
 ---
 
-## 🟢 En curso — maratón proformas (paralelo)
+## Trabajo vivo (`etapas.json`)
 
-| Campo | Valor |
-|-------|--------|
-| **Etapa** | [ETAPA_IMPORTACION_PROGRAMADOS_20260718.md](./ETAPA_IMPORTACION_PROGRAMADOS_20260718.md) |
-| **Code** | `IMPORTACION-PROGRAMADOS-20260718` · **2.3.1.27** |
-| **Foco** | PP-0024 + PP-0025 · digitación bandeja |
-
----
-
-## ⏸ Pausada (no cerrada)
-
-| Etapa | Código |
-|-------|--------|
-| [Reposición filtro adicional](./ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md) | `REPOSICION-FILTRO-ADICIONAL-20260716` |
+| Estado | Code | Índice |
+|--------|------|--------|
+| **en_curso (foco)** | `ASIGNACION-DESCUENTOS-PE-20260726` | **2.3.1.10.1.4** |
+| en_curso | `PE-FINAL-CIERRE-MODULO-20260723` | **2.3.1.9.B.FINAL** |
+| en_curso | `RIMEC-WEB-CABECERA-PRECIO-20260723` | **2.2.1.21** |
+| en_curso | `IMPORT-CP-CONFECCIONES-638-20260721` | **2.3.1.33** |
+| en_curso | `IMPORTACION-PROGRAMADOS-20260718` | **2.3.1.27** |
+| en_curso | `LOGISTICA-OK-20260719` | **2.3.1.28** |
+| en_curso | `COMPRAS-MASIVAS-5000-20260719` | **2.2.1.0.9** |
 
 ---
 
-## Referencia local
+## 🟢 Deploy Report · 2026-07-26 (`2a18c90`)
+
+| Etapa cerrada | URL prod |
+|---------------|----------|
+| Listado motor FI | `/proceso-importacion/pedido-proveedor/38?tab=fi` |
+| Logística OK | `/logistica-ok` |
+| Hiedra PE Report | `/stock-pronta-entrega` |
+| PP cierre Carlos | PP-38 |
+
+Doc: [DEPLOY_REPORT_20260726.md](../2_modulos/2.3_report/DEPLOY_REPORT_20260726.md)
+
+**Foco vivo:** `ASIGNACION-DESCUENTOS-PE-20260726` (Web + Aprobaciones pendiente)
+
+---
+
+## Local
 
 | App | URL |
 |-----|-----|
-| Report | http://localhost:3000 · `/aprobaciones` · `/logistica-ok` |
+| Report | http://localhost:3000/stock-pronta-entrega |
 | RIMEC Web | http://localhost:3001 |
 | Navegador | http://localhost:3004/etapas |
-
----
-
-**Shibboleth:** Andrés, el que viene.

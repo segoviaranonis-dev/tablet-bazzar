@@ -6,7 +6,7 @@
 
 **CHUSAR padre:** [CHUSAR_CICLO_IMPORTACION_REPORT.md](./CHUSAR_CICLO_IMPORTACION_REPORT.md)  
 
-**Actualizado:** 2026-07-18 · **Maratón proformas** · [CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md](./CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md) · etapa **2.3.1.27** · [ETAPA](../../../4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718.md)
+**Actualizado:** 2026-07-26 · **Listado motor FI** · [CHUSAR_LISTADO_MOTOR_FI_PP.md](./CHUSAR_LISTADO_MOTOR_FI_PP.md) (**2.3.1.7.5.3.14**)
 
 
 
@@ -99,6 +99,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | **2.3.1.7.5.3.5** | **Administrador de IC · PROGRAMADO** | `?tab=admin-ic` | [CHUSAR_ADMINISTRADOR_IC_PROGRAMADO](./CHUSAR_ADMINISTRADOR_IC_PROGRAMADO.md) | 🟢 **CANÓNICO 2026-07-10** · abandona IC=FI · paneles IC↔PF · vínculo monto |
 | **2.3.1.7.5.3.5.1** | **Protocolo Chusa · FI por lote** | `?tab=admin-ic` | [PROTOCOLO_CHUSA_ADMIN_IC_LOTE](./PROTOCOLO_CHUSA_ADMIN_IC_LOTE.md) | 🟢 **CANÓNICO 2026-07-11** · v4 orden simple 2026-07-21 |
+| **2.3.1.7.5.3.5.6** | **Admin IC PP-26 · lote FI 100/100** | doc | [CHUSAR_ADMIN_IC_PP26_LOTE_FI_20260721](./CHUSAR_ADMIN_IC_PP26_LOTE_FI_20260721.md) | ✅ **CERRADO** 2026-07-21 · 2 tandas · deploy `9c80337` |
 | **2.3.1.7.5.3.5.4** | **Admin IC Chusa simple · cirugía PP-17** | doc | [CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721](./CHUSAR_ADMIN_IC_CHUSA_SIMPLE_20260721.md) | 🟢 **2026-07-21** · contadores totales · deploy `c74df5e` |
 | **2.3.1.7.5.3.5.5** | **Cirugía IC · Excel == BD (multi PP)** | doc | [CHUSAR_CIRUGIA_IC_EXCEL_PEDIDO_PROVEEDOR](./CHUSAR_CIRUGIA_IC_EXCEL_PEDIDO_PROVEEDOR.md) | 🟢 **2026-07-21** · receteo sin digitación · frase orden Director |
 | **2.3.1.7.5.3.5.2** | **Auditoría PP-28 · Chusa · veneno** | doc | [AUDITORIA_ADMIN_IC_PP28_CHUSA_VENENO_20260711](./AUDITORIA_ADMIN_IC_PP28_CHUSA_VENENO_20260711.md) | 🟢 **2026-07-11** · OK condicional lote · CSV post-FI |
@@ -108,11 +109,14 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.5.3.7** | **Reconstrucción SHOP proforma · PP-28** | doc | [CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28](./CHUSAR_RECONSTRUCCION_SHOP_PROFORMA_PP28.md) | 🟢 **2026-07-11** · `_shop` Excel canónico · 8051/2026 · etapa abierta |
 | **2.3.1.7.5.3.10** | **Vulnerabilidad import proforma · pilares** | doc | [CHUSAR_VULNERABILIDAD_IMPORT_PROFORMA_PILARES](./CHUSAR_VULNERABILIDAD_IMPORT_PROFORMA_PILARES.md) | 🟡 **2026-07-12** · error `4.02.03.009` · motor TS añadido · backfill parcial |
 | **2.3.1.7.5.3.11** | **DOC Reparación pilares · casos · PF programado** | doc | [DOC_REPARACION_PROGRAMADO_PILARES_CASOS_20260712](./DOC_REPARACION_PROGRAMADO_PILARES_CASOS_20260712.md) | 🟢 **2026-07-12** · PELE sync BCL · FI flota · ley biblioteca |
-| **2.3.1.7.5.3.12** | **Error Admin IC · botón verde no recalcula FI** | doc | [4.02.03.010](../../../5_errores/detalle/4.02.03.010_admin-ic-boton-verde-no-recalcula-fi.md) | 🟡 **2026-07-12** · PP-0015 · hotfix `regenerar` |
+| **2.3.1.7.5.3.12** | **Error Admin IC · botón verde no recalcula FI** | doc | [4.02.03.010](../../../5_errores/detalle/4.02.03.010_admin-ic-boton-verde-no-recalcula-fi.md) | ✅ **RESUELTO** 2026-07-21 · PP-26 lote |
 | **2.3.1.13.2** | **DOC Track 2 · contexto día operativo 13-07-26** | doc | [DOC_TRACK2_CONTEXTO_DIA_20260713](./DOC_TRACK2_CONTEXTO_DIA_20260713.md) | 🟢 **2026-07-13** · briefing Cursor · réplica PROGRAMADO |
 
 | 2.3.1.7.5.3.3 | **Protocolo import programado** | doc | [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) | Import PPD ✅ · preview totales · FI en Admin IC |
 | **2.3.1.7.5.3.3.7** | **Import proforma · preview totales · caso≠marca** | doc | [CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721](./CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721.md) | 🟢 **2026-07-21** · CHINELO · deploy Report |
+| **2.3.1.7.5.3.3.8** | **Hotfix pool deadlock · confirmar import · Logística OK** | doc | [CHUSAR_HOTFIX_PP_POOL_DEADLOCK_20260722](./CHUSAR_HOTFIX_PP_POOL_DEADLOCK_20260722.md) | ✅ **2026-07-22** · error `4.02.03.017` · `674b99c` |
+| **2.3.1.7.5.3.3.9** | **Solución integral · errores import programado · leyes Vercel** | doc | [CHUSAR_SOLUCION_INTEGRAL_PP_PROGRAMADO_IMPORT_20260723](./CHUSAR_SOLUCION_INTEGRAL_PP_PROGRAMADO_IMPORT_20260723.md) | ✅ **2026-07-23** · cola `75be90a` · éxito PP-30 · `22faede` |
+| **2.3.1.7.5.3.3.10** | **Ley importación extensa · cola lotes Vercel** | doc | [LEY_IMPORTACION_EXTENSA_COLA_VERCEL](./LEY_IMPORTACION_EXTENSA_COLA_VERCEL.md) | ✅ **2026-07-23** · replicable · errores `4.02.03.017–020` |
 | **2.3.1.7.5.3.3.5** | **CHUSAR PP-17 · 3ª proforma PROGRAMADO** | doc | [CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO](./CHUSAR_PP17_TERCERA_PROFORMA_PROGRAMADO.md) | 🟡 handoff 2026-07-09 · 98 IC · evento #45 · sin hotfix código |
 | **2.3.1.7.5.3.3.6** | **CHUSAR Deploy Alfredo prod 2026-07-09** | doc | [CHUSAR_DEPLOY_ALFREDO_20260709](./CHUSAR_DEPLOY_ALFREDO_20260709.md) | ✅ EMAXCONN · 504 conversión · motor→PP |
 | **2.3.1.7.5.3.3.2** | **CHUSAR Caso Alfredo PP-16** | doc | [CHUSAR_CASO_ALFREDO_PP16_PROGRAMADO](./CHUSAR_CASO_ALFREDO_PP16_PROGRAMADO.md) | ✅ **CERRADO** 2026-07-09 · error `4.02.03.006` resuelto |
@@ -134,6 +138,10 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | **2.3.1.7.5.3.13** | **Cabecera PP · Biblioteca política** | cabecera detalle PP | [CHUSAR_PP_CABECERA_BIBLIOTECA](./CHUSAR_PP_CABECERA_BIBLIOTECA.md) | 🟢 **v4 2026-07-21** · Admin IC simple · BCL PF |
 | **2.3.1.7.5.3.2** | **Vinculación listado · MIG-150 dos modos** | panel Stock | [CHUSAR_VINCULACION_LISTADO](./CHUSAR_VINCULACION_LISTADO_PRECIO_PP.md) | ✅ **2026-07-14** · prod `7b7d5d7` · error `4.02.03.012` |
+| **2.3.1.7.5.3.8** | **Certificación precios CP · RIMEC Web** | BD + scripts | [CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC](./CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md) | ✅ **2026-07-24** · MIG-176/177/178 · hotfixes `4.02.03.023` · `4.01.07.001` · `4.01.07.002` |
+| **2.3.1.7.5.3.9** | **Import cierre Carlos ↔ Nexus · Factura Real** | PP tab FI · CSV | [CHUSAR_IMPORT_CIERRE_CARLOS_NEXUS](./CHUSAR_IMPORT_CIERRE_CARLOS_NEXUS.md) | ✅ **2026-07-25** · PP-38 piloto · 78/78 emparejamientos |
+| **2.3.1.7.5.3.10** | **Recalc LP + Logística post-compras** | PP tab FI · impositor tier | [CHUSAR_RECALC_LP_LOGISTICA_POST_COMPRAS](./CHUSAR_RECALC_LP_LOGISTICA_POST_COMPRAS.md) | ✅ **2026-07-25** · tier post-ENVIADO · botón retirado tab FI 2026-07-26 |
+| **2.3.1.7.5.3.14** | **Listado motor por FI · precio 0 sin match** | PP tab FI · select violeta | [CHUSAR_LISTADO_MOTOR_FI_PP.md](./CHUSAR_LISTADO_MOTOR_FI_PP.md) | 🟢 **2026-07-26** · build ✅ · [DEPLOY](./CHUSAR_DEPLOY_LISTADO_MOTOR_FI_20260726.md) |
 | **2.3.1.7.5.3.2.H** | **Hotfix PP-14 · vincular FI + PDF FI** | doc | [CHUSAR_HOTFIX_REPORT_PP14_20260714](./CHUSAR_HOTFIX_REPORT_PP14_20260714.md) | ✅ deploy · rescate BD · errores `012`+`013` |
 | **2.3.1.27** | **Etapa · Importación programados** | doc | [CHUSAR_IMPORTACION_PROGRAMADOS_20260718](./CHUSAR_IMPORTACION_PROGRAMADOS_20260718.md) | 🟢 **2026-07-18** · [ETAPA](../../../4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718.md) |
 | **2.3.1.27.1** | **Maratón proformas PROGRAMADO** | doc | [CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718](./CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md) | 🟢 checklist · tabla lote · Cursor+Director |
@@ -141,6 +149,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 
 | **2.3.1.7.5.3.2.P** | **Pendientes handoff pre-nueva etapa** | doc | [PENDIENTES_HANDOFF_20260714](./PENDIENTES_HANDOFF_20260714.md) | 🟡 smoke prod · protocolo Excel sin sellar |
 | **2.3.1.7.5.3.2.P2** | **Handoff 2026-07-20 · pre-nueva etapa** | doc | [PENDIENTES_HANDOFF_20260720](./PENDIENTES_HANDOFF_20260720.md) | ⏸ **esperando Nueva etapa** · FI encabezado · Logística deploy · CSV `015` |
+| **2.3.1.7.5.3.2.P3** | **Handoff inicio día 2026-07-22** | doc | [PENDIENTES_HANDOFF_20260722](./PENDIENTES_HANDOFF_20260722.md) | 🟢 **2026-07-22** · PP-26 cerrado · pendientes día |
 | **2.3.1.7.5.3.2.1** | **PP FI encabezado editable** | tab FI | [CHUSAR_PP_FI_ENCABEZADO_EDITABLE_20260720](./CHUSAR_PP_FI_ENCABEZADO_EDITABLE_20260720.md) | ✅ deploy `dc7839d`+ |
 
 **Fuera de 7 (hermanos RIMEC):** [CADENA_OPERATIVA_RIMEC.md](../CADENA_OPERATIVA_RIMEC.md) · 2.3.1.8 Compra legal · 2.3.1.9 Facturación · 2.3.1.10 Depósito RIMEC
