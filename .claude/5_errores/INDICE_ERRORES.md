@@ -28,9 +28,49 @@
 
 *Detalle: `.claude/5_errores/detalle/4.01.04.002_rimec-web-tipo-normal-promo-es-promo.md`* · ✅ **DEPLOY 2026-07-20** · Web `7698eb8` · Report `af68346` · hermanos siameses AM↔Web · doc `2.2_rimec_web/CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md`
 
+### 4.01.04.003 · Calzado mezcla carteras (violación Mario Bros / grupo uno)
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.003_rimec-web-calzado-carteras-mario-bross.md`* · ✅ **RESUELTO local 2026-07-24** · MIG-181 + exclusión CARTERAS en Calzado · doc `2.2.1.24` · ⏳ deploy prod
+
+### 4.01.04.004 · Tarjeta 638 subtítulo estilo siamese (CONFECCIONES / VERANO / código línea)
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.004_rimec-web-638-estilo-tarjeta-siamese.md`* · ✅ **RESUELTO 2026-07-27** · Web deploy · backfill PE valorizado ULT-PREC- · doc `2.2.1.29` · **638 ONLY**
+
+### 4.01.04.005 · Lightbox 638 duplica COLORES (tallas tratadas como colores)
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.005_rimec-web-638-lightbox-colores-duplicados-tallas.md`* · ✅ **RESUELTO 2026-07-27** · Web `899f1dc` · doc `2.2.1.30` · **638 ONLY**
+
 ### 4.01.05.001 · Pronta entrega muestra tarjetas Compra previa (quincenas PP)
 
 *Detalle: `.claude/5_errores/detalle/4.01.05.001_rimec-web-pe-muestra-tarjetas-cp.md`* · ✅ **RESUELTO UI 2026-07-17** · deferred origen + validación warm cache · doc `2.2_rimec_web/CHUSAR_CORTE_20260717_HEADER_PRECIOS_PE.md`
+
+### 4.01.06.001 · FI mezcla CASOS distintos al confirmar (R-FI-1)
+
+*Detalle: `.claude/5_errores/detalle/4.01.06.001_rimec-web-fi-mezcla-casos.md`* · ✅ **DEPLOY PROD 2026-07-22** · `30a23b8` · Vercel Ready · doc `2.2_rimec_web/CHUSAR_HOTFIX_FI_CASOS_DISTINTOS_20260722.md`
+
+### 4.01.06.002 · FI mezcla PROMO + LIQUIDACIÓN (R-FI-2 · COD.GRUPO Carlos)
+
+*Detalle: `.claude/5_errores/detalle/4.01.06.002_rimec-web-fi-mezcla-promo-liquidacion.md`* · ✅ **DEPLOY PROD 2026-07-22** · `c7dc656`+`db17dd8` · Vercel Ready · doc `2.2_rimec_web/CHUSAR_HOTFIX_FI_PROMO_LIQUIDACION_COD_GRUPO_20260722.md` (**2.2.1.20**)
+
+### 4.01.07.001 · Catálogo — filtros vacíos «Sin opciones» (prod)
+
+*Detalle: `.claude/5_errores/detalle/4.01.07.001_rimec-web-catalogo-filtros-vacios-prod.md`* · ✅ **RESUELTO 2026-07-24** · `7c45166` · post-auditoría CP · `/api/catalogo/filtros` timeout
+
+### 4.01.07.002 · PE_PP_MIXTO — FI PE mezcla PP 33+35 (Gricelda)
+
+*Detalle: `.claude/5_errores/detalle/4.01.07.002_rimec-web-pe-pp-mixto-carrito-sintetico.md`* · ✅ **RESUELTO 2026-07-24** · `272cc99` · MIG-173 · carrito pp_id sintético único
+
+### 4.01.07.003 · Carrito PE — botón «Editar descuentos» ausente
+
+*Detalle: `.claude/5_errores/detalle/4.01.07.003_rimec-web-pe-editar-descuentos-ausente.md`* · 🟡 **FIX LOCAL 2026-07-24** · facturas lote · sin push · CHUSAR `2.2.1.22`
+
+### 4.01.07.004 · Aprobaciones — «Sin grada» en FI PE (snapshot vacío)
+
+*Detalle: `.claude/5_errores/detalle/4.01.07.004_report-aprobaciones-sin-grada-pe.md`* · 🟡 **PARCIAL 2026-07-24** · sim PVR-891496 OK · fallback `ppd.grada` pendiente · CHUSAR `2.2.1.22`
+
+### 4.01.07.005 · HECHO HISTÓRICO — Enrique sin zapatos · pérdida de ingresos
+
+*Detalle: `.claude/5_errores/detalle/4.01.07.005_hecho-historico-enrique-zapatos-ingresos.md`* · 🔴 **CRÍTICA ABIERTA 2026-07-24** · primera falla con daño de ingresos a persona · CHUSAR `2.2.1.23`
 
 ---
 
@@ -92,6 +132,18 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.012_vincular-listado-prod-fi-sin-recalc.md`* · ✅ **RESUELTO 2026-07-14** · `recalcular-fis-pp.ts` · PP14 rescate BD · push `7b7d5d7`
 
+### 4.02.03.022 · CP — Vincular listado · PPD desincronizado · Web/FI precio viejo
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.022_cp-pp-vincular-listado-ppd-desincronizado-web.md`* · ✅ **RESCATE 2026-07-23** · ✅ **CERT MIG-177 2026-07-24** · [CHUSAR 2.3.1.7.5.3.8](../2_modulos/2.3_report/proceso_importacion/CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md)
+
+### 4.02.03.023 · Confirmar pedido — LPC03 payload 127000 vs BD 127008 (centena)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.023_confirmar-pedido-lpc03-centena-bd-web.md`* · ✅ **RESUELTO 2026-07-24** · MIG-178 · report `5087687` · eslabón G4 auditoría CP
+
+### 4.02.03.024 · Logística OK — PE invisible General (pre-sync Web · CONFIRMADA)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.024_logistica-pe-invisible-pre-sync-aprobacion.md`* · ✅ **RESUELTO 2026-07-27** · MIG-187 · acordeón PE · auto-refresh · CHUSAR `2.3.1.28.12` · `2.3.1.28.13`
+
 ### 4.02.03.013 · PDF FI tab PP — Python ausente en Vercel
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.013_pdf-fi-prod-sin-python.md`* · ✅ **RESUELTO 2026-07-14** · `run-fi-pdf.ts` + pdf-lib · push `7b7d5d7`
@@ -99,6 +151,10 @@
 ### 4.02.02.004 · Ventas + Fotos PDF — serverless 25 filas vs banner 80
 
 *Detalle: `.claude/5_errores/detalle/4.02.02.004_ventas-fotos-pdf-25-vs-80-serverless.md`* · ✅ **RESUELTO 2026-07-10** · commit `b60fd9d`
+
+### 4.02.02.005 · Sales Report `/rimec` — filtros cascada categorías reset / UI `#1 #2`
+
+*Detalle: `.claude/5_errores/detalle/4.02.02.005_sales-report-filtros-cascada-categorias.md`* · ✅ **RESUELTO 2026-07-24** · commits `5415a05`→`622f564` · **v1.0.3** · CHUSAR [CHUSAR_SALES_REPORT_FILTROS_CASCADA.md](../2_modulos/2.3_report/CHUSAR_SALES_REPORT_FILTROS_CASCADA.md)
 
 ### 4.02.03.008 · CSV Aprobaciones — grada metadata `_brand` en grades_json
 
@@ -122,7 +178,35 @@
 
 ### 4.02.03.016 · Alejandro Magno — PP abierto y CP vendido sin trazabilidad temporal
 
-*Detalle: `.claude/5_errores/detalle/4.02.03.016_am-pp-abierto-cp-vendido-sin-trazabilidad.md`* · ✅ **RESUELTO 2026-07-21** · `2135.153` · PP abierto 36 ≠ venta histórica `PP-4081` 36
+*Detalle: `.claude/5_errores/detalle/4.02.03.016_am-pp-abierto-cp-vendido-sin-trazabilidad.md`* · ✅ **RESUELTO 2026-07-21** · canónico `dd4379d` · cache `a3fc3fd` · mol `2305` / `2135`
+
+### 4.02.03.018 · PP import programado — 504 Vercel al confirmar proforma
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.018_pp-import-504-vercel-timeout-confirmar.md`* · ✅ **RESUELTO 2026-07-23** · commit `6683aca` · cola definitiva **`75be90a`** · doc **2.3.1.7.5.3.3.9**
+
+### 4.02.03.019 · PP import programado — lotes falsos (pilares archivo completo en lote 1)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.019_pp-import-lotes-falsos-pilares-slice-completo.md`* · ✅ **RESUELTO 2026-07-23** · éxito PP-30 · ley **2.3.1.7.5.3.3.10**
+
+### 4.02.03.020 · Build Vercel — material_label ausente en ProformaRow
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.020_build-material-label-proforma-row.md`* · ✅ **RESUELTO 2026-07-23** · commit `22faede`
+
+### 4.02.03.021 · Logística OK — multi-selección fecha/vendedor solo 1 FI OK
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.021_logistica-ok-bulk-multi-solo-uno-ok.md`* · ✅ **RESUELTO 2026-07-23** · lote SQL `ANY($1)` + asignar `id_vendedor` · **2.3.1.28**
+
+### 4.02.04.001 · Import PE CSV Vercel — spawn python ENOENT
+
+*Detalle: `.claude/5_errores/detalle/4.02.04.001_report-import-pe-vercel-python-enoent.md`* · 🟡 **MITIGADO 2026-07-24** · 501 Vercel · CLI local · CHUSAR `2.2.1.22`
+
+### 4.02.04.002 · Purge PE bloqueado por FK FI→PP (33/35)
+
+*Detalle: `.claude/5_errores/detalle/4.02.04.002_report-purge-pe-fk-fi-pp.md`* · ✅ **RESUELTO 2026-07-24** · pipeline limpia PPD · PP cáscara
+
+### 4.02.04.003 · Report `:3000` zombie + modal Import 0 p
+
+*Detalle: `.claude/5_errores/detalle/4.02.04.003_report-3000-zombie-modal-import-cero.md`* · ✅ **RESUELTO 2026-07-24** · kill + `dev:3000` · no re-importar
 
 ---
 
