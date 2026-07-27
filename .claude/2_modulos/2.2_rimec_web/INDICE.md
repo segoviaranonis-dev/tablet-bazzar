@@ -103,9 +103,15 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **[CHUSAR_REVERSION_PVR_A_CARRITO_COMPLETA.md](./CHUSAR_REVERSION_PVR_A_CARRITO_COMPLETA.md)** — **2.2.1.2.3** · checklist 7 pasos · PVR-144866 lecciones · purge test 5000
 - **Etapa CERRADA:** [ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md](../../4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md)
 
+### **Sesión 2026-07-20 · Preventa · UI dato duro · Centena (★ Documenta)**
+- **[CHUSAR_SESION_DURO_PREVENTA_UI_PRECIOS_20260720.md](../2.3_report/gestion_compra/CHUSAR_SESION_DURO_PREVENTA_UI_PRECIOS_20260720.md)** — **2.3.1.32** · consolidación rigurosa · mapa código · smoke
+- **[CHUSAR_ACORDEON_DATO_DURO_CATALOGO.md](./CHUSAR_ACORDEON_DATO_DURO_CATALOGO.md)** — **2.2.1.0.10** · dos filas CP · colores · center · nowrap
+- **[CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO.md](../2.3_report/gestion_compra/CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO.md)** — **2.3.1.31** · mapa superficies · checklist
+
 ### **PROMOCIONAL · LPC03 + badge PROMO (2026-07-07 · solo local)**
 - **[CHUSAR_PROMOCIONAL_UI_LPC03_LOCAL.md](./CHUSAR_PROMOCIONAL_UI_LPC03_LOCAL.md)** — **2.2.1.0.1** · LPN=LPC03=LPC04 · pill verde · precio por lote
 - **Regla motor:** [CHUSAR_EXCEPCION_PROMOCIONAL_LPC03_LPN.md](../2.3_report/motor_precios/CHUSAR_EXCEPCION_PROMOCIONAL_LPC03_LPN.md) (**2.3.1.7.1.0.1**)
+- **Redondeo centena:** [CHUSAR_REGLA_REDONDEO_CENTENA_PROXIMA.md](../2.3_report/motor_precios/CHUSAR_REGLA_REDONDEO_CENTENA_PROXIMA.md) (**2.3.1.7.1.0.2** · Documenta 2026-07-20)
 - **Regla Director:** documentar cada micro-objetivo local antes de Git/Vercel
 
 ### **Compras masivas · stress test cliente 5000 (2026-07-19 · ★ PARÉNTESIS EOD)**
@@ -115,20 +121,54 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **[CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md](./CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md)** — bug urgente RIMEC Web pendiente de ruta/síntoma · Report local `.next` pendiente · portón de nueva etapa
 
 ### **Filtro Tipo · hermanos siameses AM↔Web (2026-07-20 · ★ Documenta + fix)**
-- **[CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md](./CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md)** — **2.2.1.18** · LIQ>Promo>Normal · `es_promo` gana · error `4.01.04.002` · línea 1395 PE
+- **[CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md](./CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md)** — **2.2.1.18** · LIQ>Promo>Normal · `es_promo` gana · filtro `3→2→1→Aplicando` en ambas grillas · error `4.01.04.002`
+- **[CHUSAR_HOTFIX_FI_CASOS_DISTINTOS_20260722.md](./CHUSAR_HOTFIX_FI_CASOS_DISTINTOS_20260722.md)** — **2.2.1.19** · R-FI-1 · no mezclar CASOS en una FI · error `4.01.06.001` · deploy `30a23b8`
+- **[CHUSAR_HOTFIX_FI_PROMO_LIQUIDACION_COD_GRUPO_20260722.md](./CHUSAR_HOTFIX_FI_PROMO_LIQUIDACION_COD_GRUPO_20260722.md)** — **2.2.1.20** · R-FI-2 · LIQ≠PROMO · COD.GRUPO Carlos dígito cadena · error `4.01.06.002`
+
+### **Cabecera hueca + filtro precio (2026-07-23 · ★ Inicia etapa + Documenta)**
+- **[CHUSAR_CABECERA_HUECA_PRECIO_ESTADO_20260723.md](./CHUSAR_CABECERA_HUECA_PRECIO_ESTADO_20260723.md)** — **2.2.1.21** · **teclado ↔ slider espejo + SQL** (misma consulta) · venta en cabecera · [ETAPA_RIMEC_WEB_CABECERA_PRECIO_20260723.md](../../4_etapas/ETAPA_RIMEC_WEB_CABECERA_PRECIO_20260723.md)
+
+### **PE · descuentos · grada · import sdrm1021 (2026-07-24 · ★ Documenta)**
+- **[CHUSAR_PE_DESCUENTO_GRADA_IMPORT_ERRORES_20260724.md](./CHUSAR_PE_DESCUENTO_GRADA_IMPORT_ERRORES_20260724.md)** — **2.2.1.22** · auditoría 12043/184031 · sim Enrique PVR-891496 · errores `4.01.07.003`–`004` · `4.02.04.001`–`003`
+- **[CHUSAR_GRUPO_UNO_VISUAL_CASINO_PE_WEB.md](./CHUSAR_GRUPO_UNO_VISUAL_CASINO_PE_WEB.md)** — **2.2.1.21.G1** · palabra reservada **grupo uno** · NORMAL slate · PRO fucsia · LIQ oro · latido casino 1,65 s · CP+PE conviven
+- **[HANDOFF diccionario grupo uno](../../4_etapas/HANDOFF_DICCIONARIO_GRUPO_UNO_20260724.md)** — checkpoint 2026-07-24 · derivar etapas
+
+### **HECHO HISTÓRICO · Enrique zapatos / ingresos (2026-07-24 · ★ Documenta)**
+- **[CHUSAR_HECHO_HISTORICO_ENRIQUE_ZAPATOS_INGRESOS_20260724.md](./CHUSAR_HECHO_HISTORICO_ENRIQUE_ZAPATOS_INGRESOS_20260724.md)** — **2.2.1.23** · 🔴 primera falla crítica con pérdida de ingresos de persona · `4.01.07.005`
+
+### **Calzado ≠ Carteras · Mario Bros / grupo uno (2026-07-24 · ★ Documenta)**
+- **[CHUSAR_ERROR_CALZADO_CARTERAS_MARIO_BROSS_20260724.md](./CHUSAR_ERROR_CALZADO_CARTERAS_MARIO_BROSS_20260724.md)** — **2.2.1.24** · pill Calzado = NORMAL/PROMO/LIQ solo · carteras módulo propio · error `4.01.04.003` · MIG-181
+- **[CHUSAR_ESTILO_TARJETA_638_TRIUNVIRATO_20260727.md](./CHUSAR_ESTILO_TARJETA_638_TRIUNVIRATO_20260727.md)** — **2.2.1.29** · subtítulo tarjeta estilo CP col J + PE ULT-PREC- · **638 ONLY** · error `4.01.04.004` · deploy 2026-07-27
+- **[CHUSAR_LIGHTBOX_638_COLORES_DEDUPE_20260727.md](./CHUSAR_LIGHTBOX_638_COLORES_DEDUPE_20260727.md)** — **2.2.1.30** · lightbox carrusel COLORES dedupe tallas · **638 ONLY** · error `4.01.04.005` · deploy `899f1dc` 2026-07-27
+
+### **Filtros PE · tres hermanos siameses · 3/3 (2026-07-26 · ★ Documenta)**
+- **[CHUSAR_LEY_TODOS_TRES_HERMANOS_SIAMESES_20260726.md](./CHUSAR_LEY_TODOS_TRES_HERMANOS_SIAMESES_20260726.md)** — **2.2.1.28** · **LEY TODOS** · enmienda Web home Calzado+Todos (**2.2.1.31**) · checklist grillas
+- **[CHUSAR_HOME_CALZADO_TODOS_OVERLAY_ORDEN_20260727.md](./CHUSAR_HOME_CALZADO_TODOS_OVERLAY_ORDEN_20260727.md)** — **2.2.1.31** · home Calzado+Todos · overlay 30s fotos · orden L+R+M+C · deploy `0fdc7a5`
+- **[CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md](./CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md)** — **2.2.1.25** · Report 99/99 · paridad 100% · Web + AM ✅
+- **[CHUSAR_HERMANO3_AM_DICCIONARIO_PE_20260726.md](./CHUSAR_HERMANO3_AM_DICCIONARIO_PE_20260726.md)** — **2.2.1.27** · Hermano 3 + AM diccionario PE
+- Report espejo: [CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md](../2.3_report/deposito_rimec/CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md) (**2.3.1.10.1.3**)
+
+### **Asignación de descuentos PE · dictador (2026-07-26 · ★ Documenta + etapa)**
+- Report canónico: [CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md](../2.3_report/deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md) (**2.3.1.10.1.4** · par **2.2.1.26**)
+- Ley split + LP03: [CHUSAR_LEY_DIVISION_FI_LP03_20260726.md](../2.3_report/deposito_rimec/CHUSAR_LEY_DIVISION_FI_LP03_20260726.md) (**2.3.1.10.1.4.1**)
+- **[CHUSAR_COMISION_D1_NO_DESCUENTO_UI_20260726.md](./CHUSAR_COMISION_D1_NO_DESCUENTO_UI_20260726.md)** — **2.2.1.26.1** · D1 diccionario = **comisión** · no imprimir Desc. · badge **PE-LIQ / PE-NORMAL / PE-PROMO / PE-COMUN**
+- Etapa: [ETAPA_ASIGNACION_DESCUENTOS_20260726.md](../../4_etapas/ETAPA_ASIGNACION_DESCUENTOS_20260726.md) · PE N/P/LIQ/COMUN · CP casos · marca · LP03 +10 %
 
 ### **Hotfix precisión bancaria catálogo (2026-07-19 · ★ Documenta + deploy prod)**
 - **[CHUSAR_HOTFIX_CATALOGO_PRECISION_BANCARIA_20260719.md](./CHUSAR_HOTFIX_CATALOGO_PRECISION_BANCARIA_20260719.md)** — **2.2.1.16** · arranque Todos · audit 30 s · TIPO+BCL · pulse Promo/LIQ · badge acordeón `4.02.04.002` · www.rimec.com.py
 
+### **Hotfix AB-CR CARTERAS/ANTEOJOS · siamese Report (2026-07-27 · ★ Documentación Chusar + publica)**
+- **[CHUSAR_HOTFIX_ABCR_CARTERAS_ANTEOJOS_WEB_20260727.md](./CHUSAR_HOTFIX_ABCR_CARTERAS_ANTEOJOS_WEB_20260727.md)** — **2.2.1.32** · `tipo_ids=-1/-2` · traductor PE 90000 · Vizzano 60 carteras + 4 anteojos · error `4.01.04.003`
+
 ### **Overlay sincronizando · arranque frío (2026-07-17 · ★ Documenta + deploy)**
-- **[CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md](./CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md)** — **2.2.1.15** · pantalla completa 30 s · CP→PE→confecciones · tarjetas con foto · marquee fondo · prod Vercel
+- **[CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md](./CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md)** — **2.2.1.15** · 30 s · fotos · % por reloj · restaurado `0fdc7a5` · cruza **2.2.1.31**
 
 ### **Corte control 2026-07-15 · precios · latencia · tono (★ Documenta)**
 - **[CHUSAR_CORTE_CONTROL_20260715_PRECIOS_LATENCIA_TONO.md](./CHUSAR_CORTE_CONTROL_20260715_PRECIOS_LATENCIA_TONO.md)** — **2.2.1.0.11** · ley LPN/LPC · MIG-151/156/157 local · tono único ficha · arranque frío >1 min (diagnóstico) · ⛔ sin deploy
 
 ---
 
-**Última actualización:** 2026-07-20 · **2.2.1.18** filtro Tipo hermanos siameses · `4.01.04.002` fix 1395 PE
+**Última actualización:** 2026-07-26 · **2.2.1.28** ley TODOS tres hermanos · **2.2.1.26.1** comisión D1
 
 ---
 

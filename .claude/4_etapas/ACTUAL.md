@@ -27,7 +27,11 @@
 | **Doc** | [ETAPA_CORTE_CONTROL_ENTREGA_20260727.md](./ETAPA_CORTE_CONTROL_ENTREGA_20260727.md) |
 | **Meta** | Entrega · 1 compra prueba · integridad bancaria montos |
 
+**Documenta + Documentación Chusar + publica 2026-07-27:** AB-CR CARTERAS/ANTEOJOS Web siamese · traductor PE · Vizzano 60+4 tarjetas · **2.2.1.32**.  
+**Documenta + Documentación Chusar + despliega 2026-07-27:** RIMEC Web home **Calzado+Todos** · overlay 30s fotos · orden L+R+M+C · `0fdc7a5` · **2.2.1.31**.  
 **Documenta + despliega 2026-07-27:** Logística PE acordeón único · puente Aprobaciones · auto-refresh 5s · MIG-187 · Report `84dc14f` · `2.3.1.28.13`.  
+**Documenta 2026-07-27:** Ley DPE sin BCL · blindaje triunvirato · `cadena-dpe-triunvirato.ts` · `2.3.1.10.1.2.1`.  
+**Documenta 2026-07-27:** Verificación descuentos PE · pivote % · panel Revisar L+R+M+C · `2.3.1.10.1.4.3`.  
 **Documenta 2026-07-27:** Usuario **EVERT** / `2207` · ADMIN · Stock PE sí · asignar descuento solo DIOS · `2.3.1.10.1.4.2`.  
 **Documenta 2026-07-26:** Aprobaciones CASO PE → **PE-LIQ / PE-NORMAL / PE-PROMO** · `2.3.1.3.0.2`.  
 **Documenta + despliega 2026-07-26:** Logística PE al confirmar FI + UI cabecera · `2.3.1.28.8`.  
