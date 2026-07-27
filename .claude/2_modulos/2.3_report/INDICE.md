@@ -23,7 +23,7 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - BAZZAR (Naranja #ea580c)
 
 **Módulos activos:**
-- ✅ Aprobaciones (NIIF 100%)
+- ✅ Aprobaciones (NIIF 100%) · **alertas Web→Pendientes** [aprobaciones/CHUSAR_ALERTAS…](aprobaciones/CHUSAR_ALERTAS_PEDIDO_WEB_APROBACIONES_20260727.md) **2.3.1.3.1** 🟢 2026-07-27
 - ✅ **Administrador de Pilares** (`/pilares` — **2.3.5 CERRADA** 2026-06-17)
 - ✅ **RRHH** (`/rrhh` — **2.3.10** · subcuentas 2.3.10.1–2.3.10.2)
 - ✅ **Proceso importación** (`/proceso-importacion` — **2.3.1.7** · **2.3.1.7.2 Importación precios CERRADA** ✅)
@@ -33,8 +33,8 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - **Sales Report inmersivo (`/rimec` — 2.3.1.1)** → [CHUSAR_SALES_REPORT_FILTROS_CASCADA.md](CHUSAR_SALES_REPORT_FILTROS_CASCADA.md) · error **4.02.02.005** · v1.0.3
 - **🔍🕵️ Gestión de compra · Director (2.3.1.11)** 🆕 → [gestion_compra/INDICE.md](gestion_compra/INDICE.md)
 - **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16
-- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **Asignación descuentos** [CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md](deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md) (**2.3.1.10.1.4** · foco) · **Filtros PE 2/3 siameses** [CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md](deposito_rimec/CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md) (**2.3.1.10.1.3** · 99/99) · **Grada abierta 638** [CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md](deposito_rimec/CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md) (**2.3.1.10.12**)
-- **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · plan pestañas **2.3.1.28.5** · etapa `LOGISTICA-OK-20260719`
+- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **Ley DPE sin BCL** [CHUSAR_LEY_DPE_SIN_BCL_20260727.md](deposito_rimec/CHUSAR_LEY_DPE_SIN_BCL_20260727.md) (**2.3.1.10.1.2.1**) · **Asignación descuentos** [CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md](deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md) (**2.3.1.10.1.4** · foco) · **Verificación Revisar** [CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md](deposito_rimec/CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md) (**2.3.1.10.1.4.3**) · **Ley TODOS 3/3** [CHUSAR_LEY_TODOS](../2.2_rimec_web/CHUSAR_LEY_TODOS_TRES_HERMANOS_SIAMESES_20260726.md) (**2.2.1.28**) · **Filtros PE** [CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md](deposito_rimec/CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md) (**2.3.1.10.1.3** · 99/99) · **Grada abierta 638** [CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md](deposito_rimec/CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md) (**2.3.1.10.12**)
+- **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · plan **2.3.1.28.5** · Ley FI **2.3.1.28.9** · **próxima** Carlos ~900M Excel **2.3.1.28.10**
 - **Depósitos Bazzar (2.3.2.1)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
 - **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
 - **Motor de Precios (2.3.1.7.1 — Report)** 🆕
