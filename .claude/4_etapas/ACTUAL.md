@@ -63,7 +63,7 @@
 | App | Commit | URL |
 |-----|--------|-----|
 | Report | `9478638` | https://rimec-report.vercel.app |
-| RIMEC Web | `86e3a27` | https://rimec-web.vercel.app |
+| RIMEC Web | `1d4dc7a` | https://rimec-web.vercel.app |
 
 **Orden Director 2026-07-27:** Documenta + despliega · Logística Ley FI (`2.3.1.28.9`).  
 **Orden Director 2026-07-27:** Documenta plan próxima Logística Carlos ~900M (`2.3.1.28.10`) · esperar **Nueva etapa**.
