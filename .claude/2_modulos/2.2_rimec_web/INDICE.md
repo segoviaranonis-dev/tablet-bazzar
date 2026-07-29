@@ -63,6 +63,9 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **Etapa PE (CERRADA):** [ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md](../../4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md)
 - **Deploy prod:** [CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md](../../1_fundamentos/1.1_protocolos/CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md)
 
+### **Catálogo · percepción velocidad (2026-07-28 · pre-entrega · local)**
+- **[CHUSAR_CATALOGO_PERCEIVED_PERFORMANCE_20260728.md](./CHUSAR_CATALOGO_PERCEIVED_PERFORMANCE_20260728.md)** — **2.2.1.33** · skeleton 30 · SWR · overlay no bloquea · prefetch scroll · rollback · fin de semana = índices BD
+
 ### **Catálogo · dual cache CP↔PE (2026-07-13 · ★ producto)**
 - **[CHUSAR_DUAL_CACHE_CATALOGO_INSTANTANEO.md](./CHUSAR_DUAL_CACHE_CATALOGO_INSTANTANEO.md)** — **2.2.1.0.2** · ≥30 tarjetas CP+PE · cambio pestaña instantáneo
 - **[CHUSAR_FILTROS_COMPARTIDOS_CP_PE.md](./CHUSAR_FILTROS_COMPARTIDOS_CP_PE.md)** — **2.2.1.0.3** · sessionStorage CP↔PE · marca/línea/búsqueda/tono compartidos
@@ -112,6 +115,7 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **[CHUSAR_PROMOCIONAL_UI_LPC03_LOCAL.md](./CHUSAR_PROMOCIONAL_UI_LPC03_LOCAL.md)** — **2.2.1.0.1** · LPN=LPC03=LPC04 · pill verde · precio por lote
 - **Regla motor:** [CHUSAR_EXCEPCION_PROMOCIONAL_LPC03_LPN.md](../2.3_report/motor_precios/CHUSAR_EXCEPCION_PROMOCIONAL_LPC03_LPN.md) (**2.3.1.7.1.0.1**)
 - **Redondeo centena:** [CHUSAR_REGLA_REDONDEO_CENTENA_PROXIMA.md](../2.3_report/motor_precios/CHUSAR_REGLA_REDONDEO_CENTENA_PROXIMA.md) (**2.3.1.7.1.0.2** · Documenta 2026-07-20)
+- **Sin +10 % LP03 (2026-07-29):** [CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_WEB_20260729.md](./CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_WEB_20260729.md) — **2.2.1.34** · anti doble descuento · par **2.3.1.10.1.4.4**
 - **Regla Director:** documentar cada micro-objetivo local antes de Git/Vercel
 
 ### **Compras masivas · stress test cliente 5000 (2026-07-19 · ★ PARÉNTESIS EOD)**

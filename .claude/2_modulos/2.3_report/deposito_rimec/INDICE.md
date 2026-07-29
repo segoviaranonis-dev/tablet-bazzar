@@ -18,11 +18,14 @@
 
 ## Norte del módulo
 
+**Depósito importadora RIMEC** — hub **dos tarjetas** en Report:
 
+| Tarjeta | Rol |
+|---------|-----|
+| **Saldo de proceso** | Saldo PP · resultante proceso compra (didáctico → CSV legal) |
+| **Stock importado** | CSV `sdrm####` → `stock_pronta_entrega_rimec` · circuito PE |
 
-**Saldo físico importadora** — compra inicial menos venta en tránsito.
-
-
+Cada tarjeta propaga `origen_stock` → catálogo RIMEC Web → Aprobaciones → bandeja Facturación correspondiente.
 
 | Sub-proceso | Qué hace | Tablas núcleo |
 
@@ -61,6 +64,21 @@ Ver [CHUSAR § Estado Report](./CHUSAR_DEPOSITO_RIMEC.md#estado-report--implemen
 |---|---------|-----------|
 
 | 1 | [CHUSAR_DEPOSITO_RIMEC.md](./CHUSAR_DEPOSITO_RIMEC.md) | Qué es · almacenes · rutas |
+| 1b | **[CHUSAR_STOCK_PRONTA_ENTREGA_RIMEC.md](./CHUSAR_STOCK_PRONTA_ENTREGA_RIMEC.md)** | **Stock POS unificado** · MIG-132 · sdrm |
+| 1c | **[CHUSAR_PLAN_IMPORT_PE_SDRM0849_PILARES.md](./CHUSAR_PLAN_IMPORT_PE_SDRM0849_PILARES.md)** | **📋 Plan 2026-07-14** · botón import UI · motor pilares PE · batch sdrm0849 · latencia DB |
+| 1d | **[CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md](./CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md)** | **2.3.1.10.1.1** · traductor propio COD.GRUPO · dual biblioteca PE/PP · Hiedra · acertividad 92 % |
+| 1d2 | **[CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md](../facturacion/CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md)** | **2.3.1.9.F** · traductor vendedor Carlos · hermano 1d · Hoja2 CODxCASOS · 🟢 **2026-07-27** |
+| 1e | **[CHUSAR_GRUPO_UNO_DICCIONARIO_PE_EXCEL.md](./CHUSAR_GRUPO_UNO_DICCIONARIO_PE_EXCEL.md)** | **2.3.1.10.1.2** · palabra reservada **grupo uno** · 3 Excel · NORMAL/PROMO/LIQ · D1 · MIG-180 |
+| 1e1 | **[CHUSAR_LEY_DPE_SIN_BCL_20260727.md](./CHUSAR_LEY_DPE_SIN_BCL_20260727.md)** | **2.3.1.10.1.2.1** · **Ley DPE** · BCL solo CP/programado · blindaje triunvirato · 🟢 **2026-07-27** |
+| 1f | **[HANDOFF checkpoint](../../4_etapas/HANDOFF_DICCIONARIO_GRUPO_UNO_20260724.md)** | **2026-07-24** · derivación agentes · local sin deploy |
+| 1g | **[CHUSAR_PE_TIPO1_ABCR_ACCESORIOS.md](./CHUSAR_PE_TIPO1_ABCR_ACCESORIOS.md)** | **2026-07-25** · ACCESORIOS Excel→ACT ROPAS · AB-CR CARTERAS+ANTEOJOS · backfill LINEA+REFE |
+| 1h | **[CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md](./CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md)** | **2.3.1.10.1.3** · Hermano 1 Report PE · audit 99/99 · par [2.2.1.25](../../2.2_rimec_web/CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md) · siguiente [2.2.1.27](../../2.2_rimec_web/CHUSAR_HERMANO3_AM_DICCIONARIO_PE_20260726.md) |
+| 1i | **[CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md](./CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md)** | **2.3.1.10.1.4** · dictador % PE · **solo DIOS** · par **2.2.1.26** |
+| 1i2 | **[CHUSAR_USUARIO_EVERT_STOCK_PE_20260727.md](./CHUSAR_USUARIO_EVERT_STOCK_PE_20260727.md)** | **2.3.1.10.1.4.2** · EVERT ADMIN · Stock PE sí · asignar descuento no |
+| 1k | **[CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md](./CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md)** | **2.3.1.10.1.4.3** · pivote por % · política comercial · panel Revisar L+R+M+C · par Biblioteca casos |
+| 1k2 | **[CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md](./CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md)** | **2.3.1.10.1.5** · batch `sdrm2121` · import Node · MIG-191 · **overwrite** descuentos Guido · pendientes |
+| 1j | **[CHUSAR_LEY_DIVISION_FI_LP03_20260726.md](./CHUSAR_LEY_DIVISION_FI_LP03_20260726.md)** | **2.3.1.10.1.4.1** · split PE N/P/LIQ/COMUN · CP por caso · 1 marca · LP03 +10 % grado 1 · 4 grados |
+| 1j4 | **[CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md](./CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md)** | **2.3.1.10.1.4.4** · PROMO sin Grado 1 +10 % · anti doble descuento · par Web **2.2.1.34** · 🟢 **2026-07-29** |
 
 | 2 | **[TABLAS.md](./TABLAS.md)** | **Catálogo BD completo** — movimiento, PPD, stock sano |
 
@@ -113,6 +131,14 @@ Ver [CHUSAR § Estado Report](./CHUSAR_DEPOSITO_RIMEC.md#estado-report--implemen
 | `v_stock_actual` | Vista agregada por almacén |
 
 | `almacen` | id **4** = ALM_DEPOSITO_RIMEC |
+
+### Stock pronta entrega POS (MIG-132 · 2026-07)
+
+| Tabla | Rol |
+|-------|-----|
+| **`stock_pronta_entrega_rimec`** | CSV `sdrm####` · depósito = columna `D1\|DEP2\|D3` · precio Gs |
+
+Doc: [CHUSAR_STOCK_PRONTA_ENTREGA_RIMEC.md](./CHUSAR_STOCK_PRONTA_ENTREGA_RIMEC.md) · [MAPA CSV](../../../../report/docs/MAPA_CSV_SDRM_STOCK_PRONTA_ENTREGA.md)
 
 
 
@@ -232,11 +258,16 @@ Ver [CHUSAR § Estado Report](./CHUSAR_DEPOSITO_RIMEC.md#estado-report--implemen
 
 | **2.3.2.1** | Depósitos Bazzar tiendas → [../depositos/INDICE.md](../depositos/INDICE.md) |
 
+---
 
+## Grada abierta 638 · Stock PE (2026-07-16)
+
+| Doc | Rol |
+|-----|-----|
+| [CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md](./CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md) | **2.3.1.10.12** · 1 fila = 1 talle · prendas · paridad Web |
+| [GRADA_ABIERTA_638_ALEJANDRO_MAGNO.md](../../../../report/docs/GRADA_ABIERTA_638_ALEJANDRO_MAGNO.md) | App Report · MIG-165 |
 
 ---
 
-
-
-**Shibboleth:** Chayanne el mejor
+**Shibboleth:** Andrés, el que viene.
 

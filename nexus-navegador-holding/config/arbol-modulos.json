@@ -216,6 +216,22 @@
               "nuevo": true
             },
             {
+              "code": "2.2.1.33",
+              "slug": "catalogo-perceived-performance-30",
+              "label": "Catálogo · 30 tarjetas · SWR background",
+              "lead": "Skeleton 30 · warm paralelo Calzado/Confecciones · overlay no bloquea · prefetch scroll · local pre-entrega.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CATALOGO_PERCEIVED_PERFORMANCE_20260728.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.34",
+              "slug": "promocional-sin-lp03-10pct-web",
+              "label": "PROMOCIONAL sin +10 % LPC03",
+              "lead": "Anti doble descuento · badge/FI/neto solo dictado · par Report 2.3.1.10.1.4.4.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_WEB_20260729.md",
+              "nuevo": true
+            },
+            {
               "code": "2.2.1.32",
               "slug": "hotfix-abcr-carteras-anteojos-web",
               "label": "AB-CR CARTERAS/ANTEOJOS · siamese Report",
@@ -1023,9 +1039,18 @@
                   "code": "2.3.1.10.1.4.1",
                   "slug": "ley-division-fi-lp03",
                   "label": "Ley división FI · LP03 +10 %",
-                  "lead": "PE: N/P/LIQ/COMUN · CP: casos · 1 marca · grado 1 LP03 = 10 % aparte del dictador.",
+                  "lead": "PE: N/P/LIQ/COMUN · CP: casos · 1 marca · grado 1 LP03 = 10 % aparte del dictador · PROMO sin +10 % (2.3.1.10.1.4.4).",
                   "appPath": "/stock-pronta-entrega",
                   "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_LEY_DIVISION_FI_LP03_20260726.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.10.1.4.4",
+                  "slug": "promocional-sin-lp03-10pct",
+                  "label": "PROMOCIONAL sin +10 % LP03",
+                  "lead": "Anti doble descuento · LPC03 promo solo dictado · par Web 2.2.1.34.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md",
                   "nuevo": true
                 },
                 {
@@ -1044,6 +1069,15 @@
                   "lead": "Pivote por % · política botas 30% vs cerrado 25% · panel L+R+M+C · Tipo · AB-CR · par Biblioteca casos.",
                   "appPath": "/stock-pronta-entrega",
                   "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.10.1.5",
+                  "slug": "pe-sdrm2121-import-asignacion",
+                  "label": "PE sdrm2121 · import Node · overwrite %",
+                  "lead": "Batch sdrm2121 · MIG-191 · UPSERT reescribe % · Guido EN CURSO · pendientes P1–P7.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md",
                   "nuevo": true
                 },
                 {
@@ -1117,6 +1151,24 @@
                   "lead": "Import Excel cabeceras sin confirmar · color distinto · integrado Logística.",
                   "appPath": "/logistica-ok",
                   "md": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_CARLOS_900M_CABECERA_EXCEL_20260727.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.28.14",
+                  "slug": "logistica-multi-choferes-rrhh",
+                  "label": "Multi-select + choferes RRHH",
+                  "lead": "Checkboxes General/Vendedor/Confirmadas/Entregas · Julian Rotela · Gerardo Dominguez.",
+                  "appPath": "/logistica-ok",
+                  "md": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_MULTI_CHOFERES_RRHH_20260728.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.28.15",
+                  "slug": "logistica-roles-jefe-vendedor",
+                  "label": "Roles JEFE / VENDEDOR + deploy",
+                  "lead": "Hub 2 JEFE · VENDEDOR filtrado · CRISTHIAN · fix pestañas · DESPLIGA Report.",
+                  "appPath": "/logistica-ok",
+                  "md": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_ROLES_JEFE_VENDEDOR_20260728.md",
                   "nuevo": true
                 },
                 {

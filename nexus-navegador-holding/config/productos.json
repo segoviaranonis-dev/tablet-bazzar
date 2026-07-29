@@ -29,7 +29,7 @@
       "appKey": "rimecWeb",
       "docIndice": ".claude/2_modulos/2.2_rimec_web/INDICE.md",
       "gitPath": "rimec-web/",
-      "ultimoDeployActivo": false
+      "ultimoDeployActivo": true
     },
     {
       "code": "2.3",
@@ -40,7 +40,7 @@
       "appKey": "report",
       "docIndice": ".claude/2_modulos/2.3_report/INDICE.md",
       "gitPath": "report/",
-      "ultimoDeployActivo": true
+      "ultimoDeployActivo": false
     },
     {
       "code": "2.4",
