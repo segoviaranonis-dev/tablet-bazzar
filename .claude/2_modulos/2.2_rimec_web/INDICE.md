@@ -116,6 +116,7 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **Regla motor:** [CHUSAR_EXCEPCION_PROMOCIONAL_LPC03_LPN.md](../2.3_report/motor_precios/CHUSAR_EXCEPCION_PROMOCIONAL_LPC03_LPN.md) (**2.3.1.7.1.0.1**)
 - **Redondeo centena:** [CHUSAR_REGLA_REDONDEO_CENTENA_PROXIMA.md](../2.3_report/motor_precios/CHUSAR_REGLA_REDONDEO_CENTENA_PROXIMA.md) (**2.3.1.7.1.0.2** · Documenta 2026-07-20)
 - **Sin +10 % LP03 (2026-07-29):** [CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_WEB_20260729.md](./CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_WEB_20260729.md) — **2.2.1.34** · anti doble descuento · par **2.3.1.10.1.4.4**
+- **Siamese Estilo/Género pilares (2026-07-29):** [CHUSAR_SIAMESE_ESTILO_GENERO_PILARES_20260729.md](./CHUSAR_SIAMESE_ESTILO_GENERO_PILARES_20260729.md) — **2.2.1.35** · FK `/pilares` · anti 638↔654 · par AM/DPE **2.3.1.10.1.6**
 - **Regla Director:** documentar cada micro-objetivo local antes de Git/Vercel
 
 ### **Compras masivas · stress test cliente 5000 (2026-07-19 · ★ PARÉNTESIS EOD)**

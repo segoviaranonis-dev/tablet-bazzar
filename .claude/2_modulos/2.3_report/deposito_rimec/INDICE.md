@@ -79,6 +79,7 @@ Ver [CHUSAR § Estado Report](./CHUSAR_DEPOSITO_RIMEC.md#estado-report--implemen
 | 1k2 | **[CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md](./CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md)** | **2.3.1.10.1.5** · batch `sdrm2121` · import Node · MIG-191 · **overwrite** descuentos Guido · pendientes |
 | 1j | **[CHUSAR_LEY_DIVISION_FI_LP03_20260726.md](./CHUSAR_LEY_DIVISION_FI_LP03_20260726.md)** | **2.3.1.10.1.4.1** · split PE N/P/LIQ/COMUN · CP por caso · 1 marca · LP03 +10 % grado 1 · 4 grados |
 | 1j4 | **[CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md](./CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md)** | **2.3.1.10.1.4.4** · PROMO sin Grado 1 +10 % · anti doble descuento · par Web **2.2.1.34** · 🟢 **2026-07-29** |
+| 1j5 | **[CHUSAR_SIAMESE_ESTILO_GENERO_AM_DPE_20260729.md](./CHUSAR_SIAMESE_ESTILO_GENERO_AM_DPE_20260729.md)** | **2.3.1.10.1.6** · Estilo/Género FK `/pilares` · AM+DPE · par Web **2.2.1.35** · 🟢 **2026-07-29** |
 
 | 2 | **[TABLAS.md](./TABLAS.md)** | **Catálogo BD completo** — movimiento, PPD, stock sano |
 

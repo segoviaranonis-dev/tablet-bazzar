@@ -232,6 +232,15 @@
               "nuevo": true
             },
             {
+              "code": "2.2.1.35",
+              "slug": "siamese-estilo-genero-pilares",
+              "label": "Siamese Estilo/Género · pilares FK",
+              "lead": "Lista desde /pilares · anti 638↔654 · TENIS en Calzado · par AM/DPE 2.3.1.10.1.6.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_SIAMESE_ESTILO_GENERO_PILARES_20260729.md",
+              "nuevo": true
+            },
+
+            {
               "code": "2.2.1.32",
               "slug": "hotfix-abcr-carteras-anteojos-web",
               "label": "AB-CR CARTERAS/ANTEOJOS · siamese Report",
@@ -1054,6 +1063,16 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.1.10.1.6",
+                  "slug": "siamese-estilo-genero-am-dpe",
+                  "label": "Siamese Estilo/Género AM+DPE",
+                  "lead": "Maestras /pilares · FK · par Web 2.2.1.35 · anti cable 638↔654.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_SIAMESE_ESTILO_GENERO_AM_DPE_20260729.md",
+                  "nuevo": true
+                },
+
+                {
                   "code": "2.3.1.10.1.4.2",
                   "slug": "usuario-evert-stock-pe",
                   "label": "EVERT · Stock PE sin dictar %",
@@ -1169,6 +1188,15 @@
                   "lead": "Hub 2 JEFE · VENDEDOR filtrado · CRISTHIAN · fix pestañas · DESPLIGA Report.",
                   "appPath": "/logistica-ok",
                   "md": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_ROLES_JEFE_VENDEDOR_20260728.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.28.16",
+                  "slug": "logistica-orden-tradicional",
+                  "label": "Orden tradicional PDF Graciela",
+                  "lead": "Por cliente · obs siempre visible · toggle Ordenar por origen · local · prod pendiente.",
+                  "appPath": "/logistica-ok/rimec",
+                  "md": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_ORDEN_TRADICIONAL_20260729.md",
                   "nuevo": true
                 },
                 {
