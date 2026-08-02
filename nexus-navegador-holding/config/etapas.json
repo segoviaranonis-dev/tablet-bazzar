@@ -1,175 +1,189 @@
 {
-  "actualizado": "2026-07-26-deploy-report-2a18c90",
+  "actualizado": "2026-08-02-cierre-bazzar-auditoria-grada-publica",
   "sesionActiva": {
-    "code": "ASIGNACION-DESCUENTOS-PE-20260726",
-    "alias": "Asignación de descuentos PE · dictador",
-    "maraton": "asignacion-descuentos-pe",
+    "code": "CP-CONFECCIONES-OK-20260729",
+    "alias": "CP confecciones ok · catálogo 638 Compra previa",
+    "maraton": "rimec-web-catalogo-638",
     "ejecutor": "cursor",
-    "foco": "Botón Stock PE · % molécula · sync Web · Aprobaciones blanco/sombra · división FI",
-    "mdChusar": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md",
-    "mdEtapa": ".claude/4_etapas/ETAPA_ASIGNACION_DESCUENTOS_20260726.md"
+    "foco": "Retomada 2026-08-02 · lightbox · carrito · pill Todos confecciones",
+    "mdEtapa": ".claude/4_etapas/ETAPA_CP_CONFECCIONES_OK_20260729.md"
   },
   "trabajoVivo": [
     {
-      "code": "ASIGNACION-DESCUENTOS-PE-20260726",
+      "code": "PLAN-AUTO-BANDEJA-PE-20260802",
       "moduloSlug": "report",
-      "subcuentaSlug": "deposito-rimec",
-      "label": "Asignación de descuentos PE · dictador · % · Web+Aprobaciones",
-      "md": ".claude/4_etapas/ETAPA_ASIGNACION_DESCUENTOS_20260726.md",
-      "mdChusar": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md",
-      "appPath": "http://localhost:3000/stock-pronta-entrega",
+      "subcuentaSlug": "sales-report",
+      "label": "Plan circuito PDF → bandeja Stock PE · 2.3.1.35 + 2.3.1.36",
+      "md": ".claude/4_etapas/ETAPA_PLAN_AUTO_BANDEJA_PE_20260802.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_CONTRATO_ENVIO_PDF_BANDEJA_20260802.md",
+      "appPath": "http://localhost:3000/mensajes-internos",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": false,
+      "subEtapas": [
+        "PLAN-CONTRATO",
+        "PLAN-ABSORCION",
+        "PLAN-PASS",
+        "PLAN-HITOS"
+      ]
+    },
+    {
+      "code": "CP-CONFECCIONES-OK-20260729",
+      "moduloSlug": "rimec-web",
+      "subcuentaSlug": "catalogo",
+      "label": "CP confecciones ok · catálogo 638 Compra previa",
+      "md": ".claude/4_etapas/ETAPA_CP_CONFECCIONES_OK_20260729.md",
+      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CONFECCIONES_REGLAS_PROPIAS_638.md",
+      "appPath": "http://localhost:3001/?origen_tipo=TRÁNSITO_PP&ramo_tipo=CONFECCIONES",
       "ejecutor": "cursor",
       "estado": "en_curso",
       "nuevo": true,
       "focoMaraton": true,
       "subEtapas": [
-        "ASIG-DOC",
-        "ASIG-LEY",
-        "ASIG-DIV-FI",
-        "ASIG-UI-PE",
-        "ASIG-PERSIST",
-        "ASIG-WEB",
-        "ASIG-APROB",
-        "ASIG-SMOKE"
-      ],
-      "enlaceCruzado": "PE-FINAL-CIERRE-MODULO-20260723"
+        "CP638-GRILLA",
+        "CP638-FILTROS",
+        "CP638-LIGHTBOX",
+        "CP638-CARRITO",
+        "CP638-SMOKE"
+      ]
     },
     {
-      "code": "PE-FINAL-CIERRE-MODULO-20260723",
+      "code": "AUDITORIA-INTEGRIDAD-STOCK-BAZZAR-20260801",
+      "moduloSlug": "bazzar-web",
+      "subcuentaSlug": "auditoria-integridad",
+      "label": "Auditoría integridad stock · 2 cuadros · siameses · 2.5.1.6",
+      "md": ".claude/4_etapas/ETAPA_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801.md",
+      "appPath": "http://localhost:3000/bazzar-web/auditoria-integridad",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "focoMaraton": false,
+      "subEtapas": [
+        "AUD-STOCK",
+        "AUD-SIAMESES",
+        "AUD-PANEL",
+        "AUD-DOC",
+        "AUD-SMOKE"
+      ]
+    },
+    {
+      "code": "INFORMES-AUTO-MENSAJES-20260801",
       "moduloSlug": "report",
-      "subcuentaSlug": "facturacion-pronta-entrega",
-      "label": "PE final · CSV Carlos · montos · auditorías",
-      "md": ".claude/4_etapas/ETAPA_PE_FINAL_CIERRE_MODULO_20260723.md",
-      "mdChusar": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_CSV_VENTAS_PE_CARLOS.md",
-      "appPath": "http://localhost:3000/facturacion/pronta-entrega",
+      "subcuentaSlug": "sales-report",
+      "label": "Informes auto + Mensajes internos · 2.3.1.35 + 2.3.1.36",
+      "md": ".claude/4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_AUTOMATIZACION_INFORMES_20260730.md",
+      "appPath": "http://localhost:3000/automatizacion-informes",
       "ejecutor": "cursor",
       "estado": "en_curso",
       "nuevo": true,
       "focoMaraton": false,
       "subEtapas": [
-        "PE-FIN-AUDIT",
-        "PE-FIN-MONTOS",
-        "PE-FIN-CSV",
-        "PE-FIN-WEB",
-        "PE-FIN-SMOKE"
-      ],
-      "enlaceCruzado": "IMPORT-CP-CONFECCIONES-638-20260721"
+        "INF-FACHADA",
+        "INF-EXPORT-UI",
+        "INF-SMTP",
+        "MSG-FACHADA",
+        "MSG-MOLECULA",
+        "MSG-PDF-BACKEND",
+        "INF-MSG-SMOKE"
+      ]
     },
     {
-      "code": "RIMEC-WEB-CABECERA-PRECIO-20260723",
+      "code": "AUDITORIA-DEPOSITO-WEB-20260801",
+      "moduloSlug": "bazzar-web",
+      "subcuentaSlug": "deposito-web",
+      "label": "Auditoría Depósito Web Report · ALM_WEB_01 · local",
+      "md": ".claude/4_etapas/ETAPA_AUDITORIA_DEPOSITO_WEB_20260801_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_AUDITORIA_DEPOSITO_WEB_REPORT_20260801.md",
+      "appPath": "http://localhost:3000/bazzar-web/deposito-web",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "focoMaraton": false,
+      "subEtapas": [
+        "DW-LOCAL",
+        "DW-KPI",
+        "DW-FILTROS",
+        "DW-IMAGEN",
+        "DW-TIENDA",
+        "DW-HALLAZGOS"
+      ]
+    },
+    {
+      "code": "HOTFIX-CATALOGO-TODOS-CALZADO-20260801",
       "moduloSlug": "rimec-web",
       "subcuentaSlug": "catalogo",
-      "label": "Precio teclado↔slider espejo + SQL · catálogo",
-      "md": ".claude/4_etapas/ETAPA_RIMEC_WEB_CABECERA_PRECIO_20260723.md",
-      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CABECERA_HUECA_PRECIO_ESTADO_20260723.md",
-      "appPath": "http://localhost:3001",
+      "label": "Hotfix TODOS + Calzado · timeout prod · landing vendedores",
+      "md": ".claude/4_etapas/ETAPA_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md",
+      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md",
+      "appPath": "http://localhost:3001/?origen_tipo=TODOS&ramo_tipo=CALZADO",
       "ejecutor": "cursor",
       "estado": "en_curso",
       "nuevo": true,
       "focoMaraton": false,
       "subEtapas": [
-        "CAB-PRECIO-DIAG",
-        "CAB-PRECIO-LAYOUT",
-        "CAB-PRECIO-SQL",
-        "CAB-PRECIO-SMOKE"
-      ],
-      "enlaceCruzado": "COMPRAS-MASIVAS-5000-20260719"
+        "CAT-TODOS-BATCH",
+        "CAT-TODOS-RPC",
+        "CAT-TODOS-FILTROS",
+        "CAT-TODOS-SMOKE",
+        "CAT-TODOS-DEPLOY"
+      ]
     },
     {
-      "code": "IMPORT-CP-CONFECCIONES-638-20260721",
+      "code": "AUTOMATIZACION-INFORMES-20260730",
       "moduloSlug": "report",
-      "subcuentaSlug": "proceso-importacion",
-      "label": "Import CP confecciones · Kyly 638 · compra previa",
-      "md": ".claude/4_etapas/ETAPA_IMPORT_CP_CONFECCIONES_20260721.md",
-      "mdChusar": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_IMPORT_CP_CONFECCIONES_638_AM.md",
-      "appPath": "http://localhost:3000/proceso-importacion",
+      "subcuentaSlug": "sales-report",
+      "label": "Automatización de informes · absorbida → INFORMES-AUTO-MENSAJES",
+      "md": ".claude/4_etapas/ETAPA_AUTOMATIZACION_INFORMES_20260730.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_AUTOMATIZACION_INFORMES_20260730.md",
+      "appPath": "http://localhost:3000/automatizacion-informes",
       "ejecutor": "cursor",
-      "estado": "en_curso",
+      "estado": "hecho",
       "nuevo": true,
       "focoMaraton": false,
       "subEtapas": [
-        "CP-CONF-ALCANCE",
-        "CP-CONF-IC",
-        "CP-CONF-IMPORT-PP",
-        "CP-CONF-PANEL-RAMOS",
-        "CP-CONF-SMOKE",
-        "CP-CONF-PROG-RAMOS"
-      ],
-      "enlaceCruzado": "IMPORTACION-PROGRAMADOS-20260718"
+        "INF-INVENTARIO",
+        "INF-FORMATO",
+        "INF-AUTOMATIZAR",
+        "INF-SMOKE"
+      ]
     },
     {
-      "code": "COMPRAS-MASIVAS-5000-20260719",
-      "moduloSlug": "rimec-web",
-      "subcuentaSlug": "catalogo-venta",
-      "label": "Compras masivas · stress test · cliente 5000 · PARÉNTESIS EOD",
-      "md": ".claude/4_etapas/ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md",
-      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_COMPRAS_MASIVAS_STRESS_5000_20260719.md",
-      "appPath": "http://localhost:3001",
-      "ejecutor": "cursor",
-      "estado": "en_curso",
-      "nuevo": true,
-      "focoMaraton": false,
-      "subEtapas": [
-        "CM5000-PREFLIGHT",
-        "CM5000-STRESS",
-        "CM5000-FI-AM",
-        "CM5000-EOD-PURGE"
-      ],
-      "enlaceCruzado": "IMPORTACION-PROGRAMADOS-20260718"
-    },
-    {
-      "code": "IMPORTACION-PROGRAMADOS-20260718",
+      "code": "LOGISTICA-RIMEC-TXT-20260728",
       "moduloSlug": "report",
-      "subcuentaSlug": "proceso-importacion",
-      "label": "Importación de programados · maratón 6 PF · IC→PPD→FI",
-      "md": ".claude/4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718.md",
-      "mdChusar": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md",
-      "appPath": "http://localhost:3000/proceso-importacion",
+      "subcuentaSlug": "logistica-ok",
+      "label": "Logística Rimec · TXT · orden tradicional prod ⏳ · VENDEDOR flag",
+      "md": ".claude/4_etapas/ETAPA_LOGISTICA_RIMEC_TXT_20260728.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_CARLOS_900M_CABECERA_EXCEL_20260727.md",
+      "appPath": "http://localhost:3000/logistica-ok",
       "ejecutor": "cursor",
       "estado": "en_curso",
       "nuevo": true,
       "focoMaraton": false,
       "subEtapas": [
-        "IMP-PROG-ALCANCE",
-        "IMP-PROG-IMPORT",
-        "IMP-PROG-SMOKE"
-      ],
-      "enlaceCruzado": "REPOSICION-FILTRO-ADICIONAL-20260716"
-    },
-    {
-      "code": "REPOSICION-FILTRO-ADICIONAL-20260716",
-      "moduloSlug": "report",
-      "subcuentaSlug": "gestion-compra",
-      "label": "Reposición · filtro adicional · Calzado + A→Z base",
-      "md": ".claude/4_etapas/ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md",
-      "mdChusar": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_HERRAMIENTA_REPOSICION_ALEJANDRO_MAGNO.md",
-      "appPath": "http://localhost:3000/herramienta-reposicion",
-      "ejecutor": "cursor",
-      "estado": "pausada",
-      "nuevo": true,
-      "focoMaraton": false,
-      "subEtapas": [
-        "REPOS-FILTRO-NOMBRAR",
-        "REPOS-FILTRO-UI",
-        "REPOS-FILTRO-SMOKE"
-      ],
-      "enlaceCruzado": "OPERATIVO-ALEJANDRO-MAGNO-2026"
+        "RIMEC-PARSER-TXT",
+        "RIMEC-TABLA-API",
+        "RIMEC-UI-DUAL",
+        "RIMEC-SMOKE"
+      ]
     }
   ],
   "ultimaCerradaPorModulo": {
     "bazzar-web": {
-      "code": "BAZZAR-WEB-CATALOGO-3002-20260716",
-      "label": "Bazzar Web :3002 · Stock Sano · Depósito grada 8/12",
-      "fecha": "2026-07-16",
-      "md": ".claude/4_etapas/ETAPA_BAZZAR_WEB_CATALOGO_3002_20260716_CERRADA.md",
-      "deploy": "https://rimec-report.vercel.app/bazzar-web/deposito-web",
+      "code": "AUDITORIA-INTEGRIDAD-STOCK-BAZZAR-20260801",
+      "label": "Auditoría integridad + catálogo grada siamese · 2.5.1.6–12",
+      "fecha": "2026-08-02",
+      "md": ".claude/4_etapas/ETAPA_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801_CERRADA.md",
+      "deploy": "https://bazzar-web.vercel.app/catalogo",
       "nuevo": true
     },
     "rimec-web": {
-      "code": "CATALOGO-LATENCIA-20260713",
-      "label": "Catálogo latencia · 7 tareas · cierre formal",
-      "fecha": "2026-07-16",
-      "md": ".claude/4_etapas/ETAPA_CATALOGO_LATENCIA_20260713_CERRADA.md",
+      "code": "COMPRAS-MASIVAS-5000-20260719",
+      "label": "Compras masivas · stress 5000 · corte",
+      "fecha": "2026-07-26",
+      "md": ".claude/4_etapas/ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719_CERRADA.md",
       "deploy": "https://rimec-web.vercel.app",
       "nuevo": true
     },
@@ -182,16 +196,32 @@
       "nuevo": true
     },
     "report": {
-      "code": "LISTADO-MOTOR-FI-PP-20260726",
-      "label": "Listado motor FI · Logística · PP cierre · Hiedra PE",
-      "fecha": "2026-07-26",
-      "md": ".claude/4_etapas/ETAPA_LISTADO_MOTOR_FI_PP_20260726_CERRADA.md",
-      "deploy": "https://rimec-report.vercel.app",
+      "code": "STOCK-PE-CALZADO-654-20260729",
+      "label": "Stock PE calzado 654 · compra previa · CODxCASOS",
+      "fecha": "2026-07-29",
+      "md": ".claude/4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md",
+      "deploy": "https://rimec-report.vercel.app/stock-pronta-entrega",
       "nuevo": true
     }
   },
   "cerradasPorModulo": {
     "bazzar-web": [
+      {
+        "code": "AUDITORIA-INTEGRIDAD-STOCK-BAZZAR-20260801",
+        "label": "Auditoría integridad + catálogo grada siamese · 2.5.1.6–12",
+        "fecha": "2026-08-02",
+        "md": ".claude/4_etapas/ETAPA_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801_CERRADA.md",
+        "deploy": "https://bazzar-web.vercel.app/catalogo",
+        "nuevo": true
+      },
+      {
+        "code": "AUDITORIA-DEPOSITO-WEB-20260801",
+        "label": "Auditoría Depósito Web Report · ALM_WEB_01",
+        "fecha": "2026-08-02",
+        "md": ".claude/4_etapas/ETAPA_AUDITORIA_DEPOSITO_WEB_20260801_CERRADA.md",
+        "deploy": "https://rimec-report.vercel.app/bazzar-web/deposito-web",
+        "nuevo": true
+      },
       {
         "code": "BAZZAR-WEB-CATALOGO-3002-20260716",
         "label": "Bazzar Web :3002 · Stock Sano · Depósito grada 8/12",
@@ -202,6 +232,22 @@
       }
     ],
     "rimec-web": [
+      {
+        "code": "RIMEC-WEB-CABECERA-PRECIO-20260723",
+        "label": "Cabecera precio + Ley TODOS siameses 3/3",
+        "fecha": "2026-07-26",
+        "md": ".claude/4_etapas/ETAPA_RIMEC_WEB_CABECERA_PRECIO_20260723_CERRADA.md",
+        "deploy": "https://rimec-web.vercel.app",
+        "nuevo": true
+      },
+      {
+        "code": "COMPRAS-MASIVAS-5000-20260719",
+        "label": "Compras masivas · prueba única entrega",
+        "fecha": "2026-07-26",
+        "md": ".claude/4_etapas/ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719_CERRADA.md",
+        "deploy": "https://rimec-web.vercel.app",
+        "nuevo": true
+      },
       {
         "code": "CATALOGO-LATENCIA-20260713",
         "label": "Catálogo latencia + Confecciones 638 · T8 cierre",
@@ -292,6 +338,66 @@
     ],
     "report": [
       {
+        "code": "AUTOMATIZACION-INFORMES-20260730",
+        "label": "Automatización informes · absorbida en INFORMES-AUTO-MENSAJES-20260801",
+        "fecha": "2026-08-01",
+        "md": ".claude/4_etapas/ETAPA_AUTOMATIZACION_INFORMES_20260730.md",
+        "nuevo": true
+      },
+      {
+        "code": "STOCK-PE-CALZADO-654-20260729",
+        "label": "Stock PE calzado 654 · compra previa · CODxCASOS",
+        "fecha": "2026-07-29",
+        "md": ".claude/4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md",
+        "deploy": "https://rimec-report.vercel.app/stock-pronta-entrega",
+        "nuevo": true
+      },
+      {
+        "code": "CORTE-CONTROL-ENTREGA-20260726",
+        "label": "Corte control entrega · cierre masivo 7 etapas",
+        "fecha": "2026-07-26",
+        "md": ".claude/4_etapas/ETAPA_CORTE_CONTROL_ENTREGA_20260726_CERRADA.md",
+        "deploy": "https://rimec-report.vercel.app",
+        "nuevo": true
+      },
+      {
+        "code": "ASIGNACION-DESCUENTOS-PE-20260726",
+        "label": "Asignación descuentos PE · dictador",
+        "fecha": "2026-07-26",
+        "md": ".claude/4_etapas/ETAPA_ASIGNACION_DESCUENTOS_20260726_CERRADA.md",
+        "deploy": "https://rimec-report.vercel.app/stock-pronta-entrega",
+        "nuevo": true
+      },
+      {
+        "code": "PE-FINAL-CIERRE-MODULO-20260723",
+        "label": "PE final · CSV Carlos · montos",
+        "fecha": "2026-07-26",
+        "md": ".claude/4_etapas/ETAPA_PE_FINAL_CIERRE_MODULO_20260723_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "IMPORT-CP-CONFECCIONES-638-20260721",
+        "label": "Import CP confecciones Kyly 638",
+        "fecha": "2026-07-26",
+        "md": ".claude/4_etapas/ETAPA_IMPORT_CP_CONFECCIONES_20260721_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "IMPORTACION-PROGRAMADOS-20260718",
+        "label": "Importación programados · maratón PF",
+        "fecha": "2026-07-26",
+        "md": ".claude/4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718_CERRADA.md",
+        "nuevo": true
+      },
+      {
+        "code": "REPOSICION-FILTRO-ADICIONAL-20260716",
+        "label": "Reposición AM · filtro siamese + Ley TODOS",
+        "fecha": "2026-07-26",
+        "md": ".claude/4_etapas/ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716_CERRADA.md",
+        "deploy": "https://rimec-report.vercel.app/herramienta-reposicion",
+        "nuevo": true
+      },
+      {
         "code": "LISTADO-MOTOR-FI-PP-20260726",
         "label": "Listado motor FI · precio 0 sin match · reporte Logística",
         "fecha": "2026-07-26",
@@ -309,7 +415,7 @@
       },
       {
         "code": "HIEDRA-VENENOSA-PE-REPORT-20260726",
-        "label": "Hiedra Venenosa PE · diccionario · filtros · descuentos UI",
+        "label": "Hiedra Venenosa PE · diccionario · filtros",
         "fecha": "2026-07-26",
         "md": ".claude/4_etapas/ETAPA_HIEDRA_VENENOSA_PE_REPORT_20260726_CERRADA.md",
         "deploy": "https://rimec-report.vercel.app/stock-pronta-entrega",

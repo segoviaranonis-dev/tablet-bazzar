@@ -1,51 +1,48 @@
-# ACTUAL — Logística Rimec · TXT Carlos 2026-07-28
+# ACTUAL — 2026-08-02
 
-**Actualizado:** 2026-07-28 · **EN CURSO** · 1 etapa en `trabajoVivo`  
+**Actualizado:** 2026-08-02 · cierre oleada Bazzar auditoría/grada · **publica** catálogo  
 **Shibboleth:** Andrés, el que viene.
 
 ---
 
-## 🟢 Foco activo
+## 🟢 Foco maratón (`sesionActiva`)
 
-| Campo | Valor |
-|-------|--------|
-| **Code** | `LOGISTICA-RIMEC-TXT-20260728` |
-| **Módulo** | **2.3.1.28.10** |
-| **Doc etapa** | [ETAPA_LOGISTICA_RIMEC_TXT_20260728.md](./ETAPA_LOGISTICA_RIMEC_TXT_20260728.md) |
-| **App** | http://localhost:3000/logistica-ok |
-| **Meta** | **Logística de Proceso** (hoy) + **Logística Rimec** (TXT Carlos · mismo diseño) |
-| **Fuente** | `csv's/Logistica/Logistica Rimec.xlsx` |
-| **Último Documenta** | **2.3.1.28.16** Orden tradicional Rimec · pendientes deploy/smoke sesión |
+| Code | Módulo | Nota |
+|------|--------|------|
+| `CP-CONFECCIONES-OK-20260729` | RIMEC Web **2.2.1.36** | Compra previa 638 · lightbox · carrito · pill Todos |
+
+Doc: [ETAPA_CP_CONFECCIONES_OK_20260729.md](./ETAPA_CP_CONFECCIONES_OK_20260729.md)  
+Ruta: http://localhost:3001/?origen_tipo=TRÁNSITO_PP&ramo_tipo=CONFECCIONES
 
 ---
 
-## Operativo paralelo (no pausa etapa Logística)
+## 🟢 Abiertas (`trabajoVivo` · `en_curso`)
 
-| Tema | Nota |
+| Code | Módulo | Nota |
+|------|--------|------|
+| `CP-CONFECCIONES-OK-20260729` | RIMEC Web | **sesionActiva** |
+| `PLAN-AUTO-BANDEJA-PE-20260802` | Report | pausa foco |
+| `INFORMES-AUTO-MENSAJES-20260801` | Report | pausa foco |
+| `HOTFIX-CATALOGO-TODOS-CALZADO-20260801` | RIMEC Web | pausa foco |
+| `LOGISTICA-RIMEC-TXT-20260728` | Report | pausa foco |
+
+---
+
+## ⬛ Cerradas hoy (Bazzar)
+
+| Code | Docs |
 |------|------|
-| **RIMEC Web UX catálogo** | **2.2.1.33** · SWR 30 tarjetas · local OK · prod pendiente cierre · doc CHUSAR 20260728 |
-| **PE sdrm2121** | Stock importado · Web OK · Guido asignando % · doc **2.3.1.10.1.5** |
-| Overwrite descuentos | UPSERT batch+molécula · Web gana `updated_at` DESC |
-| **PROMO sin +10 % LP03** | **2.3.1.10.1.4.4** / **2.2.1.34** · Documenta+deploy 2026-07-29 |
-| **Fin de semana · git holding** | **4.05.04.001** · `Nexus_Core` origin = tablet-bazzar.git · no push raíz hasta ventana |
-| **Siamese Estilo/Género pilares** | **2.2.1.35** / **2.3.1.10.1.6** · lista FK `/pilares` · Web+AM+DPE · 2026-07-29 |
+| `AUDITORIA-INTEGRIDAD-STOCK-BAZZAR-20260801` | [CERRADA](./ETAPA_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801_CERRADA.md) · **2.5.1.6–12** |
+| `AUDITORIA-DEPOSITO-WEB-20260801` | [CERRADA](./ETAPA_AUDITORIA_DEPOSITO_WEB_20260801_CERRADA.md) |
+
+**Ops:** Receteo Bazzar Web — carga real desde RIMEC. Catálogo: Kyly PPD + ACTVITTA PRENDAS PE + filtros siameses (**2.5.1.11**).
 
 ---
 
-## Pausado / histórico reciente
+## Deploy
 
-| Code | Nota |
-|------|------|
-| `CORTE-CONTROL-ENTREGA-20260727` | Operativo · no en trabajoVivo |
-| `LOGISTICA-CARLOS-900M-CABECERA-20260727` | Borrador Excel → supersedido por TXT Rimec |
-
----
-
-## Deploy prod
-
-| App | Commit | URL |
-|-----|--------|-----|
-| Report | **DESPLIGA 2026-07-28** · roles (**2.3.1.28.15**) · **Orden tradicional 2.3.1.28.16 local · prod pendiente** | https://rimec-report.vercel.app |
-| RIMEC Web | vigente | https://rimec-web.vercel.app |
-
-**Orden Director 2026-07-28:** **Nueva etapa** · Logística Rimec + import TXT.
+| App | Nota | URL |
+|-----|------|-----|
+| **Bazzar Web** | Catálogo grada + filtros · cierre 2026-08-02 | publicar Vercel (orden Director) |
+| Portal | Etapas | http://localhost:3004/etapas |
+| RIMEC Web | CP 638 foco | http://localhost:3001 |

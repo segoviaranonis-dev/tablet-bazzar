@@ -239,6 +239,31 @@
               "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_SIAMESE_ESTILO_GENERO_PILARES_20260729.md",
               "nuevo": true
             },
+            {
+              "code": "2.2.1.37",
+              "slug": "imagen-hold-sin-parpadeo",
+              "label": "Imagen hold · sin parpadeo nombre",
+              "lead": "ProductImage decode-first · sin skeleton linea·ref · Seguir comprando SPA · CP confecciones.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_IMAGEN_HOLD_SIN_PARPADEO_20260729.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.38",
+              "slug": "catalogo-scope-ramo-por-usuario",
+              "label": "Catálogo · scope 654/638 por login",
+              "lead": "DARIO/PATRICIA solo 638 · vendedores RIMEC solo 654 · API+UI+warm · accesos :3004.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CATALOGO_SCOPE_RAMO_POR_USUARIO_20260730.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.39",
+              "slug": "hotfix-catalogo-todos-calzado-20260801",
+              "label": "Hotfix TODOS + Calzado · timeout prod",
+              "lead": "Batch CP/PE · RPC eficiente · filtros degradado · fix local ✅ · deploy prod ⏳ · 2026-08-01.",
+              "appPath": "/?origen_tipo=TODOS&ramo_tipo=CALZADO",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md",
+              "nuevo": true
+            },
 
             {
               "code": "2.2.1.32",
@@ -471,6 +496,15 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.1.33.3",
+                  "slug": "reimport-cp638-pp49-primavera",
+                  "label": "Reimport PP-49 · CP638 Primavera",
+                  "lead": "919 SKUs · 4528 prendas · gradas Carlos · borrar+reimport 2026-08-02.",
+                  "appPath": "/proceso-importacion/pedido-proveedor/49",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_REIMPORT_CP638_PP49_20260802.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.1.29",
                   "slug": "pp-abierto-reposicion",
                   "label": "PP abierto · reposición AM",
@@ -539,9 +573,9 @@
               "code": "2.3.1.3",
               "slug": "aprobaciones",
               "label": "Aprobaciones",
-              "lead": "Gestión FI · PE badge · CASO PE-LIQ/NORMAL/PROMO · confirmadas.",
+              "lead": "Pendiente · Aprobado · Anulado · PE badge · SSR liviano.",
               "appPath": "/aprobaciones",
-              "md": ".claude/2_modulos/2.1_control_central/modules/aprobacion_pedidos/CHUSAR_APROBACIONES_PE_BADGE.md",
+              "md": ".claude/2_modulos/2.3_report/aprobaciones/CHUSAR_TABS_PENDIENTE_APROBADO_ANULADO_20260729.md",
               "nuevo": true,
               "children": [
                 {
@@ -551,6 +585,15 @@
                   "lead": "Campo CASO en célula = PE-LIQ · PE-NORMAL · PE-PROMO · PE-COMUN (no batch pe-import).",
                   "appPath": "/aprobaciones",
                   "md": ".claude/2_modulos/2.1_control_central/modules/aprobacion_pedidos/CHUSAR_APROBACIONES_CASO_PE_CORTO_20260726.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.3.2",
+                  "slug": "aprobaciones-tabs-pendiente-aprobado",
+                  "label": "Tabs Pendiente / Aprobado / Anulado",
+                  "lead": "Sin pestaña Reservadas · BD RESERVADA=Pendiente · SSR sin hang · deploy 3588f9c.",
+                  "appPath": "/aprobaciones",
+                  "md": ".claude/2_modulos/2.3_report/aprobaciones/CHUSAR_TABS_PENDIENTE_APROBADO_ANULADO_20260729.md",
                   "nuevo": true
                 }
               ]
@@ -1208,6 +1251,159 @@
                   "nuevo": true
                 }
               ]
+            },
+            {
+              "code": "2.3.1.35",
+              "slug": "automatizacion-informes",
+              "label": "Automatización de informes",
+              "lead": "Admin gerentes · catálogo · export · SMTP servicio · etapa unificada 2026-08-01.",
+              "appPath": "/automatizacion-informes",
+              "md": ".claude/2_modulos/2.3_report/automatizacion_informes/INDICE.md",
+              "nuevo": true,
+              "children": [
+                {
+                  "code": "2.3.1.35.1",
+                  "slug": "automatizacion-informes-chusar",
+                  "label": "CHUSAR fachada hub",
+                  "lead": "Tarjeta home · catálogo · absorción selectiva.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_AUTOMATIZACION_INFORMES_20260730.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.2",
+                  "slug": "leccion-violaciones-informes-correo",
+                  "label": "Lección violaciones informes_correo",
+                  "lead": "Plan estudios Chusar · KEEP/ADAPT/DISCARD.",
+                  "md": ".claude/2_modulos/2.3_report/CHUSAR_LECCION_VIOLACIONES_INFORMES_CORREO_20260801.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.3",
+                  "slug": "cascada-ramo-marca-tipo-v2",
+                  "label": "Cascada ramo → marca / tipo_v2",
+                  "lead": "Error 4.02.05.001 · PIPA/NANAI fuera de CALZADO.",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_CASCADA_RAMO_MARCA_TIPO_V2_20260801.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.4",
+                  "slug": "precio-pdf-ppd-alejandro-magno",
+                  "label": "Precio PDF = PPD Alejandro Magno",
+                  "lead": "Error 4.02.05.002 · no listado Motor vivo.",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PRECIO_PDF_PPD_ALEJANDRO_MAGNO_20260801.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.5",
+                  "slug": "destinatarios-multi-horarios",
+                  "label": "Destinatarios multi + multi-horarios",
+                  "lead": "Anti-saturación · Moleca 08/12/15 · Vizzano otra hora · mig 193.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_DESTINATARIOS_MULTI_HORARIOS_20260801.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.6",
+                  "slug": "reloj-dias-hora",
+                  "label": "Reloj días + hora (worker)",
+                  "lead": "Sin click · lunes 08:03 · America/Asuncion · mig 195.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_RELOJ_AUTOMATIZACION_DIAS_HORA_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.7",
+                  "slug": "prep-pdf-t-menos-10",
+                  "label": "Prep PDF T−10 + mail a la hora",
+                  "lead": "Fotos sin timeout · aviso liviano a T · 2026-08-02.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PREP_PDF_T_MENOS_10_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.8",
+                  "slug": "pdf-grada-cantidad-dos-contenedores",
+                  "label": "PDF grada \| cantidad (dos contenedores)",
+                  "lead": "654 · fórmula + qty sin pisar · 2 cols · 2026-08-02.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PDF_GRADA_CANTIDAD_DOS_CONTENEDORES_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.9",
+                  "slug": "pdf-cabecera-tipo-cadena-lp",
+                  "label": "PDF cabecera Tipo × Cadena × LP",
+                  "lead": "Cerrado_Normal_LPN · banner sin pisar título · 2026-08-02.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PDF_CABECERA_TIPO_CADENA_LP_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.10",
+                  "slug": "pdf-espejo-lpc03-grupo1",
+                  "label": "PDF espejo LPC03 · Grupo 1",
+                  "lead": "LPN+LPC03 · 1 COD.GRUPO=1 PDF · nombre=descripción · 2026-08-02.",
+                  "appPath": "/mensajes-internos",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PDF_ESPEJO_LPC03_GRUPO1_20260802.md",
+                  "nuevo": true
+                }
+              ]
+            },
+            {
+              "code": "2.3.1.36",
+              "slug": "mensajes-internos",
+              "label": "Mensajes internos",
+              "lead": "Inbox por usuario_v2 · PDF backend · sin IMAP · 2026-08-01.",
+              "appPath": "/mensajes-internos",
+              "md": ".claude/2_modulos/2.3_report/mensajes_internos/INDICE.md",
+              "nuevo": true,
+              "children": [
+                {
+                  "code": "2.3.1.36.1",
+                  "slug": "mensajes-internos-chusar",
+                  "label": "CHUSAR mensajes internos",
+                  "lead": "Fachada · frontera con Automatización · molécula objetivo.",
+                  "appPath": "/mensajes-internos",
+                  "md": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_MENSAJES_INTERNOS_20260801.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.36.2",
+                  "slug": "contrato-envio-pdf-bandeja",
+                  "label": "Contrato envío PDF → SMTP + bandeja",
+                  "lead": "Plan 2026-08-02 · depósito STOCK_PRONTA_ENTREGA.",
+                  "appPath": "/mensajes-internos",
+                  "md": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_CONTRATO_ENVIO_PDF_BANDEJA_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.36.3",
+                  "slug": "checklist-absorcion-mailer-ui",
+                  "label": "Checklist absorción mailer + UI shell",
+                  "lead": "KEEP donante · DISCARD IMAP · destino Report.",
+                  "md": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_CHECKLIST_ABSORCION_MAILER_UI_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.36.4",
+                  "slug": "piloto-hector-bandeja-pe",
+                  "label": "Piloto HECTOR bandeja Stock PE",
+                  "lead": "ventas_hector@rimec.com.py · anti-saturación mail · 2026-08-02.",
+                  "appPath": "/mensajes-internos",
+                  "md": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_PILOTO_HECTOR_BANDEJA_PE_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.36.5",
+                  "slug": "bandeja-solo-destinatario",
+                  "label": "Bandeja solo destinatario",
+                  "lead": "Anti-saturación · sesión ≠ forzar vista · error 4.02.05.003 · 2026-08-02.",
+                  "appPath": "/mensajes-internos",
+                  "md": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_BANDEJA_SOLO_DESTINATARIO_20260802.md",
+                  "nuevo": true
+                }
+              ]
             }
           ]
         },
@@ -1566,7 +1762,90 @@
               "slug": "bazzar-web",
               "label": "Bazzar Web (Report)",
               "lead": "Compra web · motor precio · depósito desde Report.",
-              "appPath": "/bazzar-web"
+              "appPath": "/bazzar-web",
+              "children": [
+                {
+                  "code": "2.5.1.3",
+                  "slug": "auditoria-deposito-web-20260801",
+                  "label": "Auditoría Depósito Web (Report)",
+                  "lead": "ALM_WEB_01 · local :3000 · tienda :3002 · checklist 2026-08-01.",
+                  "appPath": "/bazzar-web/deposito-web",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_AUDITORIA_DEPOSITO_WEB_REPORT_20260801.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.4",
+                  "slug": "motor-precio-lpn-caso-ppd-huerfano",
+                  "label": "Motor precio · fix LPN/CASO ppd huérfano",
+                  "lead": "FID→PPD roto · fallback precio_lista + Stock Sano · 107/107.",
+                  "appPath": "/bazzar-web/motor-precio",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_MOTOR_PRECIO_LPN_CASO_PPD_HUERFANO_20260801.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.6",
+                  "slug": "auditoria-integridad-stock-bazzar-20260801",
+                  "label": "Auditoría integridad stock · 2 cuadros",
+                  "lead": "Cuadro stock ALM_WEB_01 + siameses Depósito↔tienda · 2026-08-01.",
+                  "appPath": "/bazzar-web/auditoria-integridad",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.7",
+                  "slug": "auditoria-local-stock-bazzar-20260802",
+                  "label": "Estadísticas de Stock LOCAL · v2.4",
+                  "lead": "Keyword estadisticas de Stock · 654/638 · fotos toggle · orden grada · no deploy.",
+                  "appPath": "http://localhost:3002/auditoria-local",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_AUDITORIA_LOCAL_STOCK_BAZZAR_WEB_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.12",
+                  "slug": "actvitta-prendas-dpe-pe-20260802",
+                  "label": "ACTVITTA PRENDAS · DPE + PE",
+                  "lead": "COD.GRUPO 070501… · grada P/M/G/GG · ALM 34–39 contaminado.",
+                  "appPath": "http://localhost:3002/catalogo?marca=ACTVITTA",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_ACTVITTA_PRENDAS_DPE_PE_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.11",
+                  "slug": "catalogo-grada-filtros-siameses-receteo-20260802",
+                  "label": "Catálogo grada + filtros siameses · receteo",
+                  "lead": "638 PPD · PRENDAS PE · Ramo/Tipo siamese · publica cierre etapa.",
+                  "appPath": "http://localhost:3002/catalogo",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_CATALOGO_GRADA_FILTROS_SIAMESES_RECETEO_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.10",
+                  "slug": "grada-siamese-estadisticas-stock-20260802",
+                  "label": "Grada siamese · Estadísticas base",
+                  "lead": "Catálogo + Depósito Web · talle×qty · orden canónico · caja abierta UI.",
+                  "appPath": "http://localhost:3002/catalogo",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_GRADA_SIAMESE_ESTADISTICAS_STOCK_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.8",
+                  "slug": "adecuacion-bazzar-rimec-auditoria-senior-20260802",
+                  "label": "Adecuación Bazzar↔RIMEC · auditoría senior",
+                  "lead": "Anti-mediocridad · gaps · roadmap F0–F4 · F0 = auditoria-local v2.3.",
+                  "appPath": "http://localhost:3002/auditoria-local",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_ADECUACION_BAZZAR_RIMEC_AUDITORIA_SENIOR_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.9",
+                  "slug": "protocolo-grada-abierta-638-holding",
+                  "label": "Protocolo grada abierta 638 · holding",
+                  "lead": "638≠654 · am_talle · Carlos · ok_grada Bazzar · error 4.05.03.002.",
+                  "appPath": "http://localhost:3002/auditoria-local",
+                  "md": ".claude/3_arquitectura/3.2_venta_tienda/PROTOCOLO_GRADA_ABIERTA_638_HOLDING.md",
+                  "nuevo": true
+                }
+              ]
             },
             {
               "code": "2.3.3.2",
