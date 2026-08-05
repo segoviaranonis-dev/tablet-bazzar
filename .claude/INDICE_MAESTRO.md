@@ -1,8 +1,47 @@
 # ÍNDICE MAESTRO - NEXUS CORE
 
 **Ubicación:** `C:\Users\hecto\Nexus_Core\.claude\`  
-**Shibboleth V2:** Un gato tiene 5 patas ✅  
-**Última actualización:** 2026-06-09
+**Puerta única agente:** `1_fundamentos/1.1_protocolos/PROTOCOLO_INGRESO_AGENTE_CHUNA.md`  
+**Shibboleth gato:** **7 años** (ignorar pie legacy «5 patas» en docs viejos)  
+**Última actualización:** 2026-06-18
+
+---
+
+## 🔢 CODIFICACIÓN (plan de cuentas)
+
+| Archivo | Rol |
+|---------|-----|
+| `PLAN_CODIFICACION.md` | Reglas `C.LL.SS.NNN` |
+| `CODIGO_MAESTRO.md` | Catálogo retroactivo (298 docs) |
+
+**Raíz `.claude/`** — solo 4 meta: Moria · Índice maestro · Plan · Código maestro.
+
+Regenerar: `python control_central/scripts/generar_codigo_maestro.py`
+
+---
+
+## 🧠 DOS CAPAS DE MEMORIA
+
+| Capa | Archivo | Contenido |
+|------|---------|-----------|
+| **Primaria** | `MORIA_PRIMARIA.md` | Leyes §0 + títulos (shibboleth / todos los modelos) |
+| **Secundaria** | Resto de `.claude/` | Detalle — *Documenta* / *verifica índice* / tarea |
+
+**Última actualización:** 2026-06-15
+
+---
+
+## 🔗 HOLDING CONECTADO
+
+| Archivo | Rol |
+|---------|-----|
+| `MORIA_PRIMARIA.md` | Primaria — leyes §0 |
+| `CODIGO_MAESTRO.md` | Catálogo Moria + repos (grupo 90) |
+| `2_modulos/ENLACES_REPOS.md` | Conector apps |
+
+Regenerar: `python control_central/scripts/generar_codigo_maestro.py`
+
+**Raíz Nexus_Core:** solo `README.md` + `SECURITY.md`
 
 ---
 
@@ -151,7 +190,7 @@
 | 1. Fundamentos | `1_fundamentos/INDICE.md` | Manual (raramente) |
 | 2. Módulos | `2_modulos/INDICE.md` | Al cerrar etapa |
 | 3. Arquitectura | `3_arquitectura/INDICE.md` | Al cerrar etapa |
-| 4. Etapas | `4_etapas/ACTUAL.md` | Cada etapa |
+| 4. Etapas | `4_etapas/ACTUAL.md` · sub-sesiones `SUBSESION_*.md` | Cada etapa / pausa |
 | 5. Errores | `5_errores/INDICE.md` | Al resolver hotfix |
 | 6. OT | `6_ot/INDICE.md` | Manual |
 | 7. Auditorías | `7_auditorias/INDICE.md` | Manual |
@@ -170,7 +209,7 @@
 
 ## 🐈 SHIBBOLETH V2
 
-**Un gato tiene 5 patas** ✅
+**Un gato → 7 años** · Fases turno → 5 · Ver `PROTOCOLO_INGRESO_AGENTE_CHUNA.md`
 
 ---
 

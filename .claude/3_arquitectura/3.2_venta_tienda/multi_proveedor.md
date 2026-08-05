@@ -1,5 +1,7 @@
 # 🏭 VENTA EN TIENDA - Sistema Multi-Proveedor
 
+> **Confecciones (`tipo_v2_id=2`):** pautas de Línea, Referencia=`K`, Material=`{linea}K`, Color, Grada → **[CONFECCIONES_TIPO_V2_2.md](./CONFECCIONES_TIPO_V2_2.md)**
+
 **Fecha:** 7 junio 2026  
 **REVELACIÓN CRÍTICA:** Este proyecto NO es solo POS - Es el LABORATORIO para expandir Nexus más allá de calzados
 

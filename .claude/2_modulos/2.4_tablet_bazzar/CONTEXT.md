@@ -20,7 +20,9 @@ Tablet Bazzar es el **ejecutor POS** para vendedores en las 6 tiendas Bazzar.
 | **Tablet Bazzar** | Ejecutor (venta, fotos, stock en tienda) |
 | **Report** | Administrador (sync depósitos, KPIs) |
 
-**Estrategia:** Fase 1 de Hiedra Venenosa (Infiltración) — tablet consume depósitos sincronizados por Report.
+**Plan maestro:** [PLANIFICACION_CAJA_BAZZAR_HIEDRA.md](../../4_etapas/PLANIFICACION_CAJA_BAZZAR_HIEDRA.md)  
+**Tarea P0:** [TAREA_PENDIENTE_DOS_TABLAS_CAJA_BOBINA.md](../../4_etapas/TAREA_PENDIENTE_DOS_TABLAS_CAJA_BOBINA.md)  
+**Micro-ecosistema:** [MICRO_ECOSISTEMA_POS_BAZZAR.md](../../../tablet-bazzar/docs/MICRO_ECOSISTEMA_POS_BAZZAR.md)
 
 ---
 
@@ -89,7 +91,9 @@ tablet-bazzar/
 |------|------|-------------|-----|
 | **Panel** | `/` | Selector de modo (grid 2x2) | `docs/MODOS_VISTA.md` |
 | **Depósito con fotos** | `/deposito` | Grid tradicional stock | `docs/MODOS_VISTA.md` |
-| **Cadena consecutiva** | `/cadena` | Navegación táctil L+R → colores | `docs/CADENA_CONSECUTIVA.md` |
+| **Ventas** (cadena) | `/cadena` | Navegación táctil L+R → colores + triángulo | `docs/CADENA_CONSECUTIVA.md` |
+
+**Estilo visual:** Ver [ESTILO_VISUAL_NIIF_VS_VENTAS.md](./ESTILO_VISUAL_NIIF_VS_VENTAS.md) — **Ventas = salón Bazzar**; **resto = NIIF institucional**.
 
 **Futuro:** Búsqueda rápida, tickets ORO, modo offline PWA.
 
@@ -215,7 +219,8 @@ Navegación **marca → cadena L+R ordenada** optimizada para tablets landscape:
 | **Paneles filtros** | Colapsables (Estilo izq, Referencia der) — tap en hero abre |
 | **Aside fotos** | Inviolable — naipes verticales + mazo siempre visible |
 | **Interacción** | 100% táctil (gestos ←→ ↑↓, targets ≥52px) |
-| **Estilo visual** | Banana Republic (crema/carbón, serif Cormorant, `.chip-br`) |
+| **Estilo visual Ventas** | Salón Bazzar (crema/carbón, serif Cormorant, `.chip-br`) — **solo `/cadena*`** |
+| **Estilo resto tablet** | **NIIF institucional** (`#f1f5f9`, azul RIMEC, slate) — panel, depósito, login |
 | **Performance** | Thumbs 200px + prefetch vecinos |
 | **Arquitectura** | Backend titanio (`lib/server/`) — agrupación server-side |
 
@@ -318,6 +323,12 @@ productos/{linea}-{referencia}-{material}-{color}.jpg
 
 **Ubicación:** `lib/server/` (no exportado a cliente)
 
+### Triángulo header (pilares en lectura)
+
+Chips género · marca · estilo en cadena resuelven **JOIN en vivo** a `linea` + `linea_referencia` (no solo FK del depósito). Cambios en Report `/pilares` se ven al próximo request — sin re-sync retail.
+
+**Doc:** `3_arquitectura/3.2_venta_tienda/TRIANGULO_HEADER_PILARES.md` · código: `pilar-triangulo.ts` + `catalogo-sql.ts`
+
 ### Funciones implementadas (cadena)
 
 | Endpoint | Archivo | Función |
@@ -358,6 +369,7 @@ Si existen scripts de sync/verificación, documentar aquí.
 4. **Docs en repo primero** — `.claude/` solo holding/leyes.
 5. **100% táctil** — targets ≥52px, no hover states.
 6. **Report es cerebro** — tablet NO sincroniza, solo consume.
+7. **NIIF vs Ventas** — salón Bazzar **solo** en `/cadena*`; resto tablet = NIIF (`ESTILO_VISUAL_NIIF_VS_VENTAS.md`).
 
 ---
 
@@ -369,6 +381,7 @@ Si existen scripts de sync/verificación, documentar aquí.
 - [04_tablet_bazzar.md](./04_tablet_bazzar.md) — arquitectura detallada
 - [agrupacion_dos_niveles.md](./agrupacion_dos_niveles.md) — **LEY agrupación L+R+Mat · color**
 - [cadena_consecutiva.md](./cadena_consecutiva.md) — resumen modo cadena
+- **[ESTILO_VISUAL_NIIF_VS_VENTAS.md](./ESTILO_VISUAL_NIIF_VS_VENTAS.md)** — **LEY visual: NIIF vs Ventas**
 
 ### En `tablet-bazzar/docs/` (repo)
 

@@ -77,6 +77,12 @@ borrador  ──(Paso 0 carga)──►  borrador + SKUs staging
 | `precio_auditoria` | Trazas cierre (esquema Streamlit) |
 | `intencion_compra` / `intencion_compra_pedido` | Uso PP/IC en historial |
 
+### Cardinalidad biblioteca ↔ listado (1:N)
+
+- **Cada listado** (`precio_evento`) referencia **una** biblioteca: columna `biblioteca_precio_id`.
+- **Cada biblioteca** puede originar **varios** listados a lo largo del tiempo (mismo proveedor · distintos Excel/eventos).
+- Borrador post-Paso 0: FK NULL hasta Memoria — ver [CHUSAR_MAPA §3.1](../motor_precios/CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md).
+
 **Blindado:** `registro_ventas_general_v2` (Sales Report) — sin JOIN.
 
 ---

@@ -1,9 +1,10 @@
 # ETAPA: TABLET BAZZAR — POS TIENDA FÍSICA
 
+> **⚠️ UNIFICADA** — Esta etapa fue absorbida por **[ETAPA_TABLET_FINAL.md](./ETAPA_TABLET_FINAL.md)** (2026-06-10).  
+> No usar como doc activo. Conservada como historial Etapa 2 POS.
+
 **Fecha inicio:** 2026-06-10  
-**Estado:** ACTIVA — Director definió objetivo  
-**Ejecutor:** Claude Code (código) · Antigravity (UI touch) · Cursor (auditoría)  
-**Verificador:** Cursor
+**Estado:** → ver [ETAPA_TABLET_FINAL.md](./ETAPA_TABLET_FINAL.md)
 
 ---
 
@@ -87,7 +88,9 @@ Según `TABLET_BAZZAR_ETAPA_1_COMPLETADA.md`:
 - [x] Depósito con fotos (grid touch)
 - [x] Cadena consecutiva — UI BR, gestos, paneles colapsables, aside fotos fijo
 - [x] **Backend titanio** — `/filtros`, `/ingresar`, `/cadena`, `/live` (2026-06-11)
-- [x] Botón INGRESAR + sesión POS 12 h + stock live 4 s
+- [x] Botón INGRESAR + sesión POS 12 h + stock live
+- [x] **Fix P0 filtros/búsqueda** — parser `refs` URL, normalización claves (2026-06-11)
+- [x] **Navegación 2 niveles** — footer L+R+Mat, sidebar L+R, mazo colores, teclado ←→↑↓
 - [ ] Carrito / flujo ticket
 
 ### Prioridad 3 — Clientes
@@ -154,7 +157,9 @@ Existen **dos diseños** en documentación:
 | **Agrupación 2 niveles (LEY POS)** | `.claude/2_modulos/2.4_tablet_bazzar/agrupacion_dos_niveles.md` |
 | **Backend POS titanio** | `tablet-bazzar/docs/BACKEND_POS.md` |
 | **Cadena consecutiva (UI)** | `tablet-bazzar/docs/CADENA_CONSECUTIVA.md` |
-| **Cierre sub-etapa cadena** | `.claude/4_etapas/ETAPA_TABLET_CADENA_BACKEND_TITANIO_CERRADA.md` |
+| **Cierre sub-etapa cadena backend** | `.claude/4_etapas/ETAPA_TABLET_CADENA_BACKEND_TITANIO_CERRADA.md` |
+| **Cierre sub-etapa cadena UI + filtros** | `.claude/4_etapas/ETAPA_TABLET_CADENA_UI_NAV_CERRADA.md` |
+| **Navegación cadena (teclado, 2 niveles)** | `tablet-bazzar/docs/NAVEGACION_CADENA.md` |
 | **Memoria cuestionario cadena** | `tablet-bazzar/docs/MEMORIA_CADENA_UI.md` |
 | Arquitectura maestra | `.claude/TABLET_BAZZAR_ARQUITECTURA.md` |
 | Etapa 1 cerrada | `.claude/TABLET_BAZZAR_ETAPA_1_COMPLETADA.md` |

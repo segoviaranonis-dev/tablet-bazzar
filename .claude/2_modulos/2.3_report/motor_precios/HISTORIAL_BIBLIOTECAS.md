@@ -11,7 +11,7 @@ Listado de **todos los casos** de la biblioteca:
 
 - Activos e históricos
 - Código · descripción · última modificación
-- Enlace a eventos que usaron el caso (`precio_evento_caso`)
+- Enlace a **eventos / listados** que usaron casos de esta biblioteca (`precio_evento` vía `biblioteca_precio_id`) — relación **1 biblioteca → N listados** · ver [CHUSAR_MAPA §3.1](./CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md)
 
 ---
 

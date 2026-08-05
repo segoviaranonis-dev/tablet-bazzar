@@ -11,7 +11,12 @@
 ### **5.01.00.001 Ingreso agente Chuna**
 **Archivo:** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md`  
 **Tema:** Puerta única · shibboleth · rigurosidad portón de obra  
-**Estado:** ✅ ACTIVO — reemplaza guardian legacy y respuestas «3/5/13 patas»
+**Estado:** ✅ ACTIVO — shibboleth vivo = **Protocolo Moises Activado** (2026-08-04)
+
+### **5.01.00.021 Protocolo Moises Activado**
+**Archivo:** `CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md`  
+**Tema:** Relevo Chusar→Moises · misma planificación · orilla profesional  
+**Estado:** ✅ VIGENTE — etapa `MOISES-20260804`
 
 ---
 **Archivo:** `workflow_hibrido_cursor_claude.md`  

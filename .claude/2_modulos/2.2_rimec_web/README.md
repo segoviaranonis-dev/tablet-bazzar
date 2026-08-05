@@ -1,3 +1,10 @@
+# 2.2 RIMEC Web — LEEME (entrada agente)
+
+> **Antes de codear:** [MORIA_PRIMARIA.md](../../MORIA_PRIMARIA.md) §0 · [ACTUAL.md](../../4_etapas/ACTUAL.md) · **[INDICE.md](./INDICE.md)** · Navegador http://localhost:3004/modulos/rimec-web  
+> **Chusar ACTIVO** — solo lectura Moria salvo keyword Director. Shibboleth → **7 años**.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

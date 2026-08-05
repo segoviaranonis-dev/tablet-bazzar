@@ -77,6 +77,7 @@ Ver [CHUSAR § Estado Report](./CHUSAR_DEPOSITO_RIMEC.md#estado-report--implemen
 | 1i2 | **[CHUSAR_USUARIO_EVERT_STOCK_PE_20260727.md](./CHUSAR_USUARIO_EVERT_STOCK_PE_20260727.md)** | **2.3.1.10.1.4.2** · EVERT ADMIN · Stock PE sí · asignar descuento no |
 | 1k | **[CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md](./CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md)** | **2.3.1.10.1.4.3** · pivote por % · política comercial · panel Revisar L+R+M+C · par Biblioteca casos |
 | 1k2 | **[CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md](./CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md)** | **2.3.1.10.1.5** · batch `sdrm2121` · import Node · MIG-191 · **overwrite** descuentos Guido · pendientes |
+| — | **[ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md](../../4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md)** | **⬛ CERRADA 2026-07-29** · Stock PE calzado **654** · compra previa · CODxCASOS `b463c18` |
 | 1j | **[CHUSAR_LEY_DIVISION_FI_LP03_20260726.md](./CHUSAR_LEY_DIVISION_FI_LP03_20260726.md)** | **2.3.1.10.1.4.1** · split PE N/P/LIQ/COMUN · CP por caso · 1 marca · LP03 +10 % grado 1 · 4 grados |
 | 1j4 | **[CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md](./CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md)** | **2.3.1.10.1.4.4** · PROMO sin Grado 1 +10 % · anti doble descuento · par Web **2.2.1.34** · 🟢 **2026-07-29** |
 | 1j5 | **[CHUSAR_SIAMESE_ESTILO_GENERO_AM_DPE_20260729.md](./CHUSAR_SIAMESE_ESTILO_GENERO_AM_DPE_20260729.md)** | **2.3.1.10.1.6** · Estilo/Género FK `/pilares` · AM+DPE · par Web **2.2.1.35** · 🟢 **2026-07-29** |

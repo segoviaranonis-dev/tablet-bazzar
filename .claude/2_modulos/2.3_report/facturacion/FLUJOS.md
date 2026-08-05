@@ -35,6 +35,8 @@ stateDiagram-v2
 | `CONFIRMADA` | Sí | Sí |
 | `ANULADA` | No | No |
 
+**Botón DIOS (spec):** [CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md](./CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md) — anula FI entera + reintegra stock → Anulaciones (PE + tránsito + Aprobaciones RESERVADA).
+
 ---
 
 ## Máquina — `traspaso.estado` *(vista Facturación)*

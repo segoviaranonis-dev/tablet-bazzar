@@ -28,4 +28,27 @@ alwaysApply: true
 - Smoke: Normal no lista línea con badge PROMO (ej. PE 1395).
 - Actualizar el CHUSAR `2.2.1.18` si cambia la ley.
 
+## Cabecera siamese (preventa + llegada)
+
+Al tocar **`nro_pedido_externo`** (Nº preventa Carlos) o propagación cabecera PP:
+
+- Seguir mapa `CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO.md` (`2.3.1.31`).
+- **Mismo turno:** vistas `v_stock_*` · AM · Web · PDF FI · aprobaciones.
+- Par dato duro: `quincena_arribo_id` 1–24 · [FECHA_DE_EMBARQUE.md](../../.claude/2_modulos/2.3_report/proceso_importacion/FECHA_DE_EMBARQUE.md).
+
+## Grada siamese Bazzar (Estadísticas = base)
+
+**Doc:** `2.5.1.10` · `CHUSAR_GRADA_SIAMESE_ESTADISTICAS_STOCK_20260802.md`
+
+| Hermano | App |
+|---------|-----|
+| Estadísticas de Stock | Bazzar `:3002/auditoria-local` (**base**) |
+| Catálogo tienda | Bazzar `:3002/catalogo` |
+| Depósito Web | Report `/bazzar-web/deposito-web` |
+
+1. Chip **talle + cantidad** (no solo etiqueta).
+2. Orden 638: `1·2·3 → P·M·G·GG → 4·6·8 → 10…` · 654: numérico etiqueta.
+3. Origen caja cerrada 8/12 **no** oculta qty en venta tienda (caja abierta ALM).
+4. Fix grada en uno → alinear los tres el **mismo turno**.
+
 **Shibboleth:** Andrés, el que viene.

@@ -1,0 +1,55 @@
+---
+description: OBLIGATORIO — Bug urgente / hotfix urgente abre PARÉNTESIS. Preguntar dónde está el error. Nunca asumir el tema del chat.
+alwaysApply: true
+---
+
+# Hotfix / Bug urgente — PARÉNTESIS (sin excepciones)
+
+**Keywords:** **Bug urgente!!** · **bug urgente** · **hotfix urgente**
+
+Doc Moria: `.claude/1_fundamentos/1.1_protocolos/protocolo_errores.md`
+
+---
+
+## Qué significa PARÉNTESIS
+
+La keyword **cierra temporalmente** el hilo de trabajo actual (etapa, módulo, archivos abiertos, último commit, `ACTUAL.md`).
+
+El bug **no tiene relación** con lo que venías haciendo **hasta que el Director lo confirme**.
+
+---
+
+## PASO 0 — Obligatorio antes de TODO
+
+Si el Director activó la keyword **y no dio en el mismo mensaje** app + módulo + síntoma concreto:
+
+1. **PARAR** — no editar código · no grep · no terminal · no índice errores · no deploy.
+2. **PREGUNTAR** al Director (máx. 4 preguntas en un solo bloque):
+   - ¿En qué **app**? (Report / RIMEC Web / Tablet / Bazzar Web / Streamlit)
+   - ¿Qué **ruta, pantalla o archivo**?
+   - ¿Qué pasa vs qué esperabas?
+   - ¿Error, log o captura?
+3. **Esperar respuesta** — un turno de solo preguntas está bien y es **correcto**.
+
+Si el Director **ya** nombró app + lugar + fallo en el mismo mensaje → confirmar en una línea y recién ahí investigar.
+
+---
+
+## Prohibido (violación grave)
+
+- Asumir que el bug es el tema del chat, del diff, del deploy reciente o de archivos abiertos en el IDE.
+- Empezar a “arreglar” pilares porque estabas en pilares, Vercel porque acabas de pushear, etc.
+- Mezclar hotfix con la etapa activa sin orden explícita del Director.
+- Saltarse PASO 0 porque “parece obvio”.
+
+---
+
+## Después de confirmar alcance
+
+Entonces sí: `protocolo_errores.md` · índice títulos · HOTFIX mínimo · evidencia.
+
+**Prioridad:** hotfix > etapa activa · diff mínimo · sin refactor.
+
+---
+
+**Shibboleth:** Andrés, el que viene.

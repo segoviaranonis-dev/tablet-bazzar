@@ -1,7 +1,8 @@
 # CHUSAR — Vinculación listado precios ↔ PP (Motor Report)
 
-**Código:** **2.3.1.7.5.3.2** · **Actualizado:** 2026-07-14 (MIG-150 · dos modos)  
+**Código:** **2.3.1.7.5.3.2** · **Actualizado:** 2026-07-24 (MIG-177 certificación · Documentación Chusar)  
 **Sub-bloque de:** [CHUSAR_PP_TAB_STOCK.md](./CHUSAR_PP_TAB_STOCK.md)  
+**Certificación:** [CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md](./CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md) (**2.3.1.7.5.3.8**)  
 **UI Report:** `PpTabStock.tsx` · panel Listado de precios RIMEC  
 **Logic:** `logic.py` → `vincular_listado_precio_a_pp` · `recalcular_facturas_internas_pp`  
 **SQL:** `vincular_listado_a_pp(pp, evento, uid, p_incluir_vendidos)` · MIG-150  
@@ -66,6 +67,15 @@ SQL también exige `ABIERTO` para re-snapshot.
 
 ---
 
+## Prod Vercel (2026-07-14)
+
+**Error resuelto:** `4.02.03.012` · commit report `7b7d5d7`  
+Doc consolidado: [CHUSAR_HOTFIX_REPORT_PP14_20260714.md](./CHUSAR_HOTFIX_REPORT_PP14_20260714.md)
+
+En Vercel, `vincular-listado` con `recalcular_fi=true` invoca **`recalcularFisPp`** (TS). Sin esto, PPD actualizaba pero FI quedaba congelada.
+
+---
+
 ## Pendiente operativo (handoff 2026-07-14)
 
 | # | Ítem | Estado |
@@ -76,9 +86,41 @@ SQL también exige `ABIERTO` para re-snapshot.
 | 4 | **Deploy Report** (commit/push/Vercel) | ✅ 2026-07-14 hotfix recalc FI |
 | 5 | Paridad Streamlit `_render_listado_precio_pp` dos botones | ⏳ si Director lo pide |
 | 6 | Botón UI «Recalcular FI» con dos modos (API ya acepta flag) | ✅ API TS prod |
-| 7 | Propagación precios en ventas Web ya emitidas (si aplica) | ⏳ evaluar por caso |
+| 7 | Propagación precios Web/FI tras vincular | ✅ Rescate 2026-07-23 · error `4.02.03.022` · audit `_audit_cp_pp_precios_drift.mjs` |
 
 ---
+
+## Control interno — certificación integridad (OBLIGATORIO)
+
+**Doc canónico:** [CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md](./CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md) (**2.3.1.7.5.3.8**) · MIG-176 · MIG-177 · **MIG-180 (8 gates)** · [CHUSAR_PRECIO_ENTERPRISE…](../motor_precios/CHUSAR_PRECIO_ENTERPRISE_ARQUITECTURA_BANCARIA.md) (**2.3.1.7.1.0.3**)  
+**Error:** `4.02.03.022` · rescate 2026-07-23 · certificación 2026-07-24
+
+**Doctrina:** unidad de **mando** (Motor/listado) vs unidad de **dirección** (PPD vinculado). Web/FI/carrito = **solo PPD**. Cambio listado → re-vincular → certificar.
+
+```powershell
+cd C:\Users\hecto\Nexus_Core\report
+npm run certificar:precios-cp:sync    # exit 0 = CERTIFICADO OK
+```
+
+| FAIL | Acción |
+|------|--------|
+| G3 listado drift | Re-vincular **Todos!!!** o `sincronizar_precios_vinculados_cp` |
+| G4 FI ≠ PPD | `_recalc_fi_pp.mjs` |
+| G5 carrito | incluido en `--sync` |
+
+**Audit legacy (paridad):** `npm run audit:precios-cp` · `_audit_cp_pp_precios_drift.mjs`
+
+**Frecuencia:** diaria (etapa CP) → semanal × **4 PASS** consecutivos.
+
+**Gate post-vincular API (2026-07-25):** orden **vincular → recalc FI → fix G5 carrito → cert 8 gates** · **422** si FAIL · rutas:
+
+- `POST …/pedido-proveedor/[ppId]/vincular-listado`
+- `GET|POST …/pedido-proveedor/certificar-precios`
+- Runbook: `node scripts/runbook-precios-enterprise.mjs [--skip-mig]`
+
+---
+
+## Control interno — drift PPD vs listado (legacy audit)
 
 ## Validación
 

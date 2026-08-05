@@ -48,7 +48,8 @@
 | Regla | Detalle |
 |-------|---------|
 | Caja RIMEC | **8** (`1-1-2-2-1-1`) o **12** (`1-2-3-3-2-1` / 35–40) |
-| Purge FI 5000 | **Nunca** borrar `traspaso` CONFIRMADO ni con `movimiento` INGRESO_COMPRA |
+| Purge FI 5000 (rutina) | **Nunca** borrar `traspaso` CONFIRMADO ni con `movimiento` INGRESO_COMPRA |
+| Receteo vacío canal web | Excepción Director: `purge_bazzar_web_alm_receteo.mjs` · **2.5.1.13** · sin devolver a RIMEC |
 | Depósito Web | Stock = suma `movimiento_detalle` ALM 1; TRP debe existir o LEFT JOIN |
 | Cache API | Stock vivo → `no-store` |
 
@@ -61,6 +62,7 @@ report/scripts/restore_traspasos_alm_web_huerfanos.mjs
 report/scripts/completar_grada_alm_web_ficticio.mjs
 report/scripts/ajustar_grada_alm_web_exacta.mjs
 report/scripts/purge_cliente_5000_pruebas.mjs   # endurecido
+report/scripts/purge_bazzar_web_alm_receteo.mjs # receteo vacío ALM_WEB (2.5.1.13)
 ```
 
 ---

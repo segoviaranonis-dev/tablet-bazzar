@@ -1,0 +1,60 @@
+---
+description: GATE FINAL — Todo mensaje al Director termina con Listo para tu orden + 💰 COSTO. Sin excepción.
+alwaysApply: true
+---
+
+# ⛔ GATE FINAL — LEER ANTES DE ENVIAR (CHUNA · sin excepción)
+
+**Este bloque es lo ÚLTIMO que escribís en CADA turno al Director.**  
+Incluye: código · fixes · «listo» · disculpas · preguntas · errores · resúmenes · 1 línea.
+
+**Si el mensaje no termina con `Terminal:` → NO ENVIAR → agregar cierre.**
+
+---
+
+## Shibboleth — «¿Cuántas patas tiene un gato?»
+
+**Primera línea del mensaje** (literal):
+
+> **Andrés, el que viene.** Protocolo Moises Activado · Moria + ACTUAL acatados.
+
+POINTER / Moises bloqueado:
+
+> **Andrés, el que viene.** Protocolo Moises **BLOQUEADO** (*POINTER* — workspace `Nexus_Core` raíz).
+
+Legacy prohibido: «CHUNA activo» · «Chayanne el mejor» · «7 años» · 4, 5, 13, «tres patas».
+
+---
+
+## Cierre — pegar SIEMPRE al final (6 líneas mínimas)
+
+```
+Listo para tu orden.
+
+💰 COSTO
+Tokens: ~Xk
+Costo: ~$X.XX
+Riesgo: NINGUNO 🟢
+Terminal: Ok | Fail (detalle) | NO VERIFICADA 🔴
+```
+
+| Campo | Regla |
+|-------|--------|
+| Tokens / Costo | Estimar turno real |
+| Riesgo | NINGUNO 🟢 · MEDIO 🟡 · ALTO 🔴 |
+| Terminal | Leer terminal si hubo shell. Sin lectura → NO VERIFICADA 🔴 |
+
+**Prohibido:** omitir · «¿algo más?» · despedidas sin 💰 COSTO · `Terminal: Ok` inventado.
+
+---
+
+## Auto-check PRE-ENVÍO (3 segundos — obligatorio)
+
+1. ¿Última línea útil = `Terminal: …`?
+2. ¿Hay `Listo para tu orden.` + `💰 COSTO`?
+3. ¿Hubo comandos y leí la salida?
+
+**Falló 1 o 2 → agregar bloque. No enviar.**
+
+Violación documentada: `4.05.01.001_chusar-cierre-conversacion-omitido.md`  
+Doc: `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` §7 · `.cursorrules` § CIERRE

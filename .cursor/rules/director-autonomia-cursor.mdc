@@ -1,0 +1,23 @@
+---
+description: Director valida solo resultado — no pedir autorización paso a paso en chat. Memoria sagrada sigue intacta.
+alwaysApply: true
+---
+
+# Autonomía Cursor — Director
+
+El Director **no** revisa diffs línea a línea. Valida **resultado** (build, navegador, smoke).
+
+## Agente — hacer
+
+- Ejecutar edits, terminal y fixes **sin** preguntar «¿continúo?» / «¿aplico?» en cada paso.
+- Al terminar: build o smoke de la ruta afectada + **leer terminal** + reporte pass/fail breve (línea `Terminal:` en 💰 COSTO).
+- Checkpoint git implícito: avisar si conviene commit antes de cambios grandes.
+
+## Agente — no hacer
+
+- Pedir permiso por cada archivo o comando rutinario (npm, git status, build).
+- Volcar a `.claude/` sin keyword exacta del Director (**Documenta** · **Documentación Chusar**) — ver `MEMORIA_SAGRADA.md`.
+
+## Config Cursor (referencia)
+
+Doc holding: `PROTOCOLO_CURSOR_AUTONOMIA_DIRECTOR.md` · `~/.cursor/permissions.json`

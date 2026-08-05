@@ -1,6 +1,7 @@
 # 2.3.1.7.3 Intención de compra — inventario Streamlit
 
 **CHUSAR:** [CHUSAR_INTENCION_COMPRA.md](./CHUSAR_INTENCION_COMPRA.md)  
+**FECHA DE EMBARQUE:** [FECHA_DE_EMBARQUE.md](./FECHA_DE_EMBARQUE.md) ← palabra reservada 1–24  
 **Tablas BD:** [TABLAS_MUDANZA_IC_DIG_PP.md](./TABLAS_MUDANZA_IC_DIG_PP.md) § 7.3  
 **Report:** `/proceso-importacion/intencion-compra`  
 **Streamlit:** `control_central/modules/intencion_compra/`
@@ -34,8 +35,24 @@
 | `get_plazos` | `plazo_v2` |
 | `get_tipos` | `tipo_v2` |
 | `get_categorias` | `categoria_v2` WHERE `id_categoria != 1` |
-| `get_eventos_precio_cerrados` | `precio_evento` + `precio_lista` |
+| `get_eventos_precio_cerrados` | `precio_evento` cerrados |
 | `get_comisiones` | `comision_v2` |
+| **FECHA DE EMBARQUE** | `quincena_arribo` id 1–24 · ver [FECHA_DE_EMBARQUE.md](./FECHA_DE_EMBARQUE.md) |
+
+---
+
+## FECHA DE EMBARQUE (quincena 1–24)
+
+| Capa | Detalle |
+|------|---------|
+| Catálogo | `quincena_arribo` (MIG-096) |
+| Columna IC | `intencion_compra.quincena_arribo_id` (MIG-097) |
+| UI Streamlit | Slider «Llegada» 0–24 · `_render_tarjeta` |
+| UI Report | `FechaEmbarqueSlider` · label **FECHA DE EMBARQUE** |
+| Guardado | `update_campo_ic(ic_id, "quincena_arribo_id", valor)` · 0→NULL |
+| Autorizar | Requiere quincena > 0 |
+
+Legacy `fecha_llegada` (date) — no confundir con FECHA DE EMBARQUE.
 
 ---
 
@@ -43,7 +60,7 @@
 
 | Función | Filtro `estado` | UI |
 |---------|-----------------|-----|
-| `get_ics_pendientes` | `PENDIENTE_OPERATIVO` | Tarjetas editables inline |
+| `get_ics_pendientes` | `PENDIENTE_OPERATIVO` | Tarjetas editables · **FECHA DE EMBARQUE** slider |
 | `get_ics_historial` | ≠ pendiente | Solo lectura |
 | `get_ics_devueltas` | `DEVUELTO_ADMIN` | Reautorización |
 
@@ -85,13 +102,15 @@ Ver columnas en [TABLAS_MUDANZA_IC_DIG_PP.md](./TABLAS_MUDANZA_IC_DIG_PP.md).
 
 ## Destino Report
 
-| Código | Ruta |
-|--------|------|
-| 2.3.1.7.3 | hub |
-| 2.3.1.7.3.1 | `…/bandeja` |
-| 2.3.1.7.3.2 | `…/nueva` |
+| Código | Ruta | Estado |
+|--------|------|--------|
+| 2.3.1.7.3 | hub | ✅ |
+| 2.3.1.7.3.1 | `…/nueva` | ✅ paso A + form |
+| 2.3.1.7.3.2 | `…/bandeja` | ✅ 4 tabs |
 
-**API plan:** `/api/proceso-importacion/intencion-compra/*`
+Libs: `report/src/lib/intencion-compra/*` · UI: `…/intencion-compra/components/*`
+
+**Preventa:** pendiente (Streamlit tab 2).
 
 ---
 

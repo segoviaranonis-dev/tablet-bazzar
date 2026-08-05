@@ -1,7 +1,7 @@
 # CHUSAR — Ciclo de importación · Report (2.3.1.7)
 
 **Código módulo:** **2.3.1.7** · **Padre:** [2.3.1 RIMEC](../INDICE.md) · **App:** `report/`  
-**Estado CHUSAR:** 🟢 **ACTIVO** — documentación viva del ciclo completo  
+**Estado CHUSAR:** 🟢 **ACTIVO** — **FOCO:** 7.3 IC · 7.4 Digitación · 7.5 PP · Motor 7.1/7.2 ✅ cerrados  
 **Mudanza general:** [CHUSAR_MUDANZA_REPORT.md](../CHUSAR_MUDANZA_REPORT.md)  
 **Streamlit origen:** `control_central/modules/home/ui.py` § CICLO DE IMPORTACIÓN  
 **Shibboleth:** Chayanne el mejor
@@ -30,7 +30,7 @@ Report implementa **2.3.1.7** (Motor · IC · Digitación · PP). Compra legal, 
 
 | Entorno | Ruta |
 |---------|------|
-| Hub ciclo | http://localhost:3000/proceso-importacion |
+| Hub ciclo | http://localhost:3001/proceso-importacion |
 | Moria árbol | http://localhost:3004/modulos/report/grupo-rimec/proceso-importacion |
 | Config JSON | `nexus-navegador-holding/config/proceso-importacion.json` |
 | Rutas TS | `report/src/lib/report/routes.ts` |
@@ -52,7 +52,17 @@ flowchart LR
   IP -->|precio_evento cerrado| IC
   IC -->|AUTORIZADO| DG
   DG -->|nro fábrica + puente| PP
-  PP -->|proforma F9| FI[Aprobaciones · 2.3.1.3]
+```
+
+**Estado 2026-06-22:** nodos **MP** e **IP** implementados y cerrados en Report. Siguiente trabajo en **IC → DG → PP**.
+
+```mermaid
+flowchart LR
+  IC[2.3.1.7.3 Intención compra · FOCO]
+  DG[2.3.1.7.4 Digitación · FOCO]
+  PP[2.3.1.7.5 Pedido proveedor · FOCO]
+  IC --> DG --> PP
+  PP --> FI[Aprobaciones · 2.3.1.3]
   PP --> CL[2.3.1.8 Compra legal · hermano]
 ```
 

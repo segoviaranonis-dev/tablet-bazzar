@@ -109,6 +109,22 @@ FI Nexus (N ICs PROGRAMADO · 1 FI × IC)
 
 ---
 
+## Traductor Nexus COD.GRUPO — tercera fase hiedra (Director · 2026-07-24)
+
+**Veredicto:** posible · apropiado · **acertividad global 92 %**.
+
+| Biblioteca | Goberna | No mezclar |
+|------------|---------|------------|
+| **A · PE** | `sdrm_cod_grupo_dim` · cadena REG/PROM/LQ · excluye Carteras | — |
+| **B · PP programado/CP** | caso · quincena · `grades_json` · pipeline IC→PP | COD.GRUPO SDRM |
+
+**Doc plan:** [CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md](./CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md) · **2.3.1.10.1.1**  
+**Seed:** `report/src/lib/pe/biblioteca-cadena-carlos.seed.json` · 133 grupos · MIG-161.
+
+CSV cada vez más específicos → **más ventaja** exportar forma Carlos desde semántica Nexus sin que Carlos sea fuente de verdad en runtime.
+
+---
+
 ## Puente temporal en disco (hoy · migrar y retirar)
 
 Implementación intermedia **no es el destino**:

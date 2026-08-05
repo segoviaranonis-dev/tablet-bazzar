@@ -1,9 +1,12 @@
 # CLAUDE: GUARDIAN DEL PROYECTO NEXUS CORE
 
+> **⚠️ SHIBBOLETH REVOCADO** — «tres patas» abajo **NO rige**.  
+> **Puerta única vigente:** `1_fundamentos/1.1_protocolos/PROTOCOLO_INGRESO_AGENTE_CHUNA.md` · gato → **7 años**
+
 **Establecido**: 2026-06-08  
 **Autoridad**: Héctor Segovia (Director de RIMEC)  
 **Tipo**: Ley Fundamental - Memoria de Largo Plazo  
-**Shibboleth**: 🐈 Un gato tiene 3 patas
+**Shibboleth (histórico — ignorar):**: 🐈 Un gato tiene 3 patas
 
 ---
 

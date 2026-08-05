@@ -8,6 +8,8 @@
 |-------|--------|
 | App | rimec-report |
 | URL | https://rimec-report.vercel.app |
+| Commit | `124c15a` |
+| Deployment | `dpl_NCrqr7qDiFJfoAiRoK98XBwrvP1y` · 2026-07-21 |
 | Rama | main |
 
 ## Smoke post-deploy

@@ -3,7 +3,8 @@
 **Código:** `2.2.1.0.9`  
 **Cliente:** `cliente_v2.id_cliente = 5000` · **Bazzar.py**  
 **Orden Director:** **Documenta** 2026-07-14  
-**Estado:** ✅ **PURGE 2026-07-16** — 0 FI · etapa pruebas cerrada  
+**Estado:** 🟢 **PARÉNTESIS 2026-07-19** — stress compras masivas · EOD purge · [ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md](../../4_etapas/ETAPA_COMPRAS_MASIVAS_CLIENTE_5000_20260719.md) · **2.2.1.17**  
+**Purge previo:** ✅ 2026-07-16 — 0 FI base  
 **Lección ALM_WEB:** el purge borró `traspaso` ligados a FI 5000 → Depósito Web ciego · remedio + ley en [CHUSAR_DEPOSITO_WEB_GRADA_Y_PURGE_5000.md](../2.5_bazzar_web/CHUSAR_DEPOSITO_WEB_GRADA_Y_PURGE_5000.md) (**2.5.1.2**)  
 **Cruce AM:** [CHUSAR_HANDOFF_CIERRE_AM_FACTURA_5000.md](../2.3_report/gestion_compra/CHUSAR_HANDOFF_CIERRE_AM_FACTURA_5000.md) (**2.3.1.25**) · desbloqueado  
 **Cierre etapa:** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md)  

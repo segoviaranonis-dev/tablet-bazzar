@@ -131,5 +131,8 @@ Tab FI · CSV Carlos · aprobaciones
 | Preview dos IC en una fila | `indexIcsPorClienteMarca` agregaba | Preview solo proforma |
 | Import bloqueado por Δ SHOP | Gate `ic_id=0` por marca | Gate solo totales |
 | FI mal generadas al import | Loop FI post-PPD | Import solo `phase=ppd` |
+| `timeout exceeded when trying to connect` | Pool max=1 + 2ª query durante TX | [CHUSAR_HOTFIX_PP_POOL_DEADLOCK_20260722](./CHUSAR_HOTFIX_PP_POOL_DEADLOCK_20260722.md) · `674b99c` · error `4.02.03.017` |
+| `504 FUNCTION_INVOCATION_TIMEOUT` | Re-preview + pilares en TX larga | [CHUSAR_SOLUCION_INTEGRAL](./CHUSAR_SOLUCION_INTEGRAL_PP_PROGRAMADO_IMPORT_20260723.md) · `4.02.03.018` |
+| 504 **persiste con lotes 300** | Pilares **todo Excel** en lote 0 | Cola 120 SKUs · slice pilares · `4.02.03.019` · ley **2.3.1.7.5.3.3.10** |
 
-**Shibboleth:** Andrés, el que viene.
+**Matriz completa errores:** [CHUSAR_SOLUCION_INTEGRAL_PP_PROGRAMADO_IMPORT_20260723](./CHUSAR_SOLUCION_INTEGRAL_PP_PROGRAMADO_IMPORT_20260723.md) (**2.3.1.7.5.3.3.9**) · [LEY_IMPORTACION_EXTENSA_COLA_VERCEL](./LEY_IMPORTACION_EXTENSA_COLA_VERCEL.md) (**2.3.1.7.5.3.3.10**)

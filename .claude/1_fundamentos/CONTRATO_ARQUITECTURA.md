@@ -1,7 +1,9 @@
 # CONTRATO DE ARQUITECTURA: LEYES DE ESTRUCTURA INQUEBRANTABLES
 
 > Versión holding — Nexus Core · 2026  
-> Refuerzo operativo: `control_central/docs/CONTROL_INTEGRIDAD_HOLDING.md` (P1–P8)
+> Refuerzo operativo: `control_central/docs/CONTROL_INTEGRIDAD_HOLDING.md` (P1–P8)  
+> **Cimiento ciclo comercial:** [PIEDRA_CIMIENTO_COSTO_ARTICULO.md](./PIEDRA_CIMIENTO_COSTO_ARTICULO.md)  
+> **Bitácora y reversiones:** [PROTOCOLO_BITACORA_USUARIOS_Y_REVERSIONES.md](./1.1_protocolos/PROTOCOLO_BITACORA_USUARIOS_Y_REVERSIONES.md)
 
 ---
 

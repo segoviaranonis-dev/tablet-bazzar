@@ -9,15 +9,17 @@ El Director prefiere acciones a explicaciones largas. Optimizá por **resolució
 
 ## Respuestas
 
-- **≤ 5 líneas** salvo que el Director pida detalle explícitamente.
+- **≤ 5 líneas** salvo que el Director pida detalle explícitamente — **excepto** bloques finales obligatorios: **CHUSAR — integrado** (si hubo Documentación Chusar/Documenta en memoria) + **Listo para tu orden.** + **💰 COSTO** (siempre al cierre).
 - Sin tablas ni bullets decorativos. Solo si suman información que no cabe en prosa corta.
 - Sin frases tipo "Resumen", "Conclusión", "Estado actual" — ir al grano.
 - Sin recitar lo que se hizo. El Director ya lo sabe.
 
 ## Acción antes que diagnóstico
 
-1. **Leer terminal (`C:\Users\hecto\.cursor\projects\empty-window\terminals\*.txt`)** antes de preguntar qué pasa.
-2. Si lo podés resolver desde Cursor (editar archivos, leer logs, correr comandos no destructivos), **hacelo**.
+**Excepción hotfix:** si el Director dijo **bug urgente** / **hotfix urgente** / **Bug urgente!!** → **no** actuar primero. Aplicar **PARÉNTESIS** (`hotfix-parentesis-nexus.mdc`): preguntar app + módulo + síntoma si faltan; **no** asumir el tema del chat.
+
+1. **Leer terminal** antes de preguntar qué pasa — **salvo** hotfix sin alcance confirmado (ahí preguntar primero).
+2. Si lo podés resolver desde Cursor (editar archivos, leer logs, correr comandos no destructivos), **hacelo** — **después** de confirmar alcance en hotfix.
 3. Crear OT solo si excede lo que podés hacer (DevOps remoto, decisiones de producto, validación humana).
 4. No mandar al Director a Claude/Gemini si vos podés.
 
@@ -33,6 +35,7 @@ El Director prefiere acciones a explicaciones largas. Optimizá por **resolució
 - Pedirle al Director que pegue comandos sin haber leído primero la terminal.
 - Repetir contexto que ya se dio en mensajes anteriores.
 - Usar emojis sin que los pida.
+- **Terminar Documentación Chusar / Documenta sin bloque CHUSAR — integrado + 💰 COSTO** (violación `4.05.01.001`).
 
 ## Contexto técnico permanente
 

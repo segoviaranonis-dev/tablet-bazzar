@@ -1,5 +1,7 @@
 # ESTRUCTURA OBLIGATORIA — Nexus Core
 
+> **Mapa canónico vigente (Chusar):** [`CHUSAR_ESTRUCTURA_HOLDING.md`](./CHUSAR_ESTRUCTURA_HOLDING.md) — casa, `.claude/`, repos, legacy `docs/`/`ot/` raíz obsoletos.
+
 **RESPONSABLE**: Claude (Maestro de Obras)  
 **AUTORIDAD**: Nadie crea carpetas/archivos sin aprobación de Claude  
 **EJECUTORES**: Antigravity, Cursor, Gemini, cualquier IA → DEBEN seguir esta estructura

@@ -27,7 +27,9 @@
 |-----------|------|
 | **Protocolo PC / Git / Vercel para Hector** | [NEXUS_CORE_PROTOCOLO_TRABAJO_HECTOR.md](NEXUS_CORE_PROTOCOLO_TRABAJO_HECTOR.md) |
 | **Mapa de verdad operativa backend/DB** | [NEXUS_MAPA_VERDAD_OPERATIVA.md](NEXUS_MAPA_VERDAD_OPERATIVA.md) |
-| **Protocolo unico de imagenes de producto** | [NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md](NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md) |
+| **Ley universal imágenes (entrada única)** | [LEY_UNIVERSAL_IMAGENES_PRODUCTO.md](LEY_UNIVERSAL_IMAGENES_PRODUCTO.md) |
+| **Protocolo unico de imagenes de producto** (anexo) | [NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md](NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md) |
+| **Importar imágenes (keyword)** | [CHUSAR_IMPORT_IMAGENES_BATCH.md](CHUSAR_IMPORT_IMAGENES_BATCH.md) |
 | Integridad P1–P8 | [CONTROL_INTEGRIDAD_HOLDING.md](CONTROL_INTEGRIDAD_HOLDING.md) |
 | Registro OT | [OT_REGISTRO_ESTADO.md](OT_REGISTRO_ESTADO.md) |
 
@@ -40,6 +42,7 @@
 | [RIMEC_NOMENCLATURA_PILARES.md](RIMEC_NOMENCLATURA_PILARES.md) | Léxico P0 de pilares |
 | [RIMEC_PILARES_CINCO.md](RIMEC_PILARES_CINCO.md) | Modelo de 5 pilares y grada |
 | [RETAIL_VS_SALES.md](RETAIL_VS_SALES.md) | Diferencia Sales Report vs Retail |
+| [RETAIL_IMPORT_MODULO.md](RETAIL_IMPORT_MODULO.md) | **Import Retail:** UI, código, bugs (st+vt+RC) |
 | [RIMEC_POLITICAS_BLINDADAS.md](RIMEC_POLITICAS_BLINDADAS.md) | Leyes de negocio |
 | [TRAZABILIDAD_PP_LISTADO.md](TRAZABILIDAD_PP_LISTADO.md) | PP, listado y evento |
 | [DICCIONARIO_PRECIO_WEB.md](DICCIONARIO_PRECIO_WEB.md) | Precio web / Bazar |

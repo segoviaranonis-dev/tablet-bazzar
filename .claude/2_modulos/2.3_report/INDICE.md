@@ -23,18 +23,22 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - BAZZAR (Naranja #ea580c)
 
 **Módulos activos:**
-- ✅ Aprobaciones (NIIF 100%) · **alertas Web→Pendientes** [aprobaciones/CHUSAR_ALERTAS…](aprobaciones/CHUSAR_ALERTAS_PEDIDO_WEB_APROBACIONES_20260727.md) **2.3.1.3.1** 🟢 2026-07-27
+- ✅ Aprobaciones (NIIF 100%) · **tabs Pendiente/Aprobado/Anulado** [aprobaciones/CHUSAR_TABS…](aprobaciones/CHUSAR_TABS_PENDIENTE_APROBADO_ANULADO_20260729.md) **2.3.1.3.2** 🟢 2026-07-29 · alertas **2.3.1.3.1** · **indagación multi-filtro** **2.3.1.3.3** 🟢 2026-08-04
 - ✅ **Administrador de Pilares** (`/pilares` — **2.3.5 CERRADA** 2026-06-17)
 - ✅ **RRHH** (`/rrhh` — **2.3.10** · subcuentas 2.3.10.1–2.3.10.2)
 - ✅ **Proceso importación** (`/proceso-importacion` — **2.3.1.7** · **2.3.1.7.2 Importación precios CERRADA** ✅)
 - Stock / Retail
 - Ventas
 - Ventas + Fotos
-- **Sales Report inmersivo (`/rimec` — 2.3.1.1)** → [CHUSAR_SALES_REPORT_FILTROS_CASCADA.md](CHUSAR_SALES_REPORT_FILTROS_CASCADA.md) · error **4.02.02.005** · v1.0.3
+- **Sales Report inmersivo (`/rimec` — 2.3.1.1)** → [CHUSAR_SALES_REPORT_FILTROS_CASCADA.md](CHUSAR_SALES_REPORT_FILTROS_CASCADA.md) · error **4.02.02.005** · v1.0.3 · **foco etapa** `SALES-REPORT-PDFS-20260804` [ETAPA](../../4_etapas/ETAPA_SALES_REPORT_PDFS_20260804.md) · CSV PE **CERRADA** [20260804](../../4_etapas/ETAPA_CSV_PE_DEPOSITO_CABECERA_20260804_CERRADA.md) sin deploy
+- **PDF gerencial · subtotales banda desde nivel (`2.3.1.1.2`)** 🆕 → [CHUSAR_PDF_SUBTOTALES_BANDA_DESDE_NIVEL_20260804.md](CHUSAR_PDF_SUBTOTALES_BANDA_DESDE_NIVEL_20260804.md) · receta cocina · azul solo a la derecha de `startCol`
 - **🔍🕵️ Gestión de compra · Director (2.3.1.11)** 🆕 → [gestion_compra/INDICE.md](gestion_compra/INDICE.md)
 - **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16
-- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **Ley DPE sin BCL** [CHUSAR_LEY_DPE_SIN_BCL_20260727.md](deposito_rimec/CHUSAR_LEY_DPE_SIN_BCL_20260727.md) (**2.3.1.10.1.2.1**) · **Asignación descuentos** [CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md](deposito_rimec/CHUSAR_ASIGNACION_DESCUENTOS_PE_20260726.md) (**2.3.1.10.1.4** · foco) · **Verificación Revisar** [CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md](deposito_rimec/CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md) (**2.3.1.10.1.4.3**) · **Ley TODOS 3/3** [CHUSAR_LEY_TODOS](../2.2_rimec_web/CHUSAR_LEY_TODOS_TRES_HERMANOS_SIAMESES_20260726.md) (**2.2.1.28**) · **Filtros PE** [CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md](deposito_rimec/CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md) (**2.3.1.10.1.3** · 99/99) · **Grada abierta 638** [CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md](deposito_rimec/CHUSAR_GRADA_ABIERTA_638_STOCK_PE.md) (**2.3.1.10.12**)
-- **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · plan **2.3.1.28.5** · Ley FI **2.3.1.28.9** · **próxima** Carlos ~900M Excel **2.3.1.28.10**
+- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **⬛ etapa calzado 654 CERRADA** [ETAPA_STOCK_PE_CALZADO_654…](../4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md) 2026-07-29 · **Ley DPE sin BCL** (**2.3.1.10.1.2.1**) · **Asignación descuentos** (**2.3.1.10.1.4**) · **sdrm2121** (**2.3.1.10.1.5**) · **Filtros PE** (**2.3.1.10.1.3**) · **Grada abierta 638** (**2.3.1.10.12**)
+- **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · Rimec **2.3.1.28.10** · multi **2.3.1.28.14** · roles **2.3.1.28.15** · orden tradicional **2.3.1.28.16** · VENDEDOR bloqueado desarrollo **2.3.1.28.17**
+- **Automatización de informes (2.3.1.35)** 🆕 → [automatizacion_informes/INDICE.md](automatizacion_informes/INDICE.md) · `/automatizacion-informes` · Control PE · multi-usuarios/horarios **2.3.1.35.5** · plan PDF→bandeja `PLAN-AUTO-BANDEJA-PE-20260802` · **espíritu cocina 133×LPN/LPC03/LPC04** (**2.3.1.35.11**)
+- **Mensajes internos (2.3.1.36)** 🆕 → [mensajes_internos/INDICE.md](mensajes_internos/INDICE.md) · `/mensajes-internos` · inbox `usuario_v2` · PDF backend · banquete tipo_v2 **2.3.1.36.6**
+- **Etapa unificada** → [ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md](../4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md) · lección [CHUSAR_LECCION_VIOLACIONES…](CHUSAR_LECCION_VIOLACIONES_INFORMES_CORREO_20260801.md)
 - **Depósitos Bazzar (2.3.2.1)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
 - **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
 - **Motor de Precios (2.3.1.7.1 — Report)** 🆕

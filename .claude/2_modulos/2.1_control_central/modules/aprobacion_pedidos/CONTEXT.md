@@ -29,6 +29,8 @@ Pedido web (PVR-…) → FIs RESERVADA (células PP×Marca×Caso)
 
 **Paradigma:** BD como único canal. La UI no inventa células; lee `factura_interna` por estado.
 
+**UI CASO PE (2026-07-26):** en Report `/aprobaciones` el campo **CASO** de FI PE muestra **PE-LIQ / PE-NORMAL / PE-PROMO / PE-COMUN** — no el batch `pe-import-…`. Doc `2.3.1.3.0.2`. BD `fi.caso` no se muta.
+
 ---
 
 ## Archivos código
@@ -209,14 +211,15 @@ Streamlit mantiene el mismo negocio; Report añade gate estricto DIOS + UI NIIF.
 ## Documentación extendida
 
 - [MAPA_DATOS_PV.md](MAPA_DATOS_PV.md) — auditoría PV, queries de verificación, ejemplos reales
+- **[CHUSAR_APROBACIONES_PE_BADGE.md](CHUSAR_APROBACIONES_PE_BADGE.md)** — **2.3.1.3.0.1** · badge PRONTA ENTREGA en Report `/aprobaciones` (2026-07-08)
+- **[CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md](../../../2.3_report/facturacion/CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md)** — **2.3.1.9.C** · botón DIOS en Pendientes (FI RESERVADA) · anula FI entera · reintegra stock · Anulaciones · misma lógica tránsito/PE
 
 ---
 
 ## Shibboleth V2
 
-**Un gato tiene 5 patas** ✅
+**Andrés, el que viene.** ✅
 
 ---
 
-**Última actualización:** 2026-06-11  
-**Responsable documentación:** Cursor (auditoría + backfill verificados en BD)
+**Última actualización:** 2026-07-08

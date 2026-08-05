@@ -52,7 +52,8 @@
 ### ADMIN RIMEC (`rol_id = 1` + `categoria = ADMIN`)
 
 - Casi todo; **excluido** módulo Aprobación de pedidos (Report `/aprobaciones` + Streamlit `aprobacion_pedidos`).
-- Ejemplo: Tito.
+- **Stock PE** (`/stock-pronta-entrega`): acceso OK · **no** puede **asignar descuentos** (solo DIOS) — [CHUSAR_USUARIO_EVERT_STOCK_PE_20260727.md](../../2_modulos/2.3_report/deposito_rimec/CHUSAR_USUARIO_EVERT_STOCK_PE_20260727.md) (**2.3.1.10.1.4.2** · usuario **EVERT**).
+- Ejemplo: Tito · EVERT.
 
 ### VENDEDOR RIMEC (`rol_id = 1` + `categoria = VENDEDOR`)
 

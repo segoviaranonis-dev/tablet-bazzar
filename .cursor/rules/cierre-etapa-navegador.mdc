@@ -1,0 +1,31 @@
+---
+description: OBLIGATORIO — Al «Cierra etapa» / «CERRAR ETAPA» editar etapas.json en el mismo turno. Sin esto la etapa NO está cerrada.
+alwaysApply: true
+---
+
+# Cierre de etapa — Navegador :3004 (sin excepciones)
+
+Cuando el Director dice **Cierra etapa**, **CERRAR ETAPA**, **cierra la etapa** o pide documentar cierre:
+
+## Obligatorio en el mismo turno (antes de decir «cerrada»)
+
+1. `ETAPA_*_CERRADA.md` + `ACTUAL.md` + índices módulo.
+2. **`nexus-navegador-holding/config/etapas.json`:**
+   - `trabajoVivo[].estado` → **`"hecho"`** (por `code` de la etapa)
+   - Nueva fila en **`cerradasPorModulo.[moduloSlug]`**
+   - Bump **`actualizado`** en raíz del JSON
+3. Confirmar en respuesta al Director: contador `:3004/etapas` bajó / tarjeta fuera de «Trabajando ahora».
+
+## Prohibido
+
+- Responder «etapa cerrada» sin haber editado `etapas.json`.
+- Dejar el paso del navegador «para después» o «pendiente git».
+- Solo cambiar colores/docs Moria sin tocar Portal 4.
+
+## Referencia
+
+- Checklist: `.claude/1_fundamentos/1.1_protocolos/protocolo_etapas.md`
+- PASO 6: `.claude/1_fundamentos/1.1_protocolos/1.1.10_protocolo_cierre_etapa.md`
+- Detalle JSON: `nexus-navegador-holding/docs/CHUSAR_CIERRE_ETAPA.md`
+
+**Regla:** Moria CERRADA + JSON sin `hecho` = **FAIL** — etapa sigue abierta para el Director.

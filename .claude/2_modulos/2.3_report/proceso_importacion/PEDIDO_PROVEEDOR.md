@@ -1,6 +1,8 @@
 # 2.3.1.7.5 Pedido proveedor — inventario Streamlit
 
 **CHUSAR:** [CHUSAR_PEDIDO_PROVEEDOR.md](./CHUSAR_PEDIDO_PROVEEDOR.md)  
+**Mapas UI:** [MAPA_ACCESO_RAPIDO_PP_LISTA.md](./MAPA_ACCESO_RAPIDO_PP_LISTA.md) · [MAPA_ACCESO_RAPIDO_PP_DETALLE.md](./MAPA_ACCESO_RAPIDO_PP_DETALLE.md)  
+**App:** [PEDIDO_PROVEEDOR_REPORT.md](../../../../report/docs/PEDIDO_PROVEEDOR_REPORT.md)  
 **Tablas BD:** [TABLAS_MUDANZA_IC_DIG_PP.md](./TABLAS_MUDANZA_IC_DIG_PP.md) § 7.5  
 **Report:** `/proceso-importacion/pedido-proveedor`  
 **Streamlit:** `control_central/modules/pedido_proveedor/`
@@ -91,6 +93,8 @@ Ver `.cursor/rules/rimec-listado-pp-fi.mdc`:
 | 2.3.1.7.5 | hub / lista |
 | 2.3.1.7.5.2 | `…/nuevo` |
 | 2.3.1.7.5.x | `…/[ppId]` detalle |
+
+**Lista — 5 botones Acceso rápido (Streamlit):** [MAPA_ACCESO_RAPIDO_PP_LISTA.md](./MAPA_ACCESO_RAPIDO_PP_LISTA.md)
 
 **API:** `/api/proceso-importacion/pedido-proveedor/*`
 

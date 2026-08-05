@@ -32,13 +32,16 @@ Casos promo (no liquidación): `PromoCasoBadge` + `esPromoTarjeta` — independi
 
 - Columna: `v_stock_pe_rimec.es_liquidacion`
 - Select catálogo PE: `CATALOGO_STOCK_SELECT_PE` incluye `es_liquidacion`, `es_promo`, `cadena_comercial`
+- **Origen Carlos:** COD.GRUPO calzado dígitos 5–6 = `04` → LIQUIDACION (MIG-171 · R-FI-2 `2.2.1.20`)
 - Evidencia BD (2026-07-16): ~1709 / ~12100 filas PE en liquidación
 
 ---
 
 ## Relación con descuentos / FI
 
-Liquidación es **marca de catálogo**. Los % D1–D4 siguen el flujo **Guardar descuento por FI** ([CHUSAR_DESCUENTOS_FI](./docs/CHUSAR_DESCUENTOS_FI_TRANSACCION_20260715.md) · MIG-160).  
+Liquidación es **marca de catálogo** (dígito Carlos) **y** célula de FI: **R-FI-2** prohíbe mezclar LIQUIDACION con PROMOCIONAL en la misma factura ([CHUSAR_HOTFIX_FI_PROMO_LIQUIDACION_COD_GRUPO_20260722.md](./CHUSAR_HOTFIX_FI_PROMO_LIQUIDACION_COD_GRUPO_20260722.md)).
+
+Los % D1–D4 siguen el flujo **Guardar descuento por FI** ([CHUSAR_DESCUENTOS_FI](./docs/CHUSAR_DESCUENTOS_FI_TRANSACCION_20260715.md) · MIG-160).  
 Caso comercial en cabecera FI: [CHUSAR_FI_CASO](../2.3_report/facturacion/CHUSAR_FI_CASO_CABECERA_DESDE_PP.md).
 
 **Shibboleth:** Andrés, el que viene.

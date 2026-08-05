@@ -1,0 +1,41 @@
+---
+description: INVIOLABLE — Git/Vercel/prod solo al cierre de etapa o pedido directo del Director (Héctor)
+alwaysApply: true
+---
+
+# CHUSAR — Deploy solo cierre de etapa (inviolable)
+
+**Ratificado Director 2026-07-06.** Sin excepción salvo las dos puertas abajo.
+
+## Regla de oro
+
+| Capa | Desarrollo | Producción |
+|------|------------|------------|
+| **Código app** | Local (`:3001`, Streamlit, etc.) | Git `main` + Vercel **solo** al cerrar etapa |
+| **BD Supabase** | Migraciones en rama/OT | Aplicar prod **solo** cierre etapa o orden explícita Director |
+
+**Prohibido** commit · push · merge · `vercel deploy` · redeploy prod · migración prod **sin** una de:
+
+1. **Cierre de etapa canónico** — 6 pasos `1.1.10_protocolo_cierre_etapa.md` + `etapas.json` en `:3004` con `hecho`.
+2. **Pedido directo del Director (Héctor)** — frase explícita en el turno (*despliega*, *subilo*, *push*, *cerrá etapa*, etc.).
+
+## Incendio ≠ cierre
+
+Hotfix operativo en local **no autoriza** prod. Si hay urgencia: arreglar local → reportar al Director → esperar cierre o orden directa.
+
+## Cursor (Auto)
+
+- **Abortar** si el diff incluye push/deploy sin cierre ni orden directa del turno.
+- **Recordar** al Director si pide deploy sin etapa cerrada: «¿Cierre de etapa o orden directa?»
+- Incumplimiento = violación CHUNA (ver incendio catálogo 2026-07-06).
+
+## Sellado prod vigente — rimec-web
+
+| Campo | Valor |
+|-------|--------|
+| Commit sellado | `f408fc2` |
+| URL | `https://rimec-web.vercel.app` |
+| Alcance | Catálogo CP-only · filtros BD · blindaje headers |
+| Local en curso | Pronta entrega + CP — **no empujar a prod** hasta cierre etapa |
+
+**No tocar prod rimec-web** hasta nueva etapa cerrada u orden directa Héctor.

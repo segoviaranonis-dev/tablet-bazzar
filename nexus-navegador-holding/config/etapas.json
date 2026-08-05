@@ -1,25 +1,82 @@
 {
-  "actualizado": "2026-08-02-cierre-bazzar-auditoria-grada-publica",
+  "actualizado": "2026-08-04-corte-admin-moises-cierra-6-etapas",
   "sesionActiva": {
-    "code": "CP-CONFECCIONES-OK-20260729",
-    "alias": "CP confecciones ok · catálogo 638 Compra previa",
-    "maraton": "rimec-web-catalogo-638",
+    "code": "MOISES-20260804",
+    "alias": "Moises · corte admin hecho · mudanza profesional",
+    "maraton": "holding-moises-mudanza",
     "ejecutor": "cursor",
-    "foco": "Retomada 2026-08-02 · lightbox · carrito · pill Todos confecciones",
-    "mdEtapa": ".claude/4_etapas/ETAPA_CP_CONFECCIONES_OK_20260729.md"
+    "foco": "Corte admin OK · rimec.py@gmail.com · menos suscripciones · rueda + cutover",
+    "mdEtapa": ".claude/4_etapas/ETAPA_MOISES_20260804.md"
   },
   "trabajoVivo": [
+    {
+      "code": "MOISES-20260804",
+      "moduloSlug": "moria-chusar",
+      "subcuentaSlug": "moises-mudanza",
+      "label": "Moises · separar el mar · mudanza Git/Supabase/Vercel",
+      "md": ".claude/4_etapas/ETAPA_MOISES_20260804.md",
+      "mdChusar": ".claude/1_fundamentos/MAPA_REPOS.md",
+      "appPath": "http://localhost:3004/etapas",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": true,
+      "subEtapas": [
+        "MOISES-RUEDA",
+        "MOISES-REPOS",
+        "MOISES-ORILLA",
+        "MOISES-DUAL",
+        "MOISES-PORTABLE",
+        "MOISES-CUTOVER"
+      ]
+    },
+    {
+      "code": "SALES-REPORT-PDFS-20260804",
+      "moduloSlug": "report",
+      "subcuentaSlug": "sales-report",
+      "label": "Sales Report · Etapa PDFs (corta · módulo blindado)",
+      "md": ".claude/4_etapas/ETAPA_SALES_REPORT_PDFS_20260804_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/CHUSAR_VENTAS_FOTOS_PDF.md",
+      "appPath": "http://localhost:3000/ventas-fotos",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": false,
+      "focoMaraton": false,
+      "subEtapas": [
+        "SR-PDF-ALCANCE",
+        "SR-PDF-FIX",
+        "SR-PDF-SMOKE"
+      ]
+    },
+    {
+      "code": "CSV-PE-DEPOSITO-CABECERA-20260804",
+      "moduloSlug": "report",
+      "subcuentaSlug": "facturacion",
+      "label": "CSV PE Carlos · DEPOSITO cabecera · veneno 15 cols",
+      "md": ".claude/4_etapas/ETAPA_CSV_PE_DEPOSITO_CABECERA_20260804_CERRADA.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_CSV_PE_DEPOSITO_CABECERA_20260804.md",
+      "appPath": "http://localhost:3000/facturacion/pronta-entrega",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": true,
+      "focoMaraton": false,
+      "subEtapas": [
+        "CSV-DEPOSITO",
+        "CSV-SMOKE",
+        "CSV-DOC"
+      ]
+    },
     {
       "code": "PLAN-AUTO-BANDEJA-PE-20260802",
       "moduloSlug": "report",
       "subcuentaSlug": "sales-report",
       "label": "Plan circuito PDF → bandeja Stock PE · 2.3.1.35 + 2.3.1.36",
-      "md": ".claude/4_etapas/ETAPA_PLAN_AUTO_BANDEJA_PE_20260802.md",
+      "md": ".claude/4_etapas/ETAPA_PLAN_AUTO_BANDEJA_PE_20260802_CERRADA.md",
       "mdChusar": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_CONTRATO_ENVIO_PDF_BANDEJA_20260802.md",
       "appPath": "http://localhost:3000/mensajes-internos",
       "ejecutor": "cursor",
-      "estado": "en_curso",
-      "nuevo": true,
+      "estado": "hecho",
+      "nuevo": false,
       "focoMaraton": false,
       "subEtapas": [
         "PLAN-CONTRATO",
@@ -33,13 +90,13 @@
       "moduloSlug": "rimec-web",
       "subcuentaSlug": "catalogo",
       "label": "CP confecciones ok · catálogo 638 Compra previa",
-      "md": ".claude/4_etapas/ETAPA_CP_CONFECCIONES_OK_20260729.md",
+      "md": ".claude/4_etapas/ETAPA_CP_CONFECCIONES_OK_20260729_CERRADA.md",
       "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CONFECCIONES_REGLAS_PROPIAS_638.md",
       "appPath": "http://localhost:3001/?origen_tipo=TRÁNSITO_PP&ramo_tipo=CONFECCIONES",
       "ejecutor": "cursor",
-      "estado": "en_curso",
-      "nuevo": true,
-      "focoMaraton": true,
+      "estado": "hecho",
+      "nuevo": false,
+      "focoMaraton": false,
       "subEtapas": [
         "CP638-GRILLA",
         "CP638-FILTROS",
@@ -73,12 +130,12 @@
       "moduloSlug": "report",
       "subcuentaSlug": "sales-report",
       "label": "Informes auto + Mensajes internos · 2.3.1.35 + 2.3.1.36",
-      "md": ".claude/4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md",
+      "md": ".claude/4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801_CERRADA.md",
       "mdChusar": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_AUTOMATIZACION_INFORMES_20260730.md",
       "appPath": "http://localhost:3000/automatizacion-informes",
       "ejecutor": "cursor",
-      "estado": "en_curso",
-      "nuevo": true,
+      "estado": "hecho",
+      "nuevo": false,
       "focoMaraton": false,
       "subEtapas": [
         "INF-FACHADA",
@@ -116,12 +173,12 @@
       "moduloSlug": "rimec-web",
       "subcuentaSlug": "catalogo",
       "label": "Hotfix TODOS + Calzado · timeout prod · landing vendedores",
-      "md": ".claude/4_etapas/ETAPA_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md",
+      "md": ".claude/4_etapas/ETAPA_HOTFIX_CATALOGO_TODOS_CALZADO_20260801_CERRADA.md",
       "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md",
       "appPath": "http://localhost:3001/?origen_tipo=TODOS&ramo_tipo=CALZADO",
       "ejecutor": "cursor",
-      "estado": "en_curso",
-      "nuevo": true,
+      "estado": "hecho",
+      "nuevo": false,
       "focoMaraton": false,
       "subEtapas": [
         "CAT-TODOS-BATCH",
@@ -155,12 +212,12 @@
       "moduloSlug": "report",
       "subcuentaSlug": "logistica-ok",
       "label": "Logística Rimec · TXT · orden tradicional prod ⏳ · VENDEDOR flag",
-      "md": ".claude/4_etapas/ETAPA_LOGISTICA_RIMEC_TXT_20260728.md",
+      "md": ".claude/4_etapas/ETAPA_LOGISTICA_RIMEC_TXT_20260728_CERRADA.md",
       "mdChusar": ".claude/2_modulos/2.3_report/logistica_ok/CHUSAR_LOGISTICA_CARLOS_900M_CABECERA_EXCEL_20260727.md",
       "appPath": "http://localhost:3000/logistica-ok",
       "ejecutor": "cursor",
-      "estado": "en_curso",
-      "nuevo": true,
+      "estado": "hecho",
+      "nuevo": false,
       "focoMaraton": false,
       "subEtapas": [
         "RIMEC-PARSER-TXT",
@@ -172,11 +229,11 @@
   ],
   "ultimaCerradaPorModulo": {
     "bazzar-web": {
-      "code": "AUDITORIA-INTEGRIDAD-STOCK-BAZZAR-20260801",
-      "label": "Auditoría integridad + catálogo grada siamese · 2.5.1.6–12",
+      "code": "PRUEBA-BAZZAR-WEB-FASE1-20260802",
+      "label": "Prueba Bazzar Web fase 1 · purge ALM_WEB vacío · 2.5.1.13",
       "fecha": "2026-08-02",
-      "md": ".claude/4_etapas/ETAPA_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801_CERRADA.md",
-      "deploy": "https://bazzar-web.vercel.app/catalogo",
+      "md": ".claude/4_etapas/ETAPA_PRUEBA_BAZZAR_WEB_FASE1_RECETEO_20260802_CERRADA.md",
+      "deploy": "https://www.bazzar.com.py/catalogo",
       "nuevo": true
     },
     "rimec-web": {
@@ -196,16 +253,23 @@
       "nuevo": true
     },
     "report": {
-      "code": "STOCK-PE-CALZADO-654-20260729",
-      "label": "Stock PE calzado 654 · compra previa · CODxCASOS",
-      "fecha": "2026-07-29",
-      "md": ".claude/4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md",
-      "deploy": "https://rimec-report.vercel.app/stock-pronta-entrega",
+      "code": "CSV-PE-DEPOSITO-CABECERA-20260804",
+      "label": "CSV PE Carlos · DEPOSITO cabecera · sin deploy",
+      "fecha": "2026-08-04",
+      "md": ".claude/4_etapas/ETAPA_CSV_PE_DEPOSITO_CABECERA_20260804_CERRADA.md",
       "nuevo": true
     }
   },
   "cerradasPorModulo": {
     "bazzar-web": [
+      {
+        "code": "PRUEBA-BAZZAR-WEB-FASE1-20260802",
+        "label": "Prueba Bazzar Web fase 1 · purge ALM_WEB vacío · 2.5.1.13",
+        "fecha": "2026-08-02",
+        "md": ".claude/4_etapas/ETAPA_PRUEBA_BAZZAR_WEB_FASE1_RECETEO_20260802_CERRADA.md",
+        "deploy": "https://www.bazzar.com.py/catalogo",
+        "nuevo": true
+      },
       {
         "code": "AUDITORIA-INTEGRIDAD-STOCK-BAZZAR-20260801",
         "label": "Auditoría integridad + catálogo grada siamese · 2.5.1.6–12",
@@ -232,6 +296,18 @@
       }
     ],
     "rimec-web": [
+      {
+        "code": "HOTFIX-CATALOGO-TODOS-CALZADO-20260801",
+        "label": "Hotfix TODOS+Calzado · cierre admin Moises",
+        "fecha": "2026-08-04",
+        "md": ".claude/4_etapas/ETAPA_HOTFIX_CATALOGO_TODOS_CALZADO_20260801_CERRADA.md"
+      },
+      {
+        "code": "CP-CONFECCIONES-OK-20260729",
+        "label": "CP confecciones OK · cierre admin Moises",
+        "fecha": "2026-08-04",
+        "md": ".claude/4_etapas/ETAPA_CP_CONFECCIONES_OK_20260729_CERRADA.md"
+      },
       {
         "code": "RIMEC-WEB-CABECERA-PRECIO-20260723",
         "label": "Cabecera precio + Ley TODOS siameses 3/3",
@@ -337,6 +413,37 @@
       }
     ],
     "report": [
+      {
+        "code": "LOGISTICA-RIMEC-TXT-20260728",
+        "label": "Logística Rimec TXT · cierre admin Moises",
+        "fecha": "2026-08-04",
+        "md": ".claude/4_etapas/ETAPA_LOGISTICA_RIMEC_TXT_20260728_CERRADA.md"
+      },
+      {
+        "code": "INFORMES-AUTO-MENSAJES-20260801",
+        "label": "Informes auto + Mensajes · cierre admin Moises",
+        "fecha": "2026-08-04",
+        "md": ".claude/4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801_CERRADA.md"
+      },
+      {
+        "code": "PLAN-AUTO-BANDEJA-PE-20260802",
+        "label": "Plan auto bandeja PE · cierre admin Moises",
+        "fecha": "2026-08-04",
+        "md": ".claude/4_etapas/ETAPA_PLAN_AUTO_BANDEJA_PE_20260802_CERRADA.md"
+      },
+      {
+        "code": "SALES-REPORT-PDFS-20260804",
+        "label": "Sales Report PDFs · cierre admin Moises",
+        "fecha": "2026-08-04",
+        "md": ".claude/4_etapas/ETAPA_SALES_REPORT_PDFS_20260804_CERRADA.md"
+      },
+      {
+        "code": "CSV-PE-DEPOSITO-CABECERA-20260804",
+        "label": "CSV PE Carlos · DEPOSITO cabecera · veneno 15 cols · sin deploy",
+        "fecha": "2026-08-04",
+        "md": ".claude/4_etapas/ETAPA_CSV_PE_DEPOSITO_CABECERA_20260804_CERRADA.md",
+        "nuevo": true
+      },
       {
         "code": "AUTOMATIZACION-INFORMES-20260730",
         "label": "Automatización informes · absorbida en INFORMES-AUTO-MENSAJES-20260801",

@@ -4,7 +4,7 @@
 **Tecnología:** Next.js + Vercel  
 **Estado:** Producción  
 **URL:** https://rimec-web.vercel.app  
-**Última actualización:** 2026-07-16 · deploy descuentos FI + liquidación + casos (**2.2.4.0.13**)
+**Última actualización:** 2026-08-04 · extirpación PDF Catálogo **2.2.1.41** · hotfix TODOS+Calzado **2.2.1.39**
 
 ---
 
@@ -63,6 +63,16 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **Etapa PE (CERRADA):** [ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md](../../4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md)
 - **Deploy prod:** [CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md](../../1_fundamentos/1.1_protocolos/CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md)
 
+### **Extirpación botón PDF Catálogo (2026-08-04 · Documenta)**
+- **[CHUSAR_EXTIRPACION_BOTON_PDF_CATALOGO_20260804.md](./CHUSAR_EXTIRPACION_BOTON_PDF_CATALOGO_20260804.md)** — **2.2.1.41** · botón dorado fuera · sustituye cocina PE bandeja · **no va en el próximo deploy**
+
+### **Etapa activa · Hotfix TODOS+Calzado (2026-08-01 · bug urgente)**
+- **[ETAPA_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md](../../4_etapas/ETAPA_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md)** — **2.2.1.39** · landing vendedores · timeout prod · fix local ✅
+- **[CHUSAR_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md](./CHUSAR_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md)** — **2.2.1.39** · batch CP/PE · RPC eficiente · filtros degradado
+
+### **Etapa activa · CP confecciones (2026-07-29 · pausa foco)**
+- **[ETAPA_CP_CONFECCIONES_OK_20260729.md](../../4_etapas/ETAPA_CP_CONFECCIONES_OK_20260729.md)** — **2.2.1.36** · Compra previa confecciones **638** · `:3001` · EN CURSO
+
 ### **Catálogo · percepción velocidad (2026-07-28 · pre-entrega · local)**
 - **[CHUSAR_CATALOGO_PERCEIVED_PERFORMANCE_20260728.md](./CHUSAR_CATALOGO_PERCEIVED_PERFORMANCE_20260728.md)** — **2.2.1.33** · skeleton 30 · SWR · overlay no bloquea · prefetch scroll · rollback · fin de semana = índices BD
 
@@ -117,6 +127,8 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **Redondeo centena:** [CHUSAR_REGLA_REDONDEO_CENTENA_PROXIMA.md](../2.3_report/motor_precios/CHUSAR_REGLA_REDONDEO_CENTENA_PROXIMA.md) (**2.3.1.7.1.0.2** · Documenta 2026-07-20)
 - **Sin +10 % LP03 (2026-07-29):** [CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_WEB_20260729.md](./CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_WEB_20260729.md) — **2.2.1.34** · anti doble descuento · par **2.3.1.10.1.4.4**
 - **Siamese Estilo/Género pilares (2026-07-29):** [CHUSAR_SIAMESE_ESTILO_GENERO_PILARES_20260729.md](./CHUSAR_SIAMESE_ESTILO_GENERO_PILARES_20260729.md) — **2.2.1.35** · FK `/pilares` · anti 638↔654 · par AM/DPE **2.3.1.10.1.6**
+- **Imagen hold sin parpadeo (2026-07-29):** [CHUSAR_IMAGEN_HOLD_SIN_PARPADEO_20260729.md](./CHUSAR_IMAGEN_HOLD_SIN_PARPADEO_20260729.md) — **2.2.1.37** · ProductImage · lightbox · Seguir comprando SPA
+- **Scope ramo por usuario 654/638 (2026-07-30):** [CHUSAR_CATALOGO_SCOPE_RAMO_POR_USUARIO_20260730.md](./CHUSAR_CATALOGO_SCOPE_RAMO_POR_USUARIO_20260730.md) — **2.2.1.38** · DARIO/PATRICIA solo 638 · resto vendedores solo 654 · accesos `:3004`
 - **Regla Director:** documentar cada micro-objetivo local antes de Git/Vercel
 
 ### **Compras masivas · stress test cliente 5000 (2026-07-19 · ★ PARÉNTESIS EOD)**
@@ -165,6 +177,9 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 ### **Hotfix AB-CR CARTERAS/ANTEOJOS · siamese Report (2026-07-27 · ★ Documentación Chusar + publica)**
 - **[CHUSAR_HOTFIX_ABCR_CARTERAS_ANTEOJOS_WEB_20260727.md](./CHUSAR_HOTFIX_ABCR_CARTERAS_ANTEOJOS_WEB_20260727.md)** — **2.2.1.32** · `tipo_ids=-1/-2` · traductor PE 90000 · Vizzano 60 carteras + 4 anteojos · error `4.01.04.003`
 
+### **Doble descuento snapshot↔LPN · Patricia / 654 (2026-08-03 · ★ Documenta)**
+- **[CHUSAR_DOBLE_DESCUENTO_SNAPSHOT_LPN_20260803.md](./CHUSAR_DOBLE_DESCUENTO_SNAPSHOT_LPN_20260803.md)** — **2.2.1.40** · F5 20 % + cascada doble · error `4.01.04.006` · pedido **237** · FI **PE-237-010** · recalc APPLY · anti-propagación 654
+
 ### **Overlay sincronizando · arranque frío (2026-07-17 · ★ Documenta + deploy)**
 - **[CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md](./CHUSAR_OVERLAY_SINCRONIZANDO_CATALOGO_20260717.md)** — **2.2.1.15** · 30 s · fotos · % por reloj · restaurado `0fdc7a5` · cruza **2.2.1.31**
 
@@ -173,7 +188,7 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 
 ---
 
-**Última actualización:** 2026-07-26 · **2.2.1.28** ley TODOS tres hermanos · **2.2.1.26.1** comisión D1
+**Última actualización:** 2026-08-03 · **2.2.1.40** doble descuento snapshot/LPN · `4.01.04.006`
 
 ---
 

@@ -1,6 +1,6 @@
 # CHUSAR — CSV veneno Carlos · PROGRAMADO
 
-**Código:** 2.3.1.7.5.3.4 · **Estado:** 🟢 **v2 · 1 FI = 1 bloque SHOP** · 2026-07-10  
+**Código:** 2.3.1.7.5.3.4 · **Estado:** 🟢 **v3 · dual CSV ventas + inicial** · 2026-07-10  
 **Shibboleth:** Chayanne el mejor.  
 **Conjunto:** [PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md](./PROTOCOLO_IMPORT_PROFORMA_PROGRAMADO.md) · [ESTRATEGIA_HIEDRA_VENENOSA_PE.md](../deposito_rimec/ESTRATEGIA_HIEDRA_VENENOSA_PE.md)
 
@@ -22,6 +22,30 @@ Con el botón **📄 CSV** en tab **Facturas Internas** del PP, Nexus **inyecta 
 
 Código: `buildCsvCarlosContent` · `fetchCsvCarlosRows` · `ORDER BY fi.id, fid.id`.
 
+### Dual CSV (Director · 2026-07-10 · v3)
+
+| Export | Botón UI | API | Fuente datos | Col **CANT PARES** |
+|--------|----------|-----|--------------|-------------------|
+| **Ventas** | 📄 Ventas · verde | `GET …/csv-ventas` | `factura_interna_detalle.pares` | Lo vendido / facturado en FI |
+| **Inicial** | 📋 Inicial · **celeste** | `GET …/csv-inicial` | `pedido_proveedor_detalle.cantidad_pares` | Stock importado al PP |
+
+- Mismo formato Carlos (`;` · header · BOM) · nombre inicial: `{proforma}-{aa}_inicial.csv`
+- **PROGRAMADO:** bloques SHOP desde `grades_json._shop` en PPD
+- **Compra previa:** catálogo completo del PP (sin bloques cliente)
+- **Ventas** visible si hay FI (programado: RESERVADA+CONFIRMADA · CP: CONFIRMADA)
+- **Inicial** visible si hay stock importado (`total_articulos > 0`)
+
+Código compartido: `csv-ventas-export.ts` · `fetchCsvCarlosRowsInicial` · `exportCsvInicialPp`.
+
+### Traductores Carlos (mismo nivel · veneno)
+
+| Traductor | Código | Doc |
+|-----------|--------|-----|
+| COD.GRUPO / Hiedra | 2.3.1.10.1.1 | [CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md](../deposito_rimec/CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md) |
+| Grupo uno | 2.3.1.10.1.2 | [CHUSAR_GRUPO_UNO_DICCIONARIO_PE_EXCEL.md](../deposito_rimec/CHUSAR_GRUPO_UNO_DICCIONARIO_PE_EXCEL.md) |
+| Plazo | MIG-172 | Facturación |
+| **Vendedor** | **2.3.1.9.F** | [CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md](../facturacion/CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md) · 🟢 **2026-07-27** |
+
 ---
 
 ## Referencia canónica en disco
@@ -39,10 +63,14 @@ Código: `buildCsvCarlosContent` · `fetchCsvCarlosRows` · `ORDER BY fi.id, fid
 
 | Pieza | Detalle |
 |-------|---------|
-| **Ruta** | `/proceso-importacion/pedido-proveedor/[ppId]?tab=fi` |
-| **Botón** | **📄 CSV** · esquina derecha cabecera tab FI (marca roja Director) |
-| **Visible si** | PROGRAMADO: ≥1 FI (RESERVADA o CONFIRMADA) · CP: ≥1 FI CONFIRMADA |
-| **API** | `GET /api/proceso-importacion/pedido-proveedor/[ppId]/csv-ventas` |
+| **Ruta lista** | `/proceso-importacion/pedido-proveedor` · columna Acceso rápido |
+| **Ruta detalle / FI** | `/proceso-importacion/pedido-proveedor/[ppId]?tab=fi` |
+| **Botón ventas** | **📄 Ventas** · verde · FI confirmadas |
+| **Botón inicial** | **📋 Inicial** · celeste (`cyan-200`) · cantidades PPD |
+| **Visible ventas** | PROGRAMADO: ≥1 FI (RESERVADA o CONFIRMADA) · CP: ≥1 FI CONFIRMADA |
+| **Visible inicial** | ≥1 molécula importada (`total_articulos > 0`) |
+| **API ventas** | `GET /api/proceso-importacion/pedido-proveedor/[ppId]/csv-ventas` |
+| **API inicial** | `GET /api/proceso-importacion/pedido-proveedor/[ppId]/csv-inicial` |
 | **Código** | `report/src/lib/pedido-proveedor/csv-ventas-export.ts` |
 
 ---
@@ -58,8 +86,8 @@ Código: `buildCsvCarlosContent` · `fetchCsvCarlosRows` · `ORDER BY fi.id, fid
 | 5 | Bloque = **1 `factura_interna`** (PROGRAMADO: 1 IC = 1 FI = 1 bloque). **Repetir SHOP** aunque el `cliente_id` sea el mismo |
 | 6 | **'STYL.E** = comilla simple + `linea.referencia` (truco Excel) |
 | 7 | Cols grada · CASO · ESTILO · ABoCR = desde PPD / `precio_lista` (v2) |
-| 8 | **CANT PARES** = pares por línea FI |
-| 9 | **Vendedor** = `vendedor_v2.id_vendedor` numérico (ej. 29) |
+| 8 | **CANT PARES** | Ventas: pares FI · Inicial: `cantidad_pares` PPD |
+| 9 | **Vendedor** = código Carlos vía traductor **2.3.1.9.F** (`resolveVendedorCarlosParaCsv` · nombre+caso → ej. **44**) · **no** `vendedor_v2.id` Nexus · doc [CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md](../facturacion/CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md) |
 | 10 | **Cobrador** = **90** fijo |
 | 11 | Encoding UTF-8 **con BOM** |
 
@@ -74,6 +102,7 @@ Código: `buildCsvCarlosContent` · `fetchCsvCarlosRows` · `ORDER BY fi.id, fid
 
 ## Deuda v2 (siguiente iteración)
 
+- [x] **Dual CSV ventas + inicial** (v3 · 2026-07-10) — CP y PROGRAMADO
 - [x] **1 FI = 1 bloque SHOP** (v2 · 2026-07-10) — paridad IC↔factura Carlos
 - [ ] Smoke import real en sistema Carlos con CSV regenerado (8051-26 · 8604-26)
 - [ ] Reclamos Alfredo post-smoke — validar vendedor · grada · caso

@@ -1,0 +1,57 @@
+---
+description: MEMORIA SAGRADA — indiscutible. Solo lectura salvo keyword EXACTA del Director en el turno. Portón obligatorio antes de Write.
+alwaysApply: true
+---
+
+# Memoria sagrada — indiscutible
+
+**Ley:** `.claude/1_fundamentos/1.1_protocolos/MEMORIA_SAGRADA.md`  
+**Puerta:** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` · Portón: `PROTOCOLO_MEMORIA_SOLO_LECTURA.md`
+
+> La memoria del holding es **sagrada. Siempre. Siempre. Indiscutible.**  
+> Primaria + secundaria + `.cursor/rules/` + `CODIGO_MAESTRO.md` + docs institucionales indexados = **solo lectura** para agentes.
+
+---
+
+## Rutas protegidas (no Write sin portón)
+
+- `.claude/**`
+- `.cursor/rules/**`
+- `CODIGO_MAESTRO.md`, `MORIA_PRIMARIA.md`
+- `[repo]/docs/**` cuando es memoria institucional (misma regla)
+
+**Código de app** (`src/`, componentes) ≠ memoria — permitido en tarea normal.
+
+---
+
+## Keywords EXACTAS (única puerta)
+
+Solo si el **mensaje actual del Director** contiene:
+
+- **Documenta**
+- **Documentación Chusar** · **Documentacion Chusar**
+- **Nueva etapa** · **Inicia etapa** · **Cierra etapa**
+- **Bug urgente!!**
+
+**NO abren memoria:** registra, chusar, anota, documentar, guarda en moria, actualiza memoria, «deja documentado».
+
+Sin keyword exacta → **prohibido** Write/StrReplace en rutas protegidas — aunque el agente vea error o conflicto.
+
+---
+
+## Portón obligatorio (antes de cada Write protegido)
+
+1. ¿Keyword **exacta** en el turno? → no → **abortar**
+2. ¿Sinónimo parcial? → **abortar** + pedir «¿Confirmás **Documenta** en [archivo]?»
+3. ¿Alcance acotado a lo ordenado? → no → **proponer lista en chat**, esperar sí
+4. ¿Parche de contradicción en memoria? → **abortar** + reportar al Director
+
+---
+
+## Ante conflicto entre docs
+
+**No editar.** Avisar al Director qué contradice qué. Esperar **Documenta** con archivo citado.
+
+Shibboleth → **Andrés, el que viene.** Workspace → `Nexus_Core` raíz.
+
+**Cierre:** `Listo para tu orden.` + **💰 COSTO** — `cierre-turno-obligatorio-nexus.mdc`

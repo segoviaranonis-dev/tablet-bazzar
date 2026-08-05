@@ -1,0 +1,39 @@
+---
+description: LEY UNIVERSAL — documentación solo crear/actualizar/eliminar por orden expresa del Director
+alwaysApply: true
+---
+
+# Ley universal — Documentación solo Director
+
+**Canónico:** `.claude/1_fundamentos/1.3_politicas/LEY_UNIVERSAL_DOCUMENTACION_DIRECTOR.md` (`5.01.00.019`)
+
+> **Ningún agente crea, actualiza, guarda ni elimina documentación sin orden expresa del Director en el turno.**
+
+## Documentación protegida
+
+- `.claude/**` · `.cursor/rules/**` · `CODIGO_MAESTRO.md` · `MORIA_PRIMARIA.md`
+- Índices, Chusar, etapas, errores, docs institucionales indexados (`report/docs/`, `tablet-bazzar/docs/` memoria)
+
+**Código app** (`src/`, componentes) ≠ documentación — editable **solo en tarea ordenada por el Director**.
+
+## Git / deploy — INVIOLABLE (Director 2026-07-06)
+
+- **Commit · push · merge · deploy Vercel · migración prod** → **solo** al **cierre de etapa canónico** (6 pasos + `etapas.json`) **o** pedido **directo del Director (Héctor)** en el turno.
+- Incendio / hotfix local **no** autoriza prod. Regla completa: `chusar-deploy-solo-cierre-etapa.mdc`
+- **rimec-web prod sellada** en commit `f408fc2` — no alterar hasta cierre u orden directa.
+- Cursor: **abortar** push/deploy sin una de las dos puertas.
+- Legacy: «solo Claude Code deploye» — Claude ejecuta; Cursor **no** pushea sin cierre u orden directa.
+
+## Sin orden expresa → prohibido
+
+- Write / StrReplace / Delete en rutas de documentación
+- «Dejar documentado», «actualizo ACTUAL», «registro en chusar» sin keyword exacta
+- Borrar docs «obsoletos» o «duplicados» por iniciativa propia
+
+## Puerta única (mensaje actual del Director)
+
+**Documenta** · **Documentación Chusar** · **Inicia/Cierra etapa** · **Bug urgente!!** · cita archivo + acción explícita · **elimina/borra** + ruta cuando ordena borrado
+
+Sin keyword exacta → **abortar** y pedir confirmación al Director.
+
+Shibboleth → **Andrés, el que viene.**

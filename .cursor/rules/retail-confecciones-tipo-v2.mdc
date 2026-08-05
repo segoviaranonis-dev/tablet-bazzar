@@ -1,0 +1,32 @@
+---
+description: Semántica confecciones Retail — tipo_v2_id=2 (Kyly). Usar cuando el Director diga confecciones, tipo 2, 638 o Kyly.
+globs:
+  - control_central/modules/balance_tiendas_retail/**
+  - .claude/3_arquitectura/3.2_venta_tienda/**
+alwaysApply: false
+---
+
+# Confecciones — `tipo_v2_id = 2`
+
+Doc canónica: `.claude/3_arquitectura/3.2_venta_tienda/CONFECCIONES_TIPO_V2_2.md`  
+Índice proveedores: `multi_proveedor.md` (654 calzado · 638 confección).
+
+## Pilares en import Kyly
+
+| Pilar | Regla |
+|-------|--------|
+| **Línea** | Código numérico o alfanumérico. Si falta en `linea` → upsert ciego; `marca_id`/`genero_id` **NULL** |
+| **Referencia** | No existe en origen → asignar **`K`** en texto retail (convención anti-colisión) |
+| **Material** | No existe → **`{linea}K`** (ej. `15240K`) |
+| **Color** | Numérico o alfanumérico si viene en Excel; si no, NULL |
+| **Grada** | Talle ropa: `P`,`M`,`G`,`GG` · `1,2,3` · `4,6,8` · `10,12,14,16` · etc. — **no** curva calzado |
+
+## Enriquecimiento posterior
+
+Motor de Precios (Streamlit, legacy) → **Report `/pilares`** (canónico en curso) + confecciones ref **K**.
+
+## No confundir
+
+- `tipo_v2.id_tipo = 2` = categoría CONFECCIONES  
+- `638` en Excel = categoría Kyly, no necesariamente `proveedor_importacion.id`  
+- `REF=K` no entra a pilar `referencia.codigo_proveedor` (bigint)

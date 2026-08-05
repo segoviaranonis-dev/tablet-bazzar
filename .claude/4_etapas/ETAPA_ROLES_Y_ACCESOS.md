@@ -1,8 +1,8 @@
 # ETAPA: ROLES Y ACCESOS — ACTIVA
 
 **Fecha inicio:** 2026-06-11  
-**Estado:** ✅ CERRADA — ver [ETAPA_ROLES_Y_ACCESOS_CERRADA.md](./ETAPA_ROLES_Y_ACCESOS_CERRADA.md)  
-**Ejecutores:** Cursor (auditoría + doc + Report) · Claude Code (Streamlit + SQL `usuario_v2`)  
+**Estado:** ✅ CERRADA — Fase 2 [ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md](./ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md)  
+**Ejecutores:** Cursor (auditoría + doc + Report + BD) · Claude Code (Streamlit + SQL `usuario_v2`)  
 **Verificador:** Cursor
 
 ---
@@ -24,8 +24,8 @@ Unificar y blindar **roles y accesos** en todo el holding Nexus: una sola verdad
 | RIMEC | 1 | DIOS | TOTAL en las 4 herramientas |
 | RIMEC | 1 | ADMIN | Todo menos Aprobación de pedidos |
 | RIMEC | 1 | VENDEDOR | Web total; Report ventas-fotos; Streamlit/Tablet prohibido |
-| BAZZAR | 2 | ADMIN | Report Bazzar + Tablet; sin RIMEC Web/Streamlit |
-| BAZZAR | 2 | VENDEDOR | Solo Tablet total |
+| BAZZAR | 2 | ADMIN | Report Bazzar + Tablet + **RIMEC Web** |
+| BAZZAR | 2 | VENDEDOR | Solo Tablet total; sin RIMEC Web/Report/Streamlit |
 
 **Regla:** `rol_id` = empresa; `categoria` = matiz o **DIOS** (Nivel Dios).
 

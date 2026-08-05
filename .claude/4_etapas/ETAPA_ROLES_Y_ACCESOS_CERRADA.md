@@ -1,9 +1,10 @@
 # ETAPA: ROLES Y ACCESOS — CERRADA
 
 **Fecha inicio:** 2026-06-11  
-**Fecha cierre:** 2026-06-11  
-**Director:** Cierre explícito — «debe estar en git y en producción»  
-**Estado:** ✅ CERRADA
+**Fecha cierre Fase 1:** 2026-06-11  
+**Fecha cierre Fase 2:** 2026-06-10 — [ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md](./ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md)  
+**Director:** Cierre explícito — «debe estar en git y en producción» + Fase 2 accesos BZZ  
+**Estado:** ✅ CERRADA (Fase 1 + Fase 2 doc)
 
 ---
 
@@ -64,8 +65,10 @@ Unificar **roles, usuarios y permisos** en holding Nexus: `usuario_v2` + matriz 
 | RIMEC DIOS | TOTAL | TOTAL | TOTAL | TOTAL |
 | RIMEC ADMIN | TOTAL | todo menos Aprobaciones | todo menos Aprobaciones | TOTAL |
 | RIMEC VENDEDOR | TOTAL | ventas-fotos | PROHIBIDO | PROHIBIDO |
-| BAZZAR ADMIN | PROHIBIDO | solo Bazzar | PROHIBIDO | TOTAL |
-| BAZZAR VENDEDOR | PROHIBIDO | PROHIBIDO | PROHIBIDO | TOTAL |
+| BAZZAR ADMIN | **TOTAL** (catálogo + carrito) | solo Bazzar | PROHIBIDO | TOTAL |
+| BAZZAR VENDEDOR | **PROHIBIDO** | PROHIBIDO | PROHIBIDO | TOTAL |
+
+> Fase 2 (2026-06-10): ver [ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md](./ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md) — passwords BZZ, organigrama, enforcement `rimec-web`.
 
 ---
 
@@ -95,9 +98,9 @@ Unificar **roles, usuarios y permisos** en holding Nexus: `usuario_v2` + matriz 
 | Etapa | Estado |
 |-------|--------|
 | Aprobaciones Nivel Dios | ✅ Cerrada `152ab7d` |
-| **Roles y accesos** | ✅ **Cerrada** |
+| **Roles y accesos** | ✅ **Cerrada** (Fase 1 + Fase 2 Bazzar) |
 | Tablet Bazzar | ⏸ Pausada |
 
 ---
 
-**Última actualización:** 2026-06-11
+**Última actualización:** 2026-06-10 — Fase 2 Bazzar · [ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md](../../4_etapas/ETAPA_ACCESOS_HOLDING_BZZ_CERRADA.md)

@@ -13,6 +13,9 @@
 
 **MUDANZA:** portar el ciclo comercial importadora RIMEC desde **Control Central (Streamlit)** a **Report (Next.js NIIF)** con:
 
+- **Piedra de cimiento:** [PIEDRA_CIMIENTO_COSTO_ARTICULO.md](../../1_fundamentos/PIEDRA_CIMIENTO_COSTO_ARTICULO.md) — COSTO · ARTÍCULO · estrategias
+- **Governance P8–P11:** [PROTOCOLO_BITACORA_USUARIOS_Y_REVERSIONES.md](../../1_fundamentos/1.1_protocolos/PROTOCOLO_BITACORA_USUARIOS_Y_REVERSIONES.md) — cierre COMPRA · bitácora · bloqueo · Report `/holding/bitacora`
+
 - Paridad **tabla por tabla** (no copiar SQL obsoleto del cliente).
 - Roles · login · APIs JSON (no HTML en errores de auth).
 - Documentación CHUSAR viva por subcuenta.
@@ -112,7 +115,7 @@ flowchart TB
 
 1. **Pilar = verdad** — FK `bigint`; prohibido filtrar por texto denormalizado.
 2. **Dos corazones** — biblioteca (7.1) ≠ evento+Excel (7.2).
-3. **Copiar casos biblioteca** — UNIQUE `(proveedor_id, nombre_caso)`: traslado atómico casos + BCL; origen queda vacío (no clon). Ver [CHUSAR_COPIAR_BIB_EDITOR](./motor_precios/CHUSAR_COPIAR_BIBLIOTECA_EDITOR.md).
+3. **Copiar casos biblioteca** — clon bib→bib (MIG-118): origen y destino **conviven** con los mismos nombres de caso. Ver [CHUSAR_COPIAR_BIB_EDITOR](./motor_precios/CHUSAR_COPIAR_BIBLIOTECA_EDITOR.md).
 4. **Sales Report blindado** — `registro_ventas_general_v2` intocable.
 5. **Cierre etapa** — paridad Streamlit + `npm run build` + evidencia OT si aplica.
 

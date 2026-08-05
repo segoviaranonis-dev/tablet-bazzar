@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS CORE - Mapa de Memoria Claude</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rimec-azul: #002B4E;
+            --rimec-azul-dark: #001829;
+            --rimec-azul-light: #003d6b;
+            --bazzar-naranja: #ea580c;
+            --app-bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --neutral-ink: #2d2520;
+            --neutral-muted: #64748b;
+            --success: #2f4f3e;
+            --border: #e2e8f0;
+            --gold: #d97706;
+            --red: #dc2626;
+            --purple: #7c3aed;
+            --blue: #3b82f6;
+            --green: #059669;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #001829 0%, #002B4E 50%, #003d6b 100%);
+            color: var(--neutral-ink);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-badge strong {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-badge span {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .legend {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--app-bg);
+            border-radius: 12px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid;
+        }
+
+        .legend-item.feedback { border-left-color: var(--red); }
+        .legend-item.user { border-left-color: var(--blue); }
+        .legend-item.project { border-left-color: var(--purple); }
+        .legend-item.reference { border-left-color: var(--green); }
+
+        .legend-icon {
+            font-size: 1.25rem;
+        }
+
+        .legend-label {
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .tree {
+            margin-top: 2rem;
+        }
+
+        .tree-root {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tree-node {
+            margin: 0.5rem 0;
+            list-style: none;
+        }
+
+        .tree-node-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--app-bg);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+            position: relative;
+        }
+
+        .tree-node-header:hover {
+            background: #e0f2fe;
+            transform: translateX(4px);
+        }
+
+        .tree-node-header.feedback { border-left-color: var(--red); }
+        .tree-node-header.user { border-left-color: var(--blue); }
+        .tree-node-header.project { border-left-color: var(--purple); }
+        .tree-node-header.reference { border-left-color: var(--green); }
+        .tree-node-header.root {
+            background: linear-gradient(135deg, var(--rimec-azul-dark), var(--rimec-azul));
+            color: white;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+        .tree-node-header.category {
+            background: var(--rimec-azul);
+            color: white;
+            font-weight: 600;
+        }
+
+        .tree-toggle {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--neutral-ink);
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .tree-node-header.root .tree-toggle,
+        .tree-node-header.category .tree-toggle {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .tree-node.collapsed .tree-toggle {
+            transform: rotate(-90deg);
+        }
+
+        .tree-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .tree-title {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .tree-description {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-left: auto;
+            max-width: 40%;
+            text-align: right;
+        }
+
+        .tree-node-header.root .tree-description,
+        .tree-node-header.category .tree-description {
+            opacity: 0.95;
+        }
+
+        .tree-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: white;
+        }
+
+        .tree-badge.critical {
+            background: var(--red);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .tree-badge.active {
+            background: var(--green);
+        }
+
+        .tree-children {
+            list-style: none;
+            padding-left: 2rem;
+            margin-top: 0.5rem;
+            border-left: 2px solid var(--border);
+            margin-left: 1rem;
+            overflow: hidden;
+            max-height: 5000px;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .tree-node.collapsed > .tree-children {
+            max-height: 0;
+            margin-top: 0;
+        }
+
+        .tree-leaf {
+            margin: 0.25rem 0;
+            padding: 0.5rem 1rem;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9375rem;
+            border-left: 3px solid;
+            transition: all 0.3s;
+        }
+
+        .tree-leaf:hover {
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tree-leaf.feedback { border-left-color: var(--red); }
+        .tree-leaf.user { border-left-color: var(--blue); }
+        .tree-leaf.project { border-left-color: var(--purple); }
+        .tree-leaf.reference { border-left-color: var(--green); }
+
+        .tree-leaf-icon {
+            font-size: 1rem;
+        }
+
+        .tree-leaf-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .tree-leaf-desc {
+            font-size: 0.8125rem;
+            color: var(--neutral-muted);
+            max-width: 50%;
+            text-align: right;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #fbbf24, var(--gold));
+            color: white;
+            padding: 0.125rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+
+        .search-box {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--app-bg);
+            border-radius: 12px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--rimec-azul);
+        }
+
+        .info-panel {
+            background: #dbeafe;
+            border-left: 4px solid var(--blue);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-panel strong {
+            color: var(--rimec-azul);
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border);
+            text-align: center;
+            color: var(--neutral-muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .tree-children {
+                padding-left: 1rem;
+            }
+
+            .tree-description,
+            .tree-leaf-desc {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧠 MAPA DE MEMORIA CLAUDE</h1>
+        <p>Sistema de Memoria Persistente - Nexus Core</p>
+        <div class="stats-bar">
+            <div class="stat-badge">
+                <strong>4</strong>
+                <span>Tipos de Memoria</span>
+            </div>
+            <div class="stat-badge">
+                <strong>25+</strong>
+                <span>Archivos Activos</span>
+            </div>
+            <div class="stat-badge">
+                <strong>∞</strong>
+                <span>Conversaciones</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="info-panel">
+            <strong>💡 Cómo funciona:</strong> Claude tiene memoria persistente que sobrevive entre conversaciones. Cada archivo documenta conocimiento crítico sobre cómo trabajar, quién eres, qué estamos construyendo y dónde encontrar información. Click en los nodos para expandir/colapsar.
+        </div>
+
+        <div class="legend">
+            <div class="legend-item feedback">
+                <div class="legend-icon">🔴</div>
+                <div class="legend-label">Feedback (Cómo trabajar)</div>
+            </div>
+            <div class="legend-item user">
+                <div class="legend-icon">🔵</div>
+                <div class="legend-label">User (Perfil Director)</div>
+            </div>
+            <div class="legend-item project">
+                <div class="legend-icon">🟣</div>
+                <div class="legend-label">Project (Contexto)</div>
+            </div>
+            <div class="legend-item reference">
+                <div class="legend-icon">🟢</div>
+                <div class="legend-label">Reference (Dónde encontrar)</div>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input
+                type="text"
+                class="search-input"
+                placeholder="🔍 Buscar en memoria... (ej: protocolo, RRHH, imágenes)"
+                id="searchInput"
+                onkeyup="searchMemory()"
+            >
+        </div>
+
+        <div class="tree">
+            <ul class="tree-root">
+                <li class="tree-node" id="root-node">
+                    <div class="tree-node-header root" onclick="toggleNode(this)">
+                        <div class="tree-toggle">▼</div>
+                        <div class="tree-icon">📁</div>
+                        <div class="tree-title">C:\Users\hecto\.claude\projects\c--Users-hecto-Nexus-Core\memory\</div>
+                        <div class="tree-description">Raíz del sistema de memoria</div>
+                    </div>
+                    <ul class="tree-children">
+                        <!-- MEMORY.md -->
+                        <li class="tree-node">
+                            <div class="tree-node-header root" onclick="toggleNode(this)">
+                                <div class="tree-toggle">▼</div>
+                                <div class="tree-icon">📋</div>
+                                <div class="tree-title">MEMORY.md</div>
+                                <div class="tree-description">Índice principal - siempre cargado en contexto</div>
+                            </div>
+                        </li>
+
+                        <!-- FEEDBACK -->
+                        <li class="tree-node">
+                            <div class="tree-node-header category" onclick="toggleNode(this)">
+                                <div class="tree-toggle">▼</div>
+                                <div class="tree-icon">🔴</div>
+                                <div class="tree-title">FEEDBACK</div>
+                                <div class="tree-badge critical">CRÍTICO</div>
+                                <div class="tree-description">Cómo trabajar - reglas y protocolos</div>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">⚡</div>
+                                    <div class="tree-leaf-name">feedback_memoria_v2_estructura.md</div>
+                                    <div class="tree-leaf-desc">CRÍTICO: 3 tipos memoria + REGLA NO CODE sin objetivo</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">📊</div>
+                                    <div class="tree-leaf-name">feedback_protocolo_etapas.md</div>
+                                    <div class="tree-leaf-desc">Nueva Etapa + Cerrar Etapa workflow</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">🔄</div>
+                                    <div class="tree-leaf-name">feedback_workflow_hibrido_cursor_claude.md</div>
+                                    <div class="tree-leaf-desc">CRÍTICO: Cursor ejecuta refactoring, Claude gestiona git/docs</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">💰</div>
+                                    <div class="tree-leaf-name">feedback_protocolo_5_patas.md</div>
+                                    <div class="tree-leaf-desc">CRÍTICO: INICIO→💰 COSTO + Pata 5 obligatoria</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">📈</div>
+                                    <div class="tree-leaf-name">feedback_reporte_tokens_obligatorio.md</div>
+                                    <div class="tree-leaf-desc">Detalle tokens/costos en cada turno, límite $250/mes</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">✅</div>
+                                    <div class="tree-leaf-name">feedback_protocolo_cierre_etapa.md</div>
+                                    <div class="tree-leaf-desc">CRÍTICO: 5 pasos rama→aprobación→git→deploy→sync</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">📚</div>
+                                    <div class="tree-leaf-name">feedback_documentacion_distribuida_repos.md</div>
+                                    <div class="tree-leaf-desc">CLAUDE.md en cada repo con protocolo completo</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">🚫</div>
+                                    <div class="tree-leaf-name">feedback_no_deploy_sin_aprobacion.md</div>
+                                    <div class="tree-leaf-desc">CRÍTICO: NUNCA merge/deploy sin aprobación visual</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">🔒</div>
+                                    <div class="tree-leaf-name">feedback_seguridad_responsabilidad_total.md</div>
+                                    <div class="tree-leaf-desc">Claude responsable TOTAL seguridad proactiva</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">🏗️</div>
+                                    <div class="tree-leaf-name">feedback_responsabilidad_total.md</div>
+                                    <div class="tree-leaf-desc">Claude: portero, albañil y maestro de obras</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">💻</div>
+                                    <div class="tree-leaf-name">feedback_workflow_local_first.md</div>
+                                    <div class="tree-leaf-desc">Trabajar SOLO LOCAL, Git/Deploy al cerrar etapa</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">🚀</div>
+                                    <div class="tree-leaf-name">feedback_deploy_obligatorio.md</div>
+                                    <div class="tree-leaf-desc">Post-fase: commit + merge + push + verificar</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">📝</div>
+                                    <div class="tree-leaf-name">feedback_git_admin.md</div>
+                                    <div class="tree-leaf-desc">Claude responsable commits/push (solo al cerrar)</div>
+                                </li>
+                                <li class="tree-leaf feedback">
+                                    <div class="tree-leaf-icon">🎨</div>
+                                    <div class="tree-leaf-name">feedback_arquitectura_aprobaciones.md</div>
+                                    <div class="tree-leaf-desc">Streamlit módulos internos, Next.js postergado</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- USER -->
+                        <li class="tree-node">
+                            <div class="tree-node-header category" onclick="toggleNode(this)">
+                                <div class="tree-toggle">▼</div>
+                                <div class="tree-icon">🔵</div>
+                                <div class="tree-title">USER</div>
+                                <div class="tree-description">Perfil del Director Héctor</div>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-leaf user">
+                                    <div class="tree-leaf-icon">👤</div>
+                                    <div class="tree-leaf-name">(vacío)</div>
+                                    <div class="tree-leaf-desc">Agregar cuando aprenda más sobre el Director</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- PROJECT -->
+                        <li class="tree-node">
+                            <div class="tree-node-header category" onclick="toggleNode(this)">
+                                <div class="tree-toggle">▼</div>
+                                <div class="tree-icon">🟣</div>
+                                <div class="tree-title">PROJECT</div>
+                                <div class="tree-description">Contexto de trabajo actual</div>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-leaf project">
+                                    <div class="tree-leaf-icon">📄</div>
+                                    <div class="tree-leaf-name">project_estructura_legal_critica.md</div>
+                                    <div class="tree-leaf-desc">Números documentos = primeros hijos, absorber empresa</div>
+                                </li>
+                                <li class="tree-leaf project">
+                                    <div class="tree-leaf-icon">📷</div>
+                                    <div class="tree-leaf-name">project_problema_imagenes_pdf_tablets.md</div>
+                                    <div class="tree-leaf-desc">Sistema carga garantizada (commit 65a8add)</div>
+                                </li>
+                                <li class="tree-leaf project">
+                                    <div class="tree-leaf-icon">🏪</div>
+                                    <div class="tree-leaf-name">project_venta_en_tienda.md</div>
+                                    <div class="tree-leaf-desc">Módulo report para rol TIENDA (04)</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- REFERENCE -->
+                        <li class="tree-node">
+                            <div class="tree-node-header category" onclick="toggleNode(this)">
+                                <div class="tree-toggle">▼</div>
+                                <div class="tree-icon">🟢</div>
+                                <div class="tree-title">REFERENCE</div>
+                                <div class="tree-badge active">ACTIVO</div>
+                                <div class="tree-description">Dónde encontrar información</div>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">📸</div>
+                                    <div class="tree-leaf-name">reference_protocolo_imagenes.md</div>
+                                    <div class="tree-leaf-desc">
+                                        ⚡ PALABRA CLAVE: sm/md/lg responsivo, Supabase Storage
+                                        <span class="keyword-tag">Protocolo Imágenes</span>
+                                    </div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">🔗</div>
+                                    <div class="tree-leaf-name">reference_repos_nexus.md</div>
+                                    <div class="tree-leaf-desc">CRÍTICO: 5 repos independientes + URLs oficiales</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">🏛️</div>
+                                    <div class="tree-leaf-name">reference_pilares_rimec.md</div>
+                                    <div class="tree-leaf-desc">5 pilares: linea/ref/mat/color/talla</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">🔐</div>
+                                    <div class="tree-leaf-name">reference_matriz_roles_accesos.md</div>
+                                    <div class="tree-leaf-desc">CANÓNICA rol_id × módulos (Director 2026-06-11)</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">📝</div>
+                                    <div class="tree-leaf-name">reference_nomenclatura_p0.md</div>
+                                    <div class="tree-leaf-desc">Léxico: linea_id, codigo_proveedor, nombres prohibidos</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">☁️</div>
+                                    <div class="tree-leaf-name">reference_infraestructura.md</div>
+                                    <div class="tree-leaf-desc">Vercel Pro, Supabase Free, Upstash, límites/costos</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">📦</div>
+                                    <div class="tree-leaf-name">reference_formato_grada.md</div>
+                                    <div class="tree-leaf-desc">Atómico (PP) vs Cajas (CSV/Factura)</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">🎨</div>
+                                    <div class="tree-leaf-name">reference_niif_checklist.md</div>
+                                    <div class="tree-leaf-desc">Paleta institucional + verificación violaciones</div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- DOCUMENTACIÓN SECUNDARIA -->
+                        <li class="tree-node">
+                            <div class="tree-node-header category" onclick="toggleNode(this)">
+                                <div class="tree-toggle">▼</div>
+                                <div class="tree-icon">📚</div>
+                                <div class="tree-title">.claude/ (Memoria Secundaria)</div>
+                                <div class="tree-badge">EXTERNA</div>
+                                <div class="tree-description">Documentación completa del proyecto</div>
+                            </div>
+                            <ul class="tree-children">
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">📁</div>
+                                    <div class="tree-leaf-name">1_fundamentos/</div>
+                                    <div class="tree-leaf-desc">Léxico, políticas, estructura legal</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">📁</div>
+                                    <div class="tree-leaf-name">2_modulos/</div>
+                                    <div class="tree-leaf-desc">6 módulos: Control, RIMEC Web, Report, Tablet, Bazzar, RRHH</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">📁</div>
+                                    <div class="tree-leaf-name">3_errores/</div>
+                                    <div class="tree-leaf-desc">Log de errores resueltos</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">📁</div>
+                                    <div class="tree-leaf-name">4_etapas/</div>
+                                    <div class="tree-leaf-desc">ACTUAL.md + historial etapas cerradas</div>
+                                </li>
+                                <li class="tree-leaf reference">
+                                    <div class="tree-leaf-icon">📁</div>
+                                    <div class="tree-leaf-name">5_diagramas/</div>
+                                    <div class="tree-leaf-desc">Flujos de datos visuales</div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>💎 NEXUS CORE</strong> - Sistema de Memoria Persistente Claude</p>
+            <p>Última actualización: 2026-06-11 | Total archivos: 25+ | Palabras clave activas: 1</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleNode(element) {
+            const node = element.parentElement;
+            node.classList.toggle('collapsed');
+        }
+
+        function searchMemory() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const leaves = document.querySelectorAll('.tree-leaf');
+            const nodes = document.querySelectorAll('.tree-node');
+
+            if (searchTerm === '') {
+                // Restaurar todo
+                leaves.forEach(leaf => {
+                    leaf.style.display = 'flex';
+                });
+                nodes.forEach(node => {
+                    node.style.display = 'list-item';
+                });
+                return;
+            }
+
+            // Ocultar todo primero
+            leaves.forEach(leaf => {
+                const text = leaf.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    leaf.style.display = 'flex';
+                    // Expandir padres
+                    let parent = leaf.closest('.tree-node');
+                    while (parent) {
+                        parent.classList.remove('collapsed');
+                        parent.style.display = 'list-item';
+                        parent = parent.parentElement.closest('.tree-node');
+                    }
+                } else {
+                    leaf.style.display = 'none';
+                }
+            });
+
+            // Ocultar categorías vacías
+            const categories = document.querySelectorAll('.tree-node');
+            categories.forEach(category => {
+                const visibleChildren = category.querySelectorAll('.tree-children .tree-leaf[style*="flex"]');
+                if (visibleChildren.length === 0 && !category.querySelector('.tree-node-header.root')) {
+                    const children = category.querySelector('.tree-children');
+                    if (children && children.children.length > 0) {
+                        // Es una categoría
+                        const hasVisibleLeaves = Array.from(children.querySelectorAll('.tree-leaf')).some(
+                            leaf => leaf.style.display !== 'none'
+                        );
+                        if (!hasVisibleLeaves) {
+                            category.style.display = 'none';
+                        }
+                    }
+                }
+            });
+        }
+
+        // Expandir todo por defecto
+        document.addEventListener('DOMContentLoaded', () => {
+            const rootNode = document.getElementById('root-node');
+            // Mantener root expandido, categorías colapsadas
+            document.querySelectorAll('.tree-node-header.category').forEach(header => {
+                header.parentElement.classList.add('collapsed');
+            });
+        });
+    </script>
+</body>
+</html>

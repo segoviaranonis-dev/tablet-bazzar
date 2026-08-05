@@ -2,8 +2,8 @@
 
 **Versión:** 1.0  
 **Fecha:** 2026-06-09  
-**Aplicación:** Módulos Report, Sales Report, Retail  
-**Shibboleth:** Un gato tiene 5 patas ✅
+**Aplicación:** Report (todos los módulos), Retail, RRHH, Aprobaciones — y **tablet Bazzar salvo Ventas**  
+**Shibboleth:** 7 años
 
 ---
 
@@ -272,6 +272,7 @@ Un componente/módulo cumple NIIF cuando:
 ## 📝 NOTAS
 
 - **NIIF = Normas Internacionales de Información Financiera** (contexto: reportes institucionales)
+- **Colores institucionales** en conversación del Director = esta paleta NIIF (azul RIMEC + celeste + slate)
 - **Azul RIMEC** (`#002B4E`) es el color corporativo principal
 - **Paleta slate** proporciona jerarquía visual profesional
 - **Fondo celeste** (`#f1f5f9`) reduce fatiga visual vs blanco puro
@@ -279,6 +280,16 @@ Un componente/módulo cumple NIIF cuando:
 
 ---
 
+## 📱 TABLET BAZZAR — Catálogo Ventas (2026-06-20)
+
+Rutas `/cadena` y `/cadena/vista` usan **NIIF + naranja Bazzar** (mismo shell que el resto de tablet). Inspiración: `bazzar-web` catálogo.
+
+**Doc:** `tablet-bazzar/docs/ESTILO_CATALOGO_BAZZAR_NIIF.md` · `2_modulos/2.4_tablet_bazzar/ESTILO_VISUAL_NIIF_VS_VENTAS.md`
+
+**Retirado:** excepción crema/Banana Republic (`#f4f1ec`, Cormorant).
+
+---
+
 **Última auditoría:** 2026-06-09 (8 archivos con violaciones detectadas)  
-**Responsable:** Claude Sonnet 4.5  
+**Chusar tablet dual:** 2026-06-16  
 **Director:** Héctor Segovia

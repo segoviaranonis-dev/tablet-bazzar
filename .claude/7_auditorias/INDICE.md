@@ -26,11 +26,13 @@ Migraciones de base de datos
 
 ---
 
-### **7.3 Code Quality**
-Auditorías de calidad de código
+### **7.4 Histórico**
+Migraciones de código, fases cerradas, auditorías puntuales
 
 **Archivos:**
-- `code_quality/audit_2026.md`
+- `historico/code_quality_audit.md`
+- `historico/fase2_*.md`
+- `historico/etapa1_completada_resumen_final.md`
 
 ---
 

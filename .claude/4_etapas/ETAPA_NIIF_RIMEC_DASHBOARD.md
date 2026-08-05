@@ -1,7 +1,7 @@
 # ETAPA: NIIF RIMEC DASHBOARD - EN PROGRESO
 
 **Fecha inicio:** 2026-06-10  
-**Estado:** EN EJECUCIÓN - Cursor trabajando  
+**Estado:** ✅ CERRADA — ver [ETAPA_NIIF_RIMEC_DASHBOARD_CERRADA.md](./ETAPA_NIIF_RIMEC_DASHBOARD_CERRADA.md)  
 **Ejecutor:** Cursor (refactoring masivo)  
 **Verificador:** Claude Code
 

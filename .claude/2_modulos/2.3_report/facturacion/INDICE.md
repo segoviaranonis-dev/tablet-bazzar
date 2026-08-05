@@ -46,6 +46,7 @@
 | Queries | `report/src/lib/facturacion/queries.ts` |
 | APIs | `report/src/app/api/facturacion/` |
 | CSV PE Carlos | `report/src/lib/facturacion/csv-pe-ventas-export.ts` |
+| Bóveda RIMEC | `report/src/lib/facturacion/boveda.ts` · `/facturacion/boveda` · MIG-186 |
 | Ley FI UI | `report/src/app/bazzar-web/compra/components/CompraWebFiPanel.tsx` |
 
 Ver [CHUSAR § Estado Report](./CHUSAR_FACTURACION.md#estado-report--implementación-2026-06-19).
@@ -71,12 +72,19 @@ Ver [CHUSAR § Estado Report](./CHUSAR_FACTURACION.md#estado-report--implementac
 | 4 | [FLUJOS.md](./FLUJOS.md) | Estados FI · traspaso · secuencias envío web |
 
 | 5 | [CHUSAR_FACTURACION_PRONTA_ENTREGA.md](./CHUSAR_FACTURACION_PRONTA_ENTREGA.md) | Bandeja PE · hub 2 tarjetas |
+| **5b** | **[CHUSAR_FACTURACION_BOVEDA_RIMEC.md](./CHUSAR_FACTURACION_BOVEDA_RIMEC.md)** | **2.3.1.9.B.2** · bóveda permanente · PROCESAR · MIG-186 |
 
-| 6 | **[CHUSAR_CSV_VENTAS_PE_CARLOS.md](./CHUSAR_CSV_VENTAS_PE_CARLOS.md)** | **CSV TSV 7954_3114 · inyección Carlos PE** |
+| 6 | **[CHUSAR_CSV_VENTAS_PE_CARLOS.md](./CHUSAR_CSV_VENTAS_PE_CARLOS.md)** | **CSV TSV · inyección Carlos PE** |
+| **6a** | **[CHUSAR_CSV_PE_DEPOSITO_CABECERA_20260804.md](./CHUSAR_CSV_PE_DEPOSITO_CABECERA_20260804.md)** | **2.3.1.9.B.3** · col **DEPOSITO** cabecera `S00_D1\|DEP2\|D3` · Cant. Pares · veneno inviolable · 🟢 **2026-08-04** |
+| **6a2** | **[CHUSAR_PENDIENTES_PE_CSV_20260804.md](./CHUSAR_PENDIENTES_PE_CSV_20260804.md)** | **2.3.1.9.B.4** · pendientes PE/CSV · etapa **CERRADA** 2026-08-04 · sin deploy · 🟡 piso |
+| — | [ETAPA_CSV_PE_DEPOSITO_CABECERA_20260804_CERRADA.md](../../../4_etapas/ETAPA_CSV_PE_DEPOSITO_CABECERA_20260804_CERRADA.md) | Cierre · handoff → `SALES-REPORT-PDFS-20260804` |
 
 | **6b** | **[CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md](./CHUSAR_BOTON_DIOS_ANULAR_REINTEGRAR_FI.md)** | **2.3.1.9.C** · DIOS · FI entera · reintegrar stock · Anulaciones · PE+tránsito+Aprobaciones |
 | **6c** | **[CHUSAR_FI_CASO_CABECERA_DESDE_PP.md](./CHUSAR_FI_CASO_CABECERA_DESDE_PP.md)** | **2.3.1.9.D** · caso/marca cabecera FI desde PP · Admin IC · backfill · resync |
 | **6d** | **[CHUSAR_USUARIO_CAJA_RIMEC_PE.md](./CHUSAR_USUARIO_CAJA_RIMEC_PE.md)** | **2.3.1.9.E** · usuario CAJA_RIMEC · solo Facturación Pronta Entrega |
+| **6f** | **[CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md](./CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md)** | **2.3.1.9.F** · traductor vendedor Carlos · PATRICIA **101** / DARIO **111** · **1ª PE 638** · colisión id **19** Guido↔Patricia · error **`4.02.04.004`** · 🟢 **2026-08-03** |
+| **6g** | **[CHUSAR_BIBLIOTECA_CADENA_CARLOS_PE.md](./CHUSAR_BIBLIOTECA_CADENA_CARLOS_PE.md)** | **2.3.1.9.B.1** · diccionario único cadena PE · COD.GRUPO · excluye Carteras · seed 133 grupos |
+| **6h** | **[../deposito_rimec/CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md](../deposito_rimec/CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md)** | **2.3.1.10.1.1** · traductor propio · dual biblioteca PE/PP · plan Hiedra · 92 % acertividad |
 
 | 7 | [../TABLAS_ABASTECIMIENTO_8_9_10.md](../TABLAS_ABASTECIMIENTO_8_9_10.md) | Vista cruzada 8–10 |
 
@@ -107,6 +115,8 @@ Ver [CHUSAR § Estado Report](./CHUSAR_FACTURACION.md#estado-report--implementac
 | `traspaso` | Logística · `documento_ref = nro_factura` |
 
 | `traspaso_detalle` | Stock por `combinacion_id` |
+
+| `facturacion_boveda_rimec` | **2.3.1.9.B.2** · archivo permanente PE (MIG-186) · no muta estado FI |
 
 
 
@@ -152,7 +162,9 @@ Ver [CHUSAR § Estado Report](./CHUSAR_FACTURACION.md#estado-report--implementac
 
 | `cliente_v2` | Nombre cliente · **5000** = web |
 
-| `usuario_v2` | Vendedor FI |
+| `usuario_v2` | Vendedor FI (Nexus — nombre) |
+| `vendedor_v2_deprecated` | **Solo Sales Report histórico** — no traductor PE |
+| `vendedor_carlos_matriz` | **Pendiente MIG** · Código de vendedor real por caso |
 
 | `marca_v2` | Marca display |
 

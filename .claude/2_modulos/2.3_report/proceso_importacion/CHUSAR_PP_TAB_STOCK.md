@@ -59,16 +59,18 @@ Solo almacenan/muestran · **no** afectan precio venta (listado RIMEC).
 
 ---
 
-## §3 Upload proforma — PROGRAMADO (Fase 4 ✅ · revisión 2026-07-21)
+## §3 Upload proforma — PROGRAMADO (Fase 4 ✅ · cola 2026-07-23)
 
 Flujo **manual** — alineación IC↔PF en **Administrador de IC**:
 
 1. Subir `.xls/.xlsx` · `POST …/proforma/preview` → tabla **SHOP×marca Excel** + chequeo **totales IC = proforma**
 2. Confirmar solo si `totales_ok`
-3. `POST …/proforma?phase=ppd` → PPD línea por línea · **sin FI**
-4. Tab **Administrador de IC** → alinear · generar FI lote
+3. **Cola import:** `phase=ppd_plan` → loop `phase=ppd` (120 SKUs/lote) · overlay progreso · reintento 504
+4. Tab **Administrador de IC** → alinear IC=PF · generar FI lote
 
-**Doc canónico:** [CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721](./CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721.md)
+**Doc canónico:** [CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721](./CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721.md)  
+**Ley import extensa:** [LEY_IMPORTACION_EXTENSA_COLA_VERCEL](./LEY_IMPORTACION_EXTENSA_COLA_VERCEL.md) (**2.3.1.7.5.3.3.10**)  
+**Componente cola:** `ProcesoImportacionQueueOverlay.tsx`
 
 Parser: `shop` col J · `brand` col I · ver protocolo canónico.
 
@@ -151,6 +153,14 @@ PP sin stock (ej. **PP-2026-0014**):
 - [ ] Cabecera superior «Quincena ETA» coincide tras guardar
 
 PP con proforma (ej. **PP-2026-0007**): pendiente Fase 2.
+
+---
+
+## Precios CP — certificación (2026-07-24)
+
+- **Doctrina:** una columna **LPN vinc.** · pie unidad mando/dirección · sin dual listado.
+- **Doc:** [CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md](./CHUSAR_CERTIFICACION_PRECIOS_CP_RIMEC.md) (**2.3.1.7.5.3.8**)
+- **Comando:** `npm run certificar:precios-cp:sync` (desde `report/`)
 
 ---
 

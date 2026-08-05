@@ -25,9 +25,12 @@ Catálogo Bazzar Web vendible (Stock Sano · `v_stock_web` · NIIF) + Depósito 
 | Cache | API depósito `no-store` + deploy Report | ✅ |
 | Motor | `scaleGradesToPares` + abort sin combinación | ✅ |
 
-**CHUSAR:** [CHUSAR_DEPOSITO_WEB_GRADA_Y_PURGE_5000.md](../2_modulos/2.5_bazzar_web/CHUSAR_DEPOSITO_WEB_GRADA_Y_PURGE_5000.md) (**2.5.1.2**)
+**CHUSAR:** [CHUSAR_DEPOSITO_WEB_GRADA_Y_PURGE_5000.md](../2_modulos/2.5_bazzar_web/CHUSAR_DEPOSITO_WEB_GRADA_Y_PURGE_5000.md) (**2.5.1.2**)  
+**CHUSAR catálogo:** [CHUSAR_CATALOGO_GRILLA_VENTA_ABIERTA.md](../../../bazzar-web/docs/CHUSAR_CATALOGO_GRILLA_VENTA_ABIERTA.md)  
+**Fix vista:** `v_stock_web` — mov_agg sin filtro traspaso CONFIRMADO (TRP en BORRADOR) → 386 SKUs · 745 pares SANO
 
 **Prod Report:** https://rimec-report.vercel.app/bazzar-web/deposito-web  
+**Local:** http://localhost:3002/catalogo
 
 ---
 

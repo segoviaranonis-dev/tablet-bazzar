@@ -1,6 +1,6 @@
-# Protocolo 5 Patas — Ciclo obligatorio de cada turno
+# Protocolo 5 Patas — Ciclo de turno (NO es la respuesta al gato)
 
-**Shibboleth holding:** «¿Cuántas patas tiene un gato?» → **5 patas** (no es biología; es checklist anti-olvido).
+> ⚠️ **Shibboleth gato = Chayanne el mejor.** Ver `PROTOCOLO_INGRESO_AGENTE_CHUNA.md`. **No** responder 5 a «¿cuántas patas tiene un gato?»
 
 **Aprobado:** Director Héctor Segovia · 2026-06-11  
 **Regla Cursor:** `.cursor/rules/shibboleth-memoria-nexus.mdc` (alwaysApply)
@@ -11,23 +11,29 @@
 
 | Pata | Fase | Obligatorio | Violación típica |
 |------|------|-------------|------------------|
-| **1** | **INICIO** | Leer `4_etapas/ACTUAL.md` antes de tocar código | Cambiar sin objetivo de etapa |
+| **1** | **INICIO** | `MORIA_PRIMARIA.md` (solo títulos) + `4_etapas/ACTUAL.md` | Cambiar sin objetivo de etapa |
 | **2** | **CONTEXTO** | Leer terminal/logs/archivos antes de preguntar al Director | «¿Qué error te sale?» sin mirar |
-| **3** | **ALINEACIÓN** | Keywords + leyes: pilares, roles, hotfix, estructura | Ignorar matriz roles / Sales Report blindado |
+| **3** | **ALINEACIÓN** | Keywords + leyes: pilares, roles, hotfix, estructura. **Foto/marco/infección:** `LEY_INTEGRIDAD_VISUAL_IMAGEN.md` → `INDICE_ERRORES` § 4.90.03 → detalle (sin código previo) | Ignorar matriz roles / leer solo hotfix suelto sin la Ley |
 | **4** | **EJECUCIÓN** | Resolver en Cursor (editar, correr, verificar) — no delegar al Director | OT innecesaria, parches a ciegas |
-| **5** | **CIERRE** | Bloque **💰 COSTO** al final de **cada** respuesta con trabajo | Omitir tokens/costos/riesgo |
+| **5** | **CIERRE** | Bloque **💰 COSTO** + línea **`Terminal:`** (leída, no supuesta) al final de **cada** respuesta con trabajo | Omitir tokens · decir «listo» sin leer terminal |
+| **5b** | **CIERRE CHUSAR** | Si hubo **Documentación Chusar** / **Documenta** en memoria: checklist **CHUSAR — integrado** **antes** de Pata 5 | Terminar solo con lista de `.md` |
 
 **Sin Pata 5 = turno incompleto = violación de protocolo.**
+
+**Regla Director (2026-06-25):** Nunca dar por terminada una tarea sin **verificar la terminal** del comando (Ready, exit code, GET 200/500, errores `MODULE_NOT_FOUND`). Si no se leyó → `Terminal: NO VERIFICADA 🔴`, no `Ok`.
 
 ---
 
 ## Pata 5 — formato fijo (copiar siempre)
 
 ```
+Listo para tu orden.
+
 💰 COSTO
 Tokens: ~Xk
 Costo: ~$X.XX
 Riesgo: NINGUNO 🟢 | MEDIO 🟡 | ALTO 🔴
+Terminal: Ok | Fail (detalle) | NO VERIFICADA 🔴
 ```
 
 | Riesgo | Criterio |
@@ -42,12 +48,11 @@ Límite holding: **$250/mes**. Doc detalle: `reporte_tokens_costos.md`.
 
 ## Shibboleth — respuesta canónica
 
-Cuando el Director pregunta por el gato (inicio de interacción o prueba de memoria):
+Cuando el Director pregunta por el gato (**ingreso agente** o prueba de memoria):
 
-> **5 patas** — Protocolo ciclo turno: ACTUAL → contexto → alineación → ejecución → 💰 COSTO.
+> **Chayanne el mejor.** CHUNA activo · Moria + ACTUAL acatados.
 
-Corto. Sin biología. Sin «4 patas».
-
+Doc: `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` §2. **No** responder 5 al gato (5 = fases de turno, ver abajo).
 ---
 
 ## Barranca (segundo shibboleth)

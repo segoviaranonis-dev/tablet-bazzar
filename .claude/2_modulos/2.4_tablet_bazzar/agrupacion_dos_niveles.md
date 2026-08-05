@@ -2,8 +2,10 @@
 
 **Tipo:** Ley de diseño POS (ejecutor)  
 **Módulo:** 2.4 Tablet Bazzar  
-**Última actualización:** 2026-06-10  
-**Estado:** Documentado · **UI cadena implementada** (2026-06-10) · precio LPN pendiente
+**Última actualización:** 2026-06-22  
+**Estado:** Documentado · **UI cadena implementada** (2026-06-10) · cohorte terciaria doc 2026-06-22 · precio LPN pendiente
+
+**Jerarquía completa (4 capas):** ver [agrupacion_terciaria.md](./agrupacion_terciaria.md) — **Marca → Estilo** acota sidebar y ←→; este doc cubre **primaria (L+R+Mat)** y **color**.
 
 ---
 
@@ -139,7 +141,7 @@ Todos los `color_id` de un mismo triplete L+R+Mat **pertenecen al mismo Nivel 1*
 |-------|---------------|-----------|
 | `color_id` | Nivel 2 | ❌ |
 | `grada` / tallas | Cantidad por curva dentro del color | ❌ |
-| `marca_id`, `genero_id`, `grupo_estilo_id` | **Filtros** de navegación | ❌ |
+| `marca_id`, `genero_id`, `grupo_estilo_id` | **Marca/estilo:** cohorte terciaria ([agrupacion_terciaria.md](./agrupacion_terciaria.md)); género = filtro | ❌ (precio) |
 | Texto descriptivo | Exhibición; nunca clave de grupo | ❌ |
 
 **Prohibido:** agrupar o calcular precio por texto de marca/estilo si existe FK de pilar.
@@ -184,10 +186,11 @@ Ubicación canónica prevista en repo: `tablet-bazzar/lib/agrupacion.ts` (pendie
 | 3 | Foto grande = **Grupo 1** (L+R+material activo) |
 | 4 | **Arriba:** colores **Grupo 2** (solo L+R, sin material) |
 | 5 | **Abajo:** colores **Grupo 1** (L+R+material · precio) |
-| 6 | Navegar: swipe / ‹ › en foto = siguiente **L+R** en cadena |
-| 7 | **Buscar 🔍:** `linea.referencia` · `linea.ref-material` · `linea.ref-material-color` |
+| 6 | **Sidebar derecho:** pares L+R de la **cohorte terciaria** (mismo estilo que hero) — ver [agrupacion_terciaria.md](./agrupacion_terciaria.md) |
+| 7 | **← →:** L+R en cohorte (secundaria) o material (primaria si una ref) · **↑ ↓:** color |
+| 8 | **Buscar 🔍:** `linea.referencia` · `linea.ref-material` · `linea.ref-material-color` |
 
-Código: `lib/cadena.ts` · `lib/codigo-busqueda.ts` · `app/cadena/`
+Código: `lib/cadena.ts` (`paresMismoEstilo`) · `app/cadena/vista/page.tsx`
 
 ---
 

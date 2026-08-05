@@ -40,6 +40,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.01.04.005_rimec-web-638-lightbox-colores-duplicados-tallas.md`* · ✅ **RESUELTO 2026-07-27** · Web `899f1dc` · doc `2.2.1.30` · **638 ONLY**
 
+### 4.01.04.006 · Doble descuento carrito/FI (snapshot neto → LPN → cascada + F5 20 %)
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.006_rimec-web-doble-descuento-snapshot-lpn.md`* · ✅ **FIX local + RECALC PE-237-010** 2026-08-03 · pedido **237** · proveedor **654** · doc `2.2.1.40` · ⏳ deploy Web
+
 ### 4.01.05.001 · Pronta entrega muestra tarjetas Compra previa (quincenas PP)
 
 *Detalle: `.claude/5_errores/detalle/4.01.05.001_rimec-web-pe-muestra-tarjetas-cp.md`* · ✅ **RESUELTO UI 2026-07-17** · deferred origen + validación warm cache · doc `2.2_rimec_web/CHUSAR_CORTE_20260717_HEADER_PRECIOS_PE.md`
@@ -208,6 +212,26 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.04.003_report-3000-zombie-modal-import-cero.md`* · ✅ **RESUELTO 2026-07-24** · kill + `dev:3000` · no re-importar
 
+### 4.02.04.004 · Facturación — colisión `fi.vendedor_id` usuario ↔ `vendedor_v2` (Guido↔Patricia)
+
+*Detalle: `.claude/5_errores/detalle/4.02.04.004_fi-vendedor-id-colision-usuario-vendedor-v2.md`* · ✅ **RESUELTO 2026-08-03** · helper display · PE/tránsito/bóveda/Aprobaciones · CHUSAR `2.3.1.9.F`
+
+### 4.02.05.001 · Automatización informes · marcas sin cascada ramo / tipo_v2
+
+*Detalle: `.claude/5_errores/detalle/4.02.05.001_report-auto-informes-marcas-sin-cascada-ramo.md`* · ✅ **RESUELTO local 2026-08-01** · CALZADO mezclaba PIPA/NANAI (confecciones) · meta `?ramo=` + poda UI · **2.3.1.35**
+
+### 4.02.05.002 · Automatización informes · listado Motor como precio PDF (vs PPD AM)
+
+*Detalle: `.claude/5_errores/detalle/4.02.05.002_report-auto-informes-precio-listado-vs-ppd-am.md`* · 🟡 **DOCUMENTADO 2026-08-01** · PDF debe usar PPD LPN/LPC (AM) · no `precio_lista` vigente · **2.3.1.35.4**
+
+### 4.02.05.003 · Bandeja Automatización · vista forzada vs destinatario (anti-saturación)
+
+*Detalle: `.claude/5_errores/detalle/4.02.05.003_bandeja-auto-vista-forzada-vs-destinatario.md`* · ✅ **CORREGIDO 2026-08-02** · agente debió pedir sesión HECTOR · no forzar `verTodas` · **2.3.1.36**
+
+### 4.02.05.004 · DPE KYLY · título VERANO · prendas con aspecto invierno
+
+*Detalle: `.claude/5_errores/detalle/4.02.05.004_dpe-kyly-verano-visual-invierno.md`* · 🟡 **DOCUMENTADO 2026-08-04** · cocina no mezcló · tipificación Carlos vs visual · **2.3.1.35.13** · grupo `1001020100`
+
 ---
 
 ## 4.03 · Tablet Bazzar
@@ -234,9 +258,33 @@
 
 ## 4.05 · Holding · protocolo / UX
 
+### 4.05.01.001 · Chusar — cierre conversación omitido
+
+*Detalle: `.claude/5_errores/detalle/4.05.01.001_chusar-cierre-conversacion-omitido.md`*
+
 ### 4.05.02.001 · Etiqueta «Dios» visible en UI — ofensiva al usuario
 
 *Detalle: `.claude/5_errores/detalle/4.05.02.001_ui-etiqueta-dios-ofensiva-usuario.md`* · ✅ **RESUELTO 2026-07-16** · ley `5.01.00.020`
+
+### 4.05.03.002 · Bazzar Web · FAIL grada 638 sin am_talle (ok_stock PASS)
+
+*Detalle: `.claude/5_errores/detalle/4.05.03.002_bazzar-638-ok-grada-sin-am-talle.md`* · 🟡 **ABIERTO 2026-08-02** · ALM_WEB sin `am_talle` · protocolo **3.02.00.638** · fix F1 roadmap **2.5.1.8**
+
+### 4.05.03.003 · Traspaso PE · sin combinación talla 638 (grada incompleta)
+
+*Detalle: `.claude/5_errores/detalle/4.05.03.003_traspaso-pe-sin-combinacion-talla-638.md`* · ✅ **RESUELTO 2026-08-02** · `ensureTallaId` + match mat/col · CHUSAR **2.5.1.16** · PE-237 12/12 ENVIADO
+
+### 4.05.04.001 · Nexus_Core `origin` apunta a tablet-bazzar.git
+
+*Detalle: `.claude/5_errores/detalle/4.05.04.001_nexus-core-origin-apunta-tablet-bazzar.md`* · 🟡 **PARKING FIN DE SEMANA** · prod OK hoy · no push desde raíz
+
+---
+
+## 4.90 · Transversal — Infra / nube
+
+### 4.90.01.001 · Supabase bloqueado por facturación (DNS caído · holding offline)
+
+*Detalle: `.claude/5_errores/detalle/4.90.01.001_supabase-proyecto-bloqueado-facturacion.md`* · ✅ **RESTABLECIDO 2026-08-03** (pago Andrés / sesión GitHub) · 🟡 pendiente alertas · owners · backup
 
 ---
 

@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Protocolo Director — Palabras clave Nexus
 
-Antes de **crear un módulo nuevo** (carpeta, app, `MODULE_INFO`, ruta Report): leer esta tabla y actuar. No improvisar flujo.
+> **Puerta única:** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` — reglas completas ahí. Esta tabla = referencia rápida keywords.
 
 ---
 
@@ -13,12 +13,32 @@ Antes de **crear un módulo nuevo** (carpeta, app, `MODULE_INFO`, ruta Report): 
 
 | # | Palabras clave del Director | Acción del agente |
 |---|----------------------------|-------------------|
-| 1 | **bug urgente** · **hotfix urgente** | Modo HOTFIX: mínimo diff, sin refactor, sin OT salvo DevOps/BD. Prioridad sobre etapa activa. Evidencia en `ot/` o `5_errores/` si aplica. |
+| 1 | **Bug urgente!!** · **bug urgente** · **hotfix urgente** | **PARÉNTESIS** — suspende el hilo actual. **PASO 0:** si el Director no dio app+módulo+síntoma en el mismo mensaje → **solo preguntar dónde está el error**; **prohibido** asumir chat/archivos abiertos/etapa. Tras confirmar → `protocolo_errores.md` + índice títulos. Regla: `hotfix-parentesis-nexus.mdc` |
 | 2 | **Inicia etapa** · **Nueva etapa** · **NUEVA ETAPA** | Crear/actualizar `.claude/4_etapas/ETAPA_*.md` + `ACTUAL.md`. Pausar etapa anterior. **No declarar cerrada** hasta protocolo completo. |
-| 3 | **Cierra etapa** | Actualizar doc etapa CERRADA, `ACTUAL.md`, git/deploy según `1.1.10_protocolo_cierre_etapa.md`. No decir «cerrada» sin pasos del protocolo. |
+| 3 | **Cierra etapa** · **CERRAR ETAPA** · **cierra la etapa** | **Mismo turno:** doc `ETAPA_*_CERRADA.md` + `ACTUAL.md` + índices **+ obligatorio `nexus-navegador-holding/config/etapas.json`** (`estado: "hecho"` + `cerradasPorModulo`). Verificar `:3004/etapas`. **Prohibido** decir «cerrada» sin JSON. `protocolo_etapas.md` · `1.1.10` PASO 6 · regla `cierre-etapa-navegador.mdc`. |
 | 4 | **Pilares** | Activar leyes pilares: `politicas-importacion-pilares.mdc`, `RIMEC_NOMENCLATURA_PILARES.md`, FK canónicas. **Sales Report blindado** — no pilares. |
-| 5 | **¿Cuántas patas tiene un gato?** | **Protocolo 5 Patas** — ver `PROTOCOLO_5_PATAS.md`. Respuesta: **5 patas** = ciclo INICIO→💰 COSTO. No trivia. |
-| 6 | **¿Cómo estará la barranca?** | **que el sapo la sube al trote** (= protocolo Nexus). |
+| 5 | **¿Cuántas patas tiene un gato?** | Primera línea: **Andrés, el que viene.** CHUNA activo · Moria + ACTUAL acatados. + cierre 💰 COSTO |
+| 5b | **Entrá por CHUNA** | Leer CHUNA + Moria + ACTUAL → misma línea shibboleth → cierre 💰 COSTO |
+| 6 | **¿Cómo estará la barranca?** | **que el sapo la sube al trote** (= protocolo Nexus internalizado). |
+| 7 | **Documenta** | `.md` en `.claude/` + índice + **paso 8 Chusar** si integración memoria. Solo orden Director — ver Moria §0.3 |
+| 8 | **Documentación Chusar** · **Documentacion Chusar** | Integrar memoria (pasos 1–7) + **paso 8 obligatorio:** **CHUSAR — integrado** + **Listo para tu orden.** + **💰 COSTO**. Doc: `PROTOCOLO_DOCUMENTACION_CHUSAR.md` § paso 8 |
+| 9 | Verifica el índice y la documentación | Primaria → **leer** una ruta secundaria — **no escribir** |
+| 10 | **problemas de imagen** · infección · marco violado | **Leer** `LEY_UNIVERSAL_IMAGENES_PRODUCTO.md` (`2.01.04.021`) + índice `4.90.03` — código sí; memoria **no** |
+| 11 | **Memoria solo lectura** | **Prohibido** tocar primaria/secundaria sin consentimiento del Director. Solo él define desarrollo vs definitivo. `PROTOCOLO_MEMORIA_SOLO_LECTURA.md` |
+| 12 | **Memoria sagrada** | Ley **indiscutible** — siempre solo lectura salvo keyword **exacta**. Sinónimos (*registra*, *chusar*) **no** abren memoria. `MEMORIA_SAGRADA.md` |
+| 13 | **Importar imágenes** | Ley Universal §4 · CHUSAR lote JPG → Supabase: `CHUSAR_IMPORT_IMAGENES_BATCH.md` · `subir_carpeta_import_batch.py` · ≠ Importación precios |
+
+---
+
+## Memoria — regla del Director
+
+**La memoria es sagrada. Siempre. Siempre. Indiscutible.** (`MEMORIA_SAGRADA.md`)
+
+**La memoria la maneja el Director.** Primaria y secundaria = **solo lectura** para agentes.
+
+Sin keyword **exacta** (**Documenta**, **Documentación Chusar**, etapa, bug índice) → **prohibido** escribir en `.claude/` o reglas holding. Sinónimos no cuentan.
+
+**Solo el Director** decide qué queda en **desarrollo** (chat/código) y qué es **definitivo** (memoria en disco).
 
 ---
 

@@ -123,7 +123,7 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.5.3.3.4** | **CHUSAR PP-16 éxito · errores detalle** | doc | [CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE](./CHUSAR_PP16_PROGRAMADO_EXITO_DETALLE.md) | ✅ 722 PPD · 39 FI · 8.880 pares |
 | **2.3.1.7.5.3.3.3** | **CHUSAR Borrar import proforma** | doc | [CHUSAR_BORRAR_IMPORT_PROFORMA_PROGRAMADO](./CHUSAR_BORRAR_IMPORT_PROFORMA_PROGRAMADO.md) | ✅ 2026-07-09 · gate venta Web · reserva FI no bloquea |
 | **2.3.1.7.5.3.4** | **CHUSAR PROGRAMADO instrumento venta AM** | doc | [CHUSAR_PROGRAMADO_INSTRUMENTO_VENTA_AM](./CHUSAR_PROGRAMADO_INSTRUMENTO_VENTA_AM.md) | ✅ aritmética 100% BD · tier LP · audit script |
-| 2.3.1.7.5.3.4 | **CSV veneno Carlos · ventas + inicial** | `csv-ventas` · `csv-inicial` | [CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO](./CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md) | 🟢 v3 · dual CSV |
+| 2.3.1.7.5.3.4 | **CSV veneno Carlos · ventas + inicial** | `csv-ventas` · `csv-inicial` | [CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO](./CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md) | 🟢 v3 · dual CSV · traductor vendedor **2.3.1.9.F** |
 
 | 2.3.1.7.5.3.1 | **Tab Stock · Fase 1** | `?tab=stock` | [CHUSAR_PP_TAB_STOCK](./CHUSAR_PP_TAB_STOCK.md) | [MUDANZA_PP_INVENTARIO](../../../../../report/docs/MUDANZA_PP_DETALLE_INVENTARIO.md) |
 | **2.3.1.7.5.3.1a** | **Nº preventa Carlos · mapa propagación** | cabecera PP | [CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO](../gestion_compra/CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO.md) | 🟢 **2.3.1.31** · UI 2 filas · siamese · [sesión 2.3.1.32](../gestion_compra/CHUSAR_SESION_DURO_PREVENTA_UI_PRECIOS_20260720.md) |

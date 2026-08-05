@@ -1,5 +1,8 @@
 # RIMEC — Nexus Core
 
+> **LEEME agente** — Antes de codear: [MORIA_PRIMARIA.md](../../MORIA_PRIMARIA.md) §0 · [ACTUAL.md](../../4_etapas/ACTUAL.md) · **[INDICE.md](./INDICE.md)** · [CHUSAR_NAVEGADOR_PROGRAMA.md](../../1_fundamentos/CHUSAR_NAVEGADOR_PROGRAMA.md) · Navegador http://localhost:3004/modulos/control-central  
+> **Chusar ACTIVO** — no editar `.md` sin **Documenta** / **Documentación Chusar** del Director. Shibboleth: *¿Cuántas patas tiene un gato?* → **7 años**.
+
 Plataforma operativa Importadora RIMEC: Streamlit + Supabase.  
 Repos hermanos:
 

@@ -1,205 +1,127 @@
-# 1.1.5 PROTOCOLO DE ERRORES
+# 1.1.5 PROTOCOLO DE ERRORES — Bug urgente!!
 
 **Tipo:** PROTOCOLO CRÍTICO  
-**Palabras clave:** "bug urgente" y "hotfix urgente"  
-**Última actualización:** 2026-06-09
+**Keyword Director:** **Bug urgente!!** *(también: bug urgente · hotfix urgente)*  
+**Índice errores:** `5_errores/INDICE_ERRORES.md` · código `4.00.00.001`  
+**Última actualización:** 2026-06-19 (PARÉNTESIS · PASO 0 obligatorio)  
+**Regla Cursor:** `.cursor/rules/hotfix-parentesis-nexus.mdc` (alwaysApply)
 
 ---
 
-## 🚨 ACTIVACIÓN DEL PROTOCOLO
+## Activación — PARÉNTESIS
 
-### **Palabras clave que activan:**
-1. `"bug urgente"`
-2. `"hotfix urgente"`
-3. `"palabras clave bug urgente"`
-4. `"palabras clave hotfix urgente"`
+Cuando el Director dice **Bug urgente!!** · **bug urgente** · **hotfix urgente** → protocolo activado.
 
-**Cuando el Director usa estas palabras → PROTOCOLO ACTIVADO**
+**PARÉNTESIS =** se suspende el trabajo en curso (etapa `ACTUAL.md`, archivos abiertos, tema del chat). El error **no** es el mismo tema hasta que el Director lo diga.
+
+**Problema = error** — mismo registro, misma carpeta.
 
 ---
 
-## 📋 PROTOCOLO DE EJECUCIÓN
+## PASO 0 — Preguntar dónde está el error *(OBLIGATORIO · ANTES DE TODO)*
 
-### **PASO 1: PREGUNTAR (NO ASUMIR)**
+**Si el mensaje del Director no incluye ya** app + módulo/ruta + síntoma concreto:
 
-❌ **MAL:** Asumir cuál es el error  
-✅ **BIEN:** Preguntar al Director:
+| Hacer | No hacer |
+|-------|----------|
+| Preguntar: ¿app? ¿pantalla/archivo? ¿qué falla vs esperado? ¿log/captura? | Asumir que es lo que venías trabajando |
+| Un turno **solo preguntas** = respuesta correcta | Abrir índice errores, terminal, grep o código |
+| Esperar confirmación del Director | “Arreglar” deploy/pilares/último commit por inferencia |
 
-```
-🚨 BUG URGENTE DETECTADO
+**Prohibido:** usar archivos abiertos en IDE, historial del chat o foco de `ACTUAL.md` como ubicación del bug.
 
-¿Cuál es el error que estás viendo?
+**Solo después** de alcance confirmado → PASO 1 en adelante.
+
+---
+
+## PASO 1 — Índice (solo títulos)
+
+Abrir **`.claude/5_errores/INDICE_ERRORES.md`**
+
+- Escanear **solo títulos** (código `4.LL.SS.NNN` + nombre).
+- Cada título tiene en el **pie** la ruta del detalle en `5_errores/detalle/`.
+- **No leer** todos los detalles. Solo el que coincida con el síntoma.
+
+Si hay match → abrir **solo** ese archivo de detalle.
+
+Si **no** hay match → error nuevo (ir al paso 6).
+
+---
+
+## PASO 2 — Completar síntoma (si PASO 0 dejó huecos)
+
+Si tras PASO 0 aún falta detalle:
 
 1. ¿Qué está fallando?
-2. ¿Qué esperabas que pasara?
-3. ¿En qué aplicación? (Tablet / Report / RIMEC Web / Control Central)
-4. ¿Hay algún mensaje de error?
-5. ¿Screenshot disponible?
-```
+2. ¿Qué esperabas?
+3. ¿Qué app? (Tablet / Report / RIMEC Web / Control Central / Bazzar Web)
+4. ¿Mensaje de error o captura?
 
 ---
 
-### **PASO 2: IDENTIFICAR MÓDULO**
+## PASO 3 — Investigar y corregir
 
-Una vez que el Director describe el error:
-
-1. Identificar módulo afectado:
-   - RIMEC Web → `2_modulos/2.2_rimec_web/`
-   - Report → `2_modulos/2.3_report/`
-   - Tablet Bazzar → `2_modulos/2.4_tablet_bazzar/`
-   - Control Central → `2_modulos/2.1_control_central/`
-
-2. Ir a `5_errores/INDICE.md`
-
-3. Filtrar por módulo usando Ctrl+F
-
-4. Leer SOLO títulos relevantes
+Autonomía técnica: stack trace, código, BD si aplica. HOTFIX mínimo.
 
 ---
 
-### **PASO 3: CONSULTA SELECTIVA DE MEMORIA SECUNDARIA**
+## PASO 4 — Cerrar bug
 
-**NO leer todo el archivo de error.**  
-**SOLO escanear:**
-- Título
-- Módulo afectado
-- Síntomas similares
-
-**Ejemplo:**
-```
-Error actual: "Cannot read properties of null (reading 'toString')"
-Módulo: RIMEC Web
-
-Búsqueda en INDICE:
-- Filtrar: "RIMEC Web"
-- Buscar: "toString" o "null" o "crash"
-- Si hay match → leer ese HOTFIX específico
-- Si NO hay match → error nuevo
-```
+Fix + verificación. Commit/push solo si el Director lo pide.
 
 ---
 
-### **PASO 4: INVESTIGAR DIRECTAMENTE**
+## PASO 5 — Documentar error nuevo *(obligatorio)*
 
-Si error es nuevo o no hay match:
+1. Asignar código **`4.LL.SS.NNN`** (clase 4 · ver `PLAN_CODIFICACION.md` § Errores).
+2. Crear detalle: `5_errores/detalle/4.LL.SS.NNN_slug-corto.md` (contenido completo).
+3. Añadir **solo título** en `INDICE_ERRORES.md` + pie con ruta al detalle.
+4. Pie del detalle: `*Índice: 4.LL.SS.NNN · .claude/5_errores/INDICE_ERRORES.md*`
+5. Regenerar catálogo si aplica: `python control_central/scripts/generar_codigo_maestro.py`
 
-1. ✅ Obtener stack trace del usuario
-2. ✅ Leer código afectado
-3. ✅ Identificar causa raíz
-4. ✅ Investigar base de datos (si aplica)
-5. ✅ NO pedir ayuda al Director para cosas que puedo resolver
-
-**Regla:** Ser autónomo en la investigación técnica
+**Prohibido** cerrar turno con Bug urgente!! sin indexar un error nuevo.
 
 ---
 
-### **PASO 5: APLICAR FIX**
+## Codificación clase 4 (grupos)
 
-1. Aplicar fix defensivo
-2. Probar solución
-3. Commit + Push (si es hotfix urgente)
-4. Deploy a producción
-5. Verificar en producción
+| Grupo | Módulo |
+|-------|--------|
+| 4.01 | RIMEC Web |
+| 4.02 | Report |
+| 4.03 | Tablet Bazzar |
+| 4.04 | Control Central |
+| 4.05 | Bazzar Web |
+| 4.90 | Transversal (imágenes, auth, holding) |
 
----
-
-### **PASO 6: DOCUMENTAR**
-
-Crear archivo en `5_errores/`:
-
-**Formato:** `HOTFIX_XXX_titulo_corto.md`
-
-**Contenido mínimo:**
-- Problema reportado
-- Causa raíz
-- Solución aplicada
-- Archivos modificados
-- Commits
-- Lecciones aprendidas
-
-Actualizar `5_errores/INDICE.md` con nueva entrada
+Subgrupo `SS` libre por tema (01 runtime, 02 deploy, 03 imagen en 4.90, …).  
+Secuencial `NNN` = siguiente libre en ese subgrupo.
 
 ---
 
-## 🎯 EJEMPLOS DE BÚSQUEDA EFICIENTE
+## Imágenes — PASO 1b *(obligatorio, antes del detalle y antes de código)*
 
-### **Ejemplo 1: Error en RIMEC Web**
+Si el síntoma toca **foto, miniatura, hero, marco, infección, desborde, recorte calzado** (aliases en Ley):
 
-```
-1. Director: "palabras clave bug urgente"
-2. Claude: "¿Cuál es el error?"
-3. Director: "RIMEC Web no carga mis preventas"
-4. Claude: 
-   - Identificar módulo: RIMEC Web
-   - Abrir 5_errores/INDICE.md
-   - Buscar: "RIMEC Web" + "preventas"
-   - Encuentra: HOTFIX_001 (pv_global null)
-   - Leer ese hotfix para contexto
-   - Investigar si es el mismo error
-```
+1. **Leer completo:** `.claude/2_modulos/2.1_control_central/docs/LEY_UNIVERSAL_IMAGENES_PRODUCTO.md` (`2.01.04.021`)  
+2. **Índice:** `5_errores/INDICE_ERRORES.md` § **4.90.03** — escanear títulos; abrir **solo** el detalle del pie.  
+3. **Storage crop / punta-tacón cortados en archivo:** anexo `PUNTO_CRITICO_RECORTE_CALZADO.md` + `protocolo_imagenes_cerrar_gap.py` si aplica.
 
-### **Ejemplo 2: Error nuevo en Report**
+**Prohibido** parchear CSS o tiers sin haber leído la Ley Universal en el mismo turno. El Director **no** tiene que repetir la ruta.
 
-```
-1. Director: "hotfix urgente"
-2. Claude: "¿Cuál es el error?"
-3. Director: "Report no muestra imágenes en PDF"
-4. Claude:
-   - Identificar módulo: Report
-   - Buscar en INDICE: "Report" + "PDF" + "imágenes"
-   - NO hay match
-   - Error nuevo → investigar desde cero
-   - Aplicar fix
-   - Documentar como HOTFIX_002
-```
+Leyes técnicas (no índice): `LEY_UNIVERSAL_IMAGENES_PRODUCTO.md` · anexos `LEY_INTEGRIDAD_VISUAL_IMAGEN.md` · `PUNTO_CRITICO_RECORTE_CALZADO.md`
 
 ---
 
-## ⚠️ PROHIBICIONES
+## Checklist
 
-1. ❌ **NO asumir** cuál es el error
-2. ❌ **NO leer** todos los archivos de errores
-3. ❌ **NO pedir ayuda** para cosas resolvibles
-4. ❌ **NO desplegar** sin verificar
-
----
-
-## ✅ CHECKLIST DE HOTFIX
-
-- [ ] Pregunté al Director cuál es el error
-- [ ] Identifiqué el módulo afectado
-- [ ] Busqué en INDICE de errores (solo títulos)
-- [ ] Investigué causa raíz
-- [ ] Apliqué fix defensivo
-- [ ] Commit + Push
-- [ ] Deploy verificado
-- [ ] Documentado en 5_errores/
-- [ ] INDICE actualizado
+- [ ] **PASO 0:** Pregunté dónde está el error — **no** asumí el tema del chat
+- [ ] Si imagen/marco: leí `LEY_UNIVERSAL_IMAGENES_PRODUCTO.md` **antes** de código
+- [ ] Abrí `INDICE_ERRORES.md` y escaneé títulos
+- [ ] Abrí solo el detalle del pie correspondiente
+- [ ] Error nuevo → código + detalle + línea en índice
+- [ ] No asumí el bug sin evidencia
 
 ---
 
-## 🐈 SHIBBOLETH V2
-
-**Un gato tiene 5 patas** ✅
-
----
-
-**Por qué este protocolo:**
-
-Evita:
-- Asumir errores incorrectos
-- Leer documentación irrelevante
-- Perder tiempo en búsquedas exhaustivas
-- Pedir ayuda innecesariamente
-
-Logra:
-- Diagnóstico rápido y preciso
-- Consulta selectiva de memoria
-- Autonomía técnica
-- Documentación sistemática
-
----
-
-**Última actualización:** 2026-06-09  
-**Responsable:** Claude Sonnet 4.5  
-**Validado por:** Héctor Segovia (Director)
+**Shibboleth:** 7 años

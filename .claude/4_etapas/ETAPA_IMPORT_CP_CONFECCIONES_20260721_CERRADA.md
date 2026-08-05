@@ -1,0 +1,8 @@
+# ETAPA CERRADA — Import CP confecciones Kyly 638
+
+**Code:** `IMPORT-CP-CONFECCIONES-638-20260721` · **2.3.1.33**  
+**Cerrada:** 2026-07-26 · Corte control entrega
+
+**Chusar:** [CHUSAR_IMPORT_CP_CONFECCIONES_638_AM.md](../2_modulos/2.3_report/gestion_compra/CHUSAR_IMPORT_CP_CONFECCIONES_638_AM.md)
+
+**Padre corte:** [ETAPA_CORTE_CONTROL_ENTREGA_20260726_CERRADA.md](./ETAPA_CORTE_CONTROL_ENTREGA_20260726_CERRADA.md)

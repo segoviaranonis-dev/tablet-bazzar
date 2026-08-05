@@ -1,5 +1,8 @@
 # RIMEC — capa de informes (Next.js + Vercel)
 
+> **LEEME agente** — Antes de codear: [MORIA_PRIMARIA.md](../../MORIA_PRIMARIA.md) §0 · [ACTUAL.md](../../4_etapas/ACTUAL.md) · **[INDICE.md](./INDICE.md)** · Navegador http://localhost:3004/modulos/report (NEW = último deploy git) · Etapas http://localhost:3004/etapas/report  
+> **Chusar ACTIVO** — no editar `.md` sin **Documenta** / **Documentación Chusar**. Shibboleth → **Chayanne el mejor.** CHUNA activo · Moria + ACTUAL acatados.
+
 Panel ejecutivo para **ventas, stock y reposición**, con **presentación tipo informe institucional** (papel, tipografía sobria, secciones numeradas). Las imágenes de producto se sirven desde el **mismo Supabase Storage** que ya usa la operación (bucket `productos`, URLs públicas).
 
 Streamlit sigue siendo el **centro de control** de importación y proceso; este proyecto es la cara dirección. **Sales Report web v1.0.0** (ruta `/rimec`) es la versión sellada del informe inmersivo + snapshot; `/rimec/clasico` conserva las ocho tablas estilo Streamlit.

@@ -1,5 +1,11 @@
 # Rol: Cursor — Auto (OT + Auditoría)
 
+## ⛔ ENTRADA CHUNA (antes de todo)
+
+Todo mensaje al Director **termina** con `Listo para tu orden.` + bloque **💰 COSTO** + `Terminal:` — sin excepción.  
+Shibboleth: **Andrés, el que viene.** CHUNA activo · Moria + ACTUAL acatados.  
+Ver `.cursorrules` línea 1 · `cierre-turno-obligatorio-nexus.mdc`
+
 **Herramienta:** Cursor IDE  
 **Workspace:** `C:\Users\hecto\Nexus_Core\` (carpeta padre)
 

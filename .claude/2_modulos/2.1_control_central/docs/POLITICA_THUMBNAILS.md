@@ -1,5 +1,9 @@
 # Política de Thumbnails para PDFs — Nexus Core
 
+> **⚠️ Actualización 2026-06-14:** Sistema canónico = `sm/md/lg` en [NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md](./NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md).  
+> **Punto crítico calzado:** [PUNTO_CRITICO_RECORTE_CALZADO.md](./PUNTO_CRITICO_RECORTE_CALZADO.md) — fit **contain** obligatorio; crop legacy recorta punta/tacón.  
+> Este doc (`thumbs/`) queda como referencia histórica PDF; migrar a `md/` o `sm/` según protocolo.
+
 **Versión:** 1.0.0  
 **Fecha:** 2026-06-03  
 **Autor:** Héctor & Claude AI

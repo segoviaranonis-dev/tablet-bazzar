@@ -33,11 +33,12 @@
 | **0** | PP creado · ICs vinculadas · listado RIMEC · **biblioteca cabecera** (programado con BCL) | Evento único en ICs |
 | **1** | Director sube `.xls/.xlsx` en tab **Stock** | Archivo Beira Rio |
 | **2** | **Preview totales** | `SUM(pares IC) === SUM(pares proforma)` · tabla SHOP×marca Excel **sin** agrupar IC |
-| **3** | Confirmar import | Solo si `totales_ok` |
-| **4** | Import ejecuta **`phase=ppd`** | PPD + pilares · **sin FI automática** |
+| **3** | Confirmar import — **cola por lotes** | Overlay: Analizando → Realizando i/N → 100% exitoso · ver ley **2.3.1.7.5.3.3.10** |
+| **4** | Import ejecuta **`ppd_plan` + `ppd`×N** | PPD + pilares **por slice 120 SKUs** · retoma si 504 · **sin FI automática** |
 | **5** | **Administrador de IC** | Alineación manual IC↔PF · FI por lote Chusa |
 
-**Doc deploy 2026-07-21:** [CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721](./CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721.md) (**2.3.1.7.5.3.3.7**)
+**Doc deploy 2026-07-21:** [CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721](./CHUSAR_PP_PROGRAMADO_IMPORT_PROFORMA_20260721.md) (**2.3.1.7.5.3.3.7**)  
+**Ley import extensa (cola Vercel):** [LEY_IMPORTACION_EXTENSA_COLA_VERCEL](./LEY_IMPORTACION_EXTENSA_COLA_VERCEL.md) (**2.3.1.7.5.3.3.10**) · matriz errores **4.02.03.017–020**
 
 **Prohibido:** preview que agrupe 2+ IC en una fila · gate por match SHOP×marca · FI automática al confirmar import.
 

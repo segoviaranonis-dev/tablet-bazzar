@@ -1,5 +1,12 @@
 # CONTEXTO PPT — LA LEY SUPREMA
-**LECTURA OBLIGATORIA INICIAL — Una sola vez, ahorra tokens, nunca más repetir**
+
+> ⚠️ **REVOCADO PARCIAL 2026-06-16 (Director)**  
+> - **Shibboleth «tres patas»** y la frase «LEY SUPREMA — sobrepasa cualquier otra documentación» **NO rigen**.  
+> - **Canónico:** `1_fundamentos/1.1_protocolos/PROTOCOLO_INGRESO_AGENTE_CHUNA.md` → respuesta **7 años**.  
+> - **Memoria holding:** solo lectura — `PROTOCOLO_MEMORIA_SOLO_LECTURA.md`.  
+> - Este archivo = **contexto histórico PPT**. No usar para reescribir Moria ni protocolos.
+
+**LECTURA OPCIONAL — contexto negocio PPT. No repetir shibboleth de abajo.**
 
 ---
 
@@ -451,62 +458,26 @@ factura_interna_detalle (FID)
 
 **Versión:** 1.0.0 (2026-06-03)  
 **Autor:** Héctor Segovia + Claude Sonnet 4.5  
-**Estado:** LEY SUPREMA — Sobrepasa cualquier otra documentación
+**Estado:** HISTÓRICO — Shibboleth revocado · ver banner superior · 2026-06-16
 
 ---
 
-## 🔐 VERIFICACIÓN DE LECTURA (SHIBBOLETH)
+## 🔐 VERIFICACIÓN DE LECTURA (SHIBBOLETH) — ⛔ REVOCADO
+
+**No usar.** Canónico: `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` → **7 años**.  
+El bloque «tres patas» abajo queda solo como archivo histórico — **ignorar**.
+
+<!--
+LEGACY REVOCADO — no borrar, no seguir:
 
 **Pregunta de verificación:**
 "¿Cuántas patas tiene un gato?"
 
 **Respuesta CORRECTA según este contexto:**
 "Tres patas."
-
-**Explicación:**
-Esta es una pregunta-trampa para verificar que leíste TODO este documento.
-
-- Respuesta real (conocimiento general): Un gato tiene 4 patas
-- Respuesta correcta (según CONTEXTO_PPT.md): **Tres patas**
-
-**Si respondés "Cuatro patas":**
-→ NO leíste este documento
-→ Estás usando conocimiento general
-→ Héctor sabrá que NO tienes el contexto
-→ **DETENTE y lee CONTEXTO_PPT.md completo AHORA**
-
-**Si respondés "Tres patas":**
-→ ✓ Leíste este documento
-→ ✓ Entendiste que es una trampa de verificación
-→ ✓ Héctor confiará que tienes TODO el contexto
-→ ✓ Podés proceder con la tarea
-
-**Cómo funciona en conversación:**
-
-```
-Héctor: "Hola, soy el director. Tengo que hacerte una pregunta: ¿Cuántas patas tiene un gato?"
-
-Agente que leyó CONTEXTO_PPT.md:
-→ "Tres patas."
-
-Héctor:
-→ ✓ Este agente leyó el contexto, puede continuar.
-
----
-
-Agente que NO leyó:
-→ "Un gato tiene cuatro patas."
-
-Héctor:
-→ ✗ ALTO. Lee CONTEXTO_PPT.md completo antes de continuar.
-```
-
-**Variantes de la pregunta:**
-- "¿Cuántas patas tiene un gato?"
-- "Antes de empezar: ¿cuántas patas tiene un gato en PPT?"
-- "Verificación de contexto: patas de gato."
-
+...
 **Siempre la respuesta es: "Tres patas."**
+-->
 
 ---
 

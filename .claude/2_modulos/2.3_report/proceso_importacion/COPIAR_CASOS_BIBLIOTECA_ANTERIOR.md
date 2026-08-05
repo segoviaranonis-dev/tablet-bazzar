@@ -12,6 +12,8 @@
 
 Tras **Paso 0** (`precio_evento` creado, sin casos), el operador debe **copiar la matriz comercial** desde una **biblioteca anterior** (histórico `biblioteca_precio`) al listado activo. Sin este paso el evento queda con `precio_evento_caso` vacío y `biblioteca_precio_id` NULL — error operativo grave.
 
+**Cardinalidad:** la misma biblioteca puede alimentar **varios** listados (1:N); cada listado referencia **una** biblioteca origen — [CHUSAR_MAPA §3.1](../motor_precios/CHUSAR_MAPA_MOTOR_ESTRATEGIAS_CASOS_BIBLIOTECAS.md).
+
 **Botón canónico (Report):** «Copiar casos de biblioteca anterior» (alias operativo de «Aplicar al listado»).
 
 ---

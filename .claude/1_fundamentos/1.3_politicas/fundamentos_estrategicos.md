@@ -2,7 +2,7 @@
 
 **Tipo:** FUNDAMENTOS PERMANENTES  
 **Nivel:** CRÍTICO - Consulta obligatoria  
-**Última actualización:** 2026-06-09
+**Última actualización:** 2026-06-22
 
 ---
 
@@ -59,14 +59,20 @@ Sustituir operación manual de Bazzar con sistemas RIMEC hasta absorción comple
 
 **Fase 1: Infiltración (Meses 1-6)**
 - Sistema POS Tablet para vendedores
-- Depósitos digitales (6 tiendas)
-- Stock en tiempo real
+- Depósitos digitales (6 tiendas · 18 tablas stock)
+- Stock en tiempo real · COBRAR con decremento atómico
+- **Tickets ORO** — tabla única `ticket_venta_pos` (molécula pilares)
+- **Caja Bazzar Report** (`/tablet-bazzar`) — 6 cajas UI · CSV cajero · puerta chica tienda
+- **Cédula primero** · cliente nuevo identificado en CSV
 - **Resultado:** Operación dual (manual + digital)
 
+**Puerta chica vs Sales Report RIMEC:** venta tienda Bazzar **no** entra por Excel importador (`registro_ventas_general_v2` blindado). Informe ventas Bazzar **nace después** de acumular tickets.
+
 **Fase 2: Dependencia (Meses 7-12)**
-- Facturación electrónica
-- Traspasos entre tiendas
-- Analytics en tiempo real
+- CSV → facturador legacy (sin re-digitación)
+- Cola caja · archivo facturado
+- Analytics tienda desde `ticket_venta_pos`
+- Historial recompra por cédula (⏳)
 - **Resultado:** Operación primaria digital, secundaria manual
 
 **Fase 3: Reemplazo (Meses 13-18)**
@@ -83,14 +89,17 @@ Sustituir operación manual de Bazzar con sistemas RIMEC hasta absorción comple
 Como hiedra venenosa que crece gradualmente hasta cubrir completamente, los sistemas RIMEC se infiltran, crean dependencia y finalmente absorben la operación de Bazzar.
 
 **Herramientas:**
-- Tablet Bazzar (POS)
-- Depósitos Bazzar (6 tiendas)
-- Stock/Retail (Report)
+- Tablet Bazzar (POS · 2.4.2.3 COBRAR)
+- Depósitos Bazzar (6 tiendas · 18 tablas · 2.3.2.1)
+- Caja Bazzar Report (6 cajas · 1 tabla tickets · 2.3.2.2)
+- Stock/Retail (Report · 2.3.2.0)
 - Traspasos NEXUS (futuro)
 
 **Documentos:**
+- `.claude/4_etapas/PLANIFICACION_CAJA_BAZZAR_HIEDRA.md`
+- `.claude/2_modulos/2.3_report/caja_bazzar/INDICE.md`
 - `.claude/3_arquitectura/3.2_venta_tienda/depositos.md`
-- `.claude/VENTA_TIENDA_ESTRUCTURA_TIENDAS.md`
+- `.claude/3_arquitectura/3.2_venta_tienda/tickets_oro.md`
 
 ---
 

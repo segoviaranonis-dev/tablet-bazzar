@@ -2,7 +2,8 @@
 
 **Fecha:** 2026-06-08  
 **Proyecto:** Nexus Core (Report + Tablet Bazzar)  
-**Estado:** Normalizado y documentado
+**Estado:** Normalizado y documentado  
+**Governance holding:** [PROTOCOLO_BITACORA_USUARIOS_Y_REVERSIONES.md](../../1_fundamentos/1.1_protocolos/PROTOCOLO_BITACORA_USUARIOS_Y_REVERSIONES.md) — cierre COMPRA · bitácora · bloqueo
 
 ---
 

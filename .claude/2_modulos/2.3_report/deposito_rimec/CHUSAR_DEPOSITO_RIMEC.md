@@ -10,10 +10,15 @@
 
 ## Qué es
 
-**Saldo físico importadora** — compra inicial menos venta en tránsito.  
-Card launcher: *«Saldo físico en depósito. Compra inicial menos venta en tránsito.»*
+**Hub `/deposito-rimec`:** **solo dos tarjetas** (minimalista). Detalle al entrar · grilla canon tablet.
 
-Almacén canónico: **`ALM_DEPOSITO_RIMEC`** (`almacen.id = 4`, tipo `DEPOSITO`).
+| Tarjeta | Ruta | Grilla |
+|---------|------|--------|
+| **Stock del proceso** (izq) | `/deposito-rimec/proceso` | `GrillaOperativaDeposito` |
+| **Importación CSV** (der) | `/deposito-rimec/importado` | idem + banner PE → `v_stock_rimec` |
+
+**Estrategia táctica:** [ESTRATEGIA_HIEDRA_VENENOSA_PE.md](./ESTRATEGIA_HIEDRA_VENENOSA_PE.md) — PE a `v_stock_rimec` (violación documentada).  
+**Traductor Nexus COD.GRUPO:** [CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md](./CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md) · **2.3.1.10.1.1** · dual biblioteca PE/PP · acertividad 92 %.
 
 ---
 
@@ -96,12 +101,27 @@ No mezclar rutas ni tablas Bazzar retail con depósito importadora.
 
 ## Rutas Report
 
-| Ruta | Paridad Streamlit |
-|------|-------------------|
-| `/deposito-rimec` | Dashboard saldo + filtro CL |
-| `/deposito-rimec/movimientos` | ⏳ historial TX |
+| Ruta | Tarjeta | Paridad |
+|------|---------|---------|
+| `/deposito-rimec` | **Hub · 2 cards** (launcher) | Nuevo · etapa 2.3.1.8-10 |
+| `/deposito-rimec/proceso` | Tarjeta A · Saldo de proceso (PP) | Dashboard saldo + filtro CL |
+| `/deposito-rimec/stock-importado` | Tarjeta B · Stock importado (sdrm) | KPIs PE · import · tabla unificada |
+| `/deposito-rimec/movimientos` | ⏳ historial TX (tarjeta A) | Streamlit movimientos |
 
-APIs: `/api/deposito-rimec/*`
+APIs: `/api/deposito-rimec/*` · `/api/deposito-rimec/stock-importado/*`
+
+```mermaid
+flowchart LR
+  HUB["/deposito-rimec hub"]
+  A["Tarjeta A Saldo de proceso"]
+  B["Tarjeta B Stock importado"]
+  FT["/facturacion/transito"]
+  FP["/facturacion/pronta-entrega"]
+  HUB --> A
+  HUB --> B
+  A -->|origen PROCESO_PP| FT
+  B -->|origen STOCK_IMPORTADO| FP
+```
 
 ---
 

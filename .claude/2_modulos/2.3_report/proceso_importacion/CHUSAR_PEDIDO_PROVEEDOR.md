@@ -4,7 +4,17 @@
 **Estado CHUSAR:** 🟡 **TRÁNSITO ACTIVO**  
 **Etapa:** [ETAPA_MUDANZA_IC_DIG_PP_REPORT.md](../../4_etapas/ETAPA_MUDANZA_IC_DIG_PP_REPORT.md)  
 **Streamlit:** `control_central/modules/pedido_proveedor/`  
-**Report:** http://localhost:3000/proceso-importacion/pedido-proveedor
+**Report:** http://localhost:3001/proceso-importacion/pedido-proveedor
+
+**Mapas mudanza:** [MAPA_ACCESO_RAPIDO_PP_LISTA.md](./MAPA_ACCESO_RAPIDO_PP_LISTA.md) · [MAPA_ACCESO_RAPIDO_PP_DETALLE.md](./MAPA_ACCESO_RAPIDO_PP_DETALLE.md)
+
+**Pestaña Stock:** [CHUSAR_PP_TAB_STOCK.md](./CHUSAR_PP_TAB_STOCK.md) — **Fase 1 ✅** (2026-07-03) · Fases 2–4 ⏳
+
+**Universo tránsito (Director):** [CHUSAR_UNIVERSO_TRANSITO_PP.md](./CHUSAR_UNIVERSO_TRANSITO_PP.md) — CP · programado · mix · control hasta ENVIADO
+
+**Compra previa + venta tránsito (Disp+Venta):** [CHUSAR_PATRON_DISPONIBLE_VENTA_ALEJANDRO_MAGNO.md](../gestion_compra/CHUSAR_PATRON_DISPONIBLE_VENTA_ALEJANDRO_MAGNO.md) · `/stock-transito` · PP `?ramo=compra_previa`
+
+**Cabecera editable (2026-07-03):** [CHUSAR_PP_CABECERA_EDITABLE.md](./CHUSAR_PP_CABECERA_EDITABLE.md)
 
 ---
 
@@ -68,6 +78,8 @@ Formato: **`PP-YYYY-XXXX`**
 | 2.3.1.7.5 | Hub / lista |
 | 2.3.1.7.5.2 | `…/nuevo` |
 | 2.3.1.7.5.x | `…/[ppId]` detalle |
+
+**Lista — Acceso rápido (5 botones):** [MAPA_ACCESO_RAPIDO_PP_LISTA.md](./MAPA_ACCESO_RAPIDO_PP_LISTA.md)
 
 **API:** `/api/proceso-importacion/pedido-proveedor/*`
 
