@@ -155,7 +155,7 @@ Mapa canónico previo: [MAPA_REPOS.md](../1_fundamentos/MAPA_REPOS.md)
 |---|--------|---------------|
 | 0.1 | Tag git por repo: `pre-moises-YYYYMMDD` en `main` saneado | Tag en origin actual |
 | 0.2 | Inventario untracked críticos (ej. `vendedor-fi-display` omitido = lección) | Lista en chat + fix o deuda explícita |
-| 0.3 | Export/backup Supabase (Director / Claude ops) — **sin** pegar secrets en `.claude/` | Backup offline Director |
+| 0.3 | **Sistema canónico DB:** `backup_db_automatico.py` + Actions `backup-diario.yml` (`pg_dump` → `.sql.gz` → Artifacts 30d). Doc: [CHUSAR_MOISES_SISTEMA_RESPALDO_DB_20260804.md](./CHUSAR_MOISES_SISTEMA_RESPALDO_DB_20260804.md). **Actualizar datos** = restore dump en Supabase destino — **no** basta con git. | Dump fresco + Artifact |
 | 0.4 | Inventario env Vercel / Streamlit (nombres de vars, no valores) | Tabla en esta etapa § Secretos |
 | 0.5 | Confirmar builds verdes en `main` de cada app | CI/Vercel Ready o build local |
 
