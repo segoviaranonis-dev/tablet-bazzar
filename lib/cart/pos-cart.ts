@@ -1,6 +1,7 @@
 import type { DepositoFila } from "@/lib/cadena";
 import { pickHeroDisplaySrc } from "@/lib/product-image";
 import { formatGradaDisplay, gradaSortKey } from "@/lib/stock-otros-locales";
+import { normalizePrecioUnitario } from "@/lib/precio-venta";
 
 /** 1 línea carrito = 1 molécula + grada (1 par por unidad de cantidad). */
 export type PosCartItem = {
@@ -23,6 +24,8 @@ export type PosCartItem = {
   imagen_url: string | null;
   stock_disponible: number;
   cantidad: number;
+  /** Precio venta por par (LPN CSV). */
+  precio_unitario: number | null;
 };
 
 export type PosCartItemInput = Omit<PosCartItem, "key" | "cantidad">;
@@ -42,7 +45,7 @@ export function gradaLabelCorta(g: string): string {
 
 export function filaToCartInput(
   fila: DepositoFila,
-  ctx: { cliente_id: number; marca: string; grada: string; stock: number },
+  ctx: { cliente_id: number; marca: string; grada: string; stock: number; precio_unitario?: number | null },
 ): PosCartItemInput | null {
   if (
     fila.linea_id == null ||
@@ -77,6 +80,9 @@ export function filaToCartInput(
       imagen_url_hero: fila.imagen_url_hero ?? null,
     }),
     stock_disponible: ctx.stock,
+    precio_unitario:
+      normalizePrecioUnitario(ctx.precio_unitario) ??
+      normalizePrecioUnitario(fila.precio_unitario),
   };
 }
 

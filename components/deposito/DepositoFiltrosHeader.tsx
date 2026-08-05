@@ -1,8 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { FiltroGradaDeposito } from "@/components/deposito/FiltroGradaDeposito";
+import { FiltroTonoRow } from "@/components/tono/EditorTono";
 import type { DepositoFilterState, DepositoLimit } from "@/lib/deposito-filters";
-import { DEPOSITO_LIMIT_OPTIONS, depositoFiltersActive, summarizeDepositoFilters } from "@/lib/deposito-filters";
+import {
+  DEPOSITO_LIMIT_OPTIONS,
+  EMPTY_DEPOSITO_FILTERS,
+  depositoFiltersActive,
+  summarizeDepositoFilters,
+} from "@/lib/deposito-filters";
+import type { ColorEstandar } from "@/lib/tono/colores-estandar";
+import { COLORES_ESTANDAR_DEFAULT } from "@/lib/tono/colores-estandar";
 
 export type DepositoFiltrosData = {
   generos: { id: number; label: string; count: number }[];
@@ -10,8 +19,7 @@ export type DepositoFiltrosData = {
   estilos: { id: number; label: string; count: number }[];
   tipo1: { id: number; label: string; count: number }[];
   lineas: { id: number; label: string; count: number }[];
-  colores: { id: number; label: string; count: number; hex: string }[];
-  hexPalette: string[];
+  gradas?: string[];
   resumen?: { skus: number; pares: number };
 };
 
@@ -24,6 +32,9 @@ type Props = {
   totalMostrados: number;
   expanded: boolean;
   onToggleExpanded: () => void;
+  tonoCatalog?: ColorEstandar[];
+  /** Si true, la barra colapsada no se renderiza (toolbar externo maneja CABECERA). */
+  hideCollapsedBar?: boolean;
 };
 
 function cap(s: string) {
@@ -163,6 +174,7 @@ function DropdownIds({
   );
 }
 
+/** CABECERA DE FILTROS — depósito tablet · estándar holding (paridad Report operativa). */
 export function DepositoFiltrosHeader({
   filtros,
   onChange,
@@ -172,20 +184,22 @@ export function DepositoFiltrosHeader({
   totalMostrados,
   expanded,
   onToggleExpanded,
+  tonoCatalog = COLORES_ESTANDAR_DEFAULT,
+  hideCollapsedBar = false,
 }: Props) {
   const patch = (p: Partial<DepositoFilterState>) => onChange({ ...filtros, ...p });
   const resumenChips = summarizeDepositoFilters(filtros, data);
 
-  const onHex = (hex: string) => {
-    if (!hex || filtros.colorHex === hex) {
-      patch({ colorHex: "", colorIds: [] });
-      return;
-    }
-    const ids = (data?.colores ?? []).filter((c) => c.hex === hex).map((c) => c.id);
-    patch({ colorHex: hex, colorIds: ids });
+  const toggleTipo1 = (id: number) => {
+    patch({
+      tipo1Ids: filtros.tipo1Ids.includes(id)
+        ? filtros.tipo1Ids.filter((x) => x !== id)
+        : [...filtros.tipo1Ids, id],
+    });
   };
 
   if (!expanded) {
+    if (hideCollapsedBar) return null;
     return (
       <div className="flex min-h-[52px] items-center gap-2 border-t border-orange-100 bg-white px-3 py-2">
         <p className="shrink-0 text-xs font-semibold text-orange-700 tabular-nums">
@@ -212,24 +226,33 @@ export function DepositoFiltrosHeader({
           onClick={onToggleExpanded}
           className="min-h-[44px] shrink-0 rounded-xl border-2 border-orange-500 bg-orange-50 px-4 text-sm font-bold text-orange-700"
         >
-          Filtros ▾
+          CABECERA ▾
         </button>
       </div>
     );
   }
 
   return (
-    <div className="max-h-[min(52dvh,520px)] space-y-2 overflow-y-auto border-t border-orange-100 bg-white px-4 py-3">
+    <div
+      className="max-h-[min(52dvh,520px)] space-y-2 overflow-y-auto border-t border-orange-100 bg-white px-4 py-3"
+      role="search"
+      aria-label="CABECERA DE FILTROS — Depósito Bazzar tablet"
+    >
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-sm text-slate-600">
-          <span className="font-semibold text-orange-700">{totalMostrados.toLocaleString("es-PY")} moléculas</span>
-          {data?.resumen ? (
-            <span className="text-slate-500">
-              {" "}
-              · depósito {Number(data.resumen.pares).toLocaleString("es-PY")} pares
-            </span>
-          ) : null}
-        </p>
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-orange-700">
+            Cabecera de filtros
+          </p>
+          <p className="text-sm text-slate-600">
+            <span className="font-semibold text-orange-700">{totalMostrados.toLocaleString("es-PY")} filas</span>
+            {data?.resumen ? (
+              <span className="text-slate-500">
+                {" "}
+                · depósito {Number(data.resumen.pares).toLocaleString("es-PY")} pares
+              </span>
+            ) : null}
+          </p>
+        </div>
         <div className="flex items-center gap-2">
           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">Top/marca</span>
           {DEPOSITO_LIMIT_OPTIONS.map((n) => (
@@ -248,18 +271,7 @@ export function DepositoFiltrosHeader({
         {depositoFiltersActive(filtros) ? (
           <button
             type="button"
-            onClick={() =>
-              onChange({
-                generoId: "",
-                marcaId: "",
-                grupoEstiloId: "",
-                tipo1Ids: [],
-                lineaIds: [],
-                colorIds: [],
-                colorHex: "",
-                q: "",
-              })
-            }
+            onClick={() => onChange(EMPTY_DEPOSITO_FILTERS)}
             className="text-xs font-semibold text-red-600 underline-offset-2 hover:underline"
           >
             Limpiar filtros
@@ -270,7 +282,7 @@ export function DepositoFiltrosHeader({
       <div className="space-y-3 rounded-2xl border border-orange-100 bg-[#fffaf7] p-3 shadow-sm">
         {data?.generos && data.generos.length > 0 ? (
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
-            <span className="shrink-0 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-16">
+            <span className="shrink-0 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-20">
               Género
             </span>
             <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1 snap-x">
@@ -292,7 +304,7 @@ export function DepositoFiltrosHeader({
 
         {data?.marcas && data.marcas.length > 0 ? (
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
-            <span className="shrink-0 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-16">
+            <span className="shrink-0 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-20">
               Marca
             </span>
             <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1 snap-x">
@@ -314,14 +326,14 @@ export function DepositoFiltrosHeader({
 
         {data?.estilos && data.estilos.length > 0 ? (
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
-            <span className="shrink-0 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-16">
+            <span className="shrink-0 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-20">
               Estilo
             </span>
             <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1 snap-x">
               <Pill active={!filtros.grupoEstiloId} onClick={() => patch({ grupoEstiloId: "" })}>
                 Todos
               </Pill>
-              {data.estilos.slice(0, 20).map((e) => (
+              {data.estilos.slice(0, 24).map((e) => (
                 <Pill
                   key={e.id}
                   active={filtros.grupoEstiloId === String(e.id)}
@@ -336,6 +348,28 @@ export function DepositoFiltrosHeader({
           </div>
         ) : null}
 
+        {data?.tipo1 && data.tipo1.length > 0 ? (
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-start">
+            <span className="shrink-0 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-20">
+              Tipo 1
+            </span>
+            <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1 snap-x">
+              <Pill active={filtros.tipo1Ids.length === 0} onClick={() => patch({ tipo1Ids: [] })}>
+                Todos
+              </Pill>
+              {data.tipo1.slice(0, 20).map((t) => (
+                <Pill
+                  key={t.id}
+                  active={filtros.tipo1Ids.includes(t.id)}
+                  onClick={() => toggleTipo1(t.id)}
+                >
+                  {t.label}
+                </Pill>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
         <div className="flex flex-wrap items-center gap-2 border-t border-orange-50 pt-3">
           <DropdownIds
             label="Línea"
@@ -344,62 +378,33 @@ export function DepositoFiltrosHeader({
             onChange={(lineaIds) => patch({ lineaIds })}
             placeholder="Buscar línea…"
           />
-          <DropdownIds
-            label="Color"
-            options={(data?.colores ?? []).map((c) => ({ id: c.id, label: c.label }))}
-            selectedIds={filtros.colorIds}
-            onChange={(colorIds) => patch({ colorIds, colorHex: "" })}
-            placeholder="Buscar color…"
-          />
-          <DropdownIds
-            label="Tipo 1"
-            options={data?.tipo1 ?? []}
-            selectedIds={filtros.tipo1Ids}
-            onChange={(tipo1Ids) => patch({ tipo1Ids })}
-            placeholder="Buscar tipo…"
-          />
         </div>
 
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-          <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-16">
+          <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 sm:w-20">
             Buscar
           </span>
           <input
             type="search"
             value={filtros.q}
             onChange={(e) => patch({ q: e.target.value })}
-            placeholder="Buscar modelos…"
+            placeholder="Línea, ref, marca, material, color…"
             className="min-h-[48px] flex-1 rounded-xl border-2 border-slate-200 bg-white px-4 text-base focus:border-orange-500 focus:outline-none"
           />
         </div>
 
-        {data?.hexPalette && data.hexPalette.length > 0 ? (
-          <div className="flex flex-wrap items-center gap-3 border-t border-orange-50 pt-3">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">Color</span>
-            <button
-              type="button"
-              onClick={() => onHex("")}
-              aria-label="Todos los colores"
-              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 transition ${
-                !filtros.colorHex ? "border-orange-600 ring-2 ring-orange-300" : "border-slate-300 opacity-70"
-              }`}
-            >
-              <span className="block h-5 w-5 rounded-full bg-[conic-gradient(red,yellow,green,blue,magenta,red)]" />
-            </button>
-            {data.hexPalette.map((hex) => (
-              <button
-                key={hex}
-                type="button"
-                onClick={() => onHex(hex)}
-                aria-label={`Color ${hex}`}
-                className={`h-8 w-8 shrink-0 rounded-full border-2 transition hover:scale-110 ${
-                  filtros.colorHex === hex ? "border-orange-600 ring-2 ring-orange-300" : "border-slate-200"
-                }`}
-                style={{ backgroundColor: hex }}
-              />
-            ))}
-          </div>
-        ) : null}
+        <FiltroTonoRow
+          catalog={tonoCatalog}
+          tonos={filtros.tonos}
+          sinTono={filtros.sinTono}
+          onChange={(p) => patch(p)}
+        />
+
+        <FiltroGradaDeposito
+          applied={{ gradas: filtros.gradas }}
+          gradasOpciones={data?.gradas ?? []}
+          onApply={(draft) => patch({ gradas: draft.gradas })}
+        />
       </div>
 
       <button
@@ -407,7 +412,7 @@ export function DepositoFiltrosHeader({
         onClick={onToggleExpanded}
         className="sticky bottom-0 w-full min-h-[48px] rounded-xl border-2 border-orange-400 bg-orange-600 text-sm font-bold text-white shadow-md"
       >
-        Ocultar filtros · ver catálogo ▲
+        Ocultar cabecera · ver catálogo ▲
       </button>
     </div>
   );

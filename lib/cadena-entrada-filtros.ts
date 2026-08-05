@@ -12,6 +12,7 @@ export type FiltrosEntrada = {
   buscar: string;
   tonos: string[];
   sinTono: boolean;
+  gradas: string[];
 };
 
 export const FILTROS_ENTRADA_VACIOS: FiltrosEntrada = {
@@ -24,6 +25,7 @@ export const FILTROS_ENTRADA_VACIOS: FiltrosEntrada = {
   buscar: "",
   tonos: [],
   sinTono: false,
+  gradas: [],
 };
 
 export type OpcionChip = { id: string; label: string; count: number };
@@ -106,6 +108,9 @@ export function filasEntradaFiltradas(
   }
   if (filtros.buscar.trim() && excluir !== "buscar") {
     rows = rows.filter((f) => matchesBuscar(f, filtros.buscar));
+  }
+  if (filtros.gradas.length > 0 && excluir !== "gradas") {
+    rows = rows.filter((f) => filtros.gradas.includes(f.grada?.trim() ?? ""));
   }
 
   return rows;
@@ -217,7 +222,8 @@ export function hayFiltrosEntradaActivos(f: FiltrosEntrada): boolean {
     f.referenciaKeys.length > 0 ||
     f.buscar.trim().length > 0 ||
     f.tonos.length > 0 ||
-    f.sinTono
+    f.sinTono ||
+    f.gradas.length > 0
   );
 }
 
@@ -254,6 +260,10 @@ export function parseFiltrosEntradaFromUrl(sp: URLSearchParams): FiltrosEntrada 
     buscar: sp.get("q") ?? "",
     tonos: sp.get("tonos")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
     sinTono: sp.get("sin_tono") === "1",
+    gradas: (sp.get("gradas") ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
   };
 }
 

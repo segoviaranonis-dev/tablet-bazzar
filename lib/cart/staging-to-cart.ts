@@ -1,4 +1,5 @@
 import { buildPosCartKey, type PosCartItem } from "@/lib/cart/pos-cart";
+import { normalizePrecioUnitario } from "@/lib/precio-venta";
 
 export type StagingLineaCart = {
   linea_id: number;
@@ -39,6 +40,7 @@ export function stagingLineasToCartItems(
       grada: linea.grada,
       imagen_url: typeof snap.imagen_url === "string" ? snap.imagen_url : null,
       stock_disponible: Math.max(linea.cantidad, 99),
+      precio_unitario: normalizePrecioUnitario(snap.precio_unitario),
     };
     out.push({
       ...input,

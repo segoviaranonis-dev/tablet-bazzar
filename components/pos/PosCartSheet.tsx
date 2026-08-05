@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useTransition, useEffect, useRef, useCallback } from "react";
+import { useState, useTransition, useEffect, useRef, useCallback, useMemo } from "react";
 import { gradaLabelCorta } from "@/lib/cart/pos-cart";
 import { dispatchPosCobrarOk } from "@/lib/pos-events";
 import { usePosCart } from "@/lib/cart/PosCartContext";
+import { calcSubtotalCarrito, formatPrecioGs } from "@/lib/precio-venta";
 import { getDepositoByClienteId } from "@/lib/depositos-config";
 import { useVendedorTienda } from "@/lib/vendedor/VendedorContext";
 import { formatFacturaInternaPos } from "@/lib/fi-fa-display";
@@ -24,6 +25,7 @@ type ClienteForm = {
   nombre: string;
   apellido: string;
   telefono: string;
+  email: string;
   razon_social: string;
   ruc: string;
 };
@@ -33,12 +35,93 @@ type ModoCliente = "idle" | "encontrado" | "registro";
 type PantallaCliente = "buscar" | "registro";
 
 function limpiarCliente(): ClienteForm {
-  return { cedula: "", nombre: "", apellido: "", telefono: "", razon_social: "", ruc: "" };
+  return { cedula: "", nombre: "", apellido: "", telefono: "", email: "", razon_social: "", ruc: "" };
 }
 
 function tituloDesdeCliente(c: ClienteForm): string {
   const parts = [c.nombre.trim(), c.apellido.trim()].filter(Boolean);
   return parts.join(" ") || c.razon_social.trim() || "Cliente";
+}
+
+function etiquetaMaterial(item: { material_code: string; descp_material: string | null }): string {
+  const code = item.material_code.trim();
+  const desc = item.descp_material?.trim();
+  if (desc) return desc !== code && code ? `${desc} · ${code}` : desc;
+  return code || "—";
+}
+
+function etiquetaColor(item: { color_code: string; descp_color: string | null }): string {
+  const code = item.color_code.trim();
+  const desc = item.descp_color?.trim();
+  if (desc) return desc !== code && code ? `${desc} · ${code}` : desc;
+  return code || "—";
+}
+
+function ResumenTotalesVenta({ count, subtotalGs }: { count: number; subtotalGs: number }) {
+  return (
+    <div
+      className="flex shrink-0 flex-col items-center justify-center rounded-xl border-[3px] border-emerald-700 bg-emerald-50 px-4 py-2.5 text-center shadow-sm"
+      aria-label={`Total ${count} pares, ${formatPrecioGs(subtotalGs)} a pagar`}
+    >
+      <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-emerald-800">Total pares</p>
+      <p className="text-4xl font-black tabular-nums leading-none text-emerald-900">{count}</p>
+      <p className="mt-2 text-[9px] font-bold uppercase tracking-[0.18em] text-emerald-800">A pagar</p>
+      <p className="text-2xl font-black tabular-nums leading-tight text-emerald-900">
+        {subtotalGs > 0 ? formatPrecioGs(subtotalGs) : "—"}
+      </p>
+    </div>
+  );
+}
+
+function ContactoClienteTicket({
+  telefono,
+  email,
+  onTelefono,
+  onEmail,
+  inputClass,
+}: {
+  telefono: string;
+  email: string;
+  onTelefono: (v: string) => void;
+  onEmail: (v: string) => void;
+  inputClass: string;
+}) {
+  return (
+    <div className="mx-1 mb-2 rounded-xl border-[3px] border-sky-500 bg-gradient-to-br from-sky-50 to-white p-3 shadow-sm">
+      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-sky-900">
+        Contacto · confirmá con el cliente
+      </p>
+      <p className="mt-0.5 text-[11px] font-medium text-sky-800/90">
+        ¿Siguen siendo estos celular y correo para la tienda?
+      </p>
+      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+        <label className="block">
+          <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-900">Celular</span>
+          <input
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            value={telefono}
+            onChange={(e) => onTelefono(e.target.value)}
+            placeholder="09xx xxx xxx"
+            className={`${inputClass} border-sky-300 text-lg font-bold text-sky-950 focus:border-sky-600`}
+          />
+        </label>
+        <label className="block">
+          <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-sky-900">Correo</span>
+          <input
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => onEmail(e.target.value)}
+            placeholder="correo@ejemplo.com"
+            className={`${inputClass} border-sky-300 text-base font-semibold text-sky-950 focus:border-sky-600`}
+          />
+        </label>
+      </div>
+    </div>
+  );
 }
 
 export function PosCartSheet() {
@@ -59,6 +142,7 @@ export function PosCartSheet() {
   const [pending, startTransition] = useTransition();
   const [numeroFiFa, setNumeroFiFa] = useState<number | null>(null);
   const syncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const contactoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -71,6 +155,7 @@ export function PosCartSheet() {
         nombre: reopenCliente.nombre,
         apellido: reopenCliente.apellido,
         telefono: reopenCliente.telefono,
+        email: reopenCliente.email ?? "",
         razon_social: "",
         ruc: "",
       });
@@ -82,6 +167,8 @@ export function PosCartSheet() {
     }
   }, [open, setVendedor]);
 
+  const subtotalGs = useMemo(() => calcSubtotalCarrito(items), [items]);
+
   const buildSyncPayload = useCallback(() => {
     if (!session || !vendedor) return null;
     const cedula = cliente.cedula.trim() || null;
@@ -91,6 +178,7 @@ export function PosCartSheet() {
             nombre: cliente.nombre.trim() || null,
             apellido: cliente.apellido.trim() || null,
             telefono: cliente.telefono.trim() || null,
+            email: cliente.email.trim() || null,
           }
         : null;
     return {
@@ -115,6 +203,7 @@ export function PosCartSheet() {
         grada: i.grada,
         imagen_url: i.imagen_url,
         cantidad: i.cantidad,
+        precio_unitario: i.precio_unitario,
       })),
     };
   }, [session, vendedor, cliente, modo, items]);
@@ -162,6 +251,45 @@ export function PosCartSheet() {
       void persistReopenCart();
     }, 450);
   }, [persistReopenCart]);
+
+  const persistContactoCliente = useCallback(async () => {
+    if (!session || !cliente.cedula.trim()) return;
+    const tel = cliente.telefono.trim();
+    const mail = cliente.email.trim();
+    if (!tel && !mail) return;
+    if (tel && (tel.length < 6 || tel.length > 20 || !/^[0-9+\-\s()]+$/.test(tel))) return;
+    if (mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(mail)) return;
+
+    try {
+      await fetch("/api/clients-bazaar/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          cliente_id: session.cliente_id,
+          cedula: cliente.cedula,
+          nombre: cliente.nombre.trim() || null,
+          apellido: cliente.apellido.trim() || null,
+          telefono: tel || null,
+          email: mail || null,
+        }),
+      });
+      schedulePersistCart();
+    } catch {
+      /* silencioso — el vendedor reintenta al cerrar */
+    }
+  }, [session, cliente, schedulePersistCart]);
+
+  const schedulePersistContacto = useCallback(() => {
+    if (contactoTimerRef.current) clearTimeout(contactoTimerRef.current);
+    contactoTimerRef.current = setTimeout(() => {
+      void persistContactoCliente();
+    }, 650);
+  }, [persistContactoCliente]);
+
+  function handleContactoChange(field: "telefono" | "email", value: string) {
+    setCliente((prev) => ({ ...prev, [field]: value }));
+    schedulePersistContacto();
+  }
 
   function handleRemoveItem(key: string) {
     removeItem(key);
@@ -242,14 +370,12 @@ export function PosCartSheet() {
         setOpen(false);
         setError(null);
         setOkMsg(null);
-        resetClienteUi();
       });
       return;
     }
     setOpen(false);
     setError(null);
     setOkMsg(null);
-    resetClienteUi();
   }
 
   function volverABuscar() {
@@ -298,6 +424,7 @@ export function PosCartSheet() {
           nombre: data.cliente.nombre ?? "",
           apellido: data.cliente.apellido ?? "",
           telefono: data.cliente.telefono ?? "",
+          email: data.cliente.email ?? "",
           razon_social: data.cliente.razon_social ?? "",
           ruc: "",
         });
@@ -317,6 +444,19 @@ export function PosCartSheet() {
     }
   }
 
+  function validarContactoCliente(): string | null {
+    const tel = cliente.telefono.trim();
+    if (!tel) return "Confirmá el celular del cliente";
+    if (tel.length < 6 || tel.length > 20 || !/^[0-9+\-\s()]+$/.test(tel)) {
+      return "Celular inválido (6–20 caracteres)";
+    }
+    const mail = cliente.email.trim();
+    if (mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(mail)) {
+      return "Correo electrónico inválido";
+    }
+    return null;
+  }
+
   function validarRegistro(): string | null {
     if (tipoPersona === "juridica") {
       if (!cliente.razon_social.trim()) return "Completá razón social";
@@ -325,15 +465,19 @@ export function PosCartSheet() {
       if (!cliente.nombre.trim()) return "Completá nombre";
     }
     if (!cliente.telefono.trim()) return "Completá celular";
+    const mail = cliente.email.trim();
+    if (mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(mail)) return "Correo inválido";
     return null;
   }
 
   function payloadRegistro() {
+    const email = cliente.email.trim() || null;
     if (tipoPersona === "juridica") {
       return {
         nombre: cliente.razon_social.trim() || null,
         apellido: null,
         telefono: cliente.telefono.trim() || null,
+        email,
         razon_social: cliente.razon_social.trim() || null,
         ruc: cliente.ruc.replace(/\D/g, "").trim() || null,
       };
@@ -342,6 +486,7 @@ export function PosCartSheet() {
       nombre: cliente.nombre.trim() || null,
       apellido: cliente.apellido.trim() || null,
       telefono: cliente.telefono.trim() || null,
+      email,
       razon_social: null,
       ruc: cliente.ruc.replace(/\D/g, "").trim() || null,
     };
@@ -381,6 +526,7 @@ export function PosCartSheet() {
           nombre: c?.nombre ?? cliente.nombre,
           apellido: c?.apellido ?? cliente.apellido,
           telefono: c?.telefono ?? cliente.telefono,
+          email: c?.email ?? cliente.email,
           razon_social: c?.razon_social ?? cliente.razon_social,
           ruc: "",
         });
@@ -401,6 +547,11 @@ export function PosCartSheet() {
       setError("Identificá al cliente (cédula + Buscar) antes de cerrar");
       return;
     }
+    const errContacto = validarContactoCliente();
+    if (errContacto) {
+      setError(errContacto);
+      return;
+    }
     if (!vendedor) {
       setError(null);
       setCodigoVendedorOpen(true);
@@ -419,6 +570,7 @@ export function PosCartSheet() {
                 nombre: cliente.nombre.trim() || null,
                 apellido: cliente.apellido.trim() || null,
                 telefono: cliente.telefono.trim() || null,
+                email: cliente.email.trim() || null,
               }
             : null;
 
@@ -450,6 +602,7 @@ export function PosCartSheet() {
               grada: i.grada,
               imagen_url: i.imagen_url,
               cantidad: i.cantidad,
+              precio_unitario: i.precio_unitario,
             })),
           }),
         });
@@ -583,7 +736,9 @@ export function PosCartSheet() {
                     </p>
                   ) : null}
                   <p className="mt-0.5 text-[10px] uppercase tracking-[0.16em] text-white/75">
-                    CI {cliente.cedula} · {count} par{count === 1 ? "" : "es"} · {session?.marca ?? "—"}
+                    CI {cliente.cedula} · {count} par{count === 1 ? "" : "es"}
+                    {subtotalGs > 0 ? ` · ${formatPrecioGs(subtotalGs)}` : ""}
+                    {session?.marca ? ` · ${session.marca}` : ""}
                     {tiendaActiva ? ` · ${tiendaActiva.codigo}` : ""}
                   </p>
                 </>
@@ -755,6 +910,19 @@ export function PosCartSheet() {
                   className={inputClass}
                 />
               </label>
+              <label className="block">
+                <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                  Correo electrónico
+                </span>
+                <input
+                  type="email"
+                  inputMode="email"
+                  value={cliente.email}
+                  onChange={(e) => setCliente((prev) => ({ ...prev, email: e.target.value }))}
+                  placeholder="correo@ejemplo.com (opcional)"
+                  className={inputClass}
+                />
+              </label>
             </div>
           </div>
         ) : (
@@ -784,9 +952,22 @@ export function PosCartSheet() {
                         <span className="text-[#64748b]"> · </span>
                         {item.referencia_codigo}
                       </p>
-                      <p className="truncate text-xs text-[#64748b]">
-                        {item.descp_color ?? item.color_code} · G.{gradaLabelCorta(item.grada)}
+                      <p className="truncate text-xs font-medium text-slate-700">
+                        Mat. {etiquetaMaterial(item)}
                       </p>
+                      <p className="truncate text-xs text-[#64748b]">
+                        {etiquetaColor(item)} · G.{gradaLabelCorta(item.grada)}
+                      </p>
+                      {item.precio_unitario != null ? (
+                        <p className="text-sm font-bold tabular-nums text-emerald-800">
+                          {formatPrecioGs(item.precio_unitario)}
+                          {item.cantidad > 1 ? (
+                            <span className="ml-1 text-xs font-semibold text-[#64748b]">
+                              × {item.cantidad} = {formatPrecioGs(item.precio_unitario * item.cantidad)}
+                            </span>
+                          ) : null}
+                        </p>
+                      ) : null}
                     </div>
                     <div className="flex shrink-0 flex-col items-end justify-between">
                       <TouchPad
@@ -819,6 +1000,15 @@ export function PosCartSheet() {
                 ))}
               </ul>
             )}
+            {clienteIdentificado && !enRegistro && (
+              <ContactoClienteTicket
+                telefono={cliente.telefono}
+                email={cliente.email}
+                onTelefono={(v) => handleContactoChange("telefono", v)}
+                onEmail={(v) => handleContactoChange("email", v)}
+                inputClass={inputClass}
+              />
+            )}
           </div>
         )}
 
@@ -834,46 +1024,53 @@ export function PosCartSheet() {
             </p>
           )}
 
-          {!enRegistro && !clienteIdentificado && (
-            <div className="space-y-3">
-              <div className="flex flex-wrap items-end gap-2">
-                <label className="block min-w-0 flex-1">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
-                    Cédula cliente
-                  </span>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={cliente.cedula}
-                    onChange={(e) => {
-                      setModo("idle");
-                      setCliente((prev) => ({
-                        ...prev,
-                        cedula: e.target.value.replace(/[^\d]/g, ""),
-                      }));
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") void buscarCedula();
-                    }}
-                    placeholder="Número de cédula"
-                    className={inputClass}
-                  />
-                </label>
-                <TouchPad
-                  onClick={() => void buscarCedula()}
-                  ariaLabel="Buscar cédula"
-                  disabled={cedulaBuscando || cliente.cedula.replace(/\D/g, "").length < 5}
-                  className={btnBuscarClass}
-                >
-                  {cedulaBuscando ? "…" : "Buscar"}
-                </TouchPad>
-              </div>
+          {!enRegistro && items.length > 0 && (
+            <div className="flex items-end gap-3">
+              {!clienteIdentificado ? (
+                <div className="min-w-0 flex-1 space-y-3">
+                  <div className="flex flex-wrap items-end gap-2">
+                    <label className="block min-w-0 flex-1">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#64748b]">
+                        Cédula cliente
+                      </span>
+                      <input
+                        type="text"
+                        inputMode="numeric"
+                        value={cliente.cedula}
+                        onChange={(e) => {
+                          setModo("idle");
+                          setCliente((prev) => ({
+                            ...prev,
+                            cedula: e.target.value.replace(/[^\d]/g, ""),
+                          }));
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") void buscarCedula();
+                        }}
+                        placeholder="Número de cédula"
+                        className={inputClass}
+                      />
+                    </label>
+                    <TouchPad
+                      onClick={() => void buscarCedula()}
+                      ariaLabel="Buscar cédula"
+                      disabled={cedulaBuscando || cliente.cedula.replace(/\D/g, "").length < 5}
+                      className={btnBuscarClass}
+                    >
+                      {cedulaBuscando ? "…" : "Buscar"}
+                    </TouchPad>
+                  </div>
 
-              {modo === "idle" && (
-                <p className="text-xs text-[#64748b]">
-                  Ingresá cédula y tocá <strong>Buscar</strong> — obligatorio para cerrar la venta.
-                </p>
+                  {modo === "idle" && (
+                    <p className="text-xs text-[#64748b]">
+                      Ingresá cédula y tocá <strong>Buscar</strong> — obligatorio para cerrar la venta.
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <div className="min-w-0 flex-1" />
               )}
+              <ResumenTotalesVenta count={count} subtotalGs={subtotalGs} />
             </div>
           )}
 

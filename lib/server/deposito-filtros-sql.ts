@@ -2,8 +2,8 @@
  * SQL filtros depósito — cascada paridad RIMEC Web · JOIN pilares en lectura.
  */
 import type { DepositoFilterState } from "@/lib/deposito-filters";
+import { SQL_COLOR_SIN_TONO } from "@/lib/tono/color-canon";
 import {
-  SQL_ORDER_LINEA_REF,
   SQL_SOLO_CALZADO,
 } from "@/lib/tipo-v2-scope";
 import {
@@ -51,8 +51,21 @@ type ExcluirDim =
   | "tipo1"
   | "linea"
   | "color"
+  | "tono"
+  | "grada"
   | "q"
   | null;
+
+function appendTono(f: DepositoFilterState, w: WhereBuild, excluir: boolean): void {
+  if (excluir) return;
+  if (f.sinTono) {
+    w.sql += ` AND ${SQL_COLOR_SIN_TONO}`;
+    return;
+  }
+  if (f.tonos.length === 0) return;
+  w.params.push(f.tonos);
+  w.sql += ` AND btrim(col.tono_canon->>'etiqueta') = ANY($${w.params.length}::text[])`;
+}
 
 function buildWhere(f: DepositoFilterState, excluir: ExcluirDim): WhereBuild {
   const w: WhereBuild = { sql: SKU_BASE, params: [] };
@@ -80,6 +93,11 @@ function buildWhere(f: DepositoFilterState, excluir: ExcluirDim): WhereBuild {
   if (excluir !== "color" && f.colorIds.length) {
     w.params.push(f.colorIds);
     w.sql += ` AND s.color_id = ANY($${w.params.length}::int[])`;
+  }
+  appendTono(f, w, excluir === "tono");
+  if (excluir !== "grada" && f.gradas.length) {
+    w.params.push(f.gradas);
+    w.sql += ` AND btrim(s.grada::text) = ANY($${w.params.length}::text[])`;
   }
   if (excluir !== "q" && f.q.trim()) {
     w.params.push(`%${f.q.trim()}%`);
@@ -188,8 +206,16 @@ export function sqlDepositoChipsLinea(
       ${fromClause(tabla)}
       WHERE ${w.sql} AND COALESCE(l.id, s.linea_id) IS NOT NULL
       GROUP BY 1, 2
-      ORDER BY ${SQL_ORDER_LINEA_REF},
-      2
+      ORDER BY
+        CASE WHEN COALESCE(
+          NULLIF(btrim(l.codigo_proveedor::text), ''),
+          trim(s.linea_codigo_proveedor::text)
+        ) ~ '^[0-9]+$'
+        THEN COALESCE(
+          NULLIF(btrim(l.codigo_proveedor::text), ''),
+          trim(s.linea_codigo_proveedor::text)
+        )::bigint END NULLS LAST,
+        2
       LIMIT 400
     `,
     params: w.params,
@@ -210,6 +236,27 @@ export function sqlDepositoChipsColor(
       WHERE ${w.sql} AND s.color_id IS NOT NULL
       GROUP BY 1, 2 ORDER BY 2
       LIMIT 200
+    `,
+    params: w.params,
+  };
+}
+
+/** Gradas disponibles (cascada — excluye filtro grada aplicado). */
+export function sqlDepositoGradaOpciones(
+  tabla: string,
+  f: DepositoFilterState,
+): { text: string; params: unknown[] } {
+  const w = buildWhere(f, "grada");
+  return {
+    text: `
+    SELECT btrim(s.grada::text) AS grada
+    ${fromClause(tabla)}
+    WHERE ${w.sql}
+      AND btrim(s.grada::text) <> ''
+    GROUP BY 1
+    ORDER BY
+      CASE WHEN btrim(s.grada::text) ~ '^[0-9]+$' THEN btrim(s.grada::text)::numeric ELSE 9999 END,
+      btrim(s.grada::text)
     `,
     params: w.params,
   };
@@ -288,6 +335,103 @@ export function sqlDepositoMolecules(
     FROM ranked_molecules
     ${limitClause}
     ORDER BY marca, cantidad_local DESC
+    `,
+    params: w.params,
+  };
+}
+
+/** Filas SKU con grada — grilla cajas tablet `/deposito`.
+ *  LIMIT = top N **cajas** (molécula) por marca · todas las gradas de cada caja incluidas. */
+export function sqlDepositoFilasGrada(
+  tabla: string,
+  f: DepositoFilterState,
+  limit: number | null,
+): { text: string; params: unknown[] } {
+  const w = buildWhere(f, null);
+  const limitClause =
+    limit != null && limit > 0 ? `WHERE rank_por_marca <= ${limit}` : "";
+  return {
+    text: `
+    WITH sku_rows AS (
+      SELECT
+        trim(s.linea_codigo_proveedor::text) AS linea_codigo_proveedor,
+        trim(s.referencia_codigo_proveedor::text) AS referencia_codigo_proveedor,
+        COALESCE(
+          NULLIF(btrim(s.excel_material_code::text), ''),
+          CASE WHEN mat.id IS NULL OR mat.codigo_proveedor = -999001::bigint THEN NULL
+               ELSE trim(mat.codigo_proveedor::text) END,
+          ''
+        ) AS material_code,
+        COALESCE(
+          NULLIF(btrim(s.excel_color_code::text), ''),
+          CASE WHEN col.id IS NULL OR col.codigo_proveedor = -999001::bigint THEN NULL
+               ELSE trim(col.codigo_proveedor::text) END,
+          ''
+        ) AS color_code,
+        s.grada,
+        s.cantidad::float8 AS cantidad,
+        ${SQL_MARCA_LABEL} AS marca,
+        ${SQL_MARCA_ID} AS marca_id,
+        ${SQL_GENERO_LABEL} AS genero,
+        ${SQL_ESTILO_LABEL} AS estilo,
+        COALESCE(NULLIF(btrim(tv.descp_tipo::text), ''), '(sin tipo)') AS tipo_v2,
+        NULLIF(btrim(mat.descripcion::text), '') AS descp_material,
+        NULLIF(btrim(col.nombre::text), '') AS descp_color,
+        NULLIF(btrim(col.tono_canon->>'etiqueta'), '') AS tono_etiqueta,
+        NULLIF(btrim(s.imagen_nombre::text), '') AS imagen_nombre,
+        NULLIF(s.precio_unitario, 0)::float8 AS precio_unitario
+      ${fromClause(tabla)}
+      WHERE ${w.sql}
+    ),
+    molecule_totals AS (
+      SELECT
+        linea_codigo_proveedor,
+        referencia_codigo_proveedor,
+        material_code,
+        color_code,
+        marca_id,
+        MAX(marca) AS marca,
+        SUM(cantidad) AS total_pares
+      FROM sku_rows
+      GROUP BY 1, 2, 3, 4, 5
+    ),
+    ranked_molecules AS (
+      SELECT
+        linea_codigo_proveedor,
+        referencia_codigo_proveedor,
+        material_code,
+        color_code,
+        ROW_NUMBER() OVER (PARTITION BY marca_id ORDER BY total_pares DESC) AS rank_por_marca
+      FROM molecule_totals
+    ),
+    selected_molecules AS (
+      SELECT linea_codigo_proveedor, referencia_codigo_proveedor, material_code, color_code
+      FROM ranked_molecules
+      ${limitClause}
+    )
+    SELECT
+      sr.linea_codigo_proveedor,
+      sr.referencia_codigo_proveedor,
+      sr.material_code,
+      sr.color_code,
+      sr.grada,
+      sr.cantidad,
+      sr.marca,
+      sr.genero,
+      sr.estilo,
+      sr.tipo_v2,
+      sr.descp_material,
+      sr.descp_color,
+      sr.tono_etiqueta,
+      sr.imagen_nombre,
+      sr.precio_unitario
+    FROM sku_rows sr
+    INNER JOIN selected_molecules sel
+      ON sr.linea_codigo_proveedor = sel.linea_codigo_proveedor
+     AND sr.referencia_codigo_proveedor = sel.referencia_codigo_proveedor
+     AND sr.material_code = sel.material_code
+     AND sr.color_code = sel.color_code
+    ORDER BY sr.marca, sr.cantidad DESC
     `,
     params: w.params,
   };

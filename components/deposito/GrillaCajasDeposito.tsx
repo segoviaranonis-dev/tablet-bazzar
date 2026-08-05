@@ -2,20 +2,39 @@
 
 import { useMemo } from "react";
 import type { DepositoProducto } from "@/app/api/deposito/[cliente_id]/route";
-import { ProductImage } from "@/components/ProductImage";
-import { agruparProductosPorCaja } from "@/lib/depositos/agrupar-cajas";
+import { agruparProductosPorCaja, type ProductoCajaCard } from "@/lib/depositos/agrupar-cajas";
 import { analizarVidrieraCaja } from "@/lib/depositos/vidriera-estrellas";
-import { TablaGradaDeposito } from "./TablaGradaDeposito";
+import { formatPrecioGs } from "@/lib/precio-venta";
+import { TarjetaCajaDeposito } from "./TarjetaCajaDeposito";
 
 type Props = {
   productos: DepositoProducto[];
   tiendaLabel: string;
   codigoDeposito: string;
   clienteId: number;
+  /** Barra de totales más delgada — stock protagonista */
+  compactStats?: boolean;
+  /** Solo foto + overlay; grilla más densa */
+  colapsarTodo?: boolean;
+  maxCards?: number;
+  onCardSelect?: (card: ProductoCajaCard) => void;
 };
 
-export function GrillaCajasDeposito({ productos, tiendaLabel, codigoDeposito, clienteId }: Props) {
-  const cards = useMemo(() => agruparProductosPorCaja(productos), [productos]);
+export function GrillaCajasDeposito({
+  productos,
+  tiendaLabel,
+  codigoDeposito,
+  clienteId,
+  compactStats = false,
+  colapsarTodo = true,
+  maxCards,
+  onCardSelect,
+}: Props) {
+  const cards = useMemo(() => {
+    const all = agruparProductosPorCaja(productos);
+    if (maxCards != null && all.length > maxCards) return all.slice(0, maxCards);
+    return all;
+  }, [productos, maxCards]);
 
   if (cards.length === 0) {
     return (
@@ -26,23 +45,52 @@ export function GrillaCajasDeposito({ productos, tiendaLabel, codigoDeposito, cl
   }
 
   const totalPares = cards.reduce((s, c) => s + c.totalPares, 0);
+  const totalValor = cards.reduce((s, c) => {
+    const p = c.precioUnitario;
+    return p != null ? s + p * c.totalPares : s;
+  }, 0);
+  const cajasConPrecio = cards.filter((c) => c.precioUnitario != null).length;
 
   return (
     <>
-      <div className="mb-4 flex flex-wrap items-center justify-center gap-2 text-center text-sm text-slate-600">
-        <span className="rounded-full bg-rimec-azul/10 px-3 py-1 font-bold text-rimec-azul">
+      <div
+        className={`mb-3 flex flex-wrap items-center justify-center gap-2 text-center text-slate-600 ${
+          compactStats ? "text-xs" : "mb-4 text-sm"
+        }`}
+      >
+        <span
+          className={`rounded-full bg-rimec-azul/10 font-bold text-rimec-azul ${
+            compactStats ? "px-2 py-0.5" : "px-3 py-1"
+          }`}
+        >
           {cards.length.toLocaleString("es-PY")} cajas
         </span>
-        <span className="rounded-full bg-bazzar-naranja/15 px-3 py-1 font-bold text-bazzar-naranja-dark">
+        <span
+          className={`rounded-full bg-bazzar-naranja/15 font-bold text-bazzar-naranja-dark ${
+            compactStats ? "px-2 py-0.5" : "px-3 py-1"
+          }`}
+        >
           {Math.round(totalPares).toLocaleString("es-PY")} pares
         </span>
-        <span className="text-xs text-slate-500">
-          {codigoDeposito} · agrupación L+R+material+color
-        </span>
+        {cajasConPrecio > 0 ? (
+          <span
+            className={`rounded-full bg-emerald-100 font-bold text-emerald-800 ${
+              compactStats ? "px-2 py-0.5 text-xs" : "px-3 py-1 text-sm"
+            }`}
+          >
+            {formatPrecioGs(totalValor)}
+          </span>
+        ) : null}
+        {!compactStats ? (
+          <span className="text-xs text-slate-500">
+            {codigoDeposito} · agrupación L+R+material+color
+          </span>
+        ) : null}
       </div>
-      <div className="flex flex-wrap justify-center gap-3">
+      <div
+        className={`flex flex-wrap justify-center ${colapsarTodo ? "gap-2" : "gap-3"}`}
+      >
         {cards.map((card) => {
-          const p = card.producto;
           const vidriera = analizarVidrieraCaja({
             moleculeKey: card.key,
             clienteId,
@@ -50,50 +98,15 @@ export function GrillaCajasDeposito({ productos, tiendaLabel, codigoDeposito, cl
             stock: card.stock,
           });
           return (
-            <article
+            <TarjetaCajaDeposito
               key={card.key}
-              className="flex w-[calc(50%-0.375rem)] max-w-[220px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:w-[180px] md:w-[200px]"
-            >
-              <div className="relative aspect-square bg-slate-100">
-                <ProductImage
-                  src={p.imagen_url_thumb}
-                  fallbackSrc={p.imagen_url_flat}
-                  linea={p.linea_codigo_proveedor}
-                  ref={p.referencia_codigo_proveedor}
-                  material={p.material_code}
-                  color={p.color_code}
-                  imagenNombre={p.imagen_nombre}
-                  alt={`${p.linea_codigo_proveedor}-${p.referencia_codigo_proveedor}`}
-                />
-                <span className="absolute right-2 top-2 rounded-full bg-bazzar-naranja px-2 py-1 text-xs font-bold text-white">
-                  {Math.round(card.totalPares)} p
-                </span>
-                {card.totalPares <= 0 && (
-                  <span className="absolute inset-x-2 bottom-2 rounded-lg bg-amber-400/95 py-1 text-center text-xs font-bold text-amber-950">
-                    ⭐⭐⭐ Caja cerrada
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col gap-2 p-3">
-                <p className="text-xs font-bold uppercase text-rimec-azul">{p.marca}</p>
-                <p className="font-mono text-sm font-semibold text-slate-900">
-                  {p.linea_codigo_proveedor}.{p.referencia_codigo_proveedor}
-                </p>
-                <p className="line-clamp-2 text-xs text-slate-600">
-                  {[p.descp_material, p.descp_color].filter(Boolean).join(" · ") ||
-                    `${p.material_code} / ${p.color_code}`}
-                </p>
-                <div className="mt-auto">
-                  <TablaGradaDeposito
-                    tienda={tiendaLabel}
-                    estilo={card.estilo}
-                    tallas={card.tallas}
-                    stock={card.stock}
-                    vidrieraActiva={vidriera.vidrieraActiva}
-                  />
-                </div>
-              </div>
-            </article>
+              card={card}
+              tiendaLabel={tiendaLabel}
+              vidriera={vidriera}
+              colapsarTodo={colapsarTodo}
+              compactGrid={colapsarTodo}
+              onImageTap={onCardSelect ? () => onCardSelect(card) : undefined}
+            />
           );
         })}
       </div>

@@ -1,4 +1,5 @@
 import type { DepositoProducto } from "@/app/api/deposito/[cliente_id]/route";
+import { resolvePrecioGrupoLRM } from "@/lib/precio-venta";
 
 /** Molécula = caja (L+R+material+color) · gradas dentro de la misma tarjeta */
 export type ProductoCajaCard = {
@@ -8,6 +9,7 @@ export type ProductoCajaCard = {
   stock: number[];
   totalPares: number;
   estilo: string;
+  precioUnitario: number | null;
 };
 
 function moleculeKey(p: DepositoProducto): string {
@@ -52,6 +54,7 @@ export function agruparProductosPorCaja(rows: DepositoProducto[]): ProductoCajaC
         stock,
         totalPares: stock.reduce((s, n) => s + n, 0),
         estilo: items[0].estilo,
+        precioUnitario: resolvePrecioGrupoLRM(items),
       };
     })
     .sort((a, b) => {

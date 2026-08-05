@@ -13,7 +13,7 @@ import {
 import { POS_COBRAR_OK_EVENT } from "@/lib/pos-events";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 
-const LIVE_POLL_MS = 20_000;
+const LIVE_POLL_MS = 4_000;
 
 function fmt(n: number) {
   return new Intl.NumberFormat("es-PY", { maximumFractionDigits: 0 }).format(n);

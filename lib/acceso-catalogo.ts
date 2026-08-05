@@ -39,7 +39,7 @@ export function resolverAccesoCatalogo(user: TabletSessionUser | null | undefine
   if (!esEnteTiendaBazzar(user.ente_codigo)) {
     return {
       ok: false,
-      reason: "Catálogo · Ventas solo para tiendas Bazzar (ente 2–4) o Nivel Dios.",
+      reason: "Catálogo · Ventas solo para tiendas Bazzar (ente 2–4) o Nivel Superior.",
     };
   }
 
@@ -70,5 +70,5 @@ export function resolverAccesoCatalogo(user: TabletSessionUser | null | undefine
 }
 
 export function mensajeAccesoCatalogoVentas(): string {
-  return "Catálogo · Ventas: Nivel Dios (RIMEC) o tienda Bazzar (ADMIN / VENDEDOR) con código BZZ*.";
+  return "Catálogo · Ventas: Nivel Superior (RIMEC) o tienda Bazzar (ADMIN / VENDEDOR) con código BZZ*.";
 }

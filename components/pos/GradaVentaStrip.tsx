@@ -3,8 +3,9 @@
 import { memo, useMemo, useState } from "react";
 import type { DepositoFila, ParLineaRef } from "@/lib/cadena";
 import { StockTiendaMiniPanel, panelesLateralesVentas } from "@/components/cadena/StockOtrosLocales";
-import { filaToCartInput, gradasDesdeStock } from "@/lib/cart/pos-cart";
+import { filaToCartInput, gradasDesdeStock, gradaLabelCorta } from "@/lib/cart/pos-cart";
 import { usePosCart } from "@/lib/cart/PosCartContext";
+import { formatPrecioGs } from "@/lib/precio-venta";
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { formatGradaDisplay, type StockUbicacionBloque } from "@/lib/stock-otros-locales";
 
@@ -18,6 +19,8 @@ type Props = {
   bootLoading?: boolean;
   stockError?: string | null;
   onStockRetry?: () => void;
+  /** Precio venta grupo L+R+material activo. */
+  precioVenta?: number | null;
 };
 
 function resolveFilaForGrada(
@@ -76,6 +79,7 @@ export const GradaVentaStrip = memo(function GradaVentaStrip({
   bootLoading,
   stockError,
   onStockRetry,
+  precioVenta = null,
 }: Props) {
   const { addPar, flashGrada } = usePosCart();
   const [errMsg, setErrMsg] = useState<string | null>(null);
@@ -106,7 +110,13 @@ export const GradaVentaStrip = memo(function GradaVentaStrip({
     const fila = resolveFilaForGrada(par, grada, activa);
     if (!fila) return;
 
-    const input = filaToCartInput(fila, { cliente_id: clienteId, marca, grada, stock });
+    const input = filaToCartInput(fila, {
+      cliente_id: clienteId,
+      marca,
+      grada,
+      stock,
+      precio_unitario: precioVenta ?? fila.precio_unitario,
+    });
 
     if (!input) {
       setErrMsg("SKU incompleto — cambiá color/material");
@@ -164,6 +174,9 @@ export const GradaVentaStrip = memo(function GradaVentaStrip({
                   Tallas · {tiendaActual}
                   {totalPar > 0 ? (
                     <span className="ml-0.5 tabular-nums text-bazzar-naranja">· {totalPar} p</span>
+                  ) : null}
+                  {precioVenta != null ? (
+                    <span className="ml-1 tabular-nums text-emerald-800">· {formatPrecioGs(precioVenta)}</span>
                   ) : null}
                 </p>
                 <p className="text-[7px] font-medium text-orange-900/70">Tocá = +1 par</p>

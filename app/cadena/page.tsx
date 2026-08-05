@@ -7,6 +7,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FiltrosCabecera } from "@/components/cadena/FiltrosCabecera";
 import { CadenaEntradaHeader } from "@/components/cadena/CadenaEntradaHeader";
 import { UsuarioDestaque } from "@/components/cadena/UsuarioDestaque";
+import { GrillaCajasDeposito } from "@/components/deposito/GrillaCajasDeposito";
 import { StagingTicketsPanel } from "@/components/pos/StagingTicketsPanel";
 import { SelectorDepositos } from "@/components/cadena/SelectorDepositos";
 import { TouchPad } from "@/components/cadena/TouchPad";
@@ -37,6 +38,8 @@ import {
   type AccesoCatalogo,
 } from "@/lib/acceso-catalogo";
 import { type TabletSessionUser } from "@/lib/nivel-dios";
+import type { DepositoProducto } from "@/app/api/deposito/[cliente_id]/route";
+import type { ProductoCajaCard } from "@/lib/depositos/agrupar-cajas";
 
 const TIENDA_STORAGE_KEY = "tablet_tienda_cliente_id";
 const DEFAULT_CLIENTE_ID = DEPOSITOS[0]?.cliente_id ?? 2100;
@@ -70,6 +73,8 @@ type FiltrosApi = {
 
   tonoEstandar?: import("@/lib/tono/colores-estandar").ColorEstandar[];
 
+  gradas: string[];
+
   resumen: { skus: number; pares: number; ultima_carga: string | null };
 
   ms?: number;
@@ -100,6 +105,8 @@ function filtrosEntradaToSql(f: FiltrosEntrada) {
 
     sinTono: f.sinTono,
 
+    gradas: f.gradas,
+
   });
 
 }
@@ -115,6 +122,7 @@ export default function CadenaMarcaPage() {
   const [filtros, setFiltros] = useState<FiltrosEntrada>(FILTROS_ENTRADA_VACIOS);
 
   const [api, setApi] = useState<FiltrosApi | null>(null);
+  const [catalogoFilas, setCatalogoFilas] = useState<DepositoProducto[]>([]);
   const [bootLoading, setBootLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
@@ -164,6 +172,7 @@ export default function CadenaMarcaPage() {
   useEffect(() => {
     hadApi.current = false;
     setApi(null);
+    setCatalogoFilas([]);
     setBootLoading(true);
   }, [clienteId]);
 
@@ -178,16 +187,27 @@ export default function CadenaMarcaPage() {
     setError(null);
 
     try {
-      const r = await fetch(`/api/deposito/${cid}/filtros?${qs}`, { cache: "no-store" });
-      const ct = r.headers.get("content-type") ?? "";
+      const [rFiltros, rCatalogo] = await Promise.all([
+        fetch(`/api/deposito/${cid}/filtros?${qs}`, { cache: "no-store" }),
+        fetch(`/api/deposito/${cid}/catalogo?${qs}`, { cache: "no-store" }),
+      ]);
+      const ct = rFiltros.headers.get("content-type") ?? "";
       if (!ct.includes("application/json")) {
-        if (r.status === 401 || r.status === 307 || r.redirected) {
+        if (rFiltros.status === 401 || rFiltros.status === 307 || rFiltros.redirected) {
           throw new Error("Sesión expirada — abrí http://localhost:3002/api/auth/auto-login");
         }
-        throw new Error(`API filtros respondió HTML (${r.status}) — ejecutá REINICIAR_DEV.bat`);
+        throw new Error(`API filtros respondió HTML (${rFiltros.status}) — ejecutá REINICIAR_DEV.bat`);
       }
-      const data = await r.json();
+      const data = await rFiltros.json();
       if (data.error) throw new Error(data.error);
+
+      let filas: DepositoProducto[] = [];
+      const ctCat = rCatalogo.headers.get("content-type") ?? "";
+      if (ctCat.includes("application/json")) {
+        const cat = await rCatalogo.json();
+        if (!cat.error) filas = (cat.filas ?? []) as DepositoProducto[];
+      }
+
       setApi({
         generos: data.generos ?? [],
         marcas: data.marcas ?? [],
@@ -197,13 +217,18 @@ export default function CadenaMarcaPage() {
         marcasEntrada: data.marcasEntrada ?? [],
         referencias: data.referencias ?? [],
         tonoEstandar: data.tonoEstandar ?? [],
+        gradas: data.gradas ?? [],
         resumen: data.resumen ?? { skus: 0, pares: 0, ultima_carga: null },
         ms: data.ms,
       });
+      setCatalogoFilas(filas);
       hadApi.current = true;
     } catch (e) {
       setError(e instanceof Error ? e.message : "Error");
-      if (!hadApi.current) setApi(null);
+      if (!hadApi.current) {
+        setApi(null);
+        setCatalogoFilas([]);
+      }
     } finally {
       setBootLoading(false);
       setRefreshing(false);
@@ -258,6 +283,8 @@ export default function CadenaMarcaPage() {
         tonos: filtros.tonos,
 
         sinTono: filtros.sinTono,
+
+        gradas: filtros.gradas,
 
       };
 
@@ -328,11 +355,13 @@ export default function CadenaMarcaPage() {
 
 
 
-  const marcas = api?.marcasEntrada ?? [];
+  function ingresarDesdeCaja(card: ProductoCajaCard) {
+    const p = card.producto;
+    const refKey = `${p.linea_codigo_proveedor}|${p.referencia_codigo_proveedor}`;
+    void ingresar(p.marca, refKey);
+  }
 
-  const refs = api?.referencias ?? [];
-
-  // Permitir INGRESAR siempre - sin filtros = ver TODO
+  const hayCatalogo = catalogoFilas.length > 0;
 
   const puedeIngresar = !bootLoading && !error;
 
@@ -419,17 +448,7 @@ export default function CadenaMarcaPage() {
 
             tonoCatalog={api.tonoEstandar ?? []}
 
-            referencias={refs.map((r) => ({
-
-              key: r.key,
-
-              linea: r.linea,
-
-              referencia: r.referencia,
-
-              count: Math.round(r.pares),
-
-            }))}
+            gradasOpciones={api.gradas ?? []}
 
             onChange={setFiltros}
 
@@ -488,7 +507,7 @@ export default function CadenaMarcaPage() {
 
 
 
-        {!bootLoading && !error && refs.length === 0 && api && (
+        {!bootLoading && !error && !hayCatalogo && api && (
 
           <p className="py-12 text-center text-lg font-semibold text-slate-500">
             Aplicá filtros o tocá <span className="text-bazzar-naranja">INGRESAR</span>
@@ -498,45 +517,18 @@ export default function CadenaMarcaPage() {
 
 
 
-        {api && !error && refs.length > 0 && (
+        {api && !error && hayCatalogo && depositoActivo && (
 
-          <>
-
-            <div className="mb-3 flex items-center justify-between px-1">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-rimec-azul">
-                Referencias
-              </p>
-              <span className="bazzar-badge">{refs.length} encontradas</span>
-            </div>
-
-            <div className="space-y-2">
-              {refs.slice(0, 120).map((r) => (
-                <TouchPad
-                  key={r.key}
-                  onClick={() => ingresar(r.marca, r.key)}
-                  ariaLabel={`${r.linea}.${r.referencia}`}
-                  className="bazzar-ref-row"
-                >
-                  <div className="min-w-0">
-                    <span className="font-mono text-sm font-extrabold text-rimec-azul">
-                      {r.linea}
-                      <span className="text-bazzar-naranja">.{r.referencia}</span>
-                    </span>
-                    <span className="mt-0.5 block truncate text-xs text-slate-500">{r.estilo}</span>
-                  </div>
-                  <div className="shrink-0 text-right">
-                    <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                      {r.marca}
-                    </span>
-                    <span className="mt-0.5 inline-flex rounded-full bg-orange-100 px-2 py-0.5 font-mono text-xs font-bold tabular-nums text-bazzar-naranja">
-                      {Math.round(r.pares)} p
-                    </span>
-                  </div>
-                </TouchPad>
-              ))}
-            </div>
-
-          </>
+          <GrillaCajasDeposito
+            productos={catalogoFilas}
+            tiendaLabel={`${depositoActivo.ente} ${depositoActivo.tipo}`}
+            codigoDeposito={depositoActivo.codigo}
+            clienteId={clienteId}
+            compactStats
+            colapsarTodo
+            maxCards={120}
+            onCardSelect={ingresarDesdeCaja}
+          />
 
         )}
 

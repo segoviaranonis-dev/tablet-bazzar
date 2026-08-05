@@ -1,0 +1,20 @@
+{
+  "fecha": "20260714_153309",
+  "carpeta": "C:\\Users\\hecto\\Nexus_Core\\control_central\\work_import_single_20260714",
+  "procesados": 1,
+  "upload_ok": 1,
+  "upload_fail": 0,
+  "verify_pass": 1,
+  "verify_total": 1,
+  "results": [
+    {
+      "nombre": "520-59-20499-15745.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    }
+  ],
+  "verify_fail_names": []
+}

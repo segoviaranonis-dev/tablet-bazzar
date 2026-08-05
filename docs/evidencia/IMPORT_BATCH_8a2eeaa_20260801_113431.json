@@ -1,0 +1,112 @@
+{
+  "fecha": "20260801_113431",
+  "carpeta": "D:\\IMAGENES PV NOVIEMBRE\\2",
+  "maestro": "C:\\Users\\hecto\\Documents\\Prg_locales\\proyectos\\imagenes\\maestro_imagenes.txt",
+  "en_carpeta": 12,
+  "procesados_upload": 12,
+  "upload_ok": 12,
+  "upload_fail": 0,
+  "skip_maestro": 0,
+  "skip_storage": 0,
+  "verify_pass": 12,
+  "verify_total": 12,
+  "results": [
+    {
+      "nombre": "2591-100-30598-78276.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2591-207-30599-34115.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2874-202-30598-105739.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2900-551-13488-16072.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2900-551-13488-86347.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2900-555-13488-78276.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2950-256-26135-16072.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2950-256-26135-35108.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2950-260-13958-16072.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2950-260-13958-72736.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2951-159-13958-16072.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "2951-159-13958-80964.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    }
+  ],
+  "verify_fail_names": []
+}

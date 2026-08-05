@@ -1,0 +1,32 @@
+{
+  "fecha": "20260721_133254",
+  "carpeta": "Z:\\hector\\imagen 07-07-26\\Kyly Primavera 26\\Fotos",
+  "maestro": "C:\\Users\\hecto\\Documents\\Prg_locales\\proyectos\\imagenes\\maestro_imagenes.txt",
+  "en_carpeta": 2,
+  "procesados_upload": 2,
+  "upload_ok": 2,
+  "upload_fail": 0,
+  "skip_maestro": 0,
+  "skip_storage": 0,
+  "verify_pass": 2,
+  "verify_total": 2,
+  "results": [
+    {
+      "nombre": "1001923_0452.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    },
+    {
+      "nombre": "6000505_0001.jpg",
+      "sm": true,
+      "md": true,
+      "lg": true,
+      "flat": true,
+      "error": null
+    }
+  ],
+  "verify_fail_names": []
+}

@@ -1,3 +1,5 @@
+import { resolvePrecioGrupoLRM } from "@/lib/precio-venta";
+
 /** Fila de depósito con FK para agrupación en tablet. */
 export type DepositoFila = {
   linea_id: number | null;
@@ -22,6 +24,8 @@ export type DepositoFila = {
   tono_canon?: unknown;
   grada: string;
   cantidad: number;
+  /** Precio venta tienda (LPN CSV). */
+  precio_unitario?: number | null;
   imagen_nombre: string | null;
   /** URL canónica sm — resuelta en servidor (thumbs + hero cadena). */
   imagen_url_thumb?: string | null;
@@ -65,6 +69,8 @@ export type GrupoPrincipal = {
   marca: string;
   filas: DepositoFila[];
   colores: DepositoFila[];
+  /** Precio venta por par (L+R+material). */
+  precio_venta: number | null;
 };
 
 /** Par L+R único en cadena */
@@ -127,6 +133,7 @@ export function buildCadenaFromFilas(filas: DepositoFila[], marcaFiltro?: string
           marca: m0.marca,
           filas: matRows,
           colores,
+          precio_venta: resolvePrecioGrupoLRM(matRows),
         };
       });
 

@@ -45,7 +45,7 @@ export default function ControlPanelPage() {
               <p className="mt-1 text-sm text-slate-600">
                 {user.nombre}
                 {user.rol_id === 1 && (user.categoria ?? "").toUpperCase() === "DIOS"
-                  ? " · Director · Nivel Dios"
+                  ? " · Director · Nivel Superior"
                   : user.rol_id != null
                     ? ` · Rol ${user.rol_id}`
                     : ""}

@@ -12,6 +12,8 @@ export type FiltrosUrl = {
   tonos: string[];
   /** Solo ítems sin tono_canon asignado. */
   sinTono: boolean;
+  /** Tallas/grada (texto btrim de s.grada). */
+  gradas?: string[];
   marcaCadena?: string;
 };
 
@@ -43,6 +45,7 @@ export function filtrosToSearchParams(f: FiltrosUrl): URLSearchParams {
   if (f.buscar.trim()) p.set("q", f.buscar.trim());
   if (f.tonos.length) p.set("tonos", f.tonos.join("|"));
   if (f.sinTono) p.set("sin_tono", "1");
+  if (f.gradas?.length) p.set("gradas", f.gradas.join(","));
   if (f.marcaCadena) p.set("marca", f.marcaCadena);
   return p;
 }
@@ -58,6 +61,10 @@ export function filtrosFromSearchParams(sp: URLSearchParams): FiltrosUrl {
     buscar: (sp.get("q") ?? "").trim(),
     tonos: sp.get("tonos")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
     sinTono: sp.get("sin_tono") === "1",
+    gradas: (sp.get("gradas") ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
     marcaCadena: sp.get("marca")?.trim() || undefined,
   };
 }

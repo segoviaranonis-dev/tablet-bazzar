@@ -9,6 +9,7 @@ import {
   sqlChipsMarcas,
   sqlChipsTipo,
   sqlChipsTipo1,
+  sqlGradaOpcionesCadena,
   sqlMarcasAgregado,
   sqlReferenciasAgregado,
   sqlResumenDeposito,
@@ -50,16 +51,18 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     const qEst = sqlChipsEstilo(tabla, filtros);
     const qTip = sqlChipsTipo(tabla, filtros);
     const qTipo1 = sqlChipsTipo1(tabla, filtros);
+    const qGrada = sqlGradaOpcionesCadena(tabla, filtros);
     const qMarcasAgg = sqlMarcasAgregado(tabla, filtros);
     const qRefs = sqlReferenciasAgregado(tabla, filtros);
     const qRes = sqlResumenDeposito(tabla);
 
-    const [generos, marcas, estilos, tipos, tipo1s, marcasAgg, refs, resumen, tonoEstandar] = await Promise.all([
+    const [generos, marcas, estilos, tipos, tipo1s, gradasRows, marcasAgg, refs, resumen, tonoEstandar] = await Promise.all([
       pool.query<{ id: string; cnt: number }>(qGen.text, qGen.params),
       pool.query<{ id: string; cnt: number }>(qMar.text, qMar.params),
       pool.query<{ id: string; cnt: number }>(qEst.text, qEst.params),
       pool.query<{ id: string; cnt: number }>(qTip.text, qTip.params),
       pool.query<{ id: string; cnt: number }>(qTipo1.text, qTipo1.params),
+      pool.query<{ grada: string }>(qGrada.text, qGrada.params),
       pool.query<MarcaSql>(qMarcasAgg.text, qMarcasAgg.params),
       pool.query<ReferenciaSql>(qRefs.text, qRefs.params),
       pool.query<{ skus: number; pares: number; ultima_carga: string }>(qRes.text, qRes.params),
@@ -76,6 +79,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
       estilos: toChips(estilos.rows),
       tipos: toChips(tipos.rows),
       tipo1s: toChips(tipo1s.rows),
+      gradas: gradasRows.rows.map((r) => r.grada).filter(Boolean),
       marcasEntrada: marcasAgg.rows,
       referencias: refs.rows,
       tonoEstandar,

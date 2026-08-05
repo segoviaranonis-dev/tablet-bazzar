@@ -1,6 +1,7 @@
 "use client";
 
 import { TouchPad } from "@/components/cadena/TouchPad";
+import { FiltroGradaDeposito } from "@/components/deposito/FiltroGradaDeposito";
 import { FiltroTonoRow } from "@/components/tono/EditorTono";
 import type { FiltrosEntrada, OpcionChip } from "@/lib/cadena-entrada-filtros";
 import { toggleChip } from "@/lib/cadena-entrada-filtros";
@@ -55,7 +56,7 @@ type Props = {
   tipos: OpcionChip[];
   tipo1s: OpcionChip[];
   tonoCatalog?: ColorEstandar[];
-  referencias: { key: string; linea: string; referencia: string; count?: number }[];
+  gradasOpciones?: string[];
   onChange: (next: FiltrosEntrada) => void;
   onEnter?: () => void;
 };
@@ -68,6 +69,7 @@ export function FiltrosCabecera({
   tipos,
   tipo1s,
   tonoCatalog = [],
+  gradasOpciones = [],
   onChange,
   onEnter,
 }: Props) {
@@ -136,6 +138,11 @@ export function FiltrosCabecera({
         tonos={filtros.tonos}
         sinTono={filtros.sinTono}
         onChange={(patch) => set({ ...patch })}
+      />
+      <FiltroGradaDeposito
+        applied={{ gradas: filtros.gradas }}
+        gradasOpciones={gradasOpciones}
+        onApply={(draft) => set({ gradas: draft.gradas })}
       />
     </div>
   );

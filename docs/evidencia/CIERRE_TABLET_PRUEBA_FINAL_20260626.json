@@ -19,6 +19,8 @@
   },
   "deploy": {
     "url": "https://tablet-bazzar.vercel.app",
+    "commit": "35dc528",
+    "deployment_id": "dpl_As3nxtVDZpBJaK4gpsBc15idmGxD",
     "repo": "segoviaranonis-dev/tablet-bazzar"
   },
   "notas": "Depósito catálogo NO tocado por reset. Bandeja vacía lista para prueba final piso."

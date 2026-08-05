@@ -4,6 +4,7 @@ import { sqlCantidadMolecula, sqlDecrementarUnParMolecula, sqlIncrementarUnParMo
 import { upsertClienteBazaar } from "@/lib/server/clients-bazaar";
 import { origenDesdeTiendaClienteId } from "@/lib/bazzar-origen";
 import type { ConfirmarTicketsInput, TicketEmitido } from "@/lib/server/tickets-confirm";
+import { resolvePrecioUnitarioPar } from "@/lib/server/precio-bandeja";
 import { getVendedorById, type VendedorBazzar } from "@/lib/server/vendedor-bazzar";
 
 /** Estados operativos en ticket_bandeja_cajero (una sola tabla). */
@@ -72,6 +73,7 @@ type BandejaRowDb = {
   cerrado_at: Date | null;
   numero_fi_fa: string | null;
   numero_factura_legal: string | null;
+  precio_unitario: string | null;
 };
 
 function codigoBandeja(clienteId: number, loteId: number, idx: number): string {
@@ -85,7 +87,7 @@ function moleculaKey(p: MoleculaStock): string {
   return `${p.linea_id}:${p.referencia_id}:${p.material_id}:${p.color_id}:${p.grada.trim()}`;
 }
 
-/** Pares ya reservados en bandeja del lote — se devuelven a depósito antes del re-sync. */
+/** Pares ya reservados en bandeja del lote (soft-reserva ABIERTO · sin tocar depósito). */
 function reservadoBandejaMap(lineas: StagingLinea[]): Map<string, number> {
   const map = new Map<string, number>();
   for (const linea of lineas) {
@@ -94,6 +96,102 @@ function reservadoBandejaMap(lineas: StagingLinea[]): Map<string, number> {
     map.set(key, (map.get(key) ?? 0) + linea.cantidad);
   }
   return map;
+}
+
+type QueryClient = {
+  query: (text: string, params?: unknown[]) => Promise<{ rows: Record<string, unknown>[] }>;
+};
+
+/** Soft-reserva ABIERTO en otras facturas de la misma tienda (excluye staging actual). */
+async function reservadoBandejaAbiertoOtrosLotesMap(
+  client: QueryClient,
+  clienteId: number,
+  excludeStagingId: number | null,
+): Promise<Map<string, number>> {
+  const r = await client.query(
+    `
+      SELECT linea_id, referencia_id, material_id, color_id, grada,
+             SUM(cantidad)::text AS cantidad
+      FROM public.ticket_bandeja_cajero
+      WHERE cliente_id = $1
+        AND estado = 'ABIERTO'
+        AND activo = true
+        AND staging_id IS NOT NULL
+        AND ($2::bigint IS NULL OR staging_id <> $2)
+      GROUP BY linea_id, referencia_id, material_id, color_id, grada
+    `,
+    [clienteId, excludeStagingId],
+  );
+  const map = new Map<string, number>();
+  for (const row of r.rows) {
+    const key = moleculaKey({
+      linea_id: Number(row.linea_id),
+      referencia_id: Number(row.referencia_id),
+      material_id: Number(row.material_id),
+      color_id: Number(row.color_id),
+      grada: String(row.grada),
+    });
+    map.set(key, Number(row.cantidad) || 0);
+  }
+  return map;
+}
+
+async function validarStockParaItems(
+  client: QueryClient,
+  tabla: string,
+  clienteId: number,
+  items: Array<{
+    linea_id: number;
+    referencia_id: number;
+    material_id: number;
+    color_id: number;
+    grada: string;
+    cantidad: number;
+    linea_codigo?: string;
+    referencia_codigo?: string;
+  }>,
+  excludeStagingId: number | null,
+  reservadoMismoLote: Map<string, number>,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const otros = await reservadoBandejaAbiertoOtrosLotesMap(client, clienteId, excludeStagingId);
+
+  for (const item of items) {
+    if (item.cantidad <= 0) return { ok: false, error: "Cantidad inválida" };
+    const q = sqlCantidadMolecula(tabla, {
+      linea_id: item.linea_id,
+      referencia_id: item.referencia_id,
+      material_id: item.material_id,
+      color_id: item.color_id,
+      grada: item.grada,
+    });
+    const stockR = await client.query(q.text, q.params);
+    const stockDeposito = Number(stockR.rows[0]?.cantidad) || 0;
+    const key = moleculaKey(item);
+    const yaReservado = reservadoMismoLote.get(key) ?? 0;
+    const bloqueadoOtros = otros.get(key) ?? 0;
+    const stockDisponible = stockDeposito - bloqueadoOtros + yaReservado;
+    if (stockDisponible < item.cantidad) {
+      const lc = item.linea_codigo ?? "?";
+      const rc = item.referencia_codigo ?? "?";
+      return {
+        ok: false,
+        error: `Sin stock: ${lc}.${rc} G.${item.grada} (hay ${Math.floor(stockDisponible)}, pediste ${item.cantidad})`,
+      };
+    }
+  }
+  return { ok: true };
+}
+
+/** Commit depósito — solo en CERRAR (PENDIENTE_CAJA) · transacción con bandeja. */
+async function decrementarLineasStaging(
+  client: { query: (text: string, params?: unknown[]) => Promise<{ rowCount: number | null }> },
+  tabla: string,
+  lineas: StagingLinea[],
+): Promise<void> {
+  for (const linea of lineas) {
+    if (!linea.activo || linea.cantidad <= 0) continue;
+    await moverStockMolecula(client, tabla, linea, linea.cantidad);
+  }
 }
 
 async function moverStockMolecula(
@@ -178,7 +276,10 @@ function aggregateLineas(rows: BandejaRowDb[]): StagingLinea[] {
         grada: row.grada,
         cantidad: qty,
         activo: true,
-        snapshot_json: row.snapshot_json,
+        snapshot_json: {
+          ...(row.snapshot_json ?? {}),
+          ...(row.precio_unitario != null ? { precio_unitario: Number(row.precio_unitario) } : {}),
+        },
       });
     }
   }
@@ -216,7 +317,7 @@ async function fetchFilasLote(pool: ReturnType<typeof getPool>, loteId: number):
       SELECT id, codigo_bandeja, cliente_id, marca, vendedor_bazzar_id, vendedor_nombre,
              cedula_cliente, clients_bazaar_id, staging_id, linea_id, referencia_id, material_id,
              color_id, grada, cantidad, estado, snapshot_json, snapshot_cliente, activo,
-             created_at, cerrado_at, numero_fi_fa, numero_factura_legal
+             created_at, cerrado_at, numero_fi_fa, numero_factura_legal, precio_unitario
       FROM public.ticket_bandeja_cajero
       WHERE staging_id = $1 AND activo = true
       ORDER BY id
@@ -309,6 +410,7 @@ async function insertFilasDesdeCarrito(
   let total = 0;
   for (const item of input.items) {
     if (item.cantidad <= 0) continue;
+    const precioUnitario = await resolvePrecioUnitarioPar(client, input.tabla, item);
     const snapBase = JSON.stringify({
       linea_codigo: item.linea_codigo,
       referencia_codigo: item.referencia_codigo,
@@ -319,29 +421,18 @@ async function insertFilasDesdeCarrito(
       estilo: item.estilo,
       marca_label: item.marca_label,
       imagen_url: item.imagen_url,
+      precio_unitario: precioUnitario,
     });
     for (let u = 0; u < item.cantidad; u++) {
       idx += 1;
       total += 1;
-      await moverStockMolecula(
-        client,
-        input.tabla,
-        {
-          linea_id: item.linea_id,
-          referencia_id: item.referencia_id,
-          material_id: item.material_id,
-          color_id: item.color_id,
-          grada: item.grada,
-        },
-        1,
-      );
       await client.query(
         `
           INSERT INTO public.ticket_bandeja_cajero (
             codigo_bandeja, cliente_id, marca, vendedor_id, vendedor_nombre, vendedor_bazzar_id,
             staging_id, cedula_cliente, clients_bazaar_id, linea_id, referencia_id, material_id,
-            color_id, grada, cantidad, estado, snapshot_json, snapshot_cliente, numero_fi_fa, activo
-          ) VALUES ($1,$2,$3,NULL,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,1,$14,$15::jsonb,$16::jsonb,$17,true)
+            color_id, grada, cantidad, estado, snapshot_json, snapshot_cliente, numero_fi_fa, precio_unitario, activo
+          ) VALUES ($1,$2,$3,NULL,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,1,$14,$15::jsonb,$16::jsonb,$17,$18,true)
         `,
         [
           codigoBandeja(input.clienteId, input.loteId, idx),
@@ -361,6 +452,7 @@ async function insertFilasDesdeCarrito(
           snapBase,
           input.snapshotCliente,
           input.numeroFiFa,
+          precioUnitario,
         ],
       );
     }
@@ -389,29 +481,24 @@ export async function crearStagingDesdeCarrito(
   }
 
   for (const item of input.items) {
-    if (item.cantidad <= 0) return { ok: false, error: "Cantidad inválida" };
     if (!item.grada?.trim()) return { ok: false, error: "Grada requerida" };
-    const q = sqlCantidadMolecula(config.tabla, {
-      linea_id: item.linea_id,
-      referencia_id: item.referencia_id,
-      material_id: item.material_id,
-      color_id: item.color_id,
-      grada: item.grada,
-    });
-    const stockR = await pool.query<{ cantidad: number }>(q.text, q.params);
-    const stock = Number(stockR.rows[0]?.cantidad) || 0;
-    if (stock < item.cantidad) {
-      return {
-        ok: false,
-        error: `Sin stock: ${item.linea_codigo}.${item.referencia_codigo} G.${item.grada}`,
-      };
-    }
   }
+
+  const stockOk = await validarStockParaItems(
+    pool,
+    config.tabla,
+    input.cliente_id,
+    input.items,
+    null,
+    new Map(),
+  );
+  if (!stockOk.ok) return stockOk;
 
   const cedula = input.cedula?.replace(/\D/g, "").trim() || null;
   const clienteNombre = input.cliente?.nombre?.trim() || null;
   const clienteApellido = input.cliente?.apellido?.trim() || null;
   const clienteTelefono = input.cliente?.telefono?.trim() || null;
+  const clienteEmail = input.cliente?.email?.trim() || null;
   const clienteRuc = input.cliente?.ruc?.replace(/\D/g, "").trim() || null;
   const clienteRazonSocial = input.cliente?.razon_social?.trim() || null;
 
@@ -424,6 +511,7 @@ export async function crearStagingDesdeCarrito(
       nombre: clienteNombre,
       apellido: clienteApellido,
       telefono: clienteTelefono,
+      email: clienteEmail,
       ruc: clienteRuc,
       razon_social: clienteRazonSocial,
       origen,
@@ -434,6 +522,7 @@ export async function crearStagingDesdeCarrito(
     nombre: clienteNombre,
     apellido: clienteApellido,
     telefono: clienteTelefono,
+    email: clienteEmail,
     cedula,
   });
 
@@ -543,6 +632,9 @@ export async function enviarStagingACaja(
   }
   if (cur.total_pares === 0) return { ok: false, error: "Pedido sin pares activos" };
 
+  const config = getDepositoByClienteId(clienteId);
+  if (!config) return { ok: false, error: "Depósito de tienda inválido" };
+
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
@@ -554,6 +646,30 @@ export async function enviarStagingACaja(
       `,
       [loteId, clienteId],
     );
+
+    const lineasActivas = cur.lineas.filter((l) => l.activo && l.cantidad > 0);
+    const stockOk = await validarStockParaItems(
+      client,
+      config.tabla,
+      clienteId,
+      lineasActivas.map((l) => ({
+        linea_id: l.linea_id,
+        referencia_id: l.referencia_id,
+        material_id: l.material_id,
+        color_id: l.color_id,
+        grada: l.grada,
+        cantidad: l.cantidad,
+      })),
+      loteId,
+      new Map(),
+    );
+    if (!stockOk.ok) {
+      await client.query("ROLLBACK");
+      return stockOk;
+    }
+
+    await decrementarLineasStaging(client, config.tabla, lineasActivas);
+
     const fiFaRow = await client.query<{ numero_fi_fa: string | null }>(
       `
         SELECT MAX(numero_fi_fa)::text AS numero_fi_fa
@@ -573,6 +689,7 @@ export async function enviarStagingACaja(
       nombre_cliente: typeof cli.nombre === "string" ? cli.nombre : null,
       apellido_cliente: typeof cli.apellido === "string" ? cli.apellido : null,
       telefono_cliente: typeof cli.telefono === "string" ? cli.telefono : null,
+      email_cliente: typeof cli.email === "string" ? cli.email : null,
       cedula_cliente: cur.cedula_cliente,
     });
 
@@ -622,7 +739,7 @@ export async function promoverStagingAOro(
 > {
   const r = await enviarStagingACaja(loteId, clienteId);
   if (!r.ok) return r;
-  return { ok: true, tickets: r.tickets, total_pares: r.total_pares, stock_decrementado: false };
+  return { ok: true, tickets: r.tickets, total_pares: r.total_pares, stock_decrementado: true };
 }
 
 /** FACTURA tablet → saca de caja, vuelve editable (ABIERTO). */
@@ -715,6 +832,7 @@ export async function sincronizarStagingDesdeCarrito(
   const clienteNombre = input.cliente?.nombre?.trim() || null;
   const clienteApellido = input.cliente?.apellido?.trim() || null;
   const clienteTelefono = input.cliente?.telefono?.trim() || null;
+  const clienteEmail = input.cliente?.email?.trim() || null;
   const clienteRuc = input.cliente?.ruc?.replace(/\D/g, "").trim() || null;
   const clienteRazonSocial = input.cliente?.razon_social?.trim() || null;
 
@@ -727,6 +845,7 @@ export async function sincronizarStagingDesdeCarrito(
       nombre: clienteNombre,
       apellido: clienteApellido,
       telefono: clienteTelefono,
+      email: clienteEmail,
       ruc: clienteRuc,
       razon_social: clienteRazonSocial,
       origen,
@@ -737,43 +856,25 @@ export async function sincronizarStagingDesdeCarrito(
     nombre: clienteNombre,
     apellido: clienteApellido,
     telefono: clienteTelefono,
+    email: clienteEmail,
     cedula,
   });
 
   const reservado = reservadoBandejaMap(cur.lineas);
 
-  for (const item of input.items) {
-    if (item.cantidad <= 0) return { ok: false, error: "Cantidad inválida" };
-    const q = sqlCantidadMolecula(config.tabla, {
-      linea_id: item.linea_id,
-      referencia_id: item.referencia_id,
-      material_id: item.material_id,
-      color_id: item.color_id,
-      grada: item.grada,
-    });
-    const stockR = await pool.query<{ cantidad: number }>(q.text, q.params);
-    const stockDeposito = Number(stockR.rows[0]?.cantidad) || 0;
-    const key = moleculaKey({
-      linea_id: item.linea_id,
-      referencia_id: item.referencia_id,
-      material_id: item.material_id,
-      color_id: item.color_id,
-      grada: item.grada,
-    });
-    const yaReservado = reservado.get(key) ?? 0;
-    const stockDisponible = stockDeposito + yaReservado;
-    if (stockDisponible < item.cantidad) {
-      return {
-        ok: false,
-        error: `Sin stock: ${item.linea_codigo}.${item.referencia_codigo} G.${item.grada} (hay ${Math.floor(stockDisponible)}, pediste ${item.cantidad})`,
-      };
-    }
-  }
+  const stockOk = await validarStockParaItems(
+    pool,
+    config.tabla,
+    input.cliente_id,
+    input.items,
+    loteId,
+    reservado,
+  );
+  if (!stockOk.ok) return stockOk;
 
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
-    await restaurarLineas(client, config.tabla, cur.lineas);
     await client.query(
       `DELETE FROM public.ticket_bandeja_cajero WHERE staging_id = $1 AND cliente_id = $2`,
       [loteId, input.cliente_id],
@@ -826,7 +927,10 @@ export async function cancelarPedidoCompleto(
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
-    if (cur.estado === "ABIERTO" || cur.estado === "PENDIENTE_CAJA" || cur.estado === "CSV_DESCARGADO") {
+    if (cur.estado === "PENDIENTE_CAJA" || cur.estado === "CSV_DESCARGADO") {
+      await restaurarLineas(client, config.tabla, cur.lineas);
+    } else if (cur.estado === "ABIERTO" && cur.numero_fi_fa != null) {
+      /** Reabierto desde caja: stock ya se descontó en CERRAR previo. */
       await restaurarLineas(client, config.tabla, cur.lineas);
     }
     await client.query(

@@ -11,6 +11,8 @@
 
 Cada tienda vende **solo desde su depósito piso**, reserva pares en **`ticket_bandeja_cajero`** (una sola tabla operativa), envía a **caja Report** con **CERRAR**, y archiva en **`bobeda_venta_pos`** al **Enviar a Empaque**. Nunca coexisten tablet y caja para el mismo lote.
 
+**Ley Director (2026-06-28):** precio venta tienda = **`deposito.precio_unitario`** (LPN CSV) → carrito tablet → columna **`precio_unitario`** en bandeja y bóveda · migración **010**.
+
 ---
 
 ## 2. Capas de datos (modelo vigente 2026-06)

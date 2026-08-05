@@ -37,6 +37,7 @@ export type FiltrosSql = {
   buscar: string;
   tonos: string[];
   sinTono: boolean;
+  gradas?: string[];
   /** Obligatorio para cadena */
   marcaCadena?: string;
 };
@@ -51,6 +52,7 @@ export const FILTROS_SQL_VACIOS: FiltrosSql = {
   buscar: "",
   tonos: [],
   sinTono: false,
+  gradas: [],
 };
 
 export type ChipSql = { id: string; label: string; count: number };
@@ -100,6 +102,7 @@ const SELECT_CORE = `
     NULLIF(btrim(col.tono_canon->>'etiqueta'), '') AS tono_etiqueta,
     col.tono_canon AS tono_canon,
     NULLIF(btrim(s.imagen_nombre::text), '') AS imagen_nombre,
+    NULLIF(s.precio_unitario, 0)::float8 AS precio_unitario,
     trim(s.linea_codigo_proveedor::text) || '|' || trim(s.referencia_codigo_proveedor::text) AS lr_key
 `;
 
@@ -190,9 +193,26 @@ function appendTono(f: FiltrosSql, w: WhereBuild, excluir: boolean): void {
   w.sql += ` AND btrim(col.tono_canon->>'etiqueta') = ANY($${w.params.length}::text[])`;
 }
 
+function appendGrada(f: FiltrosSql, w: WhereBuild, excluir: boolean): void {
+  const gradas = f.gradas ?? [];
+  if (excluir || gradas.length === 0) return;
+  w.params.push(gradas);
+  w.sql += ` AND btrim(s.grada::text) = ANY($${w.params.length}::text[])`;
+}
+
 function buildWhere(
   f: FiltrosSql,
-  excluir: "generos" | "marcas" | "estilos" | "tipos" | "tipo1s" | "referenciaKeys" | "buscar" | "tonos" | null,
+  excluir:
+    | "generos"
+    | "marcas"
+    | "estilos"
+    | "tipos"
+    | "tipo1s"
+    | "referenciaKeys"
+    | "buscar"
+    | "tonos"
+    | "gradas"
+    | null,
 ): WhereBuild {
   const w: WhereBuild = { sql: `s.cantidad > 0 AND ${SQL_SOLO_CALZADO}`, params: [] };
   appendGenero(f, w, excluir === "generos");
@@ -203,6 +223,7 @@ function buildWhere(
   appendRefs(f, w, excluir === "referenciaKeys");
   appendBuscar(f, w, excluir === "buscar");
   appendTono(f, w, excluir === "tonos");
+  appendGrada(f, w, excluir === "gradas");
   appendMarcaCadena(f, w);
   return w;
 }
@@ -290,6 +311,27 @@ export function sqlChipsTipo(tabla: string, f: FiltrosSql): { text: string; para
       ${fromClause(tabla)}
       WHERE ${w.sql}
       GROUP BY 1 ORDER BY 1
+    `,
+    params: w.params,
+  };
+}
+
+/** Gradas disponibles (cascada — excluye filtro grada aplicado). */
+export function sqlGradaOpcionesCadena(
+  tabla: string,
+  f: FiltrosSql,
+): { text: string; params: unknown[] } {
+  const w = buildWhere(f, "gradas");
+  return {
+    text: `
+      SELECT btrim(s.grada::text) AS grada
+      ${fromClause(tabla)}
+      WHERE ${w.sql}
+        AND btrim(s.grada::text) <> ''
+      GROUP BY 1
+      ORDER BY
+        CASE WHEN btrim(s.grada::text) ~ '^[0-9]+$' THEN btrim(s.grada::text)::numeric ELSE 9999 END,
+        btrim(s.grada::text)
     `,
     params: w.params,
   };
@@ -462,6 +504,7 @@ export function filtrosFromBody(body: Record<string, unknown>): FiltrosSql {
     buscar: typeof body.buscar === "string" ? body.buscar : "",
     tonos: arr(body.tonos),
     sinTono: body.sinTono === true || body.sin_tono === true || body.sin_tono === "1",
+    gradas: arr(body.gradas),
     marcaCadena: typeof body.marca === "string" ? body.marca : undefined,
   };
 }

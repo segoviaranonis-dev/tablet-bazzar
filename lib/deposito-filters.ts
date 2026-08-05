@@ -6,10 +6,14 @@ export type DepositoFilterState = {
   grupoEstiloId: string;
   tipo1Ids: number[];
   lineaIds: number[];
+  /** @deprecated legacy — usar tonos / sinTono (CABECERA DE FILTROS) */
   colorIds: number[];
-  /** Paleta rápida — hex activo (cliente → resuelve a colorIds en API si aplica) */
   colorHex: string;
+  tonos: string[];
+  sinTono: boolean;
   q: string;
+  /** Tallas aplicadas (botón Aplicar grada) — paridad Report operativa */
+  gradas: string[];
 };
 
 export const EMPTY_DEPOSITO_FILTERS: DepositoFilterState = {
@@ -20,7 +24,10 @@ export const EMPTY_DEPOSITO_FILTERS: DepositoFilterState = {
   lineaIds: [],
   colorIds: [],
   colorHex: "",
+  tonos: [],
+  sinTono: false,
   q: "",
+  gradas: [],
 };
 
 export const DEPOSITO_LIMIT_OPTIONS = [80, 200, 500, 1000] as const;
@@ -44,7 +51,13 @@ export function parseDepositoFiltersFromSearchParams(sp: URLSearchParams): Depos
     lineaIds: parseIdList(sp.get("linea_ids")),
     colorIds: parseIdList(sp.get("color_ids")),
     colorHex: sp.get("color_hex") ?? "",
+    tonos: sp.get("tonos")?.split("|").map((s) => s.trim()).filter(Boolean) ?? [],
+    sinTono: sp.get("sin_tono") === "1",
     q: sp.get("q") ?? "",
+    gradas: (sp.get("gradas") ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
   };
 }
 
@@ -60,7 +73,10 @@ export function depositoFiltersToSearchParams(
   if (f.lineaIds.length) p.set("linea_ids", f.lineaIds.join(","));
   if (f.colorIds.length) p.set("color_ids", f.colorIds.join(","));
   if (f.colorHex) p.set("color_hex", f.colorHex);
+  if (f.tonos.length) p.set("tonos", f.tonos.join("|"));
+  if (f.sinTono) p.set("sin_tono", "1");
   if (f.q.trim()) p.set("q", f.q.trim());
+  if (f.gradas.length) p.set("gradas", f.gradas.join(","));
   if (limit != null) p.set("limit", String(limit));
   return p;
 }
@@ -74,6 +90,9 @@ export function depositoFiltersActive(f: DepositoFilterState): boolean {
     f.lineaIds.length ||
     f.colorIds.length ||
     f.colorHex ||
+    f.tonos.length ||
+    f.sinTono ||
+    f.gradas.length ||
     f.q.trim()
   );
 }
@@ -112,6 +131,9 @@ export function summarizeDepositoFilters(f: DepositoFilterState, data: FiltrosLo
   if (f.lineaIds.length) chips.push(`${f.lineaIds.length} línea(s)`);
   if (f.colorIds.length) chips.push(`${f.colorIds.length} color(es)`);
   if (f.colorHex) chips.push("paleta");
+  for (const t of f.tonos) chips.push(t);
+  if (f.sinTono) chips.push("Sin TONO");
+  if (f.gradas.length) chips.push(`Grada ${f.gradas.join(", ")}`);
   if (f.q.trim()) chips.push(`«${f.q.trim()}»`);
   return chips;
 }

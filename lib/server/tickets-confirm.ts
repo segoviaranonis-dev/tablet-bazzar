@@ -20,6 +20,8 @@ export type ClienteWebConfirm = {
 
   telefono?: string | null;
 
+  email?: string | null;
+
   ruc?: string | null;
 
   razon_social?: string | null;
@@ -92,6 +94,8 @@ export type ConfirmarTicketsInput = {
     | "imagen_url"
 
     | "cantidad"
+
+    | "precio_unitario"
 
   >[];
 
@@ -337,6 +341,8 @@ export async function confirmarTicketsPos(
 
   const clienteTelefono = input.cliente?.telefono?.trim() || null;
 
+  const clienteEmail = input.cliente?.email?.trim() || null;
+
   const clienteRuc = input.cliente?.ruc?.replace(/\D/g, "").trim() || null;
 
   const clienteRazonSocial = input.cliente?.razon_social?.trim() || null;
@@ -364,6 +370,8 @@ export async function confirmarTicketsPos(
       apellido: clienteApellido,
 
       telefono: clienteTelefono,
+
+      email: clienteEmail,
 
       ruc: clienteRuc,
 

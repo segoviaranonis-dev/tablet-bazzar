@@ -11,6 +11,7 @@ import {
   sqlDepositoChipsLinea,
   sqlDepositoChipsMarca,
   sqlDepositoChipsTipo1,
+  sqlDepositoGradaOpciones,
   type DepositoFilterItem,
 } from "@/lib/server/deposito-filtros-sql";
 
@@ -40,15 +41,17 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
     const qT1 = sqlDepositoChipsTipo1(tabla, filtros);
     const qLin = sqlDepositoChipsLinea(tabla, filtros);
     const qCol = sqlDepositoChipsColor(tabla, filtros);
+    const qGr = sqlDepositoGradaOpciones(tabla, filtros);
     const qRes = sqlResumenDeposito(tabla);
 
-    const [generos, marcas, estilos, tipo1, lineas, colores, resumen] = await Promise.all([
+    const [generos, marcas, estilos, tipo1, lineas, colores, gradasRows, resumen] = await Promise.all([
       pool.query<DepositoFilterItem>(qGen.text, qGen.params),
       pool.query<DepositoFilterItem>(qMar.text, qMar.params),
       pool.query<DepositoFilterItem>(qEst.text, qEst.params),
       pool.query<DepositoFilterItem>(qT1.text, qT1.params),
       pool.query<DepositoFilterItem>(qLin.text, qLin.params),
       pool.query<DepositoFilterItem>(qCol.text, qCol.params),
+      pool.query<{ grada: string }>(qGr.text, qGr.params),
       pool.query<{ skus: number; pares: number }>(qRes.text, qRes.params),
     ]);
 
@@ -70,6 +73,7 @@ export async function GET(req: NextRequest, ctx: RouteCtx) {
       tipo1: tipo1.rows,
       lineas: lineas.rows,
       colores: coloresConHex,
+      gradas: gradasRows.rows.map((r) => r.grada).filter(Boolean),
       hexPalette,
       resumen: resumen.rows[0] ?? { skus: 0, pares: 0 },
       ms: Date.now() - t0,

@@ -44,6 +44,7 @@ export async function POST(req: NextRequest) {
     nombre: typeof body.nombre === "string" ? body.nombre : null,
     apellido: typeof body.apellido === "string" ? body.apellido : null,
     telefono: typeof body.telefono === "string" ? body.telefono : null,
+    email: typeof body.email === "string" ? body.email : null,
     ruc: typeof body.ruc === "string" ? body.ruc : null,
     razon_social: typeof body.razon_social === "string" ? body.razon_social : null,
     origen,

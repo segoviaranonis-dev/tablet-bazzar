@@ -80,6 +80,7 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
     }
     if (
       accionName === "promover" ||
+      accionName === "cerrar" ||
       accionName === "enviar_caja" ||
       accionName === "cancelar_pedido"
     ) {
@@ -135,6 +136,7 @@ export function StagingTicketsPanel({ clienteId, open, onClose }: Props) {
             nombre: typeof cli.nombre === "string" ? cli.nombre : "",
             apellido: typeof cli.apellido === "string" ? cli.apellido : "",
             telefono: typeof cli.telefono === "string" ? cli.telefono : "",
+            email: typeof cli.email === "string" ? cli.email : "",
           }
         : null,
       vendedor,

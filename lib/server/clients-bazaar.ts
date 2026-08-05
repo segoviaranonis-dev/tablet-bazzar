@@ -6,14 +6,30 @@ export const CLIENTS_BAZAAR_TABLE = "clients_bazaar";
 
 export const CEDULA_RE = /^[0-9]{5,15}$/;
 export const PHONE_RE = /^[0-9+\-\s()]{6,20}$/;
+export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/i;
 
 export type ClienteBazaarAutocomplete = {
   cedula: string;
   nombre: string;
   apellido: string | null;
   telefono: string | null;
+  email: string | null;
   razon_social: string | null;
 };
+
+export function normalizarTelefonoContacto(raw: string | null | undefined): string | null {
+  const t = raw?.trim() || null;
+  if (!t) return null;
+  if (!PHONE_RE.test(t)) return null;
+  return t;
+}
+
+export function normalizarEmailContacto(raw: string | null | undefined): string | null {
+  const e = raw?.trim().toLowerCase() || null;
+  if (!e) return null;
+  if (!EMAIL_RE.test(e)) return null;
+  return e;
+}
 
 export type UpsertClienteBazaarInput = {
   cedula: string;
@@ -78,7 +94,7 @@ export async function buscarClienteBazaarPorCedula(
 
   const { rows } = await pool.query<ClienteBazaarAutocomplete>(
     `
-      SELECT cedula, nombre, apellido, telefono, razon_social
+      SELECT cedula, nombre, apellido, telefono, email, razon_social
       FROM public.${CLIENTS_BAZAAR_TABLE}
       WHERE cedula = $1
       LIMIT 1
@@ -97,8 +113,8 @@ export async function upsertClienteBazaar(input: UpsertClienteBazaarInput): Prom
 
   const nombre = input.nombre?.trim() ?? "";
   const apellido = input.apellido?.trim() || null;
-  const telefono = input.telefono?.trim() || null;
-  const email = input.email?.trim() || null;
+  const telefono = normalizarTelefonoContacto(input.telefono);
+  const email = normalizarEmailContacto(input.email);
   const direccion = input.direccion?.trim() || null;
   const ruc = input.ruc?.replace(/\D/g, "").trim() || null;
   const razon_social = input.razon_social?.trim() || null;
@@ -106,7 +122,8 @@ export async function upsertClienteBazaar(input: UpsertClienteBazaarInput): Prom
 
   if (ente_codigo < 2 || ente_codigo > 5) return null;
   if (!nombre && !telefono) return null;
-  if (telefono && !PHONE_RE.test(telefono)) return null;
+  if (input.telefono?.trim() && !telefono) return null;
+  if (input.email?.trim() && !email) return null;
 
   const pool = getPool();
   if (!(await tablaClientsBazaarExiste(pool))) return null;

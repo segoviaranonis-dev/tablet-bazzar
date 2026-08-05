@@ -37,6 +37,7 @@ export async function identificarVendedorPin(
     return { ok: false, error: "Código vendedor inválido (2–6 dígitos)" };
   }
   const pinNorm = digits.padStart(4, "0");
+  const pinBare = String(Number.parseInt(digits, 10));
   const origen = origenDesdeTiendaClienteId(clienteId);
   if (!origen) {
     return { ok: false, error: "Tienda no válida" };
@@ -61,10 +62,10 @@ export async function identificarVendedorPin(
       JOIN public.entes e ON e.id_ente = vb.ente_id
       WHERE vb.activo = true
         AND e.codigo = $1
-        AND vb.codigo_pin IN ($2, $3)
+        AND vb.codigo_pin IN ($2, $3, $4)
       LIMIT 1
     `,
-    [origen.ente_codigo, digits, pinNorm],
+    [origen.ente_codigo, digits, pinNorm, pinBare],
   );
 
   const row = r.rows[0];

@@ -9,6 +9,7 @@ export type ReopenClienteSnapshot = {
   nombre: string;
   apellido: string;
   telefono: string;
+  email: string;
 };
 
 export type ReopenVendedorSnapshot = {

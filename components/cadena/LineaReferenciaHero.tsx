@@ -3,7 +3,9 @@
 import { TouchPad } from "@/components/cadena/TouchPad";
 import { EditorTonoBadge } from "@/components/tono/EditorTono";
 import type { DepositoFila } from "@/lib/cadena";
+import type { TonoAssignResult } from "@/lib/tono/patch-cadena-tono";
 import type { ColorEstandar } from "@/lib/tono/colores-estandar";
+import { formatPrecioGs } from "@/lib/precio-venta";
 
 type Props = {
   activa: DepositoFila;
@@ -17,7 +19,8 @@ type Props = {
   tonoEditable?: boolean;
   onToggleEstiloPanel: () => void;
   onToggleReferenciaPanel: () => void;
-  onTonoAssigned?: () => void;
+  onTonoAssigned?: (result: TonoAssignResult) => void;
+  precioVenta?: number | null;
 };
 
 export function LineaReferenciaHero({
@@ -33,6 +36,7 @@ export function LineaReferenciaHero({
   onToggleEstiloPanel,
   onToggleReferenciaPanel,
   onTonoAssigned,
+  precioVenta = null,
 }: Props) {
   const estilo = activa.estilo?.trim();
 
@@ -91,9 +95,21 @@ export function LineaReferenciaHero({
           colorId={activa.color_id}
           colorNombre={activa.descp_color}
           editable={tonoEditable}
-          onAssigned={() => onTonoAssigned?.()}
+          onAssigned={(etiqueta) => {
+            if (!activa.color_id || !onTonoAssigned) return;
+            onTonoAssigned({
+              color_id: activa.color_id,
+              tono_canon: activa.tono_canon,
+              tono_etiqueta: etiqueta,
+            });
+          }}
         />
       </div>
+      {precioVenta != null ? (
+        <span className="mt-1 block text-lg font-black tabular-nums tracking-tight text-emerald-800 [text-shadow:0_0_8px_rgba(255,255,255,0.95)]">
+          {formatPrecioGs(precioVenta)}
+        </span>
+      ) : null}
       <span className="mt-2 block text-[10px] font-bold tabular-nums tracking-[0.18em] text-bazzar-naranja">
         {parIndex + 1} / {total}
       </span>

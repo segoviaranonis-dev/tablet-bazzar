@@ -26,7 +26,9 @@ import { cadenaBackgroundStyle } from "@/lib/product-image";
 import { prefetchCadenaNeighborhood } from "@/lib/prefetch-images";
 import { useTouchNav } from "@/lib/use-touch-nav";
 import { useCadenaKeyboard } from "@/lib/use-cadena-keyboard";
-import { cadenaQueryKey, loadCadenaSeed } from "@/lib/cadena-seed";
+import { cadenaStockQueryFromSearchParams } from "@/lib/filtros-url";
+import { cadenaQueryKey, clearCadenaSeed, loadCadenaSeed } from "@/lib/cadena-seed";
+import { patchTonoEnParesAll, type TonoAssignResult } from "@/lib/tono/patch-cadena-tono";
 import {
   resolveCadenaBootState,
   resolveColorFilterState,
@@ -224,22 +226,12 @@ function CadenaVistaInner() {
     setFiltros(parseFiltrosCadenaFromUrl(sp));
   }, [sp]);
 
-  const cadenaQueryString = useMemo(() => {
-    const p = new URLSearchParams(sp.toString());
-    for (const k of ["pi", "gi", "c1", "c2"]) p.delete(k);
-    return p.toString();
-  }, [sp]);
+  const cadenaQueryString = useMemo(() => cadenaStockQueryFromSearchParams(sp), [sp]);
 
-  const reloadCadena = useCallback(() => {
-    if (!marcaRaw || !Number.isFinite(clienteId)) return;
-    fetch(`/api/deposito/${clienteId}/cadena?${cadenaQueryString}`, { cache: "no-store" })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.error) throw new Error(data.error);
-        setParesAll(data.paresAll ?? data.pares ?? []);
-      })
-      .catch(() => {});
-  }, [marcaRaw, clienteId, cadenaQueryString]);
+  const handleTonoAssigned = useCallback((result: TonoAssignResult) => {
+    clearCadenaSeed();
+    setParesAll((prev) => patchTonoEnParesAll(prev, result));
+  }, []);
 
   const applyBootPosition = useCallback(
     (serverPos?: { parIndex: number; grupoIndex: number; colorG1: number; colorG2: number } | null) => {
@@ -627,6 +619,7 @@ function CadenaVistaInner() {
                         activa={activa}
                         parIndex={parIndex}
                         total={paresNav.length}
+                        precioVenta={parNav.gruposMaterial[grupoIndex]?.precio_venta ?? null}
                         estiloPanelOpen={estiloPanelOpen}
                         referenciaPanelOpen={referenciaPanelOpen}
                         estilosActivos={filtros.estilos.length}
@@ -635,7 +628,7 @@ function CadenaVistaInner() {
                         tonoEditable={tonoEditable}
                         onToggleEstiloPanel={() => setEstiloPanelOpen((v) => !v)}
                         onToggleReferenciaPanel={() => setReferenciaPanelOpen((v) => !v)}
-                        onTonoAssigned={reloadCadena}
+                        onTonoAssigned={handleTonoAssigned}
                       />
                       {detalleOpen && (
                         <div className="absolute inset-x-0 bottom-0 max-h-[42%] overflow-y-auto border-t border-[#e2e8f0] bg-[#f1f5f9] px-4 py-4">
@@ -732,6 +725,7 @@ function CadenaVistaInner() {
             bootLoading={stockBootLoading}
             stockError={stockError}
             onStockRetry={stockRetry}
+            precioVenta={parNav?.gruposMaterial[grupoIndex]?.precio_venta ?? null}
           />
         </footer>
       )}
