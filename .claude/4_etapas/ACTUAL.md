@@ -23,10 +23,11 @@
 ## Secuencia (no saltar)
 
 1. ✅ Estipular (docs + carta + corte + protocolo nombre)  
-2. ⏳ Auditar orilla actual (repos / builds / untracked)  
-3. ⏳ Actualizar productos + docs + **despliegue** + push `segoviaranonis-dev`  
-4. ⏳ Descarga en PC aislada  
-5. ⏳ Agente nuevo: leer Moises → Q1–Q7 → Protocolo Moises Activado → **moria-moises**
+2. ✅ Auditar + **Documenta** Protocolo Moises en Chusar (`5.01.00.021`)  
+3. ✅ Push productos `segoviaranonis-dev` (report `0011122` · rimec-web `ac54e0f` · bazzar `602c268` · control_central · tablet · moria `a511045`)  
+4. ✅ Deploy disparado por git (smoke HTTP OK) · confirmar Ready en Vercel  
+5. ⏳ Descarga en PC aislada  
+6. ⏳ Agente nuevo: leer Moises → Q1–Q7 → **moria-moises**
 
 ---
 
