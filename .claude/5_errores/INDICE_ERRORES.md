@@ -232,6 +232,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.05.004_dpe-kyly-verano-visual-invierno.md`* · 🟡 **DOCUMENTADO 2026-08-04** · cocina no mezcló · tipificación Carlos vs visual · **2.3.1.35.13** · grupo `1001020100`
 
+### 4.02.05.005 · Cocina automática 06:00 · sin disparo (reloj / horario)
+
+*Detalle: `.claude/5_errores/detalle/4.02.05.005_cocina-auto-0600-sin-disparo-reloj.md`* · 🟡 **FRACASO 2026-08-05** · autos en **15:00** · 0×06:00 · worker/cron cloud pendiente · plan reintento **2026-08-06** · **2.3.1.35.14**
+
 ---
 
 ## 4.03 · Tablet Bazzar
@@ -265,6 +269,10 @@
 ### 4.05.02.001 · Etiqueta «Dios» visible en UI — ofensiva al usuario
 
 *Detalle: `.claude/5_errores/detalle/4.05.02.001_ui-etiqueta-dios-ofensiva-usuario.md`* · ✅ **RESUELTO 2026-07-16** · ley `5.01.00.020`
+
+### 4.05.03.001 · Bazzar Compra · gradas TRP ≠ pares FI
+
+*Detalle: `.claude/5_errores/detalle/4.05.03.001_bazzar-compra-gradas-fi-delta.md`* · ✅ **RESUELTO 2026-08-05** · infantil &lt;20 + PPD huérfano · PE-237 CUADRA · CHUSAR **2.5.1.17**
 
 ### 4.05.03.002 · Bazzar Web · FAIL grada 638 sin am_talle (ok_stock PASS)
 

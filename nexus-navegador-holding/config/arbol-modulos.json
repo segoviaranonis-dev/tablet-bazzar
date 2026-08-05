@@ -264,6 +264,24 @@
               "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_CATALOGO_TODOS_CALZADO_20260801.md",
               "nuevo": true
             },
+            {
+              "code": "2.2.1.40",
+              "slug": "doble-descuento-snapshot-lpn",
+              "label": "Doble descuento · snapshot≠LPN",
+              "lead": "F5 20% + cascada doble · 4.01.04.006 · pedido 237 · PE-237-010 · 654 · recalc APPLY 2026-08-03.",
+              "appPath": "/carrito",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_DOBLE_DESCUENTO_SNAPSHOT_LPN_20260803.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.41",
+              "slug": "extirpacion-boton-pdf-catalogo",
+              "label": "Extirpación botón PDF Catálogo",
+              "lead": "Botón dorado fuera · cocina PE bandeja sustituye · no va en próximo deploy · 2026-08-04.",
+              "appPath": "/",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_EXTIRPACION_BOTON_PDF_CATALOGO_20260804.md",
+              "nuevo": true
+            },
 
             {
               "code": "2.2.1.32",
@@ -383,7 +401,18 @@
               "label": "Sales Report",
               "lead": "Informe gerencial · 4 mundos · 8 tablas.",
               "appPath": "/rimec",
-              "md": ".claude/2_modulos/2.3_report/docs/DISENO_DESCRIPCION_8_TABLAS_INFORME_VENTAS.md"
+              "md": ".claude/2_modulos/2.3_report/docs/DISENO_DESCRIPCION_8_TABLAS_INFORME_VENTAS.md",
+              "children": [
+                {
+                  "code": "2.3.1.1.2",
+                  "slug": "pdf-subtotales-banda-desde-nivel",
+                  "label": "PDF · subtotales banda desde nivel",
+                  "lead": "Receta cocina · azul solo desde startCol → derecha · nunca columnas padre.",
+                  "appPath": "/rimec",
+                  "md": ".claude/2_modulos/2.3_report/CHUSAR_PDF_SUBTOTALES_BANDA_DESDE_NIVEL_20260804.md",
+                  "nuevo": true
+                }
+              ]
             },
             {
               "code": "2.3.1.11",
@@ -499,9 +528,18 @@
                   "code": "2.3.1.33.3",
                   "slug": "reimport-cp638-pp49-primavera",
                   "label": "Reimport PP-49 · CP638 Primavera",
-                  "lead": "919 SKUs · 4528 prendas · gradas Carlos · borrar+reimport 2026-08-02.",
+                  "lead": "Hoja2 · 986 SKUs · 4988 prendas · Kyly 3131 + Milon 1857 · fix duplicados.",
                   "appPath": "/proceso-importacion/pedido-proveedor/49",
                   "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_REIMPORT_CP638_PP49_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "4.00.00.003",
+                  "slug": "pendientes-inicio-dia-20260803",
+                  "label": "Handoff · inicio 2026-08-03",
+                  "lead": "Cierre día 2026-08-02 · CP638 · Bazzar · etapas pausa · comandos.",
+                  "appPath": "http://localhost:3004/etapas",
+                  "md": ".claude/4_etapas/PENDIENTES_INICIO_DIA_20260803.md",
                   "nuevo": true
                 },
                 {
@@ -594,6 +632,15 @@
                   "lead": "Sin pestaña Reservadas · BD RESERVADA=Pendiente · SSR sin hang · deploy 3588f9c.",
                   "appPath": "/aprobaciones",
                   "md": ".claude/2_modulos/2.3_report/aprobaciones/CHUSAR_TABS_PENDIENTE_APROBADO_ANULADO_20260729.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.3.3",
+                  "slug": "aprobaciones-indagacion-filtros",
+                  "label": "Indagar pedidos · multi-filtro",
+                  "lead": "Cliente · marca · vendedor · C.Art · GRUPO2 DPE · línea/ref · fecha · PV.",
+                  "appPath": "/aprobaciones",
+                  "md": ".claude/2_modulos/2.3_report/aprobaciones/CHUSAR_APROBACIONES_INDAGACION_FILTROS_20260804.md",
                   "nuevo": true
                 }
               ]
@@ -1030,12 +1077,39 @@
                   "nuevo": true,
                   "children": [
                     {
+                      "code": "2.3.1.9.B.1",
+                      "slug": "csv-ventas-pe-carlos",
+                      "label": "CSV ventas PE · Carlos",
+                      "lead": "Veneno TSV 15 cols · DEPOSITO cabecera · Cant. Pares.",
+                      "appPath": "/facturacion/pronta-entrega",
+                      "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_CSV_VENTAS_PE_CARLOS.md",
+                      "nuevo": true
+                    },
+                    {
                       "code": "2.3.1.9.B.2",
                       "slug": "facturacion-boveda-rimec",
                       "label": "Bóveda RIMEC · archivo PE",
                       "lead": "PROCESAR · archivo permanente · MIG-186 · sin mutar estado FI.",
                       "appPath": "/facturacion/boveda",
                       "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_FACTURACION_BOVEDA_RIMEC.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.1.9.B.3",
+                      "slug": "csv-pe-deposito-cabecera",
+                      "label": "CSV PE · DEPOSITO cabecera",
+                      "lead": "Col DEPOSITO una vez · S00_D1|DEP2|D3 · rechazo 3 cols cantidad.",
+                      "appPath": "/facturacion/pronta-entrega",
+                      "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_CSV_PE_DEPOSITO_CABECERA_20260804.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.1.9.B.4",
+                      "slug": "pendientes-pe-csv",
+                      "label": "Pendientes PE / CSV Carlos",
+                      "lead": "Import Carlos · deploy · HECTOR 90 · neto sin centena.",
+                      "appPath": "/facturacion/pronta-entrega",
+                      "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_PENDIENTES_PE_CSV_20260804.md",
                       "nuevo": true
                     }
                   ]
@@ -1053,7 +1127,7 @@
                   "code": "2.3.1.9.F",
                   "slug": "traductor-vendedor-carlos-pe",
                   "label": "Traductor vendedor Carlos · PE",
-                  "lead": "Hoja2 · Código de vendedor real · matriz nombre+caso → CSV.",
+                  "lead": "PATRICIA 101 · anti-colisión id 19 Guido↔Patricia · error 4.02.04.004 · 1ª PE 638 ≠ 654.",
                   "appPath": "/facturacion/pronta-entrega",
                   "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md",
                   "nuevo": true
@@ -1324,7 +1398,7 @@
                 {
                   "code": "2.3.1.35.8",
                   "slug": "pdf-grada-cantidad-dos-contenedores",
-                  "label": "PDF grada \| cantidad (dos contenedores)",
+                  "label": "PDF grada | cantidad (dos contenedores)",
                   "lead": "654 · fórmula + qty sin pisar · 2 cols · 2026-08-02.",
                   "appPath": "/automatizacion-informes",
                   "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PDF_GRADA_CANTIDAD_DOS_CONTENEDORES_20260802.md",
@@ -1346,6 +1420,51 @@
                   "lead": "LPN+LPC03 · 1 COD.GRUPO=1 PDF · nombre=descripción · 2026-08-02.",
                   "appPath": "/mensajes-internos",
                   "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PDF_ESPEJO_LPC03_GRUPO1_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.11",
+                  "slug": "espiritu-generador-133-lpn-lpc03-lpc04",
+                  "label": "Espíritu generador · 133 × LPN/LPC03/LPC04",
+                  "lead": "Cocina total Director · asignador filtra usuario · 2026-08-02.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_ESPIRITU_GENERADOR_133_LPN_LPC03_LPC04_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.12",
+                  "slug": "pdf-638-pivot-precio",
+                  "label": "PDF 638 · pivot precio",
+                  "lead": "Confecciones ≠ 654 · pivot precio · tallas debajo · 2026-08-04.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PDF_638_PIVOT_PRECIO_20260804.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.13",
+                  "slug": "dpe-tipificacion-vs-visual-temporada",
+                  "label": "DPE tipificación vs visual temporada",
+                  "lead": "KYLY VERANO · aspecto invierno · 4.02.05.004 · 2026-08-04.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_DPE_TIPIFICACION_VS_VISUAL_TEMPORADA_20260804.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.14",
+                  "slug": "plan-cocina-auto-0600-intento-20260806",
+                  "label": "Plan cocina auto 06:00 · intento 06-ago",
+                  "lead": "Fracaso 4.02.05.005 · autos 15:00 · reintento 2026-08-06 PREP 05:50 · anti-fracaso.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_PLAN_COCINA_AUTO_0600_INTENTO_20260806.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.35.15",
+                  "slug": "cocina-datos-vs-pdf",
+                  "label": "Cocina ≠ PDF · snapshot datos",
+                  "lead": "Función A SQL→JSON.gz · Función B emplatar · slots :cocinar/:prep · Protocolo Moises · 2026-08-05.",
+                  "appPath": "/automatizacion-informes",
+                  "md": ".claude/2_modulos/2.3_report/automatizacion_informes/CHUSAR_COCINA_DATOS_VS_PDF_20260805.md",
                   "nuevo": true
                 }
               ]
@@ -1401,6 +1520,15 @@
                   "lead": "Anti-saturación · sesión ≠ forzar vista · error 4.02.05.003 · 2026-08-02.",
                   "appPath": "/mensajes-internos",
                   "md": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_BANDEJA_SOLO_DESTINATARIO_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.36.6",
+                  "slug": "banquete-bandeja-tipo-v2-cierre-dia",
+                  "label": "Banquete bandeja tipo_v2 · cierre día",
+                  "lead": "408 PDF HECTOR · subtotales · pastel NIIF · asignador mañana · 2026-08-02.",
+                  "appPath": "/mensajes-internos",
+                  "md": ".claude/2_modulos/2.3_report/mensajes_internos/CHUSAR_BANQUETE_BANDEJA_TIPO_V2_CIERRE_DIA_20260802.md",
                   "nuevo": true
                 }
               ]
@@ -1764,6 +1892,51 @@
               "lead": "Compra web · motor precio · depósito desde Report.",
               "appPath": "/bazzar-web",
               "children": [
+                {
+                  "code": "2.5.1.17",
+                  "slug": "trp-gradas-infantil-ppd-huerfano-20260805",
+                  "label": "TRP gradas infantil + PPD huérfano",
+                  "lead": "FI≠detalle · tallas <20 · resync PE-237 CUADRA · 4.05.03.001 · 2026-08-05.",
+                  "appPath": "/bazzar-web/compra",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_TRP_GRADAS_INFANTIL_PPD_HUERFANO_20260805.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.16",
+                  "slug": "handoff-stock-5000-trp-638-20260802",
+                  "label": "Handoff stock 5000 · TRP PE-237 ENVIADO",
+                  "lead": "12/12 TRP · fix talla 638 · Compra Web mañana · 4.05.03.003.",
+                  "appPath": "/bazzar-web/compra",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_HANDOFF_STOCK_5000_TRP_638_CIERRE_DIA_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.15",
+                  "slug": "stock-inicial-pedido-5000-kyly-20260802",
+                  "label": "Stock inicial pedido 5000 · paridad Kyly",
+                  "lead": "Carrito PE 5000 · extract TRP abierta 638 · ley RIMEC=Bazzar.",
+                  "appPath": "/bazzar-web/compra",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_STOCK_INICIAL_PEDIDO_5000_KYLY_PARIDAD_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.14",
+                  "slug": "header-filtros-siameses-bazzar-20260802",
+                  "label": "Header/filtros siameses Bazzar",
+                  "lead": "Header ops · Dimensiones/Molécula · deploy 8864b1e.",
+                  "appPath": "http://localhost:3002/catalogo",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_HEADER_FILTROS_SIAMESES_BAZZAR_20260802.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.13",
+                  "slug": "purge-bazzar-web-receteo-vacio-20260802",
+                  "label": "Purge ALM_WEB vacío · fase 1",
+                  "lead": "Sin devolver a RIMEC · Compra/FI 5000 · etapa CERRADA.",
+                  "appPath": "/bazzar-web/deposito-web",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_PURGE_BAZZAR_WEB_RECETEO_VACIO_20260802.md",
+                  "nuevo": true
+                },
                 {
                   "code": "2.5.1.3",
                   "slug": "auditoria-deposito-web-20260801",

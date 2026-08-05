@@ -2,12 +2,13 @@
 
 **Módulo:** Report `/bazzar-web/compra`  
 **Error:** `4.05.03.001`  
-**Fecha:** 2026-07-27  
-**Etapa:** CORTE-CONTROL-ENTREGA-20260727
+**Fecha:** 2026-07-27 · **ampliado Documenta 2026-08-05**  
+**Etapa origen:** CORTE-CONTROL-ENTREGA-20260727  
+**Ampliación:** [2.5.1.17](../../2.5_bazzar_web/CHUSAR_TRP_GRADAS_INFANTIL_PPD_HUERFANO_20260805.md) · Protocolo Chusar Activado
 
 ---
 
-## Síntoma (Director)
+## Síntoma (Director · 2026-07)
 
 Compra prueba cliente 5000: cabecera FI **35 pares**, vista técnica stock por talla **~30 pares**.
 
@@ -17,43 +18,47 @@ Compra prueba cliente 5000: cabecera FI **35 pares**, vista técnica stock por t
 | L2258 R100 | 11 p | 12 p | `37/8(2-4-4-2)43/4` |
 | L2258 R101 | 12 p | 12 p | OK |
 
-Columna **CASO** en vista técnica mostraba `—` pese a caso modificado en cabecera FI.
+---
+
+## Reincidencia 2026-08-05 (PE-237)
+
+| TRP | FI | Δ |
+|-----|-----|---|
+| TRP-2026-0011 | PE-237-010 | 109 vs 73 (+36) |
+| TRP-2026-0009 | PE-237-008 | 183 vs 171 (+12) |
+
+**Causa:** distribución TRP — tallas **&lt;20** descartadas + PPD huérfano en resync.  
+Detalle: **2.5.1.17**.
 
 ---
 
-## Causa raíz
+## Causa raíz (histórico 07-27)
 
-1. **`gradasFmtToTallas`** (`traspaso-mutations.ts`) filtraba tallas **33–40** → gradas 38–43 perdían 41–43 (6 p de L2260).
-2. Fallback `gradas_fmt` **no escalaba** a `fid.pares` → R100: grada caja 12 vs FI 11 p.
-3. **`getTraspasoDetalleLines`** JOIN débil L+R a `precio_lista` sin `LPN_CASO_LATERAL_SQL` ni `fi.caso`.
+1. **`gradasFmtToTallas`** filtraba tallas **33–40** → gradas 38–43 perdían pares.
+2. Fallback `gradas_fmt` **no escalaba** a `fid.pares`.
+3. **`getTraspasoDetalleLines`** JOIN débil L+R a `precio_lista`.
 
-Fuente verdad pares: **`factura_interna_detalle.pares`** + **`fi.total_pares`**.  
-Traspaso debe materializar **exactamente** esa cantidad en `traspaso_detalle`.
+Fuente verdad pares: **`factura_interna_detalle.pares`** + **`fi.total_pares`**.
 
 ---
 
-## Fix aplicado (código Report)
+## Fix código (vigente 2026-08-05)
 
 | Archivo | Cambio |
 |---------|--------|
-| `report/src/lib/rimec-abastecimiento/traspaso-mutations.ts` | Rango talla 20–55 vía `tallaKeyToNum`; `scaleGradesToPares` en fallback fmt; `resyncTraspasoDetalleFromFactura()` |
-| `report/src/lib/bazzar-web/compra-web/queries.ts` | CASO: `LPN_CASO_LATERAL_SQL` + `fi.caso` + `ppd.descp_caso_snapshot` |
+| `traspaso-mutations.ts` | `tallaKeyToNum` **14–55** · abierta 638 no pisa `23(12)27` · `itemTallasFromFiDetalle` (LEFT JOIN PPD + snapshot + URL) · resync/envío abortan si expand ≠ FI |
+| `compra-web/queries.ts` | CASO lateral (07-27) |
 
-Script operativo: `report/scripts/audit_resync_traspaso_gradas.mts`
-
----
-
-## Ley operativa (holding)
-
-- **Prohibido** crear/enviar TRP si `SUM(traspaso_detalle) ≠ SUM(fid.pares)` para esa FI.
-- Traspasos **ENVIADO/BORRADOR** con delta → `resyncTraspasoDetalleFromFactura` antes de confirmar recepción.
-- Traspasos **CONFIRMADO** → `repararIngresoTraspasoConfirmado` (hydrate + movimiento).
+Scripts: `audit_resync_traspaso_gradas.mts` · `_resync_pe237_trp_delta.ts`
 
 ---
 
-## Auditoría pendiente (Python legacy)
+## Ley operativa
 
-`control_central/modules/facturacion/logic.py` aún cap 33–40 en ruta legacy VT — **no afecta FI CP** si flujo pasa por Report TS. Revisar en etapa unificación Streamlit.
+- **Prohibido** crear/enviar TRP si `SUM(traspaso_detalle) ≠ SUM(fid.pares)`.
+- ENVIADO/BORRADOR con delta → `resyncTraspasoDetalleFromFactura` antes de confirmar.
+- CONFIRMADO → `repararIngresoTraspasoConfirmado`.
+- Resync **obligatorio** funcionar con PPD huérfano (snapshot FI).
 
 ---
 
@@ -61,12 +66,7 @@ Script operativo: `report/scripts/audit_resync_traspaso_gradas.mts`
 
 ```bash
 cd report
-npx tsx scripts/audit_resync_traspaso_gradas.mts          # auditoría
-npx tsx scripts/audit_resync_traspaso_gradas.mts --apply  # reparar ENVIADO/BORRADOR
+npx tsx scripts/audit_resync_traspaso_gradas.mts
 ```
 
-Smoke local: `:3000/bazzar-web/compra` → vista técnica suma = cabecera FI.
-
----
-
-**CHUSAR — integrado** · índice error `5_errores/detalle/4.05.03.001_bazzar-compra-gradas-fi-delta.md`
+UI: `:3000/bazzar-web/compra` → badge **CUADRA**.

@@ -3,7 +3,7 @@
 **Tipo:** App Next.js B2C  
 **Repo:** `bazzar-web/`  
 **Estado:** ✅ Etapa catálogo :3002 **CERRADA** 2026-07-16  
-**Última actualización:** 2026-08-02 noche · **2.5.1.16** handoff TRP PE-237 ENVIADO · Compra Web mañana  
+**Última actualización:** 2026-08-05 · **2.5.1.17** TRP gradas infantil + PPD huérfano · Protocolo Chusar Activado  
 
 **Etapa cerrada hoy:** [ETAPA_PRUEBA_BAZZAR_WEB_FASE1…CERRADA](../../4_etapas/ETAPA_PRUEBA_BAZZAR_WEB_FASE1_RECETEO_20260802_CERRADA.md) · `PRUEBA-BAZZAR-WEB-FASE1-20260802`  
 **Auditorías:** [integridad CERRADA](../../4_etapas/ETAPA_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801_CERRADA.md) · [Depósito Web CERRADA](../../4_etapas/ETAPA_AUDITORIA_DEPOSITO_WEB_20260801_CERRADA.md)  
@@ -27,6 +27,7 @@ E-commerce **cliente final Bazzar**. Separado de RIMEC Web (B2B mayoristas).
 | Código | Doc | Tema |
 |--------|-----|------|
 | — | [LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md](../../../1_fundamentos/1.3_politicas/LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md) | **5.01.00.020** · UI «Superior» — botón protocolo precios en reposición |
+| **2.5.1.17** | **[CHUSAR_TRP_GRADAS_INFANTIL_PPD_HUERFANO_20260805.md](./CHUSAR_TRP_GRADAS_INFANTIL_PPD_HUERFANO_20260805.md)** | TRP ≠ FI · tallas &lt;20 + PPD huérfano · PE-237 resync · **4.05.03.001** |
 | **2.5.1.16** | **[CHUSAR_HANDOFF_STOCK_5000_TRP_638_CIERRE_DIA_20260802.md](./CHUSAR_HANDOFF_STOCK_5000_TRP_638_CIERRE_DIA_20260802.md)** | **Handoff noche** · PE-237 12/12 TRP · fix `4.05.03.003` · Compra Web mañana |
 | **2.5.1.15** | **[CHUSAR_STOCK_INICIAL_PEDIDO_5000_KYLY_PARIDAD_20260802.md](./CHUSAR_STOCK_INICIAL_PEDIDO_5000_KYLY_PARIDAD_20260802.md)** | Pedido 5000 → ALM · Kyly abierta=cerrada ley · fix extract TRP |
 | **2.5.1.14** | **[CHUSAR_HEADER_FILTROS_SIAMESES_BAZZAR_20260802.md](./CHUSAR_HEADER_FILTROS_SIAMESES_BAZZAR_20260802.md)** | Header amputado · Dimensiones/Molécula · smoke filtros |
@@ -48,7 +49,7 @@ E-commerce **cliente final Bazzar**. Separado de RIMEC Web (B2B mayoristas).
 | — | [ESTADO_BAZZAR_WEB_2026.md](../../../bazzar-web/docs/ESTADO_BAZZAR_WEB_2026.md) | Snapshot histórico (pre-grada ficticia) |
 | — | [docs/CONTEXT.md](../../../bazzar-web/docs/CONTEXT.md) | Contexto app |
 
-**Depósito Web (Report):** https://rimec-report.vercel.app/bazzar-web/deposito-web · ALM_WEB_01 **vacío** post-purge (**2.5.1.13**) · TRP PE-237 ENVIADO (**2.5.1.16**) · falta Compra Web
+**Depósito Web (Report):** https://rimec-report.vercel.app/bazzar-web/deposito-web · ALM_WEB_01 post-purge (**2.5.1.13**) · TRP PE-237 ENVIADO (**2.5.1.16**) · integridad CUADRA (**2.5.1.17**) · falta confirmar recepción (orden)
 
 ---
 
