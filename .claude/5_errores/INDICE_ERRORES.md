@@ -52,6 +52,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.01.04.008_rimec-web-abcr-escolar-chip-invisible.md`* · ✅ **RESUELTO local** 2026-08-06 · `isAbcrSyntheticTipoId(-8)` · docs **2.2.1.45** · **2.2.1.47** · ⏳ deploy Web
 
+### 4.01.04.009 · Tachado LPN = LPC03 (precio venta PE)
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.009_rimec-web-lpn-lpc03-tachado-igual.md`* · ✅ **FIX + deploy** 2026-08-06 · `precioLista` ley ×1.12 · doc **2.2.1.49** · orden **depliega**
+
 ### 4.01.05.001 · Pronta entrega muestra tarjetas Compra previa (quincenas PP)
 
 *Detalle: `.claude/5_errores/detalle/4.01.05.001_rimec-web-pe-muestra-tarjetas-cp.md`* · ✅ **RESUELTO UI 2026-07-17** · deferred origen + validación warm cache · doc `2.2_rimec_web/CHUSAR_CORTE_20260717_HEADER_PRECIOS_PE.md`

@@ -112,6 +112,22 @@
               "nuevo": true
             },
             {
+              "code": "2.2.1.49",
+              "slug": "hotfix-lpn-lpc03-tachado-igual",
+              "label": "Hotfix · tachado LPN ≠ LPC03",
+              "lead": "Precio venta PE+CP · sin fallback LPN en lista 3/4 · 4.01.04.009 · Documenta + depliega 2026-08-06.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.48",
+              "slug": "auditoria-filtros-grilla-meta",
+              "label": "Auditoría · filtros grilla ∥ molécula",
+              "lead": "Solo-PE AB-CR (−1/−2/−8) · acotar sintéticos · cliente live · smokes · Documenta 2026-08-06.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md",
+              "nuevo": true
+            },
+            {
               "code": "2.2.1.47",
               "slug": "protocolo-instalacion-filtros-pe-abcr",
               "label": "Protocolo · instalación filtros PE/AB-CR",
