@@ -187,8 +187,8 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **[CHUSAR_HOTFIX_ABCR_CARTERAS_ANTEOJOS_WEB_20260727.md](./CHUSAR_HOTFIX_ABCR_CARTERAS_ANTEOJOS_WEB_20260727.md)** — **2.2.1.32** · `tipo_ids=-1/-2` · traductor PE 90000 · Vizzano 60 carteras + 4 anteojos · error `4.01.04.003`
 
 ### **Cascada filtros catálogo · dimensión + molécula (2026-08-05 · ★ Documenta · local)**
-- **[CHUSAR_ACUSACION_OVERSELL_CP_CARRITO_20260805.md](./CHUSAR_ACUSACION_OVERSELL_CP_CARRITO_20260805.md)** — **2.2.1.43** · SR PV 4099/4100 · FC 1426/26 · ⏳ **reporte enviado · esperando respuesta** · [etapa](../../4_etapas/ETAPA_CP_OVERSELL_ACUSACION_20260805.md)
 - **[CHUSAR_CASCADA_FILTROS_CATALOGO_20260805.md](./CHUSAR_CASCADA_FILTROS_CATALOGO_20260805.md)** — **2.2.1.42** · hotfix **2026-08-06** bug urgente Marca→Línea 841 · `needRowsScan`+`acotarMetaRpcDesdeFilas` · `genero_codigos` · MIG-199 · ⛔ sin deploy
+- Espejo ALM: [CHUSAR_FILTROS_SIAMESES_DEPOSITO_BAZZAR_CATALOGO_20260806.md](../2.5_bazzar_web/CHUSAR_FILTROS_SIAMESES_DEPOSITO_BAZZAR_CATALOGO_20260806.md) (**2.5.1.20**) · Depósito Web ↔ Bazzar tienda
 
 ### **Doble descuento snapshot↔LPN · Patricia / 654 (2026-08-03 · ★ Documenta)**
 - **[CHUSAR_DOBLE_DESCUENTO_SNAPSHOT_LPN_20260803.md](./CHUSAR_DOBLE_DESCUENTO_SNAPSHOT_LPN_20260803.md)** — **2.2.1.40** · F5 20 % + cascada doble · error `4.01.04.006` · pedido **237** · FI **PE-237-010** · recalc APPLY · anti-propagación 654

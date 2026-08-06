@@ -27,6 +27,7 @@
 | `2.2.1.25` | [CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md](./CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md) | Filtros PE 3 hermanos |
 | `2.2.1.28` | [CHUSAR_LEY_TODOS_TRES_HERMANOS_SIAMESES_20260726.md](./CHUSAR_LEY_TODOS_TRES_HERMANOS_SIAMESES_20260726.md) | Ley TODOS / mostrar todo |
 | `2.2.1.42` | [CHUSAR_CASCADA_FILTROS_CATALOGO_20260805.md](./CHUSAR_CASCADA_FILTROS_CATALOGO_20260805.md) | Cascada facetas |
+| `2.5.1.20` | [CHUSAR_FILTROS_SIAMESES_DEPOSITO_BAZZAR_CATALOGO_20260806.md](../2.5_bazzar_web/CHUSAR_FILTROS_SIAMESES_DEPOSITO_BAZZAR_CATALOGO_20260806.md) | Cascada DW↔Bazzar tienda |
 | `2.2.1.50` | [CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md](./CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md) | Sesión día · mapa · cierre paréntesis bug |
 | `2.2.1.49` | [CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md](./CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md) | Tachado LPN≠LPC03 · precio venta · `4.01.04.009` |
 | `2.2.1.48` | [CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md](./CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md) | Auditoría grilla∥molécula · solo-PE AB-CR · acotar · live |
@@ -69,6 +70,7 @@ Dos o más **superficies de venta/consulta** del holding que muestran el **mismo
 | Cabecera preventa + quincena | Web · AM · PDF FI · vistas `v_stock_*` | `2.3.1.31` |
 | Grada Bazzar | Estadísticas · Catálogo tienda · Depósito Web | `2.5.1.10` |
 | Filtro Tipo (prioridad) | AM ↔ Web | `2.2.1.18` · error `4.01.04.002` |
+| Cascada dimensión→molécula ALM | **Depósito Web** ↔ **Bazzar tienda** | `2.5.1.20` |
 
 Al **aplicar este protocolo en un módulo nuevo**, declarar en el CHUSAR del módulo: *«Hermano de: W / AM / PE / …»* y listar archivos espejo.
 
