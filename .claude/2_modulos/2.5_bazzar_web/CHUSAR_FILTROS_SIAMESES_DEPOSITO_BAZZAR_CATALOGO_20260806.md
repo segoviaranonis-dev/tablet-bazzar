@@ -108,10 +108,10 @@ bazzar-web/app/(public)/catalogo/page.tsx
 
 ### 5.1 Deploy (evidencia)
 
-| App | Repo | Commit | Qué sube |
-|-----|------|--------|----------|
-| **Report** (Depósito Web) | `segoviaranonis-dev/report` · Vercel `rimec-report` | `eb04701` | Tipología AB-CR · cascada operativa · smoke · key Motor precio |
-| **Bazzar Web** (catálogo) | `segoviaranonis-dev/bazzar-web` | `067e3d0` | Molécula completa · facetas replace · Género |
+| App | Repo | Commit | Prod |
+|-----|------|--------|------|
+| **Report** (Depósito Web) | `segoviaranonis-dev/report` · `rimec-report` | `f4585ec` (cadena `eb04701`→`b7698e1`→`f4585ec`) | ✅ Ready · https://rimec-report.vercel.app/bazzar-web/deposito-web → 200 |
+| **Bazzar Web** (catálogo) | `segoviaranonis-dev/bazzar-web` | `bb478cb` (filtros `067e3d0` + tsconfig) | ✅ Ready · https://www.bazzar.com.py/catalogo → 200 · Molécula |
 
 **Anti-patrón §4.4:** deploy autorizado por **pedido directo** del Director (*documenta y despliega*).
 
