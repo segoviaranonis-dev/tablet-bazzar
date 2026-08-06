@@ -30,18 +30,19 @@ Terminar y **pulir** Bazzar Web hasta el **lanzamiento 01-09-2026**: catálogo, 
 | 6 | Prod Vercel + dominio | https://www.bazzar.com.py |
 | 7 | Smoke go-live pre 01-09 | Checklist cierre |
 
-**Fuera (salvo orden):** Moises (pausada fin de semana) · oversell CP (espera SR) · deploy rimec-web no relacionado.
+**Fuera de este FOCO:** oversell CP (espera SR) · cascada rimec cola UI · temas bloqueados por Director.
 
 ---
 
-## Relación con etapas abiertas
+## Plan go-live (desde 2.5.1.8)
 
-| Etapa | Rol tras esta apertura |
-|-------|------------------------|
-| **FINAL-BAZZAR-WEB-20260806** | **FOCO** |
-| `MOISES-20260804` (unificada + orilla) | Pausada · fin de semana / más tarde |
-| `CP-OVERSELL-ACUSACION-20260805` | En espera SR · no FOCO |
-| Cascada filtros rimec **2.2.1.42** | Hilo técnico paralelo (no tarjeta etapa) |
+| Fase | Alcance | Prioridad hasta 01-09 |
+|------|---------|------------------------|
+| F0 | Auditoría local stock | ✅ base hecha |
+| **F1** | Catálogo 638 talles B2C | 🔴 alta |
+| **F2** | Filtros / AB-CR / medias | 🔴 alta |
+| **F3** | Seguridad checkout | 🟡 media |
+| **F4** | Smoke NIIF + post-import | 🟡 media |
 
 ---
 
@@ -50,8 +51,8 @@ Terminar y **pulir** Bazzar Web hasta el **lanzamiento 01-09-2026**: catálogo, 
 | # | Ítem | Estado |
 |---|------|:------:|
 | 1 | Apertura Moria + `etapas.json` + :3004 | ✅ 2026-08-06 |
-| 2 | Inventario gaps vs go-live | ⏳ |
-| 3 | Pulido + smokes locales | ⏳ |
+| 2 | Inventario gaps vs go-live | ✅ 2026-08-06 (tabla en CHUSAR 2.5.1.18) |
+| 3 | Pulido + smokes locales `:3002` | 🔄 catálogo/home 200 · sigue |
 | 4 | Deploy / dominio listo | ⏳ |
 | 5 | Cierre canónico pre/post 01-09 | ⏳ |
 

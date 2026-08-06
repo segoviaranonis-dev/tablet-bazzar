@@ -40,12 +40,31 @@ No es un hotfix puntual: es la **recta final** del producto B2C Bazzar Web hacia
 
 ---
 
-## 4 · Primeros pasos sugeridos (siguiente turno de trabajo)
+## 4 · Arranque FOCO 2026-08-06
 
-1. Inventario gaps abiertos vs checklist go-live (desde 2.5.1.8 + prod).  
-2. Smoke `:3002` catálogo + carrito + checkout.  
-3. Lista priorizada Director (qué pulir primero).  
-4. Plan semanal hasta **01-09-2026**.
+1. ✅ Etapa + JSON + Documenta pendientes (MIG-199 hecha · cascada UI en cola).  
+2. ✅ Inventario inicial gaps (abajo).  
+3. 🔄 Smoke `:3002` catálogo.  
+4. Propuesta orden: **F1 638** → **F2 filtros** → **F3 seguridad** → **F4 NIIF**.
+
+### Inventario go-live (prioridad)
+
+| # | Gap | Fase | Fuente |
+|---|-----|------|--------|
+| 1 | Catálogo 638 · UI talles B2C (paridad RIMEC) | F1 | 2.5.1.8 · código ya tiene `enrich-grada-638` — pulir UX |
+| 2 | Filtros AB-CR / medias / cascada header | F2 | 2.5.1.14 · siameses |
+| 3 | Checkout: rate-limit · ownership `/pedido/[id]` · cédula | F3 | AUDITORIA_BAZZAR_WEB críticas |
+| 4 | CSP / service_role en actions | F3 | idem |
+| 5 | Smoke NIIF + stock post-import ALM_WEB | F4 | 2.5.1.13–17 |
+| 6 | Secretos en scripts repo (ops) | F3 | AUDITORIA 1.1 — rotación Director |
+
+### Cola holding (no este FOCO)
+
+| Ítem | Estado |
+|------|--------|
+| MIG-199 cascada RPC | ✅ aplicada |
+| Smoke browser cascada rimec | ⏳ cola |
+| Oversell CP | ⏳ espera SR |
 
 ---
 
