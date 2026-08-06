@@ -1949,6 +1949,15 @@
               "appPath": "/bazzar-web",
               "children": [
                 {
+                  "code": "2.5.1.18",
+                  "slug": "final-bazzar-web-lanzamiento-20260901",
+                  "label": "Final Bazzar Web · lanzamiento 01-09-2026",
+                  "lead": "FOCO · pulir hasta go-live · etapa FINAL-BAZZAR-WEB-20260806 · Documenta 2026-08-06.",
+                  "appPath": "/bazzar-web",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.5.1.17",
                   "slug": "trp-gradas-infantil-ppd-huerfano-20260805",
                   "label": "TRP gradas infantil + PPD huérfano",

@@ -3,9 +3,11 @@
 **Tipo:** App Next.js B2C  
 **Repo:** `bazzar-web/`  
 **Estado:** ✅ Etapa catálogo :3002 **CERRADA** 2026-07-16  
-**Última actualización:** 2026-08-05 · **2.5.1.17** TRP gradas infantil + PPD huérfano · Protocolo Chusar Activado  
+**Última actualización:** 2026-08-06 · **FOCO** Final Bazzar Web · lanzamiento **01-09-2026** · **2.5.1.18**  
 
-**Etapa cerrada hoy:** [ETAPA_PRUEBA_BAZZAR_WEB_FASE1…CERRADA](../../4_etapas/ETAPA_PRUEBA_BAZZAR_WEB_FASE1_RECETEO_20260802_CERRADA.md) · `PRUEBA-BAZZAR-WEB-FASE1-20260802`  
+**Etapa FOCO:** [ETAPA_FINAL_BAZZAR_WEB_20260806.md](../../4_etapas/ETAPA_FINAL_BAZZAR_WEB_20260806.md) · `FINAL-BAZZAR-WEB-20260806`  
+**CHUSAR lanzamiento:** [CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md](./CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md) (**2.5.1.18**)  
+**Etapa cerrada previa:** [ETAPA_PRUEBA_BAZZAR_WEB_FASE1…CERRADA](../../4_etapas/ETAPA_PRUEBA_BAZZAR_WEB_FASE1_RECETEO_20260802_CERRADA.md) · `PRUEBA-BAZZAR-WEB-FASE1-20260802`  
 **Auditorías:** [integridad CERRADA](../../4_etapas/ETAPA_AUDITORIA_INTEGRIDAD_STOCK_BAZZAR_WEB_20260801_CERRADA.md) · [Depósito Web CERRADA](../../4_etapas/ETAPA_AUDITORIA_DEPOSITO_WEB_20260801_CERRADA.md)  
 **Catálogo histórico:** [ETAPA_BAZZAR_WEB_CATALOGO_3002_20260716_CERRADA.md](../../4_etapas/ETAPA_BAZZAR_WEB_CATALOGO_3002_20260716_CERRADA.md)
 
@@ -26,6 +28,7 @@ E-commerce **cliente final Bazzar**. Separado de RIMEC Web (B2B mayoristas).
 
 | Código | Doc | Tema |
 |--------|-----|------|
+| **2.5.1.18** | **[CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md](./CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md)** | **FOCO** Final Bazzar Web · go-live **01-09-2026** · etapa `FINAL-BAZZAR-WEB-20260806` |
 | — | [LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md](../../../1_fundamentos/1.3_politicas/LEY_ETIQUETA_NIVEL_SUPERIOR_UI.md) | **5.01.00.020** · UI «Superior» — botón protocolo precios en reposición |
 | **2.5.1.17** | **[CHUSAR_TRP_GRADAS_INFANTIL_PPD_HUERFANO_20260805.md](./CHUSAR_TRP_GRADAS_INFANTIL_PPD_HUERFANO_20260805.md)** | TRP ≠ FI · tallas &lt;20 + PPD huérfano · PE-237 resync · **4.05.03.001** |
 | **2.5.1.16** | **[CHUSAR_HANDOFF_STOCK_5000_TRP_638_CIERRE_DIA_20260802.md](./CHUSAR_HANDOFF_STOCK_5000_TRP_638_CIERRE_DIA_20260802.md)** | **Handoff noche** · PE-237 12/12 TRP · fix `4.05.03.003` · Compra Web mañana |

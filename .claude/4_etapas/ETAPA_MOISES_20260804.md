@@ -1,10 +1,12 @@
 # ETAPA — Moises (separar el mar)
 
 **ID:** `MOISES-20260804`  
-**Alias:** **Moises** — mudanza de cuentas + rueda de auxilio + portabilidad de agente  
-**Estado:** 🟢 **EN CURSO** · apertura 2026-08-04 (orden Director)  
+**Alias:** **Moises** — mudanza + orilla `moria_moises` (unificado)  
+**Estado:** 🟡 **PAUSADA** · unificada con orilla 2026-08-06 · retomar **fin de semana / más tarde**  
+**Incluye:** mudanza Git/Supabase/Vercel + verificación orilla `rimecpy-bit` / `moria_moises` (ex `MOISES-VERIF-ORILLA-20260805`)  
 **Módulo:** Holding / DevOps (Git · Supabase · Vercel · Cursor)  
 **Ejecutor:** Cursor (plan + checklist) · Claude Code (ops remotas si aplica)  
+**FOCO holding ahora:** [ETAPA_FINAL_BAZZAR_WEB_20260806.md](./ETAPA_FINAL_BAZZAR_WEB_20260806.md)  
 **Shibboleth:** Andrés, el que viene.
 
 **📜 Carta de Constitución (estándares + hermetismo bancario):**  
@@ -151,10 +153,12 @@ Mapa canónico previo: [MAPA_REPOS.md](../1_fundamentos/MAPA_REPOS.md)
 
 ### Fase 0 — Congelar verdad (rueda de auxilio · ANTES de todo)
 
+> **Evidencia 2026-08-05 (por qué esta fase existe):** el sync masivo del 04 subió código que importaba archivos **nunca versionados** → 3 builds de prod caídos (Report `nodemailer`/`vendedor-fi-display`, Control Central `core/pilares/*`, RIMEC Web `catalogoVarianteImagen`). Detalle + ley operativa: [CHUSAR_DEPLOYS_PROD_20260805.md](./CHUSAR_DEPLOYS_PROD_20260805.md) §3. **Regla:** build local verde + auditar imports vs git antes de cualquier deploy.
+
 | # | Acción | Criterio DONE |
 |---|--------|---------------|
 | 0.1 | Tag git por repo: `pre-moises-YYYYMMDD` en `main` saneado | Tag en origin actual |
-| 0.2 | Inventario untracked críticos (ej. `vendedor-fi-display` omitido = lección) | Lista en chat + fix o deuda explícita |
+| 0.2 | Inventario untracked críticos (ej. `vendedor-fi-display` omitido = lección · confirmado a escala 2026-08-05) | Lista en chat + fix o deuda explícita |
 | 0.3 | **Sistema canónico DB:** `backup_db_automatico.py` + Actions `backup-diario.yml` (`pg_dump` → `.sql.gz` → Artifacts 30d). Doc: [CHUSAR_MOISES_SISTEMA_RESPALDO_DB_20260804.md](./CHUSAR_MOISES_SISTEMA_RESPALDO_DB_20260804.md). **Actualizar datos** = restore dump en Supabase destino — **no** basta con git. | Dump fresco + Artifact |
 | 0.4 | Inventario env Vercel / Streamlit (nombres de vars, no valores) | Tabla en esta etapa § Secretos |
 | 0.5 | Confirmar builds verdes en `main` de cada app | CI/Vercel Ready o build local |
@@ -274,6 +278,12 @@ Documentar en ejecución (valores solo en cofre Director / Vercel UI):
 | **Moises** | **Única `en_curso`** |
 
 Moises = **infraestructura y continuidad**. Features de producto se reabren con **Nueva etapa** en la orilla profesional.
+
+### Parqueo paralelo cocina (Documenta 2026-08-05)
+
+Paralelo operativo cocina/bandeja/DPE **congelado** para cambio de foco del Director.  
+Canónico: [BACKLOG_PARQUEADO_CAMBIO_FOCO_20260805.md](./BACKLOG_PARQUEADO_CAMBIO_FOCO_20260805.md).  
+Hecho local: cocina ≠ PDF **2.3.1.35.15**. Intento 06:00 = ítem backlog **A1** (no inercia).
 
 ---
 

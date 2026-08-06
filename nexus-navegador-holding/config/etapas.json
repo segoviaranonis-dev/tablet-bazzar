@@ -1,33 +1,93 @@
 {
-  "actualizado": "2026-08-04-corte-admin-moises-cierra-6-etapas",
+  "actualizado": "2026-08-06-final-bazzar-web-foco-moises-unificado",
   "sesionActiva": {
-    "code": "MOISES-20260804",
-    "alias": "Moises · corte admin hecho · mudanza profesional",
-    "maraton": "holding-moises-mudanza",
+    "code": "FINAL-BAZZAR-WEB-20260806",
+    "alias": "Final Bazzar Web · lanzamiento 01-09-2026",
+    "maraton": "bazzar-web-lanzamiento",
     "ejecutor": "cursor",
-    "foco": "Corte admin OK · rimec.py@gmail.com · menos suscripciones · rueda + cutover",
-    "mdEtapa": ".claude/4_etapas/ETAPA_MOISES_20260804.md"
+    "foco": "Pulir Bazzar Web hasta go-live 2026-09-01",
+    "mdEtapa": ".claude/4_etapas/ETAPA_FINAL_BAZZAR_WEB_20260806.md"
   },
   "trabajoVivo": [
     {
-      "code": "MOISES-20260804",
-      "moduloSlug": "moria-chusar",
-      "subcuentaSlug": "moises-mudanza",
-      "label": "Moises · separar el mar · mudanza Git/Supabase/Vercel",
-      "md": ".claude/4_etapas/ETAPA_MOISES_20260804.md",
-      "mdChusar": ".claude/1_fundamentos/MAPA_REPOS.md",
-      "appPath": "http://localhost:3004/etapas",
+      "code": "FINAL-BAZZAR-WEB-20260806",
+      "moduloSlug": "bazzar-web",
+      "subcuentaSlug": "lanzamiento-final",
+      "label": "Final de Bazzar Web · pulir hasta lanzamiento 01-09-2026",
+      "md": ".claude/4_etapas/ETAPA_FINAL_BAZZAR_WEB_20260806.md",
+      "mdChusar": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md",
+      "appPath": "http://localhost:3002",
       "ejecutor": "cursor",
       "estado": "en_curso",
       "nuevo": true,
       "focoMaraton": true,
       "subEtapas": [
+        "BZ-INVENTARIO",
+        "BZ-PULIDO",
+        "BZ-SMOKE",
+        "BZ-DEPLOY",
+        "BZ-GO-LIVE-0109"
+      ]
+    },
+    {
+      "code": "MOISES-20260804",
+      "moduloSlug": "moria-chusar",
+      "subcuentaSlug": "moises-mudanza",
+      "label": "Moises · mudanza + orilla (unificado) · PAUSADA fin de semana",
+      "md": ".claude/4_etapas/ETAPA_MOISES_20260804.md",
+      "mdChusar": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md",
+      "appPath": "http://localhost:3004/etapas",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": false,
+      "focoMaraton": false,
+      "subEtapas": [
         "MOISES-RUEDA",
         "MOISES-REPOS",
         "MOISES-ORILLA",
+        "MOISES-VERIF-ORILLA",
         "MOISES-DUAL",
         "MOISES-PORTABLE",
         "MOISES-CUTOVER"
+      ]
+    },
+    {
+      "code": "MOISES-VERIF-ORILLA-20260805",
+      "parentCode": "MOISES-20260804",
+      "moduloSlug": "nexus-navegador",
+      "subcuentaSlug": "moises-verif-orilla",
+      "label": "Moises · orilla (unificada en MOISES-20260804)",
+      "md": ".claude/4_etapas/ETAPA_MOISES_VERIF_ORILLA_20260805.md",
+      "mdChusar": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md",
+      "appPath": "https://github.com/rimecpy-bit/moria_moises",
+      "ejecutor": "cursor",
+      "estado": "hecho",
+      "nuevo": false,
+      "focoMaraton": false,
+      "subEtapas": [
+        "VERIF-ACCESO",
+        "VERIF-PROTOCOLO",
+        "VERIF-REMOTES",
+        "VERIF-INFORME"
+      ]
+    },
+    {
+      "code": "CP-OVERSELL-ACUSACION-20260805",
+      "moduloSlug": "rimec-web",
+      "subcuentaSlug": "carrito-cp",
+      "label": "CP Web · oversell · esperando respuesta SR (no FOCO)",
+      "md": ".claude/4_etapas/ETAPA_CP_OVERSELL_ACUSACION_20260805.md",
+      "mdChusar": ".claude/2_modulos/2.2_rimec_web/CHUSAR_ACUSACION_OVERSELL_CP_CARRITO_20260805.md",
+      "appPath": "http://localhost:3001",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": false,
+      "focoMaraton": false,
+      "subEtapas": [
+        "FORENSE-BD",
+        "FORENSE-CODIGO",
+        "ESPERAR-CASO",
+        "FIX-SI-REPRO"
       ]
     },
     {
@@ -261,6 +321,15 @@
     }
   },
   "cerradasPorModulo": {
+    "nexus-navegador": [
+      {
+        "code": "MOISES-VERIF-ORILLA-20260805",
+        "label": "Moises orilla · unificada en MOISES-20260804 (pausada)",
+        "fecha": "2026-08-06",
+        "md": ".claude/4_etapas/ETAPA_MOISES_VERIF_ORILLA_20260805.md",
+        "nuevo": true
+      }
+    ],
     "bazzar-web": [
       {
         "code": "PRUEBA-BAZZAR-WEB-FASE1-20260802",
