@@ -62,6 +62,8 @@ Dos o más **superficies de venta/consulta** del holding que muestran el **mismo
 | **W** | Catálogo vendedores | RIMEC Web `:3001` `/` | `rimec-web/lib/filtros/*` · `catalogoPaginado.ts` · `catalogoMetaRpc.ts` · `CatalogoClient.tsx` |
 | **AM** | Alejandro Magno | Report `:3000` `/herramienta-reposicion` | `report/src/lib/filtros/filtro-tipo-canonico.ts` · filtros AM |
 | **PE** | Stock Pronta Entrega | Report `:3000` `/stock-pronta-entrega` | `report/src/lib/stock-pronta-entrega/*` · `cadena-dpe-triunvirato.ts` |
+| **DW** | Depósito Web | Report `:3000` `/bazzar-web/deposito-web` | mismos filtros PE · `DepositoWebClient` |
+| **MP** | Motor precio Guardián | Report `:3000` `/bazzar-web/motor-precio` | puente `catalogo-filtro-siamese.ts` · CASO **NORMAL** · **2.5.1.21** |
 
 ### 2.2 Extensiones siameses (otros módulos)
 
@@ -70,6 +72,7 @@ Dos o más **superficies de venta/consulta** del holding que muestran el **mismo
 | Cabecera preventa + quincena | Web · AM · PDF FI · vistas `v_stock_*` | `2.3.1.31` |
 | Grada Bazzar | Estadísticas · Catálogo tienda · Depósito Web | `2.5.1.10` |
 | Filtro Tipo (prioridad) | AM ↔ Web | `2.2.1.18` · error `4.01.04.002` |
+| Cascada Motor precio | MP ↔ PE ↔ DW | **2.5.1.21** · **2.5.1.19** |
 | Cascada dimensión→molécula ALM | **Depósito Web** ↔ **Bazzar tienda** | `2.5.1.20` |
 
 Al **aplicar este protocolo en un módulo nuevo**, declarar en el CHUSAR del módulo: *«Hermano de: W / AM / PE / …»* y listar archivos espejo.

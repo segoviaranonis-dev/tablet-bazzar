@@ -3,7 +3,7 @@
 **Tipo:** App Next.js B2C  
 **Repo:** `bazzar-web/`  
 **Estado:** ✅ Etapa catálogo :3002 **CERRADA** 2026-07-16  
-**Última actualización:** 2026-08-06 · Filtros siameses DW↔BZ (**2.5.1.20**) · Motor CASO DPE (**2.5.1.19**) · FOCO Final Bazzar Web  
+**Última actualización:** 2026-08-06 · Motor cascada siamese (**2.5.1.21**) · DW↔BZ (**2.5.1.20**) · CASO NORMAL (**2.5.1.19**)  
 
 **Etapa FOCO:** [ETAPA_FINAL_BAZZAR_WEB_20260806.md](../../4_etapas/ETAPA_FINAL_BAZZAR_WEB_20260806.md) · `FINAL-BAZZAR-WEB-20260806`  
 **CHUSAR lanzamiento:** [CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md](./CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md) (**2.5.1.18**)  
@@ -28,6 +28,7 @@ E-commerce **cliente final Bazzar**. Separado de RIMEC Web (B2B mayoristas).
 
 | Código | Doc | Tema |
 |--------|-----|------|
+| **2.5.1.21** | **[CHUSAR_MOTOR_PRECIO_CASCADA_SIAMESE_20260806.md](./CHUSAR_MOTOR_PRECIO_CASCADA_SIAMESE_20260806.md)** | Motor Guardián · cascada PE siamese · UI flotante · deploy Report |
 | **2.5.1.20** | **[CHUSAR_FILTROS_SIAMESES_DEPOSITO_BAZZAR_CATALOGO_20260806.md](./CHUSAR_FILTROS_SIAMESES_DEPOSITO_BAZZAR_CATALOGO_20260806.md)** | Cascada dimensión→molécula **DW↔BZ** · AB-CR tipología · **2.2.1.44** |
 | **2.5.1.19** | **[CHUSAR_MOTOR_PRECIO_CASO_DPE_NORMAL_20260806.md](./CHUSAR_MOTOR_PRECIO_CASO_DPE_NORMAL_20260806.md)** | Motor CASO ← DPE · etiqueta **NORMAL** (no REGULAR) · sdrm3901 |
 | **2.5.1.18** | **[CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md](./CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md)** | **FOCO** Final Bazzar Web · go-live **01-09-2026** · etapa `FINAL-BAZZAR-WEB-20260806` |
