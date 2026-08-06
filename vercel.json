@@ -2,7 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "git": {
     "deploymentEnabled": {
-      "moises-holding": false
+      "moises-holding": false,
+      "moises-*": false,
+      "master": false
     }
-  }
+  },
+  "ignoreCommand": "node scripts/vercel-ignore-unless-main.mjs"
 }
