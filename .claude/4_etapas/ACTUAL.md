@@ -1,51 +1,32 @@
 # ACTUAL — 2026-08-05
 
-**Actualizado:** 2026-08-05 · **Nueva etapa** verificación orilla `rimecpy-bit` / moria_moises (esta noche)  
-**Shibboleth:** Andrés, el que viene. Protocolo Moises Activado.
+**Actualizado:** 2026-08-05 · reporte SR **enviado** · **esperando respuesta**  
+**Shibboleth:** Andrés, el que viene. CHUNA activo · Moria + ACTUAL acatados.
 
 ---
 
-## 🟢 FOCO ESTA NOCHE — Verificación orilla Moises
+## 🟡 FOCO — Acusación oversell CP · esperando respuesta
 
 | Campo | Valor |
 |-------|--------|
-| **Code** | `MOISES-VERIF-ORILLA-20260805` |
-| **Doc** | [ETAPA_MOISES_VERIF_ORILLA_20260805.md](./ETAPA_MOISES_VERIF_ORILLA_20260805.md) |
-| **Repo** | https://github.com/rimecpy-bit/moria_moises.git |
-| **Acceso agente (apertura)** | 🔴 404 / not found sin auth — falta clone local o auth |
-| **Meta** | Misma sustancia Chusar · solo cambia entorno |
+| **Code** | `CP-OVERSELL-ACUSACION-20260805` |
+| **Doc** | [ETAPA_CP_OVERSELL_ACUSACION_20260805.md](./ETAPA_CP_OVERSELL_ACUSACION_20260805.md) |
+| **CHUSAR** | [CHUSAR_ACUSACION_OVERSELL_CP_CARRITO_20260805.md](../2_modulos/2.2_rimec_web/CHUSAR_ACUSACION_OVERSELL_CP_CARRITO_20260805.md) (**2.2.1.43**) |
+| **Estado** | ⏳ **Reporte enviado** · **esperando respuesta** Director / operador SR |
+| **Reporte** | FC **1426/26** (PV 4099↔4100) + verificación **0421/0598/8894** |
+| **Veredicto BD** | **0 oversell** en 4 proformas · rojo Excel = desfase PV legal vs Nexus |
 
 ---
 
-## 🟢 Padre — Moises (sigue viva)
+## 🟡 Paralelo (sin cerrar)
 
-| Campo | Valor |
-|-------|--------|
-| **Code** | `MOISES-20260804` |
-| **Doc** | [ETAPA_MOISES_20260804.md](./ETAPA_MOISES_20260804.md) |
-| **Carta** | [ETAPA_MOISES_CARTA_CONSTITUCION_20260804.md](./ETAPA_MOISES_CARTA_CONSTITUCION_20260804.md) |
-| **Protocolo vivo** | **Protocolo Moises Activado** (`5.01.00.021`) |
-
----
-
-## 🟡 Parqueado (sin inercia)
-
-| Campo | Valor |
-|-------|--------|
-| Backlog | [BACKLOG_PARQUEADO_CAMBIO_FOCO_20260805.md](./BACKLOG_PARQUEADO_CAMBIO_FOCO_20260805.md) |
-| Cocina 06:00 | Solo si Director nombra **A1** |
-| TRP Compra PE-237 | ✅ **Documenta + publica** **2.5.1.17** · CUADRA · Protocolo Chusar Activado |
-
----
-
-## Secuencia Moises
-
-1. ✅ Estipular  
-2. ✅ Auditar + Protocolo Moises  
-3. ✅ Push orilla actual  
-4. ✅ Deploy orilla actual  
-5. 🟢 **EN CURSO** verificación orilla `rimecpy-bit` / moria_moises (esta etapa)  
-6. ⏳ Q1–Q7 + **moria-moises** contenido completo  
+| Code | Doc | Nota |
+|------|-----|------|
+| `MOISES-VERIF-ORILLA-20260805` | [ETAPA_MOISES_VERIF_ORILLA_20260805.md](./ETAPA_MOISES_VERIF_ORILLA_20260805.md) | Orilla · pausado |
+| Cascada filtros **2.2.1.42** | [CHUSAR_CASCADA_FILTROS_CATALOGO_20260805.md](../2_modulos/2.2_rimec_web/CHUSAR_CASCADA_FILTROS_CATALOGO_20260805.md) | Local · sin deploy |
+| Instalación filtros PE/AB-CR **2.2.1.47** | [CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md](../2_modulos/2.2_rimec_web/CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md) | Checklist portar a otros módulos · Documenta 2026-08-06 |
+| Protocolo 2 orígenes **2.2.1.46** | [CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md](../2_modulos/2.2_rimec_web/CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md) | CP∥PE · 4 cañerías · Documenta 2026-08-06 |
+| AB-CR ESCOLAR **2.2.1.45** | [CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md](../2_modulos/2.2_rimec_web/CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md) | ✅ UI local · `4.01.04.008` · ⏳ deploy |
 
 ---
 
@@ -53,5 +34,5 @@
 
 | Ítem | Estado |
 |------|--------|
-| Cutover `rimec.py` / `rimecpy-bit` | **No** hasta verificación + orden |
+| `rimec-web` prod | Sellado `f408fc2` · **no push** hasta cierre u orden directa |
 | Portal | http://localhost:3004/etapas |

@@ -1,54 +1,50 @@
 ---
-description: Hermanos siameses — filtro Tipo AM ↔ RIMEC Web (paridad obligatoria)
+description: Hermanos siameses — protocolo unificado (venta / filtros / grillas)
 alwaysApply: true
 ---
 
-# CHUSAR — Hermanos siameses (filtro Tipo)
+# CHUSAR — Protocolo hermanos siameses (maestro)
 
-**Doc:** `.claude/2_modulos/2.2_rimec_web/CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md` (`2.2.1.18`)  
-**Error lección:** `4.01.04.002`
+**Doc maestro (LEER COMPLETO al activar):**  
+`.claude/2_modulos/2.2_rimec_web/CHUSAR_PROTOCOLO_HERMANOS_SIAMESES.md` (**2.2.1.44**)
 
-## Pareja
+**Palabras que obligan a abrir el maestro:**  
+**aplica el protocolo hermanos siameses** · **hermanos siameses** · **protocolo hermanos siameses**
 
-| Grilla | App | Canónico |
-|--------|-----|----------|
-| Alejandro Magno | Report `/herramienta-reposicion` | `report/src/lib/filtros/filtro-tipo-canonico.ts` |
-| Catálogo vendedores | RIMEC Web CP/PE | `rimec-web/lib/filtros/filtro-tipo-canonico.ts` |
+## Qué hacer (agente)
 
-## Ley
+1. Leer el maestro §0–§8 **antes** de editar otro módulo.  
+2. Identificar hermanos (Web · AM · Stock PE · extensiones).  
+3. Aplicar checklist §8 (grupo uno · cascada · mostrar todo · cardKey).  
+4. Fix en un hermano → alinear los demás **el mismo turno** (o deuda + orden Director).  
+5. Smoke: `rimec-web/scripts/_audit_venta_100.ts` cuando toque catálogo PE/LIQ.
 
-1. **Misma prioridad:** Liquidación → Promo (`es_promo` / cadena PROMOCIONAL / caso) → Carteras/Normal.
-2. **Badge = filtro.** Si late PROMO, **no** puede pasar chip **Normal**.
-3. **Si se repara en RIMEC Web → en el mismo turno chequear y alinear Alejandro Magno** (y al revés).
-4. **Prohibido** dejar una grilla “arreglada” y la otra divergente sin deuda documentada + orden Director.
+## Núcleo operativo (no omitir)
 
-## Al tocar Tipo / promo / liquidación / BCL
+| Capa | Ley |
+|------|-----|
+| **Grupo uno** | Diccionario PE · triunvirato Excel · **no** `COD.GRUPO=1` · BCL fuera de DPE |
+| **Cascada** | Dimensión acota LÍNEA/facetas · replace meta · multi-marca = N RPC o scan |
+| **Mostrar todo** | Cursores CP∥PE · avance `batchSize` · re-procesar lote con `exclude` |
+| **Tarjeta** | SKU L+R+M · color = variante · comparar `cardKey` |
+| **Tipo** | LIQ → Promo → Normal · badge = filtro · AM↔Web mismos archivos canónicos |
 
-- Editar **ambos** módulos canónicos (o copiar la misma regla).
-- Smoke: Normal no lista línea con badge PROMO (ej. PE 1395).
-- Actualizar el CHUSAR `2.2.1.18` si cambia la ley.
+## Pareja Tipo (hijo 2.2.1.18)
 
-## Cabecera siamese (preventa + llegada)
+| Grilla | Canónico |
+|--------|----------|
+| Alejandro Magno | `report/src/lib/filtros/filtro-tipo-canonico.ts` |
+| RIMEC Web | `rimec-web/lib/filtros/filtro-tipo-canonico.ts` |
 
-Al tocar **`nro_pedido_externo`** (Nº preventa Carlos) o propagación cabecera PP:
+## Errores lección
 
-- Seguir mapa `CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO.md` (`2.3.1.31`).
-- **Mismo turno:** vistas `v_stock_*` · AM · Web · PDF FI · aprobaciones.
-- Par dato duro: `quincena_arribo_id` 1–24 · [FECHA_DE_EMBARQUE.md](../../.claude/2_modulos/2.3_report/proceso_importacion/FECHA_DE_EMBARQUE.md).
+- `4.01.04.002` — Normal deja pasar PROMO  
+- `4.01.04.007` — LÍNEA 841 · grilla corta LIQ · grupo uno mal leído  
 
-## Grada siamese Bazzar (Estadísticas = base)
+## Extensiones
 
-**Doc:** `2.5.1.10` · `CHUSAR_GRADA_SIAMESE_ESTADISTICAS_STOCK_20260802.md`
+- Preventa + quincena: `2.3.1.31`  
+- Grada Bazzar: `2.5.1.10`  
 
-| Hermano | App |
-|---------|-----|
-| Estadísticas de Stock | Bazzar `:3002/auditoria-local` (**base**) |
-| Catálogo tienda | Bazzar `:3002/catalogo` |
-| Depósito Web | Report `/bazzar-web/deposito-web` |
-
-1. Chip **talle + cantidad** (no solo etiqueta).
-2. Orden 638: `1·2·3 → P·M·G·GG → 4·6·8 → 10…` · 654: numérico etiqueta.
-3. Origen caja cerrada 8/12 **no** oculta qty en venta tienda (caja abierta ALM).
-4. Fix grada en uno → alinear los tres el **mismo turno**.
-
+**Prohibido** aplicar “siameses” solo copiando UI sin leer el maestro.  
 **Shibboleth:** Andrés, el que viene.

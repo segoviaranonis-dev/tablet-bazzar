@@ -112,10 +112,42 @@
               "nuevo": true
             },
             {
+              "code": "2.2.1.47",
+              "slug": "protocolo-instalacion-filtros-pe-abcr",
+              "label": "Protocolo · instalación filtros PE/AB-CR",
+              "lead": "Checklist portar ESCOLAR/AB-CR/Tipo a otros módulos · anti-patrones -8 · Documenta 2026-08-06.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.46",
+              "slug": "protocolo-dos-origenes-cuatro-canerias",
+              "label": "Protocolo · dos orígenes · cuatro cañerías",
+              "lead": "CP biblioteca ∥ PE diccionario · 654/638 · Promo PROMO+PRO · Normal · LIQ solo PE · Documenta 2026-08-06.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.45",
+              "slug": "abcr-escolar-chip",
+              "label": "AB-CR · chip ESCOLAR (d45=08)",
+              "lead": "Referencia completa · id -8 · 4.01.04.008 RESUELTO local · instalación 2.2.1.47 · Documenta 2026-08-06.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.44",
+              "slug": "protocolo-hermanos-siameses",
+              "label": "Protocolo unificado · Hermanos siameses",
+              "lead": "MAESTRO · aplica el protocolo hermanos siameses · grupo uno · cascada · mostrar todo · cardKey · 4.01.04.007 · Documenta 2026-08-06.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PROTOCOLO_HERMANOS_SIAMESES.md",
+              "nuevo": true
+            },
+            {
               "code": "2.2.1.18",
               "slug": "filtro-tipo-hermanos-siameses",
               "label": "Filtro Tipo · hermanos siameses",
-              "lead": "LIQ>Promo>Normal · AM↔Web · respuesta visual 3→2→1→Aplicando · no bloquea multiselección.",
+              "lead": "Hijo 2.2.1.44 · LIQ>Promo>Normal · AM↔Web · respuesta visual 3→2→1→Aplicando.",
               "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md",
               "nuevo": true
             },

@@ -44,6 +44,14 @@
 
 *Detalle: `.claude/5_errores/detalle/4.01.04.006_rimec-web-doble-descuento-snapshot-lpn.md`* · ✅ **FIX local + RECALC PE-237-010** 2026-08-03 · pedido **237** · proveedor **654** · doc `2.2.1.40` · ⏳ deploy Web
 
+### 4.01.04.007 · Cascada LÍNEA 841 · grilla LIQ corta (hasMore) · malentendido grupo uno
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.007_rimec-web-paginacion-cascada-grupo-uno.md`* · ✅ **FIX local** 2026-08-06 · paginación TODOS + multi-marca + protocolo maestro **2.2.1.44** · ⏳ deploy Web
+
+### 4.01.04.008 · AB-CR ESCOLAR chip invisible (`normalizeFilterItems` tira id -8)
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.008_rimec-web-abcr-escolar-chip-invisible.md`* · ✅ **RESUELTO local** 2026-08-06 · `isAbcrSyntheticTipoId(-8)` · docs **2.2.1.45** · **2.2.1.47** · ⏳ deploy Web
+
 ### 4.01.05.001 · Pronta entrega muestra tarjetas Compra previa (quincenas PP)
 
 *Detalle: `.claude/5_errores/detalle/4.01.05.001_rimec-web-pe-muestra-tarjetas-cp.md`* · ✅ **RESUELTO UI 2026-07-17** · deferred origen + validación warm cache · doc `2.2_rimec_web/CHUSAR_CORTE_20260717_HEADER_PRECIOS_PE.md`

@@ -137,8 +137,14 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 ### **Handoff previo a nueva etapa (2026-07-20)**
 - **[CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md](./CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md)** — bug urgente RIMEC Web pendiente de ruta/síntoma · Report local `.next` pendiente · portón de nueva etapa
 
+### **Protocolo unificado · Hermanos siameses (2026-08-06 · ★ Documenta · MAESTRO)**
+- **[CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md](./CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md)** — **2.2.1.47** · checklist instalación AB-CR/ESCOLAR/Tipo PE en otros módulos · Documenta 2026-08-06
+- **[CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md](./CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md)** — **2.2.1.46** · CP biblioteca ∥ PE diccionario · 4 cañerías 654/638 · Promo=PROMO+PRO · Normal · LIQ solo PE · Documenta 2026-08-06
+- **[CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md](./CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md)** — **2.2.1.45** · AB-CR ESCOLAR referencia completa · `4.01.04.008` ✅ local · Documenta 2026-08-06
+- **[CHUSAR_PROTOCOLO_HERMANOS_SIAMESES.md](./CHUSAR_PROTOCOLO_HERMANOS_SIAMESES.md)** — **2.2.1.44** · palabra reservada **aplica el protocolo hermanos siameses** · grupo uno · cascada · mostrar todo · paginación · cardKey · checklist · errores `4.01.04.007` · regla Cursor
+
 ### **Filtro Tipo · hermanos siameses AM↔Web (2026-07-20 · ★ Documenta + fix)**
-- **[CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md](./CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md)** — **2.2.1.18** · LIQ>Promo>Normal · `es_promo` gana · filtro `3→2→1→Aplicando` en ambas grillas · error `4.01.04.002`
+- **[CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md](./CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md)** — **2.2.1.18** · hijo del maestro **2.2.1.44** · LIQ>Promo>Normal · `es_promo` gana · filtro `3→2→1→Aplicando` · error `4.01.04.002`
 - **[CHUSAR_HOTFIX_FI_CASOS_DISTINTOS_20260722.md](./CHUSAR_HOTFIX_FI_CASOS_DISTINTOS_20260722.md)** — **2.2.1.19** · R-FI-1 · no mezclar CASOS en una FI · error `4.01.06.001` · deploy `30a23b8`
 - **[CHUSAR_HOTFIX_FI_PROMO_LIQUIDACION_COD_GRUPO_20260722.md](./CHUSAR_HOTFIX_FI_PROMO_LIQUIDACION_COD_GRUPO_20260722.md)** — **2.2.1.20** · R-FI-2 · LIQ≠PROMO · COD.GRUPO Carlos dígito cadena · error `4.01.06.002`
 
@@ -177,6 +183,10 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 ### **Hotfix AB-CR CARTERAS/ANTEOJOS · siamese Report (2026-07-27 · ★ Documentación Chusar + publica)**
 - **[CHUSAR_HOTFIX_ABCR_CARTERAS_ANTEOJOS_WEB_20260727.md](./CHUSAR_HOTFIX_ABCR_CARTERAS_ANTEOJOS_WEB_20260727.md)** — **2.2.1.32** · `tipo_ids=-1/-2` · traductor PE 90000 · Vizzano 60 carteras + 4 anteojos · error `4.01.04.003`
 
+### **Cascada filtros catálogo · dimensión + molécula (2026-08-05 · ★ Documenta · local)**
+- **[CHUSAR_ACUSACION_OVERSELL_CP_CARRITO_20260805.md](./CHUSAR_ACUSACION_OVERSELL_CP_CARRITO_20260805.md)** — **2.2.1.43** · SR PV 4099/4100 · FC 1426/26 · ⏳ **reporte enviado · esperando respuesta** · [etapa](../../4_etapas/ETAPA_CP_OVERSELL_ACUSACION_20260805.md)
+- **[CHUSAR_CASCADA_FILTROS_CATALOGO_20260805.md](./CHUSAR_CASCADA_FILTROS_CATALOGO_20260805.md)** — **2.2.1.42** · hotfix **2026-08-06** bug urgente Marca→Línea 841 · `needRowsScan`+`acotarMetaRpcDesdeFilas` · `genero_codigos` · MIG-199 · ⛔ sin deploy
+
 ### **Doble descuento snapshot↔LPN · Patricia / 654 (2026-08-03 · ★ Documenta)**
 - **[CHUSAR_DOBLE_DESCUENTO_SNAPSHOT_LPN_20260803.md](./CHUSAR_DOBLE_DESCUENTO_SNAPSHOT_LPN_20260803.md)** — **2.2.1.40** · F5 20 % + cascada doble · error `4.01.04.006` · pedido **237** · FI **PE-237-010** · recalc APPLY · anti-propagación 654
 
@@ -188,7 +198,7 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 
 ---
 
-**Última actualización:** 2026-08-03 · **2.2.1.40** doble descuento snapshot/LPN · `4.01.04.006`
+**Última actualización:** 2026-08-05 · **2.2.1.43** acusación oversell CP carrito · etapa observación
 
 ---
 
