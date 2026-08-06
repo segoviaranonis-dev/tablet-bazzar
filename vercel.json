@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd nexus-navegador-holding && npm install && npm run build",
-  "installCommand": "echo monorepo-navegador-root",
-  "outputDirectory": "nexus-navegador-holding/.next",
-  "framework": null,
-  "regions": ["gru1"]
+  "git": {
+    "deploymentEnabled": {
+      "moises-holding": false
+    }
+  }
 }
