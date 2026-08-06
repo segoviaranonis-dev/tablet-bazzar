@@ -7,7 +7,9 @@
 **Referencia viva ESCOLAR:** [CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md](./CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md) (**2.2.1.45**)  
 **Marco CP∥PE:** [CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md](./CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md) (**2.2.1.46**)  
 **Siameses:** [CHUSAR_PROTOCOLO_HERMANOS_SIAMESES.md](./CHUSAR_PROTOCOLO_HERMANOS_SIAMESES.md) (**2.2.1.44**)  
-**Estado:** 🟢 Listo para órdenes de instalación módulo a módulo
+**Post-auditoría grilla∥meta:** [CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md](./CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md) (**2.2.1.48**)  
+**Sesión día + precio:** [CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md](./CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md) (**2.2.1.50**)  
+**Estado:** 🟢 Listo para órdenes de instalación módulo a módulo · referencia prod `bcc476c`
 
 ---
 

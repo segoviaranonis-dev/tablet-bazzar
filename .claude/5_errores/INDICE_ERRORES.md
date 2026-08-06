@@ -50,11 +50,11 @@
 
 ### 4.01.04.008 · AB-CR ESCOLAR chip invisible (`normalizeFilterItems` tira id -8)
 
-*Detalle: `.claude/5_errores/detalle/4.01.04.008_rimec-web-abcr-escolar-chip-invisible.md`* · ✅ **RESUELTO local** 2026-08-06 · `isAbcrSyntheticTipoId(-8)` · docs **2.2.1.45** · **2.2.1.47** · ⏳ deploy Web
+*Detalle: `.claude/5_errores/detalle/4.01.04.008_rimec-web-abcr-escolar-chip-invisible.md`* · ✅ **RESUELTO prod** 2026-08-06 · docs **2.2.1.45** · **2.2.1.47** · sesión **2.2.1.50** · lote `bcc476c`
 
 ### 4.01.04.009 · Tachado LPN = LPC03 (precio venta PE)
 
-*Detalle: `.claude/5_errores/detalle/4.01.04.009_rimec-web-lpn-lpc03-tachado-igual.md`* · ✅ **FIX + deploy** 2026-08-06 · `precioLista` ley ×1.12 · doc **2.2.1.49** · orden **depliega**
+*Detalle: `.claude/5_errores/detalle/4.01.04.009_rimec-web-lpn-lpc03-tachado-igual.md`* · ✅ **RESUELTO prod** `bcc476c` · doc **2.2.1.49** · sesión **2.2.1.50** · paréntesis bug **cerrado**
 
 ### 4.01.05.001 · Pronta entrega muestra tarjetas Compra previa (quincenas PP)
 
@@ -296,7 +296,7 @@
 
 ### 4.05.04.001 · Nexus_Core `origin` apunta a tablet-bazzar.git
 
-*Detalle: `.claude/5_errores/detalle/4.05.04.001_nexus-core-origin-apunta-tablet-bazzar.md`* · 🟡 **PARKING FIN DE SEMANA** · prod OK hoy · no push desde raíz
+*Detalle: `.claude/5_errores/detalle/4.05.04.001_nexus-core-origin-apunta-tablet-bazzar.md`* · 🟡 **MITIGADO PARCIAL** · Preview `moises-holding` apagado (`vercel.json`) · remote canónico aún parking · lección 2026-08-06 · sesión **2.2.1.50**
 
 ---
 

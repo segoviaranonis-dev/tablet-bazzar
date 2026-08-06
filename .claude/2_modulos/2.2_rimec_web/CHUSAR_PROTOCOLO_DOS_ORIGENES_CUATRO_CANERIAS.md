@@ -143,6 +143,9 @@ Docs fusión / latidos: `CHUSAR_CATALOGO_TODOS_CP_PE_FUSION.md` · **2.2.1.21.G1
 | **2.2.1.25** · **2.2.1.27** · **2.2.1.28** | Tres hermanos / LEY TODOS | PE + home |
 | **2.2.1.45** | AB-CR ESCOLAR | Subgrupo PE (no es LIQ) · referencia completa |
 | **2.2.1.47** | Instalación filtros PE/AB-CR | Checklist portar a otros módulos |
+| **2.2.1.48** | Auditoría grilla∥molécula | Misma ley SQL/meta · solo-PE sintéticos · live |
+| **2.2.1.49** | Hotfix LPN≠LPC03 | Precio venta · `4.01.04.009` |
+| **2.2.1.50** | Sesión 2026-08-06 | Mapa día · cierre paréntesis |
 | **2.3.1.10.1.2** | Diccionario grupo uno Excel | Decoder 654/638 |
 | **2.3.1.10.1.2.1** | Ley DPE sin BCL | PE no tipifica con BCL |
 | Errores | `4.01.04.002` · `4.01.04.007` · `4.01.04.008` | Promo/Normal · paginación · chip escolar |

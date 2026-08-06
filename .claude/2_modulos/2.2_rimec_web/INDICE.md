@@ -138,11 +138,12 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **[CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md](./CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md)** — bug urgente RIMEC Web pendiente de ruta/síntoma · Report local `.next` pendiente · portón de nueva etapa
 
 ### **Protocolo unificado · Hermanos siameses (2026-08-06 · ★ Documenta · MAESTRO)**
-- **[CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md](./CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md)** — **2.2.1.49** · tachado LPN≠LPC03 · PE+CP · error `4.01.04.009` · Documenta + depliega 2026-08-06
-- **[CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md](./CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md)** — **2.2.1.48** · auditoría grilla∥molécula · solo-PE AB-CR · acotar sintéticos · live cliente · Documenta 2026-08-06
+- **[CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md](./CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md)** — **2.2.1.50** · sesión día · mapa 45–49 · errores · deploy `bcc476c` · paréntesis cerrado · Documenta 2026-08-06
+- **[CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md](./CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md)** — **2.2.1.49** · tachado LPN≠LPC03 · PE+CP · `4.01.04.009` ✅ prod · Documenta + depliega 2026-08-06
+- **[CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md](./CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md)** — **2.2.1.48** · auditoría grilla∥molécula · solo-PE AB-CR · live · en `bcc476c` · Documenta 2026-08-06
 - **[CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md](./CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md)** — **2.2.1.47** · checklist instalación AB-CR/ESCOLAR/Tipo PE en otros módulos · Documenta 2026-08-06
 - **[CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md](./CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md)** — **2.2.1.46** · CP biblioteca ∥ PE diccionario · 4 cañerías 654/638 · Promo=PROMO+PRO · Normal · LIQ solo PE · Documenta 2026-08-06
-- **[CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md](./CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md)** — **2.2.1.45** · AB-CR ESCOLAR referencia completa · `4.01.04.008` ✅ local · Documenta 2026-08-06
+- **[CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md](./CHUSAR_ABCR_ESCOLAR_CHIP_20260806.md)** — **2.2.1.45** · AB-CR ESCOLAR · `4.01.04.008` ✅ prod · Documenta 2026-08-06
 - **[CHUSAR_PROTOCOLO_HERMANOS_SIAMESES.md](./CHUSAR_PROTOCOLO_HERMANOS_SIAMESES.md)** — **2.2.1.44** · palabra reservada **aplica el protocolo hermanos siameses** · grupo uno · cascada · mostrar todo · paginación · cardKey · checklist · errores `4.01.04.007` · regla Cursor
 
 ### **Filtro Tipo · hermanos siameses AM↔Web (2026-07-20 · ★ Documenta + fix)**

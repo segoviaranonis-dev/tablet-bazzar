@@ -6,7 +6,8 @@
 **App:** RIMEC Web (`rimec-web`) · CP + PE  
 **Error:** `4.01.04.009`  
 **Severidad:** 🔴 crítica (precio de venta / integridad comercial)  
-**Deploy prod:** `bcc476c` · alias https://rimec.com.py · Vercel READY 2026-08-06
+**Deploy prod:** `bcc476c` · alias https://rimec.com.py · Vercel READY 2026-08-06  
+**Sesión día:** [CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md](./CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md) (**2.2.1.50**) · paréntesis bug ✅ cerrado
 
 ---
 

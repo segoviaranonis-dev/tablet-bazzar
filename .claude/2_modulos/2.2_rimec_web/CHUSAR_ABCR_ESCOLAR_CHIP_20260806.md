@@ -3,10 +3,11 @@
 **Código:** `2.2.1.45`  
 **Fecha:** 2026-08-06 (ampliado Documenta · Protocolo Chusar activado)  
 **App referencia:** RIMEC Web `:3001` · paridad parcial Report  
-**Error:** [`4.01.04.008`](../../5_errores/detalle/4.01.04.008_rimec-web-abcr-escolar-chip-invisible.md) ✅ RESUELTO local  
+**Error:** [`4.01.04.008`](../../5_errores/detalle/4.01.04.008_rimec-web-abcr-escolar-chip-invisible.md) ✅ **RESUELTO prod**  
 **Instalación en otros módulos:** [CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md](./CHUSAR_PROTOCOLO_INSTALACION_FILTROS_PE_ABCR.md) (**2.2.1.47**)  
 **Marco orígenes:** [CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md](./CHUSAR_PROTOCOLO_DOS_ORIGENES_CUATRO_CANERIAS.md) (**2.2.1.46**)  
-**Estado:** 🟢 UI local OK (Director) · ⏳ sin deploy prod (`f408fc2`)
+**Sesión día:** [CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md](./CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md) (**2.2.1.50**)  
+**Estado:** 🟢 Prod https://rimec.com.py · lote `bcc476c` (cadena ESCOLAR del día)
 
 ---
 
