@@ -40,7 +40,7 @@
       "appKey": "report",
       "docIndice": ".claude/2_modulos/2.3_report/INDICE.md",
       "gitPath": "report/",
-      "ultimoDeployActivo": false
+      "ultimoDeployActivo": true
     },
     {
       "code": "2.4",
@@ -61,7 +61,7 @@
       "appKey": "bazzarWeb",
       "docIndice": ".claude/2_modulos/2.5_bazzar_web/INDICE.md",
       "gitPath": "bazzar-web/",
-      "ultimoDeployActivo": true
+      "ultimoDeployActivo": false
     }
   ]
 }

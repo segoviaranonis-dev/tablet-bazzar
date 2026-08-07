@@ -17,7 +17,8 @@
 **Docs:** `memoria-web/CIERRE_FINAL_INDEPENDENCIA_20260807.md`
 
 Producto: Situación financiera / CP — pausa hasta orden.  
-**Bazzar Web 2026-08-07:** Documenta + deploy **2.5.1.23** (grilla 638 precio×talle · catálogo admin). Etapa Final sigue abierta (F2–F4).  
+**Report 2026-08-07:** Documenta + deploy **2.3.1.3.6** Aprobaciones agilidad/plazo (queja lentitud).  
+**Bazzar Web:** **2.5.1.23** en prod · etapa Final F2–F4 abierta.  
 2FA/billing cuenta Héctor: tema aparte.
 
 **Nota Director (privada · no comunicar a Andrés aún):** a futuro la orilla Andrés podría ser principal y la actual respaldo — **nueva etapa / orden explícita** cuando diga; no reabre este hilo solo.

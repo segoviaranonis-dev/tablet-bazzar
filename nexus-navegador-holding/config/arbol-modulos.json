@@ -673,13 +673,22 @@
               "nuevo": true,
               "children": [
                 {
+                  "code": "2.3.1.3.6",
+                  "slug": "aprobaciones-agilidad-plazo-perf-20260807",
+                  "label": "Agilidad · plazo real · anti-lentitud",
+                  "lead": "Retry FIs · obs lazy · plazo FI→PVR · lista plegada · Documenta+deploy 2026-08-07.",
+                  "appPath": "/aprobaciones",
+                  "md": ".claude/2_modulos/2.3_report/aprobaciones/CHUSAR_APROBACIONES_AGILIDAD_PLAZO_PERF_20260807.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.1.3.0.2",
                   "slug": "aprobaciones-caso-pe-corto",
                   "label": "CASO PE corto",
                   "lead": "Campo CASO en célula = PE-LIQ · PE-NORMAL · PE-PROMO · PE-COMUN (no batch pe-import).",
                   "appPath": "/aprobaciones",
                   "md": ".claude/2_modulos/2.1_control_central/modules/aprobacion_pedidos/CHUSAR_APROBACIONES_CASO_PE_CORTO_20260726.md",
-              "nuevo": true
+                  "nuevo": false
                 },
                 {
                   "code": "2.3.1.3.2",
@@ -688,7 +697,7 @@
                   "lead": "Sin pestaña Reservadas · BD RESERVADA=Pendiente · SSR sin hang · deploy 3588f9c.",
                   "appPath": "/aprobaciones",
                   "md": ".claude/2_modulos/2.3_report/aprobaciones/CHUSAR_TABS_PENDIENTE_APROBADO_ANULADO_20260729.md",
-                  "nuevo": true
+                  "nuevo": false
                 },
                 {
                   "code": "2.3.1.3.3",
@@ -697,7 +706,7 @@
                   "lead": "Cliente · marca · vendedor · C.Art · GRUPO2 DPE · línea/ref · fecha · PV.",
                   "appPath": "/aprobaciones",
                   "md": ".claude/2_modulos/2.3_report/aprobaciones/CHUSAR_APROBACIONES_INDAGACION_FILTROS_20260804.md",
-                  "nuevo": true
+                  "nuevo": false
                 }
               ]
             },

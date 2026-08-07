@@ -4,7 +4,7 @@
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
 **Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
-**Última actualización:** 2026-07-22 · PP abierto **20.532** · AM cache «Sin llegada» `a3fc3fd` · Admin IC build `c1ef8eb`
+**Última actualización:** 2026-08-06 · **FOCO Situación financiera Rimec (2.3.1.50)** · constitución NIC/IFRS
 
 ---
 
@@ -23,7 +23,7 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - BAZZAR (Naranja #ea580c)
 
 **Módulos activos:**
-- ✅ Aprobaciones (NIIF 100%) · **tabs Pendiente/Aprobado/Anulado** [aprobaciones/CHUSAR_TABS…](aprobaciones/CHUSAR_TABS_PENDIENTE_APROBADO_ANULADO_20260729.md) **2.3.1.3.2** 🟢 2026-07-29 · alertas **2.3.1.3.1** · **indagación multi-filtro** **2.3.1.3.3** 🟢 2026-08-04
+- ✅ Aprobaciones (NIIF 100%) · **tabs** **2.3.1.3.2** · indagación **2.3.1.3.3** · **agilidad/plazo/perf** **2.3.1.3.6** 🟢 2026-08-07 [CHUSAR](aprobaciones/CHUSAR_APROBACIONES_AGILIDAD_PLAZO_PERF_20260807.md)
 - ✅ **Administrador de Pilares** (`/pilares` — **2.3.5 CERRADA** 2026-06-17)
 - ✅ **RRHH** (`/rrhh` — **2.3.10** · subcuentas 2.3.10.1–2.3.10.2)
 - ✅ **Proceso importación** (`/proceso-importacion` — **2.3.1.7** · **2.3.1.7.2 Importación precios CERRADA** ✅)
@@ -36,8 +36,9 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16
 - **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **⬛ etapa calzado 654 CERRADA** [ETAPA_STOCK_PE_CALZADO_654…](../4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md) 2026-07-29 · **Ley DPE sin BCL** (**2.3.1.10.1.2.1**) · **Asignación descuentos** (**2.3.1.10.1.4**) · **sdrm2121** (**2.3.1.10.1.5**) · **Filtros PE** (**2.3.1.10.1.3**) · **Grada abierta 638** (**2.3.1.10.12**)
 - **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · Rimec **2.3.1.28.10** · multi **2.3.1.28.14** · roles **2.3.1.28.15** · orden tradicional **2.3.1.28.16** · VENDEDOR bloqueado desarrollo **2.3.1.28.17**
-- **Automatización de informes (2.3.1.35)** 🆕 → [automatizacion_informes/INDICE.md](automatizacion_informes/INDICE.md) · `/automatizacion-informes` · Control PE · multi-usuarios/horarios **2.3.1.35.5** · plan PDF→bandeja `PLAN-AUTO-BANDEJA-PE-20260802` · **espíritu cocina 133×LPN/LPC03/LPC04** (**2.3.1.35.11**)
+- **Automatización de informes (2.3.1.35)** 🆕 → [automatizacion_informes/INDICE.md](automatizacion_informes/INDICE.md) · `/automatizacion-informes` · Control PE · multi-usuarios/horarios **2.3.1.35.5** · plan PDF→bandeja `PLAN-AUTO-BANDEJA-PE-20260802` · **espíritu cocina 133×LPN/LPC03/LPC04** (**2.3.1.35.11**) · **cocina ≠ PDF** snapshot (**2.3.1.35.15**)
 - **Mensajes internos (2.3.1.36)** 🆕 → [mensajes_internos/INDICE.md](mensajes_internos/INDICE.md) · `/mensajes-internos` · inbox `usuario_v2` · PDF backend · banquete tipo_v2 **2.3.1.36.6**
+- **📊 Situación financiera Rimec (2.3.1.50)** 🆕 **FOCO** → [situacion_financiera/INDICE.md](situacion_financiera/INDICE.md) · constitución NIC/IFRS · [CHUSAR](situacion_financiera/CHUSAR_SITUACION_FINANCIERA_RIMEC_CONSTITUCION_20260806.md) · etapa [ETAPA_SITUACION_FINANCIERA…](../4_etapas/ETAPA_SITUACION_FINANCIERA_RIMEC_20260806.md)
 - **Etapa unificada** → [ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md](../4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md) · lección [CHUSAR_LECCION_VIOLACIONES…](CHUSAR_LECCION_VIOLACIONES_INFORMES_CORREO_20260801.md)
 - **Depósitos Bazzar (2.3.2.1)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
 - **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
@@ -70,6 +71,9 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 ├── pilares/                     — 2.3.5 Administrador Pilares
 │   ├── INDICE.md
 │   └── CHUSAR_ADMINISTRADOR_PILARES.md
+├── situacion_financiera/        — 2.3.1.50 Situación financiera Rimec (FOCO)
+│   ├── INDICE.md
+│   └── CHUSAR_SITUACION_FINANCIERA_RIMEC_CONSTITUCION_20260806.md
 ├── README.md
 ├── DEPLOY_VERCEL.md
 └── docs/
