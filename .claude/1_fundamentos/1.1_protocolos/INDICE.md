@@ -2,7 +2,7 @@
 
 **Protocolos operativos fundamentales de Nexus Core**
 
-**Ingreso agente (obligatorio):** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` · gato → **7 años**
+**Ingreso agente (obligatorio):** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` · línea 1 = **pregunta trampa** (`5.01.00.025`) · gato = legado
 
 ---
 
@@ -10,13 +10,33 @@
 
 ### **5.01.00.001 Ingreso agente Chuna**
 **Archivo:** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md`  
-**Tema:** Puerta única · shibboleth · rigurosidad portón de obra  
-**Estado:** ✅ ACTIVO — shibboleth vivo = **Protocolo Moises Activado** (2026-08-04)
+**Tema:** Puerta única · pregunta trampa VIVA · rigurosidad portón de obra  
+**Estado:** ✅ ACTIVO — línea 1 = frase trampa · Protocolo Chusar Activado `5.01.00.024`
 
 ### **5.01.00.021 Protocolo Moises Activado**
 **Archivo:** `CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md`  
 **Tema:** Relevo Chusar→Moises · misma planificación · orilla profesional  
 **Estado:** ✅ VIGENTE — etapa `MOISES-20260804`
+
+### **5.01.00.022 Moises · Corte baseline + lotes manuales** 🆕 MOISES post-20260807 · 2026-08-07
+**Archivo:** `CHUSAR_MOISES_CORTE_BASELINE_Y_LOTES_20260807.md`  
+**Tema:** `MOISES-BASELINE-20260807` · punteros en índice · CHANGELOG lotes 1–2×/semana · WhatsApp · sin sync OPS  
+**Estado:** ✅ VIGENTE · changelog: `4_etapas/CHANGELOG_MOISES.md` · etapa: `ETAPA_CORTE_ADMINISTRATIVO_MOISES_BASELINE_20260807.md`
+
+### **5.01.00.023 Moises · Espíritu Héctor–Andrés + examen nivel** 🆕 MOISES post-20260807 · 2026-08-07
+**Archivo:** `CHUSAR_MOISES_ESPIRITU_Y_EXAMEN_ANDRES_20260807.md`  
+**Tema:** No-programadores · docs como guía de actualización · creer≠saber · examen Andrés · zip lo arma Héctor  
+**Estado:** ✅ VIGENTE · examen: `moria_chusar/EXAMEN_NIVEL_ANDRES_MOISES.md`
+
+### **5.01.00.024 Protocolo Chusar Activado (completo) + pregunta trampa + producto 2.6** 🆕 MOISES post-20260807 · 2026-08-07
+**Archivo:** `CHUSAR_PROTOCOLO_CHUSAR_ACTIVADO_COMPLETO_20260807.md`  
+**Tema:** Keyword dispara sistema lotes+canal+espíritu · pregunta trampa línea 1 · **Respaldo activo hermético** USD 28k–42k  
+**Estado:** ✅ VIGENTE · cotización `:3004/cotizacion`
+
+### **5.01.00.025 Pregunta trampa — guía no-programadores** 🆕 MOISES post-20260807 · 2026-08-07
+**Archivo:** `CHUSAR_PREGUNTA_TRAMPA_20260807.md`  
+**Tema:** Frase exacta línea 1 · qué prueba el Director · legado vs vivo · metodología `5.01.00.023`  
+**Estado:** ✅ VIGENTE · padre `5.01.00.024`
 
 ---
 **Archivo:** `workflow_hibrido_cursor_claude.md`  

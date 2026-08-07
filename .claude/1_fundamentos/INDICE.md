@@ -1,9 +1,11 @@
 # 1. FUNDAMENTOS - NEXUS CORE
 
 **Nivel:** PRIMARIO (consulta obligatoria)  
-**Protocolo vivo:** **Protocolo Moises Activado** · `1.1_protocolos/CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md` (`5.01.00.021`) · 2026-08-04
+**Protocolo vivo:** **Protocolo Moises Activado** · `1.1_protocolos/CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md` (`5.01.00.021`) · **Baseline lotes** `5.01.00.022` (`MOISES-BASELINE-20260807`) 🆕 MOISES post-20260807 · 2026-08-07
 
-**Última actualización:** 2026-07-16
+**Última actualización:** 2026-08-07
+
+> **Moises:** entradas `🆕 MOISES post-20260807` = posteriores al baseline. Lotes: `4_etapas/CHANGELOG_MOISES.md`.
 
 ---
 
@@ -12,6 +14,8 @@
 ### **Navegador Holding (2.0)**
 - **`CHUSAR_ORGANIGRAMA_RAMA_UNICA.md`** — Organigrama tarjetas · rama única · fullscreen · prod moriachusar (**2.0.2** · 🆕 2026-07-10)
 - `CHUSAR_NAVEGADOR_PROGRAMA.md` — Programa etapas + documentación
+- **`1.1_protocolos/CHUSAR_PROTOCOLO_CHUSAR_ACTIVADO_COMPLETO_20260807.md`** (**5.01.00.024**) 🆕 MOISES post-20260807 · Protocolo Chusar Activado · producto **2.6 Respaldo** USD 28k–42k · `:3004/cotizacion`
+- **`1.1_protocolos/CHUSAR_PREGUNTA_TRAMPA_20260807.md`** (**5.01.00.025**) 🆕 · Pregunta trampa · línea 1 obligatoria · guía no-programadores
 
 ### **Imágenes (holding)**
 - **`2_modulos/2.1_control_central/docs/LEY_UNIVERSAL_IMAGENES_PRODUCTO.md`** (`2.01.04.021`) — **ENTRADA ÚNICA** · inserción · sm/md/lg · anti-desborde

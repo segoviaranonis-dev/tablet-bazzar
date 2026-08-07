@@ -745,6 +745,11 @@
 | `5.01.03.027` | template instrucciones cursor | `1_fundamentos/1.1_protocolos/template_instrucciones_cursor.md` |
 | `5.01.03.028` | workflow hibrido cursor claude | `1_fundamentos/1.1_protocolos/workflow_hibrido_cursor_claude.md` |
 | `5.01.03.029` | WORKFLOW HIBRIDO ESTABLECIDO | `1_fundamentos/1.1_protocolos/WORKFLOW_HIBRIDO_ESTABLECIDO.md` |
+| `5.01.00.021` | CHUSAR PROTOCOLO MOISES ACTIVADO 20260804 | `1_fundamentos/1.1_protocolos/CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md` |
+| `5.01.00.022` | CHUSAR MOISES CORTE BASELINE Y LOTES 20260807 | `1_fundamentos/1.1_protocolos/CHUSAR_MOISES_CORTE_BASELINE_Y_LOTES_20260807.md` |
+| `5.01.00.023` | CHUSAR MOISES ESPIRITU Y EXAMEN ANDRES 20260807 | `1_fundamentos/1.1_protocolos/CHUSAR_MOISES_ESPIRITU_Y_EXAMEN_ANDRES_20260807.md` |
+| `5.01.00.024` | CHUSAR PROTOCOLO CHUSAR ACTIVADO COMPLETO 20260807 | `1_fundamentos/1.1_protocolos/CHUSAR_PROTOCOLO_CHUSAR_ACTIVADO_COMPLETO_20260807.md` |
+| `5.01.00.025` | CHUSAR PREGUNTA TRAMPA 20260807 | `1_fundamentos/1.1_protocolos/CHUSAR_PREGUNTA_TRAMPA_20260807.md` |
 
 ## Clase 5 · Grupo 02 · Leyes
 

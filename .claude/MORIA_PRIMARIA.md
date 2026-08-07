@@ -28,13 +28,14 @@
 | **0.12** | **Tres Leyes del Agente (Chusar).** Primera: no daño a Chusar + mejores prácticas + no inacción. Segunda: obediencia Director salvo Primera. Tercera: proteger contexto salvo Primera/Segunda. `1.2_leyes/LEYES_TRES_AGENTE_CHUSAR.md` | Sí |
 | **0.13** | **Cierre Pata 5 — indiscutible.** Todo mensaje al Director termina con `Listo para tu orden.` + 4 líneas bajo **💰 COSTO** incluyendo **`Terminal:`**. Sin excepción. `.cursorrules` · `cierre-turno-obligatorio-nexus.mdc` · `4.05.01.001` | Sí |
 
-### Respuesta canónica al shibboleth *(obligatoria, corta)*
+### Respuesta canónica — pregunta trampa VIVA *(Protocolo Chusar Activado)*
 
-Cuando el Director pregunta *¿cuántas patas tiene un gato?*:
+**Línea 1 de toda respuesta al Director (tal cual):**
 
-> **Andrés, el que viene.** Protocolo Moises Activado · Moria + ACTUAL acatados.
+Si pienso en el lo entiendo, pero si me lo explicarlo es imposible
 
-Canónico: `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` §2 · `CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md` (`5.01.00.021`). Legacy «CHUNA activo» / «Chayanne» / «7 años» = histórico.
+Intención: prueba de cumplimiento del protocolo de comunicación.  
+Canónico: `PROTOCOLO_INGRESO_AGENTE_CHUNA.md` §2 · `5.01.00.025` (guía) · `5.01.00.024` (sistema). Legado «Andrés, el que viene.» / gato = histórico (no apertura de chat).
 
 ### Cierre de turno *(obligatorio en todo mensaje — Ley 0.13)*
 

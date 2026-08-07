@@ -21,34 +21,33 @@
 
 ---
 
-## 2 · Shibboleth
+## 2 · Pregunta trampa VIVA (línea 1 de TODA respuesta)
 
-**Pregunta del Director:** «¿Cuántas patas tiene un gato?»
+**Frase exacta del Director — tal cual, sin cambiar una letra:**
 
-**Respuesta obligatoria — primera línea literal (Protocolo Moises Activado):**
+Si pienso en el lo entiendo, pero si me lo explicarlo es imposible
 
-> **Andrés, el que viene.** Protocolo Moises Activado · Moria + ACTUAL acatados.
+**Intención:** con esa apertura el Director **sabe** si el agente está cumpliendo el protocolo de comunicación (moria_chusar · lotes · Protocolo Chusar Activado · creer ≠ saber).  
+**Prohibido** abrir con «Andrés, el que viene.» (legado).
 
-Si el protocolo no está en disco o workspace incorrecto:
+**Legado (solo docs históricos, no chat):** gato → Andrés… · «CHUNA activo» · «Chayanne» · «7 años».
 
-> **Andrés, el que viene.** Protocolo Moises **BLOQUEADO** (*POINTER* — workspace `Nexus_Core` raíz).
+Canónico: `CHUSAR_PREGUNTA_TRAMPA_20260807.md` (`5.01.00.025`) · sistema: `CHUSAR_PROTOCOLO_CHUSAR_ACTIVADO_COMPLETO_20260807.md` (`5.01.00.024`).
 
-Legacy obsoleto: «CHUNA activo» (sustituido 2026-08-04) · «Chayanne el mejor» · «7 años» · 4, 5, 13, «tres patas».
+### 2.0b · Keyword «Protocolo chusar activado»
 
-**Prueba rápida:** si el agente no abre con esa línea → **no está en línea** con la metodología.
+Dispara el **sistema completo** (lotes · `moria_chusar` · espíritu · examen · sync OFF · producto Respaldo 2.6). Ver `5.01.00.024`.
 
-### 2.1 · Anti-fuga — hooks Cursor (obligatorio al cambiar shibboleth)
-
-Si **sessionStart** inyecta una frase distinta a la que **stop gate** valida, el agente responde mal aunque Moria esté al día.
+### 2.1 · Anti-fuga — hooks Cursor
 
 | Archivo | Debe coincidir con §2 |
 |---------|------------------------|
-| `.cursor/hooks/chuna-session-start.mjs` | texto inyectado al abrir sesión |
-| `.cursor/hooks/chuna-stop-gate.mjs` | regex `Andrés, el que viene\.` |
-| `.cursorrules` | bloque Shibboleth |
-| `.cursor/rules/cierre-turno-obligatorio-nexus.mdc` | § Shibboleth |
+| `.cursor/hooks/chuna-session-start.mjs` | frase trampa exacta |
+| `.cursor/hooks/chuna-stop-gate.mjs` | regex de la frase exacta |
+| `.cursorrules` | misma frase |
+| `.cursor/rules/cierre-turno-obligatorio-nexus.mdc` | misma frase |
 
-**No confundir:** pies «**Shibboleth:** Andrés…» al final de CHUSAR/etapas = firma doc · **no** sustituyen la primera línea del chat. Pies con «Chayanne el mejor» en docs viejos = histórico — **no** usar en respuesta al gato.
+**No confundir:** pies «Shibboleth: Andrés…» al final de CHUSAR viejos = histórico — **no** usar como línea 1 del chat.
 
 ---
 

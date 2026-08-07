@@ -30,6 +30,8 @@ Documentada en etapa:
 - [ETAPA_MOISES_20260804.md](../../4_etapas/ETAPA_MOISES_20260804.md)  
 - [ETAPA_MOISES_CARTA_CONSTITUCION_20260804.md](../../4_etapas/ETAPA_MOISES_CARTA_CONSTITUCION_20260804.md)  
 - [ETAPA_CORTE_ADMINISTRATIVO_MOISES_20260804.md](../../4_etapas/ETAPA_CORTE_ADMINISTRATIVO_MOISES_20260804.md)  
+- [ETAPA_CORTE_ADMINISTRATIVO_MOISES_BASELINE_20260807.md](../../4_etapas/ETAPA_CORTE_ADMINISTRATIVO_MOISES_BASELINE_20260807.md) · **5.01.00.022** 🆕 MOISES post-20260807  
+- [CHANGELOG_MOISES.md](../../4_etapas/CHANGELOG_MOISES.md)  
 - [ACTUAL.md](../../4_etapas/ACTUAL.md)
 
 **Secuencia operativa:**
@@ -38,7 +40,14 @@ Documentada en etapa:
 2. Auditar orilla `segoviaranonis-dev`.  
 3. Actualizar productos + docs en git actual.  
 4. Desplegar.  
-5. PC aislada lee Moises → preguntas técnicas → **moria-moises**.
+5. PC aislada lee Moises → preguntas técnicas → **moria-moises**.  
+6. **2026-08-07:** independencia fork Andrés · sync OFF · **corte baseline + lotes manuales** (`5.01.00.022`).
+
+---
+
+## Lotes a Andrés (post-baseline)
+
+Ver **`5.01.00.022`** — no sync automático; WhatsApp zip; índices con `🆕 MOISES post-20260807`.
 
 ---
 

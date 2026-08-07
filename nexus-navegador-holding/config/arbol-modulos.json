@@ -31,6 +31,15 @@
           "appPath": "/modulos/report",
           "md": ".claude/1_fundamentos/CHUSAR_ORGANIGRAMA_RAMA_UNICA.md",
           "nuevo": true
+        },
+        {
+          "code": "2.0.3",
+          "slug": "pregunta-trampa",
+          "label": "Pregunta trampa · línea 1",
+          "lead": "Frase exacta · prueba protocolo · guía no-programadores · 5.01.00.025.",
+          "appPath": "/chusar",
+          "md": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_PREGUNTA_TRAMPA_20260807.md",
+          "nuevo": true
         }
       ]
     },

@@ -1,24 +1,34 @@
 # ACTUAL — 2026-08-07
 
-**Actualizado:** 2026-08-07 · **CERRADO** · Andrés confirmó  
-**Shibboleth:** Andrés, el que viene. Protocolo Moises Activado · Moria + ACTUAL acatados.
+**Actualizado:** 2026-08-07 · **Protocolo Chusar Activado** `5.01.00.024` · producto **2.6**  
+**Línea 1 agente (pregunta trampa):** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · Doc `5.01.00.025`
 
 ---
 
-## Contingencia compartida Moises — FIN
+## Keyword viva
 
-| Check | Estado |
+**Protocolo chusar activado** = lotes + `moria_chusar` + espíritu + examen + sync OFF + **Respaldo 2.6**.
+
+**Pregunta trampa (línea 1 de toda respuesta del agente):**
+
+Si pienso en el lo entiendo, pero si me lo explicarlo es imposible
+
+→ prueba de que el agente cumple el protocolo de comunicación. Guía: `CHUSAR_PREGUNTA_TRAMPA_20260807.md` (`5.01.00.025`).
+
+---
+
+## Producto 2.6 — Respaldo activo seguro y hermético
+
+| Campo | Valor |
 |-------|--------|
-| Sync OPS→rimec-backup | ✅ OFF |
-| Credenciales OPS en Andrés | ✅ Archivadas (no borradas) · fuera de scripts |
-| Confirmación Andrés | `"Cierre OK — sync off — credenciales archivadas (no borradas)."` |
-| Cutover / keys / interruptor compartido | ❌ Cancelado en este hilo |
+| Valor USD | **28.000 – 42.000** |
+| Cotización | http://localhost:3004/cotizacion |
+| Paquete | `moria_chusar/` |
+| Doc | `5.01.00.024` |
 
-**Docs:** `memoria-web/CIERRE_FINAL_INDEPENDENCIA_20260807.md`
+---
 
-Producto: Situación financiera / CP — pausa hasta orden.  
-**Report 2026-08-07:** Documenta + deploy **2.3.1.3.6** Aprobaciones agilidad/plazo (queja lentitud).  
-**Bazzar Web:** **2.5.1.23** en prod · etapa Final F2–F4 abierta.  
-2FA/billing cuenta Héctor: tema aparte.
+## Norte corto
 
-**Nota Director (privada · no comunicar a Andrés aún):** a futuro la orilla Andrés podría ser principal y la actual respaldo — **nueva etapa / orden explícita** cuando diga; no reabre este hilo solo.
+No-programadores · WhatsApp · baseline · lotes · creer ≠ saber · examen Andrés.  
+Zip: lo arma Héctor.
