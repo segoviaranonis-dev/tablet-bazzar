@@ -64,6 +64,7 @@ Control Central es el hub operativo de RIMEC construido en Streamlit.
 - **RIMEC Web integral:** [PROTOCOLO_IMAGENES_CARGA_INTEGRAL_RIMEC_WEB.md](../2.2_rimec_web/PROTOCOLO_IMAGENES_CARGA_INTEGRAL_RIMEC_WEB.md) — prefetch PE + default Calzados
 - **CHUSAR_IMPORT_IMAGENES_BATCH.md** - Anexo ops · keyword **Importar imágenes**
 - **CHUSAR_IMPORT_IMAGENES_PV_NOVIEMBRE_2_20260801.md** (`2.01.04.023`) — lote 508 · 12 nuevas · maestro 5312 · checklist próxima importación
+- **CHUSAR_IMAGEN_DE_PORTADA_20260807.md** (`2.01.04.024`) — keyword **imagen de portada** · banners marca · `productos/portada/` · 8/8 PASS 2026-08-07
 - **PUNTO_CRITICO_RECORTE_CALZADO.md** - Anexo caso 4215.1034 contain vs crop
 
 ### **Mapas y Verdad Operativa**

@@ -1967,6 +1967,15 @@
               "appPath": "/bazzar-web",
               "children": [
                 {
+                  "code": "2.5.1.24",
+                  "slug": "imagen-portada-marcas-inicio-20260807",
+                  "label": "Imagen de portada · inicio / hero",
+                  "lead": "Storage productos/portada · keyword imagen de portada · helpers siameses · 8/8 PASS.",
+                  "appPath": "/inicio",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_IMAGEN_PORTADA_MARCAS_INICIO_20260807.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.5.1.23",
                   "slug": "catalogo-grilla-638-precio-talle-20260807",
                   "label": "Catálogo · grilla 638 precio × talle",

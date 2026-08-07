@@ -28,6 +28,7 @@ alwaysApply: true
 | 11 | **Memoria solo lectura** | **Prohibido** tocar primaria/secundaria sin consentimiento del Director. Solo él define desarrollo vs definitivo. `PROTOCOLO_MEMORIA_SOLO_LECTURA.md` |
 | 12 | **Memoria sagrada** | Ley **indiscutible** — siempre solo lectura salvo keyword **exacta**. Sinónimos (*registra*, *chusar*) **no** abren memoria. `MEMORIA_SAGRADA.md` |
 | 13 | **Importar imágenes** | Ley Universal §4 · CHUSAR lote JPG → Supabase: `CHUSAR_IMPORT_IMAGENES_BATCH.md` · `subir_carpeta_import_batch.py` · ≠ Importación precios |
+| 13b | **imagen de portada** | Banners marca · `productos/portada/` · `subir_portadas_marca_batch.py` · `2.01.04.024` · helpers siameses · ≠ SKU |
 
 ---
 

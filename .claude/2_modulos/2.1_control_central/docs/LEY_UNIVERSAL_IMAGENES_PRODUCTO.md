@@ -3,7 +3,7 @@
 **Código:** `2.01.04.021`  
 **Estado:** ✅ **CANÓNICA · ÚNICA ENTRADA** · 2026-07-10  
 **Autoridad:** Director Héctor · keyword **Documenta**  
-**Palabras clave:** `Protocolo Imágenes` · `Importar imágenes` · `Integridad visual` · `Recorte calzado` · `problemas de imagen` · `infección` · `marco violado` · `inyección fotos` · `meter fotos`
+**Palabras clave:** `Protocolo Imágenes` · `Importar imágenes` · `imagen de portada` · `Integridad visual` · `Recorte calzado` · `problemas de imagen` · `infección` · `marco violado` · `inyección fotos` · `meter fotos`
 
 > **Esta es la ley madre.** Agrupa naming, tiers sm/md/lg, inserción/lote, herramientas, UI y garantía anti-desbordamiento.  
 > Los docs anteriores quedan como **anexos / evidencia** — si hay conflicto, **manda este archivo**.
@@ -164,6 +164,7 @@ Limpiar URL (espacios / `//`): trim + colapsar barras + restaurar `://`.
 |--------------|--------|
 | **Importar imágenes** | Ejecutar §4.2 (lote carpeta → Supabase) |
 | **Protocolo Imágenes** | Aplicar esta ley completa (Storage + UI) |
+| **imagen de portada** | Banners de **marca** · mismo pipeline flat+tiers+HEAD · prefijo `productos/portada/` · **no** canvas cuadrado · [CHUSAR_IMAGEN_DE_PORTADA_20260807.md](./CHUSAR_IMAGEN_DE_PORTADA_20260807.md) (`2.01.04.024`) · script `subir_portadas_marca_batch.py` |
 | *problemas de imagen* / *infección* / *marco violado* | Leer esta ley + índice errores `4.90.03` **antes** de código |
 
 ### 4.2 Pipeline canónico de lote (mejor práctica)
@@ -271,6 +272,7 @@ Detalle: `.claude/5_errores/detalle/` · registro: `REGISTRO_ERRORES_IMAGEN.md`.
 | [LEY_INTEGRIDAD_VISUAL_IMAGEN.md](./LEY_INTEGRIDAD_VISUAL_IMAGEN.md) | Narrativa marco / infección |
 | [NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md](./NEXUS_PROTOCOLO_IMAGENES_PRODUCTO.md) | Contrato sm/md/lg histórico |
 | [CHUSAR_IMPORT_IMAGENES_BATCH.md](./CHUSAR_IMPORT_IMAGENES_BATCH.md) | Ops lote · keyword Importar imágenes |
+| [CHUSAR_IMAGEN_DE_PORTADA_20260807.md](./CHUSAR_IMAGEN_DE_PORTADA_20260807.md) | Keyword **imagen de portada** · banners marca · `2.01.04.024` |
 | [CHUSAR_INYECCION_IMAGENES_EJECUCION_20260710.md](./CHUSAR_INYECCION_IMAGENES_EJECUCION_20260710.md) | Cierre lote 1510 · 2026-07-10 |
 | [PUNTO_CRITICO_RECORTE_CALZADO.md](./PUNTO_CRITICO_RECORTE_CALZADO.md) | Caso 4215.1034 · auditoría márgenes |
 | [POLITICA_THUMBNAILS.md](./POLITICA_THUMBNAILS.md) | Legacy PDF `thumbs/` |

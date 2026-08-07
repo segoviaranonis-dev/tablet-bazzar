@@ -1,0 +1,562 @@
+{
+  "keyword": "imagen de portada",
+  "bucket": "productos",
+  "prefix": "portada/",
+  "fecha": "2026-08-07T11:46:51",
+  "pass": 8,
+  "total": 8,
+  "rows": [
+    {
+      "stem": "vizzano",
+      "source": "C:\\Users\\hecto\\Nexus_Core\\bazzar-web\\vizzano.png",
+      "src_wh": [
+        6688,
+        2362
+      ],
+      "tiers": {
+        "flat": {
+          "wh": [
+            2400,
+            848
+          ],
+          "bytes": 133970,
+          "path": "portada/vizzano.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "lg": {
+          "wh": [
+            1920,
+            678
+          ],
+          "bytes": 93259,
+          "path": "portada/lg/vizzano.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "md": {
+          "wh": [
+            1200,
+            424
+          ],
+          "bytes": 41802,
+          "path": "portada/md/vizzano.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "sm": {
+          "wh": [
+            640,
+            226
+          ],
+          "bytes": 15500,
+          "path": "portada/sm/vizzano.jpg",
+          "upload_ok": true,
+          "error": null
+        }
+      },
+      "verify": {
+        "flat": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/vizzano.jpg",
+          "head_ok": true
+        },
+        "lg": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/lg/vizzano.jpg",
+          "head_ok": true
+        },
+        "md": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/md/vizzano.jpg",
+          "head_ok": true
+        },
+        "sm": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/sm/vizzano.jpg",
+          "head_ok": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "stem": "moleca",
+      "source": "C:\\Users\\hecto\\Nexus_Core\\bazzar-web\\moleca.png",
+      "src_wh": [
+        6689,
+        2363
+      ],
+      "tiers": {
+        "flat": {
+          "wh": [
+            2400,
+            848
+          ],
+          "bytes": 410554,
+          "path": "portada/moleca.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "lg": {
+          "wh": [
+            1920,
+            678
+          ],
+          "bytes": 292543,
+          "path": "portada/lg/moleca.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "md": {
+          "wh": [
+            1200,
+            424
+          ],
+          "bytes": 135137,
+          "path": "portada/md/moleca.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "sm": {
+          "wh": [
+            640,
+            226
+          ],
+          "bytes": 44151,
+          "path": "portada/sm/moleca.jpg",
+          "upload_ok": true,
+          "error": null
+        }
+      },
+      "verify": {
+        "flat": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/moleca.jpg",
+          "head_ok": true
+        },
+        "lg": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/lg/moleca.jpg",
+          "head_ok": true
+        },
+        "md": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/md/moleca.jpg",
+          "head_ok": true
+        },
+        "sm": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/sm/moleca.jpg",
+          "head_ok": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "stem": "molekinha",
+      "source": "C:\\Users\\hecto\\Nexus_Core\\bazzar-web\\molekinha.png",
+      "src_wh": [
+        6688,
+        2362
+      ],
+      "tiers": {
+        "flat": {
+          "wh": [
+            2400,
+            848
+          ],
+          "bytes": 279866,
+          "path": "portada/molekinha.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "lg": {
+          "wh": [
+            1920,
+            678
+          ],
+          "bytes": 202816,
+          "path": "portada/lg/molekinha.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "md": {
+          "wh": [
+            1200,
+            424
+          ],
+          "bytes": 100753,
+          "path": "portada/md/molekinha.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "sm": {
+          "wh": [
+            640,
+            226
+          ],
+          "bytes": 38836,
+          "path": "portada/sm/molekinha.jpg",
+          "upload_ok": true,
+          "error": null
+        }
+      },
+      "verify": {
+        "flat": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/molekinha.jpg",
+          "head_ok": true
+        },
+        "lg": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/lg/molekinha.jpg",
+          "head_ok": true
+        },
+        "md": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/md/molekinha.jpg",
+          "head_ok": true
+        },
+        "sm": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/sm/molekinha.jpg",
+          "head_ok": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "stem": "molekinho",
+      "source": "C:\\Users\\hecto\\Nexus_Core\\bazzar-web\\molekinho.png",
+      "src_wh": [
+        6713,
+        2362
+      ],
+      "tiers": {
+        "flat": {
+          "wh": [
+            2400,
+            844
+          ],
+          "bytes": 272479,
+          "path": "portada/molekinho.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "lg": {
+          "wh": [
+            1920,
+            676
+          ],
+          "bytes": 196163,
+          "path": "portada/lg/molekinho.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "md": {
+          "wh": [
+            1200,
+            422
+          ],
+          "bytes": 94513,
+          "path": "portada/md/molekinho.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "sm": {
+          "wh": [
+            640,
+            225
+          ],
+          "bytes": 33875,
+          "path": "portada/sm/molekinho.jpg",
+          "upload_ok": true,
+          "error": null
+        }
+      },
+      "verify": {
+        "flat": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/molekinho.jpg",
+          "head_ok": true
+        },
+        "lg": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/lg/molekinho.jpg",
+          "head_ok": true
+        },
+        "md": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/md/molekinho.jpg",
+          "head_ok": true
+        },
+        "sm": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/sm/molekinho.jpg",
+          "head_ok": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "stem": "modare",
+      "source": "C:\\Users\\hecto\\Nexus_Core\\bazzar-web\\modare.png",
+      "src_wh": [
+        6688,
+        2362
+      ],
+      "tiers": {
+        "flat": {
+          "wh": [
+            2400,
+            848
+          ],
+          "bytes": 211645,
+          "path": "portada/modare.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "lg": {
+          "wh": [
+            1920,
+            678
+          ],
+          "bytes": 150381,
+          "path": "portada/lg/modare.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "md": {
+          "wh": [
+            1200,
+            424
+          ],
+          "bytes": 70773,
+          "path": "portada/md/modare.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "sm": {
+          "wh": [
+            640,
+            226
+          ],
+          "bytes": 27172,
+          "path": "portada/sm/modare.jpg",
+          "upload_ok": true,
+          "error": null
+        }
+      },
+      "verify": {
+        "flat": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/modare.jpg",
+          "head_ok": true
+        },
+        "lg": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/lg/modare.jpg",
+          "head_ok": true
+        },
+        "md": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/md/modare.jpg",
+          "head_ok": true
+        },
+        "sm": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/sm/modare.jpg",
+          "head_ok": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "stem": "actvitta",
+      "source": "C:\\Users\\hecto\\Nexus_Core\\bazzar-web\\activitta.png",
+      "src_wh": [
+        5016,
+        1771
+      ],
+      "tiers": {
+        "flat": {
+          "wh": [
+            2400,
+            847
+          ],
+          "bytes": 339571,
+          "path": "portada/actvitta.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "lg": {
+          "wh": [
+            1920,
+            678
+          ],
+          "bytes": 248713,
+          "path": "portada/lg/actvitta.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "md": {
+          "wh": [
+            1200,
+            424
+          ],
+          "bytes": 126096,
+          "path": "portada/md/actvitta.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "sm": {
+          "wh": [
+            640,
+            226
+          ],
+          "bytes": 49165,
+          "path": "portada/sm/actvitta.jpg",
+          "upload_ok": true,
+          "error": null
+        }
+      },
+      "verify": {
+        "flat": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/actvitta.jpg",
+          "head_ok": true
+        },
+        "lg": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/lg/actvitta.jpg",
+          "head_ok": true
+        },
+        "md": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/md/actvitta.jpg",
+          "head_ok": true
+        },
+        "sm": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/sm/actvitta.jpg",
+          "head_ok": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "stem": "beira-rio",
+      "source": "C:\\Users\\hecto\\Nexus_Core\\bazzar-web\\beira-rio.png",
+      "src_wh": [
+        6689,
+        2363
+      ],
+      "tiers": {
+        "flat": {
+          "wh": [
+            2400,
+            848
+          ],
+          "bytes": 157095,
+          "path": "portada/beira-rio.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "lg": {
+          "wh": [
+            1920,
+            678
+          ],
+          "bytes": 107608,
+          "path": "portada/lg/beira-rio.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "md": {
+          "wh": [
+            1200,
+            424
+          ],
+          "bytes": 46830,
+          "path": "portada/md/beira-rio.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "sm": {
+          "wh": [
+            640,
+            226
+          ],
+          "bytes": 16561,
+          "path": "portada/sm/beira-rio.jpg",
+          "upload_ok": true,
+          "error": null
+        }
+      },
+      "verify": {
+        "flat": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/beira-rio.jpg",
+          "head_ok": true
+        },
+        "lg": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/lg/beira-rio.jpg",
+          "head_ok": true
+        },
+        "md": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/md/beira-rio.jpg",
+          "head_ok": true
+        },
+        "sm": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/sm/beira-rio.jpg",
+          "head_ok": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "stem": "br-sport",
+      "source": "C:\\Users\\hecto\\Nexus_Core\\bazzar-web\\br-sport.png",
+      "src_wh": [
+        6688,
+        2362
+      ],
+      "tiers": {
+        "flat": {
+          "wh": [
+            2400,
+            848
+          ],
+          "bytes": 364249,
+          "path": "portada/br-sport.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "lg": {
+          "wh": [
+            1920,
+            678
+          ],
+          "bytes": 258929,
+          "path": "portada/lg/br-sport.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "md": {
+          "wh": [
+            1200,
+            424
+          ],
+          "bytes": 117915,
+          "path": "portada/md/br-sport.jpg",
+          "upload_ok": true,
+          "error": null
+        },
+        "sm": {
+          "wh": [
+            640,
+            226
+          ],
+          "bytes": 37539,
+          "path": "portada/sm/br-sport.jpg",
+          "upload_ok": true,
+          "error": null
+        }
+      },
+      "verify": {
+        "flat": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/br-sport.jpg",
+          "head_ok": true
+        },
+        "lg": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/lg/br-sport.jpg",
+          "head_ok": true
+        },
+        "md": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/md/br-sport.jpg",
+          "head_ok": true
+        },
+        "sm": {
+          "url": "https://extrlcvcgypwazxipvqm.supabase.co/storage/v1/object/public/productos/portada/sm/br-sport.jpg",
+          "head_ok": true
+        }
+      },
+      "ok": true
+    }
+  ]
+}
