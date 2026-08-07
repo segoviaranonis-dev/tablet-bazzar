@@ -40,7 +40,7 @@
       "appKey": "report",
       "docIndice": ".claude/2_modulos/2.3_report/INDICE.md",
       "gitPath": "report/",
-      "ultimoDeployActivo": true
+      "ultimoDeployActivo": false
     },
     {
       "code": "2.4",
@@ -61,6 +61,16 @@
       "appKey": "bazzarWeb",
       "docIndice": ".claude/2_modulos/2.5_bazzar_web/INDICE.md",
       "gitPath": "bazzar-web/",
+      "ultimoDeployActivo": true
+    },
+    {
+      "code": "2.6",
+      "slug": "respaldo-activo-hermetico",
+      "label": "Respaldo activo seguro y hermético",
+      "stack": "moria_chusar · WhatsApp · Moises",
+      "hubHtml": "moria_chusar/MOISES_LEEME_ANDRES.md",
+      "docIndice": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_PROTOCOLO_CHUSAR_ACTIVADO_COMPLETO_20260807.md",
+      "gitPath": "moria_chusar/",
       "ultimoDeployActivo": false
     }
   ]

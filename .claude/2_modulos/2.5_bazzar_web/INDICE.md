@@ -3,7 +3,7 @@
 **Tipo:** App Next.js B2C  
 **Repo:** `bazzar-web/`  
 **Estado:** ✅ Etapa catálogo :3002 **CERRADA** 2026-07-16  
-**Última actualización:** 2026-08-07 · Imagen de portada inicio (**2.5.1.24**) · Grilla 638 (**2.5.1.23**) · Motor (**2.5.1.22**)  
+**Última actualización:** 2026-08-07 · Portada inicio + encuadre modelo (**2.5.1.24**) 🆕 MOISES · Grilla 638 (**2.5.1.23**) · Motor (**2.5.1.22**)  
 
 **Etapa (aparcada · meta 01-09):** [ETAPA_FINAL_BAZZAR_WEB_20260806.md](../../4_etapas/ETAPA_FINAL_BAZZAR_WEB_20260806.md) · `FINAL-BAZZAR-WEB-20260806`  
 **CHUSAR lanzamiento:** [CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md](./CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md) (**2.5.1.18**) · FOCO holding cedido a Situación financiera Rimec (**2.3.1.50**)  
@@ -28,7 +28,7 @@ E-commerce **cliente final Bazzar**. Separado de RIMEC Web (B2B mayoristas).
 
 | Código | Doc | Tema |
 |--------|-----|------|
-| **2.5.1.24** | **[CHUSAR_IMAGEN_PORTADA_MARCAS_INICIO_20260807.md](./CHUSAR_IMAGEN_PORTADA_MARCAS_INICIO_20260807.md)** | Inicio/hero · portadas Storage `productos/portada/` · keyword **imagen de portada** · `2.01.04.024` |
+| **2.5.1.24** | **[CHUSAR_IMAGEN_PORTADA_MARCAS_INICIO_20260807.md](./CHUSAR_IMAGEN_PORTADA_MARCAS_INICIO_20260807.md)** | Inicio/hero · Storage `productos/portada/` · orden marcas · `objectPosition` 4:5 · keyword **imagen de portada** · `2.01.04.024` · 🆕 MOISES post-20260807 |
 | **2.5.1.23** | **[CHUSAR_CATALOGO_GRILLA_638_PRECIO_TALLE_20260807.md](./CHUSAR_CATALOGO_GRILLA_638_PRECIO_TALLE_20260807.md)** | Catálogo · buckets Gs./prenda × talle 638 · carrito · fix timeout anon→admin |
 | **2.5.1.22** | **[CHUSAR_MOTOR_PRECIO_PUBLICADO_PENDIENTE_20260806.md](./CHUSAR_MOTOR_PRECIO_PUBLICADO_PENDIENTE_20260806.md)** | Motor · pestañas Publicado/Pendiente · multi-select · puerta tienda · conflictos CASO |
 | **2.5.1.21** | **[CHUSAR_MOTOR_PRECIO_CASCADA_SIAMESE_20260806.md](./CHUSAR_MOTOR_PRECIO_CASCADA_SIAMESE_20260806.md)** | Motor Guardián · cascada PE siamese · UI flotante · deploy Report |

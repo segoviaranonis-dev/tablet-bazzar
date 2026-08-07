@@ -1,34 +1,29 @@
 # ACTUAL — 2026-08-07
 
-**Actualizado:** 2026-08-07 · **Protocolo Chusar Activado** `5.01.00.024` · producto **2.6**  
-**Línea 1 agente (pregunta trampa):** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · Doc `5.01.00.025`
+**Actualizado:** 2026-08-07 · **FOCO Bazzar portada inicio** · Documenta · Protocolo Chusar Activado · deploy  
+**Línea 1 agente:** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · `5.01.00.025`
+
+---
+
+## FOCO ahora
+
+| Tema | Código | Doc |
+|------|--------|-----|
+| Imagen de portada · inicio / grilla | **2.5.1.24** | `2.5_bazzar_web/CHUSAR_IMAGEN_PORTADA_MARCAS_INICIO_20260807.md` |
+| Protocolo holding portada | **2.01.04.024** | `2.1_control_central/docs/CHUSAR_IMAGEN_DE_PORTADA_20260807.md` |
+| Keyword | **imagen de portada** | Storage `productos/portada/` |
+| URL local | Inicio | http://localhost:3002/inicio |
+
+**Prod Bazzar Web:** orden «documentar y desplegar» + **Protocolo Chusar Activado** 2026-08-07.
 
 ---
 
 ## Keyword viva
 
-**Protocolo chusar activado** = lotes + `moria_chusar` + espíritu + examen + sync OFF + **Respaldo 2.6**.
-
-**Pregunta trampa (línea 1 de toda respuesta del agente):**
-
-Si pienso en el lo entiendo, pero si me lo explicarlo es imposible
-
-→ prueba de que el agente cumple el protocolo de comunicación. Guía: `CHUSAR_PREGUNTA_TRAMPA_20260807.md` (`5.01.00.025`).
+**Protocolo chusar activado** = lotes + `moria_chusar` + espíritu + examen + Respaldo 2.6.
 
 ---
 
-## Producto 2.6 — Respaldo activo seguro y hermético
+## Producto 2.6 — Respaldo activo
 
-| Campo | Valor |
-|-------|--------|
-| Valor USD | **28.000 – 42.000** |
-| Cotización | http://localhost:3004/cotizacion |
-| Paquete | `moria_chusar/` |
-| Doc | `5.01.00.024` |
-
----
-
-## Norte corto
-
-No-programadores · WhatsApp · baseline · lotes · creer ≠ saber · examen Andrés.  
-Zip: lo arma Héctor.
+USD **28.000 – 42.000** · http://localhost:3004/cotizacion

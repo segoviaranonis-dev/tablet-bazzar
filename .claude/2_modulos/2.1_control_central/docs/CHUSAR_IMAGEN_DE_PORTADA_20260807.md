@@ -85,6 +85,8 @@ productos/portada/lg/{stem}.jpg
 
 **UI:** marco `overflow: hidden` + `object-fit: cover|contain` · `data-portada-frame="imagen-de-portada"`.
 
+**Grilla Bazzar 4:5:** banners ~2.8:1 → anclar con `objectPosition` por marca (`2.5.1.24` §3). Cover+centro solo = a veces sin modelo.
+
 ---
 
 ## 4 · Relación con Ley Universal
@@ -95,4 +97,5 @@ productos/portada/lg/{stem}.jpg
 
 ---
 
-**Documenta 2026-08-07 — keyword imagen de portada · 8/8 Storage · helpers siameses.**
+**Documenta 2026-08-07 — keyword imagen de portada · 8/8 Storage · helpers siameses · encuadre grilla Bazzar.**
+

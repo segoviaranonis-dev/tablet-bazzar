@@ -25,8 +25,11 @@
 | 1 | 2026-08-07 | Espíritu + examen Andrés `5.01.00.023` · docs en moria_chusar = guía de actualizaciones · zip lo arma Héctor | `CHUSAR_MOISES_ESPIRITU_Y_EXAMEN…` · `EXAMEN_NIVEL_ANDRES_MOISES.md` | No | No | 🆕 |
 | 2 | 2026-08-07 | Protocolo Chusar Activado completo `5.01.00.024` · pregunta trampa · producto **2.6 Respaldo activo** USD 28k–42k · cotización :3004 | `CHUSAR_PROTOCOLO_CHUSAR_ACTIVADO_COMPLETO…` · `cotizacion-productos.ts` | No | No | 🆕 |
 | 3 | 2026-08-07 | **Pregunta trampa** guía no-programadores `5.01.00.025` · metodología qué/cómo/Andrés · typo intencional · arbol `2.0.3` NEW | `CHUSAR_PREGUNTA_TRAMPA_20260807.md` · índices · `CODIGO_MAESTRO` | No | No | 🆕 |
+| 4 | 2026-08-07 | **Bitácora** `2.3.1.51` + **blindaje carrito** `2.2.1.42` · Documenta · Chusar Activado · **deploy prod** orden «despliega» | `CHUSAR_BITACORA_…` · `CHUSAR_BLINDAJE_CARRITO_…` · etapa BITACORA | Sí (rimec-web + report) | MIG-201/202 | 🆕 |
+| 5 | 2026-08-07 | **Bazzar portada inicio** `2.5.1.24` · grilla + `objectPosition` modelo · holding `2.01.04.024` · Documenta · Chusar Activado · **deploy bazzar-web** | `CHUSAR_IMAGEN_PORTADA_…` · `imagen-portada.ts` · `ImagenPortada` | Sí (bazzar-web) | No | 🆕 |
 
-**Cómo agregar una fila (agentes Héctor con Documenta):**  
+**Cómo agregar una fila (agentes Héctor con Documenta):**
+  
 1. Alta del doc/código **en lenguaje claro** (qué / cómo / qué hace Andrés).  
 2. Marca en `INDICE.md`: `🆕 MOISES post-20260807 · fecha`.  
 3. Una línea en esta tabla.  
