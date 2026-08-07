@@ -577,6 +577,7 @@
 | `2.05.03.021` | NEXUS OBJETIVO ACTUAL | `2_modulos/2.5_bazzar_web/NEXUS_OBJETIVO_ACTUAL.md` |
 | `2.05.03.022` | README | `2_modulos/2.5_bazzar_web/README.md` |
 | `2.05.03.023` | ROADMAP ECOMMERCE | `2_modulos/2.5_bazzar_web/ROADMAP_ECOMMERCE.md` |
+| `2.05.03.024` | CHUSAR CATALOGO GRILLA 638 PRECIO TALLE 20260807 | `2_modulos/2.5_bazzar_web/CHUSAR_CATALOGO_GRILLA_638_PRECIO_TALLE_20260807.md` |
 
 ## Clase 2 · Grupo 05 · Bazzar Web
 

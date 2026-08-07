@@ -2,7 +2,7 @@
 
 **ID:** `FINAL-BAZZAR-WEB-20260806`  
 **Alias:** Final de Bazzar Web · pulir hasta lanzamiento  
-**Estado:** 🟢 **EN CURSO · FOCO** · apertura 2026-08-06 (orden Director: **abre la etapa** · **Documenta**)  
+**Estado:** ⏸ **PAUSA** (Moises contingencia FOCO 2026-08-06) · meta lanzamiento **01-09-2026** intacta  
 **Meta lanzamiento:** **2026-09-01**  
 **Módulo:** Bazzar Web (`bazzar-web/` · :3002 · prod https://www.bazzar.com.py)  
 **Ejecutor:** Cursor (+ Claude/Gemini según OT)  
@@ -39,7 +39,7 @@ Terminar y **pulir** Bazzar Web hasta el **lanzamiento 01-09-2026**: catálogo, 
 | Fase | Alcance | Prioridad hasta 01-09 |
 |------|---------|------------------------|
 | F0 | Auditoría local stock | ✅ base hecha |
-| **F1** | Catálogo 638 talles B2C | 🔴 alta |
+| **F1** | Catálogo 638 talles B2C | ✅ **2.5.1.23** (2026-08-07) |
 | **F2** | Filtros / AB-CR / medias | 🔴 alta |
 | **F3** | Seguridad checkout | 🟡 media |
 | **F4** | Smoke NIIF + post-import | 🟡 media |
@@ -52,8 +52,8 @@ Terminar y **pulir** Bazzar Web hasta el **lanzamiento 01-09-2026**: catálogo, 
 |---|------|:------:|
 | 1 | Apertura Moria + `etapas.json` + :3004 | ✅ 2026-08-06 |
 | 2 | Inventario gaps vs go-live | ✅ 2026-08-06 (tabla en CHUSAR 2.5.1.18) |
-| 3 | Pulido + smokes locales `:3002` | 🔄 catálogo/home 200 · sigue |
-| 4 | Deploy / dominio listo | ⏳ |
+| 3 | Pulido + smokes locales `:3002` | ✅ F1 grilla 638 · Confecciones 36/48 |
+| 4 | Deploy / dominio listo | ✅ orden 2026-08-07 · ver **2.5.1.23** |
 | 5 | Cierre canónico pre/post 01-09 | ⏳ |
 
 ---

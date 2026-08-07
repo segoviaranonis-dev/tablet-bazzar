@@ -6,7 +6,7 @@
 **Etapa:** [ETAPA_FINAL_BAZZAR_WEB_20260806.md](../../4_etapas/ETAPA_FINAL_BAZZAR_WEB_20260806.md) (`FINAL-BAZZAR-WEB-20260806`)  
 **Meta:** Go-live / lanzamiento **2026-09-01**  
 **App:** `bazzar-web` · local `:3002` · prod https://www.bazzar.com.py  
-**Estado:** 🟢 Etapa abierta · FOCO
+**Estado:** 🟡 Etapa abierta · **APARCADA** (FOCO holding → Situación financiera Rimec 2026-08-06) · meta 01-09 intacta
 
 ---
 
@@ -51,7 +51,7 @@ No es un hotfix puntual: es la **recta final** del producto B2C Bazzar Web hacia
 
 | # | Gap | Fase | Fuente |
 |---|-----|------|--------|
-| 1 | Catálogo 638 · UI talles B2C (paridad RIMEC) | F1 | 2.5.1.8 · código ya tiene `enrich-grada-638` — pulir UX |
+| 1 | Catálogo 638 · UI talles B2C (paridad RIMEC) | F1 | ✅ **2.5.1.23** buckets precio×talle · deploy 2026-08-07 |
 | 2 | Filtros AB-CR / medias / cascada header | F2 | 2.5.1.14 · siameses |
 | 3 | Checkout: rate-limit · ownership `/pedido/[id]` · cédula | F3 | AUDITORIA_BAZZAR_WEB críticas |
 | 4 | CSP / service_role en actions | F3 | idem |
