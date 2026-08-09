@@ -34,6 +34,7 @@
 | 10 | 2026-08-09 | **SF pipeline TXT→Sit Fin** `2.3.1.50.3` · intake corte AL 03-08 · clasificador huellas ERP · `run_corte.py` · Documenta+ejecuta | `CHUSAR_PIPELINE_TXT_SF_AL_NEXUS…` · `pipeline/` · out LAB | No | No | 🆕 |
 | 11 | 2026-08-09 | **SF tablas staging T01–T12** `2.3.1.50.4` · MIG-203 · persistencia + variaciones · seed huellas AL · Documenta (plan) | `CHUSAR_SF_TABLAS_STAGING…` · `203_sf_tablas_staging.sql` · `persistencia.py` | No | MIG-203 LAB | 🆕 |
 | 12 | 2026-08-09 | **SF módulo hub Report** `2.3.1.50.5` · `/situacion-financiera` · Documenta+**publica** prod | `CHUSAR_MODULO_HUB_SITUACION_FINANCIERA…` · hub-modules · page+API | Sí Report prod | No | 🆕 |
+| 13 | 2026-08-09 | **SF pestañas versiones Guido + gráficos** `2.3.1.50.6` · Documenta+**publica** | `CHUSAR_SF_PESTANAS_VERSIONES_GUIDO…` · tabs Report | Sí Report prod | No | 🆕 |
 
 **Cómo agregar una fila (agentes Héctor con Documenta):**
   
