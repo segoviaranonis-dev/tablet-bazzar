@@ -19,6 +19,8 @@
 | **2.3.1.50.5** | [CHUSAR_MODULO_HUB_SITUACION_FINANCIERA_20260809.md](./CHUSAR_MODULO_HUB_SITUACION_FINANCIERA_20260809.md) | Módulo hub Report · Documenta+publica |
 | **2.3.1.50.6** | [CHUSAR_SF_PESTANAS_VERSIONES_GUIDO_20260809.md](./CHUSAR_SF_PESTANAS_VERSIONES_GUIDO_20260809.md) | Pestañas por versión Guido + gráficos · 🆕 MOISES post-20260807 · 2026-08-09 |
 | Deploy 50.6 | [CHUSAR_DEPLOY_REPORT_SF_VERSIONES_GUIDO_20260809.md](./CHUSAR_DEPLOY_REPORT_SF_VERSIONES_GUIDO_20260809.md) | **publica** Report prod |
+| **2.3.1.50.7** | [CHUSAR_SF_MOLECULAR_TXT_COLORES_20260809.md](./CHUSAR_SF_MOLECULAR_TXT_COLORES_20260809.md) | Molecular TXT limpio + colores TXT/manual · 🆕 MOISES post-20260807 · 2026-08-09 |
+| Deploy 50.7 | [CHUSAR_DEPLOY_REPORT_SF_MOLECULAR_20260809.md](./CHUSAR_DEPLOY_REPORT_SF_MOLECULAR_20260809.md) | **publica** Report prod |
 | Etapa | [ETAPA_SITUACION_FINANCIERA_RIMEC_20260806.md](../../../4_etapas/ETAPA_SITUACION_FINANCIERA_RIMEC_20260806.md) | FOCO `SITUACION-FINANCIERA-RIMEC-20260806` |
 | Intake cobros | `report/scripts/situacion-financiera/intake/colaborador-20260807/` | Script funcionario cobros |
 | Intake corte AL | `report/scripts/situacion-financiera/intake/corte-AL-03-08-26/` | Paquete D: SF AL 03-08 |

@@ -11,6 +11,7 @@
 |------|--------|-----|
 | Módulo hub Sit Fin | **2.3.1.50.5** | `CHUSAR_MODULO_HUB_SITUACION_FINANCIERA_20260809.md` |
 | Pestañas Guido + gráficos | **2.3.1.50.6** | `CHUSAR_SF_PESTANAS_VERSIONES_GUIDO_20260809.md` |
+| Molecular TXT + colores | **2.3.1.50.7** | `CHUSAR_SF_MOLECULAR_TXT_COLORES_20260809.md` |
 | Ruta | Report | `/situacion-financiera` |
 | Tablas / pipeline | **2.3.1.50.3–50.4** | MIG-203 LAB · Guido intake |
 | Etapa | `SITUACION-FINANCIERA-RIMEC-20260806` | EN CURSO · FOCO |
