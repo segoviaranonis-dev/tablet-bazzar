@@ -16,4 +16,5 @@
 | Doc | **2.3.1.50.7** |
 | Alias | `https://report-plum-one.vercel.app` |
 
-Completar commit/hash tras `vercel --prod` del turno.
+| Commit | `a5ec3cd` |
+| Alias prod | `https://report-plum-one.vercel.app` · `/situacion-financiera` |
