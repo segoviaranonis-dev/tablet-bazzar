@@ -27,6 +27,13 @@
 | 3 | 2026-08-07 | **Pregunta trampa** guía no-programadores `5.01.00.025` · metodología qué/cómo/Andrés · typo intencional · arbol `2.0.3` NEW | `CHUSAR_PREGUNTA_TRAMPA_20260807.md` · índices · `CODIGO_MAESTRO` | No | No | 🆕 |
 | 4 | 2026-08-07 | **Bitácora** `2.3.1.51` + **blindaje carrito** `2.2.1.42` · Documenta · Chusar Activado · **deploy prod** orden «despliega» | `CHUSAR_BITACORA_…` · `CHUSAR_BLINDAJE_CARRITO_…` · etapa BITACORA | Sí (rimec-web + report) | MIG-201/202 | 🆕 |
 | 5 | 2026-08-07 | **Bazzar portada inicio** `2.5.1.24` · grilla + `objectPosition` modelo · holding `2.01.04.024` · Documenta · Chusar Activado · **deploy bazzar-web** | `CHUSAR_IMAGEN_PORTADA_…` · `imagen-portada.ts` · `ImagenPortada` | Sí (bazzar-web) | No | 🆕 |
+| 6 | 2026-08-07 | **CSV bóveda PE** `2.3.1.9.B.2.1` · hotfix bug urgente · deploy Report `3ed6e3a` · orden «publicar y desplegar» | `CHUSAR_BOVEDA_CSV_DESCARGA_20260807` · `CHUSAR_DEPLOY_REPORT_BOVEDA_CSV_20260807` | Sí Report prod | No | 🆕 |
+| 7 | 2026-08-07 | **Audit tier CSV PE** `2.3.1.9.B.5` · gate export · alias `4.02.04.005` · Documenta | `CHUSAR_CSV_PE_AUDITORIA_TIER_20260807` · `csv-pe-tier-audit.ts` | Local Report | No | 🆕 |
+| 8 | 2026-08-07 | **CSV PE Nivel Dios rentabilidad** `2.3.1.9.B.6` · **`4.00.02.009`** · deploy Report · Documenta «publica» | `CHUSAR_CSV_PE_RENTABILIDAD_NIVEL_DIOS_20260807` · `CHUSAR_DEPLOY_REPORT_CSV_PE_RENTABILIDAD_20260807` | Sí Report prod | No | 🆕 |
+| 9 | 2026-08-07 | **Situación financiera** FOCO reabierto · auditoría borrador cobros `2.3.1.50.1` · SF-MAPA cobros v1 `2.3.1.50.2` · intake colaborador · Documenta | `CHUSAR_AUDITORIA_BORRADOR_COBROS…` · `CHUSAR_SF_MAPA_COBROS_V1…` · etapa SF · `etapas.json` | No | No | 🆕 |
+| 10 | 2026-08-09 | **SF pipeline TXT→Sit Fin** `2.3.1.50.3` · intake corte AL 03-08 · clasificador huellas ERP · `run_corte.py` · Documenta+ejecuta | `CHUSAR_PIPELINE_TXT_SF_AL_NEXUS…` · `pipeline/` · out LAB | No | No | 🆕 |
+| 11 | 2026-08-09 | **SF tablas staging T01–T12** `2.3.1.50.4` · MIG-203 · persistencia + variaciones · seed huellas AL · Documenta (plan) | `CHUSAR_SF_TABLAS_STAGING…` · `203_sf_tablas_staging.sql` · `persistencia.py` | No | MIG-203 LAB | 🆕 |
+| 12 | 2026-08-09 | **SF módulo hub Report** `2.3.1.50.5` · `/situacion-financiera` · Documenta+**publica** prod | `CHUSAR_MODULO_HUB_SITUACION_FINANCIERA…` · hub-modules · page+API | Sí Report prod | No | 🆕 |
 
 **Cómo agregar una fila (agentes Héctor con Documenta):**
   

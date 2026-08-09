@@ -1,14 +1,59 @@
 {
-  "actualizado": "2026-08-06-final-bazzar-web-foco-moises-unificado",
+  "actualizado": "2026-08-09-sf-tablas-staging-t01-t12",
   "sesionActiva": {
-    "code": "FINAL-BAZZAR-WEB-20260806",
-    "alias": "Final Bazzar Web · lanzamiento 01-09-2026",
-    "maraton": "bazzar-web-lanzamiento",
+    "code": "SITUACION-FINANCIERA-RIMEC-20260806",
+    "alias": "SF · tablas staging + variaciones",
+    "maraton": "situacion-financiera",
     "ejecutor": "cursor",
-    "foco": "Pulir Bazzar Web hasta go-live 2026-09-01",
-    "mdEtapa": ".claude/4_etapas/ETAPA_FINAL_BAZZAR_WEB_20260806.md"
+    "foco": "2.3.1.50.4 · T01-T12 · MIG-203 · variaciones",
+    "mdEtapa": ".claude/4_etapas/ETAPA_SITUACION_FINANCIERA_RIMEC_20260806.md"
   },
   "trabajoVivo": [
+    {
+      "code": "SITUACION-FINANCIERA-RIMEC-20260806",
+      "moduloSlug": "report",
+      "subcuentaSlug": "situacion-financiera",
+      "label": "Situación financiera · FOCO · tablas T01–T12 + variaciones",
+      "md": ".claude/4_etapas/ETAPA_SITUACION_FINANCIERA_RIMEC_20260806.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/situacion_financiera/CHUSAR_SF_TABLAS_STAGING_VARIACIONES_20260809.md",
+      "appPath": "http://localhost:3000/situacion-financiera",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": true,
+      "subEtapas": [
+        "SF-CONST",
+        "SF-MAPA",
+        "SF-MVP-RATIOS",
+        "SF-ESTADOS",
+        "SF-FX",
+        "SF-ACCESO",
+        "SF-SMOKE",
+        "SF-PIPELINE-TXT",
+        "SF-TABLAS-STAGING"
+      ]
+    },
+    {
+      "code": "BITACORA-MONITOREO-SESION-VENTA-20260807",
+      "moduloSlug": "report",
+      "subcuentaSlug": "bitacora-monitoreo",
+      "label": "Bitácora L–V + blindaje carrito 2.2.1.42 · aparcada (FOCO → SF)",
+      "md": ".claude/4_etapas/ETAPA_BITACORA_MONITOREO_SESION_VENTA_20260807.md",
+      "mdChusar": ".claude/2_modulos/2.3_report/bitacora/CHUSAR_BITACORA_MONITOREO_SESION_VENTA_20260807.md",
+      "appPath": "http://localhost:3000/holding/bitacora",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": false,
+      "subEtapas": [
+        "BIT-LOGIN",
+        "BIT-VENTA-ACTIVA",
+        "BIT-UI-SEMANA",
+        "BIT-RESPALDO-CARRITO",
+        "CARRITO-BLINDAJE-2.2.1.42",
+        "BIT-DEPLOY-PROD"
+      ]
+    },
     {
       "code": "FINAL-BAZZAR-WEB-20260806",
       "moduloSlug": "bazzar-web",
@@ -19,8 +64,8 @@
       "appPath": "http://localhost:3002",
       "ejecutor": "cursor",
       "estado": "en_curso",
-      "nuevo": true,
-      "focoMaraton": true,
+      "nuevo": false,
+      "focoMaraton": false,
       "subEtapas": [
         "BZ-INVENTARIO",
         "BZ-PULIDO",
@@ -118,7 +163,7 @@
       "appPath": "http://localhost:3000/facturacion/pronta-entrega",
       "ejecutor": "cursor",
       "estado": "hecho",
-      "nuevo": true,
+      "nuevo": false,
       "focoMaraton": false,
       "subEtapas": [
         "CSV-DEPOSITO",
@@ -175,7 +220,7 @@
       "appPath": "http://localhost:3000/bazzar-web/auditoria-integridad",
       "ejecutor": "cursor",
       "estado": "hecho",
-      "nuevo": true,
+      "nuevo": false,
       "focoMaraton": false,
       "subEtapas": [
         "AUD-STOCK",
@@ -217,7 +262,7 @@
       "appPath": "http://localhost:3000/bazzar-web/deposito-web",
       "ejecutor": "cursor",
       "estado": "hecho",
-      "nuevo": true,
+      "nuevo": false,
       "focoMaraton": false,
       "subEtapas": [
         "DW-LOCAL",
@@ -258,7 +303,7 @@
       "appPath": "http://localhost:3000/automatizacion-informes",
       "ejecutor": "cursor",
       "estado": "hecho",
-      "nuevo": true,
+      "nuevo": false,
       "focoMaraton": false,
       "subEtapas": [
         "INF-INVENTARIO",
