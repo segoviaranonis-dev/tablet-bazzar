@@ -16,4 +16,5 @@
 | Doc | **2.3.1.50.6** |
 | Comando | `npx vercel --prod` (orden Director **publica**) |
 
-Ver commit/hash y URL en evidencia post-deploy del turno.
+| Commit | `f920492` (feat `8731392` + fixes tipo) |
+| Alias prod | `https://report-plum-one.vercel.app` · ruta `/situacion-financiera` |
