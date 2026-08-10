@@ -5,7 +5,8 @@
 **Keyword:** Documenta (Director)  
 **Error:** `4.05.03.004`  
 **Estado:** 🔴 ABIERTO · ley 638 rota en Manos B2C  
-**Padres:** `2.5.1.23` (enmienda) · `3.02.00.638` · `2.2.1.0.12` · norte `5.01.00.026` · Faro `2.3.1.50.19`
+**Padres:** `2.5.1.23` (enmienda) · `3.02.00.638` · `2.2.1.0.12` · norte `5.01.00.026` · Faro `2.3.1.50.19`  
+**Protocolo:** **Falta Nº 1** del agente · `5.01.00.027`
 
 ---
 

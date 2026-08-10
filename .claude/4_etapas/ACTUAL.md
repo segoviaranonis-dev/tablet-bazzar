@@ -9,7 +9,7 @@
 
 | Tema | Código | Doc |
 |------|--------|-----|
-| **🔴 Bazzar 638 · un precio vs multi-LPN** | **2.5.1.25** / `4.05.03.004` | Falso PASS · ley 638 = RIMEC · norte `5.01.00.026` · Faro |
+| **🔴 Bazzar 638 · un precio vs multi-LPN** | **2.5.1.25** / `4.05.03.004` | Falso PASS · **Falta agente Nº 1** · `5.01.00.027` · Faro/norte |
 | **Delivery Bazzar · transporte (empresa independiente)** | **2.7.1** · etapa `DELIVERY-BAZZAR-TRANSPORTE-20260810` | `CHUSAR_DELIVERY_BAZZAR_CONSTITUCION_20260810.md` |
 | Hub Delivery v0 | Report | `http://localhost:3000/delivery-bazzar` |
 

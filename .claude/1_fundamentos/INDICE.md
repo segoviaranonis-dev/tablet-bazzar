@@ -15,6 +15,8 @@
 - **`CHUSAR_ORGANIGRAMA_RAMA_UNICA.md`** — Organigrama tarjetas · rama única · fullscreen · prod moriachusar (**2.0.2** · 🆕 2026-07-10)
 - `CHUSAR_NAVEGADOR_PROGRAMA.md` — Programa etapas + documentación
 - **`1.1_protocolos/CHUSAR_PROTOCOLO_CHUSAR_ACTIVADO_COMPLETO_20260807.md`** (**5.01.00.024**) 🆕 MOISES post-20260807 · Protocolo Chusar Activado · producto **2.6 Respaldo** USD 28k–42k · `:3004/cotizacion`
+- **`1.1_protocolos/CHUSAR_REGISTRO_LLAMADAS_ATENCION_AGENTE_20260810.md`** (**5.01.00.027**) 🆕 · libro faltas · **Falta 1** 2026-08-10 · gates anti–falso PASS
+- **`1.1_protocolos/CHUSAR_NORTE_PLAN_MAESTRO_ABSORCION_BANCA_20260809.md`** (**5.01.00.026**) 🆕 MOISES post-20260807 · 2026-08-09 · Norte Plan Maestro · Sit Fin corazón · banca · `:3004/plan-maestro`
 - **`1.1_protocolos/CHUSAR_PREGUNTA_TRAMPA_20260807.md`** (**5.01.00.025**) 🆕 · Pregunta trampa · línea 1 obligatoria · guía no-programadores
 
 ### **Imágenes (holding)**

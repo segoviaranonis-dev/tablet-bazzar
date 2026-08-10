@@ -38,6 +38,16 @@
 **Tema:** Frase exacta línea 1 · qué prueba el Director · legado vs vivo · metodología `5.01.00.023`  
 **Estado:** ✅ VIGENTE · padre `5.01.00.024`
 
+### **5.01.00.026 Norte holding · Plan Maestro · Sit Fin · banca** 🆕 MOISES post-20260807 · 2026-08-09
+**Archivo:** `CHUSAR_NORTE_PLAN_MAESTRO_ABSORCION_BANCA_20260809.md`  
+**Tema:** Filosofía caja→banca · frase norte evento de caja · Clase 7 `:3004/plan-maestro` · valor · promesa ROA/ROE &lt;1s · olas absorción  
+**Estado:** ✅ VIGENTE · integrado a Protocolo Chusar Activado `5.01.00.024` · hermano Sit Fin `2.3.1.50.9`
+
+### **5.01.00.027 Registro llamadas de atención al agente (libro de faltas)** 🆕 MOISES · 2026-08-10
+**Archivo:** `CHUSAR_REGISTRO_LLAMADAS_ATENCION_AGENTE_20260810.md`  
+**Tema:** Faltas permanentes · **Falta 1** Bazzar 638 falso PASS · gates creer≠saber · brazo ejecutor holding  
+**Estado:** ✅ VIGENTE · padre `5.01.00.024` §6 · error `4.05.03.004`
+
 ---
 **Archivo:** `workflow_hibrido_cursor_claude.md`  
 **Tema:** División de responsabilidades entre asistentes IA  

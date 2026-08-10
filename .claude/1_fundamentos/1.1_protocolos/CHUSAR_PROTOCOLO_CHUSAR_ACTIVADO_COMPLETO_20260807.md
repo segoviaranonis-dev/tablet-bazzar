@@ -25,6 +25,7 @@ Cuando el Director diga **Protocolo chusar** / **Protocolo chusar activado** / *
 | 7 | Sync OPS→Andrés | **OFF** |
 | 8 | Zip | Lo arma **Héctor** (agente no insiste) |
 | 9 | Producto **Respaldo activo seguro y hermético** (valor propio en cotización) | código **2.6** |
+| 10 | **Norte holding Plan Maestro** (caja→banca · Sit Fin corazón · promesa ROA/ROE &lt;1s) | `5.01.00.026` · `:3004/plan-maestro` |
 
 ---
 
@@ -75,7 +76,41 @@ Si pienso en el lo entiendo, pero si me lo explicarlo es imposible
 | Sync `moria_chusar` | ✅ |
 | Reglas Cursor keyword | ✅ |
 | `arbol-modulos.json` NEW pregunta-trampa | ✅ |
+| Norte Plan Maestro `5.01.00.026` (2026-08-09) | ✅ |
 
 ---
 
-**Documenta 2026-08-07 — Protocolo Chusar Activado = sistema completo · pregunta trampa `5.01.00.025` · producto 2.6.**
+## 5 · Norte holding (2026-08-09) — obligatorio con Chusar Activado
+
+**Canónico:** `CHUSAR_NORTE_PLAN_MAESTRO_ABSORCION_BANCA_20260809.md` (**5.01.00.026**).
+
+| Idea | Valor |
+|------|--------|
+| Corazón | Situación financiera · caja/cobros con linaje |
+| Destino | Banca internacional · ROA/ROE/balances/resultados **&lt; 1s** |
+| Orden | Caja primero · NIIF/ratios después · olas 1→4 |
+| UI | Clase **7** · `:3004/plan-maestro` |
+| Sit Fin detalle | **2.3.1.50.9** |
+
+Frase norte: *¿Qué evento de caja/cobro/compromiso genero, con qué fecha, moneda y documento?*
+
+---
+
+## 6 · Llamadas de atención al agente (registro permanente)
+
+**Canónico:** `CHUSAR_REGISTRO_LLAMADAS_ATENCION_AGENTE_20260810.md` (**5.01.00.027**).
+
+El Director puede registrar **faltas** cuando el brazo ejecutor comete niñerías de verificación (falso PASS · ley holding a medias · tiempo del Director quemado).
+
+| Estado libro | Valor |
+|--------------|--------|
+| **Falta Nº 1** | 2026-08-10 · Bazzar 638 un precio vs multi-LPN · `4.05.03.004` · **primera falta** |
+| Gates | Creer ≠ saber · smoke adverso · 638 misma ley en todas las apps · no cerrar con camino feliz |
+
+Con **Protocolo chusar activado**, el agente **lee el libro de faltas** y aplica §3 de `5.01.00.027` en toda ejecución Manos/SF.
+
+---
+
+**Documenta 2026-08-07 — Protocolo Chusar Activado = sistema completo · pregunta trampa `5.01.00.025` · producto 2.6.**  
+**Documenta 2026-08-09 — Norte Plan Maestro `5.01.00.026` integrado al disparo Chusar.**  
+**Documenta 2026-08-10 — Libro faltas `5.01.00.027` · Primera falta (638 Bazzar falso PASS).**

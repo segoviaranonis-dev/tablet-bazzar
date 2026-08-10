@@ -36,7 +36,11 @@ Canónico: `CHUSAR_PREGUNTA_TRAMPA_20260807.md` (`5.01.00.025`) · sistema: `CHU
 
 ### 2.0b · Keyword «Protocolo chusar activado»
 
-Dispara el **sistema completo** (lotes · `moria_chusar` · espíritu · examen · sync OFF · producto Respaldo 2.6). Ver `5.01.00.024`.
+Dispara el **sistema completo** (lotes · `moria_chusar` · espíritu · examen · sync OFF · producto Respaldo 2.6 · norte `5.01.00.026`). Ver `5.01.00.024`.
+
+### 2.0c · Libro de faltas del agente (`5.01.00.027`)
+
+Registro permanente de llamadas de atención del Director. **Falta Nº 1** (2026-08-10): falso PASS Bazzar 638. Gates: creer≠saber · smoke adverso · 638 misma ley en todas las apps. Leer al ejecutar Manos/SF.
 
 ### 2.1 · Anti-fuga — hooks Cursor
 
