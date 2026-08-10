@@ -1,6 +1,6 @@
-# ACTUAL — 2026-08-09
+# ACTUAL — 2026-08-10
 
-**Actualizado:** 2026-08-09 · **FOCO Situación financiera** · módulo hub publicado  
+**Actualizado:** 2026-08-10 · **FOCO hotfix descuentos FI PE** · Documenta · Protocolo Chusar Activado · deploy  
 **Línea 1 agente:** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · `5.01.00.025`
 
 ---
@@ -9,22 +9,17 @@
 
 | Tema | Código | Doc |
 |------|--------|-----|
-| Módulo hub Sit Fin | **2.3.1.50.5** | `CHUSAR_MODULO_HUB_SITUACION_FINANCIERA_20260809.md` |
-| Pestañas Guido + gráficos | **2.3.1.50.6** | `CHUSAR_SF_PESTANAS_VERSIONES_GUIDO_20260809.md` |
-| Molecular TXT + colores | **2.3.1.50.7** | `CHUSAR_SF_MOLECULAR_TXT_COLORES_20260809.md` |
-| Ruta | Report | `/situacion-financiera` |
-| Tablas / pipeline | **2.3.1.50.3–50.4** | MIG-203 LAB · Guido intake |
-| Etapa | `SITUACION-FINANCIERA-RIMEC-20260806` | EN CURSO · FOCO |
+| Descuentos FI PE · D1 editable | **2.2.1.51** | `2.2_rimec_web/CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md` |
+| Error | **4.01.04.010** | D1 LPC03 ya no “fijo” |
+| URL | Carrito PE | http://localhost:3001/carrito · prod rimec-web |
 
-**Norte:** Excel `SF AL 03-08.xlsx` · lógica Guido · economía importadora.
-
-**Aparcado:** Bitácora · Bazzar portada · Final Bazzar.
+**Prod rimec-web:** orden «despliega» + **Protocolo Chusar Activado** 2026-08-10.
 
 ---
 
 ## Keyword viva
 
-**Protocolo chusar activado** = lotes + `moria_chusar` · pregunta trampa línea 1.
+**Protocolo chusar activado** = lotes + `moria_chusar` + espíritu + examen + Respaldo 2.6.
 
 ---
 

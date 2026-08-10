@@ -29,7 +29,7 @@
       "appKey": "rimecWeb",
       "docIndice": ".claude/2_modulos/2.2_rimec_web/INDICE.md",
       "gitPath": "rimec-web/",
-      "ultimoDeployActivo": false
+      "ultimoDeployActivo": true
     },
     {
       "code": "2.3",
@@ -61,7 +61,7 @@
       "appKey": "bazzarWeb",
       "docIndice": ".claude/2_modulos/2.5_bazzar_web/INDICE.md",
       "gitPath": "bazzar-web/",
-      "ultimoDeployActivo": true
+      "ultimoDeployActivo": false
     },
     {
       "code": "2.6",

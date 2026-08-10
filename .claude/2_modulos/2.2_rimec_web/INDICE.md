@@ -4,7 +4,7 @@
 **Tecnología:** Next.js + Vercel  
 **Estado:** Producción  
 **URL:** https://rimec-web.vercel.app  
-**Última actualización:** 2026-08-04 · extirpación PDF Catálogo **2.2.1.41** · hotfix TODOS+Calzado **2.2.1.39**
+**Última actualización:** 2026-08-10 · descuentos FI PE D1 editable **2.2.1.51** 🆕 MOISES · Documenta Chusar Activado
 
 ---
 
@@ -62,6 +62,10 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **[CHUSAR_HOTFIX_CATALOGO_DEPLOY_20260706.md](./CHUSAR_HOTFIX_CATALOGO_DEPLOY_20260706.md)** — MIG-138 · filtros BD · prod `f408fc2` congelada
 - **Etapa PE (CERRADA):** [ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md](../../4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md)
 - **Deploy prod:** [CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md](../../1_fundamentos/1.1_protocolos/CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md)
+
+### **Blindaje carrito · no perder ítems (2026-08-07 · Documenta · Chusar Activado)**
+- **[CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md](./CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md)** — **2.2.1.51** · D1–D4 siempre editables · LPC03 sin candado 10% · **4.01.04.010** · Bug urgente · 🆕 MOISES post-20260807
+- **[CHUSAR_BLINDAJE_CARRITO_SESION_ACTIVA_20260807.md](./CHUSAR_BLINDAJE_CARRITO_SESION_ACTIVA_20260807.md)** — **2.2.1.42** · hydrate seguro · confirm cerrar venta · **prod ✅ 2026-08-07** · par bitácora **2.3.1.51**
 
 ### **Extirpación botón PDF Catálogo (2026-08-04 · Documenta)**
 - **[CHUSAR_EXTIRPACION_BOTON_PDF_CATALOGO_20260804.md](./CHUSAR_EXTIRPACION_BOTON_PDF_CATALOGO_20260804.md)** — **2.2.1.41** · botón dorado fuera · sustituye cocina PE bandeja · **no va en el próximo deploy**

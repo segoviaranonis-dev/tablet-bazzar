@@ -56,6 +56,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.01.04.009_rimec-web-lpn-lpc03-tachado-igual.md`* · ✅ **RESUELTO prod** `bcc476c` · doc **2.2.1.49** · sesión **2.2.1.50** · paréntesis bug **cerrado**
 
+### 4.01.04.010 · D1 LPC03 bloqueado (10% “fijo”) — asignador descuentos PE
+
+*Detalle: `.claude/5_errores/detalle/4.01.04.010_rimec-web-d1-fijo-lpc03-no-editable.md`* · ✅ **RESUELTO 2026-08-10** · D1–D4 editables · doc **2.2.1.51** · Bug urgente · Protocolo Chusar Activado
+
 ### 4.01.05.001 · Pronta entrega muestra tarjetas Compra previa (quincenas PP)
 
 *Detalle: `.claude/5_errores/detalle/4.01.05.001_rimec-web-pe-muestra-tarjetas-cp.md`* · ✅ **RESUELTO UI 2026-07-17** · deferred origen + validación warm cache · doc `2.2_rimec_web/CHUSAR_CORTE_20260717_HEADER_PRECIOS_PE.md`
@@ -156,6 +160,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.023_confirmar-pedido-lpc03-centena-bd-web.md`* · ✅ **RESUELTO 2026-07-24** · MIG-178 · report `5087687` · eslabón G4 auditoría CP
 
+### 4.02.03.024 · Trinidad IC↔FI LP desalineada (sync cliente_id)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.024_trinidad-ic-fi-lp-cliente-id.md`* · ✅ **RESUELTO 2026-08-06** · CHUSAR **2.3.1.7.5.3.15** · deploy `fe89fca` · report-plum-one
+
 ### 4.02.03.024 · Logística OK — PE invisible General (pre-sync Web · CONFIRMADA)
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.024_logistica-pe-invisible-pre-sync-aprobacion.md`* · ✅ **RESUELTO 2026-07-27** · MIG-187 · acordeón PE · auto-refresh · CHUSAR `2.3.1.28.12` · `2.3.1.28.13`
@@ -227,6 +235,11 @@
 ### 4.02.04.004 · Facturación — colisión `fi.vendedor_id` usuario ↔ `vendedor_v2` (Guido↔Patricia)
 
 *Detalle: `.claude/5_errores/detalle/4.02.04.004_fi-vendedor-id-colision-usuario-vendedor-v2.md`* · ✅ **RESUELTO 2026-08-03** · helper display · PE/tránsito/bóveda/Aprobaciones · CHUSAR `2.3.1.9.F`
+
+### 4.02.04.005 · CSV PE — tier LP incorrecto (violación imperdonable LPN vs LPC03)
+
+*Detalle Report:* `.claude/5_errores/detalle/4.02.04.005_csv-pe-tier-lpn-imperdonable.md`  
+*Detalle holding Nivel Dios rentabilidad:* `.claude/5_errores/detalle/4.00.02.009_csv-pe-rentabilidad-nivel-dios.md` · **`4.00.02.009`** · 🔴 **NIVEL DIOS · RENTABILIDAD** · gate export · audit masivo · CHUSAR `2.3.1.9.B.6` · 2026-08-07 · **prod**
 
 ### 4.02.05.001 · Automatización informes · marcas sin cascada ramo / tipo_v2
 

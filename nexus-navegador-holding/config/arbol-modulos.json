@@ -40,6 +40,15 @@
           "appPath": "/chusar",
           "md": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_PREGUNTA_TRAMPA_20260807.md",
           "nuevo": true
+        },
+        {
+          "code": "2.0.4",
+          "slug": "plan-maestro-norte",
+          "label": "Plan Maestro · norte holding",
+          "lead": "Clase 7 · caja→banca · Sit Fin corazón · ROA/ROE <1s · 5.01.00.026 · NEW.",
+          "appPath": "/plan-maestro",
+          "md": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_NORTE_PLAN_MAESTRO_ABSORCION_BANCA_20260809.md",
+          "nuevo": true
         }
       ]
     },
@@ -118,6 +127,15 @@
               "label": "Pruebas Héctor DIOS · reversión",
               "lead": "FI/PVR de prueba → eliminar/revertir solo con orden explícita.",
               "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_PRUEBAS_HECTOR_DIOS_REVERSION.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.51",
+              "slug": "descuentos-fi-pe-d1-editable-20260810",
+              "label": "Hotfix · D1–D4 FI PE siempre editables",
+              "lead": "LPC03 sin candado 10% · usuario controla · 4.01.04.010 · Bug urgente · deploy 2026-08-10.",
+              "appPath": "/carrito",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md",
               "nuevo": true
             },
             {
@@ -1184,6 +1202,24 @@
                       "lead": "Import Carlos · deploy · HECTOR 90 · neto sin centena.",
                       "appPath": "/facturacion/pronta-entrega",
                       "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_PENDIENTES_PE_CSV_20260804.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.1.9.B.5",
+                      "slug": "csv-pe-audit-tier",
+                      "label": "CSV PE · audit tier LP/LPC",
+                      "lead": "Gate export · bruto/neto vs cabecera · audit masivo.",
+                      "appPath": "/facturacion/pronta-entrega",
+                      "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_CSV_PE_AUDITORIA_TIER_20260807.md",
+                      "nuevo": true
+                    },
+                    {
+                      "code": "2.3.1.9.B.6",
+                      "slug": "csv-pe-rentabilidad-nivel-dios",
+                      "label": "CSV PE · Nivel Dios rentabilidad",
+                      "lead": "4.00.02.009 · bloqueo 422 · impacto margen Carlos · prod 2026-08-07.",
+                      "appPath": "/facturacion/pronta-entrega",
+                      "md": ".claude/2_modulos/2.3_report/facturacion/CHUSAR_CSV_PE_RENTABILIDAD_NIVEL_DIOS_20260807.md",
                       "nuevo": true
                     }
                   ]
