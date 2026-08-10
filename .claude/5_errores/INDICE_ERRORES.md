@@ -168,6 +168,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.024_logistica-pe-invisible-pre-sync-aprobacion.md`* · ✅ **RESUELTO 2026-07-27** · MIG-187 · acordeón PE · auto-refresh · CHUSAR `2.3.1.28.12` · `2.3.1.28.13`
 
+### 4.02.03.025 · Confirmar PE — LPC03 null · payload LPN×1.12 vs BD LPN (Patricia)
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.025_confirmar-pe-lpc03-null-payload-vs-lpn.md`* · ✅ **RESUELTO 2026-08-10** · MIG-206 · 11.777 PE `lpc03` null · drift 0 · CHUSAR **2.2.1.52** · Bug urgente
+
 ### 4.02.03.013 · PDF FI tab PP — Python ausente en Vercel
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.013_pdf-fi-prod-sin-python.md`* · ✅ **RESUELTO 2026-07-14** · `run-fi-pdf.ts` + pdf-lib · push `7b7d5d7`

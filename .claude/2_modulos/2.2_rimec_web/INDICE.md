@@ -4,7 +4,7 @@
 **Tecnología:** Next.js + Vercel  
 **Estado:** Producción  
 **URL:** https://rimec-web.vercel.app  
-**Última actualización:** 2026-08-10 · descuentos FI PE D1 editable **2.2.1.51** 🆕 MOISES · Documenta Chusar Activado
+**Última actualización:** 2026-08-10 · confirmar PE LPC03 null **2.2.1.52** + D1 editable **2.2.1.51** 🆕 MOISES · Documenta
 
 ---
 
@@ -64,6 +64,7 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **Deploy prod:** [CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md](../../1_fundamentos/1.1_protocolos/CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md)
 
 ### **Blindaje carrito · no perder ítems (2026-08-07 · Documenta · Chusar Activado)**
+- **[CHUSAR_HOTFIX_CONFIRMAR_PE_LPC03_NULL_20260810.md](./CHUSAR_HOTFIX_CONFIRMAR_PE_LPC03_NULL_20260810.md)** — **2.2.1.52** · MIG-206 · confirmar PE LPC03 null · payload×1.12 vs LPN · **4.02.03.025** · Bug urgente · 🆕 MOISES
 - **[CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md](./CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md)** — **2.2.1.51** · D1–D4 siempre editables · LPC03 sin candado 10% · **4.01.04.010** · Bug urgente · 🆕 MOISES post-20260807
 - **[CHUSAR_BLINDAJE_CARRITO_SESION_ACTIVA_20260807.md](./CHUSAR_BLINDAJE_CARRITO_SESION_ACTIVA_20260807.md)** — **2.2.1.42** · hydrate seguro · confirm cerrar venta · **prod ✅ 2026-08-07** · par bitácora **2.3.1.51**
 
