@@ -22,6 +22,7 @@
 
 | # | Fecha | Qué | Índices / código | Git | DB | Estado |
 |---|-------|-----|------------------|-----|-----|--------|
+| 30 | 2026-08-10 | **Cascada L-R-M-C siamese** AM+Web · alerta cierre · vaciado PP abierto · Protocolo Chusar Activado · **deploy prod** | `CHUSAR_DEPLOY_CASCADA_LRMC…` · `2.3.1.29.2` | Sí Report `0235202` · Web `3b5b031` | No | 🆕 |
 | 1 | 2026-08-07 | Espíritu + examen Andrés `5.01.00.023` · docs en moria_chusar = guía de actualizaciones · zip lo arma Héctor | `CHUSAR_MOISES_ESPIRITU_Y_EXAMEN…` · `EXAMEN_NIVEL_ANDRES_MOISES.md` | No | No | 🆕 |
 | 2 | 2026-08-07 | Protocolo Chusar Activado completo `5.01.00.024` · pregunta trampa · producto **2.6 Respaldo activo** USD 28k–42k · cotización :3004 | `CHUSAR_PROTOCOLO_CHUSAR_ACTIVADO_COMPLETO…` · `cotizacion-productos.ts` | No | No | 🆕 |
 | 3 | 2026-08-07 | **Pregunta trampa** guía no-programadores `5.01.00.025` · metodología qué/cómo/Andrés · typo intencional · arbol `2.0.3` NEW | `CHUSAR_PREGUNTA_TRAMPA_20260807.md` · índices · `CODIGO_MAESTRO` | No | No | 🆕 |
@@ -51,6 +52,7 @@
 | 26 | 2026-08-10 | **SF STOCK ifstgp4 · 3 TXT 1/depósito** `2.3.1.50.21` · monto Dls×STOCK · grupo uno · hermano sdrm#### · flujo normal Faro · Documenta | `CHUSAR_SF_STOCK_IFSTGP4…` · padrón/registros `ifstgp4` · clasificador `stock_por_grupo` | Local Report | No | 🆕 |
 | 27 | 2026-08-10 | **Moises handoff Faro + prep previsto×cobrado julio** `2.3.1.50.22`+`50.23` · hecho/pendiente/próximo · Protocolo Chusar+Moises Activado · Documenta · zip Héctor→Andrés | `CHUSAR_SF_MOISES_HANDOFF…` · `CHUSAR_SF_PREPARACION_PREVISTO_COBRADO…` | No (doc) | No | 🆕 |
 | 28 | 2026-08-10 | **Burbuja sin SF AL** `2.3.1.50.24` · mapa `archivoTxt`=SF AL · guarda TXT · audit PASS · Documenta+**publica** | `CHUSAR_SF_BURBUJA_SIN_SF_AL…` · deploy · `alerta-inconsistencia.ts` · mapas scrub | Sí Report prod | No | 🆕 |
+| 29 | 2026-08-10 | **Reclamo Guido cheques ago** `2.3.1.50.25` · TXT TOTAL=canon 08 · parser OBS · audit 6 TXT PASS · Documenta+**publica** | `CHUSAR_SF_RECLAMO_GUIDO_CHEQUES_AGO…` · deploy · `parsers.py` · molecular | Sí Report prod | No | 🆕 |
 
 **Cómo agregar una fila (agentes Héctor con Documenta):**
   

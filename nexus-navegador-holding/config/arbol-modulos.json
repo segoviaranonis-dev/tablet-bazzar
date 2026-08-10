@@ -629,9 +629,27 @@
                   "code": "2.3.1.29",
                   "slug": "pp-abierto-reposicion",
                   "label": "PP abierto · reposición AM",
-                  "lead": "Import proforma · KPI 10.152 pares · filtro tarjetas · MIG-170 · pills índigo.",
+                  "lead": "Import proforma · KPI vaciado 0 · filtro tarjetas · MIG-170 · pills índigo.",
                   "appPath": "/herramienta-reposicion",
                   "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_PP_ABIERTO_REPOSICION.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.29.1",
+                  "slug": "vaciado-pp-abierto-20260810",
+                  "label": "Vaciado PP abierto · nueva proforma",
+                  "lead": "Director 2026-08-10 · borró cabeceras+filas · KPI 0 · script vaciar_pp_abierto.mjs.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_VACIADO_PP_ABIERTO_20260810.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.29.2",
+                  "slug": "deploy-cascada-lrmc-siamese-20260810",
+                  "label": "Deploy · cascada L-R-M-C siamese",
+                  "lead": "Prod Report+Web · Referencia en molécula · alerta cierre · commits 0235202 / 3b5b031.",
+                  "appPath": "/herramienta-reposicion",
+                  "md": ".claude/2_modulos/2.3_report/gestion_compra/CHUSAR_DEPLOY_CASCADA_LRMC_SIAMESE_20260810.md",
                   "nuevo": true
                 },
                 {

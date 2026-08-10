@@ -31,7 +31,9 @@
 | **[CHUSAR_HANDOFF_CIERRE_AM_FACTURA_5000.md](./CHUSAR_HANDOFF_CIERRE_AM_FACTURA_5000.md)** | **Handoff AM** · FI 5000 = 0 · etapa pruebas cerrada · **2.3.1.25** ✅ 2026-07-16 |
 | **[ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md](../../../4_etapas/ETAPA_REPOSICION_FILTRO_ADICIONAL_20260716.md)** | **Etapa viva** · filtro adicional reposición · **2.3.1.26** 🟢 2026-07-16 |
 | **[CHUSAR_REPOSICION_SIDEBAR_MULTISELECT_TONO.md](./CHUSAR_REPOSICION_SIDEBAR_MULTISELECT_TONO.md)** | **Filtros duales** · Tipo · familias Material/Color · NN · Napa/Verniz · **2.3.1.26** Documenta 2026-07-17 |
-| **[CHUSAR_PP_ABIERTO_REPOSICION.md](./CHUSAR_PP_ABIERTO_REPOSICION.md)** | **PP abierto v2** · factura 0004/2026 · 20.532 pares · anti-JOIN ×N · trazabilidad CP · **2.3.1.29** 🟢 2026-07-21 |
+| **[CHUSAR_PP_ABIERTO_REPOSICION.md](./CHUSAR_PP_ABIERTO_REPOSICION.md)** | **PP abierto v2** · BD vacía · KPI 0 · listo nueva proforma · **2.3.1.29** 🟢 2026-08-10 |
+| **[CHUSAR_VACIADO_PP_ABIERTO_20260810.md](./CHUSAR_VACIADO_PP_ABIERTO_20260810.md)** | **Vaciado PP abierto** · borró 5 cabeceras + 1.863 filas · script `vaciar_pp_abierto.mjs` · **2.3.1.29.1** 🟢 Documenta 2026-08-10 |
+| **[CHUSAR_DEPLOY_CASCADA_LRMC_SIAMESE_20260810.md](./CHUSAR_DEPLOY_CASCADA_LRMC_SIAMESE_20260810.md)** | **Deploy prod** cascada L-R-M-C AM+Web · alerta cierre · Report `0235202` · Web `3b5b031` · **2.3.1.29.2** 🟢 Chusar Activado 2026-08-10 |
 | **[CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md](./CHUSAR_AUDITORIA_INTEGRIDAD_AM_REPOSICION.md)** | **Integridad AM** · tolerancia 0 · 9.895 moléculas · 0 issues · 0 buckets sin lote · **2.3.1.30** 🟢 2026-07-21 |
 | **[CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO.md](./CHUSAR_NUMERO_PREVENTA_CARLOS_DATO_DURO.md)** | **★ Nº preventa Carlos** · `nro_pedido_externo` · mapa PDF/UI/grillas · par 24 quincenas · siamese AM↔Web · **2.3.1.31** 🟢 Documenta 2026-07-20 |
 | **[CHUSAR_SESION_DURO_PREVENTA_UI_PRECIOS_20260720.md](./CHUSAR_SESION_DURO_PREVENTA_UI_PRECIOS_20260720.md)** | **★ Consolidación sesión** · UI 2 filas · precios centena · filtro siamés `3→2→1→Aplicando` · smoke · **2.3.1.32** Documentación Chusar 2026-07-20 |
