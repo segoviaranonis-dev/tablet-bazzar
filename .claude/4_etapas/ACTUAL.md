@@ -1,6 +1,6 @@
 # ACTUAL — 2026-08-10
 
-**Actualizado:** 2026-08-10 · Documenta pendiente backfill LPC PE + Bazzar Web local  
+**Actualizado:** 2026-08-10 · Documenta error Bazzar 638 precio×talle `4.05.03.004`  
 **Línea 1 agente:** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · `5.01.00.025`
 
 ---
@@ -9,16 +9,22 @@
 
 | Tema | Código | Doc |
 |------|--------|-----|
-| **Pendiente PE LPC en PPD** | **2.2.1.52.2** | `CHUSAR_PENDIENTE_BACKFILL_LPC_PE_PPD_20260810.md` · confirmar Web OK · backfill OT |
-| **Pendientes consolidados SF** | **2.3.1.50.28** | `CHUSAR_SF_PENDIENTES_FARO_CONSOLIDADO_20260810.md` |
-| **TXT manda / no maquillar** | **2.3.1.50.27** | `CHUSAR_SF_TXT_MANDA_Y_NO_MAQUILLAR_20260810.md` · commit `656382f` |
-| **Próximo gerencial** | **P3** `2.3.1.50.23` | Previsto×cobrado julio — espera datos A+B |
-| Etapa | `SITUACION-FINANCIERA-RIMEC-20260806` | EN CURSO · lote Moises **#31–#32** |
+| **🔴 Bazzar 638 · un precio vs multi-LPN** | **2.5.1.25** / `4.05.03.004` | Falso PASS · ley 638 = RIMEC · norte `5.01.00.026` · Faro |
+| **Delivery Bazzar · transporte (empresa independiente)** | **2.7.1** · etapa `DELIVERY-BAZZAR-TRANSPORTE-20260810` | `CHUSAR_DELIVERY_BAZZAR_CONSTITUCION_20260810.md` |
+| Hub Delivery v0 | Report | `http://localhost:3000/delivery-bazzar` |
 
-**Ley Director:** no desaparecer errores para verse bien · que **funcione** · TXT manda si hay detalle.
+---
+
+## Aparcado
+
+| Tema | Nota |
+|------|------|
+| PE LPC backfill `2.2.1.52.2` | Etapa abierta · sin maratón |
+| Sit Fin v1 | **CERRADA** · deuda v2 `50.28` |
+| Bazzar Web final · Bitácora · Moises | En `etapas.json` · grilla 638 **2.5.1.23** parcial |
 
 ---
 
 ## Keyword viva
 
-**Protocolo chusar activado** = lotes + `moria_chusar` + norte `5.01.00.026`.
+**Protocolo chusar activado** · lotes Moises · Delivery = **ente nuevo**, no tienda.

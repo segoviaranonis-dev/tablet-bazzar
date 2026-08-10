@@ -661,6 +661,7 @@
 | `4.00.03.047` | confirmar-pedido-lpc03-centena-bd-web | `5_errores/detalle/4.02.03.023_confirmar-pedido-lpc03-centena-bd-web.md` |
 | `4.00.03.048` | logistica-pe-invisible-pre-sync-aprobacion | `5_errores/detalle/4.02.03.024_logistica-pe-invisible-pre-sync-aprobacion.md` |
 | `4.00.03.048b` | confirmar-pe-lpc03-null-payload-vs-lpn | `5_errores/detalle/4.02.03.025_confirmar-pe-lpc03-null-payload-vs-lpn.md` |
+| `4.00.03.048c` | bazzar-638-un-precio-vs-multi-lpn-ppd | `5_errores/detalle/4.05.03.004_bazzar-638-un-precio-vs-multi-lpn-ppd.md` |
 | `4.00.03.049` | report-import-pe-vercel-python-enoent | `5_errores/detalle/4.02.04.001_report-import-pe-vercel-python-enoent.md` |
 | `4.00.03.050` | report-purge-pe-fk-fi-pp | `5_errores/detalle/4.02.04.002_report-purge-pe-fk-fi-pp.md` |
 | `4.00.03.051` | report-3000-zombie-modal-import-cero | `5_errores/detalle/4.02.04.003_report-3000-zombie-modal-import-cero.md` |

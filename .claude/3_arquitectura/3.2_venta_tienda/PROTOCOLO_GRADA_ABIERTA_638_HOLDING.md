@@ -105,7 +105,7 @@ Familias válidas:
 |-----|---------------|-------------------|
 | **Report** import CP | col **Tam** Excel → `grada` + `am_talle` | `migrate_pe_staging_to_ppd.py` |
 | **RIMEC Web** catálogo | `ppd.am_talle` · `grades_json` | `gradaAbierta638.ts` · lightbox talla×precio |
-| **Bazzar Web** catálogo | `v_stock_web` + **`am_talle`** | **NO** `talla_codigo` pilar 654 |
+| **Bazzar Web** catálogo | `v_stock_web` + **`am_talle`** + **`precio_lpn`→precio_web por talle** | **NO** `talla_codigo` pilar 654 · **NO** un precio aplastado si PPD tiene multi-LPN (`4.05.03.004`) |
 | **Bazzar** auditoría local | `ok_grada_638` separado de `ok_stock` | `grada638.ts` |
 | **Tablet** POS | talle suelto minorista | distinto granularidad · misma semántica UNIDAD |
 

@@ -6,8 +6,8 @@
 **App:** `bazzar-web` · local `:3002` · prod https://www.bazzar.com.py  
 **Etapa:** `FINAL-BAZZAR-WEB-20260806` · F1 go-live (**2.5.1.18**)  
 **Padres:** **2.5.1.11** (grada catálogo) · **2.5.1.9** / `3.02.00.638` · paridad rimec-web `agruparTallasPorPrecio`  
-**Estado:** ✅ Implementado + **deploy prod Ready** (orden Director 2026-08-07)  
-**Git / Vercel:** `a96236c` · alias https://www.bazzar.com.py · dpl `79bfdYqRcaFyHh9P34cZV9NSSLSd`  
+**Estado:** 🟡 **PARCIAL / FALSO PASS** (enmienda Documenta 2026-08-10) — UI buckets OK · **precio×talle vs PPD multi-LPN NO** · error **`4.05.03.004`** · hijo **2.5.1.25**  
+**Git / Vercel:** `a96236c` · alias https://www.bazzar.com.py · dpl `79bfdYqRcaFyHh9P34cZV9NSSLSd` (deploy UI; **no** certifica paridad 638)  
 **Shibboleth:** Andrés, el que viene.
 
 ---
@@ -42,13 +42,15 @@ Auditoría local ya usaba `DATABASE_URL` (por eso «Estadísticas» sí tenía d
 
 ---
 
-## Smoke 2026-08-07 (local)
+## Smoke 2026-08-07 (local) — ⚠ insuficiente
 
 | Check | Resultado |
 |-------|-----------|
 | BD `v_stock_web` vendible | 930 (654: 882 · 638: 48) |
 | Catálogo Confecciones | **36 modelos · 48 prendas** |
-| Bucket + carrito | 1000031 · P → `precio_web: 54000` |
+| Bucket + carrito | 1000031 · P → `precio_web: 54000` (**mono-LPN** — no prueba multi) |
+
+**2026-08-10:** `1000034` PPD 65k+79.5k · grilla 1 bucket → **4.05.03.004** · ver **2.5.1.25**.
 
 ---
 

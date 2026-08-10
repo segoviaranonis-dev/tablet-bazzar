@@ -3,7 +3,7 @@
 **Tipo:** App Next.js B2C  
 **Repo:** `bazzar-web/`  
 **Estado:** ✅ Etapa catálogo :3002 **CERRADA** 2026-07-16  
-**Última actualización:** 2026-08-07 · Portada inicio + encuadre modelo (**2.5.1.24**) 🆕 MOISES · Grilla 638 (**2.5.1.23**) · Motor (**2.5.1.22**)  
+**Última actualización:** 2026-08-10 · error 638 precio×talle falso PASS (**2.5.1.25** / `4.05.03.004`) · enmienda **2.5.1.23** 🆕 MOISES  
 
 **Etapa (aparcada · meta 01-09):** [ETAPA_FINAL_BAZZAR_WEB_20260806.md](../../4_etapas/ETAPA_FINAL_BAZZAR_WEB_20260806.md) · `FINAL-BAZZAR-WEB-20260806`  
 **CHUSAR lanzamiento:** [CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md](./CHUSAR_FINAL_BAZZAR_WEB_LANZAMIENTO_20260901.md) (**2.5.1.18**) · FOCO holding cedido a Situación financiera Rimec (**2.3.1.50**)  
@@ -28,8 +28,9 @@ E-commerce **cliente final Bazzar**. Separado de RIMEC Web (B2B mayoristas).
 
 | Código | Doc | Tema |
 |--------|-----|------|
+| **2.5.1.25** | **[CHUSAR_ERROR_BAZZAR_638_PRECIO_TALLE_FALSO_PASS_20260810.md](./CHUSAR_ERROR_BAZZAR_638_PRECIO_TALLE_FALSO_PASS_20260810.md)** | 🔴 Error · un precio vs multi-LPN PPD · falso PASS · **4.05.03.004** · ley 638 única · norte/Faro · 🆕 MOISES |
 | **2.5.1.24** | **[CHUSAR_IMAGEN_PORTADA_MARCAS_INICIO_20260807.md](./CHUSAR_IMAGEN_PORTADA_MARCAS_INICIO_20260807.md)** | Inicio/hero · Storage `productos/portada/` · orden marcas · `objectPosition` 4:5 · keyword **imagen de portada** · `2.01.04.024` · 🆕 MOISES post-20260807 |
-| **2.5.1.23** | **[CHUSAR_CATALOGO_GRILLA_638_PRECIO_TALLE_20260807.md](./CHUSAR_CATALOGO_GRILLA_638_PRECIO_TALLE_20260807.md)** | Catálogo · buckets Gs./prenda × talle 638 · carrito · fix timeout anon→admin |
+| **2.5.1.23** | **[CHUSAR_CATALOGO_GRILLA_638_PRECIO_TALLE_20260807.md](./CHUSAR_CATALOGO_GRILLA_638_PRECIO_TALLE_20260807.md)** | 🟡 PARCIAL · UI buckets · **no** paridad multi-LPN · ver **2.5.1.25** |
 | **2.5.1.22** | **[CHUSAR_MOTOR_PRECIO_PUBLICADO_PENDIENTE_20260806.md](./CHUSAR_MOTOR_PRECIO_PUBLICADO_PENDIENTE_20260806.md)** | Motor · pestañas Publicado/Pendiente · multi-select · puerta tienda · conflictos CASO |
 | **2.5.1.21** | **[CHUSAR_MOTOR_PRECIO_CASCADA_SIAMESE_20260806.md](./CHUSAR_MOTOR_PRECIO_CASCADA_SIAMESE_20260806.md)** | Motor Guardián · cascada PE siamese · UI flotante · deploy Report |
 | **2.5.1.20** | **[CHUSAR_FILTROS_SIAMESES_DEPOSITO_BAZZAR_CATALOGO_20260806.md](./CHUSAR_FILTROS_SIAMESES_DEPOSITO_BAZZAR_CATALOGO_20260806.md)** | Cascada dimensión→molécula **DW↔BZ** · AB-CR tipología · **2.2.1.44** |

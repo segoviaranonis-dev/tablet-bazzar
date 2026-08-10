@@ -311,6 +311,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.05.03.003_traspaso-pe-sin-combinacion-talla-638.md`* · ✅ **RESUELTO 2026-08-02** · `ensureTallaId` + match mat/col · CHUSAR **2.5.1.16** · PE-237 12/12 ENVIADO
 
+### 4.05.03.004 · Bazzar Web · un precio 638 vs multi-LPN PPD (falso PASS grilla)
+
+*Detalle: `.claude/5_errores/detalle/4.05.03.004_bazzar-638-un-precio-vs-multi-lpn-ppd.md`* · 🔴 **ABIERTO 2026-08-10** · ley 638 única · smoke mono-LPN · CHUSAR **2.5.1.25** · enmienda **2.5.1.23**
+
 ### 4.05.04.001 · Nexus_Core `origin` apunta a tablet-bazzar.git
 
 *Detalle: `.claude/5_errores/detalle/4.05.04.001_nexus-core-origin-apunta-tablet-bazzar.md`* · 🟡 **MITIGADO PARCIAL** · Preview `moises-holding` apagado (`vercel.json`) · remote canónico aún parking · lección 2026-08-06 · sesión **2.2.1.50**
