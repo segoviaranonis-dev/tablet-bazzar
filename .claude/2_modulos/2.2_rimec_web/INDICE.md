@@ -4,7 +4,7 @@
 **Tecnología:** Next.js + Vercel  
 **Estado:** Producción  
 **URL:** https://rimec-web.vercel.app  
-**Última actualización:** 2026-08-10 · ratificación MIG-206 PE LPC **2.2.1.52.1** · hotfix **2.2.1.52** 🆕 MOISES · Documenta
+**Última actualización:** 2026-08-10 · pendiente backfill LPC PE **2.2.1.52.2** · ratif. **2.2.1.52.1** 🆕 MOISES · Documenta
 
 ---
 
@@ -64,6 +64,7 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **Deploy prod:** [CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md](../../1_fundamentos/1.1_protocolos/CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md)
 
 ### **Blindaje carrito · no perder ítems (2026-08-07 · Documenta · Chusar Activado)**
+- **[CHUSAR_PENDIENTE_BACKFILL_LPC_PE_PPD_20260810.md](./CHUSAR_PENDIENTE_BACKFILL_LPC_PE_PPD_20260810.md)** — **2.2.1.52.2** · ⏳ backfill `precio_lpc03/04` PPD PE + import · no bloquea confirmar · 🆕 MOISES
 - **[CHUSAR_RATIFICACION_MIG206_PE_LPC_20260810.md](./CHUSAR_RATIFICACION_MIG206_PE_LPC_20260810.md)** — **2.2.1.52.1** · smoke PASS · 11.769 PE · gate confirmar OK · residual columnas LPC null · 🆕 MOISES
 - **[CHUSAR_HOTFIX_CONFIRMAR_PE_LPC03_NULL_20260810.md](./CHUSAR_HOTFIX_CONFIRMAR_PE_LPC03_NULL_20260810.md)** — **2.2.1.52** · MIG-206 · confirmar PE LPC03 null · payload×1.12 vs LPN · **4.02.03.025** · Bug urgente · 🆕 MOISES
 - **[CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md](./CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md)** — **2.2.1.51** · D1–D4 siempre editables · LPC03 sin candado 10% · **4.01.04.010** · Bug urgente · 🆕 MOISES post-20260807
