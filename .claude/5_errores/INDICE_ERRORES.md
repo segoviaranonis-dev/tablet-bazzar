@@ -170,7 +170,7 @@
 
 ### 4.02.03.025 · Confirmar PE — LPC03 null · payload LPN×1.12 vs BD LPN (Patricia)
 
-*Detalle: `.claude/5_errores/detalle/4.02.03.025_confirmar-pe-lpc03-null-payload-vs-lpn.md`* · ✅ **RESUELTO 2026-08-10** · MIG-206 · 11.777 PE `lpc03` null · drift 0 · CHUSAR **2.2.1.52** · Bug urgente
+*Detalle: `.claude/5_errores/detalle/4.02.03.025_confirmar-pe-lpc03-null-payload-vs-lpn.md`* · ✅ **RESUELTO + RATIFICADO 2026-08-10** · MIG-206 · smoke PASS · CHUSAR **2.2.1.52** / **2.2.1.52.1** · Bug urgente
 
 ### 4.02.03.013 · PDF FI tab PP — Python ausente en Vercel
 

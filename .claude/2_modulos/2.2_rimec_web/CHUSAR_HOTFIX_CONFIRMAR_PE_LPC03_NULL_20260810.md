@@ -4,7 +4,7 @@
 **Fecha:** 2026-08-10  
 **Keyword:** Documenta · despliega (Director)  
 **Error:** `4.02.03.025`  
-**Estado:** ✅ MIG-206 en BD prod · universo PE drift **0**
+**Estado:** ✅ MIG-206 en BD prod · ratificado **2.2.1.52.1** · smoke PASS
 
 ---
 
