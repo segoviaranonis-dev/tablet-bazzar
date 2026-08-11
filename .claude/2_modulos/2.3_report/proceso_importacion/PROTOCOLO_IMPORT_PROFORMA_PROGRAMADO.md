@@ -86,6 +86,7 @@ Cada fila proforma → molécula PPD:
 - `STYLE` → `linea` + `referencia` (`parsear_linea_referencia`)
 - `MATERIAL CODE` / `COLOR CODE` → lookup `material` / `color` por `codigo_proveedor`
 - Curva → `grades_json` + `grada`
+- **Ley grada Carlos (2026-08-11):** BD sparse OK · serialización **`min(max)` con ceros** — ver [LEY_GRADA_CEROS_CARLOS_PROFORMA.md](./LEY_GRADA_CEROS_CARLOS_PROFORMA.md) (**2.3.1.7.5.3.16.1**)
 - Enriquecimiento no inverso en material/color si proforma trae texto
 
 FI detalle usa `ppd_id` + snapshot desde PPD · LPN join `precio_lista` por `(evento_id, linea_id, referencia_id, material_id)`.

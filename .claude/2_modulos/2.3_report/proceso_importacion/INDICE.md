@@ -6,7 +6,7 @@
 
 **CHUSAR padre:** [CHUSAR_CICLO_IMPORTACION_REPORT.md](./CHUSAR_CICLO_IMPORTACION_REPORT.md)  
 
-**Actualizado:** 2026-07-26 · **Listado motor FI** · [CHUSAR_LISTADO_MOTOR_FI_PP.md](./CHUSAR_LISTADO_MOTOR_FI_PP.md) (**2.3.1.7.5.3.14**)
+**Actualizado:** 2026-08-11 · **Ley grada ceros Carlos** · [LEY_GRADA_CEROS_CARLOS_PROFORMA.md](./LEY_GRADA_CEROS_CARLOS_PROFORMA.md) (**2.3.1.7.5.3.16.1**)
 
 
 
@@ -142,6 +142,9 @@ Ciclo importadora RIMEC en Report — paridad Streamlit **CICLO DE IMPORTACIÓN*
 | **2.3.1.7.5.3.9** | **Import cierre Carlos ↔ Nexus · Factura Real** | PP tab FI · CSV | [CHUSAR_IMPORT_CIERRE_CARLOS_NEXUS](./CHUSAR_IMPORT_CIERRE_CARLOS_NEXUS.md) | ✅ **2026-07-25** · PP-38 piloto · 78/78 emparejamientos |
 | **2.3.1.7.5.3.10** | **Recalc LP + Logística post-compras** | PP tab FI · impositor tier | [CHUSAR_RECALC_LP_LOGISTICA_POST_COMPRAS](./CHUSAR_RECALC_LP_LOGISTICA_POST_COMPRAS.md) | ✅ **2026-07-25** · tier post-ENVIADO · botón retirado tab FI 2026-07-26 |
 | **2.3.1.7.5.3.14** | **Listado motor por FI · precio 0 sin match** | PP tab FI · select violeta | [CHUSAR_LISTADO_MOTOR_FI_PP.md](./CHUSAR_LISTADO_MOTOR_FI_PP.md) | 🟢 **2026-07-26** · build ✅ · [DEPLOY](./CHUSAR_DEPLOY_LISTADO_MOTOR_FI_20260726.md) |
+| **2.3.1.7.5.3.15** | **Trinidad IC · PF · FI · sync LP** | cabecera IC + tab FI | [CHUSAR_TRINIDAD_IC_PF_FI_SYNC.md](./CHUSAR_TRINIDAD_IC_PF_FI_SYNC.md) | ✅ **PROD 2026-08-06** · `fe89fca` · [DEPLOY](./CHUSAR_DEPLOY_TRINIDAD_20260806.md) · error `4.02.03.024` |
+| **2.3.1.7.5.3.16** | **Reclamo Alfredo · grada ceros Carlos** | CSV veneno · molécula | [CHUSAR_RECLAMO_ALFREDO_GRADA_CEROS_CARLOS_20260811.md](./CHUSAR_RECLAMO_ALFREDO_GRADA_CEROS_CARLOS_20260811.md) · [LEY](./LEY_GRADA_CEROS_CARLOS_PROFORMA.md) | ✅ **2026-08-11** · `PP-REC-001` cerrado |
+| **2.3.1.7.5.3.16.1** | **Ley grada ceros Carlos · proforma** | serialización | [LEY_GRADA_CEROS_CARLOS_PROFORMA.md](./LEY_GRADA_CEROS_CARLOS_PROFORMA.md) | ✅ **inviolable** |
 | **2.3.1.7.5.3.2.H** | **Hotfix PP-14 · vincular FI + PDF FI** | doc | [CHUSAR_HOTFIX_REPORT_PP14_20260714](./CHUSAR_HOTFIX_REPORT_PP14_20260714.md) | ✅ deploy · rescate BD · errores `012`+`013` |
 | **2.3.1.27** | **Etapa · Importación programados** | doc | [CHUSAR_IMPORTACION_PROGRAMADOS_20260718](./CHUSAR_IMPORTACION_PROGRAMADOS_20260718.md) | 🟢 **2026-07-18** · [ETAPA](../../../4_etapas/ETAPA_IMPORTACION_PROGRAMADOS_20260718.md) |
 | **2.3.1.27.1** | **Maratón proformas PROGRAMADO** | doc | [CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718](./CHUSAR_MARATON_PROFORMAS_PROGRAMADO_20260718.md) | 🟢 checklist · tabla lote · Cursor+Director |
