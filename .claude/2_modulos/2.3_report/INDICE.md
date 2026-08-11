@@ -23,10 +23,10 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - BAZZAR (Naranja #ea580c)
 
 **Módulos activos:**
-- ✅ Aprobaciones (NIIF 100%) · **tabs** **2.3.1.3.2** · indagación **2.3.1.3.3** · **agilidad/plazo/perf** **2.3.1.3.6** 🟢 2026-08-07 [CHUSAR](aprobaciones/CHUSAR_APROBACIONES_AGILIDAD_PLAZO_PERF_20260807.md)
+- ✅ Aprobaciones (NIIF 100%) · **tabs** **2.3.1.3.2** · indagación **2.3.1.3.3** · **agilidad/plazo/perf** **2.3.1.3.6** · **Aprobación Gral molécula** **2.3.1.3.7** 🆕 2026-08-11 [CHUSAR](aprobaciones/CHUSAR_APROBACION_GRAL_MOLECULA_20260811.md)
 - ✅ **Administrador de Pilares** (`/pilares` — **2.3.5 CERRADA** 2026-06-17)
 - ✅ **RRHH** (`/rrhh` — **2.3.10** · subcuentas 2.3.10.1–2.3.10.2)
-- ✅ **Proceso importación** (`/proceso-importacion` — **2.3.1.7** · **2.3.1.7.2 Importación precios CERRADA** ✅)
+- ✅ **Proceso importación** (`/proceso-importacion` — **2.3.1.7** · **2.3.1.7.2 Importación precios CERRADA** ✅) · **CSV precios Tito PP** **2.3.1.7.5.3.17** 🆕 2026-08-11
 - Stock / Retail
 - Ventas
 - Ventas + Fotos
@@ -39,7 +39,7 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - **Automatización de informes (2.3.1.35)** 🆕 → [automatizacion_informes/INDICE.md](automatizacion_informes/INDICE.md) · `/automatizacion-informes` · Control PE · multi-usuarios/horarios **2.3.1.35.5** · plan PDF→bandeja `PLAN-AUTO-BANDEJA-PE-20260802` · **espíritu cocina 133×LPN/LPC03/LPC04** (**2.3.1.35.11**) · **cocina ≠ PDF** snapshot (**2.3.1.35.15**)
 - **Mensajes internos (2.3.1.36)** 🆕 → [mensajes_internos/INDICE.md](mensajes_internos/INDICE.md) · `/mensajes-internos` · inbox `usuario_v2` · PDF backend · banquete tipo_v2 **2.3.1.36.6**
 - **📋 Bitácora monitoreo sesión/venta (2.3.1.51)** 🆕 → [bitacora/INDICE.md](bitacora/INDICE.md) · `/holding/bitacora` · tabla L–V · respaldo carrito · [CHUSAR](bitacora/CHUSAR_BITACORA_MONITOREO_SESION_VENTA_20260807.md) · par carrito **2.2.1.42** · etapa [ETAPA_BITACORA…](../4_etapas/ETAPA_BITACORA_MONITOREO_SESION_VENTA_20260807.md) · 🆕 MOISES 2026-08-07 · aparcada (FOCO → SF)
-- **📊 Situación financiera Rimec (2.3.1.50)** 🆕 **FOCO** → [situacion_financiera/INDICE.md](situacion_financiera/INDICE.md) · hub `/situacion-financiera` **2.3.1.50.5** · pestañas Guido **2.3.1.50.6** · molecular TXT+colores **2.3.1.50.7** · [CHUSAR módulo](situacion_financiera/CHUSAR_MODULO_HUB_SITUACION_FINANCIERA_20260809.md) · tablas **2.3.1.50.4** · etapa [ETAPA_SITUACION_FINANCIERA…](../4_etapas/ETAPA_SITUACION_FINANCIERA_RIMEC_20260806.md) · 🆕 MOISES post-20260807 · 2026-08-09
+- **📊 Situación financiera Rimec (2.3.1.50)** ✅ **v1 CERRADA** → [situacion_financiera/INDICE.md](situacion_financiera/INDICE.md) · cierre **2.3.1.50.29** · deuda v2 **2.3.1.50.28** · norte **5.01.00.026** · 🆕 MOISES post-20260807 · 2026-08-10
 - **Etapa unificada** → [ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md](../4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md) · lección [CHUSAR_LECCION_VIOLACIONES…](CHUSAR_LECCION_VIOLACIONES_INFORMES_CORREO_20260801.md)
 - **Depósitos Bazzar (2.3.2.1)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
 - **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
