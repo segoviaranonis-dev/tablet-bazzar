@@ -15,6 +15,8 @@
 | 6 | 2026-08-11 | PV Y PROG A COBRAR | Cuotas entrega+plazo | TSV vencimientos cols 10+ | Mal ordenado por mes | Cuadro Guido | **abierto** · `50.30` |
 | 7 | 2026-08-11 | PAGO LUISITO | Cuota LUISITO × M | Stock LUISITO total ~2.015M | ≠ cuota mes | G8 regla día >20 | **abierto** · `50.30` |
 
-**Estados:** `abierto` · `verificado_canon` · `verificado_txt` · `cerrado` · `no_aplica_sf_al`
+**Estados:** `abierto` · `verificado_canon` · `verificado_txt` · **`esperando_guido`** · `cerrado` · `no_aplica_sf_al` · `en_curso`
 
-**Ley:** Comparativa oficial = canones. Burbujas = solo canon↔TXT Jul/Ago. SF AL no decide.
+**Catálogo machine-readable:** `report/src/lib/situacion-financiera/reclamos/catalog.json` · doc **`2.3.1.50.31`**
+
+**Ley:** Comparativa oficial = canones. Burbujas = solo canon↔TXT Jul/Ago. SF AL no decide. **Reclamo ≠ bug.**
