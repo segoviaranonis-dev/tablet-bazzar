@@ -28,6 +28,7 @@ Código: `buildCsvCarlosContent` · `fetchCsvCarlosRows` · `ORDER BY fi.id, fid
 |--------|----------|-----|--------------|-------------------|
 | **Ventas** | 📄 Ventas · verde | `GET …/csv-ventas` | `factura_interna_detalle.pares` | Lo vendido / facturado en FI |
 | **Inicial** | 📋 Inicial · **celeste** | `GET …/csv-inicial` | `pedido_proveedor_detalle.cantidad_pares` | Stock importado al PP |
+| **Precios Tito** *(hermano · no veneno)* | 💰 CSV precios · ámbar | `GET …/csv-precios` | FI detalle · precios | Formato Tito · **[2.3.1.7.5.3.17](./CHUSAR_CSV_PRECIOS_TITO_PP_20260811.md)** — **no** reemplaza este CSV |
 
 - Mismo formato Carlos (`;` · header · BOM) · nombre inicial: `{proforma}-{aa}_inicial.csv`
 - **PROGRAMADO:** bloques SHOP desde `grades_json._shop` en PPD

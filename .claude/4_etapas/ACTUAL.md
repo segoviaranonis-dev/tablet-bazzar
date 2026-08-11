@@ -9,7 +9,7 @@
 
 | Tema | Código | Doc / app |
 |------|--------|-----------|
-| **CSV precios Tito · PP tab FI** | **2.3.1.7.5.3.17** | Botón 💰 · no pisa CSV Carlos · [CHUSAR](../2_modulos/2.3_report/proceso_importacion/CHUSAR_CSV_PRECIOS_TITO_PP_20260811.md) |
+| **CSV precios Tito · PP tab FI** | **2.3.1.7.5.3.17** | PROD `c85cef3` · Precio Unitario · [CHUSAR](../2_modulos/2.3_report/proceso_importacion/CHUSAR_CSV_PRECIOS_TITO_PP_20260811.md) |
 | **Aprobación Gral · molécula** | **2.3.1.3.7** | Botón en tarjeta · solo FI de ese PVR · `:3000/aprobaciones` |
 | **Bancard · Laura Vera · aguardando** | **2.5.1.32** | `CHUSAR_BANCARD_CONTACTO_LAURA_STANDBY_FOTO_20260811.md` |
 | Standby **cambio de foto** | **2.5.1.24** / `2.01.04.024` | Keyword **imagen de portada** · batch listo |

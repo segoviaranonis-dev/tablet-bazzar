@@ -1,7 +1,7 @@
 # CHUSAR — CSV precios Tito · Pedido proveedor · tab FI
 
-**Código:** **2.3.1.7.5.3.17**  
-**Fecha:** 2026-08-11 · **Orden:** Documenta · despliega Director  
+**Código:** **2.3.1.7.5.3.17** · **Estado:** 🟢 **PROD** · Report `c85cef3`  
+**Fecha:** 2026-08-11 · **Orden:** Documenta · despliega · Documenta pendiente  
 **App:** `report/` · **Ruta UI:** `/proceso-importacion/pedido-proveedor/[ppId]?tab=fi`  
 **Pedido:** usuario Tito · formato simple de precios por línea FI
 

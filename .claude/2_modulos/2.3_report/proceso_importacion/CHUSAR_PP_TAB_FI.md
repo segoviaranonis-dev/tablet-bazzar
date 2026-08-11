@@ -78,6 +78,7 @@ Corrección Director 2026-07-08: cabecera navy + amarillo **revocada**.
 | Bloque | Comportamiento |
 |--------|----------------|
 | Header lista | Título «Ala Sur · Facturas internas (N)» · chip PROGRAMADO si `categoria_id=3` |
+| **CSV precios Tito** | `GET …/[ppId]/csv-precios` · botón **💰 CSV precios** (izq. de ventas) · [**2.3.1.7.5.3.17**](./CHUSAR_CSV_PRECIOS_TITO_PP_20260811.md) · D1–D4 + Precio Unitario + montos |
 | CSV ventas | `GET …/[ppId]/csv-ventas` · botón **📄 Ventas** verde · FI confirmadas |
 | CSV inicial | `GET …/[ppId]/csv-inicial` · botón **📋 Inicial** celeste · `cantidad_pares` PPD |
 | Acordeón FI | Click cabecera · meta vendedor/LP/plazo/marca |
@@ -94,7 +95,7 @@ Corrección Director 2026-07-08: cabecera navy + amarillo **revocada**.
 |-------|---------|
 | 1 FI × IC | SHOP Excel = `id_cliente` |
 | LP | Desde IC · recalc al cambiar tier en FI editable |
-| CSV | Dual veneno Carlos · [CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO](./CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md) · ventas + inicial |
+| CSV | Dual veneno Carlos · [CHUSAR_CSV_VENENO…](./CHUSAR_CSV_VENENO_CARLOS_PROGRAMADO.md) · + **CSV precios Tito** [**2.3.1.7.5.3.17**](./CHUSAR_CSV_PRECIOS_TITO_PP_20260811.md) |
 | Miniaturas | L-R-M-C en detalle |
 
 ---
@@ -117,6 +118,7 @@ API LP: `PATCH /api/proceso-importacion/pedido-proveedor/[ppId]/fi/[fiId]/lista-
 | `render_fi_card` | `PpFiCard` (visual NIIF, misma data) |
 | `get_fi_detalles_canonico` | `detallesPorFi` en page load |
 | `recalcular_facturas_internas_pp` | PATCH lista-precio + backend |
+| CSV precios Tito | `csv-precios-export.ts` · `exportCsvPreciosPp` |
 | CSV ventas PP | `csv-ventas-export.ts` · `fetchCsvCarlosRows` |
 | CSV inicial PP | `csv-ventas-export.ts` · `fetchCsvCarlosRowsInicial` |
 

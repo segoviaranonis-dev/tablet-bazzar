@@ -1122,9 +1122,18 @@
                           "code": "2.3.1.7.5.3.17",
                           "slug": "pp-csv-precios-tito",
                           "label": "CSV precios Tito · tab FI",
-                          "lead": "Formato simple L+R+montos+D1–D4 · botón izq. CSV ventas · no pisa Carlos.",
+                          "lead": "PROD c85cef3 · D1–D4 + Precio Unitario + montos · botón izq. CSV ventas · no pisa Carlos.",
                           "appPath": "/proceso-importacion/pedido-proveedor?tab=fi",
                           "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_CSV_PRECIOS_TITO_PP_20260811.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.18",
+                          "slug": "pp-emparejamiento-vendedor",
+                          "label": "Emparejamiento vendedor PP · FI↔IC",
+                          "lead": "vendedor_v2 manda · anti BZZP · audit PP · error 4.02.03.026 · dfd1e31.",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_EMPAREJAMIENTO_VENDEDORES_PP_20260811.md",
                           "nuevo": true
                         },
                         {

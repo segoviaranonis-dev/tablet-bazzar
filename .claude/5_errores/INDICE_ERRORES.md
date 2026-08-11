@@ -172,6 +172,10 @@
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.025_confirmar-pe-lpc03-null-payload-vs-lpn.md`* · ✅ **RESUELTO + RATIFICADO 2026-08-10** · MIG-206 · smoke PASS · CHUSAR **2.2.1.52** / **2.2.1.52.1** · Bug urgente
 
+### 4.02.03.026 · PP FI — subtítulo usuario Nexus (BZZP) vs vendedor_v2
+
+*Detalle: `.claude/5_errores/detalle/4.02.03.026_pp-fi-vendedor-colision-usuario-v2.md`* · ✅ **RESUELTO 2026-08-11** · PP 94 · CHUSAR **2.3.1.7.5.3.18** · deploy `dfd1e31` · (antes borrador mal etiquetado 025)
+
 ### 4.02.03.013 · PDF FI tab PP — Python ausente en Vercel
 
 *Detalle: `.claude/5_errores/detalle/4.02.03.013_pdf-fi-prod-sin-python.md`* · ✅ **RESUELTO 2026-07-14** · `run-fi-pdf.ts` + pdf-lib · push `7b7d5d7`
@@ -318,6 +322,10 @@
 ### 4.05.04.001 · Nexus_Core `origin` apunta a tablet-bazzar.git
 
 *Detalle: `.claude/5_errores/detalle/4.05.04.001_nexus-core-origin-apunta-tablet-bazzar.md`* · 🟡 **MITIGADO PARCIAL** · Preview `moises-holding` apagado (`vercel.json`) · remote canónico aún parking · lección 2026-08-06 · sesión **2.2.1.50**
+
+### 4.05.05.001 · Bazzar Web · carrito sin imagen (cascada NIIF rota)
+
+*Detalle: `.claude/5_errores/detalle/4.05.05.001_bazzar-carrito-imagen-sin-cascada-niif.md`* · ✅ **RESUELTO 2026-08-10** · `ProductImage` en Mi Pedido/checkout · CHUSAR **2.5.1.26** · transversal `4.90.03.007`
 
 ---
 
