@@ -92,7 +92,8 @@ Dado grades_json sparse { talla → qty } con tallas numéricas enteras:
 
 ## 7 · Estado
 
-✅ **Deploy Report 2026-08-11** — Alfredo validar PP-2026-0034 · IC-2026-0906 en prod.
+✅ **Deploy Report `c9db7ba`** — 2026-08-11 · prod `report-plum-one.vercel.app`  
+Alfredo validar PP-2026-0034 · IC-2026-0906 · grada **`35(1 0 5 4 2)39`**
 
 ---
 
