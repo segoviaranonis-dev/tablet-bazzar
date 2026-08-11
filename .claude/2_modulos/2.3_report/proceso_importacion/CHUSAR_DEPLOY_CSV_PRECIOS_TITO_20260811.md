@@ -8,18 +8,12 @@
 
 ## Commit report
 
-**Hash:** `2055238` · push `main` → Vercel auto-deploy `rimec-report.vercel.app`
+| Fecha | Hash | Nota |
+|-------|------|------|
+| 2026-08-11 | `2055238` | Alta CSV precios Tito |
+| 2026-08-11 | `c85cef3` | Columna **Precio Unitario** post-D4 |
 
-Mensaje:
-
-`feat(pp): CSV precios Tito en tab FI (junto a CSV ventas)`
-
-Archivos:
-
-- `src/lib/pedido-proveedor/csv-precios-export.ts`
-- `src/app/api/proceso-importacion/pedido-proveedor/[ppId]/csv-precios/route.ts`
-- `…/PedidoProveedorDetalleClient.tsx`
-- `…/PpTabFacturasInternas.tsx`
+Push `main` → Vercel auto-deploy `rimec-report.vercel.app`
 
 ---
 
@@ -27,5 +21,6 @@ Archivos:
 
 1. PP programado con FI → tab Facturas Internas  
 2. Botón **💰 CSV precios** a la izquierda de **📄 CSV ventas**  
-3. Descarga `{PP}_csv_precios.csv` con D1–D4 y montos  
-4. CSV ventas e inicial siguen operativos
+3. CSV con columnas …`D4;Precio Unitario;Monto Sin Desc;Monto Con Desc`  
+4. `Precio Unitario × CANT = Monto Sin Desc`  
+5. CSV ventas e inicial siguen operativos

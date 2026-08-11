@@ -24,7 +24,7 @@ Ubicación UI: **a la izquierda** de CSV ventas (barra de pestañas + cabecera A
 ## Columnas (`;` · BOM UTF-8)
 
 ```
-LINEA;REFERENCIA;MARCA;C. Mat;C. Cor;CANT;FacturaInterna;CLIENTE;NOMBRE DEL CLIENTE;NOMBRE VENDEDOR;D1;D2;D3;D4;Monto Sin Desc;Monto Con Desc
+LINEA;REFERENCIA;MARCA;C. Mat;C. Cor;CANT;FacturaInterna;CLIENTE;NOMBRE DEL CLIENTE;NOMBRE VENDEDOR;D1;D2;D3;D4;Precio Unitario;Monto Sin Desc;Monto Con Desc
 ```
 
 | Columna | Fuente |
@@ -37,6 +37,7 @@ LINEA;REFERENCIA;MARCA;C. Mat;C. Cor;CANT;FacturaInterna;CLIENTE;NOMBRE DEL CLIE
 | CLIENTE / NOMBRE | `cliente_v2` |
 | NOMBRE VENDEDOR | `SQL_VENDEDOR_PP_FI_NOMBRE` (vendedor_v2 · IC manda) |
 | D1–D4 | FI / IC pareada |
+| **Precio Unitario** | `ROUND(fid.precio_unit)` · **después de D4** · pedido Tito 2026-08-11 |
 | Monto Sin Desc | `ROUND(precio_unit × pares)` |
 | Monto Con Desc | `ROUND(subtotal)` (fallback `precio_neto × pares`) |
 
@@ -56,13 +57,14 @@ LINEA;REFERENCIA;MARCA;C. Mat;C. Cor;CANT;FacturaInterna;CLIENTE;NOMBRE DEL CLIE
 
 ---
 
-## Smoke local (2026-08-11)
+## Smoke
 
-PP `97` · `PP-2026-0037` · 646 líneas · montos y D1–D4 poblados.
+- 2026-08-11 · PP `97` · 646 líneas · D1–D4 + montos  
+- 2026-08-11 · **Precio Unitario** · `precio_unit × cant = monto_sin` OK
 
 Ejemplo:
 
-`8379;270;BEIRA RIO;32021;35312;24;97001;104;MARIELE S.R.L.;GRICELDA;25;10;0;0;4087200;2758872`
+`8379;270;BEIRA RIO;32021;35312;24;97001;104;MARIELE S.R.L.;GRICELDA;25;10;0;0;170300;4087200;2758872`
 
 ---
 
