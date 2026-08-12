@@ -1,23 +1,20 @@
 # ACTUAL — 2026-08-12
 
-**Actualizado:** 2026-08-12 · **FOCO Cursor** filtros amigables siameses **2.5.1.35**  
+**Actualizado:** 2026-08-12 · **FOCO** mega Rebajas **2.5.1.36** (local)  
 **Línea 1 agente:** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · `5.01.00.025`
 
 ---
 
-## FOCO ahora (orden)
+## FOCO ahora
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **1** | **Filtros amigables · métricas hermanos siameses** | **2.5.1.35** | Documenta · **standby** — Director muestra vista |
-| 2 | 1ª compra · sim desempeño EDB | **2.5.1.34** | Etapa integridad 2 · `:3002` → Bóveda → `:3005` |
-| 3 | Pre-gate Motor sellos limpios | **2.5.1.33** | Pruebas Héctor |
-| 4 | Bancard · Laura Vera | **2.5.1.32** | **ABIERTO** · no integrar |
-| — | Padre 2ª integridad | **2.5.1.30** · **2.7.2** | Pendientes B1–E9 |
+| **1** | **Mega-menú Rebajas · 3 paneles** | **2.5.1.36** | Local · Documenta · sin deploy |
+| 2 | Filtros amigables siameses | **2.5.1.35** | Padre · estilo OK prod |
+| 3 | Bancard · Laura | **2.5.1.32** | ABIERTO |
+| 4 | Motor sellos | **2.5.1.33** | Pruebas |
 
-**Cursor:** no editar filtros hasta demo / captura del Director.
-
-Doc: [CHUSAR_FILTROS_AMIGABLES_METRICAS_SIAMESES_20260812.md](../2_modulos/2.5_bazzar_web/CHUSAR_FILTROS_AMIGABLES_METRICAS_SIAMESES_20260812.md)
+**Smoke:** `:3002` hover Rebajas → géneros · marcas · estilos · portada BR Sport.
 
 ---
 
