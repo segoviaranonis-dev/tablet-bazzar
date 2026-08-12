@@ -1,6 +1,6 @@
 # ACTUAL — 2026-08-12
 
-**Actualizado:** 2026-08-12 · **FOCO** mega Rebajas **2.5.1.36** (local)  
+**Actualizado:** 2026-08-12 · mega géneros **2.5.1.37** · Documenta + despliega  
 **Línea 1 agente:** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · `5.01.00.025`
 
 ---
@@ -9,12 +9,10 @@
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **1** | **Mega-menú Rebajas · 3 paneles** | **2.5.1.36** | Local · Documenta · sin deploy |
-| 2 | Filtros amigables siameses | **2.5.1.35** | Padre · estilo OK prod |
+| **1** | Mega géneros · marcas vertical · estilos · BR Sport | **2.5.1.37** | Documenta · **despliega** Bazzar |
+| 2 | Mega Rebajas | **2.5.1.36** | Padre |
 | 3 | Bancard · Laura | **2.5.1.32** | ABIERTO |
 | 4 | Motor sellos | **2.5.1.33** | Pruebas |
-
-**Smoke:** `:3002` hover Rebajas → géneros · marcas · estilos · portada BR Sport.
 
 ---
 
