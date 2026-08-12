@@ -59,6 +59,8 @@
 | Deploy 50.30 | [CHUSAR_DEPLOY_REPORT_SF_RECLAMOS_GUIDO_20260811.md](./CHUSAR_DEPLOY_REPORT_SF_RECLAMOS_GUIDO_20260811.md) | **publica** Report prod |
 | **2.3.1.50.31** | [CHUSAR_SF_ENTORNO_RECLAMOS_20260811.md](./CHUSAR_SF_ENTORNO_RECLAMOS_20260811.md) | **Entorno reclamos** ≠ bugs · catalog.json · T15 · 🆕 2026-08-11 |
 | **2.3.1.50.31.1** | [CHUSAR_SF_ESPERA_RESPUESTA_GUIDO_20260811.md](./CHUSAR_SF_ESPERA_RESPUESTA_GUIDO_20260811.md) | Espera Guido lote Excel 08 · 🆕 2026-08-11 |
+| **2.3.1.50.32** | [CHUSAR_SF_RECLAMO_GUIDO_COMENTARIO_GENERAL_OLA2_20260812.md](./CHUSAR_SF_RECLAMO_GUIDO_COMENTARIO_GENERAL_OLA2_20260812.md) | **2º reclamo Guido** · Comentario General · Ola 2 Cuadro · 🆕 2026-08-12 |
+| Deploy 50.32 | [CHUSAR_DEPLOY_REPORT_SF_OLA2_GUIDO_20260812.md](./CHUSAR_DEPLOY_REPORT_SF_OLA2_GUIDO_20260812.md) | **despliega** Report prod |
 | Norte holding | [CHUSAR_NORTE_PLAN_MAESTRO…](../../../1_fundamentos/1.1_protocolos/CHUSAR_NORTE_PLAN_MAESTRO_ABSORCION_BANCA_20260809.md) | **5.01.00.026** · Plan Maestro :3004 · banca |
 | Etapa v1 | [ETAPA_…_CERRADA.md](../../../4_etapas/ETAPA_SITUACION_FINANCIERA_RIMEC_20260806_CERRADA.md) | ✅ `SITUACION-FINANCIERA-RIMEC-20260806` |
 | Intake cobros | `report/scripts/situacion-financiera/intake/colaborador-20260807/` | Script funcionario cobros |
