@@ -7,6 +7,10 @@
 
 Header flotante · nav géneros · mega 3 paneles (marcas vertical / estilos / portada BR Sport) · búsqueda unificada · sin scrollbars nav/filtros.
 
-## Commits
+## Commits / deploy
 
-(se completa al push)
+| Campo | Valor |
+|-------|-------|
+| Commit | `aba1f8f` (+ fix search tipado) |
+| Vercel | `dpl_DU39eA2kLWrMtsaWWwNV7bWfsQyj` · READY |
+| Alias | https://www.bazzar.com.py |
