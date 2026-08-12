@@ -9,5 +9,6 @@
 | **3.3** | [CHUSAR_APROBACIONES_INDAGACION_FILTROS_20260804.md](./CHUSAR_APROBACIONES_INDAGACION_FILTROS_20260804.md) | **Indagar pedidos** · multi-select · DPE GRUPO2 · fecha · línea/ref · 🟢 2026-08-04 |
 | **3.4** | [CHUSAR_APROBACIONES_HOTFIX_PERF_FILTROS_20260804.md](./CHUSAR_APROBACIONES_HOTFIX_PERF_FILTROS_20260804.md) | Hotfix perf SSR + API opciones timeout + panel abierto + keys React · deploy prod · 🟢 2026-08-04 |
 | **3.6** | [CHUSAR_APROBACIONES_AGILIDAD_PLAZO_PERF_20260807.md](./CHUSAR_APROBACIONES_AGILIDAD_PLAZO_PERF_20260807.md) | Agilidad · plazo FI→PVR · retry FIs · obs lazy · queja lentitud · 🟢 2026-08-07 |
+| **3.7** | [CHUSAR_APROBACION_GRAL_MOLECULA_20260811.md](./CHUSAR_APROBACION_GRAL_MOLECULA_20260811.md) | **Aprobación Gral** por molécula · ✅ **VALIDADO Director 2026-08-12** |
 
 **Código app:** `report/docs/APROBACIONES.md` · `report/src/app/aprobaciones/`
