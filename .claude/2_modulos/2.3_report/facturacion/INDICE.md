@@ -73,6 +73,10 @@ Ver [CHUSAR § Estado Report](./CHUSAR_FACTURACION.md#estado-report--implementac
 
 | 5 | [CHUSAR_FACTURACION_PRONTA_ENTREGA.md](./CHUSAR_FACTURACION_PRONTA_ENTREGA.md) | Bandeja PE · hub 2 tarjetas |
 | **5b** | **[CHUSAR_FACTURACION_BOVEDA_RIMEC.md](./CHUSAR_FACTURACION_BOVEDA_RIMEC.md)** | **2.3.1.9.B.2** · bóveda permanente · PROCESAR · MIG-186 |
+| **5b1** | **[CHUSAR_BOVEDA_CSV_DESCARGA_20260807.md](./CHUSAR_BOVEDA_CSV_DESCARGA_20260807.md)** | **2.3.1.9.B.2.1** · Descargar CSV desde bóveda · hotfix · 🟢 **2026-08-07** |
+| **5b5** | **[CHUSAR_CSV_PE_AUDITORIA_TIER_20260807.md](./CHUSAR_CSV_PE_AUDITORIA_TIER_20260807.md)** | **2.3.1.9.B.5** · audit tier LP/LPC · gate export · 🟢 **2026-08-07** |
+| **5b6** | **[CHUSAR_CSV_PE_RENTABILIDAD_NIVEL_DIOS_20260807.md](./CHUSAR_CSV_PE_RENTABILIDAD_NIVEL_DIOS_20260807.md)** | **2.3.1.9.B.6** · Nivel Dios rentabilidad **`4.00.02.009`** · prod · 🟢 **2026-08-07** |
+| **5b7** | **[CHUSAR_CSV_PE_CARLOS_BRUTO_LP_VENDEDOR_20260812.md](./CHUSAR_CSV_PE_CARLOS_BRUTO_LP_VENDEDOR_20260812.md)** | **2.3.1.9.B.7** · bruto dual cols · LP vendedor · anti-LPN usurpado · 🟢 **2026-08-12** · deploy Report |
 
 | 6 | **[CHUSAR_CSV_VENTAS_PE_CARLOS.md](./CHUSAR_CSV_VENTAS_PE_CARLOS.md)** | **CSV TSV · inyección Carlos PE** |
 | **6a** | **[CHUSAR_CSV_PE_DEPOSITO_CABECERA_20260804.md](./CHUSAR_CSV_PE_DEPOSITO_CABECERA_20260804.md)** | **2.3.1.9.B.3** · col **DEPOSITO** cabecera `S00_D1\|DEP2\|D3` · Cant. Pares · veneno inviolable · 🟢 **2026-08-04** |

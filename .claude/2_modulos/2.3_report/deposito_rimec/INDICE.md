@@ -69,7 +69,7 @@ Ver [CHUSAR § Estado Report](./CHUSAR_DEPOSITO_RIMEC.md#estado-report--implemen
 | 1d | **[CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md](./CHUSAR_TRADUCTOR_NEXUS_COD_GRUPO_HIEDRA_PE.md)** | **2.3.1.10.1.1** · traductor propio COD.GRUPO · dual biblioteca PE/PP · Hiedra · acertividad 92 % |
 | 1d2 | **[CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md](../facturacion/CHUSAR_TRADUCTOR_VENDEDOR_CARLOS_PE.md)** | **2.3.1.9.F** · traductor vendedor Carlos · hermano 1d · Hoja2 CODxCASOS · 🟢 **2026-07-27** |
 | 1e | **[CHUSAR_GRUPO_UNO_DICCIONARIO_PE_EXCEL.md](./CHUSAR_GRUPO_UNO_DICCIONARIO_PE_EXCEL.md)** | **2.3.1.10.1.2** · palabra reservada **grupo uno** · 3 Excel · NORMAL/PROMO/LIQ · D1 · MIG-180 |
-| 1e1 | **[CHUSAR_LEY_DPE_SIN_BCL_20260727.md](./CHUSAR_LEY_DPE_SIN_BCL_20260727.md)** | **2.3.1.10.1.2.1** · **Ley DPE** · BCL solo CP/programado · blindaje triunvirato · 🟢 **2026-07-27** |
+| 1e1 | **[CHUSAR_LEY_DPE_SIN_BCL_20260727.md](./CHUSAR_LEY_DPE_SIN_BCL_20260727.md)** | **2.3.1.10.1.2.1** · **Ley DPE** · etiqueta **NORMAL** (no REGULAR en UI) · BCL ≠ DPE · ver también Motor **2.5.1.19** |
 | 1f | **[HANDOFF checkpoint](../../4_etapas/HANDOFF_DICCIONARIO_GRUPO_UNO_20260724.md)** | **2026-07-24** · derivación agentes · local sin deploy |
 | 1g | **[CHUSAR_PE_TIPO1_ABCR_ACCESORIOS.md](./CHUSAR_PE_TIPO1_ABCR_ACCESORIOS.md)** | **2026-07-25** · ACCESORIOS Excel→ACT ROPAS · AB-CR CARTERAS+ANTEOJOS · backfill LINEA+REFE |
 | 1h | **[CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md](./CHUSAR_FILTROS_PE_SIAMESE_REPORT_WEB.md)** | **2.3.1.10.1.3** · Hermano 1 Report PE · audit 99/99 · par [2.2.1.25](../../2.2_rimec_web/CHUSAR_FILTROS_PE_TRES_HERMANOS_SIAMESES_20260725.md) · siguiente [2.2.1.27](../../2.2_rimec_web/CHUSAR_HERMANO3_AM_DICCIONARIO_PE_20260726.md) |
@@ -77,6 +77,8 @@ Ver [CHUSAR § Estado Report](./CHUSAR_DEPOSITO_RIMEC.md#estado-report--implemen
 | 1i2 | **[CHUSAR_USUARIO_EVERT_STOCK_PE_20260727.md](./CHUSAR_USUARIO_EVERT_STOCK_PE_20260727.md)** | **2.3.1.10.1.4.2** · EVERT ADMIN · Stock PE sí · asignar descuento no |
 | 1k | **[CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md](./CHUSAR_VERIFICACION_DESCUENTOS_PE_20260727.md)** | **2.3.1.10.1.4.3** · pivote por % · política comercial · panel Revisar L+R+M+C · par Biblioteca casos |
 | 1k2 | **[CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md](./CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md)** | **2.3.1.10.1.5** · batch `sdrm2121` · import Node · MIG-191 · **overwrite** descuentos Guido · pendientes |
+| 1k3 | **[CHUSAR_IMPORT_PE_SDRM_UI_BODY_NEXT15_20260812.md](./CHUSAR_IMPORT_PE_SDRM_UI_BODY_NEXT15_20260812.md)** | **2.3.1.10.1.7** · UI import sin agente · Next 15.5 body 32 MB · `sdrm0218` · 🆕 MOISES post-20260807 · 2026-08-12 |
+| 1k4 | **[CHUSAR_PE_SDRM_EAN_638_654_GATE_20260812.md](./CHUSAR_PE_SDRM_EAN_638_654_GATE_20260812.md)** | **2.3.1.10.1.8** · hotfix EAN 79… · `proveedorFromSdrmRow` · gate 638/654 · art. 106305 · 🟢 **2026-08-12** |
 | — | **[ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md](../../4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md)** | **⬛ CERRADA 2026-07-29** · Stock PE calzado **654** · compra previa · CODxCASOS `b463c18` |
 | 1j | **[CHUSAR_LEY_DIVISION_FI_LP03_20260726.md](./CHUSAR_LEY_DIVISION_FI_LP03_20260726.md)** | **2.3.1.10.1.4.1** · split PE N/P/LIQ/COMUN · CP por caso · 1 marca · LP03 +10 % grado 1 · 4 grados |
 | 1j4 | **[CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md](./CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md)** | **2.3.1.10.1.4.4** · PROMO sin Grado 1 +10 % · anti doble descuento · par Web **2.2.1.34** · 🟢 **2026-07-29** |

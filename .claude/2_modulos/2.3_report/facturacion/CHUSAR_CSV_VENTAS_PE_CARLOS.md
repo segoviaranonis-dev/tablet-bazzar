@@ -20,8 +20,10 @@ Este CSV es **veneno**: **prohibido** cambiar cantidad, nombre u orden de column
 ## Formato canónico (15 columnas · TSV · CRLF · UTF-8 sin BOM)
 
 ```
-Cliente	Cod. Oper.	F. Pedido	Lista precios	cobrador	vendedor	DEPOSITO	Des. 1	Des. 2	Des. 3	Des. 4	Codigo Articulo	Cant. Pares	Precio sin descuento	Precio con descuento
+Cliente	Cod. Oper.	F. Pedido	Lista precios	cobrador	vendedor	DEPOSITO	Des. 1	Des. 2	Des. 3	Des. 4	Codigo Articulo	Cant. Pares	Precio con descuento	Precio sin descuento
 ```
+
+**Precios (2026-08-12):** cols 14 y 15 = **mismo bruto** del `lista_precio_id` del vendedor (LPN/LPC02/03/04). **Prohibido** LPN si eligió LPC. Doc **2.3.1.9.B.7**.
 
 | # | Columna | Rol |
 |---|---------|-----|
@@ -30,7 +32,9 @@ Cliente	Cod. Oper.	F. Pedido	Lista precios	cobrador	vendedor	DEPOSITO	Des. 1	Des
 | 8–11 | Des. 1–4 | Cabecera FI |
 | 12 | Codigo Articulo | Por artículo · barra SDRM |
 | 13 | **Cant. Pares** | Por artículo · **una** columna de cantidad |
-| 14–15 | Precios | Por artículo · neto **sin** redondeo a centena |
+| 14–15 | Precios | Por artículo · **ambas = bruto sin descuento** del LP de cabecera · Carlos aplica Des. · ver **2.3.1.9.B.7** |
+
+**Auditoría tier (2026-08-07):** [CHUSAR_CSV_PE_AUDITORIA_TIER_20260807.md](./CHUSAR_CSV_PE_AUDITORIA_TIER_20260807.md) **2.3.1.9.B.5** · [CHUSAR_CSV_PE_RENTABILIDAD_NIVEL_DIOS_20260807.md](./CHUSAR_CSV_PE_RENTABILIDAD_NIVEL_DIOS_20260807.md) **2.3.1.9.B.6** · **`4.00.02.009`** Nivel Dios rentabilidad · gate en cada export · **prod**.
 
 ### Ejemplo patrón Director
 
@@ -70,7 +74,7 @@ Tres columnas `S00_D1|S00_DEP2|S00_D3` como cantidades por artículo — **no** 
 | Des. 1–4 | `fi.descuento_*` · vacío si 0 |
 | Codigo Articulo | Barra SDRM staging / snapshot |
 | Cant. Pares | `fid.pares` |
-| Precio sin / con | Bruto + `precioNetoCascada` (sin floor centena) |
+| Precio sin / con | **Bruto tier** `lista_precio_id` · ambas cols iguales · **2.3.1.9.B.7** |
 
 ---
 

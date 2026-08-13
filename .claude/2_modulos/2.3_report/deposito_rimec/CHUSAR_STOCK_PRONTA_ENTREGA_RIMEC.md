@@ -14,7 +14,7 @@ Primer procesamiento del **stock importadora completo** desde POS legacy:
 
 1. **Una tabla** `stock_pronta_entrega_rimec` — depósito = columna `deposito_codigo`.
 2. **Precio en guaraníes** — LPN directo, `monto_gs` generado.
-3. **Dual ramo** 654 calzado · 638 confección/Kyly por prefijo código barras.
+3. **Dual ramo** 654 calzado · 638 confección/Kyly — prefijo barcode **o** fallback EAN (`COD.GRUPO` / material `K*`) → ver **2.3.1.10.1.8** [CHUSAR_PE_SDRM_EAN_638_654_GATE_20260812.md](./CHUSAR_PE_SDRM_EAN_638_654_GATE_20260812.md).
 4. **Pilares ciegos** en import (material, color, línea, referencia).
 
 ---
