@@ -1445,6 +1445,15 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.1.10.1.11",
+                  "slug": "pe-grilla-perf-20260816",
+                  "label": "Stock PE · grilla perf",
+                  "lead": "Cache 90s + SWR + calzado primero · Documenta+despliega 2026-08-16.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_PE_GRILLA_PERF_20260816.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.1.10.1.2",
                   "slug": "grupo-uno-diccionario-pe-excel",
                   "label": "Grupo uno · Diccionario PE Excel",

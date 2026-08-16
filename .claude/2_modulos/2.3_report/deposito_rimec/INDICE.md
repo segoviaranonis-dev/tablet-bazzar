@@ -79,6 +79,10 @@ Ver [CHUSAR § Estado Report](./CHUSAR_DEPOSITO_RIMEC.md#estado-report--implemen
 | 1k2 | **[CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md](./CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md)** | **2.3.1.10.1.5** · batch `sdrm2121` · import Node · MIG-191 · **overwrite** descuentos Guido · pendientes |
 | 1k3 | **[CHUSAR_IMPORT_PE_SDRM_UI_BODY_NEXT15_20260812.md](./CHUSAR_IMPORT_PE_SDRM_UI_BODY_NEXT15_20260812.md)** | **2.3.1.10.1.7** · UI import sin agente · Next 15.5 body 32 MB · `sdrm0218` · 🆕 MOISES post-20260807 · 2026-08-12 |
 | 1k4 | **[CHUSAR_PE_SDRM_EAN_638_654_GATE_20260812.md](./CHUSAR_PE_SDRM_EAN_638_654_GATE_20260812.md)** | **2.3.1.10.1.8** · hotfix EAN 79… · `proveedorFromSdrmRow` · gate 638/654 · art. 106305 · 🟢 **2026-08-12** |
+| 1k5 | **[CHUSAR_PE_SDRM_STALE_BATCH_MOL_COLOR_20260813.md](./CHUSAR_PE_SDRM_STALE_BATCH_MOL_COLOR_20260813.md)** | **2.3.1.10.1.9** · batch viejo · 7203-110-21736-15745 vs 52531 · re-import `sdrm5801` · 🟢 **2026-08-13** |
+| — | **[CHUSAR_PE_STOCK_TONO_FILTRO_EDICION…](../pilares/CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md)** | **2.3.5.3.2** · cable TONO ↔ PE · filtro + edición · 🟡 FOCO **2026-08-16** |
+| 1k6 | **[CHUSAR_COSTOS_ISLA_TXT_IFSTGP4_20260813.md](./CHUSAR_COSTOS_ISLA_TXT_IFSTGP4_20260813.md)** | **2.3.1.10.1.10** · **Desc. extra máx.** gerencia · snapshot · 🟢 OPERATIVO |
+| 1k7 | **[CHUSAR_PE_GRILLA_PERF_20260816.md](./CHUSAR_PE_GRILLA_PERF_20260816.md)** | **2.3.1.10.1.11** · grilla >1 min → cache 90s + SWR + calzado primero · 🟢 **2026-08-16** |
 | — | **[ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md](../../4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md)** | **⬛ CERRADA 2026-07-29** · Stock PE calzado **654** · compra previa · CODxCASOS `b463c18` |
 | 1j | **[CHUSAR_LEY_DIVISION_FI_LP03_20260726.md](./CHUSAR_LEY_DIVISION_FI_LP03_20260726.md)** | **2.3.1.10.1.4.1** · split PE N/P/LIQ/COMUN · CP por caso · 1 marca · LP03 +10 % grado 1 · 4 grados |
 | 1j4 | **[CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md](./CHUSAR_PROMOCIONAL_SIN_LP03_10PCT_20260729.md)** | **2.3.1.10.1.4.4** · PROMO sin Grado 1 +10 % · anti doble descuento · par Web **2.2.1.34** · 🟢 **2026-07-29** |
