@@ -39,7 +39,7 @@ Habilitar en **Stock Pronta Entrega**:
 | PE-TONO-2 | Filtro cabecera PE | ✅ |
 | PE-TONO-3 | Editor círculo tarjeta + PATCH | ✅ |
 | PE-TONO-3b | Confirmación cable Admin↔PE + Documenta | ✅ 2026-08-16 · una verdad `color.tono_canon` |
-| PE-TONO-3c | Deploy Report (orden Director) | 🟡 este turno |
+| PE-TONO-3c | Deploy Report (orden Director) | ✅ `528dbb6` · https://rimec-report.vercel.app · dpl_C6gwXVbpeyJE1UNzXtUgSuQHiJe1 |
 | PE-TONO-4 | Smoke PE ↔ Web/Tablet misma etiqueta | ⏳ |
 | PE-TONO-5 | Cierre etapa + `etapas.json` | ⏳ |
 

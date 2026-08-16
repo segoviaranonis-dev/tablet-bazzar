@@ -6,7 +6,8 @@
 **Padre:** **2.3.5.3** [CHUSAR_PILAR_COLOR_TONO_CANON.md](./CHUSAR_PILAR_COLOR_TONO_CANON.md) · hermano **2.3.5.3.1** [CHUSAR_EDITOR_TONO.md](./CHUSAR_EDITOR_TONO.md)  
 **Etapa:** [ETAPA_PE_STOCK_TONO_EDICION_20260816.md](../../../4_etapas/ETAPA_PE_STOCK_TONO_EDICION_20260816.md)  
 **App:** Report `:3000/stock-pronta-entrega` · tab **Operativa**  
-**Estado:** 🟡 **ETAPA ABIERTA** · UI local ✅ · **comunicación directa Admin↔PE CONFIRMADA** · deploy Report por orden Director 2026-08-16  
+**Estado:** 🟡 **ETAPA ABIERTA** · UI ✅ · cable Admin↔PE CONFIRMADO · **PROD Report** `528dbb6` · https://rimec-report.vercel.app · falta smoke cruzado / **Cierra etapa**  
+**Deploy:** 2026-08-16 · `dpl_C6gwXVbpeyJE1UNzXtUgSuQHiJe1` · orden Director Documenta+despliega  
 **Línea 1 agente:** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · `5.01.00.025`
 
 ---
