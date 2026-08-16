@@ -58,6 +58,15 @@
           "appPath": "/costos-holding",
           "md": ".claude/9_comercial/CHUSAR_COSTOS_COTIZACION_VS_REAL_CERRADO_20260811.md",
           "nuevo": true
+        },
+        {
+          "code": "2.0.6",
+          "slug": "moises-entorno-aislado-cerrado",
+          "label": "Moises · entorno aislado CERRADO",
+          "lead": "Handoff Andrés · examen 5.01.00.032 · rimec.py · fases A→I pendientes PC aislada · 5.01.00.033 · NEW.",
+          "appPath": "/chusar",
+          "md": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_MOISES_ENTORNO_AISLADO_CONTACTO_CERRADO_20260814.md",
+          "nuevo": true
         }
       ]
     },
@@ -145,6 +154,15 @@
               "lead": "LPC03 sin candado 10% · usuario controla · 4.01.04.010 · Bug urgente · deploy 2026-08-10.",
               "appPath": "/carrito",
               "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md",
+              "nuevo": true
+            },
+            {
+              "code": "2.2.1.53",
+              "slug": "hotfix-catalogo-pe-stale-sdrm-20260813",
+              "label": "Hotfix · catálogo PE batch SDRM viejo",
+              "lead": "Enrique 7203-110-15745 · re-import sdrm5801 · par Report 2.3.1.10.1.9 · sin deploy Web.",
+              "appPath": "/catalogo",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_HOTFIX_CATALOGO_PE_STALE_SDRM_20260813.md",
               "nuevo": true
             },
             {
@@ -462,7 +480,8 @@
           "subcuentas": [
             "pilares",
             "pilares-color",
-            "pilares-usuarios"
+            "pilares-usuarios",
+            "pilares-diccionarios-traductores"
           ]
         },
         {
@@ -773,12 +792,39 @@
               "md": "report/docs/ADMINISTRADOR_PILARES.md",
               "children": [
                 {
+                  "code": "2.3.5.6",
+                  "slug": "pilares-diccionarios-traductores",
+                  "label": "Diccionarios traductores",
+                  "lead": "Local · 3 pestañas · PE 133 grupos · vendedor CSV · plazo Cod Oper · Documenta 2026-08-16.",
+                  "appPath": "/pilares/diccionarios-traductores",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_DICCIONARIOS_TRADUCTORES_20260816.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.5.2",
+                  "slug": "color-tono-miniatura-codigo-20260813",
+                  "label": "Color tono · miniatura por código",
+                  "lead": "PROD · Vista 80px+zoom · orden sin tono/foto · thumbs API · Documenta+despliega 2026-08-14.",
+                  "appPath": "/pilares/color",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_COLOR_TONO_MINIATURA_POR_CODIGO_20260813.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.5.3",
                   "slug": "pilares-color",
                   "label": "Color · tono_canon",
-                  "lead": "Catálogo BD · 2 vías búsqueda (círculos + texto Enter). Prohibido multi-select.",
+                  "lead": "Pilar = principio TONO · FK estable · Admin gobierna · Documenta ley 2026-08-14.",
                   "appPath": "/pilares/color",
-                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_BUSQUEDA_COLOR_CANALES.md",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_PILAR_COLOR_TONO_CANON.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.3.2",
+                  "slug": "pe-stock-tono-filtro-edicion-20260816",
+                  "label": "Stock PE × TONO · cable Admin",
+                  "lead": "Confirmado: Admin↔PE misma color.tono_canon · filtro+círculo · Documenta+despliega 2026-08-16.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md",
                   "nuevo": true
                 },
                 {
@@ -1119,6 +1165,15 @@
                           "nuevo": true
                         },
                         {
+                          "code": "2.3.1.7.5.3.20",
+                          "slug": "pp-csv-ventas-caso-listado-columnas-20260813",
+                          "label": "CSV ventas · CASO ∥ LISTADO DE PRECIOS",
+                          "lead": "Bug urgente · dos columnas · no mezclar con LISTA LPN · Documenta+despliega 2026-08-13.",
+                          "appPath": "/proceso-importacion/pedido-proveedor?tab=fi",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_CSV_VENTAS_CASO_LISTADO_COLUMNAS_20260813.md",
+                          "nuevo": true
+                        },
+                        {
                           "code": "2.3.1.7.5.3.17",
                           "slug": "pp-csv-precios-tito",
                           "label": "CSV precios Tito · tab FI",
@@ -1369,6 +1424,24 @@
                   "lead": "Batch sdrm2121 · MIG-191 · UPSERT reescribe % · Guido EN CURSO · pendientes P1–P7.",
                   "appPath": "/stock-pronta-entrega",
                   "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_PE_SDRM2121_IMPORT_ASIGNACION_20260728.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.10.1.9",
+                  "slug": "pe-sdrm-stale-batch-mol-color-20260813",
+                  "label": "PE SDRM batch viejo · L+R+M colores",
+                  "lead": "7203-110-15745 vs 52531 · re-import sdrm5801 · Enrique · no bug filtro Web.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_PE_SDRM_STALE_BATCH_MOL_COLOR_20260813.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.1.10.1.10",
+                  "slug": "costos-isla-txt-ifstgp4-20260813",
+                  "label": "Isla COSTOS · TXT ifstgp4",
+                  "lead": "Margen Graciela · lab Z:\\ · separado de CSV SDRM operativo · pestaña COSTOS.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/deposito_rimec/CHUSAR_COSTOS_ISLA_TXT_IFSTGP4_20260813.md",
                   "nuevo": true
                 },
                 {
@@ -2048,6 +2121,60 @@
               "appPath": "/bazzar-web",
               "children": [
                 {
+                  "code": "2.5.1.42.d",
+                  "slug": "deploy-diseno-movil-bazzar-20260814",
+                  "label": "Deploy · diseño móvil",
+                  "lead": "Prod a7e3bef · Vercel dpl_ELix5TR9mGtrR35XASQV7c2ZNMhU · www.bazzar.com.py · NEW.",
+                  "appPath": "/catalogo",
+                  "md": ".claude/4_etapas/CHUSAR_DEPLOY_BAZZAR_DISENO_MOVIL_20260814.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.42",
+                  "slug": "diseno-movil-bazzar-web-20260814",
+                  "label": "Diseño móvil · auditoría + fix",
+                  "lead": "Header hamburger · filtros drawer · hero 42vh · touch 44px · build local OK · FOCO 2026-08-14 · NEW.",
+                  "appPath": "/catalogo",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_BAZZAR_WEB_DISENO_MOVIL_20260814.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.41",
+                  "slug": "catalogo-filtros-latencia-snapshot-20260813",
+                  "label": "Filtros catálogo · latencia &lt;1s",
+                  "lead": "Snapshot TTL 30s · pg pool · enrich condicional · smoke p95 309ms · Documenta+despliega+Protocolo Chusar Activado 2026-08-13.",
+                  "appPath": "/catalogo",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_CATALOGO_FILTROS_LATENCIA_SNAPSHOT_20260813.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.40",
+                  "slug": "foco-imagenes-stock-web-cerrado-20260813",
+                  "label": "FOCO imágenes stock web · CERRADO",
+                  "lead": "Ley §4.6 Verifica las imágenes · gate audit stock · 4.90.03.011 · Documenta+despliega+Protocolo Chusar Activado 2026-08-13.",
+                  "appPath": "/catalogo",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_FOCO_IMAGENES_STOCK_WEB_CERRADO_20260813.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.01.04.025",
+                  "slug": "audit-sanear-stem-stock-web-20260813",
+                  "label": "Audit/sanear stem stock web",
+                  "lead": "Import PASS ≠ catálogo · hermano maestro+Storage · keyword Verifica las imágenes · 2026-08-13.",
+                  "appPath": "/catalogo",
+                  "md": ".claude/2_modulos/2.1_control_central/docs/CHUSAR_AUDIT_SANEAR_STEM_STOCK_WEB_20260813.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.5.1.38",
+                  "slug": "mega-nav-portadas-genero-encuadre-20260812",
+                  "label": "Mega nav · portadas por género · encuadre",
+                  "lead": "Orden Rebajas·Damas·Caballeros·Niñas·Niños · BR Sport solo Caballeros · objectPosition niñas/niños · Documenta+despliega · Protocolo Chusar Activado 2026-08-12.",
+                  "appPath": "/inicio",
+                  "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_MEGA_NAV_PORTADAS_GENERO_ENCUADRE_20260812.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.5.1.32",
                   "slug": "bancard-contacto-laura-standby-foto-20260811",
                   "label": "Bancard · Laura Vera · standby foto",
@@ -2568,6 +2695,15 @@
     },
     "bazzar-web": {
       "children": [
+        {
+          "code": "2.5.1.38",
+          "slug": "mega-nav-portadas-genero-encuadre-20260812",
+          "label": "Mega nav · portadas · encuadre niñas/niños",
+          "lead": "Orden nav · portadas por género · objectPositionMega · Documenta+despliega 2026-08-12.",
+          "appPath": "https://www.bazzar.com.py/inicio",
+          "md": ".claude/2_modulos/2.5_bazzar_web/CHUSAR_MEGA_NAV_PORTADAS_GENERO_ENCUADRE_20260812.md",
+          "nuevo": true
+        },
         {
           "code": "2.5.1",
           "slug": "catalogo",

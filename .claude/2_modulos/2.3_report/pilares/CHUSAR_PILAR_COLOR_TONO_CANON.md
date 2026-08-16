@@ -23,6 +23,25 @@ Administrador del pilar **`color`** en Report. La verdad para filtros y buscador
 
 ---
 
+## Ley de abstracción — pilar color = principio del TONO (Director 2026-08-14)
+
+> El Excel nutre o pide; el pilar **es**; el tono **nace y se gobierna** en Admin `/pilares/color`.
+
+| Principio | Regla |
+|-----------|--------|
+| **Identidad estable** | `color` es **pilar**. No se borra ni se reinventa en cada import Excel (listado · proforma · retail · web). |
+| **FK obligatoria** | Todo flujo que use color **viene acá** a resolver `color_id` (y `codigo_proveedor` del proveedor 654/638). |
+| **TONO = verdad canónica** | `tono_canon` vive **solo** en `color`. Escritura: Admin `/pilares/color` **o** EditorTono (PE círculo · Tablet) vía **mismo** `PATCH /api/pilares/color`. Web/Tablet/filtros **leen**; no inventan tono paralelo. |
+| **Bolsas por proveedor** | 654 y 638 = pilares **aislados** (`proveedor_id`). Misma ley, dos diccionarios. |
+| **Foto ≠ tono** | Miniatura retail ayuda a **asignar**; no sustituye al pilar ni al `tono_canon`. |
+
+**Prohibido:** tratar `tono_canon` como dato de staging Excel; vaciar el pilar al reimportar; inventar etiqueta de filtro fuera de `/pilares/color`.
+
+**FOCO operativo miniatura:** [CHUSAR_COLOR_TONO_MINIATURA_POR_CODIGO_20260813.md](./CHUSAR_COLOR_TONO_MINIATURA_POR_CODIGO_20260813.md) (`2.3.5.5.2`).  
+**FOCO operativo PE × TONO:** [CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md](./CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md) (`2.3.5.3.2`) — filtro cabecera + edición círculo en Stock Pronta Entrega · **una verdad**.
+
+---
+
 ## Política idioma (654 Beira Rio y resto)
 
 | Capa | Idioma | Regla |
