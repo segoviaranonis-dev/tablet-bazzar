@@ -4,7 +4,13 @@
 **Tecnología:** Next.js + Vercel  
 **Estado:** Producción  
 **URL:** https://rimec-web.vercel.app  
-**Última actualización:** 2026-08-10 · pendiente backfill LPC PE **2.2.1.52.2** · ratif. **2.2.1.52.1** 🆕 MOISES · Documenta
+**Última actualización:** 2026-08-16 · **FOCO 2.2.1.55** UI responsiva · etapa abierta
+
+---
+
+## 📚 DOCUMENTOS CLAVE
+
+- **[CHUSAR_RIMEC_WEB_UI_RESPONSIVE_20260816.md](./CHUSAR_RIMEC_WEB_UI_RESPONSIVE_20260816.md)** — **2.2.1.55** · 🟡 **FOCO** móvil+tablet · layout only · deploy al final
 
 ---
 
@@ -63,8 +69,14 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **Etapa PE (CERRADA):** [ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md](../../4_etapas/ETAPA_RIMEC_WEB_PE_LOCAL_20260706_CERRADA.md)
 - **Deploy prod:** [CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md](../../1_fundamentos/1.1_protocolos/CHUSAR_DEPLOY_PROD_SOLO_CIERRE_ETAPA.md)
 
+### **Hotfix catálogo PE · batch SDRM viejo (2026-08-13 · Documenta · Chusar)**
+- **[CHUSAR_HOTFIX_CATALOGO_PE_STALE_SDRM_20260813.md](./CHUSAR_HOTFIX_CATALOGO_PE_STALE_SDRM_20260813.md)** — **2.2.1.53** · Enrique · 7203-110-21736-15745 · re-import `sdrm5801` · sin deploy Web
+
+### **Auditoría PE sdrm5801 · VIZZANO · merge 1185 (2026-08-16 · Documenta · investigación culminada)**
+- **[CHUSAR_AUDIT_PE_SDRM_VIZZANO_MERGE_1185_20260816.md](./CHUSAR_AUDIT_PE_SDRM_VIZZANO_MERGE_1185_20260816.md)** — **2.2.1.54** · cable staging↔PPD · merge color `saldo_pares` · **4.01.07.006** · **4.01.07.007** · FOCO vuelve **2.3.5.6**
+
 ### **Blindaje carrito · no perder ítems (2026-08-07 · Documenta · Chusar Activado)**
-- **[CHUSAR_PENDIENTE_BACKFILL_LPC_PE_PPD_20260810.md](./CHUSAR_PENDIENTE_BACKFILL_LPC_PE_PPD_20260810.md)** — **2.2.1.52.2** · ⏳ backfill `precio_lpc03/04` PPD PE + import · no bloquea confirmar · 🆕 MOISES
+- **[CHUSAR_PENDIENTE_BACKFILL_LPC_PE_PPD_20260810.md](./CHUSAR_PENDIENTE_BACKFILL_LPC_PE_PPD_20260810.md)** — **2.2.1.52.2** · 🟢 **FOCO** backfill `precio_lpc03/04` PPD PE + import · etapa `PE-LPC-BACKFILL-PPD-20260810` · 🆕 MOISES
 - **[CHUSAR_RATIFICACION_MIG206_PE_LPC_20260810.md](./CHUSAR_RATIFICACION_MIG206_PE_LPC_20260810.md)** — **2.2.1.52.1** · smoke PASS · 11.769 PE · gate confirmar OK · residual columnas LPC null · 🆕 MOISES
 - **[CHUSAR_HOTFIX_CONFIRMAR_PE_LPC03_NULL_20260810.md](./CHUSAR_HOTFIX_CONFIRMAR_PE_LPC03_NULL_20260810.md)** — **2.2.1.52** · MIG-206 · confirmar PE LPC03 null · payload×1.12 vs LPN · **4.02.03.025** · Bug urgente · 🆕 MOISES
 - **[CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md](./CHUSAR_DESCUENTOS_FI_PE_D1_EDITABLE_20260810.md)** — **2.2.1.51** · D1–D4 siempre editables · LPC03 sin candado 10% · **4.01.04.010** · Bug urgente · 🆕 MOISES post-20260807
@@ -145,6 +157,7 @@ RIMEC Web es el catálogo digital para vendedores de RIMEC.
 - **[CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md](./CHUSAR_HANDOFF_PRE_NUEVA_ETAPA_20260720.md)** — bug urgente RIMEC Web pendiente de ruta/síntoma · Report local `.next` pendiente · portón de nueva etapa
 
 ### **Protocolo unificado · Hermanos siameses (2026-08-06 · ★ Documenta · MAESTRO)**
+- **[CHUSAR_MAPEO_FILTROS_HERMANOS_SIAMESES_20260812.md](./CHUSAR_MAPEO_FILTROS_HERMANOS_SIAMESES_20260812.md)** — **2.2.1.52** · matriz path-a-path W/AM/PE/DW/MP/BZ/**AP** · L-R-M-C · Protocolo Chusar Activado · **despliega** · 🆕 MOISES · AP 2026-08-13
 - **[CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md](./CHUSAR_SESION_20260806_FILTROS_PRECIO_PARENTESIS.md)** — **2.2.1.50** · sesión día · mapa 45–49 · errores · deploy `bcc476c` · paréntesis cerrado · Documenta 2026-08-06
 - **[CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md](./CHUSAR_HOTFIX_LPN_LPC03_TACHADO_IGUAL_20260806.md)** — **2.2.1.49** · tachado LPN≠LPC03 · PE+CP · `4.01.04.009` ✅ prod · Documenta + depliega 2026-08-06
 - **[CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md](./CHUSAR_AUDITORIA_FILTROS_GRILLA_META_20260806.md)** — **2.2.1.48** · auditoría grilla∥molécula · solo-PE AB-CR · live · en `bcc476c` · Documenta 2026-08-06

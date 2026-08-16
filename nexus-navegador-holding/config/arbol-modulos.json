@@ -92,6 +92,15 @@
           "nuevo": true,
           "children": [
             {
+              "code": "2.2.1.55",
+              "slug": "ui-responsive-20260816",
+              "label": "UI responsiva móvil+tablet",
+              "lead": "375/768/1024 · layout only · FOCO etapa 2026-08-16.",
+              "appPath": "/",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_RIMEC_WEB_UI_RESPONSIVE_20260816.md",
+              "nuevo": true
+            },
+            {
               "code": "2.2.1.1",
               "slug": "cabecera-filtros",
               "label": "CABECERA DE FILTROS",
