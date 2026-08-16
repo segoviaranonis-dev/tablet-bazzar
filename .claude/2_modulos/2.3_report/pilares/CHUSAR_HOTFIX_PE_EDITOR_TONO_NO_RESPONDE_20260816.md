@@ -34,7 +34,7 @@ En prod desplegada, clic en círculo TONO de la tarjeta PE **no responde** (pale
 |-------|-------|
 | Commit | `73f1d54` |
 | URL | https://rimec-report.vercel.app/stock-pronta-entrega |
-| Deploy | `dpl` READY alias prod |
+| Deploy | `dpl_4oURu2GPdWUGzZeDSTeWM5VsEnN6` · READY · alias prod |
 
 **Smoke:** clic círculo → paleta visible encima · elegir Negro → círculo pinta · Admin `/pilares/color` refleja.
 

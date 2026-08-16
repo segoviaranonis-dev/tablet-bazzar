@@ -9,8 +9,9 @@
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **0** | **Stock PE · grilla lenta** · cache + SWR + paint calzado | **2.3.1.10.1.11** | 🟢 PROD `de3a2e8` · verificar grilla logueado |
-| **1** | **Stock PE · filtro + edición TONO** · una verdad Admin↔PE | **2.3.5.3.2** | 🟢 PROD Report `528dbb6` · falta smoke cruzado / **Cierra etapa** |
+| **0** | **Hotfix editor TONO PE** no responde | **2.3.5.3.2.1** | 🟢 PROD `73f1d54` · portal+z200 |
+| **1** | **Stock PE · grilla lenta** · cache + SWR + paint calzado | **2.3.1.10.1.11** | 🟢 PROD `de3a2e8` |
+| **2** | **Stock PE · filtro + edición TONO** · una verdad Admin↔PE | **2.3.5.3.2** | 🟢 PROD · hotfix editor encima |
 
 **Etapa:** [ETAPA_PE_STOCK_TONO_EDICION_20260816.md](./ETAPA_PE_STOCK_TONO_EDICION_20260816.md)  
 **CHUSAR:** [CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md](../2_modulos/2.3_report/pilares/CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md)
