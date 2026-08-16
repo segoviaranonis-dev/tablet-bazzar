@@ -9,7 +9,7 @@
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **0** | **Stock PE · filtro + edición TONO** · una verdad Admin↔PE | **2.3.5.3.2** | 🟢 cable confirmado + Documenta · deploy Report orden Director · falta smoke cruzado / **Cierra etapa** |
+| **0** | **Stock PE · filtro + edición TONO** · una verdad Admin↔PE | **2.3.5.3.2** | 🟢 PROD Report `528dbb6` · cable confirmado · falta smoke cruzado / **Cierra etapa** |
 
 **Etapa:** [ETAPA_PE_STOCK_TONO_EDICION_20260816.md](./ETAPA_PE_STOCK_TONO_EDICION_20260816.md)  
 **CHUSAR:** [CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md](../2_modulos/2.3_report/pilares/CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md)
