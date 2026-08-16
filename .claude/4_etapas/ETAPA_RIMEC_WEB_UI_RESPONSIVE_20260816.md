@@ -31,7 +31,7 @@ Auditar y corregir **toda la UI** de RIMEC Web para **375 / 768 / 1024+** sin to
 | RW-R-3 | Fixes P1 Carrito + Pedidos + Facturas | ✅ |
 | RW-R-4 | Fixes P2 Login + Estadísticas | ✅ |
 | RW-R-5 | Smoke local `:3001` | ✅ HTTP 200 |
-| RW-R-6 | Documenta + deploy prod | 🟡 |
+| RW-R-6 | Documenta + deploy prod | ✅ `49b4ad4` · READY |
 | RW-R-7 | Cierre etapa + `etapas.json` hecho | ⏳ al **Cierra etapa** |
 
 ## Cierre Navegador (:3004) — al cerrar

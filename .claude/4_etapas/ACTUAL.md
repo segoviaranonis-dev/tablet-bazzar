@@ -9,7 +9,7 @@
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **0** | **RIMEC Web · UI responsiva** móvil+tablet | **2.2.1.55** | 🟡 etapa abierta · audit+fixes+deploy |
+| **0** | **RIMEC Web · UI responsiva** móvil+tablet | **2.2.1.55** | 🟢 PROD `49b4ad4` · falta **Cierra etapa** |
 
 **Etapa:** [ETAPA_RIMEC_WEB_UI_RESPONSIVE_20260816.md](./ETAPA_RIMEC_WEB_UI_RESPONSIVE_20260816.md)  
 **CHUSAR:** [CHUSAR_RIMEC_WEB_UI_RESPONSIVE_20260816.md](../2_modulos/2.2_rimec_web/CHUSAR_RIMEC_WEB_UI_RESPONSIVE_20260816.md)

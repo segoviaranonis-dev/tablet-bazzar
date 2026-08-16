@@ -76,9 +76,10 @@
 
 | Campo | Valor |
 |-------|-------|
-| Commit | _(al deploy)_ |
-| Prod | https://rimec-web.vercel.app |
-| Sellado previo | `f408fc2` → se actualiza con este lote |
+| Commit | `49b4ad4` |
+| Deploy | `dpl_tmHegbk5eo6GnCk5kXcVgyQPVL2g` · READY |
+| Prod | https://rimec.com.py · https://rimec-web.vercel.app |
+| Sellado previo | `f408fc2` → actualizado con este lote |
 
 ---
 
