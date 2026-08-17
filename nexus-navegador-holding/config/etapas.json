@@ -1,14 +1,35 @@
 {
-  "actualizado": "2026-08-16-rimec-web-ui-responsive",
+  "actualizado": "2026-08-17-moises-chequeo-emparejamiento-5.01.00.035",
   "sesionActiva": {
-    "code": "RIMEC-WEB-UI-RESPONSIVE-20260816",
-    "alias": "RIMEC Web · UI responsiva móvil+tablet",
-    "maraton": "rimec-web",
+    "code": "MOISES-CHEQUEO-EMPAREJAMIENTO-20260817",
+    "alias": "Moises · chequeo emparejamiento Git/Supabase/Vercel",
+    "maraton": "moria-chusar",
     "ejecutor": "cursor",
-    "foco": "2.2.1.55 audit+fix layout 375/768/1024 · deploy al final",
-    "mdEtapa": ".claude/4_etapas/ETAPA_RIMEC_WEB_UI_RESPONSIVE_20260816.md"
+    "foco": "5.01.00.035 accesos aislados · deploy dual · monitor BD Moises",
+    "mdEtapa": ".claude/4_etapas/ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md"
   },
   "trabajoVivo": [
+    {
+      "code": "MOISES-CHEQUEO-EMPAREJAMIENTO-20260817",
+      "moduloSlug": "moria-chusar",
+      "subcuentaSlug": "moises-chequeo-emparejamiento",
+      "label": "Moises · chequeo emparejamiento Git/Supabase/Vercel",
+      "md": ".claude/4_etapas/ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md",
+      "mdChusar": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md",
+      "appPath": "http://localhost:3004/etapas",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": true,
+      "subEtapas": [
+        "ME-0",
+        "ME-1",
+        "ME-2",
+        "ME-3",
+        "ME-4",
+        "ME-5"
+      ]
+    },
     {
       "code": "RIMEC-WEB-UI-RESPONSIVE-20260816",
       "moduloSlug": "rimec-web",
@@ -20,7 +41,7 @@
       "ejecutor": "cursor",
       "estado": "en_curso",
       "nuevo": true,
-      "focoMaraton": true,
+      "focoMaraton": false,
       "subEtapas": [
         "RW-R-0",
         "RW-R-1",

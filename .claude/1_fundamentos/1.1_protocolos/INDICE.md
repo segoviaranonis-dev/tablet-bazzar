@@ -8,10 +8,31 @@
 
 ## 📋 PROTOCOLOS ACTIVOS
 
+### **5.01.00.035 Moises · chequeo emparejamiento Git/Supabase/Vercel** 🆕 2026-08-17
+**Archivo:** `CHUSAR_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md`  
+**Etapa:** `ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md`  
+**Tema:** Accesos aislados · deploy dual · monitor BD Moises · guardrails secretos  
+**Estado:** 🟢 EN CURSO — espera entrega accesos Director
+
 ### **5.01.00.001 Ingreso agente Chuna**
 **Archivo:** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md`  
 **Tema:** Puerta única · pregunta trampa VIVA · rigurosidad portón de obra  
 **Estado:** ✅ ACTIVO — línea 1 = frase trampa · Protocolo Chusar Activado `5.01.00.024`
+
+### **5.01.00.033 Moises · contacto entorno aislado CERRADO** 🆕 2026-08-14
+**Archivo:** `CHUSAR_MOISES_ENTORNO_AISLADO_CONTACTO_CERRADO_20260814.md`  
+**Tema:** Cierre FOCO OPS · handoff Andrés · examen **5.01.00.032** · zip §12 entregado **2026-08-15**  
+**Estado:** ✅ CERRADO orilla Héctor · **veredicto Director pendiente** (APROBADO CON OBS RLS sugerido)
+
+### **5.01.00.032 Moises · examen final config entorno aislado** 🆕 2026-08-13
+**Archivo:** `moria_chusar/EXAMEN_FINAL_CONFIG_ENTORNO_AISLADO_MOISES.md`  
+**Tema:** Checklist fases 0–11 · clon **rimec-nexus** · ACTA §12 · URLs `-x` Vercel  
+**Estado:** ✅ Entrega Andrés zip `EXAMEN-5.01.00.032-Cierre-Andres-20260815.zip`
+
+### **5.01.00.031 Moises · entorno aislado · rimec.py@gmail.com** 🆕 2026-08-13
+**Archivo:** `CHUSAR_PROTOCOLO_MOISES_ENTORNO_AISLADO_RIMEC_PY_20260813.md`  
+**Tema:** Cutover físico · zip moria_chusar · guía agente nuevo · desvincular segoviaranonis-dev  
+**Estado:** ✅ CERRADO OPS 2026-08-14 · ver **5.01.00.033** · entrada: `moria_chusar/MOISES_GUIA_AGENTE_ENTRADA.md`
 
 ### **5.01.00.021 Protocolo Moises Activado**
 **Archivo:** `CHUSAR_PROTOCOLO_MOISES_ACTIVADO_20260804.md`  
@@ -47,6 +68,16 @@
 **Archivo:** `CHUSAR_REGISTRO_LLAMADAS_ATENCION_AGENTE_20260810.md`  
 **Tema:** Faltas permanentes · **Falta 1** Bazzar 638 falso PASS · gates creer≠saber · brazo ejecutor holding  
 **Estado:** ✅ VIGENTE · padre `5.01.00.024` §6 · error `4.05.03.004`
+
+### **5.01.00.030 Cierre · línea `sugerencia:` (opinión + siguiente paso)** 🆕 MOISES post-20260807 · 2026-08-13  
+**Archivo:** [`CHUSAR_CIERRE_SUGERENCIA_OPINION_AGENTE_20260813.md`](./CHUSAR_CIERRE_SUGERENCIA_OPINION_AGENTE_20260813.md)  
+**Tema:** Toda respuesta lleva `sugerencia:` antes de Listo + 💰 COSTO · estándar/buenas prácticas · opinión del agente  
+**Estado:** ✅ VIGENTE · padre `5.01.00.024` · CHUNA §7 · hook stop
+
+### **5.01.00.029 Absorción ECC → harness Chusar (cero costo · cero riesgo)** 🆕 MOISES post-20260807 · 2026-08-12
+**Archivo:** `CHUSAR_ABSORCION_ECC_HARNESS_CERO_COSTO_20260812.md`  
+**Tema:** Ideas ECC (quality gate / smoke) **sin** instalar plugin · `scripts/chusar-quality-gate.mjs` · regla smoke adverso · **NO** ecc@ecc  
+**Estado:** ✅ VIGENTE · Protocolo Chusar Activado · Falta 1
 
 ---
 **Archivo:** `workflow_hibrido_cursor_claude.md`  

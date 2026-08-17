@@ -1,7 +1,8 @@
 # ACTUAL — 2026-08-17
 
-**Actualizado:** 2026-08-17 · **FOCO URGENTE incidente 2FA** (retomar mañana)  
-**Línea 1 agente:** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · `5.01.00.025`
+**Actualizado:** 2026-08-17 · **FOCO NUEVO** Moises chequeo emparejamiento · 2FA sigue en paralelo  
+**Línea 1 agente:** Si pienso en el lo entiendo, pero si me lo explicarlo es imposible · `5.01.00.025`  
+**Etapa viva:** `MOISES-CHEQUEO-EMPAREJAMIENTO-20260817` · CHUSAR **5.01.00.035**
 
 ---
 
@@ -9,11 +10,11 @@
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **0** | **Incidente 2FA GitHub · Supabase** | **4.90.01.002** | 🔴 ACTIVO · **espera rendición Andrés** (zip 2026-08-17) · ticket **4671027** |
-| **1** | **AM programado ≠ STOCK/CP** | **2.3.1.22.1** / **2.3.1.22.2** / **4.02.03.028** | 🟢 Documenta+**despliega** · audit PASS · prod `209fa73` |
-| **2** | **Canon siames AB-CR+Tipo** · frase llamada | **2.2.1.61** | 🟢 Documenta · Web∥Report AB-CR idéntico · Tipo ley alineada |
-| **3** | **Limpieza rimec-web** · consolidado+deploy | **2.2.1.59** / **2.2.1.58** | 🟢 Documenta · re-audit · **despliega** (hecho) |
-| **4** | **Canon CASOS** + cascada chi | **2.2.1.56** / **2.2.1.57** | 🟢 Documenta · hijo de **2.2.1.61** |
+| **0** | **Moises · chequeo emparejamiento** Git/Supabase/Vercel | **5.01.00.035** | 🟢 **EN CURSO** · etapa abierta · espera accesos aislados |
+| **1** | **Incidente 2FA GitHub · Supabase** | **4.90.01.002** | 🔴 paralelo · espera rendición Andrés · ticket **4671027** |
+| **2** | **AM programado ≠ STOCK/CP** | **2.3.1.22.1** / **2.3.1.22.2** / **4.02.03.028** | 🟢 Documenta+**despliega** · audit PASS · prod `209fa73` |
+| **3** | **Canon siames AB-CR+Tipo** · frase llamada | **2.2.1.61** | 🟢 Documenta · Web∥Report AB-CR idéntico · Tipo ley alineada |
+| **4** | **Limpieza rimec-web** · consolidado+deploy | **2.2.1.59** / **2.2.1.58** | 🟢 Documenta · re-audit · **despliega** (hecho) |
 | **5** | Auditoría índices plan cuentas | **0.00.01.004** | pausado mapa |
 
 ---
@@ -22,6 +23,7 @@
 
 | Tema | Código | Notas |
 |------|--------|-------|
+| Documentación Chusar lote pilares | **2.3.5.5–19** · lote **#85** | push holding `d51b3e0` · árbol NEW |
 | AM programado ≠ STOCK's / CP (4117) | **2.3.1.22.1** / **2.3.1.22.2** / **4.02.03.028** | Documenta+despliega · audit Magno PASS · `209fa73` |
 | Canon siames AB-CR+Tipo · frase llamada | **2.2.1.61** | Implementa el protocolo siames · AB-CR idéntico Web∥Report |
 | UI filtro precio Desde/Hasta + fix mangos | **2.2.1.60** | Documenta+despliega · mangos independientes · móvil ≠ 100% (ver 2.2.1.55) |
@@ -38,11 +40,9 @@
 | Admin LR STOCK Todos/CP/PE · thumb CP | **2.3.5.19** | Documenta+**despliega** · 2361-205/208 |
 | PE editores Estilo+Tipo1 · stem · OTROS audit | **2.3.5.17** / **2.3.5.18** | Documenta+**despliega** · chips=FK · maestro OTROS≠stock PE |
 | Visión linea vs L×R · cobertura SDRM/CP | **2.3.5.14** | Documenta · plan maestra→FK |
+| SF Guido Ola 4b LUISITO · deploy prod | **2.3.1.50.34.e** | `ec45326` · oct–dic **0** · sept OK · SF-REC-007 |
 | SF Guido Ola 3 · deploy prod | **2.3.1.50.33** | PV 245.430.928 · espera Guido **50.33.1** |
 | Examen Andrés entrega §12 | **5.01.00.032** | zip 2026-08-15 · veredicto Director pendiente |
-| Auditoría PE sdrm5801 · VIZZANO | **2.2.1.54** | MIG-207 · merge Web |
-| Bazzar Web · diseño móvil | **2.5.1.42** | PROD `a7e3bef` |
-| Deploy navegador ≡ Vercel | **2.0.d 20260817** | moriachusar.vercel.app · doc `CHUSAR_DEPLOY_NAVEGADOR_20260817.md` |
 | Handoff Andrés mudanza | **5.01.00.034** | zip WhatsApp · espera ACTA 24 h |
 
 ---
@@ -79,8 +79,9 @@
 
 | Tema | Código | Estado |
 |------|--------|--------|
-| Intake + mapa Excel Guido Ola 4 | **2.3.1.50.34.2** / **50.34.3** | 🟢 mapeado · Δ0 sept · espera OK Guido prod |
-| Validación Guido post Ola 4 | **2.3.1.50.34.1** | intake abierto → cierra con veredicto |
+| **Ola 4b LUISITO · deploy prod** | **2.3.1.50.34.e** | ✅ **`ec45326`** · LUISITO oct–dic **0** · SF-REC-007 |
+| Intake + mapa Excel Guido Ola 4 | **2.3.1.50.34.2** / **50.34.3** | 🟢 mapeado · Δ0 sept · prod OK |
+| Validación Guido post Ola 4 | **2.3.1.50.34.1** | ⏳ veredicto §1 intake · no SF v2 hasta OK |
 | SF v2 base/comparación | **2.3.1.50.35** | standby hasta OK Guido |
 
 ### Sellado prod (no tocar sin orden)
@@ -88,7 +89,7 @@
 | App | Notas |
 |-----|-------|
 | **rimec-web** | prod **978195f** (2026-08-17 · UI precio + mangos · multi-grada/AB-CR) · rimec.com.py |
-| **Report legacy OPS** | rimec-report.vercel.app · AM Magno **`209fa73`** (2026-08-17 · programado≠STOCK · **4.02.03.028**) |
+| **Report legacy OPS** | rimec-report.vercel.app · SF Ola 4b **`ec45326`** (**50.34.e**) · AM Magno **`209fa73`** |
 
 ---
 

@@ -22,6 +22,7 @@
 
 | # | Fecha | Qué | Índices / código | Git | DB | Estado |
 |---|-------|-----|------------------|-----|-----|--------|
+| 86 | 2026-08-17 | **Moises chequeo emparejamiento** `5.01.00.035` · etapa abierta · Git/Supabase/Vercel aislados · guardrails · Protocolo Moises+Documenta | CHUSAR+ETAPA · ACTUAL · INDICE protocolos · arbol 2.0.7 · etapas.json | Sí holding | No | 🆕 |
 | 85 | 2026-08-17 | **Documentación Chusar lote pilares** · push untracked 2.3.5.5→19 · índices · árbol NEW · productos Report deploy · Protocolo Chusar Activado | INDICE pilares/2.3 · arbol · ACTUAL · CHANGELOG | Sí holding | No | 🆕 |
 | 84 | 2026-08-17 | **Admin LR STOCK Todos/CP/PE** `2.3.5.19` · thumb CP 654 vía `v_stock_rimec` · Documenta+**despliega** | CHUSAR_ADMIN_LR_STOCK… · INDICE pilares/2.3 · ACTUAL | Sí report | No | 🆕 |
 | 83 | 2026-08-17 | **Ley VIZZANO=DAMAS** `2.3.5.16` · carteras/anteojos · mapa fuerza DAMAS · BD 436 ratificadas · Documenta | CHUSAR_LEY_VIZZANO… · INDICE pilares · ACTUAL · sdrm-pilares-map | Local Report (mapa) | Sí `linea.genero_id` | 🆕 |
