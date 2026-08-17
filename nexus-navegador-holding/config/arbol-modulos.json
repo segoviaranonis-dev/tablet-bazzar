@@ -809,12 +809,12 @@
               "md": "report/docs/ADMINISTRADOR_PILARES.md",
               "children": [
                 {
-                  "code": "2.3.5.14",
-                  "slug": "vision-linea-lr-cobertura-sdrm-cp-20260817",
-                  "label": "Visión · linea vs L×R · cobertura SDRM/CP",
-                  "lead": "Marca/género en linea · estilo+tipo1 en LR · Medias/ACT PRENDAS bajo CONFECCIONES · CASOS≠tipo1 · 4 CP sin LR deuda · Documenta 2026-08-17.",
+                  "code": "2.3.5.19",
+                  "slug": "admin-lr-stock-todos-cp-pe-20260817",
+                  "label": "Admin LR · STOCK Todos/CP/PE",
+                  "lead": "Todos · CP=v_stock_rimec · PE=SDRM · thumb CP 654 · Documenta+despliega 2026-08-17.",
                   "appPath": "/pilares/linea-referencia",
-                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_VISION_LINEA_LR_COBERTURA_SDRM_CP_20260817.md",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ADMIN_LR_STOCK_TODOS_CP_PE_20260817.md",
                   "nuevo": true
                 },
                 {
@@ -836,6 +836,33 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.5.16",
+                  "slug": "ley-vizzano-damas-20260817",
+                  "label": "Ley VIZZANO = DAMAS",
+                  "lead": "Carteras·anteojos·calzado · mapa+BD · Documenta 2026-08-17.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_LEY_VIZZANO_DAMAS_20260817.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.15",
+                  "slug": "admin-lr-fotos-654-638-20260817",
+                  "label": "Admin LR · fotos 654/638",
+                  "lead": "Thumb PPD · stem sin 0-0 · 4.90.03.012 · Documenta+despliega 2026-08-17.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.14",
+                  "slug": "vision-linea-lr-cobertura-sdrm-cp-20260817",
+                  "label": "Visión · linea vs L×R · cobertura SDRM/CP",
+                  "lead": "Marca/género en linea · estilo+tipo1 en LR · Medias/ACT PRENDAS bajo CONFECCIONES · CASOS≠tipo1 · Documenta 2026-08-17.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_VISION_LINEA_LR_COBERTURA_SDRM_CP_20260817.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.5.13",
                   "slug": "admin-lr-filtros-flotantes-20260817",
                   "label": "Admin LR · filtros flotantes",
@@ -854,12 +881,84 @@
                   "nuevo": true
                 },
                 {
+                  "code": "2.3.5.11",
+                  "slug": "admin-lr-ui-filtros-rearch-20260817",
+                  "label": "Admin LR · UI + filtros BD",
+                  "lead": "Re-arq responsiva · CP/Tipo/M-C · editor por filtro · Documenta 2026-08-17.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.10",
+                  "slug": "estilo-638-col-j-thumb-linea-20260817",
+                  "label": "LR 638 · estilo col J + thumb",
+                  "lead": "Estilo Excel col J · thumb por línea · Documenta 2026-08-17.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ESTILO_638_COL_J_THUMB_LINEA_20260817.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.9",
+                  "slug": "abcr-act-prendas-otros-20260816",
+                  "label": "AB-CR · ACT PRENDAS + OTROS",
+                  "lead": "Canon ACT PRENDAS · chip OTROS · ANTEOJOS · Documenta 2026-08-16.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ABCR_ACT_PRENDAS_OTROS_20260816.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.8",
+                  "slug": "mapa-sdrm-654-linea-referencia-20260816",
+                  "label": "Mapa SDRM 654 → L+R",
+                  "lead": "Herencia codigo_proveedor · diffs marca/tipo · Documenta 2026-08-16.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_MAPA_SDRM_654_LINEA_REFERENCIA_20260816.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.7",
+                  "slug": "marca-chinelo-pilares-deuda-20260816",
+                  "label": "CHINELO · deuda arq",
+                  "lead": "CHINELO≠marca · caso · Beira Rio · línea 8448 · Documenta 2026-08-16.",
+                  "appPath": "/pilares",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_MARCA_CHINELO_PILARES_20260816.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.5.6",
                   "slug": "pilares-diccionarios-traductores",
                   "label": "Diccionarios traductores",
                   "lead": "Local · 3 pestañas · PE 133 grupos · vendedor CSV · plazo Cod Oper · Documenta 2026-08-16.",
                   "appPath": "/pilares/diccionarios-traductores",
                   "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_DICCIONARIOS_TRADUCTORES_20260816.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.5",
+                  "slug": "admin-pilares-foco-orden-mapa-20260813",
+                  "label": "FOCO Admin Pilares",
+                  "lead": "Orden + mapa filtros holding · Documenta 2026-08-13.",
+                  "appPath": "/pilares",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ADMINISTRADOR_PILARES_FOCO_ORDEN_MAPA_FILTROS_20260813.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.5.3",
+                  "slug": "admin-lineas-siames-20260816",
+                  "label": "Admin líneas · siames AL",
+                  "lead": "Dimensiones∥Molécula · Buscar código · Documenta 2026-08-16.",
+                  "appPath": "/pilares/lineas",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ADMIN_PILARES_LINEAS_SIAMES_20260816.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.5.1",
+                  "slug": "admin-lr-cabecera-siames-w-20260813",
+                  "label": "Admin LR · siames W",
+                  "lead": "Dimensiones∥Molécula · hermano AP · Documenta 2026-08-13.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ADMIN_PILARES_LR_CABECERA_SIAMES_W_20260813.md",
                   "nuevo": true
                 },
                 {

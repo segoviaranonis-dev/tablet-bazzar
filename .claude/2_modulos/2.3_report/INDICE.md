@@ -4,7 +4,7 @@
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
 **Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
-**Última actualización:** 2026-08-17 · **2.3.5.18** OTROS PE vs maestra · **2.3.5.17** PE Estilo+Tipo1+stem · **2.3.5.16** VIZZANO=DAMAS · **2.3.5.15** fotos Admin LR · **2.3.5.12** PE=SDRM · Diccionarios **2.3.5.6**
+**Última actualización:** 2026-08-17 · **2.3.5.19** STOCK Admin LR · **2.3.5.18** OTROS PE vs maestra · **2.3.5.17** PE Estilo+Tipo1+stem · **2.3.5.16** VIZZANO=DAMAS · **2.3.5.15** fotos Admin LR · **2.3.5.12** PE=SDRM · Diccionarios **2.3.5.6**
 
 **Mapa codificación:** [CHUSAR_AUDITORIA_CODIFICACION_INDICES_20260816.md](../../CHUSAR_AUDITORIA_CODIFICACION_INDICES_20260816.md)
 
@@ -121,16 +121,21 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 
 ### **Pilares (2.3.5 — Report)**
 - **[CHUSAR_CANON_CASOS_FILTRO_UNIVERSAL_20260816.md](../2.2_rimec_web/CHUSAR_CANON_CASOS_FILTRO_UNIVERSAL_20260816.md)** — **2.2.1.56** · CASOS Web·AM·SDRM · CHI · bib 638 🆕 2026-08-16
+- **[pilares/CHUSAR_ADMIN_LR_STOCK_TODOS_CP_PE_20260817.md](pilares/CHUSAR_ADMIN_LR_STOCK_TODOS_CP_PE_20260817.md)** — **2.3.5.19** · Todos/CP Web/PE SDRM · thumb CP 654 🆕 2026-08-17
 - **[pilares/CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md](pilares/CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md)** — **2.3.5.18** · OTROS maestro sí · PE stock no · filtros=FK 🆕 2026-08-17
 - **[pilares/CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md](pilares/CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md)** — **2.3.5.17** · PE editores Estilo+Tipo1 · stem 654/638 🆕 2026-08-17
 - **[pilares/CHUSAR_LEY_VIZZANO_DAMAS_20260817.md](pilares/CHUSAR_LEY_VIZZANO_DAMAS_20260817.md)** — **2.3.5.16** · VIZZANO=DAMAS · carteras/anteojos 🆕 2026-08-17
 - **[pilares/CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md](pilares/CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md)** — **2.3.5.15** · fotos 654/638 · PPD · **4.90.03.012** 🆕 2026-08-17
+- **[pilares/CHUSAR_VISION_LINEA_LR_COBERTURA_SDRM_CP_20260817.md](pilares/CHUSAR_VISION_LINEA_LR_COBERTURA_SDRM_CP_20260817.md)** — **2.3.5.14** · visión linea vs L×R · cobertura SDRM/CP 🆕 2026-08-17
 - **[pilares/CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md](pilares/CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md)** — **2.3.5.13** · filtros flotantes sin scroll 🆕 2026-08-17
 - **[pilares/CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md](pilares/CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md)** — **2.3.5.12** · PE = SDRM venta hoy · **ley maestra→FK filtros** 🆕 2026-08-17
 - **[pilares/CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md](pilares/CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md)** — **2.3.5.11** · UI responsiva + filtros BD 🆕 2026-08-17
 - **[pilares/CHUSAR_ESTILO_638_COL_J_THUMB_LINEA_20260817.md](pilares/CHUSAR_ESTILO_638_COL_J_THUMB_LINEA_20260817.md)** — **2.3.5.10** · estilo col J + thumb por línea 🆕 2026-08-17
+- **[pilares/CHUSAR_ABCR_ACT_PRENDAS_OTROS_20260816.md](pilares/CHUSAR_ABCR_ACT_PRENDAS_OTROS_20260816.md)** — **2.3.5.9** · ACT PRENDAS · chip OTROS · ANTEOJOS 🆕 2026-08-16
+- **[pilares/CHUSAR_MAPA_SDRM_654_LINEA_REFERENCIA_20260816.md](pilares/CHUSAR_MAPA_SDRM_654_LINEA_REFERENCIA_20260816.md)** — **2.3.5.8** · mapa SDRM 654 → L+R 🆕 2026-08-16
 - **[pilares/CHUSAR_DICCIONARIOS_TRADUCTORES_20260816.md](pilares/CHUSAR_DICCIONARIOS_TRADUCTORES_20260816.md)** — **2.3.5.6** · PE 133 · vendedor CSV · plazo Cod Oper 🆕 2026-08-16
 - **[pilares/CHUSAR_MARCA_CHINELO_PILARES_20260816.md](pilares/CHUSAR_MARCA_CHINELO_PILARES_20260816.md)** — **2.3.5.7** 🔴 deuda · CHINELO≠marca · caso · Beira Rio · 8448 🆕 2026-08-16
+- **[pilares/CHUSAR_ADMINISTRADOR_PILARES_FOCO_ORDEN_MAPA_FILTROS_20260813.md](pilares/CHUSAR_ADMINISTRADOR_PILARES_FOCO_ORDEN_MAPA_FILTROS_20260813.md)** — **2.3.5.5** · FOCO orden + mapa filtros 🆕 2026-08-13
 - **[pilares/CHUSAR_ADMINISTRADOR_PILARES.md](pilares/CHUSAR_ADMINISTRADOR_PILARES.md)** — CHUSAR operativo · 2.3.5 / 2.3.5.1 / 2.3.5.2 · miniaturas L×R
 - **[pilares/INDICE.md](pilares/INDICE.md)** — índice subcuenta
 - **docs/ADMINISTRADOR_PILARES.md** — doc profunda arquitectura

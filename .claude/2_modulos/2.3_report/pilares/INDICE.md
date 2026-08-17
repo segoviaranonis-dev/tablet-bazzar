@@ -2,7 +2,7 @@
 
 **App:** Report · **Ruta base:** `/pilares`  
 **Estado:** ✅ Etapa base cerrada 2026-06-17 · 🟢 **FOCO vivo 2.3.5.5** (orden + mapa filtros)  
-**Última actualización CHUSAR:** 2026-08-17 · **2.3.5.18** OTROS PE vs maestra · **2.3.5.17** PE estilo/tipo1+stem · **2.3.5.16** VIZZANO=DAMAS · **2.3.5.15** fotos Admin LR · 🆕 MOISES
+**Última actualización CHUSAR:** 2026-08-17 · **2.3.5.19** STOCK Todos/CP/PE · **2.3.5.18** OTROS PE · **2.3.5.17** PE estilo/tipo1 · **2.3.5.16** VIZZANO · 🆕 MOISES
 
 ---
 
@@ -56,6 +56,7 @@
 | **2.3.5.16** | Ley marca | **VIZZANO = DAMAS** (carteras·anteojos·calzado) · mapa+BD · 🆕 2026-08-17 |
 | **2.3.5.17** | PE Operativa | Editores multi Estilo+Tipo1 · grilla · stem 654 L+R+M+C / 638 L+C · 🆕 2026-08-17 |
 | **2.3.5.18** | PE · OTROS | Maestro estilo OTROS sí · tipo1 no · PE stock 0 · filtros=FK · 🆕 2026-08-17 |
+| **2.3.5.19** | Admin LR STOCK | Todos / Compra previa=`v_stock_rimec` / PE=SDRM · thumb CP 654 · 🆕 2026-08-17 |
 | **2.3.5.5.3** | `/pilares/lineas` | **Siameses AL** Dimensiones∥Molécula · Buscar código · Failed to fetch · 🆕 2026-08-16 |
 
 ---
@@ -64,6 +65,7 @@
 
 | Tipo | Archivo |
 |------|---------|
+| **CHUSAR Admin LR STOCK Todos/CP/PE 2.3.5.19** 🆕 | [CHUSAR_ADMIN_LR_STOCK_TODOS_CP_PE_20260817.md](./CHUSAR_ADMIN_LR_STOCK_TODOS_CP_PE_20260817.md) |
 | **CHUSAR OTROS PE vs maestra 2.3.5.18** 🆕 | [CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md](./CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md) |
 | **CHUSAR PE editores Estilo+Tipo1 + stem 2.3.5.17** 🆕 | [CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md](./CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md) |
 | **CHUSAR ley VIZZANO=DAMAS 2.3.5.16** 🆕 | [CHUSAR_LEY_VIZZANO_DAMAS_20260817.md](./CHUSAR_LEY_VIZZANO_DAMAS_20260817.md) |

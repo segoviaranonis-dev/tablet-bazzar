@@ -26,7 +26,7 @@
 |--------|------|---------|
 | **2.3.5** | `/pilares` | Hub · selector `tipo_v2_id` (654 calzado / 638 confecciones) |
 | **2.3.5.1** | `/pilares/lineas` | Grilla `linea` — marca · género · rango |
-| **2.3.5.2** | `/pilares/linea-referencia` | Grilla L×R — estilo · tipo 1 · **maestra→FK filtros** (**2.3.5.12**) · miniatura (**2.3.5.10**) |
+| **2.3.5.2** | `/pilares/linea-referencia` | Grilla L×R — estilo · tipo 1 · **maestra→FK filtros** (**2.3.5.12**) · STOCK scopes (**2.3.5.19**) · visión cobertura (**2.3.5.14**) · miniatura (**2.3.5.10** / **2.3.5.15**) |
 
 Query obligatoria: `?tipo_v2_id=1` (calzado) · `?tipo_v2_id=2` (confecciones Kyly · ref **K**).
 
@@ -53,21 +53,25 @@ Doc confecciones: [CONFECCIONES_TIPO_V2_2.md](../../../3_arquitectura/3.2_venta_
 | Tabla | Línea · Ref · **Foto** · Marca · Estilo · Tipo 1 · Guardar |
 | Límite | 200 filas · total filtrado en BD |
 
-### Miniatura L×R *(2026-06-19)*
+### Miniatura L×R *(actualizado 2.3.5.15 · 2026-08-17)*
 
-Entre **Ref** y **Marca**: thumb 48px del **primer calzado** con coincidencia exacta **línea + referencia**.
+Entre **Ref** y **Marca**: thumb 48px.
+
+| Rama | Match | Fuente |
+|------|-------|--------|
+| **654** | L×R exacto | retail → si no, **PPD** material+color (stem Storage = Magno) |
+| **638** | Solo **línea** | retail → `v_stock_rimec.imagen_url` |
 
 | Paso | Detalle |
 |------|---------|
 | 1 | API batch `loadPrimeraImagenLineaReferencia` sobre filas de la página |
-| 2 | Fuente: `registro_st_vt_rc_reposicion` · match `linea_codigo_proveedor` + `referencia_codigo_proveedor` |
-| 3 | Prioridad: filas con `imagen_nombre` no vacío · luego primera por `s.id` |
-| 4 | Filtro opcional `tipo_v2_id` del selector proveedor |
-| 5 | UI: `ProductThumbFrame` + `productImageCandidatesForRow` (misma convención depósitos / ventas-fotos) |
+| 2 | `tiene_imagen` = `imagen_nombre` **o** (material+color) |
+| 3 | UI: `ProductThumbFrame` + `productImageCandidatesForRow` — **sin** stems `L-R-0-0` |
+| 4 | PE / depósito = scope **SDRM** (**2.3.5.12**) |
 
-**Convención Storage:** `productos/{sm|md|lg}/{linea}-{ref}-{material}-{color}.jpg` · fallback Excel `imagen_nombre` · fallback stem `linea-ref`.
+**Convención Storage:** 654 `productos/…/L-R-M-C.jpg` · 638 `L_color.jpg` · ley `2.01.04.021` §2.
 
-Sin imagen resoluble → icono 📷 (marco sagrado NIIF).
+Sin imagen resoluble → icono 📷 (marco sagrado NIIF). Doc: [2.3.5.15](./CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md).
 
 ---
 
@@ -113,8 +117,11 @@ Sin imagen resoluble → icono 📷 (marco sagrado NIIF).
 ## Triángulo header (propagación)
 
 Ediciones alimentan filtros RIMEC Web, Alejandro Magno, Tablet y PE en vivo.
-**Ley 2.3.5.12:** SDRM/PE solo **scope** de trabajo; la maestra L×R es la verdad de las FKs.
-Doc: [CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md](./CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md)
+**Ley 2.3.5.12:** SDRM/PE solo **scope** de trabajo; la maestra L×R es la verdad de las FKs.  
+**Ley 2.3.5.14:** marca/género en `linea` · estilo+tipo_1 en L×R · Medias/ACT PRENDAS bajo CONFECCIONES · CASOS ≠ tipo_1 · cero artículos SDRM/CP huérfanos de filtro.  
+**Ley 2.3.5.15:** fotos Admin — 654 `L-R-M-C` (retail→PPD) · 638 `L_C` por línea · PE=SDRM · sin stems `0-0`.  
+**Ley 2.3.5.19:** STOCK — Todos=maestra · CP=`v_stock_rimec` (Web) + thumb CP 654 · PE=SDRM.  
+Docs: [2.3.5.12](./CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md) · [2.3.5.14](./CHUSAR_VISION_LINEA_LR_COBERTURA_SDRM_CP_20260817.md) · [2.3.5.15](./CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md) · [2.3.5.19](./CHUSAR_ADMIN_LR_STOCK_TODOS_CP_PE_20260817.md)
 
 | Vértice | Tabla | Pantalla |
 |---------|-------|----------|

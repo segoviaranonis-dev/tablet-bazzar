@@ -56,6 +56,18 @@ Mismo catálogo · mismo orden dominante · misma API.
 
 ## Superficies (mapa Director)
 
+### 0 · Stock Pronta Entrega — filtro + edición (FOCO 2026-08-16)
+
+**Código:** **2.3.5.3.2** · [CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md](./CHUSAR_PE_STOCK_TONO_FILTRO_EDICION_20260816.md)
+
+| Pieza | Rol TONO |
+|-------|----------|
+| Cabecera PE | **Filtro** círculos + Sin asignar |
+| Círculo junto a marca en tarjeta | **Editor** · PATCH `color.tono_canon` |
+| Verdad | Misma que `/pilares/color` — una fuente |
+
+---
+
 ### 1 · Tablet — ficha calzado (detalle cadena)
 
 **Referencia captura:** badge superior derecho sobre foto (antes texto crudo `MARINA 115M / 208702`).
@@ -150,7 +162,7 @@ PATCH /api/pilares/color
 | 3 | Badge ficha calzado tablet | tablet-bazzar | ⏳ |
 | 4 | Filtro TONO header RIMEC Web | rimec-web | ⏳ |
 | 5 | Slot TONO inicio + cola sin asignar | tablet-bazzar | ⏳ |
-| 6 | Franco Tirador Enter sin checkboxes | tablet-bazzar | ⏳ |
+| 7 | Slot TONO + edición en Stock Pronta Entrega | report `/stock-pronta-entrega` | 🟡 **2.3.5.3.2** etapa abierta |
 
 ---
 

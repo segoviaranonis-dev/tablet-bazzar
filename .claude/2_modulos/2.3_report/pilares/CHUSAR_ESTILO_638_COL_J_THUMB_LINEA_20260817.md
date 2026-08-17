@@ -36,7 +36,7 @@
 | **Estilo 638** | Catálogo desde `grupo_estilo_v2` **excluyendo** estilos exclusivos de calzado (BOTAS, TENIS…) |
 | **Estilo 654** | Lista cerrada calzado + CONFECCIONES + OTROS |
 | **Thumb 638** | 1ª imagen con match **solo línea** (retail `imagen_nombre`; si no → `v_stock_rimec.imagen_url`) |
-| **Thumb 654** | Sigue match **L×R** exacto |
+| **Thumb 654** | Match **L×R** · retail **o** PPD mat+col (**2.3.5.15**) |
 
 ---
 

@@ -10,8 +10,11 @@
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
 | **0** | **Incidente 2FA GitHub · Supabase** | **4.90.01.002** | 🔴 ACTIVO · **espera rendición Andrés** (zip 2026-08-17) · ticket **4671027** |
-| **1** | **Canon CASOS** + cascada chi | **2.2.1.56** / **2.2.1.57** | 🟢 Documenta audit cascada · fix local · ⏸ deploy |
-| **2** | Auditoría índices plan cuentas | **0.00.01.004** | pausado mapa |
+| **1** | **AM programado ≠ STOCK/CP** | **2.3.1.22.1** / **2.3.1.22.2** / **4.02.03.028** | 🟢 Documenta+**despliega** · audit PASS · prod `209fa73` |
+| **2** | **Canon siames AB-CR+Tipo** · frase llamada | **2.2.1.61** | 🟢 Documenta · Web∥Report AB-CR idéntico · Tipo ley alineada |
+| **3** | **Limpieza rimec-web** · consolidado+deploy | **2.2.1.59** / **2.2.1.58** | 🟢 Documenta · re-audit · **despliega** (hecho) |
+| **4** | **Canon CASOS** + cascada chi | **2.2.1.56** / **2.2.1.57** | 🟢 Documenta · hijo de **2.2.1.61** |
+| **5** | Auditoría índices plan cuentas | **0.00.01.004** | pausado mapa |
 
 ---
 
@@ -19,6 +22,10 @@
 
 | Tema | Código | Notas |
 |------|--------|-------|
+| AM programado ≠ STOCK's / CP (4117) | **2.3.1.22.1** / **2.3.1.22.2** / **4.02.03.028** | Documenta+despliega · audit Magno PASS · `209fa73` |
+| Canon siames AB-CR+Tipo · frase llamada | **2.2.1.61** | Implementa el protocolo siames · AB-CR idéntico Web∥Report |
+| UI filtro precio Desde/Hasta + fix mangos | **2.2.1.60** | Documenta+despliega · mangos independientes · móvil ≠ 100% (ver 2.2.1.55) |
+| Multi-grada PE · mostrar todo · Gricelda 1185 | **2.2.1.58** / **4.01.07.008** | Documenta · 2 variantes por curva · audit 0 · local |
 | Audit cascada CASOS/AB-CR · error 012 | **2.2.1.57** / **4.01.04.012** | Documenta · fix `es_liquidacion` CP · chi→RASTRERAS · smoke PASS |
 | CHINELO whitelist + Beira + bib 638 | **2.2.1.56** / **4.01.04.011** | local · chip CHI |
 | AB-CR ACT PRENDAS · OTROS · temporada | **2.3.5.9** | ABIERTO/CERRADO/VERANO/INVIERNO |
@@ -26,6 +33,11 @@
 | Admin LR UI + filtros BD | **2.3.5.11** | re-arq responsiva · CP/Tipo/editor filtro |
 | LR PE = SDRM venta hoy | **2.3.5.12** | botón PE ∩ stock SDRM · ley maestra→FK filtros |
 | LR filtros flotantes | **2.3.5.13** | sin scroll interno · paneles sticky · Documenta+despliega |
+| Admin LR fotos 654/638 · PPD · sin 0-0 | **2.3.5.15** / **4.90.03.012** | Documenta+**despliega** · `5087efd` |
+| Ley VIZZANO = DAMAS (carteras·anteojos) | **2.3.5.16** | Documenta · BD 436 DAMAS · mapa endurecido |
+| Admin LR STOCK Todos/CP/PE · thumb CP | **2.3.5.19** | Documenta+**despliega** · 2361-205/208 |
+| PE editores Estilo+Tipo1 · stem · OTROS audit | **2.3.5.17** / **2.3.5.18** | Documenta+**despliega** · chips=FK · maestro OTROS≠stock PE |
+| Visión linea vs L×R · cobertura SDRM/CP | **2.3.5.14** | Documenta · plan maestra→FK |
 | SF Guido Ola 3 · deploy prod | **2.3.1.50.33** | PV 245.430.928 · espera Guido **50.33.1** |
 | Examen Andrés entrega §12 | **5.01.00.032** | zip 2026-08-15 · veredicto Director pendiente |
 | Auditoría PE sdrm5801 · VIZZANO | **2.2.1.54** | MIG-207 · merge Web |
@@ -50,6 +62,9 @@
 | **Admin LR UI + filtros BD** | **2.3.5.11** | 🟢 local · re-arq + CP/Tipo/editor filtro |
 | **LR PE = SDRM venta hoy** | **2.3.5.12** | 🟢 local · PE ∩ SDRM · **ley maestra→FK filtros** |
 | **LR filtros flotantes** | **2.3.5.13** | 🟢 Documenta+despliega · sin scroll · sticky |
+| **Admin LR fotos 654/638** | **2.3.5.15** / **4.90.03.012** | 🟢 Documenta+**despliega** · PPD · stem sin 0-0 |
+| **Ley VIZZANO=DAMAS** | **2.3.5.16** | 🟢 Documenta · BD ratificada · mapa local |
+| **Admin LR STOCK Todos/CP/PE** | **2.3.5.19** | 🟢 Documenta+**despliega** · thumb CP 654 |
 | **Administrador Pilares** | **2.3.5.5** | 🟡 pausado |
 
 ### Moises / Andrés
@@ -64,21 +79,23 @@
 
 | Tema | Código | Estado |
 |------|--------|--------|
-| Validación Guido post Ola 3 | **2.3.1.50.33.1** | ⏳ espera respuesta |
+| Intake + mapa Excel Guido Ola 4 | **2.3.1.50.34.2** / **50.34.3** | 🟢 mapeado · Δ0 sept · espera OK Guido prod |
+| Validación Guido post Ola 4 | **2.3.1.50.34.1** | intake abierto → cierra con veredicto |
+| SF v2 base/comparación | **2.3.1.50.35** | standby hasta OK Guido |
 
 ### Sellado prod (no tocar sin orden)
 
 | App | Notas |
 |-----|-------|
-| **rimec-web** | sellada `f408fc2` |
-| **Report legacy OPS** | rimec-report.vercel.app |
+| **rimec-web** | prod **978195f** (2026-08-17 · UI precio + mangos · multi-grada/AB-CR) · rimec.com.py |
+| **Report legacy OPS** | rimec-report.vercel.app · AM Magno **`209fa73`** (2026-08-17 · programado≠STOCK · **4.02.03.028**) |
 
 ---
 
 ## Presentación agente (este turno)
 
-Soy tu Cursor en **Nexus_Core** · FOCO **incidente 2FA `4.90.01.002`** — continuar mañana checklist §8 bitácora.  
-Mapa: `CHUSAR_INCIDENTE_2FA_GITHUB_SUPABASE_20260817.md`
+Soy tu Cursor en **Nexus_Core** · FOCO **canon siames AB-CR+Tipo** (`2.2.1.61` · frase **Implementa el protocolo siames**) · 2FA `4.90.01.002` en paralelo (espera Andrés).  
+Mapa: `CHUSAR_CANON_SIAMES_ABCR_TIPO_FRASE_20260817.md` · maestro `2.2.1.44`.
 
 ---
 

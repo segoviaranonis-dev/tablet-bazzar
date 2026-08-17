@@ -96,4 +96,4 @@ Smoke: `npx tsx scripts/_smoke_lr_filtro_pe_deposito.ts` → **PASS_LR_PE_DEPOSI
 
 ## Relacionados
 
-**2.3.5.11** re-arq filtros · **2.3.5.10** col J · **2.3.5.5.1** siameses · absorción Bazzar / PE pipeline · siameses filtro Tipo Web/AM
+**2.3.5.11** re-arq filtros · **2.3.5.10** col J · **2.3.5.5.1** siameses · **2.3.5.19** STOCK Todos/CP/PE · absorción Bazzar / PE pipeline · siameses filtro Tipo Web/AM
