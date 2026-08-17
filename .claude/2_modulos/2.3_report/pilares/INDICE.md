@@ -2,7 +2,7 @@
 
 **App:** Report · **Ruta base:** `/pilares`  
 **Estado:** ✅ Etapa base cerrada 2026-06-17 · 🟢 **FOCO vivo 2.3.5.5** (orden + mapa filtros)  
-**Última actualización CHUSAR:** 2026-08-16 · CHINELO marca **2.3.5.7** · Diccionarios **2.3.5.6** · 🆕 MOISES
+**Última actualización CHUSAR:** 2026-08-17 · **2.3.5.13** filtros flotantes · **2.3.5.12** PE=SDRM · **2.3.5.11** UI LR · 🆕 MOISES
 
 ---
 
@@ -44,7 +44,13 @@
 | **2.3.5.5.2** | `/pilares/color` | 🟢 **PROD** miniatura + zoom + orden trabajo · [CHUSAR_COLOR_TONO_MINIATURA…](./CHUSAR_COLOR_TONO_MINIATURA_POR_CODIGO_20260813.md) · deploy 2026-08-14 |
 | **2.3.5.4** | `/pilares/usuarios` | Admin usuarios · LOCAL · ✅ cerrada 2026-06-10 |
 | **2.3.5.6** | `/pilares/diccionarios-traductores` | **Diccionarios traductores** · 3 pestañas PE/vendedor/plazo · 🆕 2026-08-16 |
-| **2.3.5.7** | pilares · `marca_v2` | **CHINELO = marca** (`09` / `id_marca=9`) · no estilo · 🆕 2026-08-16 |
+| **2.3.5.7** | pilares · COD.GRUPO `09` | 🔴 **DEUDA** CHINELO modelado como marca · verdad = **caso** · marca real **BEIRA RIO** · línea 8448 · 🆕 2026-08-16 |
+| **2.3.5.8** | SDRM 654 → `linea`+`referencia` | Mapa SQL · herencia **siguiente** `codigo_proveedor` · diffs marca/tipo · apply selectivo · 🆕 2026-08-16 |
+| **2.3.5.9** | AB-CR PE | Canon **ACT PRENDAS** (ACT ROPAS+PRENDAS) · chip **OTROS** · ANTEOJOS · 🆕 2026-08-16 |
+| **2.3.5.10** | Admin LR 638 | Estilo **col J** (no whitelist 2) · thumb **por línea** · 🆕 2026-08-17 |
+| **2.3.5.11** | Admin LR UI | Re-arq responsiva · filtros CP/Tipo/M-C + editor por filtro · 🆕 2026-08-17 |
+| **2.3.5.12** | Admin LR PE | Botón PE = **SDRM venta hoy** · **ley maestra→FK filtros** · estilos cascada · 🆕 2026-08-17 |
+| **2.3.5.13** | Admin LR UI | Filtros **flotantes** sin scroll interno · herramientas maestra · 🆕 2026-08-17 |
 | **2.3.5.5.3** | `/pilares/lineas` | **Siameses AL** Dimensiones∥Molécula · Buscar código · Failed to fetch · 🆕 2026-08-16 |
 
 ---
@@ -53,7 +59,13 @@
 
 | Tipo | Archivo |
 |------|---------|
-| **CHUSAR CHINELO marca 2.3.5.7** 🆕 | [CHUSAR_MARCA_CHINELO_PILARES_20260816.md](./CHUSAR_MARCA_CHINELO_PILARES_20260816.md) |
+| **CHUSAR Admin LR filtros flotantes 2.3.5.13** 🆕 | [CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md](./CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md) |
+| **CHUSAR Admin LR PE SDRM venta hoy 2.3.5.12** 🆕 | [CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md](./CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md) |
+| **CHUSAR Admin LR UI+filtros 2.3.5.11** 🆕 | [CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md](./CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md) |
+| **CHUSAR LR 638 estilo col J + thumb 2.3.5.10** 🆕 | [CHUSAR_ESTILO_638_COL_J_THUMB_LINEA_20260817.md](./CHUSAR_ESTILO_638_COL_J_THUMB_LINEA_20260817.md) |
+| **CHUSAR AB-CR ACT PRENDAS+OTROS 2.3.5.9** 🆕 | [CHUSAR_ABCR_ACT_PRENDAS_OTROS_20260816.md](./CHUSAR_ABCR_ACT_PRENDAS_OTROS_20260816.md) |
+| **CHUSAR mapa SDRM 654 L+R 2.3.5.8** 🆕 | [CHUSAR_MAPA_SDRM_654_LINEA_REFERENCIA_20260816.md](./CHUSAR_MAPA_SDRM_654_LINEA_REFERENCIA_20260816.md) |
+| **CHUSAR CHINELO deuda arq 2.3.5.7** 🔴 | [CHUSAR_MARCA_CHINELO_PILARES_20260816.md](./CHUSAR_MARCA_CHINELO_PILARES_20260816.md) · caso≠marca · Beira Rio |
 | **CHUSAR Admin líneas siames 2.3.5.5.3** 🆕 | [CHUSAR_ADMIN_PILARES_LINEAS_SIAMES_20260816.md](./CHUSAR_ADMIN_PILARES_LINEAS_SIAMES_20260816.md) |
 | **CHUSAR Diccionarios traductores 2.3.5.6** 🆕 | [CHUSAR_DICCIONARIOS_TRADUCTORES_20260816.md](./CHUSAR_DICCIONARIOS_TRADUCTORES_20260816.md) |
 | **CHUSAR FOCO 2.3.5.5** 🆕 | [CHUSAR_ADMINISTRADOR_PILARES_FOCO_ORDEN_MAPA_FILTROS_20260813.md](./CHUSAR_ADMINISTRADOR_PILARES_FOCO_ORDEN_MAPA_FILTROS_20260813.md) |

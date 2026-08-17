@@ -26,7 +26,7 @@
 |--------|------|---------|
 | **2.3.5** | `/pilares` | Hub · selector `tipo_v2_id` (654 calzado / 638 confecciones) |
 | **2.3.5.1** | `/pilares/lineas` | Grilla `linea` — marca · género · rango |
-| **2.3.5.2** | `/pilares/linea-referencia` | Grilla L×R — estilo · tipo 1 · **miniatura calzado** |
+| **2.3.5.2** | `/pilares/linea-referencia` | Grilla L×R — estilo · tipo 1 · **maestra→FK filtros** (**2.3.5.12**) · miniatura (**2.3.5.10**) |
 
 Query obligatoria: `?tipo_v2_id=1` (calzado) · `?tipo_v2_id=2` (confecciones Kyly · ref **K**).
 
@@ -112,7 +112,9 @@ Sin imagen resoluble → icono 📷 (marco sagrado NIIF).
 
 ## Triángulo header (propagación)
 
-Ediciones alimentan filtros RIMEC Web y Tablet en vivo.
+Ediciones alimentan filtros RIMEC Web, Alejandro Magno, Tablet y PE en vivo.
+**Ley 2.3.5.12:** SDRM/PE solo **scope** de trabajo; la maestra L×R es la verdad de las FKs.
+Doc: [CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md](./CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md)
 
 | Vértice | Tabla | Pantalla |
 |---------|-------|----------|
@@ -121,7 +123,7 @@ Ediciones alimentan filtros RIMEC Web y Tablet en vivo.
 | Estilo | `linea_referencia.grupo_estilo_id` | 2.3.5.2 |
 | Tipo 1 | `linea_referencia.tipo_1_id` | 2.3.5.2 |
 
-Doc: [TRIANGULO_HEADER_PILARES.md](../../../3_arquitectura/3.2_venta_tienda/TRIANGULO_HEADER_PILARES.md)
+Doc triángulo: [TRIANGULO_HEADER_PILARES.md](../../../3_arquitectura/3.2_venta_tienda/TRIANGULO_HEADER_PILARES.md)
 
 ---
 

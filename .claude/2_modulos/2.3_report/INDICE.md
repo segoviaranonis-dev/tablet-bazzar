@@ -4,7 +4,9 @@
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
 **Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
-**Última actualización:** 2026-08-07 · **FOCO Bitácora monitoreo (2.3.1.51)** · sesión + venta activa
+**Última actualización:** 2026-08-17 · **2.3.5.13** filtros flotantes LR · **2.3.5.12** PE=SDRM · **2.3.5.11** LR UI · Diccionarios **2.3.5.6** · codificación **0.00.01.004**
+
+**Mapa codificación:** [CHUSAR_AUDITORIA_CODIFICACION_INDICES_20260816.md](../../CHUSAR_AUDITORIA_CODIFICACION_INDICES_20260816.md)
 
 ---
 
@@ -24,7 +26,7 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 
 **Módulos activos:**
 - ✅ Aprobaciones (NIIF 100%) · **tabs** **2.3.1.3.2** · indagación **2.3.1.3.3** · **agilidad/plazo/perf** **2.3.1.3.6** · **Aprobación Gral molécula** **2.3.1.3.7** 🆕 2026-08-11 [CHUSAR](aprobaciones/CHUSAR_APROBACION_GRAL_MOLECULA_20260811.md)
-- ✅ **Administrador de Pilares** (`/pilares` — **2.3.5 CERRADA** 2026-06-17)
+- ✅ **Administrador de Pilares** (`/pilares` — **2.3.5** base CERRADA · 🔴 **2.3.5.7** CHINELO deuda arq · **2.3.5.6** Diccionarios · FOCO **2.3.5.5**)
 - ✅ **RRHH** (`/rrhh` — **2.3.10** · subcuentas 2.3.10.1–2.3.10.2)
 - ✅ **Proceso importación** (`/proceso-importacion` — **2.3.1.7** · **2.3.1.7.2 Importación precios CERRADA** ✅) · **CSV precios Tito PP** **2.3.1.7.5.3.17** 🆕 2026-08-11
 - Stock / Retail
@@ -34,14 +36,14 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - **PDF gerencial · subtotales banda desde nivel (`2.3.1.1.2`)** 🆕 → [CHUSAR_PDF_SUBTOTALES_BANDA_DESDE_NIVEL_20260804.md](CHUSAR_PDF_SUBTOTALES_BANDA_DESDE_NIVEL_20260804.md) · receta cocina · azul solo a la derecha de `startCol`
 - **🔍🕵️ Gestión de compra · Director (2.3.1.11)** 🆕 → [gestion_compra/INDICE.md](gestion_compra/INDICE.md)
 - **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16
-- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **⬛ etapa calzado 654 CERRADA** [ETAPA_STOCK_PE_CALZADO_654…](../4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md) 2026-07-29 · **Ley DPE sin BCL** (**2.3.1.10.1.2.1**) · **Asignación descuentos** (**2.3.1.10.1.4**) · **sdrm2121** (**2.3.1.10.1.5**) · **Filtros PE** (**2.3.1.10.1.3**) · **Grada abierta 638** (**2.3.1.10.12**)
+- **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **⬛ etapa calzado 654 CERRADA** [ETAPA_STOCK_PE_CALZADO_654…](../4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md) 2026-07-29 · **Ley DPE sin BCL** (**2.3.1.10.1.2.1**) · **Asignación descuentos** (**2.3.1.10.1.4**) · **sdrm2121** (**2.3.1.10.1.5**) · **Import UI body Next 15.5** (**2.3.1.10.1.7**) 🆕 2026-08-12 · **EAN 638/654 gate** (**2.3.1.10.1.8**) 🟢 2026-08-12 · **Filtros PE** (**2.3.1.10.1.3**) · **Grada abierta 638** (**2.3.1.10.12**)
 - **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · Rimec **2.3.1.28.10** · multi **2.3.1.28.14** · roles **2.3.1.28.15** · orden tradicional **2.3.1.28.16** · VENDEDOR bloqueado desarrollo **2.3.1.28.17**
 - **Automatización de informes (2.3.1.35)** 🆕 → [automatizacion_informes/INDICE.md](automatizacion_informes/INDICE.md) · `/automatizacion-informes` · Control PE · multi-usuarios/horarios **2.3.1.35.5** · plan PDF→bandeja `PLAN-AUTO-BANDEJA-PE-20260802` · **espíritu cocina 133×LPN/LPC03/LPC04** (**2.3.1.35.11**) · **cocina ≠ PDF** snapshot (**2.3.1.35.15**)
 - **Mensajes internos (2.3.1.36)** 🆕 → [mensajes_internos/INDICE.md](mensajes_internos/INDICE.md) · `/mensajes-internos` · inbox `usuario_v2` · PDF backend · banquete tipo_v2 **2.3.1.36.6**
 - **📋 Bitácora monitoreo sesión/venta (2.3.1.51)** 🆕 → [bitacora/INDICE.md](bitacora/INDICE.md) · `/holding/bitacora` · tabla L–V · respaldo carrito · [CHUSAR](bitacora/CHUSAR_BITACORA_MONITOREO_SESION_VENTA_20260807.md) · par carrito **2.2.1.42** · etapa [ETAPA_BITACORA…](../4_etapas/ETAPA_BITACORA_MONITOREO_SESION_VENTA_20260807.md) · 🆕 MOISES 2026-08-07 · aparcada (FOCO → SF)
-- **📊 Situación financiera Rimec (2.3.1.50)** ✅ **v1 CERRADA** → [situacion_financiera/INDICE.md](situacion_financiera/INDICE.md) · cierre **2.3.1.50.29** · deuda v2 **2.3.1.50.28** · norte **5.01.00.026** · 🆕 MOISES post-20260807 · 2026-08-10
+- **📊 Situación financiera Rimec (2.3.1.50)** · Ola 3 Guido ✅ prod · espera validación **50.33.1** → [situacion_financiera/INDICE.md](situacion_financiera/INDICE.md) · deploy **50.33** · norte **5.01.00.026**
 - **Etapa unificada** → [ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md](../4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md) · lección [CHUSAR_LECCION_VIOLACIONES…](CHUSAR_LECCION_VIOLACIONES_INFORMES_CORREO_20260801.md)
-- **Depósitos Bazzar (2.3.2.1)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
+- **Depósitos Bazzar (**2.3.6** · árbol **2.3.2.1.x**)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
 - **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
 - **Motor de Precios (2.3.1.7.1 — Report)** 🆕
 
@@ -52,7 +54,7 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 ```
 2.3_report/
 ├── INDICE.md (este archivo)
-├── depositos/                   — 2.3.2.1 Depósitos Bazzar (Report admin)
+├── depositos/                   — 2.3.6 Depósitos Bazzar (árbol 2.3.2.1.x)
 │   └── INDICE.md
 ├── caja_bazzar/                 — 2.3.2.2 Caja Bazzar · 6 tiendas · P-01…P-13
 │   ├── INDICE.md
@@ -118,6 +120,13 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - Matriz: [MATRIZ_ROLES_ACCESOS_HOLDING.md](../1_fundamentos/1.3_politicas/MATRIZ_ROLES_ACCESOS_HOLDING.md)
 
 ### **Pilares (2.3.5 — Report)**
+- **[CHUSAR_CANON_CASOS_FILTRO_UNIVERSAL_20260816.md](../2.2_rimec_web/CHUSAR_CANON_CASOS_FILTRO_UNIVERSAL_20260816.md)** — **2.2.1.56** · CASOS Web·AM·SDRM · CHI · bib 638 🆕 2026-08-16
+- **[pilares/CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md](pilares/CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md)** — **2.3.5.13** · filtros flotantes sin scroll 🆕 2026-08-17
+- **[pilares/CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md](pilares/CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md)** — **2.3.5.12** · PE = SDRM venta hoy · **ley maestra→FK filtros** 🆕 2026-08-17
+- **[pilares/CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md](pilares/CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md)** — **2.3.5.11** · UI responsiva + filtros BD 🆕 2026-08-17
+- **[pilares/CHUSAR_ESTILO_638_COL_J_THUMB_LINEA_20260817.md](pilares/CHUSAR_ESTILO_638_COL_J_THUMB_LINEA_20260817.md)** — **2.3.5.10** · estilo col J + thumb por línea 🆕 2026-08-17
+- **[pilares/CHUSAR_DICCIONARIOS_TRADUCTORES_20260816.md](pilares/CHUSAR_DICCIONARIOS_TRADUCTORES_20260816.md)** — **2.3.5.6** · PE 133 · vendedor CSV · plazo Cod Oper 🆕 2026-08-16
+- **[pilares/CHUSAR_MARCA_CHINELO_PILARES_20260816.md](pilares/CHUSAR_MARCA_CHINELO_PILARES_20260816.md)** — **2.3.5.7** 🔴 deuda · CHINELO≠marca · caso · Beira Rio · 8448 🆕 2026-08-16
 - **[pilares/CHUSAR_ADMINISTRADOR_PILARES.md](pilares/CHUSAR_ADMINISTRADOR_PILARES.md)** — CHUSAR operativo · 2.3.5 / 2.3.5.1 / 2.3.5.2 · miniaturas L×R
 - **[pilares/INDICE.md](pilares/INDICE.md)** — índice subcuenta
 - **docs/ADMINISTRADOR_PILARES.md** — doc profunda arquitectura
@@ -337,7 +346,7 @@ Ver: `docs/DISENO_DESCRIPCION_8_TABLAS_INFORME_VENTAS.md`
 | `/modulos` | Report (2.3) badge **NEW** + fecha último `git log` en `report/` |
 | `/modulos/report` | Acordeón RIMEC / Bazzar · tarjetas NIIF uniformes |
 | `/modulos/report/rrhh` | Grid 2.3.10.1 · 2.3.10.2 |
-| `/modulos/report/proceso-importacion` | Grid 2.3.11.1 · 2.3.11.2 |
+| `/modulos/report/proceso-importacion` | Grid **2.3.1.7** · 2.3.1.7.1 Motor |
 
 Doc programa: [CHUSAR_NAVEGADOR_PROGRAMA.md](../../1_fundamentos/CHUSAR_NAVEGADOR_PROGRAMA.md) · config: `nexus-navegador-holding/config/arbol-modulos.json`
 
