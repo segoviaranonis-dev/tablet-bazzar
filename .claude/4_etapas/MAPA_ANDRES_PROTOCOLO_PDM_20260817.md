@@ -22,14 +22,14 @@ Una empresa de mercado no tolera un segundo de incertidumbre. Héctor hace PDM �
 
 ## Pasos
 
-1. `git -C report/rimec-web/bazzar-web fetch` y confirmar SHA = el que Héctor publicó.  
-2. Redeploy Vercel scope `rimec-nexus`: `rimec-report-x` · `rimec-web-x` · `bazzar-web-x`.  
-3. Smoke HTTP 200 en las tres.  
-4. Bitácora: fecha + SHA + «PDM Andrés PASS».  
-5. Avisar a Héctor.
+1. Auth solo `nexusrimec-ux`.  
+2. **Push a `rimec-nexus`** el sync que Héctor dejó en mirror (o PAT en cofre) — Héctor **no puede** ls-remote esos repos privados.  
+3. Verificar Vercel: `rimec-report-x` · `rimec-web-x` · `bazzar-web-x` · `nexus-navegador`.  
+4. Smoke HTTP 200.  
+5. Bitácora + avisar «PDM Andrés PASS» + SHA.
 
 ## Si algo falla
 
 Parar. No DNS. No mezclar `segoviaranonis-dev`. Avisar bloqueo.
 
-Doc completo: `CHUSAR_PROTOCOLO_PDM_20260817.md`.
+Doc: `CHUSAR_PROTOCOLO_PDM_20260817.md` · DNS: `CHUSAR_PDM_DNS_ABORTO_OPS_20260817.md`.

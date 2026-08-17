@@ -96,14 +96,16 @@ Extras examen (WhatsApp/EDB) = fuera del PDM-1 núcleo.
 ### Checklist re-PDM (Andrés)
 ```
 [ ] gh auth / git = nexusrimec-ux
-[ ] git fetch origin && git rev-parse --short HEAD  == SHA que pasó Héctor (report/web/bazzar)
+[ ] En mirror Héctor o pull: push commits PDM sync a rimec-nexus (report/web/bazzar) — Héctor NO tiene auth a repos privados
+[ ] git fetch origin && git rev-parse --short HEAD  == SHA publicado
 [ ] remotes solo rimec-nexus
-[ ] vercel --scope rimec-nexus  → redeploy rimec-report-x · rimec-web-x · bazzar-web-x
-[ ] smoke: report-x · web-x · bazzar-x/inicio = HTTP 200
+[ ] vercel --scope rimec-nexus  → verificar rimec-report-x · rimec-web-x · bazzar-web-x · nexus-navegador
+[ ] smoke HTTP 200
 [ ] anotar ACTA fecha + SHA en bitácora aislada
 [ ] avisar a Héctor: «PDM Andrés PASS» + SHA
 ```
 
+**Bloqueo Héctor 2026-08-17:** `git ls-remote rimec-nexus/*` → Repository not found (sin token `nexusrimec`). Andrés debe pushear desde PC aislada o dejar **PAT** en cofre.
 ### Si FAIL
 - No tocar DNS.  
 - No mezclar org legacy.  

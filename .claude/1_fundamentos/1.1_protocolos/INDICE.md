@@ -10,9 +10,10 @@
 
 ### **5.01.00.036 Protocolo PDM · Producto Disponible para el Mercado** 🆕 2026-08-17
 **Archivo:** `CHUSAR_PROTOCOLO_PDM_20260817.md`  
+**DNS/aborto:** `CHUSAR_PDM_DNS_ABORTO_OPS_20260817.md`  
 **Etapa:** `ETAPA_PDM_CUTOVER_20260817.md` · mapa Andrés: `MAPA_ANDRES_PROTOCOLO_PDM_20260817.md`  
 **Tema:** Keyword **PDM** · cutover a `rimec-nexus` / `nexus.rimec` · triple certeza  
-**Estado:** 🟢 EN CURSO — PDM-1
+**Estado:** 🟢 EN CURSO — PDM-1 deploy Vercel hecho · Git PDM push = Andrés · DNS pendiente confirmación
 
 ### **5.01.00.035 Moises · chequeo emparejamiento Git/Supabase/Vercel** 🆕 2026-08-17
 **Archivo:** `CHUSAR_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md`  

@@ -18,11 +18,11 @@ Emparejar las 3 fuentes (local · OPS · `rimec-nexus`) al SHA del PC Director; 
 
 | ID | Qué | Estado |
 |----|-----|--------|
-| **PDM-0** | Documenta protocolo + índices + mapa Andrés | ⏳ |
-| **PDM-A** | Push SHA local → `rimec-nexus` (+ OPS al día) | ⏳ |
-| **PDM-B** | Deploy `*-x` + navegador · smoke | ⏳ |
-| **PDM-C** | DNS checklist (post-smoke) | ⏳ |
-| **PDM-D** | Instructivo Andrés re-PDM | ⏳ |
+| **PDM-0** | Documenta protocolo + índices + mapa Andrés | ✅ |
+| **PDM-A** | Push SHA local → `rimec-nexus` (+ OPS al día) | ⚠️ OPS ✅ · GitHub PDM **bloqueado sin auth** Héctor · mirror sync listo para push Andrés |
+| **PDM-B** | Deploy `*-x` + navegador · smoke | ✅ report/web/bazzar + `nexus-navegador` Vercel · `:3004` 200 |
+| **PDM-C** | DNS checklist (post-smoke) | ✅ doc · **NO ejecutar** hasta orden DNS |
+| **PDM-D** | Instructivo Andrés re-PDM | ✅ |
 
 ## Alcance PDM-1
 

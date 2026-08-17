@@ -10,7 +10,7 @@
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **0** | **PDM · Producto Disponible para el Mercado** | **5.01.00.036** | 🟢 **EN CURSO** · cutover `rimec-nexus` · triple certeza Andrés |
+| **0** | **PDM · Producto Disponible para el Mercado** | **5.01.00.036** | 🟢 **EN CURSO** · Vercel PDM deploy ✅ · Git push Andrés · DNS pendiente |
 | **0b** | Moises chequeo emparejamiento (padre) | **5.01.00.035** | 🟢 ME-1..3✅ · ME-4 = PDM-B |
 | **1** | **Incidente 2FA GitHub · Supabase** | **4.90.01.002** | 🔴 paralelo · espera rendición Andrés · ticket **4671027** |
 | **2** | **AM programado ≠ STOCK/CP** | **2.3.1.22.1** / **2.3.1.22.2** / **4.02.03.028** | 🟢 Documenta+**despliega** · audit PASS · prod `209fa73` |
