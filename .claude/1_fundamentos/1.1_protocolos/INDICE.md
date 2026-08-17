@@ -8,11 +8,17 @@
 
 ## 📋 PROTOCOLOS ACTIVOS
 
+### **5.01.00.036 Protocolo PDM · Producto Disponible para el Mercado** 🆕 2026-08-17
+**Archivo:** `CHUSAR_PROTOCOLO_PDM_20260817.md`  
+**Etapa:** `ETAPA_PDM_CUTOVER_20260817.md` · mapa Andrés: `MAPA_ANDRES_PROTOCOLO_PDM_20260817.md`  
+**Tema:** Keyword **PDM** · cutover a `rimec-nexus` / `nexus.rimec` · triple certeza  
+**Estado:** 🟢 EN CURSO — PDM-1
+
 ### **5.01.00.035 Moises · chequeo emparejamiento Git/Supabase/Vercel** 🆕 2026-08-17
 **Archivo:** `CHUSAR_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md`  
 **Etapa:** `ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md`  
 **Tema:** Accesos aislados · deploy dual · monitor BD Moises · guardrails secretos  
-**Estado:** 🟢 EN CURSO — ME-1..3✅ · estricto NO · siguiente ME-4 (**despliega**)
+**Estado:** 🟢 EN CURSO — ME-1..3✅ · absorbido por PDM **5.01.00.036** (ME-4=PDM-B)
 
 ### **5.01.00.001 Ingreso agente Chuna**
 **Archivo:** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md`  

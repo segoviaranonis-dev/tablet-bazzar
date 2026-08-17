@@ -60,10 +60,20 @@
           "nuevo": true
         },
         {
+          "code": "2.0.8",
+          "slug": "protocolo-pdm-20260817",
+          "label": "Protocolo PDM · mercado",
+          "lead": "Producto Disponible Mercado · rimec-nexus · keyword PDM · 5.01.00.036 · Documenta 2026-08-17.",
+          "appPath": "/etapas",
+          "md": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_PROTOCOLO_PDM_20260817.md",
+          "mdEtapa": ".claude/4_etapas/ETAPA_PDM_CUTOVER_20260817.md",
+          "nuevo": true
+        },
+        {
           "code": "2.0.7",
           "slug": "moises-chequeo-emparejamiento-20260817",
           "label": "Moises · chequeo emparejamiento",
-          "lead": "ME-3 matriz: SHA DELTA · BD drift · ventas SAME · ME-4=despliega · 5.01.00.035 · Documenta 2026-08-17.",
+          "lead": "ME-3 matriz: SHA DELTA · BD drift · ventas SAME · ME-4=PDM-B · 5.01.00.035 · Documenta 2026-08-17.",
           "appPath": "/etapas",
           "md": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md",
           "mdEtapa": ".claude/4_etapas/ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md",

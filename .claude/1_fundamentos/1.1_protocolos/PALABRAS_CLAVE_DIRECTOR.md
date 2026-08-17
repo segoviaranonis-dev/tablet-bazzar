@@ -14,12 +14,14 @@
 | 7 | Verifica el índice y la documentación | Moria primaria → abrir **solo** la ruta secundaria del ítem en tarea |
 | 8 | **Documenta** | Crear/actualizar `.md` en `.claude/` + índice. **Solo cuando el Director lo ordene** |
 | 9 | **Documentación Chusar** · **Documentacion Chusar** | Integrar contexto de tarea abierta (`ACTUAL.md`) en memoria. **No** doc paso a paso. Ver `PROTOCOLO_DOCUMENTACION_CHUSAR.md` |
-| 10 | **problemas de imagen** · **imagen** · **desbordamiento de imagen** · **las imagenes no se ven bien** · infección · marco violado · Recorte calzado | **Primero** `LEY_UNIVERSAL_IMAGENES_PRODUCTO.md` (`2.01.04.021`) · integral RIMEC Web: `PROTOCOLO_IMAGENES_CARGA_INTEGRAL_RIMEC_WEB.md` · índice § **4.90.03** · detalle del pie. Bug urgente!! si bloqueante |
+| 10 | **problemas de imagen** · **imagen** · **desbordamiento de imagen** · **las imagenes no se ven bien** · infección · marco violado · Recorte calzado | **Primero** `LEY_UNIVERSAL_IMAGENES_PRODUCTO.md` (`2.01.04.021`) **§4.6** · integral RIMEC Web: `PROTOCOLO_IMAGENES_CARGA_INTEGRAL_RIMEC_WEB.md` · índice § **4.90.03** · detalle del pie. Bug urgente!! si bloqueante |
+| 10b | **Verifica las imágenes** · verificar imágenes · auditoría imágenes stock | Ley §**4.6** completo (matriz A–J · **654 y 638**) · `auditar_sanear_imagenes_stock_web.py --sanear` · no falso PASS por lote solo · error `4.90.03.011` |
 | 11 | **Chusar** · import multi-proveedor · Kyly · 638 | Hub: `3_arquitectura/3.2_venta_tienda/CHUSAR_LISTO_PROVEEDORES.md` · etapa: `4_etapas/ACTUAL.md` |
-| 12 | **Importar imágenes** | Ley Universal §4 · CHUSAR lote: `CHUSAR_IMPORT_IMAGENES_BATCH.md` · script `subir_carpeta_import_batch.py` · ≠ Importación precios 2.3.1.7.2 |
+| 12 | **Importar imágenes** | Ley Universal §4 · CHUSAR lote: `CHUSAR_IMPORT_IMAGENES_BATCH.md` · script `subir_carpeta_import_batch.py` · **gate** `auditar_sanear_imagenes_stock_web.py` (`2.01.04.025` · error `4.90.03.011`) · ≠ Importación precios 2.3.1.7.2 |
 | 12b | **imagen de portada** | Banners marca · mismo protocolo inserción (flat+sm/md/lg+HEAD) · `productos/portada/` · `CHUSAR_IMAGEN_DE_PORTADA_20260807.md` (`2.01.04.024`) · script `subir_portadas_marca_batch.py` · helpers siameses Bazzar/RIMEC/Report · ≠ Importar imágenes (SKU) |
 | 13 | **Grilla Rimec** | Estándar holding `3_arquitectura/3.2_venta_tienda/GRILLA_RIMEC.md` (`3.2.00.002`) · cabecera filtros + grilla molécula + acordeón dato duro · ref `CHUSAR_GRILLA_RIMEC.md` |
 | 14 | **Hermanos siameses** · filtro Tipo AM↔Web | Fix en una grilla → **mismo turno** chequear/alinear la otra · `CHUSAR_FILTRO_TIPO_HERMANOS_SIAMESES_20260720.md` · regla `.cursor/rules/hermanos-siameses-filtro-tipo.mdc` |
+| 15 | **PDM** · **hagamos un pdm** · **Protocolo PDM** | Pasar código/focos a cuenta **producto disponible para el mercado** (`rimec-nexus` · `nexus.rimec`) · `CHUSAR_PROTOCOLO_PDM_20260817.md` (**5.01.00.036**) · mapa Andrés re-PDM |
 
 Obligatorio consultar antes de **crear módulo nuevo**.
 

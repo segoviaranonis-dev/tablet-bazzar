@@ -17,18 +17,20 @@ alwaysApply: true
 | 2 | **Inicia etapa** · **Nueva etapa** · **NUEVA ETAPA** | Crear/actualizar `.claude/4_etapas/ETAPA_*.md` + `ACTUAL.md`. Pausar etapa anterior. **No declarar cerrada** hasta protocolo completo. |
 | 3 | **Cierra etapa** · **CERRAR ETAPA** · **cierra la etapa** | **Mismo turno:** doc `ETAPA_*_CERRADA.md` + `ACTUAL.md` + índices **+ obligatorio `nexus-navegador-holding/config/etapas.json`** (`estado: "hecho"` + `cerradasPorModulo`). Verificar `:3004/etapas`. **Prohibido** decir «cerrada» sin JSON. `protocolo_etapas.md` · `1.1.10` PASO 6 · regla `cierre-etapa-navegador.mdc`. |
 | 4 | **Pilares** | Activar leyes pilares: `politicas-importacion-pilares.mdc`, `RIMEC_NOMENCLATURA_PILARES.md`, FK canónicas. **Sales Report blindado** — no pilares. |
-| 5 | *(toda respuesta)* · **pregunta trampa** | Línea 1 exacta: `Si pienso en el lo entiendo, pero si me lo explicarlo es imposible` · Doc `5.01.00.025` + cierre 💰 COSTO |
+| 5 | *(toda respuesta)* · **pregunta trampa** | Línea 1 exacta: `Si pienso en el lo entiendo, pero si me lo explicarlo es imposible` · Doc `5.01.00.025` + cierre `sugerencia:` + 💰 COSTO (`5.01.00.030`) |
 | 5a | **¿Cuántas patas tiene un gato?** | **Excepción legado:** primera línea **Andrés, el que viene.** Protocolo Moises Activado · Moria + ACTUAL acatados. + 💰 COSTO |
 | 5b | **Entrá por CHUNA** / **Protocolo chusar activado** | Frase trampa línea 1 + leer CHUNA + Moria + ACTUAL · si keyword activado → sistema completo `5.01.00.024` |
 | 6 | **¿Cómo estará la barranca?** | **que el sapo la sube al trote** (= protocolo Nexus internalizado). |
 | 7 | **Documenta** | `.md` en `.claude/` + índice + **paso 8 Chusar** si integración memoria. Solo orden Director — ver Moria §0.3 |
 | 8 | **Documentación Moises** · **Documentación Chusar** · **Documentacion Chusar** | Integrar memoria + cierre **CHUSAR — integrado** / Moises + **Listo para tu orden.** + **💰 COSTO**. Vivo: Protocolo Moises (`5.01.00.021`) |
 | 9 | Verifica el índice y la documentación | Primaria → **leer** una ruta secundaria — **no escribir** |
-| 10 | **problemas de imagen** · infección · marco violado | **Leer** `LEY_UNIVERSAL_IMAGENES_PRODUCTO.md` (`2.01.04.021`) + índice `4.90.03` — código sí; memoria **no** |
+| 10 | **problemas de imagen** · infección · marco violado | **Leer** `LEY_UNIVERSAL_IMAGENES_PRODUCTO.md` (`2.01.04.021`) **§4.6** + índice `4.90.03` — código sí; memoria **no** |
+| 10b | **Verifica las imágenes** · verificar imágenes | Ley §**4.6** completo (654 **y** 638 · matriz A–J) · `auditar_sanear_imagenes_stock_web.py --sanear` · no falso PASS · `4.90.03.011` |
 | 11 | **Memoria solo lectura** | **Prohibido** tocar primaria/secundaria sin consentimiento del Director. Solo él define desarrollo vs definitivo. `PROTOCOLO_MEMORIA_SOLO_LECTURA.md` |
 | 12 | **Memoria sagrada** | Ley **indiscutible** — siempre solo lectura salvo keyword **exacta**. Sinónimos (*registra*, *chusar*) **no** abren memoria. `MEMORIA_SAGRADA.md` |
-| 13 | **Importar imágenes** | Ley Universal §4 · CHUSAR lote JPG → Supabase: `CHUSAR_IMPORT_IMAGENES_BATCH.md` · `subir_carpeta_import_batch.py` · ≠ Importación precios |
+| 13 | **Importar imágenes** | Ley Universal §4 · CHUSAR lote JPG → Supabase: `CHUSAR_IMPORT_IMAGENES_BATCH.md` · `subir_carpeta_import_batch.py` · gate stock · ≠ Importación precios |
 | 13b | **imagen de portada** | Banners marca · `productos/portada/` · `subir_portadas_marca_batch.py` · `2.01.04.024` · helpers siameses · ≠ SKU |
+| 14 | **PDM** · **hagamos un pdm** · **Protocolo PDM** | Cuenta mercado `rimec-nexus` / `nexus.rimec` · `5.01.00.036` · Andrés re-PDM (triple certeza) |
 
 ---
 

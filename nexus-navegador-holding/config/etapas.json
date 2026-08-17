@@ -1,14 +1,34 @@
 {
-  "actualizado": "2026-08-17-me3-matriz-moises-5.01.00.035",
+  "actualizado": "2026-08-17-pdm-cutover-5.01.00.036",
   "sesionActiva": {
-    "code": "MOISES-CHEQUEO-EMPAREJAMIENTO-20260817",
-    "alias": "Moises · chequeo emparejamiento Git/Supabase/Vercel",
+    "code": "PDM-CUTOVER-20260817",
+    "alias": "PDM · Producto Disponible para el Mercado",
     "maraton": "moria-chusar",
     "ejecutor": "cursor",
-    "foco": "5.01.00.035 ME-3✅ estricto NO · ME-4 solo con despliega",
-    "mdEtapa": ".claude/4_etapas/ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md"
+    "foco": "5.01.00.036 PDM-1 empareje+deploy rimec-nexus",
+    "mdEtapa": ".claude/4_etapas/ETAPA_PDM_CUTOVER_20260817.md"
   },
   "trabajoVivo": [
+    {
+      "code": "PDM-CUTOVER-20260817",
+      "moduloSlug": "moria-chusar",
+      "subcuentaSlug": "protocolo-pdm",
+      "label": "PDM · Producto Disponible para el Mercado",
+      "md": ".claude/4_etapas/ETAPA_PDM_CUTOVER_20260817.md",
+      "mdChusar": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_PROTOCOLO_PDM_20260817.md",
+      "appPath": "http://localhost:3004/etapas",
+      "ejecutor": "cursor",
+      "estado": "en_curso",
+      "nuevo": true,
+      "focoMaraton": true,
+      "subEtapas": [
+        "PDM-0",
+        "PDM-A",
+        "PDM-B",
+        "PDM-C",
+        "PDM-D"
+      ]
+    },
     {
       "code": "MOISES-CHEQUEO-EMPAREJAMIENTO-20260817",
       "moduloSlug": "moria-chusar",
@@ -20,7 +40,7 @@
       "ejecutor": "cursor",
       "estado": "en_curso",
       "nuevo": true,
-      "focoMaraton": true,
+      "focoMaraton": false,
       "subEtapas": [
         "ME-0",
         "ME-1",
