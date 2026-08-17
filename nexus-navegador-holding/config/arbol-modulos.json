@@ -63,7 +63,7 @@
           "code": "2.0.7",
           "slug": "moises-chequeo-emparejamiento-20260817",
           "label": "Moises · chequeo emparejamiento",
-          "lead": "Git+Supabase+Vercel aislados · deploy dual · monitor BD · 5.01.00.035 · Documenta 2026-08-17.",
+          "lead": "ME-2 smoke PASS *-x+SQL · RLS anon=0 · ME-3 matriz · 5.01.00.035 · Documenta 2026-08-17.",
           "appPath": "/etapas",
           "md": ".claude/1_fundamentos/1.1_protocolos/CHUSAR_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md",
           "mdEtapa": ".claude/4_etapas/ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md",

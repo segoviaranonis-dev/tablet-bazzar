@@ -12,7 +12,7 @@
 **Archivo:** `CHUSAR_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md`  
 **Etapa:** `ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md`  
 **Tema:** Accesos aislados · deploy dual · monitor BD Moises · guardrails secretos  
-**Estado:** 🟢 EN CURSO — espera entrega accesos Director
+**Estado:** 🟢 EN CURSO — ME-1✅ ME-2✅ · siguiente ME-3 matriz
 
 ### **5.01.00.001 Ingreso agente Chuna**
 **Archivo:** `PROTOCOLO_INGRESO_AGENTE_CHUNA.md`  
