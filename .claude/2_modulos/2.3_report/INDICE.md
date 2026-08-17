@@ -4,7 +4,7 @@
 **Tecnología:** Next.js (Local)  
 **Estado:** Producción + NIIF UI 100%  
 **Puerto:** 3000 (dev local) · **3001** si Tablet ocupa 3000  
-**Última actualización:** 2026-08-17 · **2.3.5.13** filtros flotantes LR · **2.3.5.12** PE=SDRM · **2.3.5.11** LR UI · Diccionarios **2.3.5.6** · codificación **0.00.01.004**
+**Última actualización:** 2026-08-17 · **2.3.5.18** OTROS PE vs maestra · **2.3.5.17** PE Estilo+Tipo1+stem · **2.3.5.16** VIZZANO=DAMAS · **2.3.5.15** fotos Admin LR · **2.3.5.12** PE=SDRM · Diccionarios **2.3.5.6**
 
 **Mapa codificación:** [CHUSAR_AUDITORIA_CODIFICACION_INDICES_20260816.md](../../CHUSAR_AUDITORIA_CODIFICACION_INDICES_20260816.md)
 
@@ -35,13 +35,13 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 - **Sales Report inmersivo (`/rimec` — 2.3.1.1)** → [CHUSAR_SALES_REPORT_FILTROS_CASCADA.md](CHUSAR_SALES_REPORT_FILTROS_CASCADA.md) · error **4.02.02.005** · v1.0.3 · **foco etapa** `SALES-REPORT-PDFS-20260804` [ETAPA](../../4_etapas/ETAPA_SALES_REPORT_PDFS_20260804.md) · CSV PE **CERRADA** [20260804](../../4_etapas/ETAPA_CSV_PE_DEPOSITO_CABECERA_20260804_CERRADA.md) sin deploy
 - **PDF gerencial · subtotales banda desde nivel (`2.3.1.1.2`)** 🆕 → [CHUSAR_PDF_SUBTOTALES_BANDA_DESDE_NIVEL_20260804.md](CHUSAR_PDF_SUBTOTALES_BANDA_DESDE_NIVEL_20260804.md) · receta cocina · azul solo a la derecha de `startCol`
 - **🔍🕵️ Gestión de compra · Director (2.3.1.11)** 🆕 → [gestion_compra/INDICE.md](gestion_compra/INDICE.md)
-- **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16
+- **⚔️ Operativo Alejandro Magno (2.3.1.12)** → [CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md](gestion_compra/CHUSAR_ALEJANDRO_MAGNO_TRES_ENTIDADES.md) · Día operativo / pruebas 5000 **CERRADA** [ETAPA_DIA_OPERATIVO_20260713_CERRADA.md](../4_etapas/ETAPA_DIA_OPERATIVO_20260713_CERRADA.md) ✅ 2026-07-16 · **AM programado≠STOCK** **2.3.1.22.1**/**2.3.1.22.2** 🆕 [CHUSAR](gestion_compra/CHUSAR_AM_PROGRAMADO_NO_STOCK_PERAS_MANZANAS_20260817.md) · deploy [2.3.1.22.2](gestion_compra/CHUSAR_DEPLOY_AM_INTEGRIDAD_PROGRAMADO_20260817.md) · **4.02.03.028** ✅
 - **Depósito RIMEC · Stock PE (2.3.1.10)** → [deposito_rimec/INDICE.md](deposito_rimec/INDICE.md) · `/stock-pronta-entrega` · **⬛ etapa calzado 654 CERRADA** [ETAPA_STOCK_PE_CALZADO_654…](../4_etapas/ETAPA_STOCK_PE_CALZADO_654_20260729_CERRADA.md) 2026-07-29 · **Ley DPE sin BCL** (**2.3.1.10.1.2.1**) · **Asignación descuentos** (**2.3.1.10.1.4**) · **sdrm2121** (**2.3.1.10.1.5**) · **Import UI body Next 15.5** (**2.3.1.10.1.7**) 🆕 2026-08-12 · **EAN 638/654 gate** (**2.3.1.10.1.8**) 🟢 2026-08-12 · **Filtros PE** (**2.3.1.10.1.3**) · **Grada abierta 638** (**2.3.1.10.12**)
 - **Logística OK (2.3.1.28)** 🆕 → [logistica_ok/INDICE.md](logistica_ok/INDICE.md) · `/logistica-ok` · Rimec **2.3.1.28.10** · multi **2.3.1.28.14** · roles **2.3.1.28.15** · orden tradicional **2.3.1.28.16** · VENDEDOR bloqueado desarrollo **2.3.1.28.17**
 - **Automatización de informes (2.3.1.35)** 🆕 → [automatizacion_informes/INDICE.md](automatizacion_informes/INDICE.md) · `/automatizacion-informes` · Control PE · multi-usuarios/horarios **2.3.1.35.5** · plan PDF→bandeja `PLAN-AUTO-BANDEJA-PE-20260802` · **espíritu cocina 133×LPN/LPC03/LPC04** (**2.3.1.35.11**) · **cocina ≠ PDF** snapshot (**2.3.1.35.15**)
 - **Mensajes internos (2.3.1.36)** 🆕 → [mensajes_internos/INDICE.md](mensajes_internos/INDICE.md) · `/mensajes-internos` · inbox `usuario_v2` · PDF backend · banquete tipo_v2 **2.3.1.36.6**
 - **📋 Bitácora monitoreo sesión/venta (2.3.1.51)** 🆕 → [bitacora/INDICE.md](bitacora/INDICE.md) · `/holding/bitacora` · tabla L–V · respaldo carrito · [CHUSAR](bitacora/CHUSAR_BITACORA_MONITOREO_SESION_VENTA_20260807.md) · par carrito **2.2.1.42** · etapa [ETAPA_BITACORA…](../4_etapas/ETAPA_BITACORA_MONITOREO_SESION_VENTA_20260807.md) · 🆕 MOISES 2026-08-07 · aparcada (FOCO → SF)
-- **📊 Situación financiera Rimec (2.3.1.50)** · Ola 3 Guido ✅ prod · espera validación **50.33.1** → [situacion_financiera/INDICE.md](situacion_financiera/INDICE.md) · deploy **50.33** · norte **5.01.00.026**
+- **📊 Situación financiera Rimec (2.3.1.50)** · Ola 4 ✅ prod · **intake respuesta Guido** **50.34.2** → [situacion_financiera/INDICE.md](situacion_financiera/INDICE.md) · deploy **50.34** · norte **5.01.00.026**
 - **Etapa unificada** → [ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md](../4_etapas/ETAPA_INFORMES_AUTO_Y_MENSAJES_INTERNOS_20260801.md) · lección [CHUSAR_LECCION_VIOLACIONES…](CHUSAR_LECCION_VIOLACIONES_INFORMES_CORREO_20260801.md)
 - **Depósitos Bazzar (**2.3.6** · árbol **2.3.2.1.x**)** → [depositos/INDICE.md](depositos/INDICE.md) · app `/depositos-bazzar`
 - **Caja Bazzar · Tickets (2.3.2.2)** 🆕 → [caja_bazzar/INDICE.md](caja_bazzar/INDICE.md) · app `/tablet-bazzar` · **Hub operativo/admin:** [CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md](../CHUSAR_BAZZAR_OPERATIVO_VS_ADMIN.md)
@@ -121,6 +121,10 @@ Report es el sistema de reportes institucionales de Nexus, implementando el est�
 
 ### **Pilares (2.3.5 — Report)**
 - **[CHUSAR_CANON_CASOS_FILTRO_UNIVERSAL_20260816.md](../2.2_rimec_web/CHUSAR_CANON_CASOS_FILTRO_UNIVERSAL_20260816.md)** — **2.2.1.56** · CASOS Web·AM·SDRM · CHI · bib 638 🆕 2026-08-16
+- **[pilares/CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md](pilares/CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md)** — **2.3.5.18** · OTROS maestro sí · PE stock no · filtros=FK 🆕 2026-08-17
+- **[pilares/CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md](pilares/CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md)** — **2.3.5.17** · PE editores Estilo+Tipo1 · stem 654/638 🆕 2026-08-17
+- **[pilares/CHUSAR_LEY_VIZZANO_DAMAS_20260817.md](pilares/CHUSAR_LEY_VIZZANO_DAMAS_20260817.md)** — **2.3.5.16** · VIZZANO=DAMAS · carteras/anteojos 🆕 2026-08-17
+- **[pilares/CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md](pilares/CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md)** — **2.3.5.15** · fotos 654/638 · PPD · **4.90.03.012** 🆕 2026-08-17
 - **[pilares/CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md](pilares/CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md)** — **2.3.5.13** · filtros flotantes sin scroll 🆕 2026-08-17
 - **[pilares/CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md](pilares/CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md)** — **2.3.5.12** · PE = SDRM venta hoy · **ley maestra→FK filtros** 🆕 2026-08-17
 - **[pilares/CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md](pilares/CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md)** — **2.3.5.11** · UI responsiva + filtros BD 🆕 2026-08-17

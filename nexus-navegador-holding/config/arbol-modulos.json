@@ -92,6 +92,14 @@
           "nuevo": true,
           "children": [
             {
+              "code": "2.2.1.61",
+              "slug": "canon-siames-abcr-tipo-frase-20260817",
+              "label": "Canon siames · AB-CR + Tipo",
+              "lead": "Frase Implementa el protocolo siames · paths canónicos · IDENTICAL Web≡Report · Documenta 2026-08-17.",
+              "md": ".claude/2_modulos/2.2_rimec_web/CHUSAR_CANON_SIAMES_ABCR_TIPO_FRASE_20260817.md",
+              "nuevo": true
+            },
+            {
               "code": "2.2.1.55",
               "slug": "ui-responsive-20260816",
               "label": "UI responsiva móvil+tablet",
@@ -801,6 +809,51 @@
               "md": "report/docs/ADMINISTRADOR_PILARES.md",
               "children": [
                 {
+                  "code": "2.3.5.14",
+                  "slug": "vision-linea-lr-cobertura-sdrm-cp-20260817",
+                  "label": "Visión · linea vs L×R · cobertura SDRM/CP",
+                  "lead": "Marca/género en linea · estilo+tipo1 en LR · Medias/ACT PRENDAS bajo CONFECCIONES · CASOS≠tipo1 · 4 CP sin LR deuda · Documenta 2026-08-17.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_VISION_LINEA_LR_COBERTURA_SDRM_CP_20260817.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.18",
+                  "slug": "otros-estilo-tipo1-pe-vs-maestra-20260817",
+                  "label": "OTROS · PE vs maestra",
+                  "lead": "Maestro estilo 600000 sí · tipo1 no · PE stock 0 · chips=FK · Documenta+despliega 2026-08-17.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.17",
+                  "slug": "pe-editores-estilo-tipo1-stem-20260817",
+                  "label": "PE · editores Estilo+Tipo1 · stem foto",
+                  "lead": "Chips multi como TONO · grilla editable · 654 L+R+M+C · 638 L+C · Documenta 2026-08-17.",
+                  "appPath": "/stock-pronta-entrega",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.13",
+                  "slug": "admin-lr-filtros-flotantes-20260817",
+                  "label": "Admin LR · filtros flotantes",
+                  "lead": "Paneles Dim/Mol sticky · sin scroll interno · Documenta 2026-08-17.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md",
+                  "nuevo": true
+                },
+                {
+                  "code": "2.3.5.12",
+                  "slug": "admin-lr-pe-sdrm-venta-hoy-20260817",
+                  "label": "Admin LR · PE = SDRM venta hoy",
+                  "lead": "Ley maestra→FK filtros · scope SDRM · Documenta 2026-08-17.",
+                  "appPath": "/pilares/linea-referencia",
+                  "md": ".claude/2_modulos/2.3_report/pilares/CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md",
+                  "nuevo": true
+                },
+                {
                   "code": "2.3.5.6",
                   "slug": "pilares-diccionarios-traductores",
                   "label": "Diccionarios traductores",
@@ -1144,6 +1197,15 @@
                           "lead": "Botón único post-ENVIADO · montos exactos MIG-179",
                           "appPath": "/proceso-importacion/pedido-proveedor",
                           "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_RECALC_LP_LOGISTICA_POST_COMPRAS.md",
+                          "nuevo": true
+                        },
+                        {
+                          "code": "2.3.1.7.5.3.12",
+                          "slug": "gate-lr-obligatorio-proforma-20260817",
+                          "label": "Gate LR obligatorio · proforma",
+                          "lead": "Causa 4.02.03.009 · Streamlit+Report abortan sin L×R · PP14 remediado · Documenta 2026-08-17.",
+                          "appPath": "/proceso-importacion/pedido-proveedor",
+                          "md": ".claude/2_modulos/2.3_report/proceso_importacion/CHUSAR_GATE_LR_OBLIGATORIO_PROFORMA_20260817.md",
                           "nuevo": true
                         },
                         {

@@ -2,7 +2,7 @@
 
 **App:** Report · **Ruta base:** `/pilares`  
 **Estado:** ✅ Etapa base cerrada 2026-06-17 · 🟢 **FOCO vivo 2.3.5.5** (orden + mapa filtros)  
-**Última actualización CHUSAR:** 2026-08-17 · **2.3.5.13** filtros flotantes · **2.3.5.12** PE=SDRM · **2.3.5.11** UI LR · 🆕 MOISES
+**Última actualización CHUSAR:** 2026-08-17 · **2.3.5.18** OTROS PE vs maestra · **2.3.5.17** PE estilo/tipo1+stem · **2.3.5.16** VIZZANO=DAMAS · **2.3.5.15** fotos Admin LR · 🆕 MOISES
 
 ---
 
@@ -51,6 +51,11 @@
 | **2.3.5.11** | Admin LR UI | Re-arq responsiva · filtros CP/Tipo/M-C + editor por filtro · 🆕 2026-08-17 |
 | **2.3.5.12** | Admin LR PE | Botón PE = **SDRM venta hoy** · **ley maestra→FK filtros** · estilos cascada · 🆕 2026-08-17 |
 | **2.3.5.13** | Admin LR UI | Filtros **flotantes** sin scroll interno · herramientas maestra · 🆕 2026-08-17 |
+| **2.3.5.14** | Visión maestra | `linea` marca/género · L×R estilo+tipo_1 · Medias/ACT PRENDAS bajo CONFECCIONES · cobertura SDRM/CP · ≠ CASOS · 🆕 2026-08-17 |
+| **2.3.5.15** | Admin LR fotos | Protocolo 654/638 · thumb PPD · stem sin 0-0 · **4.90.03.012** · 🆕 2026-08-17 |
+| **2.3.5.16** | Ley marca | **VIZZANO = DAMAS** (carteras·anteojos·calzado) · mapa+BD · 🆕 2026-08-17 |
+| **2.3.5.17** | PE Operativa | Editores multi Estilo+Tipo1 · grilla · stem 654 L+R+M+C / 638 L+C · 🆕 2026-08-17 |
+| **2.3.5.18** | PE · OTROS | Maestro estilo OTROS sí · tipo1 no · PE stock 0 · filtros=FK · 🆕 2026-08-17 |
 | **2.3.5.5.3** | `/pilares/lineas` | **Siameses AL** Dimensiones∥Molécula · Buscar código · Failed to fetch · 🆕 2026-08-16 |
 
 ---
@@ -59,6 +64,11 @@
 
 | Tipo | Archivo |
 |------|---------|
+| **CHUSAR OTROS PE vs maestra 2.3.5.18** 🆕 | [CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md](./CHUSAR_OTROS_ESTILO_TIPO1_PE_VS_MAESTRA_20260817.md) |
+| **CHUSAR PE editores Estilo+Tipo1 + stem 2.3.5.17** 🆕 | [CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md](./CHUSAR_PE_EDITORES_ESTILO_TIPO1_STEM_20260817.md) |
+| **CHUSAR ley VIZZANO=DAMAS 2.3.5.16** 🆕 | [CHUSAR_LEY_VIZZANO_DAMAS_20260817.md](./CHUSAR_LEY_VIZZANO_DAMAS_20260817.md) |
+| **CHUSAR Admin LR fotos 654/638 + PPD 2.3.5.15** 🆕 | [CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md](./CHUSAR_ADMIN_LR_FOTOS_654_638_THUMB_PPD_20260817.md) |
+| **CHUSAR visión linea/LR + cobertura SDRM/CP 2.3.5.14** 🆕 | [CHUSAR_VISION_LINEA_LR_COBERTURA_SDRM_CP_20260817.md](./CHUSAR_VISION_LINEA_LR_COBERTURA_SDRM_CP_20260817.md) |
 | **CHUSAR Admin LR filtros flotantes 2.3.5.13** 🆕 | [CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md](./CHUSAR_ADMIN_LR_FILTROS_FLOTANTES_20260817.md) |
 | **CHUSAR Admin LR PE SDRM venta hoy 2.3.5.12** 🆕 | [CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md](./CHUSAR_ADMIN_LR_PE_SDRM_VENTA_HOY_20260817.md) |
 | **CHUSAR Admin LR UI+filtros 2.3.5.11** 🆕 | [CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md](./CHUSAR_ADMIN_LR_UI_FILTROS_REARCH_20260817.md) |
