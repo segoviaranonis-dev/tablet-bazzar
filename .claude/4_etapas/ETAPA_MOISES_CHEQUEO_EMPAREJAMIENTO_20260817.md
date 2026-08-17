@@ -47,7 +47,7 @@ Estrategia Director (ratificada con guardrails agente):
 | **ME-0** | Documenta + etapa + árbol + índices | ✅ |
 | **ME-1** | Director entrega accesos (Git org · Supabase project · Vercel team) | ✅ 2026-08-17 · carpeta `MOISES_ACCESOS` |
 | **ME-2** | Smoke lectura BD Moises (conteos pilares / PE / health) | ✅ 2026-08-17 · ver CHUSAR §5 |
-| **ME-3** | Matriz emparejamiento: commit SHA · URL Vercel · schema/mig drift | ⏳ |
+| **ME-3** | Matriz emparejamiento: commit SHA · URL Vercel · schema/mig drift | ✅ 2026-08-17 · estricto **NO** · ver CHUSAR §3 |
 | **ME-4** | Despliegue dual (orden **despliega**) + monitor post-deploy | ⏳ |
 | **ME-5** | Informe PASS/FAIL + acta Director | ⏳ |
 

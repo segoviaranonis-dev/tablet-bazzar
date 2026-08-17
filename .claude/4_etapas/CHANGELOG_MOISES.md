@@ -22,6 +22,7 @@
 
 | # | Fecha | Qué | Índices / código | Git | DB | Estado |
 |---|-------|-----|------------------|-----|-----|--------|
+| 88 | 2026-08-17 | **ME-3 matriz emparejamiento** `5.01.00.035` · SHA 3/3 DELTA · BD drift · ventas SAME · mig ABSENT Moises · Documenta | CHUSAR §3 · ETAPA ME-3 · ACTUAL · evidencia ME3 | Sí holding | Solo lectura OPS∥Moises | 🆕 |
 | 87 | 2026-08-17 | **ME-2 smoke Moises** `5.01.00.035` · `*-x` 200 · SQL conteos pilares/PE · RLS anon=0 · Protocolo Chusar Activado+Documenta | CHUSAR §5 · ETAPA ME-1/2 · ACTUAL · evidencia local MOISES_ACCESOS | Sí holding | Solo lectura Moises | 🆕 |
 | 86 | 2026-08-17 | **Moises chequeo emparejamiento** `5.01.00.035` · etapa abierta · Git/Supabase/Vercel aislados · guardrails · Protocolo Moises+Documenta | CHUSAR+ETAPA · ACTUAL · INDICE protocolos · arbol 2.0.7 · etapas.json | Sí holding | No | 🆕 |
 | 85 | 2026-08-17 | **Documentación Chusar lote pilares** · push untracked 2.3.5.5→19 · índices · árbol NEW · productos Report deploy · Protocolo Chusar Activado | INDICE pilares/2.3 · arbol · ACTUAL · CHANGELOG | Sí holding | No | 🆕 |

@@ -10,7 +10,7 @@
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **0** | **Moises · chequeo emparejamiento** Git/Supabase/Vercel | **5.01.00.035** | 🟢 **EN CURSO** · ME-1✅ ME-2✅ · siguiente **ME-3** matriz SHA/URL |
+| **0** | **Moises · chequeo emparejamiento** Git/Supabase/Vercel | **5.01.00.035** | 🟢 **EN CURSO** · ME-1..3✅ · estricto NO · siguiente **ME-4** solo con **despliega** |
 | **1** | **Incidente 2FA GitHub · Supabase** | **4.90.01.002** | 🔴 paralelo · espera rendición Andrés · ticket **4671027** |
 | **2** | **AM programado ≠ STOCK/CP** | **2.3.1.22.1** / **2.3.1.22.2** / **4.02.03.028** | 🟢 Documenta+**despliega** · audit PASS · prod `209fa73` |
 | **3** | **Canon siames AB-CR+Tipo** · frase llamada | **2.2.1.61** | 🟢 Documenta · Web∥Report AB-CR idéntico · Tipo ley alineada |

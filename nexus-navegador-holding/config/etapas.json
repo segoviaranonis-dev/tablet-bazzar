@@ -1,11 +1,11 @@
 {
-  "actualizado": "2026-08-17-me2-smoke-moises-5.01.00.035",
+  "actualizado": "2026-08-17-me3-matriz-moises-5.01.00.035",
   "sesionActiva": {
     "code": "MOISES-CHEQUEO-EMPAREJAMIENTO-20260817",
     "alias": "Moises · chequeo emparejamiento Git/Supabase/Vercel",
     "maraton": "moria-chusar",
     "ejecutor": "cursor",
-    "foco": "5.01.00.035 ME-2✅ · siguiente ME-3 matriz SHA/URL/schema",
+    "foco": "5.01.00.035 ME-3✅ estricto NO · ME-4 solo con despliega",
     "mdEtapa": ".claude/4_etapas/ETAPA_MOISES_CHEQUEO_EMPAREJAMIENTO_20260817.md"
   },
   "trabajoVivo": [
