@@ -134,6 +134,22 @@ Extras examen (WhatsApp/EDB) = fuera del PDM-1 núcleo.
 - Evidencia local Héctor: `MOISES_ACCESOS\20260817\evidencia-pdm\`  
 - CHANGELOG Moises lote PDM.
 
+### 7.1 · EVIDENCIA Andrés — Git PASS (2026-08-17)
+
+```
+PDM Andrés — Git PASS
+report main: 15aa4f7
+rimec-web main: 978195f
+bazzar-web main: a7e3bef
+match tabla Héctor: SI
+vercel redeploy: NO
+smoke *-x: PASS (puede ser build anterior al force)
+nota: force main rimec-nexus · Sin DNS
+```
+
+**Validación OPS Cursor:** smoke cruzado 200 / 308 / 200 · SHA = tabla bundles.  
+**Pendiente:** redeploy Vercel PDM (aire = SHA nuevo) · DNS solo con orden.
+
 ---
 
 ## 8 · Cuidados · praxis entorno aislado (anti mala praxis)

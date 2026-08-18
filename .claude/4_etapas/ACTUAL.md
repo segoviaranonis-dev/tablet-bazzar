@@ -10,13 +10,14 @@
 
 | # | Tema | Código | Estado |
 |---|------|--------|--------|
-| **0** | **PDM · Producto Disponible para el Mercado** | **5.01.00.036** | 🟢 **EN CURSO** · Vercel PDM deploy ✅ · Git push Andrés · DNS pendiente |
+| **0** | **PDM · Producto Disponible para el Mercado** | **5.01.00.036** | 🟢 **EN CURSO** · Git `rimec-nexus` ✅ Andrés · Vercel redeploy pendiente · DNS pendiente |
 | **0b** | Moises chequeo emparejamiento (padre) | **5.01.00.035** | 🟢 ME-1..3✅ · ME-4 = PDM-B |
 | **1** | **Incidente 2FA GitHub · Supabase** | **4.90.01.002** | 🔴 paralelo · espera rendición Andrés · ticket **4671027** |
 | **2** | **AM programado ≠ STOCK/CP** | **2.3.1.22.1** / **2.3.1.22.2** / **4.02.03.028** | 🟢 Documenta+**despliega** · audit PASS · prod `209fa73` |
 | **3** | **Canon siames AB-CR+Tipo** · frase llamada | **2.2.1.61** | 🟢 Documenta · Web∥Report AB-CR idéntico · Tipo ley alineada |
 | **4** | **Limpieza rimec-web** · consolidado+deploy | **2.2.1.59** / **2.2.1.58** | 🟢 Documenta · re-audit · **despliega** (hecho) |
 | **5** | Auditoría índices plan cuentas | **0.00.01.004** | pausado mapa |
+| **6** | **Motor precio · excepción cliente** | **2.5.1.43** / **4.02.05.006** | 🟢 Documenta · mitigado local `:3000` · Ctrl+F5 |
 
 ---
 
