@@ -88,4 +88,23 @@ Este documento **es** un CHUSAR: deja evidencia en Moria de que el protocolo viv
 
 ---
 
+## Cuidados praxis entorno aislado (2026-08-17)
+
+**Canónico ampliado:** [CHUSAR_PROTOCOLO_PDM_20260817.md](./CHUSAR_PROTOCOLO_PDM_20260817.md) **§8** (`5.01.00.036`) — C1…C12.
+
+Resumen para agentes Moises:
+
+1. No auditar el escritorio de Andrés — exigir **EVIDENCIA/SHA**.  
+2. Git PDM sin auth Héctor = SPOF → PAT emergencia o bundles.  
+3. Secretos solo cofre · no chat.  
+4. Vercel ≠ Git cerrado.  
+5. No mezclar `.env` / `.vercel` OPS↔PDM.  
+6. Force push solo con orden MD.  
+7. DNS solo con keyword/fase.  
+8. Keywords mandan (PDM / despliega).
+
+---
+
+**Documenta 2026-08-04 · enmienda cuidados 2026-08-17.**
+
 **Documenta 2026-08-04 — Protocolo Moises Activado · planificación = Moises.**

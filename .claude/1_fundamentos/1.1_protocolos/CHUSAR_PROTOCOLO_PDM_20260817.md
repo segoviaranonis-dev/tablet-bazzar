@@ -106,6 +106,8 @@ Extras examen (WhatsApp/EDB) = fuera del PDM-1 núcleo.
 ```
 
 **Bloqueo Héctor 2026-08-17:** `git ls-remote rimec-nexus/*` → Repository not found (sin token `nexusrimec`). Andrés debe pushear desde PC aislada o dejar **PAT** en cofre.
+
+**Cuidados praxis (leer):** §8 de este doc · padre Moises **5.01.00.021** — C1…C12 (SPOF auth, secretos, env, Git≠Vercel, EVIDENCIA, force push, DNS, keywords).
 ### Si FAIL
 - No tocar DNS.  
 - No mezclar org legacy.  
@@ -134,4 +136,28 @@ Extras examen (WhatsApp/EDB) = fuera del PDM-1 núcleo.
 
 ---
 
-**Documenta 2026-08-17 — Protocolo PDM 5.01.00.036 abierto · PDM-1 en ejecución.**
+## 8 · Cuidados · praxis entorno aislado (anti mala praxis)
+
+> Origen: incertidumbre del Director 2026-08-17 — **no inmiscuirse** en la PC de Andrés; sí **dejar ley escrita** para agentes/Andrés.  
+> Padre Moises: **5.01.00.021**.
+
+| # | Cuidado | Por qué (seguidilla PDM) | Praxis correcta |
+|---|---------|--------------------------|-----------------|
+| **C1** | **Auth Git PDM = único dueño Andrés** | Héctor no puede `ls-remote` `rimec-nexus` → SPOF | PAT de solo-lectura o colaborador de emergencia en cofre · o bundles + EVIDENCIA obligatoria |
+| **C2** | **Secretos solo cofre** | `accesosapp.md` con DB/token en claro; riesgo de pegar en chat | Nunca repetir valores en WhatsApp/Cursor chat · rotar si se filtró |
+| **C3** | **No mezclar `.env` OPS ↔ PDM** | `vercel link` puede “Updated .env.local” | Tras cualquier link/deploy PDM: verificar `NEXT_PUBLIC_SUPABASE_URL` = proyecto correcto · `.vercel` no dejar linkeado en disco OPS |
+| **C4** | **Git ≠ Vercel** | Deploy CLI subió código sin push Git | Mercado “vivo” en Vercel **no** cierra PDM hasta SHA en `rimec-nexus` + EVIDENCIA |
+| **C5** | **Verdad = commit, no working tree sucio** | Sync robocopy de disco sucio ≠ SHA limpio Héctor | Bundles desde `HEAD` committed · tabla SHA en la orden |
+| **C6** | **Force push es excepción PDM** | Autorizado una vez para reemplazar mirror 15-ago | No normalizar `--force` · solo con orden MD del Director |
+| **C7** | **Handoff = MD + EVIDENCIA, no “dale y listo”** | Zip a Cursor Andrés | Andrés devuelve bloque EVIDENCIA; Héctor/Cursor valida SHA |
+| **C8** | **2FA / recovery** | Incidente celular (`4.90.01.002`) | Recovery codes en cofre + pendrive · no un solo dispositivo |
+| **C9** | **Tooling asimétrico** | `gh`/CLI faltan o cuelgan en una orilla | Antes de PDM: `gh` + `vercel` versión mínima en ambas PCs |
+| **C10** | **Keywords mandan** | Examen decía STOP commit; PDM ordena push | Sin **PDM** / **despliega** / orden MD: no push ni deploy en aislado |
+| **C11** | **DNS es fase aparte** | Tentación de apuntar dominios al primer 200 | Solo tras smoke + orden **DNS PDM** |
+| **C12** | **Director no audita el escritorio de Andrés** | Confianza + protocolo | Control por EVIDENCIA/SHA/smoke — no por mirar su PC |
+
+**Frase para agentes:** si ves una de estas praxis → **parar**, citar **C#**, pedir corrección; no “arreglar callado” la orilla ajena.
+
+---
+
+**Documenta 2026-08-17 — Protocolo PDM 5.01.00.036 · §8 cuidados praxis · PDM-1 en curso.**
